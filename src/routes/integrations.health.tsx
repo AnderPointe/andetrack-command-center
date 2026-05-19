@@ -40,6 +40,7 @@ function IntegrationHealth() {
   return (
     <AppShell>
       <div className="p-4 md:p-6 space-y-6">
+        <EnterpriseNav />
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Integration Health</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Live status of every external connection — API, EDI, webhooks, providers.</p>
