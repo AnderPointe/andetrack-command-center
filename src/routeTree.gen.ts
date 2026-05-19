@@ -20,6 +20,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as LoadsRouteImport } from './routes/loads'
 import { Route as FuelRouteImport } from './routes/fuel'
 import { Route as DriversRouteImport } from './routes/drivers'
+import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DispatchRouteImport } from './routes/dispatch'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AlertsRouteImport } from './routes/alerts'
@@ -28,10 +29,20 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as SettingsWhiteLabelRouteImport } from './routes/settings.white-label'
 import { Route as SettingsProductionMonitoringRouteImport } from './routes/settings.production-monitoring'
 import { Route as SettingsProductionRouteImport } from './routes/settings.production'
+import { Route as SettingsEmailTemplatesRouteImport } from './routes/settings.email-templates'
 import { Route as SettingsBillingRouteImport } from './routes/settings.billing'
+import { Route as RatingQuoteRouteImport } from './routes/rating.quote'
 import { Route as PortalNewRequestRouteImport } from './routes/portal.new-request'
+import { Route as OptimizationCenterRouteImport } from './routes/optimization.center'
+import { Route as IntegrationsWebhooksRouteImport } from './routes/integrations.webhooks'
+import { Route as IntegrationsHubRouteImport } from './routes/integrations.hub'
+import { Route as IntegrationsHealthRouteImport } from './routes/integrations.health'
+import { Route as IntegrationsEdiRouteImport } from './routes/integrations.edi'
+import { Route as IntegrationsApiRouteImport } from './routes/integrations.api'
+import { Route as EnterprisePhase7DemoRouteImport } from './routes/enterprise.phase7-demo'
 import { Route as DriverPhase5DemoRouteImport } from './routes/driver.phase5-demo'
 import { Route as DriverNotificationsLabRouteImport } from './routes/driver.notifications-lab'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
@@ -41,6 +52,7 @@ import { Route as DriverEliteNavRouteImport } from './routes/driver.elite-nav'
 import { Route as DriverDeliveriesRouteImport } from './routes/driver.deliveries'
 import { Route as DriverCopilotLabRouteImport } from './routes/driver.copilot-lab'
 import { Route as DispatchCommandCenterRouteImport } from './routes/dispatch.command-center'
+import { Route as DataImportExportRouteImport } from './routes/data.import-export'
 import { Route as AdminPlatformRouteImport } from './routes/admin.platform'
 
 const VehiclesRoute = VehiclesRouteImport.update({
@@ -98,6 +110,11 @@ const DriversRoute = DriversRouteImport.update({
   path: '/drivers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DispatchRoute = DispatchRouteImport.update({
   id: '/dispatch',
   path: '/dispatch',
@@ -138,6 +155,11 @@ const DriverIndexRoute = DriverIndexRouteImport.update({
   path: '/driver/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsWhiteLabelRoute = SettingsWhiteLabelRouteImport.update({
+  id: '/white-label',
+  path: '/white-label',
+  getParentRoute: () => SettingsRoute,
+} as any)
 const SettingsProductionMonitoringRoute =
   SettingsProductionMonitoringRouteImport.update({
     id: '/production-monitoring',
@@ -149,15 +171,60 @@ const SettingsProductionRoute = SettingsProductionRouteImport.update({
   path: '/production',
   getParentRoute: () => SettingsRoute,
 } as any)
+const SettingsEmailTemplatesRoute = SettingsEmailTemplatesRouteImport.update({
+  id: '/email-templates',
+  path: '/email-templates',
+  getParentRoute: () => SettingsRoute,
+} as any)
 const SettingsBillingRoute = SettingsBillingRouteImport.update({
   id: '/billing',
   path: '/billing',
   getParentRoute: () => SettingsRoute,
 } as any)
+const RatingQuoteRoute = RatingQuoteRouteImport.update({
+  id: '/rating/quote',
+  path: '/rating/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalNewRequestRoute = PortalNewRequestRouteImport.update({
   id: '/new-request',
   path: '/new-request',
   getParentRoute: () => PortalRoute,
+} as any)
+const OptimizationCenterRoute = OptimizationCenterRouteImport.update({
+  id: '/optimization/center',
+  path: '/optimization/center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsWebhooksRoute = IntegrationsWebhooksRouteImport.update({
+  id: '/integrations/webhooks',
+  path: '/integrations/webhooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsHubRoute = IntegrationsHubRouteImport.update({
+  id: '/integrations/hub',
+  path: '/integrations/hub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsHealthRoute = IntegrationsHealthRouteImport.update({
+  id: '/integrations/health',
+  path: '/integrations/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsEdiRoute = IntegrationsEdiRouteImport.update({
+  id: '/integrations/edi',
+  path: '/integrations/edi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegrationsApiRoute = IntegrationsApiRouteImport.update({
+  id: '/integrations/api',
+  path: '/integrations/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnterprisePhase7DemoRoute = EnterprisePhase7DemoRouteImport.update({
+  id: '/enterprise/phase7-demo',
+  path: '/enterprise/phase7-demo',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DriverPhase5DemoRoute = DriverPhase5DemoRouteImport.update({
   id: '/driver/phase5-demo',
@@ -204,6 +271,11 @@ const DispatchCommandCenterRoute = DispatchCommandCenterRouteImport.update({
   path: '/command-center',
   getParentRoute: () => DispatchRoute,
 } as any)
+const DataImportExportRoute = DataImportExportRouteImport.update({
+  id: '/data/import-export',
+  path: '/data/import-export',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPlatformRoute = AdminPlatformRouteImport.update({
   id: '/platform',
   path: '/platform',
@@ -218,6 +290,7 @@ export interface FileRoutesByFullPath {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/dispatch': typeof DispatchRouteWithChildren
+  '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
@@ -230,6 +303,7 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/vehicles': typeof VehiclesRoute
   '/admin/platform': typeof AdminPlatformRoute
+  '/data/import-export': typeof DataImportExportRoute
   '/dispatch/command-center': typeof DispatchCommandCenterRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
@@ -239,10 +313,20 @@ export interface FileRoutesByFullPath {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/enterprise/phase7-demo': typeof EnterprisePhase7DemoRoute
+  '/integrations/api': typeof IntegrationsApiRoute
+  '/integrations/edi': typeof IntegrationsEdiRoute
+  '/integrations/health': typeof IntegrationsHealthRoute
+  '/integrations/hub': typeof IntegrationsHubRoute
+  '/integrations/webhooks': typeof IntegrationsWebhooksRoute
+  '/optimization/center': typeof OptimizationCenterRoute
   '/portal/new-request': typeof PortalNewRequestRoute
+  '/rating/quote': typeof RatingQuoteRoute
   '/settings/billing': typeof SettingsBillingRoute
+  '/settings/email-templates': typeof SettingsEmailTemplatesRoute
   '/settings/production': typeof SettingsProductionRoute
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
+  '/settings/white-label': typeof SettingsWhiteLabelRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -253,6 +337,7 @@ export interface FileRoutesByTo {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/dispatch': typeof DispatchRouteWithChildren
+  '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
@@ -265,6 +350,7 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/vehicles': typeof VehiclesRoute
   '/admin/platform': typeof AdminPlatformRoute
+  '/data/import-export': typeof DataImportExportRoute
   '/dispatch/command-center': typeof DispatchCommandCenterRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
@@ -274,10 +360,20 @@ export interface FileRoutesByTo {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/enterprise/phase7-demo': typeof EnterprisePhase7DemoRoute
+  '/integrations/api': typeof IntegrationsApiRoute
+  '/integrations/edi': typeof IntegrationsEdiRoute
+  '/integrations/health': typeof IntegrationsHealthRoute
+  '/integrations/hub': typeof IntegrationsHubRoute
+  '/integrations/webhooks': typeof IntegrationsWebhooksRoute
+  '/optimization/center': typeof OptimizationCenterRoute
   '/portal/new-request': typeof PortalNewRequestRoute
+  '/rating/quote': typeof RatingQuoteRoute
   '/settings/billing': typeof SettingsBillingRoute
+  '/settings/email-templates': typeof SettingsEmailTemplatesRoute
   '/settings/production': typeof SettingsProductionRoute
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
+  '/settings/white-label': typeof SettingsWhiteLabelRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -289,6 +385,7 @@ export interface FileRoutesById {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/dispatch': typeof DispatchRouteWithChildren
+  '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
@@ -301,6 +398,7 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/vehicles': typeof VehiclesRoute
   '/admin/platform': typeof AdminPlatformRoute
+  '/data/import-export': typeof DataImportExportRoute
   '/dispatch/command-center': typeof DispatchCommandCenterRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
@@ -310,10 +408,20 @@ export interface FileRoutesById {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/enterprise/phase7-demo': typeof EnterprisePhase7DemoRoute
+  '/integrations/api': typeof IntegrationsApiRoute
+  '/integrations/edi': typeof IntegrationsEdiRoute
+  '/integrations/health': typeof IntegrationsHealthRoute
+  '/integrations/hub': typeof IntegrationsHubRoute
+  '/integrations/webhooks': typeof IntegrationsWebhooksRoute
+  '/optimization/center': typeof OptimizationCenterRoute
   '/portal/new-request': typeof PortalNewRequestRoute
+  '/rating/quote': typeof RatingQuoteRoute
   '/settings/billing': typeof SettingsBillingRoute
+  '/settings/email-templates': typeof SettingsEmailTemplatesRoute
   '/settings/production': typeof SettingsProductionRoute
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
+  '/settings/white-label': typeof SettingsWhiteLabelRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -326,6 +434,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dispatch'
+    | '/documents'
     | '/drivers'
     | '/fuel'
     | '/loads'
@@ -338,6 +447,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/vehicles'
     | '/admin/platform'
+    | '/data/import-export'
     | '/dispatch/command-center'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
@@ -347,10 +457,20 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/enterprise/phase7-demo'
+    | '/integrations/api'
+    | '/integrations/edi'
+    | '/integrations/health'
+    | '/integrations/hub'
+    | '/integrations/webhooks'
+    | '/optimization/center'
     | '/portal/new-request'
+    | '/rating/quote'
     | '/settings/billing'
+    | '/settings/email-templates'
     | '/settings/production'
     | '/settings/production-monitoring'
+    | '/settings/white-label'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -361,6 +481,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dispatch'
+    | '/documents'
     | '/drivers'
     | '/fuel'
     | '/loads'
@@ -373,6 +494,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/vehicles'
     | '/admin/platform'
+    | '/data/import-export'
     | '/dispatch/command-center'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
@@ -382,10 +504,20 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/enterprise/phase7-demo'
+    | '/integrations/api'
+    | '/integrations/edi'
+    | '/integrations/health'
+    | '/integrations/hub'
+    | '/integrations/webhooks'
+    | '/optimization/center'
     | '/portal/new-request'
+    | '/rating/quote'
     | '/settings/billing'
+    | '/settings/email-templates'
     | '/settings/production'
     | '/settings/production-monitoring'
+    | '/settings/white-label'
     | '/driver'
   id:
     | '__root__'
@@ -396,6 +528,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dispatch'
+    | '/documents'
     | '/drivers'
     | '/fuel'
     | '/loads'
@@ -408,6 +541,7 @@ export interface FileRouteTypes {
     | '/signup'
     | '/vehicles'
     | '/admin/platform'
+    | '/data/import-export'
     | '/dispatch/command-center'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
@@ -417,10 +551,20 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/enterprise/phase7-demo'
+    | '/integrations/api'
+    | '/integrations/edi'
+    | '/integrations/health'
+    | '/integrations/hub'
+    | '/integrations/webhooks'
+    | '/optimization/center'
     | '/portal/new-request'
+    | '/rating/quote'
     | '/settings/billing'
+    | '/settings/email-templates'
     | '/settings/production'
     | '/settings/production-monitoring'
+    | '/settings/white-label'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -432,6 +576,7 @@ export interface RootRouteChildren {
   AlertsRoute: typeof AlertsRoute
   AnalyticsRoute: typeof AnalyticsRoute
   DispatchRoute: typeof DispatchRouteWithChildren
+  DocumentsRoute: typeof DocumentsRoute
   DriversRoute: typeof DriversRoute
   FuelRoute: typeof FuelRoute
   LoadsRoute: typeof LoadsRoute
@@ -443,6 +588,7 @@ export interface RootRouteChildren {
   ShipmentsRoute: typeof ShipmentsRoute
   SignupRoute: typeof SignupRoute
   VehiclesRoute: typeof VehiclesRoute
+  DataImportExportRoute: typeof DataImportExportRoute
   DriverCopilotLabRoute: typeof DriverCopilotLabRoute
   DriverDeliveriesRoute: typeof DriverDeliveriesRoute
   DriverEliteNavRoute: typeof DriverEliteNavRoute
@@ -451,6 +597,14 @@ export interface RootRouteChildren {
   DriverNavigationRoute: typeof DriverNavigationRoute
   DriverNotificationsLabRoute: typeof DriverNotificationsLabRoute
   DriverPhase5DemoRoute: typeof DriverPhase5DemoRoute
+  EnterprisePhase7DemoRoute: typeof EnterprisePhase7DemoRoute
+  IntegrationsApiRoute: typeof IntegrationsApiRoute
+  IntegrationsEdiRoute: typeof IntegrationsEdiRoute
+  IntegrationsHealthRoute: typeof IntegrationsHealthRoute
+  IntegrationsHubRoute: typeof IntegrationsHubRoute
+  IntegrationsWebhooksRoute: typeof IntegrationsWebhooksRoute
+  OptimizationCenterRoute: typeof OptimizationCenterRoute
+  RatingQuoteRoute: typeof RatingQuoteRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -533,6 +687,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriversRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dispatch': {
       id: '/dispatch'
       path: '/dispatch'
@@ -589,6 +750,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings/white-label': {
+      id: '/settings/white-label'
+      path: '/white-label'
+      fullPath: '/settings/white-label'
+      preLoaderRoute: typeof SettingsWhiteLabelRouteImport
+      parentRoute: typeof SettingsRoute
+    }
     '/settings/production-monitoring': {
       id: '/settings/production-monitoring'
       path: '/production-monitoring'
@@ -603,6 +771,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsProductionRouteImport
       parentRoute: typeof SettingsRoute
     }
+    '/settings/email-templates': {
+      id: '/settings/email-templates'
+      path: '/email-templates'
+      fullPath: '/settings/email-templates'
+      preLoaderRoute: typeof SettingsEmailTemplatesRouteImport
+      parentRoute: typeof SettingsRoute
+    }
     '/settings/billing': {
       id: '/settings/billing'
       path: '/billing'
@@ -610,12 +785,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsBillingRouteImport
       parentRoute: typeof SettingsRoute
     }
+    '/rating/quote': {
+      id: '/rating/quote'
+      path: '/rating/quote'
+      fullPath: '/rating/quote'
+      preLoaderRoute: typeof RatingQuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/new-request': {
       id: '/portal/new-request'
       path: '/new-request'
       fullPath: '/portal/new-request'
       preLoaderRoute: typeof PortalNewRequestRouteImport
       parentRoute: typeof PortalRoute
+    }
+    '/optimization/center': {
+      id: '/optimization/center'
+      path: '/optimization/center'
+      fullPath: '/optimization/center'
+      preLoaderRoute: typeof OptimizationCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations/webhooks': {
+      id: '/integrations/webhooks'
+      path: '/integrations/webhooks'
+      fullPath: '/integrations/webhooks'
+      preLoaderRoute: typeof IntegrationsWebhooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations/hub': {
+      id: '/integrations/hub'
+      path: '/integrations/hub'
+      fullPath: '/integrations/hub'
+      preLoaderRoute: typeof IntegrationsHubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations/health': {
+      id: '/integrations/health'
+      path: '/integrations/health'
+      fullPath: '/integrations/health'
+      preLoaderRoute: typeof IntegrationsHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations/edi': {
+      id: '/integrations/edi'
+      path: '/integrations/edi'
+      fullPath: '/integrations/edi'
+      preLoaderRoute: typeof IntegrationsEdiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integrations/api': {
+      id: '/integrations/api'
+      path: '/integrations/api'
+      fullPath: '/integrations/api'
+      preLoaderRoute: typeof IntegrationsApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enterprise/phase7-demo': {
+      id: '/enterprise/phase7-demo'
+      path: '/enterprise/phase7-demo'
+      fullPath: '/enterprise/phase7-demo'
+      preLoaderRoute: typeof EnterprisePhase7DemoRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/driver/phase5-demo': {
       id: '/driver/phase5-demo'
@@ -680,6 +911,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DispatchCommandCenterRouteImport
       parentRoute: typeof DispatchRoute
     }
+    '/data/import-export': {
+      id: '/data/import-export'
+      path: '/data/import-export'
+      fullPath: '/data/import-export'
+      preLoaderRoute: typeof DataImportExportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/platform': {
       id: '/admin/platform'
       path: '/platform'
@@ -725,14 +963,18 @@ const PortalRouteWithChildren =
 
 interface SettingsRouteChildren {
   SettingsBillingRoute: typeof SettingsBillingRoute
+  SettingsEmailTemplatesRoute: typeof SettingsEmailTemplatesRoute
   SettingsProductionRoute: typeof SettingsProductionRoute
   SettingsProductionMonitoringRoute: typeof SettingsProductionMonitoringRoute
+  SettingsWhiteLabelRoute: typeof SettingsWhiteLabelRoute
 }
 
 const SettingsRouteChildren: SettingsRouteChildren = {
   SettingsBillingRoute: SettingsBillingRoute,
+  SettingsEmailTemplatesRoute: SettingsEmailTemplatesRoute,
   SettingsProductionRoute: SettingsProductionRoute,
   SettingsProductionMonitoringRoute: SettingsProductionMonitoringRoute,
+  SettingsWhiteLabelRoute: SettingsWhiteLabelRoute,
 }
 
 const SettingsRouteWithChildren = SettingsRoute._addFileChildren(
@@ -747,6 +989,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlertsRoute: AlertsRoute,
   AnalyticsRoute: AnalyticsRoute,
   DispatchRoute: DispatchRouteWithChildren,
+  DocumentsRoute: DocumentsRoute,
   DriversRoute: DriversRoute,
   FuelRoute: FuelRoute,
   LoadsRoute: LoadsRoute,
@@ -758,6 +1001,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShipmentsRoute: ShipmentsRoute,
   SignupRoute: SignupRoute,
   VehiclesRoute: VehiclesRoute,
+  DataImportExportRoute: DataImportExportRoute,
   DriverCopilotLabRoute: DriverCopilotLabRoute,
   DriverDeliveriesRoute: DriverDeliveriesRoute,
   DriverEliteNavRoute: DriverEliteNavRoute,
@@ -766,18 +1010,16 @@ const rootRouteChildren: RootRouteChildren = {
   DriverNavigationRoute: DriverNavigationRoute,
   DriverNotificationsLabRoute: DriverNotificationsLabRoute,
   DriverPhase5DemoRoute: DriverPhase5DemoRoute,
+  EnterprisePhase7DemoRoute: EnterprisePhase7DemoRoute,
+  IntegrationsApiRoute: IntegrationsApiRoute,
+  IntegrationsEdiRoute: IntegrationsEdiRoute,
+  IntegrationsHealthRoute: IntegrationsHealthRoute,
+  IntegrationsHubRoute: IntegrationsHubRoute,
+  IntegrationsWebhooksRoute: IntegrationsWebhooksRoute,
+  OptimizationCenterRoute: OptimizationCenterRoute,
+  RatingQuoteRoute: RatingQuoteRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
