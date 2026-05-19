@@ -31,7 +31,12 @@ function GovernancePage() {
             <ScrollText className="size-5 text-slate-300" />
             <h1 className="text-xl font-semibold">AI Governance</h1>
             <Badge variant="outline" className="border-white/15 text-muted-foreground">Safety · Cost · Audit · Models</Badge>
+            <MockBadge />
           </div>
+          <p className="max-w-2xl text-xs text-muted-foreground">
+            Safety policy is enforced platform-side and cannot be disabled by tenants.
+            Every AI action is audited and budget-bounded.
+          </p>
           <IntelligenceNav />
         </header>
 
