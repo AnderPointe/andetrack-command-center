@@ -18,3 +18,4 @@ export { useNavigationStateMachine } from "./useNavigationStateMachine";
 export { useVoiceCoPilot, type VoiceCoPilotEntry } from "./useVoiceCoPilot";
 export { useRouteIntelligence } from "./useRouteIntelligence";
 export { useDispatchVoiceMessages, type DispatchVoiceMessage } from "./useDispatchVoiceMessages";
+export { useOfflineVoiceQueue } from "./useOfflineVoiceQueue";

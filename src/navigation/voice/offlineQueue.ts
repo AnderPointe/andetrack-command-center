@@ -41,7 +41,9 @@ export async function insertWithQueue(table: QueuedTable, row: Record<string, un
     write(items);
     return { queued: true as const };
   }
-  const { error } = await supabase.from(table).insert(row);
+  // Dynamic table dispatch — Supabase typed client unions trip the inferrer.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { error } = await (supabase.from(table) as any).insert(row);
   if (error) {
     const items = read();
     items.push({ id: `q_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`, table, row, queued_at: new Date().toISOString() });
@@ -58,7 +60,8 @@ export async function flushQueue(): Promise<{ flushed: number; remaining: number
   let flushed = 0;
   const remaining: QueuedInsert[] = [];
   for (const it of items) {
-    const { error } = await supabase.from(it.table).insert(it.row);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabase.from(it.table) as any).insert(it.row);
     if (error) remaining.push(it);
     else flushed++;
   }
