@@ -38,7 +38,7 @@ export async function sendNotification(
 
   const localId = `notif_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 6)}`;
   if (!opts.skipLog) {
-    await insertWithQueue("notification_events" as never, {
+    await insertWithQueue("notification_events", {
       driver_id: payload.driver_id,
       company_id: payload.company_id,
       category: payload.category,

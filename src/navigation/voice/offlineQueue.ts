@@ -10,7 +10,12 @@
  */
 import { supabase } from "@/integrations/supabase/client";
 
-type QueuedTable = "voice_command_events" | "dispatch_voice_messages" | "driver_status_events";
+type QueuedTable =
+  | "voice_command_events"
+  | "dispatch_voice_messages"
+  | "driver_status_events"
+  | "notification_events"
+  | "in_vehicle_sessions";
 
 interface QueuedInsert {
   id: string;
