@@ -412,6 +412,42 @@ export type Database = {
           },
         ]
       }
+      driver_navigation_preferences: {
+        Row: {
+          avoid_highways: boolean
+          avoid_tolls: boolean
+          company_id: string
+          created_at: string
+          driver_id: string
+          id: string
+          preferred_provider: string | null
+          updated_at: string
+          voice_enabled: boolean
+        }
+        Insert: {
+          avoid_highways?: boolean
+          avoid_tolls?: boolean
+          company_id: string
+          created_at?: string
+          driver_id: string
+          id?: string
+          preferred_provider?: string | null
+          updated_at?: string
+          voice_enabled?: boolean
+        }
+        Update: {
+          avoid_highways?: boolean
+          avoid_tolls?: boolean
+          company_id?: string
+          created_at?: string
+          driver_id?: string
+          id?: string
+          preferred_provider?: string | null
+          updated_at?: string
+          voice_enabled?: boolean
+        }
+        Relationships: []
+      }
       driver_status_events: {
         Row: {
           company_id: string
@@ -835,6 +871,207 @@ export type Database = {
           },
         ]
       }
+      navigation_events: {
+        Row: {
+          company_id: string
+          created_at: string
+          driver_id: string
+          eta_minutes: number | null
+          event_metadata: Json
+          event_type: string
+          heading: number | null
+          id: string
+          instruction: string | null
+          latitude: number | null
+          load_id: string | null
+          longitude: number | null
+          provider: string
+          remaining_miles: number | null
+          road_name: string | null
+          session_id: string
+          speed_mph: number | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          driver_id: string
+          eta_minutes?: number | null
+          event_metadata?: Json
+          event_type: string
+          heading?: number | null
+          id?: string
+          instruction?: string | null
+          latitude?: number | null
+          load_id?: string | null
+          longitude?: number | null
+          provider: string
+          remaining_miles?: number | null
+          road_name?: string | null
+          session_id: string
+          speed_mph?: number | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          driver_id?: string
+          eta_minutes?: number | null
+          event_metadata?: Json
+          event_type?: string
+          heading?: number | null
+          id?: string
+          instruction?: string | null
+          latitude?: number | null
+          load_id?: string | null
+          longitude?: number | null
+          provider?: string
+          remaining_miles?: number | null
+          road_name?: string | null
+          session_id?: string
+          speed_mph?: number | null
+        }
+        Relationships: []
+      }
+      navigation_provider_settings: {
+        Row: {
+          cdl_validation_required: boolean
+          company_id: string
+          created_at: string
+          enable_alternatives: boolean
+          enable_copilot: boolean
+          enable_dispatch_monitoring: boolean
+          enable_off_route_alerts: boolean
+          enable_traffic: boolean
+          enable_voice_instructions: boolean
+          id: string
+          mock_mode: boolean
+          navigation_provider: string
+          truck_validator: string
+          updated_at: string
+        }
+        Insert: {
+          cdl_validation_required?: boolean
+          company_id: string
+          created_at?: string
+          enable_alternatives?: boolean
+          enable_copilot?: boolean
+          enable_dispatch_monitoring?: boolean
+          enable_off_route_alerts?: boolean
+          enable_traffic?: boolean
+          enable_voice_instructions?: boolean
+          id?: string
+          mock_mode?: boolean
+          navigation_provider?: string
+          truck_validator?: string
+          updated_at?: string
+        }
+        Update: {
+          cdl_validation_required?: boolean
+          company_id?: string
+          created_at?: string
+          enable_alternatives?: boolean
+          enable_copilot?: boolean
+          enable_dispatch_monitoring?: boolean
+          enable_off_route_alerts?: boolean
+          enable_traffic?: boolean
+          enable_voice_instructions?: boolean
+          id?: string
+          mock_mode?: boolean
+          navigation_provider?: string
+          truck_validator?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      navigation_sessions: {
+        Row: {
+          company_id: string
+          completed_at: string | null
+          created_at: string
+          current_instruction: string | null
+          current_step_index: number
+          destination_latitude: number
+          destination_longitude: number
+          driver_id: string
+          eta_minutes: number | null
+          id: string
+          is_navigation_active: boolean
+          is_off_route: boolean
+          is_rerouting: boolean
+          load_id: string | null
+          mode: string
+          origin_latitude: number
+          origin_longitude: number
+          provider: string
+          remaining_miles: number | null
+          route_geometry_json: Json | null
+          route_polyline: string | null
+          route_progress_percentage: number | null
+          shipment_id: string | null
+          started_at: string | null
+          truck_route_validated: boolean
+          updated_at: string
+          vehicle_id: string | null
+        }
+        Insert: {
+          company_id: string
+          completed_at?: string | null
+          created_at?: string
+          current_instruction?: string | null
+          current_step_index?: number
+          destination_latitude: number
+          destination_longitude: number
+          driver_id: string
+          eta_minutes?: number | null
+          id?: string
+          is_navigation_active?: boolean
+          is_off_route?: boolean
+          is_rerouting?: boolean
+          load_id?: string | null
+          mode?: string
+          origin_latitude: number
+          origin_longitude: number
+          provider: string
+          remaining_miles?: number | null
+          route_geometry_json?: Json | null
+          route_polyline?: string | null
+          route_progress_percentage?: number | null
+          shipment_id?: string | null
+          started_at?: string | null
+          truck_route_validated?: boolean
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Update: {
+          company_id?: string
+          completed_at?: string | null
+          created_at?: string
+          current_instruction?: string | null
+          current_step_index?: number
+          destination_latitude?: number
+          destination_longitude?: number
+          driver_id?: string
+          eta_minutes?: number | null
+          id?: string
+          is_navigation_active?: boolean
+          is_off_route?: boolean
+          is_rerouting?: boolean
+          load_id?: string | null
+          mode?: string
+          origin_latitude?: number
+          origin_longitude?: number
+          provider?: string
+          remaining_miles?: number | null
+          route_geometry_json?: Json | null
+          route_polyline?: string | null
+          route_progress_percentage?: number | null
+          shipment_id?: string | null
+          started_at?: string | null
+          truck_route_validated?: boolean
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -1148,6 +1385,126 @@ export type Database = {
         }
         Relationships: []
       }
+      route_provider_logs: {
+        Row: {
+          company_id: string
+          cost_units: number | null
+          created_at: string
+          http_status: number | null
+          id: string
+          latency_ms: number | null
+          metadata: Json
+          operation: string
+          provider: string
+        }
+        Insert: {
+          company_id: string
+          cost_units?: number | null
+          created_at?: string
+          http_status?: number | null
+          id?: string
+          latency_ms?: number | null
+          metadata?: Json
+          operation: string
+          provider: string
+        }
+        Update: {
+          company_id?: string
+          cost_units?: number | null
+          created_at?: string
+          http_status?: number | null
+          id?: string
+          latency_ms?: number | null
+          metadata?: Json
+          operation?: string
+          provider?: string
+        }
+        Relationships: []
+      }
+      route_recalculation_events: {
+        Row: {
+          company_id: string
+          created_at: string
+          delta_eta_minutes: number | null
+          driver_id: string
+          id: string
+          reason: string | null
+          session_id: string
+          succeeded: boolean
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          delta_eta_minutes?: number | null
+          driver_id: string
+          id?: string
+          reason?: string | null
+          session_id: string
+          succeeded?: boolean
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          delta_eta_minutes?: number | null
+          driver_id?: string
+          id?: string
+          reason?: string | null
+          session_id?: string
+          succeeded?: boolean
+        }
+        Relationships: []
+      }
+      route_requests: {
+        Row: {
+          company_id: string
+          created_at: string
+          destination_latitude: number
+          destination_longitude: number
+          driver_id: string
+          id: string
+          load_id: string | null
+          origin_latitude: number
+          origin_longitude: number
+          requested_provider: string | null
+          route_profile: string
+          shipment_id: string | null
+          vehicle_id: string | null
+          vehicle_profile_json: Json | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          destination_latitude: number
+          destination_longitude: number
+          driver_id: string
+          id?: string
+          load_id?: string | null
+          origin_latitude: number
+          origin_longitude: number
+          requested_provider?: string | null
+          route_profile: string
+          shipment_id?: string | null
+          vehicle_id?: string | null
+          vehicle_profile_json?: Json | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          destination_latitude?: number
+          destination_longitude?: number
+          driver_id?: string
+          id?: string
+          load_id?: string | null
+          origin_latitude?: number
+          origin_longitude?: number
+          requested_provider?: string | null
+          route_profile?: string
+          shipment_id?: string | null
+          vehicle_id?: string | null
+          vehicle_profile_json?: Json | null
+        }
+        Relationships: []
+      }
       route_steps: {
         Row: {
           company_id: string
@@ -1335,6 +1692,108 @@ export type Database = {
           },
         ]
       }
+      truck_route_restrictions: {
+        Row: {
+          company_id: string
+          created_at: string
+          distance_from_origin_m: number | null
+          id: string
+          latitude: number | null
+          longitude: number | null
+          message: string
+          recommended_action: string | null
+          road_name: string | null
+          severity: string
+          type: string
+          validation_id: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          distance_from_origin_m?: number | null
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          message: string
+          recommended_action?: string | null
+          road_name?: string | null
+          severity: string
+          type: string
+          validation_id: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          distance_from_origin_m?: number | null
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          message?: string
+          recommended_action?: string | null
+          road_name?: string | null
+          severity?: string
+          type?: string
+          validation_id?: string
+        }
+        Relationships: []
+      }
+      truck_route_validations: {
+        Row: {
+          company_id: string
+          created_at: string
+          driver_id: string
+          hazmat_restriction_detected: boolean
+          id: string
+          is_valid: boolean
+          load_id: string | null
+          low_clearance_detected: boolean
+          provider: string
+          restricted_road_detected: boolean
+          restrictions_json: Json
+          route_safety_score: number | null
+          validated_at: string
+          vehicle_id: string | null
+          warnings_json: Json
+          weight_restriction_detected: boolean
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          driver_id: string
+          hazmat_restriction_detected?: boolean
+          id?: string
+          is_valid: boolean
+          load_id?: string | null
+          low_clearance_detected?: boolean
+          provider: string
+          restricted_road_detected?: boolean
+          restrictions_json?: Json
+          route_safety_score?: number | null
+          validated_at: string
+          vehicle_id?: string | null
+          warnings_json?: Json
+          weight_restriction_detected?: boolean
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          driver_id?: string
+          hazmat_restriction_detected?: boolean
+          id?: string
+          is_valid?: boolean
+          load_id?: string | null
+          low_clearance_detected?: boolean
+          provider?: string
+          restricted_road_detected?: boolean
+          restrictions_json?: Json
+          route_safety_score?: number | null
+          validated_at?: string
+          vehicle_id?: string | null
+          warnings_json?: Json
+          weight_restriction_detected?: boolean
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           company_id: string
@@ -1472,6 +1931,51 @@ export type Database = {
           response?: string | null
           safety_mode?: boolean
           transcript?: string | null
+        }
+        Relationships: []
+      }
+      voice_instruction_events: {
+        Row: {
+          company_id: string
+          created_at: string
+          distance_to_maneuver_m: number | null
+          driver_id: string
+          id: string
+          instruction_text: string
+          load_id: string | null
+          maneuver_type: string
+          provider: string
+          road_name: string | null
+          session_id: string
+          spoken_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          distance_to_maneuver_m?: number | null
+          driver_id: string
+          id?: string
+          instruction_text: string
+          load_id?: string | null
+          maneuver_type: string
+          provider: string
+          road_name?: string | null
+          session_id: string
+          spoken_at: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          distance_to_maneuver_m?: number | null
+          driver_id?: string
+          id?: string
+          instruction_text?: string
+          load_id?: string | null
+          maneuver_type?: string
+          provider?: string
+          road_name?: string | null
+          session_id?: string
+          spoken_at?: string
         }
         Relationships: []
       }
