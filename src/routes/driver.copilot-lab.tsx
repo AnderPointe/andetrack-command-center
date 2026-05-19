@@ -105,6 +105,7 @@ function CoPilotLab() {
               suggestions={SUGGESTIONS}
             />
             <div className="space-y-4">
+              <PrivacyVoiceNotice />
               <RouteIntelligencePanel
                 insights={intel.insights}
                 summary={intel.summary}
