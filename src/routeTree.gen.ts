@@ -34,6 +34,7 @@ import { Route as SettingsProductionMonitoringRouteImport } from './routes/setti
 import { Route as SettingsProductionRouteImport } from './routes/settings.production'
 import { Route as SettingsEmailTemplatesRouteImport } from './routes/settings.email-templates'
 import { Route as SettingsBillingRouteImport } from './routes/settings.billing'
+import { Route as SecurityPrivacyRouteImport } from './routes/security.privacy'
 import { Route as SecurityOverviewRouteImport } from './routes/security.overview'
 import { Route as SecurityCenterRouteImport } from './routes/security.center'
 import { Route as RatingQuoteRouteImport } from './routes/rating.quote'
@@ -188,6 +189,11 @@ const SettingsBillingRoute = SettingsBillingRouteImport.update({
   id: '/billing',
   path: '/billing',
   getParentRoute: () => SettingsRoute,
+} as any)
+const SecurityPrivacyRoute = SecurityPrivacyRouteImport.update({
+  id: '/security/privacy',
+  path: '/security/privacy',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SecurityOverviewRoute = SecurityOverviewRouteImport.update({
   id: '/security/overview',
@@ -378,6 +384,7 @@ export interface FileRoutesByFullPath {
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
   '/security/overview': typeof SecurityOverviewRoute
+  '/security/privacy': typeof SecurityPrivacyRoute
   '/settings/billing': typeof SettingsBillingRoute
   '/settings/email-templates': typeof SettingsEmailTemplatesRoute
   '/settings/production': typeof SettingsProductionRoute
@@ -433,6 +440,7 @@ export interface FileRoutesByTo {
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
   '/security/overview': typeof SecurityOverviewRoute
+  '/security/privacy': typeof SecurityPrivacyRoute
   '/settings/billing': typeof SettingsBillingRoute
   '/settings/email-templates': typeof SettingsEmailTemplatesRoute
   '/settings/production': typeof SettingsProductionRoute
@@ -489,6 +497,7 @@ export interface FileRoutesById {
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
   '/security/overview': typeof SecurityOverviewRoute
+  '/security/privacy': typeof SecurityPrivacyRoute
   '/settings/billing': typeof SettingsBillingRoute
   '/settings/email-templates': typeof SettingsEmailTemplatesRoute
   '/settings/production': typeof SettingsProductionRoute
@@ -546,6 +555,7 @@ export interface FileRouteTypes {
     | '/rating/quote'
     | '/security/center'
     | '/security/overview'
+    | '/security/privacy'
     | '/settings/billing'
     | '/settings/email-templates'
     | '/settings/production'
@@ -601,6 +611,7 @@ export interface FileRouteTypes {
     | '/rating/quote'
     | '/security/center'
     | '/security/overview'
+    | '/security/privacy'
     | '/settings/billing'
     | '/settings/email-templates'
     | '/settings/production'
@@ -656,6 +667,7 @@ export interface FileRouteTypes {
     | '/rating/quote'
     | '/security/center'
     | '/security/overview'
+    | '/security/privacy'
     | '/settings/billing'
     | '/settings/email-templates'
     | '/settings/production'
@@ -709,6 +721,7 @@ export interface RootRouteChildren {
   RatingQuoteRoute: typeof RatingQuoteRoute
   SecurityCenterRoute: typeof SecurityCenterRoute
   SecurityOverviewRoute: typeof SecurityOverviewRoute
+  SecurityPrivacyRoute: typeof SecurityPrivacyRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -888,6 +901,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/settings/billing'
       preLoaderRoute: typeof SettingsBillingRouteImport
       parentRoute: typeof SettingsRoute
+    }
+    '/security/privacy': {
+      id: '/security/privacy'
+      path: '/security/privacy'
+      fullPath: '/security/privacy'
+      preLoaderRoute: typeof SecurityPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/security/overview': {
       id: '/security/overview'
@@ -1186,6 +1206,7 @@ const rootRouteChildren: RootRouteChildren = {
   RatingQuoteRoute: RatingQuoteRoute,
   SecurityCenterRoute: SecurityCenterRoute,
   SecurityOverviewRoute: SecurityOverviewRoute,
+  SecurityPrivacyRoute: SecurityPrivacyRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
