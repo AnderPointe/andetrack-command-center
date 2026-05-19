@@ -28,6 +28,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
+import { Route as DriverNavLabRouteImport } from './routes/driver.nav-lab'
 import { Route as DriverElitenavRouteImport } from './routes/driver.elitenav'
 import { Route as DriverEliteNavRouteImport } from './routes/driver.elite-nav'
 import { Route as DriverDeliveriesRouteImport } from './routes/driver.deliveries'
@@ -127,6 +128,11 @@ const DriverNavigationRoute = DriverNavigationRouteImport.update({
   path: '/driver/navigation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DriverNavLabRoute = DriverNavLabRouteImport.update({
+  id: '/driver/nav-lab',
+  path: '/driver/nav-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DriverElitenavRoute = DriverElitenavRouteImport.update({
   id: '/driver/elitenav',
   path: '/driver/elitenav',
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
   '/driver/elitenav': typeof DriverElitenavRoute
+  '/driver/nav-lab': typeof DriverNavLabRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/': typeof DriverIndexRoute
 }
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
   '/driver/elitenav': typeof DriverElitenavRoute
+  '/driver/nav-lab': typeof DriverNavLabRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver': typeof DriverIndexRoute
 }
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
   '/driver/elitenav': typeof DriverElitenavRoute
+  '/driver/nav-lab': typeof DriverNavLabRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/': typeof DriverIndexRoute
 }
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/driver/deliveries'
     | '/driver/elite-nav'
     | '/driver/elitenav'
+    | '/driver/nav-lab'
     | '/driver/navigation'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
@@ -263,6 +273,7 @@ export interface FileRouteTypes {
     | '/driver/deliveries'
     | '/driver/elite-nav'
     | '/driver/elitenav'
+    | '/driver/nav-lab'
     | '/driver/navigation'
     | '/driver'
   id:
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/driver/deliveries'
     | '/driver/elite-nav'
     | '/driver/elitenav'
+    | '/driver/nav-lab'
     | '/driver/navigation'
     | '/driver/'
   fileRoutesById: FileRoutesById
@@ -312,6 +324,7 @@ export interface RootRouteChildren {
   DriverDeliveriesRoute: typeof DriverDeliveriesRoute
   DriverEliteNavRoute: typeof DriverEliteNavRoute
   DriverElitenavRoute: typeof DriverElitenavRoute
+  DriverNavLabRoute: typeof DriverNavLabRoute
   DriverNavigationRoute: typeof DriverNavigationRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
@@ -451,6 +464,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverNavigationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/driver/nav-lab': {
+      id: '/driver/nav-lab'
+      path: '/driver/nav-lab'
+      fullPath: '/driver/nav-lab'
+      preLoaderRoute: typeof DriverNavLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/driver/elitenav': {
       id: '/driver/elitenav'
       path: '/driver/elitenav'
@@ -496,6 +516,7 @@ const rootRouteChildren: RootRouteChildren = {
   DriverDeliveriesRoute: DriverDeliveriesRoute,
   DriverEliteNavRoute: DriverEliteNavRoute,
   DriverElitenavRoute: DriverElitenavRoute,
+  DriverNavLabRoute: DriverNavLabRoute,
   DriverNavigationRoute: DriverNavigationRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
