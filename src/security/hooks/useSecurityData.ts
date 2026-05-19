@@ -2,7 +2,8 @@
 import {
   POSTURE_CARDS, CONTROLS, FINDINGS, POLICIES, EVIDENCE, CHANGES,
   INCIDENTS, VENDORS, VULNS, BACKUPS, RETENTION, TESTS, DEPLOYMENTS,
-  METRICS, readinessScore,
+  METRICS, RLS_COVERAGE, ISOLATION_TESTS, PRIVACY_CONTROLS, EDGE_FN_BOUNDARIES,
+  readinessScore, executiveSummary,
 } from "../data/mockSecurity";
 
 export function useSecurityPosture()    { return { cards: POSTURE_CARDS, score: readinessScore() }; }
@@ -19,3 +20,8 @@ export function useRetentionRules()     { return { rules: RETENTION }; }
 export function useQaDashboard()        { return { tests: TESTS }; }
 export function useDeploymentStatus()   { return { deployments: DEPLOYMENTS }; }
 export function useObservability()      { return { metrics: METRICS }; }
+export function useRlsCoverage()        { return { rows: RLS_COVERAGE }; }
+export function useIsolationTests()     { return { tests: ISOLATION_TESTS }; }
+export function usePrivacyControls()    { return { controls: PRIVACY_CONTROLS }; }
+export function useEdgeFnBoundaries()   { return { boundaries: EDGE_FN_BOUNDARIES }; }
+export function useExecutiveSummary()   { return { metrics: executiveSummary() }; }
