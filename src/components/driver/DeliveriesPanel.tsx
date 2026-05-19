@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
+import { PODDetailDrawer } from "./PODDetailDrawer";
 
 /**
  * Driver-facing Deliveries panel.
@@ -30,6 +31,7 @@ import { formatDistanceToNow } from "date-fns";
 export function DeliveriesPanel() {
   const { user } = useAuth();
   const qc = useQueryClient();
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // Resolve the driver record for the signed-in user (drivers.user_id).
   const driverQ = useQuery({
@@ -134,11 +136,25 @@ export function DeliveriesPanel() {
                 showConfirmButton={!driverId} // dispatcher-style helper
                 onConfirm={() => confirmMut.mutate(pod.id)}
                 confirming={confirmMut.isPending && confirmMut.variables === pod.id}
+                onOpen={() => setSelectedId(pod.id)}
               />
             ))}
           </ul>
         </ScrollArea>
       )}
+
+      <PODDetailDrawer
+        pod={pods.find((p) => p.id === selectedId) ?? null}
+        load={(() => {
+          const p = pods.find((pp) => pp.id === selectedId);
+          return p?.load_id ? loadById.get(p.load_id) ?? null : null;
+        })()}
+        open={!!selectedId}
+        onOpenChange={(o) => !o && setSelectedId(null)}
+        showConfirmAction={!driverId}
+        confirming={confirmMut.isPending && confirmMut.variables === selectedId}
+        onConfirm={() => selectedId && confirmMut.mutate(selectedId)}
+      />
     </div>
   );
 }
@@ -149,19 +165,31 @@ function PODCard({
   showConfirmButton,
   onConfirm,
   confirming,
+  onOpen,
 }: {
   pod: ProofOfDeliveryRow;
   load: LoadRow | null;
   showConfirmButton: boolean;
   onConfirm: () => void;
   confirming: boolean;
+  onOpen?: () => void;
 }) {
   const confirmed = pod.dispatch_confirmed;
   return (
     <li>
       <Card
+        role={onOpen ? "button" : undefined}
+        tabIndex={onOpen ? 0 : undefined}
+        onClick={onOpen}
+        onKeyDown={(e) => {
+          if (onOpen && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            onOpen();
+          }
+        }}
         className={cn(
           "overflow-hidden border bg-card/60 p-4 backdrop-blur transition-colors",
+          onOpen && "cursor-pointer hover:bg-card focus:outline-none focus:ring-2 focus:ring-ring",
           confirmed
             ? "border-emerald-500/30"
             : "border-amber-500/30",
@@ -214,6 +242,7 @@ function PODCard({
               href={pod.photo_url}
               target="_blank"
               rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-background/60 px-2 py-0.5 text-muted-foreground hover:text-foreground"
             >
               <ImageIcon className="h-3 w-3" /> View photo
@@ -240,7 +269,14 @@ function PODCard({
               Dispatch hasn’t marked this delivery as received yet.
             </p>
             {showConfirmButton && (
-              <Button size="sm" onClick={onConfirm} disabled={confirming}>
+              <Button
+                size="sm"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onConfirm();
+                }}
+                disabled={confirming}
+              >
                 {confirming ? "Confirming…" : "Mark received"}
               </Button>
             )}
