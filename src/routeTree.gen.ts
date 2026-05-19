@@ -14,6 +14,7 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RoutesRouteImport } from './routes/routes'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LoadsRouteImport } from './routes/loads'
@@ -29,6 +30,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
 import { Route as SettingsProductionMonitoringRouteImport } from './routes/settings.production-monitoring'
 import { Route as SettingsProductionRouteImport } from './routes/settings.production'
+import { Route as SettingsBillingRouteImport } from './routes/settings.billing'
+import { Route as PortalNewRequestRouteImport } from './routes/portal.new-request'
 import { Route as DriverPhase5DemoRouteImport } from './routes/driver.phase5-demo'
 import { Route as DriverNotificationsLabRouteImport } from './routes/driver.notifications-lab'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
@@ -37,6 +40,8 @@ import { Route as DriverElitenavRouteImport } from './routes/driver.elitenav'
 import { Route as DriverEliteNavRouteImport } from './routes/driver.elite-nav'
 import { Route as DriverDeliveriesRouteImport } from './routes/driver.deliveries'
 import { Route as DriverCopilotLabRouteImport } from './routes/driver.copilot-lab'
+import { Route as DispatchCommandCenterRouteImport } from './routes/dispatch.command-center'
+import { Route as AdminPlatformRouteImport } from './routes/admin.platform'
 
 const VehiclesRoute = VehiclesRouteImport.update({
   id: '/vehicles',
@@ -61,6 +66,11 @@ const SettingsRoute = SettingsRouteImport.update({
 const RoutesRoute = RoutesRouteImport.update({
   id: '/routes',
   path: '/routes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapRoute = MapRouteImport.update({
@@ -139,6 +149,16 @@ const SettingsProductionRoute = SettingsProductionRouteImport.update({
   path: '/production',
   getParentRoute: () => SettingsRoute,
 } as any)
+const SettingsBillingRoute = SettingsBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
+  getParentRoute: () => SettingsRoute,
+} as any)
+const PortalNewRequestRoute = PortalNewRequestRouteImport.update({
+  id: '/new-request',
+  path: '/new-request',
+  getParentRoute: () => PortalRoute,
+} as any)
 const DriverPhase5DemoRoute = DriverPhase5DemoRouteImport.update({
   id: '/driver/phase5-demo',
   path: '/driver/phase5-demo',
@@ -179,25 +199,38 @@ const DriverCopilotLabRoute = DriverCopilotLabRouteImport.update({
   path: '/driver/copilot-lab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DispatchCommandCenterRoute = DispatchCommandCenterRouteImport.update({
+  id: '/command-center',
+  path: '/command-center',
+  getParentRoute: () => DispatchRoute,
+} as any)
+const AdminPlatformRoute = AdminPlatformRouteImport.update({
+  id: '/platform',
+  path: '/platform',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admin-change-password': typeof AdminChangePasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
-  '/dispatch': typeof DispatchRoute
+  '/dispatch': typeof DispatchRouteWithChildren
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/portal': typeof PortalRouteWithChildren
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
   '/signup': typeof SignupRoute
   '/vehicles': typeof VehiclesRoute
+  '/admin/platform': typeof AdminPlatformRoute
+  '/dispatch/command-center': typeof DispatchCommandCenterRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
@@ -206,28 +239,33 @@ export interface FileRoutesByFullPath {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/portal/new-request': typeof PortalNewRequestRoute
+  '/settings/billing': typeof SettingsBillingRoute
   '/settings/production': typeof SettingsProductionRoute
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admin-change-password': typeof AdminChangePasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
-  '/dispatch': typeof DispatchRoute
+  '/dispatch': typeof DispatchRouteWithChildren
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/portal': typeof PortalRouteWithChildren
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
   '/signup': typeof SignupRoute
   '/vehicles': typeof VehiclesRoute
+  '/admin/platform': typeof AdminPlatformRoute
+  '/dispatch/command-center': typeof DispatchCommandCenterRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
@@ -236,6 +274,8 @@ export interface FileRoutesByTo {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/portal/new-request': typeof PortalNewRequestRoute
+  '/settings/billing': typeof SettingsBillingRoute
   '/settings/production': typeof SettingsProductionRoute
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/driver': typeof DriverIndexRoute
@@ -243,22 +283,25 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/admin-change-password': typeof AdminChangePasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
-  '/dispatch': typeof DispatchRoute
+  '/dispatch': typeof DispatchRouteWithChildren
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/portal': typeof PortalRouteWithChildren
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
   '/signup': typeof SignupRoute
   '/vehicles': typeof VehiclesRoute
+  '/admin/platform': typeof AdminPlatformRoute
+  '/dispatch/command-center': typeof DispatchCommandCenterRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
@@ -267,6 +310,8 @@ export interface FileRoutesById {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/portal/new-request': typeof PortalNewRequestRoute
+  '/settings/billing': typeof SettingsBillingRoute
   '/settings/production': typeof SettingsProductionRoute
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/driver/': typeof DriverIndexRoute
@@ -286,11 +331,14 @@ export interface FileRouteTypes {
     | '/loads'
     | '/login'
     | '/map'
+    | '/portal'
     | '/routes'
     | '/settings'
     | '/shipments'
     | '/signup'
     | '/vehicles'
+    | '/admin/platform'
+    | '/dispatch/command-center'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
     | '/driver/elite-nav'
@@ -299,6 +347,8 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/portal/new-request'
+    | '/settings/billing'
     | '/settings/production'
     | '/settings/production-monitoring'
     | '/driver/'
@@ -316,11 +366,14 @@ export interface FileRouteTypes {
     | '/loads'
     | '/login'
     | '/map'
+    | '/portal'
     | '/routes'
     | '/settings'
     | '/shipments'
     | '/signup'
     | '/vehicles'
+    | '/admin/platform'
+    | '/dispatch/command-center'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
     | '/driver/elite-nav'
@@ -329,6 +382,8 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/portal/new-request'
+    | '/settings/billing'
     | '/settings/production'
     | '/settings/production-monitoring'
     | '/driver'
@@ -346,11 +401,14 @@ export interface FileRouteTypes {
     | '/loads'
     | '/login'
     | '/map'
+    | '/portal'
     | '/routes'
     | '/settings'
     | '/shipments'
     | '/signup'
     | '/vehicles'
+    | '/admin/platform'
+    | '/dispatch/command-center'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
     | '/driver/elite-nav'
@@ -359,6 +417,8 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/portal/new-request'
+    | '/settings/billing'
     | '/settings/production'
     | '/settings/production-monitoring'
     | '/driver/'
@@ -366,17 +426,18 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AdminChangePasswordRoute: typeof AdminChangePasswordRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AlertsRoute: typeof AlertsRoute
   AnalyticsRoute: typeof AnalyticsRoute
-  DispatchRoute: typeof DispatchRoute
+  DispatchRoute: typeof DispatchRouteWithChildren
   DriversRoute: typeof DriversRoute
   FuelRoute: typeof FuelRoute
   LoadsRoute: typeof LoadsRoute
   LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
+  PortalRoute: typeof PortalRouteWithChildren
   RoutesRoute: typeof RoutesRoute
   SettingsRoute: typeof SettingsRouteWithChildren
   ShipmentsRoute: typeof ShipmentsRoute
@@ -428,6 +489,13 @@ declare module '@tanstack/react-router' {
       path: '/routes'
       fullPath: '/routes'
       preLoaderRoute: typeof RoutesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/map': {
@@ -535,6 +603,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsProductionRouteImport
       parentRoute: typeof SettingsRoute
     }
+    '/settings/billing': {
+      id: '/settings/billing'
+      path: '/billing'
+      fullPath: '/settings/billing'
+      preLoaderRoute: typeof SettingsBillingRouteImport
+      parentRoute: typeof SettingsRoute
+    }
+    '/portal/new-request': {
+      id: '/portal/new-request'
+      path: '/new-request'
+      fullPath: '/portal/new-request'
+      preLoaderRoute: typeof PortalNewRequestRouteImport
+      parentRoute: typeof PortalRoute
+    }
     '/driver/phase5-demo': {
       id: '/driver/phase5-demo'
       path: '/driver/phase5-demo'
@@ -591,15 +673,64 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverCopilotLabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dispatch/command-center': {
+      id: '/dispatch/command-center'
+      path: '/command-center'
+      fullPath: '/dispatch/command-center'
+      preLoaderRoute: typeof DispatchCommandCenterRouteImport
+      parentRoute: typeof DispatchRoute
+    }
+    '/admin/platform': {
+      id: '/admin/platform'
+      path: '/platform'
+      fullPath: '/admin/platform'
+      preLoaderRoute: typeof AdminPlatformRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminPlatformRoute: typeof AdminPlatformRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminPlatformRoute: AdminPlatformRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface DispatchRouteChildren {
+  DispatchCommandCenterRoute: typeof DispatchCommandCenterRoute
+}
+
+const DispatchRouteChildren: DispatchRouteChildren = {
+  DispatchCommandCenterRoute: DispatchCommandCenterRoute,
+}
+
+const DispatchRouteWithChildren = DispatchRoute._addFileChildren(
+  DispatchRouteChildren,
+)
+
+interface PortalRouteChildren {
+  PortalNewRequestRoute: typeof PortalNewRequestRoute
+}
+
+const PortalRouteChildren: PortalRouteChildren = {
+  PortalNewRequestRoute: PortalNewRequestRoute,
+}
+
+const PortalRouteWithChildren =
+  PortalRoute._addFileChildren(PortalRouteChildren)
+
 interface SettingsRouteChildren {
+  SettingsBillingRoute: typeof SettingsBillingRoute
   SettingsProductionRoute: typeof SettingsProductionRoute
   SettingsProductionMonitoringRoute: typeof SettingsProductionMonitoringRoute
 }
 
 const SettingsRouteChildren: SettingsRouteChildren = {
+  SettingsBillingRoute: SettingsBillingRoute,
   SettingsProductionRoute: SettingsProductionRoute,
   SettingsProductionMonitoringRoute: SettingsProductionMonitoringRoute,
 }
@@ -610,17 +741,18 @@ const SettingsRouteWithChildren = SettingsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   AdminChangePasswordRoute: AdminChangePasswordRoute,
   AdminLoginRoute: AdminLoginRoute,
   AlertsRoute: AlertsRoute,
   AnalyticsRoute: AnalyticsRoute,
-  DispatchRoute: DispatchRoute,
+  DispatchRoute: DispatchRouteWithChildren,
   DriversRoute: DriversRoute,
   FuelRoute: FuelRoute,
   LoadsRoute: LoadsRoute,
   LoginRoute: LoginRoute,
   MapRoute: MapRoute,
+  PortalRoute: PortalRouteWithChildren,
   RoutesRoute: RoutesRoute,
   SettingsRoute: SettingsRouteWithChildren,
   ShipmentsRoute: ShipmentsRoute,
