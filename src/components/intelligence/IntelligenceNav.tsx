@@ -1,7 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import {
   Brain, ShieldAlert, Sparkles, BotMessageSquare, LineChart, Gauge,
-  ClipboardList, Users, BellRing, ScrollText,
+  ClipboardList, Users, BellRing, ScrollText, Timer,
 } from "lucide-react";
 
 /** Phase 9 — AI Operations Intelligence sub-navigation. */
@@ -10,6 +10,7 @@ const ITEMS = [
   { to: "/intelligence/risk",            label: "Predictive Risk",  icon: ShieldAlert },
   { to: "/intelligence/recommendations", label: "Recommendations",  icon: Sparkles },
   { to: "/intelligence/dispatch",        label: "Auto Dispatch",    icon: BotMessageSquare },
+  { to: "/intelligence/eta-confidence",  label: "ETA Confidence",   icon: Timer },
   { to: "/intelligence/executive",       label: "Executive",        icon: LineChart },
   { to: "/intelligence/capacity",        label: "Capacity",         icon: Gauge },
   { to: "/intelligence/handoff",         label: "Shift Handoff",    icon: ClipboardList },
