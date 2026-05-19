@@ -60,6 +60,14 @@ function DbHardeningPage() {
   const { vulns } = useVulnerabilities();
   const { vendors } = useVendorRisk();
   const { rules } = useRetentionRules();
+  const { rows: rlsRows } = useRlsCoverage();
+  const { tests: isoTests } = useIsolationTests();
+  const { boundaries } = useEdgeFnBoundaries();
+
+  const rlsFull    = rlsRows.filter((r) => r.coverage === "full").length;
+  const rlsPartial = rlsRows.filter((r) => r.coverage === "partial").length;
+  const rlsGap     = rlsRows.filter((r) => r.coverage === "gap").length;
+  const isoFail    = isoTests.filter((t) => t.status === "fail").length;
 
   return (
     <AppShell>
@@ -69,7 +77,142 @@ function DbHardeningPage() {
           <Database className="size-5 text-teal-300" />
           <h1 className="text-2xl font-semibold tracking-tight">Database & Hardening</h1>
         </div>
-        <p className="text-sm text-muted-foreground -mt-3">RLS coverage, backups, vendor risk, vulnerabilities, retention.</p>
+        <p className="text-sm text-muted-foreground -mt-3">RLS coverage, tenant isolation matrix, edge function boundaries, backups, vendor risk, vulnerabilities, retention.</p>
+
+        {/* RLS coverage dashboard */}
+        <Card className="p-5">
+          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="size-4 text-teal-300" />
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">RLS coverage matrix</h2>
+            </div>
+            <div className="flex gap-2 text-[11px]">
+              <Badge className="bg-emerald-500/15 text-emerald-300 border-emerald-500/30">{rlsFull} full</Badge>
+              <Badge className="bg-amber-500/15 text-amber-300 border-amber-500/30">{rlsPartial} partial</Badge>
+              {rlsGap > 0 && <Badge className="bg-rose-500/15 text-rose-300 border-rose-500/30">{rlsGap} gap</Badge>}
+            </div>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase tracking-wider text-muted-foreground">
+                <tr className="border-b border-white/5">
+                  <th className="text-left py-2 pr-3">Table</th>
+                  <th className="text-left py-2 pr-3">RLS</th>
+                  <th className="text-right py-2 pr-3">Policies</th>
+                  <th className="text-left py-2 pr-3">Scope</th>
+                  <th className="text-left py-2 pr-3">Coverage</th>
+                  <th className="text-left py-2 pr-3">Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rlsRows.map((r) => (
+                  <tr key={r.table} className="border-b border-white/[0.04] hover:bg-white/[0.02]">
+                    <td className="py-2 pr-3 font-mono text-xs">{r.table}</td>
+                    <td className="py-2 pr-3">{statusBadge(r.enabled ? "pass" : "fail")}</td>
+                    <td className="py-2 pr-3 text-xs tabular-nums text-right">{r.policies}</td>
+                    <td className="py-2 pr-3 text-xs text-muted-foreground">{r.scope}</td>
+                    <td className="py-2 pr-3">
+                      <Badge className={
+                        r.coverage === "full"    ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/30" :
+                        r.coverage === "partial" ? "bg-amber-500/15 text-amber-300 border-amber-500/30" :
+                                                   "bg-rose-500/15 text-rose-300 border-rose-500/30"
+                      }>{r.coverage}</Badge>
+                    </td>
+                    <td className="py-2 pr-3 text-xs text-muted-foreground">{r.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-[11px] text-muted-foreground">RLS examples: <span className="font-mono">docs/phase8-rls-examples.sql</span> · Schema proposal: <span className="font-mono">docs/phase8-schema.sql</span></p>
+        </Card>
+
+        {/* Tenant isolation test matrix */}
+        <Card className="p-5">
+          <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <Network className="size-4 text-teal-300" />
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Tenant isolation tests</h2>
+            </div>
+            <div className="flex gap-2 text-[11px]">
+              <Badge className="bg-emerald-500/15 text-emerald-300 border-emerald-500/30">{isoTests.length - isoFail} pass</Badge>
+              {isoFail > 0 && <Badge className="bg-rose-500/15 text-rose-300 border-rose-500/30">{isoFail} fail</Badge>}
+            </div>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase tracking-wider text-muted-foreground">
+                <tr className="border-b border-white/5">
+                  <th className="text-left py-2 pr-3">Scenario</th>
+                  <th className="text-left py-2 pr-3">Attacker</th>
+                  <th className="text-left py-2 pr-3">Target</th>
+                  <th className="text-left py-2 pr-3">Expected</th>
+                  <th className="text-left py-2 pr-3">Actual</th>
+                  <th className="text-left py-2 pr-3">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {isoTests.map((t) => (
+                  <tr key={t.id} className="border-b border-white/[0.04] hover:bg-white/[0.02]">
+                    <td className="py-2 pr-3 font-medium">{t.scenario}</td>
+                    <td className="py-2 pr-3 text-xs font-mono text-muted-foreground">{t.attacker}</td>
+                    <td className="py-2 pr-3 text-xs font-mono text-muted-foreground">{t.target}</td>
+                    <td className="py-2 pr-3 text-xs">{t.expected}</td>
+                    <td className="py-2 pr-3 text-xs">{t.actual}</td>
+                    <td className="py-2 pr-3">{statusBadge(t.status)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+
+        {/* Edge function / server boundary matrix */}
+        <Card className="p-5">
+          <div className="flex items-center gap-2 mb-3">
+            <Server className="size-4 text-teal-300" />
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Server function & Edge boundary</h2>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase tracking-wider text-muted-foreground">
+                <tr className="border-b border-white/5">
+                  <th className="text-left py-2 pr-3">Name</th>
+                  <th className="text-left py-2 pr-3">Kind</th>
+                  <th className="text-left py-2 pr-3">Trust</th>
+                  <th className="text-left py-2 pr-3">Scope</th>
+                  <th className="text-left py-2 pr-3">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {boundaries.map((b) => (
+                  <tr key={b.name} className="border-b border-white/[0.04] hover:bg-white/[0.02]">
+                    <td className="py-2 pr-3 font-mono text-xs">{b.name}</td>
+                    <td className="py-2 pr-3">
+                      <Badge className={
+                        b.kind === "server-fn"    ? "bg-teal-500/15 text-teal-300 border-teal-500/30" :
+                        b.kind === "server-route" ? "bg-blue-500/15 text-blue-300 border-blue-500/30" :
+                                                    "bg-violet-500/15 text-violet-300 border-violet-500/30"
+                      }>{b.kind}</Badge>
+                    </td>
+                    <td className="py-2 pr-3">
+                      <Badge className={
+                        b.trust === "user"     ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/30" :
+                        b.trust === "service"  ? "bg-amber-500/15 text-amber-300 border-amber-500/30" :
+                                                 "bg-rose-500/15 text-rose-300 border-rose-500/30"
+                      }>{b.trust}</Badge>
+                    </td>
+                    <td className="py-2 pr-3 text-xs text-muted-foreground">{b.scope}</td>
+                    <td className="py-2 pr-3 text-xs text-muted-foreground">{b.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-[11px] text-muted-foreground">
+            Rule: app-internal logic uses <span className="font-mono">createServerFn</span>. Edge Functions only when an external system MUST call a stable Supabase URL. Plan: <span className="font-mono">docs/phase8-edge-function-plan.md</span>.
+          </p>
+        </Card>
 
         {/* Hardening checklist */}
         <Card className="p-5">
@@ -82,8 +225,8 @@ function DbHardeningPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-3 text-[11px] text-muted-foreground">Proposed schema: <span className="font-mono">docs/phase8-schema.sql</span> · RLS examples: <span className="font-mono">docs/phase8-rls-examples.sql</span></p>
         </Card>
+
 
         {/* Backup & Recovery */}
         <Card className="p-5">
