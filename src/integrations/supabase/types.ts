@@ -154,6 +154,42 @@ export type Database = {
           },
         ]
       }
+      dispatch_status_sync: {
+        Row: {
+          channel: string
+          company_id: string
+          connection_state: string
+          driver_id: string | null
+          id: string
+          last_event_id: string | null
+          last_seen_at: string
+          load_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          channel: string
+          company_id: string
+          connection_state: string
+          driver_id?: string | null
+          id?: string
+          last_event_id?: string | null
+          last_seen_at?: string
+          load_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          channel?: string
+          company_id?: string
+          connection_state?: string
+          driver_id?: string | null
+          id?: string
+          last_event_id?: string | null
+          last_seen_at?: string
+          load_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       driver_location_events: {
         Row: {
           company_id: string
@@ -360,6 +396,48 @@ export type Database = {
           },
         ]
       }
+      eta_updates: {
+        Row: {
+          company_id: string
+          confidence: number | null
+          driver_id: string | null
+          eta_at: string | null
+          eta_seconds_remaining: number | null
+          id: string
+          load_id: string | null
+          reason: string
+          recorded_at: string
+          route_id: string
+          source: string
+        }
+        Insert: {
+          company_id: string
+          confidence?: number | null
+          driver_id?: string | null
+          eta_at?: string | null
+          eta_seconds_remaining?: number | null
+          id?: string
+          load_id?: string | null
+          reason: string
+          recorded_at?: string
+          route_id: string
+          source: string
+        }
+        Update: {
+          company_id?: string
+          confidence?: number | null
+          driver_id?: string | null
+          eta_at?: string | null
+          eta_seconds_remaining?: number | null
+          id?: string
+          load_id?: string | null
+          reason?: string
+          recorded_at?: string
+          route_id?: string
+          source?: string
+        }
+        Relationships: []
+      }
       load_offers: {
         Row: {
           company_id: string
@@ -420,6 +498,48 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      load_status_updates: {
+        Row: {
+          changed_at: string
+          company_id: string
+          driver_id: string | null
+          from_status: Database["public"]["Enums"]["load_status"] | null
+          id: string
+          lat: number | null
+          lng: number | null
+          load_id: string
+          note: string | null
+          source: string
+          to_status: Database["public"]["Enums"]["load_status"]
+        }
+        Insert: {
+          changed_at?: string
+          company_id: string
+          driver_id?: string | null
+          from_status?: Database["public"]["Enums"]["load_status"] | null
+          id?: string
+          lat?: number | null
+          lng?: number | null
+          load_id: string
+          note?: string | null
+          source?: string
+          to_status: Database["public"]["Enums"]["load_status"]
+        }
+        Update: {
+          changed_at?: string
+          company_id?: string
+          driver_id?: string | null
+          from_status?: Database["public"]["Enums"]["load_status"] | null
+          id?: string
+          lat?: number | null
+          lng?: number | null
+          load_id?: string
+          note?: string | null
+          source?: string
+          to_status?: Database["public"]["Enums"]["load_status"]
+        }
+        Relationships: []
       }
       loads: {
         Row: {
@@ -631,6 +751,144 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      push_devices: {
+        Row: {
+          app_version: string | null
+          company_id: string
+          created_at: string
+          driver_id: string | null
+          id: string
+          last_active_at: string
+          platform: string
+          token: string
+          user_id: string
+        }
+        Insert: {
+          app_version?: string | null
+          company_id: string
+          created_at?: string
+          driver_id?: string | null
+          id?: string
+          last_active_at?: string
+          platform: string
+          token: string
+          user_id: string
+        }
+        Update: {
+          app_version?: string | null
+          company_id?: string
+          created_at?: string
+          driver_id?: string | null
+          id?: string
+          last_active_at?: string
+          platform?: string
+          token?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      push_notifications: {
+        Row: {
+          body: string | null
+          company_id: string
+          created_at: string
+          data: Json
+          delivered_at: string | null
+          driver_id: string | null
+          id: string
+          provider: string | null
+          sent_at: string | null
+          status: string
+          title: string
+          topic: string
+          user_id: string | null
+        }
+        Insert: {
+          body?: string | null
+          company_id: string
+          created_at?: string
+          data?: Json
+          delivered_at?: string | null
+          driver_id?: string | null
+          id?: string
+          provider?: string | null
+          sent_at?: string | null
+          status?: string
+          title: string
+          topic: string
+          user_id?: string | null
+        }
+        Update: {
+          body?: string | null
+          company_id?: string
+          created_at?: string
+          data?: Json
+          delivered_at?: string | null
+          driver_id?: string | null
+          id?: string
+          provider?: string | null
+          sent_at?: string | null
+          status?: string
+          title?: string
+          topic?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      route_progress: {
+        Row: {
+          company_id: string
+          current_lat: number | null
+          current_lng: number | null
+          current_step_index: number
+          distance_off_route_m: number
+          driver_id: string
+          heading: number | null
+          id: string
+          load_id: string | null
+          on_route: boolean
+          recorded_at: string
+          remaining_miles: number
+          route_id: string
+          speed: number | null
+          traveled_miles: number
+        }
+        Insert: {
+          company_id: string
+          current_lat?: number | null
+          current_lng?: number | null
+          current_step_index?: number
+          distance_off_route_m?: number
+          driver_id: string
+          heading?: number | null
+          id?: string
+          load_id?: string | null
+          on_route?: boolean
+          recorded_at?: string
+          remaining_miles?: number
+          route_id: string
+          speed?: number | null
+          traveled_miles?: number
+        }
+        Update: {
+          company_id?: string
+          current_lat?: number | null
+          current_lng?: number | null
+          current_step_index?: number
+          distance_off_route_m?: number
+          driver_id?: string
+          heading?: number | null
+          id?: string
+          load_id?: string | null
+          on_route?: boolean
+          recorded_at?: string
+          remaining_miles?: number
+          route_id?: string
+          speed?: number | null
+          traveled_miles?: number
+        }
+        Relationships: []
       }
       route_steps: {
         Row: {
@@ -916,6 +1174,48 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      voice_assistant_events: {
+        Row: {
+          company_id: string
+          driver_id: string | null
+          id: string
+          intent: string | null
+          kind: string
+          latency_ms: number | null
+          load_id: string | null
+          occurred_at: string
+          response: string | null
+          safety_mode: boolean
+          transcript: string | null
+        }
+        Insert: {
+          company_id: string
+          driver_id?: string | null
+          id?: string
+          intent?: string | null
+          kind: string
+          latency_ms?: number | null
+          load_id?: string | null
+          occurred_at?: string
+          response?: string | null
+          safety_mode?: boolean
+          transcript?: string | null
+        }
+        Update: {
+          company_id?: string
+          driver_id?: string | null
+          id?: string
+          intent?: string | null
+          kind?: string
+          latency_ms?: number | null
+          load_id?: string | null
+          occurred_at?: string
+          response?: string | null
+          safety_mode?: boolean
+          transcript?: string | null
+        }
+        Relationships: []
       }
     }
     Views: {
