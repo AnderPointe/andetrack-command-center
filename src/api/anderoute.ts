@@ -129,4 +129,28 @@ export const api = {
   // POD
   uploadPOD: (input: Tables["proof_of_delivery"]["Insert"]) =>
     unwrap(supabase.from("proof_of_delivery").insert(input).select().maybeSingle()),
+
+  /**
+   * Upload a POD file (signature image or photo) to the private storage bucket
+   * `proof-of-delivery`. Files are stored under `{company_id}/{load_id}/...`
+   * so RLS policies on storage.objects can scope access by company.
+   */
+  uploadPODFile: async (
+    companyId: string,
+    loadId: string,
+    file: Blob,
+    kind: "signature" | "photo",
+    ext = "png",
+  ): Promise<{ path: string; signedUrl: string | null }> => {
+    const path = `${companyId}/${loadId}/${kind}-${Date.now()}.${ext}`;
+    const { error } = await supabase.storage
+      .from("proof-of-delivery")
+      .upload(path, file, { contentType: file.type || `image/${ext}`, upsert: false });
+    if (error) throw new Error(error.message);
+    const { data: signed } = await supabase.storage
+      .from("proof-of-delivery")
+      .createSignedUrl(path, 60 * 60 * 24 * 7); // 7d
+    return { path, signedUrl: signed?.signedUrl ?? null };
+  },
 };
+
