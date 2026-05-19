@@ -242,6 +242,7 @@ function PODCard({
               href={pod.photo_url}
               target="_blank"
               rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-background/60 px-2 py-0.5 text-muted-foreground hover:text-foreground"
             >
               <ImageIcon className="h-3 w-3" /> View photo
