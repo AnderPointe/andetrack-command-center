@@ -46,6 +46,7 @@ import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
 import { Route as OpsDatabaseRouteImport } from './routes/ops.database'
 import { Route as OpsCenterRouteImport } from './routes/ops.center'
 import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
+import { Route as LaunchDemoRouteImport } from './routes/launch.demo'
 import { Route as IntelligenceRiskRouteImport } from './routes/intelligence.risk'
 import { Route as IntelligenceRecommendationsRouteImport } from './routes/intelligence.recommendations'
 import { Route as IntelligencePhase9OverviewRouteImport } from './routes/intelligence.phase9-overview'
@@ -264,6 +265,11 @@ const LaunchOverviewRoute = LaunchOverviewRouteImport.update({
   path: '/launch/overview',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaunchDemoRoute = LaunchDemoRouteImport.update({
+  id: '/launch/demo',
+  path: '/launch/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IntelligenceRiskRoute = IntelligenceRiskRouteImport.update({
   id: '/intelligence/risk',
   path: '/intelligence/risk',
@@ -474,6 +480,7 @@ export interface FileRoutesByFullPath {
   '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
+  '/launch/demo': typeof LaunchDemoRoute
   '/launch/overview': typeof LaunchOverviewRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
@@ -544,6 +551,7 @@ export interface FileRoutesByTo {
   '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
+  '/launch/demo': typeof LaunchDemoRoute
   '/launch/overview': typeof LaunchOverviewRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
@@ -615,6 +623,7 @@ export interface FileRoutesById {
   '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
+  '/launch/demo': typeof LaunchDemoRoute
   '/launch/overview': typeof LaunchOverviewRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
@@ -687,6 +696,7 @@ export interface FileRouteTypes {
     | '/intelligence/phase9-overview'
     | '/intelligence/recommendations'
     | '/intelligence/risk'
+    | '/launch/demo'
     | '/launch/overview'
     | '/ops/center'
     | '/ops/database'
@@ -757,6 +767,7 @@ export interface FileRouteTypes {
     | '/intelligence/phase9-overview'
     | '/intelligence/recommendations'
     | '/intelligence/risk'
+    | '/launch/demo'
     | '/launch/overview'
     | '/ops/center'
     | '/ops/database'
@@ -827,6 +838,7 @@ export interface FileRouteTypes {
     | '/intelligence/phase9-overview'
     | '/intelligence/recommendations'
     | '/intelligence/risk'
+    | '/launch/demo'
     | '/launch/overview'
     | '/ops/center'
     | '/ops/database'
@@ -896,6 +908,7 @@ export interface RootRouteChildren {
   IntelligencePhase9OverviewRoute: typeof IntelligencePhase9OverviewRoute
   IntelligenceRecommendationsRoute: typeof IntelligenceRecommendationsRoute
   IntelligenceRiskRoute: typeof IntelligenceRiskRoute
+  LaunchDemoRoute: typeof LaunchDemoRoute
   LaunchOverviewRoute: typeof LaunchOverviewRoute
   OpsCenterRoute: typeof OpsCenterRoute
   OpsDatabaseRoute: typeof OpsDatabaseRoute
@@ -1169,6 +1182,13 @@ declare module '@tanstack/react-router' {
       path: '/launch/overview'
       fullPath: '/launch/overview'
       preLoaderRoute: typeof LaunchOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/demo': {
+      id: '/launch/demo'
+      path: '/launch/demo'
+      fullPath: '/launch/demo'
+      preLoaderRoute: typeof LaunchDemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/intelligence/risk': {
@@ -1493,6 +1513,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntelligencePhase9OverviewRoute: IntelligencePhase9OverviewRoute,
   IntelligenceRecommendationsRoute: IntelligenceRecommendationsRoute,
   IntelligenceRiskRoute: IntelligenceRiskRoute,
+  LaunchDemoRoute: LaunchDemoRoute,
   LaunchOverviewRoute: LaunchOverviewRoute,
   OpsCenterRoute: OpsCenterRoute,
   OpsDatabaseRoute: OpsDatabaseRoute,
