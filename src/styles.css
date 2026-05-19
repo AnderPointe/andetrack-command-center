@@ -339,4 +339,10 @@
     0%, 100% { transform: scaleY(0.35); }
     50%      { transform: scaleY(1); }
   }
+
+  /* Edge fade mask for marquee */
+  .mask-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
 }
