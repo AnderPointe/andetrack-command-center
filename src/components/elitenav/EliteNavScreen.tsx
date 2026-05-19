@@ -360,7 +360,7 @@ export function EliteNavScreen() {
                 </span>
               </div>
               <div className="relative grid grid-cols-2 gap-x-3 gap-y-1.5 mt-2.5 text-[11px]">
-                <SafetyRow ok label="Low bridge avoided · 13'9\"" />
+                <SafetyRow ok label={`Low bridge avoided · 13'9"`} />
                 <SafetyRow ok label="Weight restrictions clear" />
                 <SafetyRow ok label="Hazmat policy verified" />
                 <SafetyRow label="Tight turn in 1.4 mi" tone="warning" />
