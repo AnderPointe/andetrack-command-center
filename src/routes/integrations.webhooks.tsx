@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
+import { EnterpriseNav } from "@/components/enterprise/EnterpriseNav";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ALL_WEBHOOK_EVENTS, type WebhookEvent } from "@/enterprise/types";
+import { buildPayload, buildWebhookSignature } from "@/enterprise/services/webhookService";
 import { Webhook, Plus, Send, RotateCw, Pause, CheckCircle2, XCircle, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/integrations/webhooks")({
@@ -36,16 +38,31 @@ function delIcon(s: string) {
   return <Clock className="size-3.5 text-amber-300" />;
 }
 
+type Filter = "all" | "delivered" | "failed" | "pending";
+
 function WebhooksPage() {
   const [eps, setEps] = useState(EPS);
+  const [filter, setFilter] = useState<Filter>("all");
+  const [selected, setSelected] = useState<string>(DELS[0].id);
+
+  const filtered = DELS.filter((d) => filter === "all" || d.status === filter);
+  const current = DELS.find((d) => d.id === selected) ?? DELS[0];
+  const sample = useMemo(() => {
+    const payload = buildPayload(current.event, { load_id: "L-2041", shipment_id: "SH-1042" });
+    const body = JSON.stringify(payload, null, 2);
+    const ts = Math.floor(Date.now() / 1000);
+    const sig = buildWebhookSignature("whsec_sample_secret", body, ts);
+    return { body, sig };
+  }, [current]);
 
   return (
     <AppShell>
       <div className="p-4 md:p-6 space-y-6">
+        <EnterpriseNav />
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">Webhooks</h1>
-            <p className="text-sm text-muted-foreground mt-0.5">Subscribe to shipment, driver, and billing events. Signed with HMAC-SHA256.</p>
+            <p className="text-sm text-muted-foreground mt-0.5">Subscribe to shipment, driver, and billing events. Signed with HMAC-SHA256, retried with exponential backoff.</p>
           </div>
           <Button size="sm"><Plus className="size-3.5 mr-1.5" />New endpoint</Button>
         </div>
@@ -73,31 +90,67 @@ function WebhooksPage() {
           </div>
         </Card>
 
-        <Card className="p-5">
-          <h2 className="text-sm font-semibold mb-3 uppercase tracking-wider text-muted-foreground">Delivery log</h2>
-          <table className="w-full text-sm">
-            <thead className="text-xs uppercase tracking-wider text-muted-foreground">
-              <tr className="border-b border-white/5">
-                <th className="text-left py-2 pr-3">Status</th>
-                <th className="text-left py-2 pr-3">Event</th>
-                <th className="text-left py-2 pr-3">Code</th>
-                <th className="text-left py-2 pr-3">Attempts</th>
-                <th className="text-left py-2 pr-3">When</th>
-              </tr>
-            </thead>
-            <tbody>
-              {DELS.map((d) => (
-                <tr key={d.id} className="border-b border-white/[0.04]">
-                  <td className="py-2 pr-3 flex items-center gap-1.5">{delIcon(d.status)}<span className="capitalize text-xs">{d.status}</span></td>
-                  <td className="py-2 pr-3 font-mono text-xs">{d.event}</td>
-                  <td className="py-2 pr-3 tabular-nums">{d.code ?? "—"}</td>
-                  <td className="py-2 pr-3 tabular-nums">{d.attempt}</td>
-                  <td className="py-2 pr-3 text-xs text-muted-foreground">{new Date(d.ts).toLocaleString()}</td>
+        <div className="grid lg:grid-cols-[1fr_420px] gap-4">
+          <Card className="p-5">
+            <div className="mb-3 flex items-center justify-between flex-wrap gap-2">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Delivery log</h2>
+              <div className="flex gap-1">
+                {(["all","delivered","pending","failed"] as Filter[]).map((f) => {
+                  const count = f === "all" ? DELS.length : DELS.filter((d) => d.status === f).length;
+                  return (
+                    <button
+                      key={f}
+                      onClick={() => setFilter(f)}
+                      className={`rounded-full border px-2.5 py-0.5 text-[11px] capitalize ${
+                        filter === f ? "border-teal-400/50 bg-teal-500/10 text-teal-200" : "border-white/10 bg-white/[0.02] text-muted-foreground hover:border-white/20"
+                      }`}
+                    >
+                      {f} <span className="tabular-nums opacity-70">{count}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            <table className="w-full text-sm">
+              <thead className="text-xs uppercase tracking-wider text-muted-foreground">
+                <tr className="border-b border-white/5">
+                  <th className="text-left py-2 pr-3">Status</th>
+                  <th className="text-left py-2 pr-3">Event</th>
+                  <th className="text-left py-2 pr-3">Code</th>
+                  <th className="text-left py-2 pr-3">Attempts</th>
+                  <th className="text-left py-2 pr-3">When</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
+              </thead>
+              <tbody>
+                {filtered.map((d) => (
+                  <tr
+                    key={d.id}
+                    onClick={() => setSelected(d.id)}
+                    className={`border-b border-white/[0.04] cursor-pointer ${selected === d.id ? "bg-teal-500/[0.06]" : "hover:bg-white/[0.02]"}`}
+                  >
+                    <td className="py-2 pr-3 flex items-center gap-1.5">{delIcon(d.status)}<span className="capitalize text-xs">{d.status}</span></td>
+                    <td className="py-2 pr-3 font-mono text-xs">{d.event}</td>
+                    <td className="py-2 pr-3 tabular-nums">{d.code ?? "—"}</td>
+                    <td className="py-2 pr-3 tabular-nums">{d.attempt}</td>
+                    <td className="py-2 pr-3 text-xs text-muted-foreground">{new Date(d.ts).toLocaleString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Card>
+
+          <Card className="p-5">
+            <div className="mb-2 flex items-center justify-between">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Signed payload</h2>
+              <Badge variant="outline" className="text-[10px] font-mono">{current.event}</Badge>
+            </div>
+            <div className="text-[11px] text-muted-foreground mb-1">Anderoute-Signature</div>
+            <div className="rounded-md border border-white/5 bg-slate-950/60 p-2 font-mono text-[11px] text-teal-200 break-all">{sample.sig}</div>
+            <div className="mt-3 text-[11px] text-muted-foreground mb-1">Body</div>
+            <pre className="rounded-md border border-white/5 bg-slate-950/60 p-2 font-mono text-[11px] text-slate-300 overflow-x-auto max-h-64">{sample.body}</pre>
+            <div className="mt-3 text-[11px] text-muted-foreground">Retry backoff: <span className="font-mono text-foreground">0s, 30s, 2m, 10m, 1h</span></div>
+          </Card>
+        </div>
 
         <Card className="p-5">
           <h2 className="text-sm font-semibold mb-2 uppercase tracking-wider text-muted-foreground">Subscribable events ({ALL_WEBHOOK_EVENTS.length})</h2>

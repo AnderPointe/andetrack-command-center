@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
+import { EnterpriseNav } from "@/components/enterprise/EnterpriseNav";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { ALL_API_SCOPES, type ApiScope } from "@/enterprise/types";
-import { Key, Plus, Eye, EyeOff, Trash2, RotateCw, Copy } from "lucide-react";
+import { Key, Plus, Eye, EyeOff, Trash2, RotateCw, Copy, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/integrations/api")({
   head: () => ({ meta: [{ title: "API Marketplace — Anderoute" }] }),
@@ -49,6 +50,7 @@ function ApiMarketplace() {
   return (
     <AppShell>
       <div className="p-4 md:p-6 space-y-6">
+        <EnterpriseNav />
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">API Marketplace</h1>
@@ -56,6 +58,18 @@ function ApiMarketplace() {
           </div>
           <Button size="sm"><Plus className="size-3.5 mr-1.5" />Create API key</Button>
         </div>
+
+        <Card className="p-4 border-teal-500/20 bg-teal-500/[0.03]">
+          <div className="flex items-start gap-3">
+            <ShieldCheck className="size-4 text-teal-300 mt-0.5" />
+            <div className="text-xs text-muted-foreground">
+              <span className="text-foreground font-medium">Security boundary:</span> Keys are hashed (SHA-256) at rest;
+              the cleartext is shown exactly once at create/rotate. Every request is checked for scope, IP allowlist,
+              and per-key rate limit. Tenant scope is enforced server-side — clients never pass <code className="font-mono">company_id</code>.
+            </div>
+          </div>
+        </Card>
+
 
         <div className="grid lg:grid-cols-[1fr_360px] gap-4">
           <Card className="p-5">

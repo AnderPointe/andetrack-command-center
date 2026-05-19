@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
+import { EnterpriseNav } from "@/components/enterprise/EnterpriseNav";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,6 +31,7 @@ function WhiteLabelSettings() {
   return (
     <AppShell>
       <div className="p-4 md:p-6 space-y-6">
+        <EnterpriseNav />
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">White-Label Branding</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Customize logo, colors, custom domain, and email branding for your enterprise deployment.</p>

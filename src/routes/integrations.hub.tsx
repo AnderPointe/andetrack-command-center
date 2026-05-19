@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
+import { EnterpriseNav } from "@/components/enterprise/EnterpriseNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -60,16 +61,15 @@ function IntegrationHub() {
   return (
     <AppShell>
       <div className="p-4 md:p-6 space-y-6">
+        <EnterpriseNav />
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">Integration Hub</h1>
             <p className="text-sm text-muted-foreground mt-0.5">Connect Anderoute to EDI, accounting, telematics, maps, brokers, and customer systems.</p>
           </div>
-          <div className="flex gap-2 text-xs">
-            <Link to="/integrations/edi" className="rounded-md border border-white/10 bg-white/[0.03] px-3 py-1.5 hover:border-teal-400/40">EDI</Link>
-            <Link to="/integrations/api" className="rounded-md border border-white/10 bg-white/[0.03] px-3 py-1.5 hover:border-teal-400/40">API Marketplace</Link>
-            <Link to="/integrations/webhooks" className="rounded-md border border-white/10 bg-white/[0.03] px-3 py-1.5 hover:border-teal-400/40">Webhooks</Link>
-            <Link to="/integrations/health" className="rounded-md border border-white/10 bg-white/[0.03] px-3 py-1.5 hover:border-teal-400/40">Health</Link>
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <span><span className="text-foreground font-medium tabular-nums">{items.filter((i) => i.enabled).length}</span> enabled</span>
+            <span><span className="text-foreground font-medium tabular-nums">{catalog.length}</span> in marketplace</span>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
+import { EnterpriseNav } from "@/components/enterprise/EnterpriseNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Activity, AlertTriangle, CheckCircle2, XCircle } from "lucide-react";
@@ -39,6 +40,7 @@ function IntegrationHealth() {
   return (
     <AppShell>
       <div className="p-4 md:p-6 space-y-6">
+        <EnterpriseNav />
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Integration Health</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Live status of every external connection — API, EDI, webhooks, providers.</p>
