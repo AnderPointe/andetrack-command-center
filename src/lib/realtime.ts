@@ -19,7 +19,7 @@ import type {
 
 export type ChangeEvent = "INSERT" | "UPDATE" | "DELETE" | "*";
 
-interface SubscribeOptions<T> {
+interface SubscribeOptions<T extends { [key: string]: any }> {
   channelName: string;
   table: string;
   event?: ChangeEvent;
@@ -28,7 +28,7 @@ interface SubscribeOptions<T> {
   onPayload: (payload: RealtimePostgresChangesPayload<T>) => void;
 }
 
-export function subscribeToTable<T extends Record<string, unknown>>(
+export function subscribeToTable<T extends { [key: string]: any }>(
   opts: SubscribeOptions<T>,
 ): () => void {
   let channel: RealtimeChannel | null = null;
@@ -36,8 +36,7 @@ export function subscribeToTable<T extends Record<string, unknown>>(
     channel = supabase
       .channel(opts.channelName)
       .on(
-        // @ts-expect-error – supabase-js generic constraint mismatch
-        "postgres_changes",
+        "postgres_changes" as any,
         {
           event: opts.event ?? "*",
           schema: opts.schema ?? "public",
