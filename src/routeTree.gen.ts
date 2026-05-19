@@ -48,6 +48,7 @@ import { Route as OpsCenterRouteImport } from './routes/ops.center'
 import { Route as LaunchSalesRouteImport } from './routes/launch.sales'
 import { Route as LaunchRoiRouteImport } from './routes/launch.roi'
 import { Route as LaunchPricingRouteImport } from './routes/launch.pricing'
+import { Route as LaunchPilotRouteImport } from './routes/launch.pilot'
 import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
 import { Route as LaunchOnboardingRouteImport } from './routes/launch.onboarding'
 import { Route as LaunchMarketingRouteImport } from './routes/launch.marketing'
@@ -279,6 +280,11 @@ const LaunchRoiRoute = LaunchRoiRouteImport.update({
 const LaunchPricingRoute = LaunchPricingRouteImport.update({
   id: '/launch/pricing',
   path: '/launch/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchPilotRoute = LaunchPilotRouteImport.update({
+  id: '/launch/pilot',
+  path: '/launch/pilot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchOverviewRoute = LaunchOverviewRouteImport.update({
@@ -521,6 +527,7 @@ export interface FileRoutesByFullPath {
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
@@ -598,6 +605,7 @@ export interface FileRoutesByTo {
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
@@ -676,6 +684,7 @@ export interface FileRoutesById {
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
@@ -755,6 +764,7 @@ export interface FileRouteTypes {
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/pilot'
     | '/launch/pricing'
     | '/launch/roi'
     | '/launch/sales'
@@ -832,6 +842,7 @@ export interface FileRouteTypes {
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/pilot'
     | '/launch/pricing'
     | '/launch/roi'
     | '/launch/sales'
@@ -909,6 +920,7 @@ export interface FileRouteTypes {
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/pilot'
     | '/launch/pricing'
     | '/launch/roi'
     | '/launch/sales'
@@ -985,6 +997,7 @@ export interface RootRouteChildren {
   LaunchMarketingRoute: typeof LaunchMarketingRoute
   LaunchOnboardingRoute: typeof LaunchOnboardingRoute
   LaunchOverviewRoute: typeof LaunchOverviewRoute
+  LaunchPilotRoute: typeof LaunchPilotRoute
   LaunchPricingRoute: typeof LaunchPricingRoute
   LaunchRoiRoute: typeof LaunchRoiRoute
   LaunchSalesRoute: typeof LaunchSalesRoute
@@ -1274,6 +1287,13 @@ declare module '@tanstack/react-router' {
       path: '/launch/pricing'
       fullPath: '/launch/pricing'
       preLoaderRoute: typeof LaunchPricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/pilot': {
+      id: '/launch/pilot'
+      path: '/launch/pilot'
+      fullPath: '/launch/pilot'
+      preLoaderRoute: typeof LaunchPilotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/overview': {
@@ -1638,6 +1658,7 @@ const rootRouteChildren: RootRouteChildren = {
   LaunchMarketingRoute: LaunchMarketingRoute,
   LaunchOnboardingRoute: LaunchOnboardingRoute,
   LaunchOverviewRoute: LaunchOverviewRoute,
+  LaunchPilotRoute: LaunchPilotRoute,
   LaunchPricingRoute: LaunchPricingRoute,
   LaunchRoiRoute: LaunchRoiRoute,
   LaunchSalesRoute: LaunchSalesRoute,
