@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
 import { IntelligenceNav } from "@/components/intelligence/IntelligenceNav";
+import { MockBadge } from "@/components/intelligence/MockBadge";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { LineChart, TrendingUp } from "lucide-react";
