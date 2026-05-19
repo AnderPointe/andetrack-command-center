@@ -56,7 +56,11 @@ function AdminLoginPage() {
     }
 
     setLoading(false);
-    navigate({ to: "/admin" });
+    const mustChange = Boolean(
+      (signInData.user.user_metadata as { must_change_password?: boolean } | null)
+        ?.must_change_password,
+    );
+    navigate({ to: mustChange ? "/admin-change-password" : "/admin" });
   };
 
   return (

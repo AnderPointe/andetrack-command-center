@@ -25,6 +25,14 @@ function AdminDashboard() {
         navigate({ to: "/admin-login" });
         return;
       }
+      const mustChange = Boolean(
+        (user.user_metadata as { must_change_password?: boolean } | null)
+          ?.must_change_password,
+      );
+      if (mustChange) {
+        navigate({ to: "/admin-change-password" });
+        return;
+      }
       await supabase.rpc("bootstrap_demo_membership");
       const { data, error } = await supabase
         .from("user_roles")

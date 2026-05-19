@@ -23,6 +23,7 @@ import { Route as DispatchRouteImport } from './routes/dispatch'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as AdminLoginRouteImport } from './routes/admin-login'
+import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-password'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
@@ -101,6 +102,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin-login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminChangePasswordRoute = AdminChangePasswordRouteImport.update({
+  id: '/admin-change-password',
+  path: '/admin-change-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -140,6 +146,7 @@ const DriverDeliveriesRoute = DriverDeliveriesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/admin-change-password': typeof AdminChangePasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
@@ -163,6 +170,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/admin-change-password': typeof AdminChangePasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
@@ -187,6 +195,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/admin-change-password': typeof AdminChangePasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
@@ -212,6 +221,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/admin-change-password'
     | '/admin-login'
     | '/alerts'
     | '/analytics'
@@ -235,6 +245,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/admin-change-password'
     | '/admin-login'
     | '/alerts'
     | '/analytics'
@@ -258,6 +269,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/admin-change-password'
     | '/admin-login'
     | '/alerts'
     | '/analytics'
@@ -282,6 +294,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  AdminChangePasswordRoute: typeof AdminChangePasswordRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AlertsRoute: typeof AlertsRoute
   AnalyticsRoute: typeof AnalyticsRoute
@@ -403,6 +416,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin-change-password': {
+      id: '/admin-change-password'
+      path: '/admin-change-password'
+      fullPath: '/admin-change-password'
+      preLoaderRoute: typeof AdminChangePasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -458,6 +478,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  AdminChangePasswordRoute: AdminChangePasswordRoute,
   AdminLoginRoute: AdminLoginRoute,
   AlertsRoute: AlertsRoute,
   AnalyticsRoute: AnalyticsRoute,
@@ -481,3 +502,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
