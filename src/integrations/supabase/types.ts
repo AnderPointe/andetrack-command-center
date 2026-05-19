@@ -16,6 +16,9 @@ export type Database = {
     Tables: {
       alerts: {
         Row: {
+          acknowledged_at: string | null
+          acknowledged_by: string | null
+          alert_type: string | null
           company_id: string
           created_at: string
           driver_id: string | null
@@ -27,9 +30,13 @@ export type Database = {
           resolved_at: string | null
           resolved_by: string | null
           severity: Database["public"]["Enums"]["alert_severity"]
+          status: Database["public"]["Enums"]["alert_status"]
           type: string
         }
         Insert: {
+          acknowledged_at?: string | null
+          acknowledged_by?: string | null
+          alert_type?: string | null
           company_id: string
           created_at?: string
           driver_id?: string | null
@@ -41,9 +48,13 @@ export type Database = {
           resolved_at?: string | null
           resolved_by?: string | null
           severity: Database["public"]["Enums"]["alert_severity"]
+          status?: Database["public"]["Enums"]["alert_status"]
           type: string
         }
         Update: {
+          acknowledged_at?: string | null
+          acknowledged_by?: string | null
+          alert_type?: string | null
           company_id?: string
           created_at?: string
           driver_id?: string | null
@@ -55,6 +66,7 @@ export type Database = {
           resolved_at?: string | null
           resolved_by?: string | null
           severity?: Database["public"]["Enums"]["alert_severity"]
+          status?: Database["public"]["Enums"]["alert_status"]
           type?: string
         }
         Relationships: [
@@ -80,6 +92,48 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      audit_logs: {
+        Row: {
+          actor_user_id: string | null
+          company_id: string
+          created_at: string
+          driver_id: string | null
+          event_type: Database["public"]["Enums"]["audit_event_type"]
+          id: string
+          ip_address: string | null
+          load_id: string | null
+          message: string | null
+          metadata: Json
+          user_agent: string | null
+        }
+        Insert: {
+          actor_user_id?: string | null
+          company_id: string
+          created_at?: string
+          driver_id?: string | null
+          event_type: Database["public"]["Enums"]["audit_event_type"]
+          id?: string
+          ip_address?: string | null
+          load_id?: string | null
+          message?: string | null
+          metadata?: Json
+          user_agent?: string | null
+        }
+        Update: {
+          actor_user_id?: string | null
+          company_id?: string
+          created_at?: string
+          driver_id?: string | null
+          event_type?: Database["public"]["Enums"]["audit_event_type"]
+          id?: string
+          ip_address?: string | null
+          load_id?: string | null
+          message?: string | null
+          metadata?: Json
+          user_agent?: string | null
+        }
+        Relationships: []
       }
       companies: {
         Row: {
@@ -190,36 +244,156 @@ export type Database = {
         }
         Relationships: []
       }
+      driver_live_state: {
+        Row: {
+          active_load_id: string | null
+          active_shipment_id: string | null
+          app_state: Database["public"]["Enums"]["app_state"] | null
+          battery_level: number | null
+          company_id: string
+          current_latitude: number | null
+          current_longitude: number | null
+          driver_id: string
+          driver_status: Database["public"]["Enums"]["driver_status"] | null
+          eta_minutes: number | null
+          heading: number | null
+          is_charging: boolean | null
+          is_gps_stale: boolean
+          last_location_at: string | null
+          last_status_at: string | null
+          location_permission_status: Database["public"]["Enums"]["location_permission_status"]
+          remaining_miles: number | null
+          route_progress_pct: number | null
+          route_status: string | null
+          speed_mph: number | null
+          tracking_mode: Database["public"]["Enums"]["tracking_mode"]
+          updated_at: string
+          vehicle_id: string | null
+        }
+        Insert: {
+          active_load_id?: string | null
+          active_shipment_id?: string | null
+          app_state?: Database["public"]["Enums"]["app_state"] | null
+          battery_level?: number | null
+          company_id: string
+          current_latitude?: number | null
+          current_longitude?: number | null
+          driver_id: string
+          driver_status?: Database["public"]["Enums"]["driver_status"] | null
+          eta_minutes?: number | null
+          heading?: number | null
+          is_charging?: boolean | null
+          is_gps_stale?: boolean
+          last_location_at?: string | null
+          last_status_at?: string | null
+          location_permission_status?: Database["public"]["Enums"]["location_permission_status"]
+          remaining_miles?: number | null
+          route_progress_pct?: number | null
+          route_status?: string | null
+          speed_mph?: number | null
+          tracking_mode?: Database["public"]["Enums"]["tracking_mode"]
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Update: {
+          active_load_id?: string | null
+          active_shipment_id?: string | null
+          app_state?: Database["public"]["Enums"]["app_state"] | null
+          battery_level?: number | null
+          company_id?: string
+          current_latitude?: number | null
+          current_longitude?: number | null
+          driver_id?: string
+          driver_status?: Database["public"]["Enums"]["driver_status"] | null
+          eta_minutes?: number | null
+          heading?: number | null
+          is_charging?: boolean | null
+          is_gps_stale?: boolean
+          last_location_at?: string | null
+          last_status_at?: string | null
+          location_permission_status?: Database["public"]["Enums"]["location_permission_status"]
+          remaining_miles?: number | null
+          route_progress_pct?: number | null
+          route_status?: string | null
+          speed_mph?: number | null
+          tracking_mode?: Database["public"]["Enums"]["tracking_mode"]
+          updated_at?: string
+          vehicle_id?: string | null
+        }
+        Relationships: []
+      }
       driver_location_events: {
         Row: {
+          accuracy_meters: number | null
+          active_load_id: string | null
+          active_shipment_id: string | null
+          altitude: number | null
+          app_state: Database["public"]["Enums"]["app_state"] | null
+          battery_level: number | null
           company_id: string
           driver_id: string
+          driver_status: Database["public"]["Enums"]["driver_status"] | null
+          eta_minutes: number | null
+          event_source: Database["public"]["Enums"]["event_source"] | null
           heading: number | null
           id: number
+          is_charging: boolean | null
           lat: number
           lng: number
           recorded_at: string
+          remaining_miles: number | null
+          route_status: string | null
           speed: number | null
+          tracking_mode: Database["public"]["Enums"]["tracking_mode"] | null
+          vehicle_id: string | null
         }
         Insert: {
+          accuracy_meters?: number | null
+          active_load_id?: string | null
+          active_shipment_id?: string | null
+          altitude?: number | null
+          app_state?: Database["public"]["Enums"]["app_state"] | null
+          battery_level?: number | null
           company_id: string
           driver_id: string
+          driver_status?: Database["public"]["Enums"]["driver_status"] | null
+          eta_minutes?: number | null
+          event_source?: Database["public"]["Enums"]["event_source"] | null
           heading?: number | null
           id?: number
+          is_charging?: boolean | null
           lat: number
           lng: number
           recorded_at?: string
+          remaining_miles?: number | null
+          route_status?: string | null
           speed?: number | null
+          tracking_mode?: Database["public"]["Enums"]["tracking_mode"] | null
+          vehicle_id?: string | null
         }
         Update: {
+          accuracy_meters?: number | null
+          active_load_id?: string | null
+          active_shipment_id?: string | null
+          altitude?: number | null
+          app_state?: Database["public"]["Enums"]["app_state"] | null
+          battery_level?: number | null
           company_id?: string
           driver_id?: string
+          driver_status?: Database["public"]["Enums"]["driver_status"] | null
+          eta_minutes?: number | null
+          event_source?: Database["public"]["Enums"]["event_source"] | null
           heading?: number | null
           id?: number
+          is_charging?: boolean | null
           lat?: number
           lng?: number
           recorded_at?: string
+          remaining_miles?: number | null
+          route_status?: string | null
           speed?: number | null
+          tracking_mode?: Database["public"]["Enums"]["tracking_mode"] | null
+          vehicle_id?: string | null
         }
         Relationships: [
           {
@@ -241,27 +415,48 @@ export type Database = {
       driver_status_events: {
         Row: {
           company_id: string
+          created_by: string | null
           driver_id: string
           id: number
+          lat: number | null
+          lng: number | null
+          load_id: string | null
           note: string | null
+          previous_status: Database["public"]["Enums"]["driver_status"] | null
+          reason: string | null
           recorded_at: string
           status: Database["public"]["Enums"]["driver_status"]
+          vehicle_id: string | null
         }
         Insert: {
           company_id: string
+          created_by?: string | null
           driver_id: string
           id?: number
+          lat?: number | null
+          lng?: number | null
+          load_id?: string | null
           note?: string | null
+          previous_status?: Database["public"]["Enums"]["driver_status"] | null
+          reason?: string | null
           recorded_at?: string
           status: Database["public"]["Enums"]["driver_status"]
+          vehicle_id?: string | null
         }
         Update: {
           company_id?: string
+          created_by?: string | null
           driver_id?: string
           id?: number
+          lat?: number | null
+          lng?: number | null
+          load_id?: string | null
           note?: string | null
+          previous_status?: Database["public"]["Enums"]["driver_status"] | null
+          reason?: string | null
           recorded_at?: string
           status?: Database["public"]["Enums"]["driver_status"]
+          vehicle_id?: string | null
         }
         Relationships: [
           {
@@ -890,6 +1085,69 @@ export type Database = {
         }
         Relationships: []
       }
+      route_progress_events: {
+        Row: {
+          company_id: string
+          current_lat: number | null
+          current_lng: number | null
+          current_step_index: number
+          distance_off_route_m: number
+          driver_id: string
+          eta_minutes: number | null
+          heading: number | null
+          id: string
+          load_id: string | null
+          on_route: boolean
+          progress_pct: number
+          recorded_at: string
+          remaining_miles: number
+          route_id: string | null
+          source: Database["public"]["Enums"]["event_source"]
+          speed_mph: number | null
+          traveled_miles: number
+        }
+        Insert: {
+          company_id: string
+          current_lat?: number | null
+          current_lng?: number | null
+          current_step_index?: number
+          distance_off_route_m?: number
+          driver_id: string
+          eta_minutes?: number | null
+          heading?: number | null
+          id?: string
+          load_id?: string | null
+          on_route?: boolean
+          progress_pct?: number
+          recorded_at?: string
+          remaining_miles?: number
+          route_id?: string | null
+          source?: Database["public"]["Enums"]["event_source"]
+          speed_mph?: number | null
+          traveled_miles?: number
+        }
+        Update: {
+          company_id?: string
+          current_lat?: number | null
+          current_lng?: number | null
+          current_step_index?: number
+          distance_off_route_m?: number
+          driver_id?: string
+          eta_minutes?: number | null
+          heading?: number | null
+          id?: string
+          load_id?: string | null
+          on_route?: boolean
+          progress_pct?: number
+          recorded_at?: string
+          remaining_miles?: number
+          route_id?: string | null
+          source?: Database["public"]["Enums"]["event_source"]
+          speed_mph?: number | null
+          traveled_miles?: number
+        }
+        Relationships: []
+      }
       route_steps: {
         Row: {
           company_id: string
@@ -1243,7 +1501,23 @@ export type Database = {
     }
     Enums: {
       alert_severity: "low" | "medium" | "high" | "critical"
+      alert_status: "open" | "acknowledged" | "resolved"
       app_role: "owner" | "admin" | "dispatcher" | "driver"
+      app_state: "foreground" | "background" | "inactive" | "unknown"
+      audit_event_type:
+        | "tracking_started"
+        | "tracking_stopped"
+        | "permission_granted"
+        | "permission_denied"
+        | "load_offered"
+        | "load_accepted"
+        | "load_denied"
+        | "status_changed"
+        | "load_assigned"
+        | "alert_resolved"
+        | "pod_submitted"
+        | "login"
+        | "logout"
       driver_status:
         | "waiting"
         | "offered"
@@ -1255,6 +1529,13 @@ export type Database = {
         | "offduty"
         | "delayed"
         | "delivered"
+      event_source:
+        | "mobile_gps"
+        | "mock_stream"
+        | "manual_status_update"
+        | "navigation_sdk_future"
+        | "dispatcher"
+        | "system"
       fuel_type: "Diesel" | "Gas" | "Electric"
       license_type: "CDL-A" | "CDL-B" | "Non-CDL"
       load_status:
@@ -1272,8 +1553,21 @@ export type Database = {
         | "delivered"
         | "completed"
         | "cancelled"
+      location_permission_status:
+        | "granted"
+        | "denied"
+        | "prompt"
+        | "restricted"
+        | "unknown"
       offer_response: "pending" | "accepted" | "denied" | "expired"
       route_status: "planned" | "active" | "completed"
+      tracking_mode:
+        | "off"
+        | "foreground"
+        | "background"
+        | "active_load"
+        | "reduced_frequency"
+        | "paused"
       vehicle_op_status: "Active" | "Idle" | "Maintenance" | "Out of Service"
       vehicle_type:
         | "CDL Freight"
@@ -1414,7 +1708,24 @@ export const Constants = {
   public: {
     Enums: {
       alert_severity: ["low", "medium", "high", "critical"],
+      alert_status: ["open", "acknowledged", "resolved"],
       app_role: ["owner", "admin", "dispatcher", "driver"],
+      app_state: ["foreground", "background", "inactive", "unknown"],
+      audit_event_type: [
+        "tracking_started",
+        "tracking_stopped",
+        "permission_granted",
+        "permission_denied",
+        "load_offered",
+        "load_accepted",
+        "load_denied",
+        "status_changed",
+        "load_assigned",
+        "alert_resolved",
+        "pod_submitted",
+        "login",
+        "logout",
+      ],
       driver_status: [
         "waiting",
         "offered",
@@ -1426,6 +1737,14 @@ export const Constants = {
         "offduty",
         "delayed",
         "delivered",
+      ],
+      event_source: [
+        "mobile_gps",
+        "mock_stream",
+        "manual_status_update",
+        "navigation_sdk_future",
+        "dispatcher",
+        "system",
       ],
       fuel_type: ["Diesel", "Gas", "Electric"],
       license_type: ["CDL-A", "CDL-B", "Non-CDL"],
@@ -1445,8 +1764,23 @@ export const Constants = {
         "completed",
         "cancelled",
       ],
+      location_permission_status: [
+        "granted",
+        "denied",
+        "prompt",
+        "restricted",
+        "unknown",
+      ],
       offer_response: ["pending", "accepted", "denied", "expired"],
       route_status: ["planned", "active", "completed"],
+      tracking_mode: [
+        "off",
+        "foreground",
+        "background",
+        "active_load",
+        "reduced_frequency",
+        "paused",
+      ],
       vehicle_op_status: ["Active", "Idle", "Maintenance", "Out of Service"],
       vehicle_type: [
         "CDL Freight",
