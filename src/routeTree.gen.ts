@@ -9,38 +9,288 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VehiclesRouteImport } from './routes/vehicles'
+import { Route as ShipmentsRouteImport } from './routes/shipments'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as RoutesRouteImport } from './routes/routes'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as LoadsRouteImport } from './routes/loads'
+import { Route as FuelRouteImport } from './routes/fuel'
+import { Route as DriversRouteImport } from './routes/drivers'
+import { Route as DispatchRouteImport } from './routes/dispatch'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
 
+const VehiclesRoute = VehiclesRouteImport.update({
+  id: '/vehicles',
+  path: '/vehicles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShipmentsRoute = ShipmentsRouteImport.update({
+  id: '/shipments',
+  path: '/shipments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoutesRoute = RoutesRouteImport.update({
+  id: '/routes',
+  path: '/routes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoadsRoute = LoadsRouteImport.update({
+  id: '/loads',
+  path: '/loads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuelRoute = FuelRouteImport.update({
+  id: '/fuel',
+  path: '/fuel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriversRoute = DriversRouteImport.update({
+  id: '/drivers',
+  path: '/drivers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DispatchRoute = DispatchRouteImport.update({
+  id: '/dispatch',
+  path: '/dispatch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DriverIndexRoute = DriverIndexRouteImport.update({
+  id: '/driver/',
+  path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriverNavigationRoute = DriverNavigationRouteImport.update({
+  id: '/driver/navigation',
+  path: '/driver/navigation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
+  '/dispatch': typeof DispatchRoute
+  '/drivers': typeof DriversRoute
+  '/fuel': typeof FuelRoute
+  '/loads': typeof LoadsRoute
+  '/map': typeof MapRoute
+  '/routes': typeof RoutesRoute
+  '/settings': typeof SettingsRoute
+  '/shipments': typeof ShipmentsRoute
+  '/vehicles': typeof VehiclesRoute
+  '/driver/navigation': typeof DriverNavigationRoute
+  '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
+  '/dispatch': typeof DispatchRoute
+  '/drivers': typeof DriversRoute
+  '/fuel': typeof FuelRoute
+  '/loads': typeof LoadsRoute
+  '/map': typeof MapRoute
+  '/routes': typeof RoutesRoute
+  '/settings': typeof SettingsRoute
+  '/shipments': typeof ShipmentsRoute
+  '/vehicles': typeof VehiclesRoute
+  '/driver/navigation': typeof DriverNavigationRoute
+  '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alerts': typeof AlertsRoute
+  '/analytics': typeof AnalyticsRoute
+  '/dispatch': typeof DispatchRoute
+  '/drivers': typeof DriversRoute
+  '/fuel': typeof FuelRoute
+  '/loads': typeof LoadsRoute
+  '/map': typeof MapRoute
+  '/routes': typeof RoutesRoute
+  '/settings': typeof SettingsRoute
+  '/shipments': typeof ShipmentsRoute
+  '/vehicles': typeof VehiclesRoute
+  '/driver/navigation': typeof DriverNavigationRoute
+  '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/dispatch'
+    | '/drivers'
+    | '/fuel'
+    | '/loads'
+    | '/map'
+    | '/routes'
+    | '/settings'
+    | '/shipments'
+    | '/vehicles'
+    | '/driver/navigation'
+    | '/driver/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/dispatch'
+    | '/drivers'
+    | '/fuel'
+    | '/loads'
+    | '/map'
+    | '/routes'
+    | '/settings'
+    | '/shipments'
+    | '/vehicles'
+    | '/driver/navigation'
+    | '/driver'
+  id:
+    | '__root__'
+    | '/'
+    | '/alerts'
+    | '/analytics'
+    | '/dispatch'
+    | '/drivers'
+    | '/fuel'
+    | '/loads'
+    | '/map'
+    | '/routes'
+    | '/settings'
+    | '/shipments'
+    | '/vehicles'
+    | '/driver/navigation'
+    | '/driver/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlertsRoute: typeof AlertsRoute
+  AnalyticsRoute: typeof AnalyticsRoute
+  DispatchRoute: typeof DispatchRoute
+  DriversRoute: typeof DriversRoute
+  FuelRoute: typeof FuelRoute
+  LoadsRoute: typeof LoadsRoute
+  MapRoute: typeof MapRoute
+  RoutesRoute: typeof RoutesRoute
+  SettingsRoute: typeof SettingsRoute
+  ShipmentsRoute: typeof ShipmentsRoute
+  VehiclesRoute: typeof VehiclesRoute
+  DriverNavigationRoute: typeof DriverNavigationRoute
+  DriverIndexRoute: typeof DriverIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vehicles': {
+      id: '/vehicles'
+      path: '/vehicles'
+      fullPath: '/vehicles'
+      preLoaderRoute: typeof VehiclesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipments': {
+      id: '/shipments'
+      path: '/shipments'
+      fullPath: '/shipments'
+      preLoaderRoute: typeof ShipmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/routes': {
+      id: '/routes'
+      path: '/routes'
+      fullPath: '/routes'
+      preLoaderRoute: typeof RoutesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loads': {
+      id: '/loads'
+      path: '/loads'
+      fullPath: '/loads'
+      preLoaderRoute: typeof LoadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fuel': {
+      id: '/fuel'
+      path: '/fuel'
+      fullPath: '/fuel'
+      preLoaderRoute: typeof FuelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/drivers': {
+      id: '/drivers'
+      path: '/drivers'
+      fullPath: '/drivers'
+      preLoaderRoute: typeof DriversRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dispatch': {
+      id: '/dispatch'
+      path: '/dispatch'
+      fullPath: '/dispatch'
+      preLoaderRoute: typeof DispatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +298,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/driver/': {
+      id: '/driver/'
+      path: '/driver'
+      fullPath: '/driver/'
+      preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/driver/navigation': {
+      id: '/driver/navigation'
+      path: '/driver/navigation'
+      fullPath: '/driver/navigation'
+      preLoaderRoute: typeof DriverNavigationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlertsRoute: AlertsRoute,
+  AnalyticsRoute: AnalyticsRoute,
+  DispatchRoute: DispatchRoute,
+  DriversRoute: DriversRoute,
+  FuelRoute: FuelRoute,
+  LoadsRoute: LoadsRoute,
+  MapRoute: MapRoute,
+  RoutesRoute: RoutesRoute,
+  SettingsRoute: SettingsRoute,
+  ShipmentsRoute: ShipmentsRoute,
+  VehiclesRoute: VehiclesRoute,
+  DriverNavigationRoute: DriverNavigationRoute,
+  DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
