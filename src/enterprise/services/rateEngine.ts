@@ -7,8 +7,8 @@ const VEHICLE_BASE: Record<string, number> = {
 };
 
 export function calculateBaseRate(input: RateQuoteInput): number {
-  const perMile = (input.vehicleType && VEHICLE_BASE[input.vehicleType]) ?? 2.1;
-  const urgency = URGENCY_MULT[input.urgency ?? "standard"] ?? 1;
+  const perMile: number = (input.vehicleType ? VEHICLE_BASE[input.vehicleType] : undefined) ?? 2.1;
+  const urgency: number = URGENCY_MULT[input.urgency ?? "standard"] ?? 1;
   return Math.round(input.miles * perMile * urgency * 100) / 100;
 }
 
