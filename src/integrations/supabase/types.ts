@@ -913,6 +913,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      bootstrap_demo_membership: { Args: never; Returns: string }
       can_manage_company: {
         Args: { _company_id: string; _user_id: string }
         Returns: boolean
