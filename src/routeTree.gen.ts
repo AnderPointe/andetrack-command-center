@@ -46,6 +46,7 @@ import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
 import { Route as OpsDatabaseRouteImport } from './routes/ops.database'
 import { Route as OpsCenterRouteImport } from './routes/ops.center'
 import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
+import { Route as LaunchMarketingRouteImport } from './routes/launch.marketing'
 import { Route as LaunchDemoRouteImport } from './routes/launch.demo'
 import { Route as IntelligenceRiskRouteImport } from './routes/intelligence.risk'
 import { Route as IntelligenceRecommendationsRouteImport } from './routes/intelligence.recommendations'
@@ -265,6 +266,11 @@ const LaunchOverviewRoute = LaunchOverviewRouteImport.update({
   path: '/launch/overview',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaunchMarketingRoute = LaunchMarketingRouteImport.update({
+  id: '/launch/marketing',
+  path: '/launch/marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaunchDemoRoute = LaunchDemoRouteImport.update({
   id: '/launch/demo',
   path: '/launch/demo',
@@ -481,6 +487,7 @@ export interface FileRoutesByFullPath {
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
+  '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/overview': typeof LaunchOverviewRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
@@ -552,6 +559,7 @@ export interface FileRoutesByTo {
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
+  '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/overview': typeof LaunchOverviewRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
@@ -624,6 +632,7 @@ export interface FileRoutesById {
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
+  '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/overview': typeof LaunchOverviewRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
@@ -697,6 +706,7 @@ export interface FileRouteTypes {
     | '/intelligence/recommendations'
     | '/intelligence/risk'
     | '/launch/demo'
+    | '/launch/marketing'
     | '/launch/overview'
     | '/ops/center'
     | '/ops/database'
@@ -768,6 +778,7 @@ export interface FileRouteTypes {
     | '/intelligence/recommendations'
     | '/intelligence/risk'
     | '/launch/demo'
+    | '/launch/marketing'
     | '/launch/overview'
     | '/ops/center'
     | '/ops/database'
@@ -839,6 +850,7 @@ export interface FileRouteTypes {
     | '/intelligence/recommendations'
     | '/intelligence/risk'
     | '/launch/demo'
+    | '/launch/marketing'
     | '/launch/overview'
     | '/ops/center'
     | '/ops/database'
@@ -909,6 +921,7 @@ export interface RootRouteChildren {
   IntelligenceRecommendationsRoute: typeof IntelligenceRecommendationsRoute
   IntelligenceRiskRoute: typeof IntelligenceRiskRoute
   LaunchDemoRoute: typeof LaunchDemoRoute
+  LaunchMarketingRoute: typeof LaunchMarketingRoute
   LaunchOverviewRoute: typeof LaunchOverviewRoute
   OpsCenterRoute: typeof OpsCenterRoute
   OpsDatabaseRoute: typeof OpsDatabaseRoute
@@ -1182,6 +1195,13 @@ declare module '@tanstack/react-router' {
       path: '/launch/overview'
       fullPath: '/launch/overview'
       preLoaderRoute: typeof LaunchOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/marketing': {
+      id: '/launch/marketing'
+      path: '/launch/marketing'
+      fullPath: '/launch/marketing'
+      preLoaderRoute: typeof LaunchMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/demo': {
@@ -1514,6 +1534,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntelligenceRecommendationsRoute: IntelligenceRecommendationsRoute,
   IntelligenceRiskRoute: IntelligenceRiskRoute,
   LaunchDemoRoute: LaunchDemoRoute,
+  LaunchMarketingRoute: LaunchMarketingRoute,
   LaunchOverviewRoute: LaunchOverviewRoute,
   OpsCenterRoute: OpsCenterRoute,
   OpsDatabaseRoute: OpsDatabaseRoute,
