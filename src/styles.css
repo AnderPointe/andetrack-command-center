@@ -270,9 +270,37 @@
     background-clip: padding-box;
   }
 
-  /* Animated dashed route line */
+  /* === Premium map + nav animations === */
+
+  /* Animated dashed route line — flowing forward */
   @keyframes dash-flow { to { stroke-dashoffset: -24; } }
   .route-flow { stroke-dasharray: 4 4; animation: dash-flow 1.6s linear infinite; }
+
+  /* Comet/glow head racing along the route */
+  @keyframes dash-comet { to { stroke-dashoffset: -240; } }
+  .route-comet {
+    stroke-dasharray: 1 240;
+    animation: dash-comet 3.6s linear infinite;
+    filter: drop-shadow(0 0 2px var(--teal));
+  }
+
+  /* Slow shimmer for laid-down traveled segment */
+  @keyframes traveled-shimmer { to { stroke-dashoffset: -40; } }
+  .route-traveled-shimmer {
+    stroke-dasharray: 0.5 4;
+    animation: traveled-shimmer 5s linear infinite;
+    opacity: 0.55;
+  }
+
+  /* Concentric breathing rings for driver marker */
+  @keyframes ring-pulse {
+    0%   { transform: scale(0.6); opacity: 0.55; }
+    80%  { transform: scale(2.6); opacity: 0; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+  .ring-pulse { animation: ring-pulse 2.2s cubic-bezier(0, 0.2, 0.4, 1) infinite; }
+  .ring-pulse.delay-1 { animation-delay: 0.7s; }
+  .ring-pulse.delay-2 { animation-delay: 1.4s; }
 
   @keyframes ping-soft {
     0% { transform: scale(1); opacity: 0.55; }
@@ -284,5 +312,37 @@
     border-radius: 9999px;
     background: currentColor;
     animation: ping-soft 2s cubic-bezier(0,0,0.2,1) infinite;
+  }
+
+  /* Subtle map vignette */
+  .map-vignette {
+    box-shadow: inset 0 0 80px 10px color-mix(in oklab, black 35%, transparent);
+    pointer-events: none;
+  }
+
+  /* Marquee for dispatch sync ticker */
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 28s linear infinite; }
+
+  /* Slow gradient drift for CoPilot header */
+  @keyframes copilot-aurora {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+  .copilot-aurora {
+    background-size: 200% 200%;
+    animation: copilot-aurora 9s ease-in-out infinite;
+  }
+
+  /* Voice wave bar idle bobbing fallback */
+  @keyframes wave-idle {
+    0%, 100% { transform: scaleY(0.35); }
+    50%      { transform: scaleY(1); }
+  }
+
+  /* Edge fade mask for marquee */
+  .mask-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 }

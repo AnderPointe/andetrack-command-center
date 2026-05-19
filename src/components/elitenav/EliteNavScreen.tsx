@@ -233,7 +233,12 @@ export function EliteNavScreen() {
 
   // ===== NAVIGATION / OPERATIONAL =====
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-surface-2 via-background to-surface-2 py-6 px-4">
+    <div className="min-h-[calc(100vh-4rem)] py-6 px-4"
+      style={{
+        background:
+          "radial-gradient(ellipse at 0% 0%, color-mix(in oklab, var(--teal) 12%, transparent), transparent 60%), radial-gradient(ellipse at 100% 100%, color-mix(in oklab, var(--orange) 10%, transparent), transparent 60%), linear-gradient(180deg, var(--surface-2), var(--background))",
+      }}
+    >
       <PhoneFrame>
         {/* Status bar */}
         <div className="bg-sidebar text-sidebar-foreground px-5 py-2 flex items-center justify-between text-[11px]">
@@ -268,32 +273,63 @@ export function EliteNavScreen() {
           {/* Turn card */}
           {driving && (
             <motion.button
-              initial={{ y: -8, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+              initial={{ y: -8, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               onClick={() => setTurnsOpen(true)}
               className={cn(
-                "absolute left-3 right-3 rounded-2xl bg-sidebar text-sidebar-foreground border border-sidebar-border shadow-[var(--shadow-lg)] text-left",
+                "absolute left-3 right-3 rounded-2xl text-left overflow-hidden",
+                "bg-gradient-to-br from-sidebar to-sidebar/90 text-sidebar-foreground",
+                "border border-sidebar-border shadow-[var(--shadow-lg)] ring-1 ring-teal/15",
                 safetyMode ? "top-14 p-4" : "top-14 p-3",
               )}
             >
+              {/* Lane guidance strip */}
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-teal/0 via-teal to-orange" />
               <div className="flex items-center gap-3">
-                <div className="grid place-items-center rounded-xl bg-teal text-teal-foreground"
-                  style={{ width: safetyMode ? 56 : 44, height: safetyMode ? 56 : 44 }}>
+                <div
+                  className="relative grid place-items-center rounded-2xl bg-gradient-to-br from-teal to-info text-teal-foreground shadow-[var(--shadow-md)]"
+                  style={{ width: safetyMode ? 60 : 46, height: safetyMode ? 60 : 46 }}
+                >
                   <Icon className={safetyMode ? "size-7" : "size-5"} />
+                  <span className="absolute inset-0 rounded-2xl bg-teal-foreground/10 animate-pulse" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className={cn("font-semibold leading-tight", safetyMode ? "text-lg" : "text-sm")}>
-                    {current.instruction}
+                  <div className="flex items-baseline gap-2">
+                    <div className={cn("font-semibold leading-tight truncate", safetyMode ? "text-lg" : "text-sm")}>
+                      {current.instruction}
+                    </div>
+                    <div className="ml-auto shrink-0 inline-flex items-baseline gap-0.5">
+                      <span className={cn("font-bold tabular-nums text-teal", safetyMode ? "text-xl" : "text-base")}>
+                        {current.distance.replace(/[^0-9.]/g, "") || "0.3"}
+                      </span>
+                      <span className="text-[10px] text-sidebar-foreground/60 uppercase">mi</span>
+                    </div>
                   </div>
-                  <div className="text-[11px] text-sidebar-foreground/70 mt-0.5">
-                    {current.street} · in {current.distance}
+                  <div className="text-[11px] text-sidebar-foreground/65 mt-0.5 truncate">
+                    on {current.street}
+                  </div>
+                  {/* Lane diagram */}
+                  <div className="mt-1.5 flex items-center gap-1">
+                    {[0, 1, 2, 3].map((i) => (
+                      <span
+                        key={i}
+                        className={cn(
+                          "h-1 flex-1 rounded-full",
+                          i === 0 || i === 1 ? "bg-teal" : "bg-sidebar-foreground/15",
+                        )}
+                      />
+                    ))}
                   </div>
                 </div>
-                <ChevronUp className="size-4 opacity-60" />
+                <ChevronUp className="size-4 opacity-50 shrink-0" />
               </div>
               {next && (
-                <div className="mt-2 pt-2 border-t border-sidebar-border/60 text-[11px] text-sidebar-foreground/70 flex items-center justify-between">
-                  <span>Then · {next.instruction}</span>
-                  <span className="tabular-nums">{next.distance}</span>
+                <div className="mt-2.5 pt-2 border-t border-sidebar-border/60 text-[11px] text-sidebar-foreground/70 flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 truncate">
+                    <span className="text-[9px] uppercase tracking-widest text-sidebar-foreground/50">Then</span>
+                    <span className="truncate">{next.instruction}</span>
+                  </span>
+                  <span className="tabular-nums shrink-0">{next.distance}</span>
                 </div>
               )}
             </motion.button>
@@ -329,34 +365,41 @@ export function EliteNavScreen() {
         </div>
 
         {/* ETA / Remaining strip */}
-        <div className="grid grid-cols-4 divide-x divide-border border-b border-border">
-          <Stat label="ETA" value={`${eta}m`} />
-          <Stat label="Remaining" value={`${remainingMi} mi`} />
-          <Stat label="Drive Time" value={`${Math.max(1, Math.round(eta * 0.95))}m`} />
-          <Stat label="Window" value="2h 14m" tone="success" />
+        <div className="grid grid-cols-4 divide-x divide-border border-b border-border bg-gradient-to-b from-surface-2/40 to-transparent">
+          <Stat label="ETA" value={`${eta}m`} delta={driving ? "-2m" : undefined} deltaTone="success" />
+          <Stat label="Remaining" value={`${remainingMi} mi`} sub={driving ? `~${Math.round(eta * 0.95)} min` : undefined} />
+          <Stat label="Avg Speed" value={`${Math.max(0, Math.min(72, speed))} mph`} sub="Limit 65" />
+          <Stat label="Window" value="2h 14m" tone="success" sub="On schedule" />
         </div>
 
         {/* Driving / Action body */}
         {driving ? (
           <div className="p-4 space-y-3">
             {/* Quick chips */}
-            <div className="flex items-center gap-2 overflow-x-auto -mx-1 px-1 pb-1">
+            <div className="flex items-center gap-2 overflow-x-auto -mx-1 px-1 pb-1 scrollbar-thin">
               <Chip onClick={() => setRouteIntelOpen(true)} icon={<Activity className="size-3.5" />}>Route Intelligence</Chip>
-              <Chip icon={<CloudSun className="size-3.5" />}>Weather Clear</Chip>
-              <Chip tone="warning" icon={<AlertTriangle className="size-3.5" />}>1 risk</Chip>
-              <Chip icon={<Fuel className="size-3.5" />}>312 mi range</Chip>
+              <Chip icon={<CloudSun className="size-3.5" />}>Weather Clear · 71°F</Chip>
+              <Chip tone="warning" icon={<AlertTriangle className="size-3.5" />}>1 risk · low bridge</Chip>
+              <Chip icon={<Fuel className="size-3.5" />}>312 mi range · ~$112</Chip>
+              <Chip icon={<Coffee className="size-3.5" />}>Break · in 1h 42m</Chip>
             </div>
 
-            {/* CDL safety card */}
-            <div className="rounded-xl border border-border bg-surface-2 p-3">
-              <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold flex items-center gap-1.5">
-                <ShieldCheck className="size-3 text-teal" /> CDL Truck-Safe Routing Active
+            {/* CDL safety card — promoted to premium tile */}
+            <div className="relative overflow-hidden rounded-xl border border-teal/30 bg-gradient-to-br from-teal/10 via-surface-2 to-surface-2 p-3 shadow-[var(--shadow-sm)]">
+              <div className="absolute -top-12 -right-12 size-32 rounded-full bg-teal/20 blur-2xl pointer-events-none" />
+              <div className="relative flex items-center justify-between">
+                <div className="text-[10px] uppercase tracking-widest font-semibold flex items-center gap-1.5 text-teal">
+                  <ShieldCheck className="size-3.5" /> CDL Truck-Safe Routing
+                </div>
+                <span className="px-2 py-0.5 rounded-full text-[9px] uppercase tracking-widest font-bold bg-success/15 text-success border border-success/30">
+                  Active
+                </span>
               </div>
-              <div className="grid grid-cols-2 gap-2 mt-2 text-[11px]">
-                <SafetyRow ok label="Low bridge avoided" />
-                <SafetyRow ok label="Weight restrictions" />
-                <SafetyRow ok label="Hazmat policy" />
-                <SafetyRow label="Tight turn ahead" tone="warning" />
+              <div className="relative grid grid-cols-2 gap-x-3 gap-y-1.5 mt-2.5 text-[11px]">
+                <SafetyRow ok label={`Low bridge avoided · 13'9"`} />
+                <SafetyRow ok label="Weight restrictions clear" />
+                <SafetyRow ok label="Hazmat policy verified" />
+                <SafetyRow label="Tight turn in 1.4 mi" tone="warning" />
               </div>
             </div>
 
@@ -389,13 +432,8 @@ export function EliteNavScreen() {
           </div>
         )}
 
-        {/* Dispatch sync footer */}
-        <div className="border-t border-border bg-surface-2/60 px-4 py-2 flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground">
-          <span className="relative inline-flex size-2 rounded-full bg-success">
-            <span className="absolute inset-0 rounded-full bg-success/60 animate-ping" />
-          </span>
-          Synced with dispatch · {sync[0]?.message}
-        </div>
+        {/* Dispatch sync ticker footer */}
+        <DispatchSyncTicker events={sync} />
       </PhoneFrame>
 
       {/* CoPilot panel */}
@@ -508,48 +546,174 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
 }
 
 function MapCanvas({ progress, phase }: { progress: number; phase: Phase }) {
-  // Coords are arbitrary points along the SVG path for marker positioning
+  void phase;
+  // Route control points
   const pickupAt = { x: 14, y: 80 };
   const dropAt = { x: 88, y: 18 };
-  // Interpolated driver position
-  const t = progress / 100;
-  const driverX = pickupAt.x + (dropAt.x - pickupAt.x) * t;
-  const driverY = pickupAt.y + (dropAt.y - pickupAt.y) * t - Math.sin(t * Math.PI) * 10;
+  const c1 = { x: 32, y: 64 };
+  const c2 = { x: 64, y: 28 };
+  const routeD = `M ${pickupAt.x} ${pickupAt.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${dropAt.x} ${dropAt.y}`;
+
+  // Interpolated driver position along cubic bezier
+  const t = Math.min(1, Math.max(0, progress / 100));
+  const bz = (p0: number, p1: number, p2: number, p3: number, u: number) => {
+    const v = 1 - u;
+    return v * v * v * p0 + 3 * v * v * u * p1 + 3 * v * u * u * p2 + u * u * u * p3;
+  };
+  const driverX = bz(pickupAt.x, c1.x, c2.x, dropAt.x, t);
+  const driverY = bz(pickupAt.y, c1.y, c2.y, dropAt.y, t);
+  // Heading via derivative
+  const dt = 0.01;
+  const u2 = Math.min(1, t + dt);
+  const hx = bz(pickupAt.x, c1.x, c2.x, dropAt.x, u2) - driverX;
+  const hy = bz(pickupAt.y, c1.y, c2.y, dropAt.y, u2) - driverY;
+  const heading = (Math.atan2(hy, hx) * 180) / Math.PI;
 
   return (
     <div className="absolute inset-0 bg-sidebar">
-      {/* Dark grid */}
-      <div className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }} />
-      {/* Radial glow */}
-      <div className="absolute inset-0"
+      {/* Base land tint */}
+      <div
+        className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 20% 80%, color-mix(in oklab, var(--teal) 28%, transparent), transparent 45%), radial-gradient(circle at 85% 18%, color-mix(in oklab, var(--orange) 22%, transparent), transparent 45%)",
-        }} />
+            "radial-gradient(ellipse at 30% 70%, color-mix(in oklab, var(--teal) 14%, transparent), transparent 55%), radial-gradient(ellipse at 80% 25%, color-mix(in oklab, var(--orange) 12%, transparent), transparent 55%), linear-gradient(180deg, color-mix(in oklab, var(--sidebar) 92%, white 8%), var(--sidebar))",
+        }}
+      />
 
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {/* Roads (faux) */}
-        <g stroke="color-mix(in oklab, white 14%, transparent)" strokeWidth="0.6" fill="none">
-          <path d="M 0 70 L 100 60" />
-          <path d="M 40 0 L 50 100" />
-          <path d="M 0 40 Q 50 50 100 30" />
+      {/* Fine grid */}
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, color-mix(in oklab, white 5%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, white 5%, transparent) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      {/* Coarse grid */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, color-mix(in oklab, white 10%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, white 10%, transparent) 1px, transparent 1px)",
+          backgroundSize: "112px 112px",
+        }}
+      />
+
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="routeGrad" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stopColor="var(--teal)" />
+            <stop offset="65%" stopColor="var(--teal)" />
+            <stop offset="100%" stopColor="var(--orange)" />
+          </linearGradient>
+          <radialGradient id="cometGlow" r="50%">
+            <stop offset="0%" stopColor="white" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="var(--teal)" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* Water bodies */}
+        <g fill="color-mix(in oklab, var(--info) 30%, var(--sidebar) 70%)" opacity="0.45">
+          <path d="M -4 6 Q 22 18 18 36 Q 14 50 -4 44 Z" />
+          <path d="M 70 92 Q 86 84 104 92 L 104 104 L 70 104 Z" />
         </g>
-        {/* Route shadow */}
-        <path d={`M ${pickupAt.x} ${pickupAt.y} Q 45 40 ${dropAt.x} ${dropAt.y}`}
-          stroke="black" strokeOpacity="0.4" strokeWidth="3.6" fill="none" strokeLinecap="round" />
-        {/* Traveled */}
-        <path d={`M ${pickupAt.x} ${pickupAt.y} Q 45 40 ${dropAt.x} ${dropAt.y}`}
-          stroke="var(--teal)" strokeWidth="1.8" fill="none" strokeLinecap="round"
-          pathLength={100} strokeDasharray={`${progress} 100`} />
-        {/* Remaining */}
-        <path d={`M ${pickupAt.x} ${pickupAt.y} Q 45 40 ${dropAt.x} ${dropAt.y}`}
-          stroke="var(--orange)" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeDasharray="2 2"
-          className="route-flow" opacity={0.7} />
+        {/* Parks */}
+        <g fill="color-mix(in oklab, var(--success) 28%, var(--sidebar) 72%)" opacity="0.32">
+          <path d="M 56 70 Q 68 64 74 74 Q 72 84 60 84 Q 52 80 56 70 Z" />
+          <rect x="6" y="58" width="14" height="9" rx="2" />
+        </g>
+
+        {/* Highways — wide base + bright stripe */}
+        <g fill="none" strokeLinecap="round">
+          <path
+            d="M -4 70 Q 30 64 60 60 T 104 56"
+            stroke="color-mix(in oklab, white 8%, transparent)"
+            strokeWidth="3.4"
+          />
+          <path
+            d="M -4 70 Q 30 64 60 60 T 104 56"
+            stroke="color-mix(in oklab, var(--orange) 60%, white 10%)"
+            strokeWidth="1"
+            strokeDasharray="2 2"
+            opacity="0.55"
+          />
+          <path
+            d="M 40 -4 Q 46 30 52 60 T 60 104"
+            stroke="color-mix(in oklab, white 6%, transparent)"
+            strokeWidth="2.4"
+          />
+        </g>
+        {/* Streets */}
+        <g
+          stroke="color-mix(in oklab, white 10%, transparent)"
+          strokeWidth="0.5"
+          fill="none"
+        >
+          <path d="M 0 28 L 100 22" />
+          <path d="M 0 86 L 100 78" />
+          <path d="M 18 0 L 24 100" />
+          <path d="M 74 0 L 80 100" />
+          <path d="M 0 50 Q 50 56 100 46" />
+        </g>
+
+        {/* Route shadow / casing */}
+        <path
+          d={routeD}
+          stroke="black"
+          strokeOpacity="0.45"
+          strokeWidth="4.4"
+          fill="none"
+          strokeLinecap="round"
+        />
+        {/* Traveled segment — gradient + glow */}
+        <path
+          d={routeD}
+          stroke="url(#routeGrad)"
+          strokeWidth="2.4"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={100}
+          strokeDasharray={`${progress} 100`}
+          style={{ filter: "drop-shadow(0 0 1.5px var(--teal))" }}
+        />
+        {/* Traveled shimmer overlay */}
+        <path
+          d={routeD}
+          stroke="white"
+          strokeOpacity="0.35"
+          strokeWidth="0.6"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={100}
+          strokeDasharray={`${progress} 100`}
+          className="route-traveled-shimmer"
+        />
+        {/* Remaining — dashed flow */}
+        <path
+          d={routeD}
+          stroke="var(--orange)"
+          strokeWidth="1.4"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={100}
+          strokeDasharray={`0 ${progress} 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2`}
+          className="route-flow"
+          opacity={0.85}
+        />
+        {/* Comet head racing */}
+        <path
+          d={routeD}
+          stroke="white"
+          strokeWidth="2.2"
+          fill="none"
+          strokeLinecap="round"
+          className="route-comet"
+          opacity={0.9}
+        />
       </svg>
 
       {/* Pickup marker */}
@@ -558,24 +722,61 @@ function MapCanvas({ progress, phase }: { progress: number; phase: Phase }) {
       <Marker x={dropAt.x} y={dropAt.y} color="var(--orange)" label="D" />
 
       {/* Driver position */}
-      <motion.div
+      <div
         className="absolute"
-        style={{ left: `${driverX}%`, top: `${driverY}%`, transform: "translate(-50%, -50%)" }}
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ duration: 1.8, repeat: Infinity }}
+        style={{
+          left: `${driverX}%`,
+          top: `${driverY}%`,
+          transform: "translate(-50%, -50%)",
+        }}
       >
         <div className="relative">
-          <div className="absolute -inset-3 rounded-full bg-teal/30 animate-ping" />
-          <div className="relative size-8 rounded-full bg-teal grid place-items-center text-teal-foreground border-2 border-background shadow-[var(--shadow-md)]">
-            <Truck className="size-4" />
+          {/* Breathing rings */}
+          <span className="absolute inset-0 -m-3 rounded-full bg-teal/30 ring-pulse" />
+          <span className="absolute inset-0 -m-3 rounded-full bg-teal/20 ring-pulse delay-1" />
+          <span className="absolute inset-0 -m-3 rounded-full bg-teal/10 ring-pulse delay-2" />
+          {/* Heading cone */}
+          <div
+            className="absolute left-1/2 top-1/2"
+            style={{
+              transform: `translate(-50%, -50%) rotate(${heading}deg)`,
+            }}
+          >
+            <div
+              className="origin-center"
+              style={{
+                width: 0,
+                height: 0,
+                borderLeft: "10px solid transparent",
+                borderRight: "10px solid transparent",
+                borderBottom: "26px solid color-mix(in oklab, var(--teal) 55%, transparent)",
+                marginTop: "-30px",
+                filter: "blur(2px)",
+              }}
+            />
           </div>
+          {/* Puck */}
+          <motion.div
+            animate={{ scale: [1, 1.06, 1] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative size-9 rounded-full bg-gradient-to-br from-teal to-info grid place-items-center text-teal-foreground border-[2.5px] border-background shadow-[var(--shadow-lg)]"
+          >
+            <Truck className="size-4" />
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Traffic indicator */}
-      <div className="absolute top-3 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-background/85 backdrop-blur border border-border text-[10px] font-semibold">
-        <span className="size-1.5 rounded-full bg-warning" /> Traffic · Moderate
+      <div className="absolute top-3 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/85 backdrop-blur border border-border text-[10px] font-semibold tracking-wide shadow-[var(--shadow-sm)]">
+        <span className="relative flex size-1.5">
+          <span className="absolute inset-0 rounded-full bg-warning animate-ping opacity-70" />
+          <span className="relative rounded-full bg-warning size-1.5" />
+        </span>
+        Traffic · Moderate · +4 min
       </div>
+
+      {/* Map vignette overlay */}
+      <div className="absolute inset-0 map-vignette" />
     </div>
   );
 }
@@ -600,13 +801,86 @@ function MapChip({ children, active, onClick }: { children: React.ReactNode; act
   );
 }
 
-function Stat({ label, value, tone }: { label: string; value: string; tone?: "success" | "warning" }) {
+function Stat({
+  label,
+  value,
+  tone,
+  sub,
+  delta,
+  deltaTone,
+}: {
+  label: string;
+  value: string;
+  tone?: "success" | "warning";
+  sub?: string;
+  delta?: string;
+  deltaTone?: "success" | "warning" | "danger";
+}) {
   return (
     <div className="p-3 text-center">
       <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
-      <div className={cn("text-sm font-semibold mt-0.5 tabular-nums",
-        tone === "success" && "text-success", tone === "warning" && "text-warning")}>
-        {value}
+      <div className="flex items-baseline justify-center gap-1 mt-0.5">
+        <span
+          className={cn(
+            "text-sm font-semibold tabular-nums",
+            tone === "success" && "text-success",
+            tone === "warning" && "text-warning",
+          )}
+        >
+          {value}
+        </span>
+        {delta && (
+          <span
+            className={cn(
+              "text-[9px] font-semibold tabular-nums",
+              deltaTone === "success" && "text-success",
+              deltaTone === "warning" && "text-warning",
+              deltaTone === "danger" && "text-destructive",
+            )}
+          >
+            {delta}
+          </span>
+        )}
+      </div>
+      {sub && <div className="text-[9px] text-muted-foreground mt-0.5">{sub}</div>}
+    </div>
+  );
+}
+
+function DispatchSyncTicker({ events }: { events: DispatchSyncEvent[] }) {
+  const items = events.slice(0, 6);
+  return (
+    <div className="relative border-t border-border bg-gradient-to-b from-surface-2/70 to-surface-2/40 px-3 py-2 overflow-hidden">
+      <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest">
+        <div className="shrink-0 inline-flex items-center gap-1.5 text-success font-semibold">
+          <span className="relative inline-flex size-2 rounded-full bg-success">
+            <span className="absolute inset-0 rounded-full bg-success/60 animate-ping" />
+          </span>
+          Dispatch Sync
+        </div>
+        <div className="flex-1 min-w-0 overflow-hidden mask-fade">
+          <div className="marquee-track inline-flex whitespace-nowrap gap-6 text-muted-foreground">
+            {[...items, ...items].map((e, i) => (
+              <span key={`${e.id}-${i}`} className="inline-flex items-center gap-1.5">
+                <span
+                  className="size-1 rounded-full"
+                  style={{
+                    background:
+                      e.type === "status"
+                        ? "var(--teal)"
+                        : e.type === "delay"
+                        ? "var(--warning)"
+                        : e.type === "pod"
+                        ? "var(--orange)"
+                        : "var(--muted-foreground)",
+                  }}
+                />
+                <span className="normal-case tracking-normal text-[11px]">{e.message}</span>
+                <span className="opacity-60">· {e.timestamp}</span>
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -750,33 +1024,71 @@ function CoPilotPanel({ open, onClose, feed, eta, phase }: { open: boolean; onCl
             className="w-full max-w-md rounded-3xl border border-teal/30 bg-sidebar text-sidebar-foreground shadow-[var(--shadow-lg)] overflow-hidden"
           >
             {/* Header */}
-            <div className="px-5 pt-4 pb-3 bg-gradient-to-b from-teal/20 to-transparent border-b border-sidebar-border">
-              <div className="flex items-center justify-between">
+            <div
+              className="px-5 pt-4 pb-3 border-b border-sidebar-border copilot-aurora relative overflow-hidden"
+              style={{
+                backgroundImage:
+                  "linear-gradient(120deg, color-mix(in oklab, var(--teal) 28%, transparent), color-mix(in oklab, var(--info) 22%, transparent), color-mix(in oklab, var(--orange) 14%, transparent), color-mix(in oklab, var(--teal) 24%, transparent))",
+              }}
+            >
+              <div className="relative flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="relative grid place-items-center size-9 rounded-full bg-gradient-to-br from-teal to-info text-teal-foreground">
+                  <div className="relative grid place-items-center size-9 rounded-full bg-gradient-to-br from-teal to-info text-teal-foreground shadow-[var(--shadow-md)]">
                     <Sparkles className="size-4" />
                     <span className="absolute inset-0 rounded-full bg-teal/40 animate-ping" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold tracking-wide">Anderoute CoPilot</div>
-                    <div className="text-[10px] uppercase tracking-widest text-sidebar-foreground/60">AI Driving Assistant</div>
+                    <div className="text-[10px] uppercase tracking-widest text-sidebar-foreground/70 flex items-center gap-1">
+                      <span className="size-1 rounded-full bg-success animate-pulse" />
+                      AI Driving Assistant · Online
+                    </div>
                   </div>
                 </div>
-                <button onClick={onClose} className="size-8 grid place-items-center rounded-full hover:bg-sidebar-accent">
+                <button onClick={onClose} className="size-8 grid place-items-center rounded-full hover:bg-sidebar-accent/60">
                   <X className="size-4" />
                 </button>
               </div>
               {/* Wave */}
-              <div className="mt-3 flex items-end gap-1 h-10">
-                {Array.from({ length: 32 }).map((_, i) => (
-                  <motion.div key={i}
-                    className="w-1 rounded-full bg-teal"
-                    animate={{ height: listening ? [4, 12 + Math.random() * 24, 6, 18, 4] : [4, 8, 4] }}
-                    transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.04 }} />
-                ))}
+              <div className="relative mt-3 flex items-center justify-center gap-[3px] h-12">
+                {Array.from({ length: 36 }).map((_, i) => {
+                  const center = 18;
+                  const dist = Math.abs(i - center);
+                  const baseHeight = listening
+                    ? Math.max(6, 36 - dist * 1.6 + Math.random() * 14)
+                    : Math.max(4, 14 - dist * 0.5);
+                  return (
+                    <motion.span
+                      key={i}
+                      className={cn(
+                        "w-[3px] rounded-full origin-center",
+                        listening ? "bg-teal" : "bg-sidebar-foreground/35",
+                      )}
+                      style={{ height: baseHeight }}
+                      animate={
+                        listening
+                          ? { scaleY: [0.4, 1, 0.6, 1.1, 0.5] }
+                          : { scaleY: [0.4, 0.8, 0.4] }
+                      }
+                      transition={{
+                        duration: listening ? 0.9 : 2.4,
+                        repeat: Infinity,
+                        delay: i * 0.03,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  );
+                })}
               </div>
-              <div className="mt-2 text-[11px] text-sidebar-foreground/70 text-center">
-                {listening ? "Listening… say a command" : "Tap the mic or pick a suggestion"}
+              <div className="relative mt-1.5 text-[11px] text-sidebar-foreground/80 text-center inline-flex w-full items-center justify-center gap-1.5">
+                {listening ? (
+                  <>
+                    <span className="size-1.5 rounded-full bg-destructive animate-pulse" />
+                    Listening… say a command
+                  </>
+                ) : (
+                  <>Tap the mic or pick a suggested command</>
+                )}
               </div>
             </div>
 
