@@ -43,6 +43,7 @@ import { Route as IntegrationsHealthRouteImport } from './routes/integrations.he
 import { Route as IntegrationsEdiRouteImport } from './routes/integrations.edi'
 import { Route as IntegrationsApiRouteImport } from './routes/integrations.api'
 import { Route as EnterprisePhase7DemoRouteImport } from './routes/enterprise.phase7-demo'
+import { Route as EnterpriseOverviewRouteImport } from './routes/enterprise.overview'
 import { Route as DriverPhase5DemoRouteImport } from './routes/driver.phase5-demo'
 import { Route as DriverNotificationsLabRouteImport } from './routes/driver.notifications-lab'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
@@ -226,6 +227,11 @@ const EnterprisePhase7DemoRoute = EnterprisePhase7DemoRouteImport.update({
   path: '/enterprise/phase7-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnterpriseOverviewRoute = EnterpriseOverviewRouteImport.update({
+  id: '/enterprise/overview',
+  path: '/enterprise/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DriverPhase5DemoRoute = DriverPhase5DemoRouteImport.update({
   id: '/driver/phase5-demo',
   path: '/driver/phase5-demo',
@@ -313,6 +319,7 @@ export interface FileRoutesByFullPath {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/enterprise/overview': typeof EnterpriseOverviewRoute
   '/enterprise/phase7-demo': typeof EnterprisePhase7DemoRoute
   '/integrations/api': typeof IntegrationsApiRoute
   '/integrations/edi': typeof IntegrationsEdiRoute
@@ -360,6 +367,7 @@ export interface FileRoutesByTo {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/enterprise/overview': typeof EnterpriseOverviewRoute
   '/enterprise/phase7-demo': typeof EnterprisePhase7DemoRoute
   '/integrations/api': typeof IntegrationsApiRoute
   '/integrations/edi': typeof IntegrationsEdiRoute
@@ -408,6 +416,7 @@ export interface FileRoutesById {
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
+  '/enterprise/overview': typeof EnterpriseOverviewRoute
   '/enterprise/phase7-demo': typeof EnterprisePhase7DemoRoute
   '/integrations/api': typeof IntegrationsApiRoute
   '/integrations/edi': typeof IntegrationsEdiRoute
@@ -457,6 +466,7 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/enterprise/overview'
     | '/enterprise/phase7-demo'
     | '/integrations/api'
     | '/integrations/edi'
@@ -504,6 +514,7 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/enterprise/overview'
     | '/enterprise/phase7-demo'
     | '/integrations/api'
     | '/integrations/edi'
@@ -551,6 +562,7 @@ export interface FileRouteTypes {
     | '/driver/navigation'
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
+    | '/enterprise/overview'
     | '/enterprise/phase7-demo'
     | '/integrations/api'
     | '/integrations/edi'
@@ -597,6 +609,7 @@ export interface RootRouteChildren {
   DriverNavigationRoute: typeof DriverNavigationRoute
   DriverNotificationsLabRoute: typeof DriverNotificationsLabRoute
   DriverPhase5DemoRoute: typeof DriverPhase5DemoRoute
+  EnterpriseOverviewRoute: typeof EnterpriseOverviewRoute
   EnterprisePhase7DemoRoute: typeof EnterprisePhase7DemoRoute
   IntegrationsApiRoute: typeof IntegrationsApiRoute
   IntegrationsEdiRoute: typeof IntegrationsEdiRoute
@@ -848,6 +861,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnterprisePhase7DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/enterprise/overview': {
+      id: '/enterprise/overview'
+      path: '/enterprise/overview'
+      fullPath: '/enterprise/overview'
+      preLoaderRoute: typeof EnterpriseOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/driver/phase5-demo': {
       id: '/driver/phase5-demo'
       path: '/driver/phase5-demo'
@@ -1010,6 +1030,7 @@ const rootRouteChildren: RootRouteChildren = {
   DriverNavigationRoute: DriverNavigationRoute,
   DriverNotificationsLabRoute: DriverNotificationsLabRoute,
   DriverPhase5DemoRoute: DriverPhase5DemoRoute,
+  EnterpriseOverviewRoute: EnterpriseOverviewRoute,
   EnterprisePhase7DemoRoute: EnterprisePhase7DemoRoute,
   IntegrationsApiRoute: IntegrationsApiRoute,
   IntegrationsEdiRoute: IntegrationsEdiRoute,
@@ -1023,13 +1044,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
