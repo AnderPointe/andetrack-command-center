@@ -233,7 +233,12 @@ export function EliteNavScreen() {
 
   // ===== NAVIGATION / OPERATIONAL =====
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-surface-2 via-background to-surface-2 py-6 px-4">
+    <div className="min-h-[calc(100vh-4rem)] py-6 px-4"
+      style={{
+        background:
+          "radial-gradient(ellipse at 0% 0%, color-mix(in oklab, var(--teal) 12%, transparent), transparent 60%), radial-gradient(ellipse at 100% 100%, color-mix(in oklab, var(--orange) 10%, transparent), transparent 60%), linear-gradient(180deg, var(--surface-2), var(--background))",
+      }}
+    >
       <PhoneFrame>
         {/* Status bar */}
         <div className="bg-sidebar text-sidebar-foreground px-5 py-2 flex items-center justify-between text-[11px]">
