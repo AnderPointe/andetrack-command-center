@@ -15,6 +15,16 @@ import { CDLRestrictionCard } from "@/components/intelligence/CDLRestrictionCard
 import { IssueReportModal } from "@/components/alerts/IssueReportModal";
 import { DispatchSyncIndicator } from "@/components/sync/DispatchSyncIndicator";
 import { ProofOfDeliveryPlaceholder } from "@/components/shipment/ProofOfDeliveryPlaceholder";
+import { DriverSyncIndicator } from "@/components/realtime/DriverSyncIndicator";
+import { GPSStatusBadge } from "@/components/realtime/GPSStatusBadge";
+import { TrackingModeBadge } from "@/components/realtime/TrackingModeBadge";
+import { BatteryStatusBadge } from "@/components/realtime/BatteryStatusBadge";
+import { LiveETAUpdater } from "@/components/realtime/LiveETAUpdater";
+import { RouteProgressLiveBar } from "@/components/realtime/RouteProgressLiveBar";
+import { DriverPrivacyNotice } from "@/components/realtime/DriverPrivacyNotice";
+import { LocationPermissionModal } from "@/components/realtime/LocationPermissionModal";
+import { useDriverLocationStream } from "@/hooks/useDriverLocationStream";
+import { DEMO_ROUTE_DALLAS_HOUSTON, type MockStreamConfig } from "@/data/mockGpsStream";
 import { mockDriver, mockVehicle } from "@/data/elitenav/mockDriver";
 import { mockShipment } from "@/data/elitenav/mockLoad";
 import { mockRoute } from "@/data/elitenav/mockRoute";
@@ -53,19 +63,54 @@ export function EliteNavScreen({ onExit }: Props) {
   const [syncEvents, setSyncEvents] = useState<DispatchSyncEvent[]>(mockDispatchSync);
   const [transcript, setTranscript] = useState<CoPilotTranscriptEntry[]>([]);
 
-  // Mock GPS / ETA tick
-  useEffect(() => {
-    if (!routeStarted) return;
-    const id = window.setInterval(() => {
-      setProgress((p) => Math.min(1, p + 0.006));
-      setRemainingMiles((r) => Math.max(0, +(r - 0.4).toFixed(1)));
-      setEtaMin((e) => Math.max(0, e + (Math.random() > 0.65 ? -1 : Math.random() > 0.7 ? 1 : 0)));
-      setSpeed(() => 52 + Math.floor(Math.random() * 14));
-    }, 2200);
-    return () => window.clearInterval(id);
-  }, [routeStarted]);
+  // Phase 2 — realtime telemetry state
+  const [consent, setConsent] = useState(false);
+  const [showPermission, setShowPermission] = useState(false);
+  const [trackingMode, setTrackingMode] = useState<"off" | "active_load">("off");
+  const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
+  const [batteryLevel, setBatteryLevel] = useState<number>(0.92);
+  const [gpsActive, setGpsActive] = useState(false);
+  const [headingDeg, setHeadingDeg] = useState<number>(174);
 
-  // Mock dispatch sync stream
+  // Drive the mock GPS stream once the driver consents AND starts the route.
+  const streamCfg = useMemo<MockStreamConfig | null>(
+    () =>
+      routeStarted && consent
+        ? {
+            driverId: mockDriver.id,
+            companyId: "demo",
+            vehicleId: mockVehicle.id,
+            activeLoadId: mockShipment.id,
+            waypoints: DEMO_ROUTE_DALLAS_HOUSTON,
+            totalMiles: mockRoute.totalMiles,
+            intervalMs: 2000,
+            averageMph: 58,
+            trackingMode: "active_load",
+            driverStatus: status,
+          }
+        : null,
+    [routeStarted, consent, status],
+  );
+
+  useDriverLocationStream(streamCfg, {
+    enabled: routeStarted && consent,
+    onEvent: (e) => {
+      setProgress(Math.min(1, ((mockRoute.totalMiles - (e.remaining_miles ?? 0)) / mockRoute.totalMiles)));
+      if (e.remaining_miles != null) setRemainingMiles(+e.remaining_miles.toFixed(1));
+      if (e.eta_minutes != null) setEtaMin(e.eta_minutes);
+      if (e.speed_mph != null) setSpeed(Math.round(e.speed_mph));
+      if (e.heading != null) setHeadingDeg(e.heading);
+      if (e.battery_level != null) setBatteryLevel(e.battery_level);
+      setGpsActive(true);
+      setTrackingMode("active_load");
+      setLastSyncedAt(new Date().toISOString());
+      // Phase 3: forward to recordLocationEvent + upsertDriverLiveState once a
+      // real authenticated driver row exists. The mock driver_id won't satisfy
+      // the RLS check (driver_id IN drivers WHERE user_id = auth.uid()).
+    },
+  });
+
+  // Mock dispatch sync stream (legacy preview chatter)
   useEffect(() => {
     if (!routeStarted) return;
     const id = window.setInterval(() => {
@@ -86,8 +131,13 @@ export function EliteNavScreen({ onExit }: Props) {
   const pct = progressPct(route);
   const currentStep = mockRoute.steps[stepIdx] ?? mockRoute.steps[mockRoute.steps.length - 1];
   const upcoming = mockRoute.steps[stepIdx + 1];
+  const etaDelta = etaMin - mockRoute.etaMinutes;
 
   const handleStart = () => {
+    if (!consent) {
+      setShowPermission(true);
+      return;
+    }
     setRouteStarted(true);
     setSafety(true);
     setStatus("en_route_pickup");
@@ -96,6 +146,8 @@ export function EliteNavScreen({ onExit }: Props) {
   const handleStop = () => {
     setRouteStarted(false);
     setSafety(false);
+    setTrackingMode("off");
+    setGpsActive(false);
   };
 
   const handleVoice = (cmd: VoiceCommand, source: "voice" | "quick" = "quick") => {
@@ -212,12 +264,34 @@ export function EliteNavScreen({ onExit }: Props) {
       {/* Side panel — hidden in safety mode */}
       {!safety && (
         <div className="absolute right-3 top-32 z-20 hidden w-[340px] space-y-3 lg:block">
+          {/* Phase 2 — Realtime telemetry strip */}
+          <div className="rounded-2xl border border-white/10 bg-[#0a1218]/85 p-3 backdrop-blur-xl space-y-2">
+            <div className="flex items-center justify-between">
+              <DriverSyncIndicator connected={routeStarted && gpsActive} lastSyncedAt={lastSyncedAt} />
+              <LiveETAUpdater etaMinutes={etaMin} deltaMin={etaDelta} />
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              <GPSStatusBadge active={gpsActive} stale={false} />
+              <TrackingModeBadge mode={trackingMode} />
+              <BatteryStatusBadge level={batteryLevel} />
+              <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] text-slate-300">
+                hdg {Math.round(headingDeg)}°
+              </span>
+            </div>
+            <RouteProgressLiveBar
+              progressPct={pct}
+              totalMiles={mockRoute.totalMiles}
+              remainingMiles={remainingMiles}
+            />
+            <DriverPrivacyNotice />
+          </div>
+
           <ETACard
             etaMinutes={etaMin}
             remainingMiles={remainingMiles}
             currentSpeed={speed}
             speedLimit={65}
-            delayMin={etaMin - mockRoute.etaMinutes}
+            delayMin={etaDelta}
             deliveryWindow="Today · 18:00 – 19:30 CT"
             trafficLabel="Moderate"
           />
@@ -318,6 +392,17 @@ export function EliteNavScreen({ onExit }: Props) {
           setStatus("delivered");
           onExit?.();
         }}
+      />
+      <LocationPermissionModal
+        open={showPermission}
+        onAllow={() => {
+          setConsent(true);
+          setShowPermission(false);
+          setRouteStarted(true);
+          setSafety(true);
+          setStatus("en_route_pickup");
+        }}
+        onDeny={() => setShowPermission(false)}
       />
     </div>
   );
