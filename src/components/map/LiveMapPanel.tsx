@@ -3,7 +3,11 @@ import { drivers, statusMeta } from "@/data/mock";
 import type { Driver } from "@/types";
 import { Layers, Navigation, Eye, Zap, Users, Truck, Plus, Minus, Compass, Maximize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useDispatchMapRealtime } from "@/hooks/useDispatchMapRealtime";
+import { DriverLiveMarker } from "@/components/realtime/DriverLiveMarker";
+import type { DriverLiveState } from "@/types/location";
+import type { DriverStatusKey } from "@/types/status";
 
 // Project lat/lng across continental US into a 0..1 box
 function project(lat: number, lng: number) {
