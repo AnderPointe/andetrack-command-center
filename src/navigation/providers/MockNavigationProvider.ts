@@ -15,7 +15,7 @@ import type {
   VoiceInstructionEvent,
 } from "../types/navigation";
 import { BaseNavigationProvider } from "./NavigationProvider";
-import type { RouteResult } from "../types/providers";
+import type { MockNavigationControls, RouteResult } from "../types/providers";
 import type { RouteRequest } from "../types/truckRouting";
 
 const MI_TO_M = 1609.34;
