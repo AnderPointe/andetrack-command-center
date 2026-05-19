@@ -18,6 +18,7 @@ import {
   formatDistance,
   formatEta,
   getNavigationProvider,
+  isMockProvider,
   isTruckValidationRequired,
   ManeuverIcon,
   requestNavigationRoute,
@@ -33,7 +34,6 @@ import {
   type NavigationProviderId,
   type RouteRequest,
   type TruckRouteProfile,
-  MockNavigationProvider,
 } from "@/navigation";
 
 interface Props {
