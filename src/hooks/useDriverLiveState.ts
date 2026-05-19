@@ -1,12 +1,15 @@
 /**
- * Phase 2 — Subscribe to driver_live_state for a company.
- * Returns a map keyed by driver_id with the latest known state for each driver.
+ * Phase 2 — Subscribe to `driver_live_state` for a company.
+ *
+ * This hook ONLY owns the Supabase subscription + the in-memory map.
+ * Staleness re-evaluation lives in `useGpsStaleClock` so the two concerns
+ * stay independently testable and replaceable.
  */
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { subscribeToTable } from "@/lib/realtime";
 import type { DriverLiveState } from "@/types/location";
-import { STALE_GPS_THRESHOLD_SEC } from "@/types/realtime";
+import { useGpsStaleClock } from "./useGpsStaleClock";
 
 export function useDriverLiveState(companyId: string | null) {
   const [byDriverId, setByDriverId] = useState<Record<string, DriverLiveState>>({});
@@ -43,26 +46,5 @@ export function useDriverLiveState(companyId: string | null) {
     };
   }, [companyId]);
 
-  // Tag stale entries every 15s so the UI can warn.
-  useEffect(() => {
-    const t = window.setInterval(() => {
-      setByDriverId((prev) => {
-        const now = Date.now();
-        let dirty = false;
-        const next: Record<string, DriverLiveState> = { ...prev };
-        for (const [id, s] of Object.entries(prev)) {
-          const last = s.last_location_at ? Date.parse(s.last_location_at) : 0;
-          const stale = !last || (now - last) / 1000 > STALE_GPS_THRESHOLD_SEC;
-          if (stale !== s.is_gps_stale) {
-            next[id] = { ...s, is_gps_stale: stale };
-            dirty = true;
-          }
-        }
-        return dirty ? next : prev;
-      });
-    }, 15000);
-    return () => window.clearInterval(t);
-  }, []);
-
-  return byDriverId;
+  return useGpsStaleClock(byDriverId);
 }

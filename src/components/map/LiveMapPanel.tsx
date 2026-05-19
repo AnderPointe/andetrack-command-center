@@ -142,8 +142,7 @@ export function LiveMapPanel({
                   y={0}
                   heading={s.heading ?? 0}
                   status={(s.driver_status ?? "available") as DriverStatusKey}
-                  fresh={!s.is_gps_stale}
-                  stale={s.is_gps_stale}
+                  signal={s.is_gps_stale ? "stale" : "live"}
                   onClick={() => onSelectLiveDriver?.(s)}
                 />
               </g>
