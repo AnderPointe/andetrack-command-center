@@ -167,6 +167,16 @@ export interface VoiceCommand {
   utterance: string;
 }
 
+export interface CoPilotTranscriptEntry {
+  id: string;
+  utterance: string;
+  label: string;
+  action: string;
+  source: "voice" | "quick";
+  status: "recognized" | "executed" | "ignored";
+  at: string;
+}
+
 export interface DispatchSyncEvent {
   id: string;
   type: "gps" | "speed" | "eta" | "progress" | "status" | "delay" | "arrival" | "delivery" | "pod";

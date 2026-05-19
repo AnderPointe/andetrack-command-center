@@ -25,7 +25,7 @@ import {
   mockVoiceCommands,
 } from "@/data/elitenav/mockNavigationEvents";
 import { STATUS_META, progressPct } from "@/utils/elitenav";
-import type { CoPilotMessage, DispatchSyncEvent, DriverStatusKey } from "@/types/elitenav";
+import type { CoPilotMessage, CoPilotTranscriptEntry, DispatchSyncEvent, DriverStatusKey, VoiceCommand } from "@/types/elitenav";
 import { Play, Square } from "lucide-react";
 
 interface Props {
@@ -51,6 +51,7 @@ export function EliteNavScreen({ onExit }: Props) {
 
   const [coPilotFeed, setCoPilotFeed] = useState<CoPilotMessage[]>(mockCoPilotFeed);
   const [syncEvents, setSyncEvents] = useState<DispatchSyncEvent[]>(mockDispatchSync);
+  const [transcript, setTranscript] = useState<CoPilotTranscriptEntry[]>([]);
 
   // Mock GPS / ETA tick
   useEffect(() => {
@@ -97,33 +98,64 @@ export function EliteNavScreen({ onExit }: Props) {
     setSafety(false);
   };
 
-  const handleVoice = (cmd: { utterance: string; label: string }) => {
+  const handleVoice = (cmd: VoiceCommand, source: "voice" | "quick" = "quick") => {
     const utter = cmd.utterance.toLowerCase();
-    const reply: CoPilotMessage = {
-      id: `c_${Date.now()}`,
-      role: "copilot",
-      tone: "info",
-      text: utter.includes("eta")
-        ? `Your ETA is ${etaMin} minutes.`
-        : utter.includes("repeat")
-        ? `Next: ${currentStep.instruction} on ${currentStep.street}.`
-        : utter.includes("arrived")
-        ? "Marked arrived at pickup. Dispatch notified."
-        : utter.includes("loaded")
-        ? "Marked loaded. Switching status to En Route to Drop-off."
-        : utter.includes("delivered")
-        ? "Opening Proof of Delivery."
-        : utter.includes("dispatch")
-        ? "Calling dispatch now."
-        : utter.includes("delay")
-        ? "Delay reported. Dispatch has been notified."
-        : `Acknowledged: ${cmd.label}.`,
-      at: "now",
-    };
-    setCoPilotFeed((f) => [...f, reply]);
+    let action = `Acknowledged: ${cmd.label}`;
+    let replyText = `Acknowledged: ${cmd.label}.`;
+    let tone: CoPilotMessage["tone"] = "info";
+    let status: CoPilotTranscriptEntry["status"] = "executed";
+
+    if (utter.includes("eta")) {
+      replyText = `Your ETA is ${etaMin} minutes.`;
+      action = `Reported ETA · ${etaMin} min`;
+    } else if (utter.includes("repeat")) {
+      replyText = `Next: ${currentStep.instruction} on ${currentStep.street}.`;
+      action = "Repeated next maneuver";
+    } else if (utter.includes("arrived")) {
+      replyText = "Marked arrived at pickup. Dispatch notified.";
+      action = "Status → Arrived at pickup";
+      tone = "success";
+    } else if (utter.includes("loaded")) {
+      replyText = "Marked loaded. Switching status to En Route to Drop-off.";
+      action = "Status → Loaded";
+      tone = "success";
+    } else if (utter.includes("delivered")) {
+      replyText = "Opening Proof of Delivery.";
+      action = "Opened Proof of Delivery";
+      tone = "success";
+    } else if (utter.includes("dispatch")) {
+      replyText = "Calling dispatch now.";
+      action = "Dialing dispatch";
+    } else if (utter.includes("delay")) {
+      replyText = "Delay reported. Dispatch has been notified.";
+      action = "Delay reported to dispatch";
+      tone = "warning";
+    } else {
+      status = "recognized";
+    }
+
+    setCoPilotFeed((f) => [...f, { id: `c_${Date.now()}`, role: "copilot", tone, text: replyText, at: "now" }]);
+    setTranscript((t) =>
+      [
+        ...t,
+        {
+          id: `t_${Date.now()}`,
+          utterance: cmd.utterance,
+          label: cmd.label,
+          action,
+          source,
+          status,
+          at: "now",
+        },
+      ].slice(-50),
+    );
+
     if (utter.includes("arrived")) setStatus("arrived_pickup");
     if (utter.includes("loaded")) setStatus("loaded");
-    if (utter.includes("delivered")) { setStatus("delivered"); setShowPOD(true); }
+    if (utter.includes("delivered")) {
+      setStatus("delivered");
+      setShowPOD(true);
+    }
   };
 
   return (
@@ -255,7 +287,10 @@ export function EliteNavScreen({ onExit }: Props) {
         onClose={() => { setShowCoPilot(false); setCoPilotListening(false); }}
         feed={coPilotFeed}
         commands={mockVoiceCommands}
-        onCommand={handleVoice}
+        onCommand={(c) => handleVoice(c, "quick")}
+        transcript={transcript}
+        onReplayCommand={(t) => handleVoice({ id: t.id, label: t.label, utterance: t.utterance }, t.source)}
+        onClearTranscript={() => setTranscript([])}
       />
       <DriverStatusControl
         open={showStatus}

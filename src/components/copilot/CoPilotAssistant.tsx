@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Mic } from "lucide-react";
-import type { CoPilotMessage } from "@/types/elitenav";
+import { X, Mic, MessageSquare, History, Check, AlertTriangle, Sparkles } from "lucide-react";
+import { useState } from "react";
+import type { CoPilotMessage, CoPilotTranscriptEntry, VoiceCommand } from "@/types/elitenav";
 import { VoiceCommandPanel } from "./VoiceCommandPanel";
-import type { VoiceCommand } from "@/types/elitenav";
 
 interface Props {
   open: boolean;
@@ -12,9 +12,27 @@ interface Props {
   feed: CoPilotMessage[];
   commands: VoiceCommand[];
   onCommand: (c: VoiceCommand) => void;
+  transcript: CoPilotTranscriptEntry[];
+  onReplayCommand?: (entry: CoPilotTranscriptEntry) => void;
+  onClearTranscript?: () => void;
 }
 
-export function CoPilotAssistant({ open, listening, onToggleListen, onClose, feed, commands, onCommand }: Props) {
+type Tab = "feed" | "transcript";
+
+export function CoPilotAssistant({
+  open,
+  listening,
+  onToggleListen,
+  onClose,
+  feed,
+  commands,
+  onCommand,
+  transcript,
+  onReplayCommand,
+  onClearTranscript,
+}: Props) {
+  const [tab, setTab] = useState<Tab>("feed");
+
   return (
     <AnimatePresence>
       {open && (
@@ -27,7 +45,7 @@ export function CoPilotAssistant({ open, listening, onToggleListen, onClose, fee
             onClick={onClose}
           />
           <motion.div
-            className="absolute inset-x-3 bottom-3 z-50 overflow-hidden rounded-3xl border border-teal-400/25 bg-gradient-to-br from-[#0b1620]/95 via-[#0a1218]/96 to-[#0a151c]/95 backdrop-blur-2xl shadow-[0_40px_100px_-20px_rgba(45,212,191,0.35),0_0_0_1px_rgba(45,212,191,0.08)] sm:inset-x-auto sm:right-4 sm:w-[440px]"
+            className="absolute inset-x-3 bottom-3 z-50 overflow-hidden rounded-3xl border border-teal-400/25 bg-gradient-to-br from-[#0b1620]/95 via-[#0a1218]/96 to-[#0a151c]/95 backdrop-blur-2xl shadow-[0_40px_100px_-20px_rgba(45,212,191,0.35),0_0_0_1px_rgba(45,212,191,0.08)] sm:inset-x-auto sm:right-4 sm:w-[460px]"
             initial={{ y: 40, opacity: 0, scale: 0.96 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 40, opacity: 0, scale: 0.96 }}
@@ -113,33 +131,160 @@ export function CoPilotAssistant({ open, listening, onToggleListen, onClose, fee
               </div>
             </div>
 
-            {/* Feed */}
-            <div className="max-h-[280px] space-y-2 overflow-y-auto px-4 py-3">
-              {feed.slice().reverse().map((m) => (
-                <div
-                  key={m.id}
-                  className={`rounded-2xl border px-3 py-2 text-[12.5px] leading-relaxed ${
-                    m.role === "dispatch"
-                      ? "border-orange-400/20 bg-orange-500/[0.05] text-orange-100"
-                      : m.tone === "warning"
-                      ? "border-orange-400/20 bg-white/[0.02] text-slate-100"
-                      : m.tone === "success"
-                      ? "border-emerald-500/20 bg-emerald-500/[0.04] text-emerald-100"
-                      : "border-white/10 bg-white/[0.025] text-slate-100"
-                  }`}
+            {/* Tabs */}
+            <div className="flex items-center justify-between gap-2 border-b border-white/5 px-3 pt-2">
+              <div className="flex items-center gap-1">
+                <TabButton active={tab === "feed"} onClick={() => setTab("feed")} icon={<MessageSquare className="h-3 w-3" />} label="Feed" count={feed.length} />
+                <TabButton active={tab === "transcript"} onClick={() => setTab("transcript")} icon={<History className="h-3 w-3" />} label="Transcript" count={transcript.length} />
+              </div>
+              {tab === "transcript" && transcript.length > 0 && onClearTranscript && (
+                <button
+                  onClick={onClearTranscript}
+                  className="mb-1 rounded-full border border-white/10 px-2 py-0.5 text-[10px] uppercase tracking-widest text-slate-400 hover:bg-white/5 hover:text-slate-200"
                 >
-                  <div className="mb-0.5 text-[9px] uppercase tracking-widest text-slate-500">
-                    {m.role === "dispatch" ? "Dispatch" : "CoPilot"} · {m.at}
-                  </div>
-                  {m.text}
-                </div>
-              ))}
+                  Clear
+                </button>
+              )}
             </div>
+
+            {/* Content */}
+            {tab === "feed" ? (
+              <div className="max-h-[280px] space-y-2 overflow-y-auto px-4 py-3">
+                {feed.slice().reverse().map((m) => (
+                  <div
+                    key={m.id}
+                    className={`rounded-2xl border px-3 py-2 text-[12.5px] leading-relaxed ${
+                      m.role === "dispatch"
+                        ? "border-orange-400/20 bg-orange-500/[0.05] text-orange-100"
+                        : m.tone === "warning"
+                        ? "border-orange-400/20 bg-white/[0.02] text-slate-100"
+                        : m.tone === "success"
+                        ? "border-emerald-500/20 bg-emerald-500/[0.04] text-emerald-100"
+                        : "border-white/10 bg-white/[0.025] text-slate-100"
+                    }`}
+                  >
+                    <div className="mb-0.5 text-[9px] uppercase tracking-widest text-slate-500">
+                      {m.role === "dispatch" ? "Dispatch" : "CoPilot"} · {m.at}
+                    </div>
+                    {m.text}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="max-h-[280px] space-y-2 overflow-y-auto px-4 py-3">
+                {transcript.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center gap-2 py-8 text-center">
+                    <div className="rounded-full border border-white/10 bg-white/[0.03] p-2">
+                      <History className="h-4 w-4 text-slate-500" />
+                    </div>
+                    <div className="text-[12px] text-slate-400">No commands yet</div>
+                    <div className="max-w-[240px] text-[10.5px] text-slate-500">
+                      Recognized phrases and quick actions will appear here for review.
+                    </div>
+                  </div>
+                ) : (
+                  transcript
+                    .slice()
+                    .reverse()
+                    .map((t) => (
+                      <button
+                        key={t.id}
+                        onClick={() =>
+                          onReplayCommand?.(t)
+                        }
+                        className="group block w-full rounded-2xl border border-white/10 bg-white/[0.02] px-3 py-2 text-left transition hover:border-teal-400/40 hover:bg-teal-500/[0.05]"
+                      >
+                        <div className="mb-1 flex items-center justify-between gap-2 text-[9px] uppercase tracking-widest text-slate-500">
+                          <span className="flex items-center gap-1.5">
+                            {t.source === "voice" ? (
+                              <Mic className="h-2.5 w-2.5 text-teal-300" />
+                            ) : (
+                              <Sparkles className="h-2.5 w-2.5 text-teal-300" />
+                            )}
+                            {t.source === "voice" ? "Voice" : "Quick action"} · {t.at}
+                          </span>
+                          <StatusPill status={t.status} />
+                        </div>
+                        <div className="text-[12.5px] font-medium text-slate-100">
+                          “{t.utterance}”
+                        </div>
+                        <div className="mt-0.5 flex items-center justify-between gap-2">
+                          <div className="text-[11px] text-slate-400">{t.action}</div>
+                          <span className="text-[10px] text-slate-600 transition group-hover:text-teal-300">
+                            Replay →
+                          </span>
+                        </div>
+                      </button>
+                    ))
+                )}
+              </div>
+            )}
 
             <VoiceCommandPanel commands={commands} onCommand={onCommand} />
           </motion.div>
         </>
       )}
     </AnimatePresence>
+  );
+}
+
+function TabButton({
+  active,
+  onClick,
+  icon,
+  label,
+  count,
+}: {
+  active: boolean;
+  onClick: () => void;
+  icon: React.ReactNode;
+  label: string;
+  count: number;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`relative flex items-center gap-1.5 rounded-t-lg px-3 py-2 text-[11px] font-medium tracking-wide transition ${
+        active ? "text-teal-200" : "text-slate-400 hover:text-slate-200"
+      }`}
+    >
+      {icon}
+      {label}
+      <span
+        className={`rounded-full px-1.5 py-px text-[9px] tabular-nums ${
+          active ? "bg-teal-500/20 text-teal-200" : "bg-white/[0.04] text-slate-500"
+        }`}
+      >
+        {count}
+      </span>
+      {active && (
+        <motion.span
+          layoutId="copilot-tab"
+          className="absolute inset-x-2 -bottom-px h-[2px] rounded-full bg-gradient-to-r from-teal-400 to-teal-300"
+        />
+      )}
+    </button>
+  );
+}
+
+function StatusPill({ status }: { status: "recognized" | "executed" | "ignored" }) {
+  if (status === "executed") {
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-1.5 py-0.5 text-[8.5px] font-semibold tracking-widest text-emerald-200">
+        <Check className="h-2 w-2" /> Executed
+      </span>
+    );
+  }
+  if (status === "ignored") {
+    return (
+      <span className="inline-flex items-center gap-1 rounded-full border border-orange-400/30 bg-orange-500/10 px-1.5 py-0.5 text-[8.5px] font-semibold tracking-widest text-orange-200">
+        <AlertTriangle className="h-2 w-2" /> Ignored
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full border border-teal-400/30 bg-teal-500/10 px-1.5 py-0.5 text-[8.5px] font-semibold tracking-widest text-teal-200">
+      Recognized
+    </span>
   );
 }
