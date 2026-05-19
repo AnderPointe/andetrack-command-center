@@ -34,14 +34,22 @@ export function LiveMapPanel({
   selectedId,
   className,
   compact = false,
+  companyId = null,
+  onSelectLiveDriver,
 }: {
   onSelectDriver?: (d: Driver) => void;
   selectedId?: string | null;
   className?: string;
   compact?: boolean;
+  /** When provided, overlays realtime drivers from driver_live_state. */
+  companyId?: string | null;
+  onSelectLiveDriver?: (state: DriverLiveState) => void;
 }) {
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
   const [active, setActive] = useState<Record<string, boolean>>({ routes: true, traffic: true });
+
+  const { liveStates } = useDispatchMapRealtime(companyId);
+  const liveList = useMemo(() => Object.values(liveStates), [liveStates]);
 
   const filtered = drivers.filter(
     (d) => !statusFilter || d.status === statusFilter,
