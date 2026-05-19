@@ -15,6 +15,16 @@ import { CDLRestrictionCard } from "@/components/intelligence/CDLRestrictionCard
 import { IssueReportModal } from "@/components/alerts/IssueReportModal";
 import { DispatchSyncIndicator } from "@/components/sync/DispatchSyncIndicator";
 import { ProofOfDeliveryPlaceholder } from "@/components/shipment/ProofOfDeliveryPlaceholder";
+import { DriverSyncIndicator } from "@/components/realtime/DriverSyncIndicator";
+import { GPSStatusBadge } from "@/components/realtime/GPSStatusBadge";
+import { TrackingModeBadge } from "@/components/realtime/TrackingModeBadge";
+import { BatteryStatusBadge } from "@/components/realtime/BatteryStatusBadge";
+import { LiveETAUpdater } from "@/components/realtime/LiveETAUpdater";
+import { RouteProgressLiveBar } from "@/components/realtime/RouteProgressLiveBar";
+import { DriverPrivacyNotice } from "@/components/realtime/DriverPrivacyNotice";
+import { LocationPermissionModal } from "@/components/realtime/LocationPermissionModal";
+import { useDriverLocationStream } from "@/hooks/useDriverLocationStream";
+import { DEMO_ROUTE_DALLAS_HOUSTON, type MockStreamConfig } from "@/data/mockGpsStream";
 import { mockDriver, mockVehicle } from "@/data/elitenav/mockDriver";
 import { mockShipment } from "@/data/elitenav/mockLoad";
 import { mockRoute } from "@/data/elitenav/mockRoute";
