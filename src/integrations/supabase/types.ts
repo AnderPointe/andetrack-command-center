@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_cost_events: {
+        Row: {
+          company_id: string
+          completion_tokens: number | null
+          cost_usd: number | null
+          created_at: string
+          driver_id: string | null
+          error: string | null
+          id: string
+          latency_ms: number | null
+          metadata: Json
+          model: string
+          operation: string
+          prompt_tokens: number | null
+          provider: string
+          status: string
+          total_tokens: number | null
+          user_id: string | null
+        }
+        Insert: {
+          company_id: string
+          completion_tokens?: number | null
+          cost_usd?: number | null
+          created_at?: string
+          driver_id?: string | null
+          error?: string | null
+          id?: string
+          latency_ms?: number | null
+          metadata?: Json
+          model: string
+          operation: string
+          prompt_tokens?: number | null
+          provider: string
+          status?: string
+          total_tokens?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          company_id?: string
+          completion_tokens?: number | null
+          cost_usd?: number | null
+          created_at?: string
+          driver_id?: string | null
+          error?: string | null
+          id?: string
+          latency_ms?: number | null
+          metadata?: Json
+          model?: string
+          operation?: string
+          prompt_tokens?: number | null
+          provider?: string
+          status?: string
+          total_tokens?: number | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       alerts: {
         Row: {
           acknowledged_at: string | null
@@ -92,6 +149,51 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      app_error_events: {
+        Row: {
+          app_version: string | null
+          company_id: string
+          context: Json
+          created_at: string
+          driver_id: string | null
+          id: string
+          message: string
+          platform: string | null
+          severity: string
+          source: string
+          stack: string | null
+          user_id: string | null
+        }
+        Insert: {
+          app_version?: string | null
+          company_id: string
+          context?: Json
+          created_at?: string
+          driver_id?: string | null
+          id?: string
+          message: string
+          platform?: string | null
+          severity?: string
+          source: string
+          stack?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          app_version?: string | null
+          company_id?: string
+          context?: Json
+          created_at?: string
+          driver_id?: string | null
+          id?: string
+          message?: string
+          platform?: string | null
+          severity?: string
+          source?: string
+          stack?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
       }
       audit_logs: {
         Row: {
@@ -1011,6 +1113,72 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      mobile_device_sessions: {
+        Row: {
+          app_version: string | null
+          battery_level: number | null
+          company_id: string
+          created_at: string
+          device_id: string | null
+          device_model: string | null
+          driver_id: string
+          ended_at: string | null
+          id: string
+          is_charging: boolean | null
+          last_seen_at: string
+          locale: string | null
+          metadata: Json
+          network_type: string | null
+          os_version: string | null
+          platform: string
+          started_at: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          app_version?: string | null
+          battery_level?: number | null
+          company_id: string
+          created_at?: string
+          device_id?: string | null
+          device_model?: string | null
+          driver_id: string
+          ended_at?: string | null
+          id?: string
+          is_charging?: boolean | null
+          last_seen_at?: string
+          locale?: string | null
+          metadata?: Json
+          network_type?: string | null
+          os_version?: string | null
+          platform: string
+          started_at?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          app_version?: string | null
+          battery_level?: number | null
+          company_id?: string
+          created_at?: string
+          device_id?: string | null
+          device_model?: string | null
+          driver_id?: string
+          ended_at?: string | null
+          id?: string
+          is_charging?: boolean | null
+          last_seen_at?: string
+          locale?: string | null
+          metadata?: Json
+          network_type?: string | null
+          os_version?: string | null
+          platform?: string
+          started_at?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       navigation_events: {
         Row: {
