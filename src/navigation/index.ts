@@ -40,3 +40,4 @@ export { WebSpeechVoiceProvider } from "./voice/WebSpeechVoiceProvider";
 export { VOICE_INTENTS, detectIntentLocally, intentCategory } from "./voice/intentRegistry";
 export { executeVoiceIntent, type VoiceExecutionContext, type VoiceExecutionResult } from "./services/voiceCommandHandler";
 export { copilotResolveIntent, copilotRouteIntelligence, type RouteIntelligenceInsight } from "./services/copilot.functions";
+export { insertWithQueue, flushQueue, getQueueSize, isOnline } from "./voice/offlineQueue";

@@ -5,6 +5,8 @@ import { VoiceCoPilotConsole } from "@/navigation/components/VoiceCoPilotConsole
 import { RouteIntelligencePanel } from "@/navigation/components/RouteIntelligencePanel";
 import { DispatchVoicePushPanel } from "@/navigation/components/DispatchVoicePushPanel";
 import { DispatchVoiceInbox } from "@/navigation/components/DispatchVoiceInbox";
+import { OfflineQueueBadge } from "@/navigation/components/OfflineQueueBadge";
+import { PrivacyVoiceNotice } from "@/navigation/components/PrivacyVoiceNotice";
 import { useVoiceCoPilot } from "@/navigation/hooks/useVoiceCoPilot";
 import { useRouteIntelligence } from "@/navigation/hooks/useRouteIntelligence";
 import { useDispatchVoiceMessages } from "@/navigation/hooks/useDispatchVoiceMessages";
@@ -65,9 +67,12 @@ function CoPilotLab() {
   return (
     <AppShell>
       <div className="mx-auto grid max-w-6xl gap-4 py-4">
-        <div>
-          <h1 className="text-lg font-semibold text-zinc-100">CoPilot Voice + Intelligence Lab</h1>
-          <p className="text-[12px] text-zinc-400">Phase 4 — AI voice commands, route intelligence, dispatch-to-driver voice push.</p>
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h1 className="text-lg font-semibold text-zinc-100">CoPilot Voice + Intelligence Lab</h1>
+            <p className="text-[12px] text-zinc-400">Phase 4 — AI voice commands, route intelligence, dispatch-to-driver voice push.</p>
+          </div>
+          <OfflineQueueBadge />
         </div>
 
         <div className="flex gap-2">
@@ -100,6 +105,7 @@ function CoPilotLab() {
               suggestions={SUGGESTIONS}
             />
             <div className="space-y-4">
+              <PrivacyVoiceNotice />
               <RouteIntelligencePanel
                 insights={intel.insights}
                 summary={intel.summary}
