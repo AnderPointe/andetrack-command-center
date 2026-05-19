@@ -112,22 +112,50 @@ export function startMockLocationStream(
 ): () => void {
   stopMockLocationStream(cfg.driverId);
 
-  const intervalMs = cfg.intervalMs ?? 2000;
-  const mph = cfg.averageMph ?? 58;
+  const intervalMs = cfg.intervalMs ?? 1500;
+  const baseMph = cfg.averageMph ?? 58;
   const trackingMode = cfg.trackingMode ?? "active_load";
   const status = cfg.driverStatus ?? "en_route_pickup";
 
   let segIdx = 0;
   let segFrac = 0;
   let battery = 0.92;
+  let dwellTicks = 0; // simulate stop-light / traffic dwell
+  let lastSpeed = baseMph;
+
+  // Per-segment speed profile makes the puck feel less robotic.
+  // Lower speeds on early/late segments, faster on highway middle.
+  const segmentSpeedFor = (i: number) => {
+    const total = cfg.waypoints.length - 1;
+    if (total <= 1) return baseMph;
+    const norm = i / total; // 0..1
+    // Bell curve peak near 0.55
+    const factor = 0.55 + 0.55 * Math.sin(norm * Math.PI);
+    return Math.max(20, baseMph * factor);
+  };
 
   const tick = () => {
     if (segIdx >= cfg.waypoints.length - 1) {
       stopMockLocationStream(cfg.driverId);
       return;
     }
+
+    // Occasional dwell (red light, congestion) ~ every ~12 ticks for 2-3 ticks.
+    if (dwellTicks > 0) {
+      dwellTicks -= 1;
+      lastSpeed = Math.max(0, lastSpeed * 0.55);
+    } else if (Math.random() < 0.06) {
+      dwellTicks = 2 + Math.floor(Math.random() * 2);
+    }
+
+    const targetMph = segmentSpeedFor(segIdx);
+    // Smooth speed changes (driver doesn't yank throttle).
+    lastSpeed = lastSpeed + (targetMph - lastSpeed) * 0.25 + (Math.random() * 3 - 1.5);
+    lastSpeed = Math.max(0, lastSpeed);
+    const effMph = dwellTicks > 0 ? lastSpeed * 0.3 : lastSpeed;
+
     const segLenMi = haversineMi(cfg.waypoints[segIdx], cfg.waypoints[segIdx + 1]);
-    const stepMi = (mph / 3600) * (intervalMs / 1000);
+    const stepMi = (effMph / 3600) * (intervalMs / 1000);
     segFrac += segLenMi > 0 ? stepMi / segLenMi : 1;
     while (segFrac >= 1 && segIdx < cfg.waypoints.length - 1) {
       segFrac -= 1;
@@ -144,19 +172,24 @@ export function startMockLocationStream(
         ? cfg.waypoints[cfg.waypoints.length - 1]
         : cfg.waypoints[segIdx + 1];
 
+    // Tiny perpendicular jitter to simulate GPS noise (≈3-7 m).
+    const jitter = (Math.random() - 0.5) * 0.00008;
+    here[0] += jitter;
+    here[1] += jitter * 0.6;
+
     const heading = calculateHeading(here, next);
     const remaining = calculateDistanceRemaining(cfg.waypoints, segIdx, segFrac);
-    const eta = calculateMockETA(remaining, mph);
+    // ETA uses the rolling effective speed, not the static baseline.
+    const eta = calculateMockETA(remaining, Math.max(15, lastSpeed));
     const progress = calculateRouteProgress(remaining, cfg.totalMiles);
-    const speed = mph + (Math.random() * 6 - 3);
 
-    battery = Math.max(0.05, battery - 0.001);
+    battery = Math.max(0.05, battery - 0.0008);
 
     const sample: MockStreamSample = {
       latitude: here[1],
       longitude: here[0],
       heading,
-      speed_mph: +speed.toFixed(1),
+      speed_mph: +effMph.toFixed(1),
       progress_pct: +progress.toFixed(1),
       remaining_miles: +remaining.toFixed(2),
       eta_minutes: eta,
@@ -175,7 +208,7 @@ export function startMockLocationStream(
       heading: sample.heading,
       speed_mph: sample.speed_mph,
       altitude: 210,
-      accuracy_meters: 6 + Math.random() * 4,
+      accuracy_meters: 4 + Math.random() * 6,
       battery_level: sample.battery_level,
       is_charging: false,
       app_state: "foreground",
