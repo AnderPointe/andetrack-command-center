@@ -49,6 +49,8 @@ import { Route as LaunchSupportRouteImport } from './routes/launch.support'
 import { Route as LaunchSuccessRouteImport } from './routes/launch.success'
 import { Route as LaunchSalesRouteImport } from './routes/launch.sales'
 import { Route as LaunchRoiRouteImport } from './routes/launch.roi'
+import { Route as LaunchRoadmapRouteImport } from './routes/launch.roadmap'
+import { Route as LaunchReleaseNotesRouteImport } from './routes/launch.release-notes'
 import { Route as LaunchPricingRouteImport } from './routes/launch.pricing'
 import { Route as LaunchPilotRouteImport } from './routes/launch.pilot'
 import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
@@ -287,6 +289,16 @@ const LaunchSalesRoute = LaunchSalesRouteImport.update({
 const LaunchRoiRoute = LaunchRoiRouteImport.update({
   id: '/launch/roi',
   path: '/launch/roi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchRoadmapRoute = LaunchRoadmapRouteImport.update({
+  id: '/launch/roadmap',
+  path: '/launch/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchReleaseNotesRoute = LaunchReleaseNotesRouteImport.update({
+  id: '/launch/release-notes',
+  path: '/launch/release-notes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchPricingRoute = LaunchPricingRouteImport.update({
@@ -541,6 +553,8 @@ export interface FileRoutesByFullPath {
   '/launch/overview': typeof LaunchOverviewRoute
   '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
+  '/launch/release-notes': typeof LaunchReleaseNotesRoute
+  '/launch/roadmap': typeof LaunchRoadmapRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
   '/launch/success': typeof LaunchSuccessRoute
@@ -621,6 +635,8 @@ export interface FileRoutesByTo {
   '/launch/overview': typeof LaunchOverviewRoute
   '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
+  '/launch/release-notes': typeof LaunchReleaseNotesRoute
+  '/launch/roadmap': typeof LaunchRoadmapRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
   '/launch/success': typeof LaunchSuccessRoute
@@ -702,6 +718,8 @@ export interface FileRoutesById {
   '/launch/overview': typeof LaunchOverviewRoute
   '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
+  '/launch/release-notes': typeof LaunchReleaseNotesRoute
+  '/launch/roadmap': typeof LaunchRoadmapRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
   '/launch/success': typeof LaunchSuccessRoute
@@ -784,6 +802,8 @@ export interface FileRouteTypes {
     | '/launch/overview'
     | '/launch/pilot'
     | '/launch/pricing'
+    | '/launch/release-notes'
+    | '/launch/roadmap'
     | '/launch/roi'
     | '/launch/sales'
     | '/launch/success'
@@ -864,6 +884,8 @@ export interface FileRouteTypes {
     | '/launch/overview'
     | '/launch/pilot'
     | '/launch/pricing'
+    | '/launch/release-notes'
+    | '/launch/roadmap'
     | '/launch/roi'
     | '/launch/sales'
     | '/launch/success'
@@ -944,6 +966,8 @@ export interface FileRouteTypes {
     | '/launch/overview'
     | '/launch/pilot'
     | '/launch/pricing'
+    | '/launch/release-notes'
+    | '/launch/roadmap'
     | '/launch/roi'
     | '/launch/sales'
     | '/launch/success'
@@ -1023,6 +1047,8 @@ export interface RootRouteChildren {
   LaunchOverviewRoute: typeof LaunchOverviewRoute
   LaunchPilotRoute: typeof LaunchPilotRoute
   LaunchPricingRoute: typeof LaunchPricingRoute
+  LaunchReleaseNotesRoute: typeof LaunchReleaseNotesRoute
+  LaunchRoadmapRoute: typeof LaunchRoadmapRoute
   LaunchRoiRoute: typeof LaunchRoiRoute
   LaunchSalesRoute: typeof LaunchSalesRoute
   LaunchSuccessRoute: typeof LaunchSuccessRoute
@@ -1320,6 +1346,20 @@ declare module '@tanstack/react-router' {
       path: '/launch/roi'
       fullPath: '/launch/roi'
       preLoaderRoute: typeof LaunchRoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/roadmap': {
+      id: '/launch/roadmap'
+      path: '/launch/roadmap'
+      fullPath: '/launch/roadmap'
+      preLoaderRoute: typeof LaunchRoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/release-notes': {
+      id: '/launch/release-notes'
+      path: '/launch/release-notes'
+      fullPath: '/launch/release-notes'
+      preLoaderRoute: typeof LaunchReleaseNotesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/pricing': {
@@ -1700,6 +1740,8 @@ const rootRouteChildren: RootRouteChildren = {
   LaunchOverviewRoute: LaunchOverviewRoute,
   LaunchPilotRoute: LaunchPilotRoute,
   LaunchPricingRoute: LaunchPricingRoute,
+  LaunchReleaseNotesRoute: LaunchReleaseNotesRoute,
+  LaunchRoadmapRoute: LaunchRoadmapRoute,
   LaunchRoiRoute: LaunchRoiRoute,
   LaunchSalesRoute: LaunchSalesRoute,
   LaunchSuccessRoute: LaunchSuccessRoute,
@@ -1719,3 +1761,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
