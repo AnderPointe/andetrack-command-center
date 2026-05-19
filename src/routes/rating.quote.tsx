@@ -26,6 +26,7 @@ function RateQuoteBuilder() {
   return (
     <AppShell>
       <div className="p-4 md:p-6 space-y-6">
+        <EnterpriseNav />
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Rate Quote Builder</h1>
           <p className="text-sm text-muted-foreground mt-0.5">Mileage · vehicle · fuel surcharge · accessorials · margin · driver pay.</p>
