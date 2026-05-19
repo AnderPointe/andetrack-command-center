@@ -988,33 +988,71 @@ function CoPilotPanel({ open, onClose, feed, eta, phase }: { open: boolean; onCl
             className="w-full max-w-md rounded-3xl border border-teal/30 bg-sidebar text-sidebar-foreground shadow-[var(--shadow-lg)] overflow-hidden"
           >
             {/* Header */}
-            <div className="px-5 pt-4 pb-3 bg-gradient-to-b from-teal/20 to-transparent border-b border-sidebar-border">
-              <div className="flex items-center justify-between">
+            <div
+              className="px-5 pt-4 pb-3 border-b border-sidebar-border copilot-aurora relative overflow-hidden"
+              style={{
+                backgroundImage:
+                  "linear-gradient(120deg, color-mix(in oklab, var(--teal) 28%, transparent), color-mix(in oklab, var(--info) 22%, transparent), color-mix(in oklab, var(--orange) 14%, transparent), color-mix(in oklab, var(--teal) 24%, transparent))",
+              }}
+            >
+              <div className="relative flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="relative grid place-items-center size-9 rounded-full bg-gradient-to-br from-teal to-info text-teal-foreground">
+                  <div className="relative grid place-items-center size-9 rounded-full bg-gradient-to-br from-teal to-info text-teal-foreground shadow-[var(--shadow-md)]">
                     <Sparkles className="size-4" />
                     <span className="absolute inset-0 rounded-full bg-teal/40 animate-ping" />
                   </div>
                   <div>
                     <div className="text-sm font-semibold tracking-wide">Anderoute CoPilot</div>
-                    <div className="text-[10px] uppercase tracking-widest text-sidebar-foreground/60">AI Driving Assistant</div>
+                    <div className="text-[10px] uppercase tracking-widest text-sidebar-foreground/70 flex items-center gap-1">
+                      <span className="size-1 rounded-full bg-success animate-pulse" />
+                      AI Driving Assistant · Online
+                    </div>
                   </div>
                 </div>
-                <button onClick={onClose} className="size-8 grid place-items-center rounded-full hover:bg-sidebar-accent">
+                <button onClick={onClose} className="size-8 grid place-items-center rounded-full hover:bg-sidebar-accent/60">
                   <X className="size-4" />
                 </button>
               </div>
               {/* Wave */}
-              <div className="mt-3 flex items-end gap-1 h-10">
-                {Array.from({ length: 32 }).map((_, i) => (
-                  <motion.div key={i}
-                    className="w-1 rounded-full bg-teal"
-                    animate={{ height: listening ? [4, 12 + Math.random() * 24, 6, 18, 4] : [4, 8, 4] }}
-                    transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.04 }} />
-                ))}
+              <div className="relative mt-3 flex items-center justify-center gap-[3px] h-12">
+                {Array.from({ length: 36 }).map((_, i) => {
+                  const center = 18;
+                  const dist = Math.abs(i - center);
+                  const baseHeight = listening
+                    ? Math.max(6, 36 - dist * 1.6 + Math.random() * 14)
+                    : Math.max(4, 14 - dist * 0.5);
+                  return (
+                    <motion.span
+                      key={i}
+                      className={cn(
+                        "w-[3px] rounded-full origin-center",
+                        listening ? "bg-teal" : "bg-sidebar-foreground/35",
+                      )}
+                      style={{ height: baseHeight }}
+                      animate={
+                        listening
+                          ? { scaleY: [0.4, 1, 0.6, 1.1, 0.5] }
+                          : { scaleY: [0.4, 0.8, 0.4] }
+                      }
+                      transition={{
+                        duration: listening ? 0.9 : 2.4,
+                        repeat: Infinity,
+                        delay: i * 0.03,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  );
+                })}
               </div>
-              <div className="mt-2 text-[11px] text-sidebar-foreground/70 text-center">
-                {listening ? "Listening… say a command" : "Tap the mic or pick a suggestion"}
+              <div className="relative mt-1.5 text-[11px] text-sidebar-foreground/80 text-center inline-flex w-full items-center justify-center gap-1.5">
+                {listening ? (
+                  <>
+                    <span className="size-1.5 rounded-full bg-destructive animate-pulse" />
+                    Listening… say a command
+                  </>
+                ) : (
+                  <>Tap the mic or pick a suggested command</>
+                )}
               </div>
             </div>
 
