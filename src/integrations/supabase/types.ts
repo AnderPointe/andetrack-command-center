@@ -562,6 +562,9 @@ export type Database = {
         Row: {
           captured_at: string
           company_id: string
+          dispatch_confirmed: boolean
+          dispatch_confirmed_at: string | null
+          dispatch_confirmed_by: string | null
           driver_id: string | null
           id: string
           load_id: string
@@ -573,6 +576,9 @@ export type Database = {
         Insert: {
           captured_at?: string
           company_id: string
+          dispatch_confirmed?: boolean
+          dispatch_confirmed_at?: string | null
+          dispatch_confirmed_by?: string | null
           driver_id?: string | null
           id?: string
           load_id: string
@@ -584,6 +590,9 @@ export type Database = {
         Update: {
           captured_at?: string
           company_id?: string
+          dispatch_confirmed?: boolean
+          dispatch_confirmed_at?: string | null
+          dispatch_confirmed_by?: string | null
           driver_id?: string | null
           id?: string
           load_id?: string
