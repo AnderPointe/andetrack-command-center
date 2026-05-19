@@ -244,6 +244,48 @@ export type Database = {
         }
         Relationships: []
       }
+      dispatch_voice_messages: {
+        Row: {
+          acknowledged_at: string | null
+          audio_url: string | null
+          company_id: string
+          created_at: string
+          delivered_at: string | null
+          dispatcher_id: string
+          driver_id: string
+          id: string
+          message: string
+          priority: string
+          session_id: string | null
+        }
+        Insert: {
+          acknowledged_at?: string | null
+          audio_url?: string | null
+          company_id: string
+          created_at?: string
+          delivered_at?: string | null
+          dispatcher_id: string
+          driver_id: string
+          id?: string
+          message: string
+          priority?: string
+          session_id?: string | null
+        }
+        Update: {
+          acknowledged_at?: string | null
+          audio_url?: string | null
+          company_id?: string
+          created_at?: string
+          delivered_at?: string | null
+          dispatcher_id?: string
+          driver_id?: string
+          id?: string
+          message?: string
+          priority?: string
+          session_id?: string | null
+        }
+        Relationships: []
+      }
       driver_live_state: {
         Row: {
           active_load_id: string | null
@@ -1268,6 +1310,57 @@ export type Database = {
         }
         Relationships: []
       }
+      route_intelligence_insights: {
+        Row: {
+          company_id: string
+          created_at: string
+          distance_ahead_m: number | null
+          driver_id: string
+          expires_at: string | null
+          id: string
+          insight_type: string
+          location_lat: number | null
+          location_lng: number | null
+          message: string
+          metadata: Json | null
+          session_id: string | null
+          severity: string
+          title: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          distance_ahead_m?: number | null
+          driver_id: string
+          expires_at?: string | null
+          id?: string
+          insight_type: string
+          location_lat?: number | null
+          location_lng?: number | null
+          message: string
+          metadata?: Json | null
+          session_id?: string | null
+          severity?: string
+          title: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          distance_ahead_m?: number | null
+          driver_id?: string
+          expires_at?: string | null
+          id?: string
+          insight_type?: string
+          location_lat?: number | null
+          location_lng?: number | null
+          message?: string
+          metadata?: Json | null
+          session_id?: string | null
+          severity?: string
+          title?: string
+        }
+        Relationships: []
+      }
       route_progress: {
         Row: {
           company_id: string
@@ -1931,6 +2024,45 @@ export type Database = {
           response?: string | null
           safety_mode?: boolean
           transcript?: string | null
+        }
+        Relationships: []
+      }
+      voice_command_events: {
+        Row: {
+          company_id: string
+          confidence: number | null
+          created_at: string
+          driver_id: string
+          handled: boolean
+          handler_result: Json | null
+          id: string
+          intent: string | null
+          session_id: string | null
+          transcript: string
+        }
+        Insert: {
+          company_id: string
+          confidence?: number | null
+          created_at?: string
+          driver_id: string
+          handled?: boolean
+          handler_result?: Json | null
+          id?: string
+          intent?: string | null
+          session_id?: string | null
+          transcript: string
+        }
+        Update: {
+          company_id?: string
+          confidence?: number | null
+          created_at?: string
+          driver_id?: string
+          handled?: boolean
+          handler_result?: Json | null
+          id?: string
+          intent?: string | null
+          session_id?: string | null
+          transcript?: string
         }
         Relationships: []
       }
