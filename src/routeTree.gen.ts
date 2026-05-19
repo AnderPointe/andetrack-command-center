@@ -52,6 +52,7 @@ import { Route as IntelligenceOverviewRouteImport } from './routes/intelligence.
 import { Route as IntelligenceHandoffRouteImport } from './routes/intelligence.handoff'
 import { Route as IntelligenceGovernanceRouteImport } from './routes/intelligence.governance'
 import { Route as IntelligenceExecutiveRouteImport } from './routes/intelligence.executive'
+import { Route as IntelligenceEtaConfidenceRouteImport } from './routes/intelligence.eta-confidence'
 import { Route as IntelligenceDispatchRouteImport } from './routes/intelligence.dispatch'
 import { Route as IntelligenceCustomersRouteImport } from './routes/intelligence.customers'
 import { Route as IntelligenceCapacityRouteImport } from './routes/intelligence.capacity'
@@ -294,6 +295,12 @@ const IntelligenceExecutiveRoute = IntelligenceExecutiveRouteImport.update({
   path: '/intelligence/executive',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IntelligenceEtaConfidenceRoute =
+  IntelligenceEtaConfidenceRouteImport.update({
+    id: '/intelligence/eta-confidence',
+    path: '/intelligence/eta-confidence',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IntelligenceDispatchRoute = IntelligenceDispatchRouteImport.update({
   id: '/intelligence/dispatch',
   path: '/intelligence/dispatch',
@@ -453,6 +460,7 @@ export interface FileRoutesByFullPath {
   '/intelligence/capacity': typeof IntelligenceCapacityRoute
   '/intelligence/customers': typeof IntelligenceCustomersRoute
   '/intelligence/dispatch': typeof IntelligenceDispatchRoute
+  '/intelligence/eta-confidence': typeof IntelligenceEtaConfidenceRoute
   '/intelligence/executive': typeof IntelligenceExecutiveRoute
   '/intelligence/governance': typeof IntelligenceGovernanceRoute
   '/intelligence/handoff': typeof IntelligenceHandoffRoute
@@ -521,6 +529,7 @@ export interface FileRoutesByTo {
   '/intelligence/capacity': typeof IntelligenceCapacityRoute
   '/intelligence/customers': typeof IntelligenceCustomersRoute
   '/intelligence/dispatch': typeof IntelligenceDispatchRoute
+  '/intelligence/eta-confidence': typeof IntelligenceEtaConfidenceRoute
   '/intelligence/executive': typeof IntelligenceExecutiveRoute
   '/intelligence/governance': typeof IntelligenceGovernanceRoute
   '/intelligence/handoff': typeof IntelligenceHandoffRoute
@@ -590,6 +599,7 @@ export interface FileRoutesById {
   '/intelligence/capacity': typeof IntelligenceCapacityRoute
   '/intelligence/customers': typeof IntelligenceCustomersRoute
   '/intelligence/dispatch': typeof IntelligenceDispatchRoute
+  '/intelligence/eta-confidence': typeof IntelligenceEtaConfidenceRoute
   '/intelligence/executive': typeof IntelligenceExecutiveRoute
   '/intelligence/governance': typeof IntelligenceGovernanceRoute
   '/intelligence/handoff': typeof IntelligenceHandoffRoute
@@ -660,6 +670,7 @@ export interface FileRouteTypes {
     | '/intelligence/capacity'
     | '/intelligence/customers'
     | '/intelligence/dispatch'
+    | '/intelligence/eta-confidence'
     | '/intelligence/executive'
     | '/intelligence/governance'
     | '/intelligence/handoff'
@@ -728,6 +739,7 @@ export interface FileRouteTypes {
     | '/intelligence/capacity'
     | '/intelligence/customers'
     | '/intelligence/dispatch'
+    | '/intelligence/eta-confidence'
     | '/intelligence/executive'
     | '/intelligence/governance'
     | '/intelligence/handoff'
@@ -796,6 +808,7 @@ export interface FileRouteTypes {
     | '/intelligence/capacity'
     | '/intelligence/customers'
     | '/intelligence/dispatch'
+    | '/intelligence/eta-confidence'
     | '/intelligence/executive'
     | '/intelligence/governance'
     | '/intelligence/handoff'
@@ -863,6 +876,7 @@ export interface RootRouteChildren {
   IntelligenceCapacityRoute: typeof IntelligenceCapacityRoute
   IntelligenceCustomersRoute: typeof IntelligenceCustomersRoute
   IntelligenceDispatchRoute: typeof IntelligenceDispatchRoute
+  IntelligenceEtaConfidenceRoute: typeof IntelligenceEtaConfidenceRoute
   IntelligenceExecutiveRoute: typeof IntelligenceExecutiveRoute
   IntelligenceGovernanceRoute: typeof IntelligenceGovernanceRoute
   IntelligenceHandoffRoute: typeof IntelligenceHandoffRoute
@@ -1186,6 +1200,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IntelligenceExecutiveRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/intelligence/eta-confidence': {
+      id: '/intelligence/eta-confidence'
+      path: '/intelligence/eta-confidence'
+      fullPath: '/intelligence/eta-confidence'
+      preLoaderRoute: typeof IntelligenceEtaConfidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/intelligence/dispatch': {
       id: '/intelligence/dispatch'
       path: '/intelligence/dispatch'
@@ -1444,6 +1465,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntelligenceCapacityRoute: IntelligenceCapacityRoute,
   IntelligenceCustomersRoute: IntelligenceCustomersRoute,
   IntelligenceDispatchRoute: IntelligenceDispatchRoute,
+  IntelligenceEtaConfidenceRoute: IntelligenceEtaConfidenceRoute,
   IntelligenceExecutiveRoute: IntelligenceExecutiveRoute,
   IntelligenceGovernanceRoute: IntelligenceGovernanceRoute,
   IntelligenceHandoffRoute: IntelligenceHandoffRoute,
@@ -1466,13 +1488,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
