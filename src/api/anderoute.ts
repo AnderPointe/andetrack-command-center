@@ -129,6 +129,31 @@ export const api = {
   // POD
   uploadPOD: (input: Tables["proof_of_delivery"]["Insert"]) =>
     unwrap(supabase.from("proof_of_delivery").insert(input).select().maybeSingle()),
+  listPODs: () =>
+    unwrap(supabase.from("proof_of_delivery").select("*").order("captured_at", { ascending: false })),
+  listPODsForDriver: (driverId: string) =>
+    unwrap(
+      supabase
+        .from("proof_of_delivery")
+        .select("*")
+        .eq("driver_id", driverId)
+        .order("captured_at", { ascending: false }),
+    ),
+  confirmPOD: async (id: string) => {
+    const { data: { user } } = await supabase.auth.getUser();
+    return unwrap(
+      supabase
+        .from("proof_of_delivery")
+        .update({
+          dispatch_confirmed: true,
+          dispatch_confirmed_at: new Date().toISOString(),
+          dispatch_confirmed_by: user?.id ?? null,
+        })
+        .eq("id", id)
+        .select()
+        .maybeSingle(),
+    );
+  },
 
   /**
    * Upload a POD file (signature image or photo) to the private storage bucket
