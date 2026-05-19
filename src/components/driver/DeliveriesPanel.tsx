@@ -31,6 +31,7 @@ import { PODDetailDrawer } from "./PODDetailDrawer";
 export function DeliveriesPanel() {
   const { user } = useAuth();
   const qc = useQueryClient();
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   // Resolve the driver record for the signed-in user (drivers.user_id).
   const driverQ = useQuery({
