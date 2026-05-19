@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
 import { IntelligenceNav } from "@/components/intelligence/IntelligenceNav";
+import { MockBadge } from "@/components/intelligence/MockBadge";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Sparkles, CheckCircle2, XCircle, Info } from "lucide-react";
+import { Sparkles, CheckCircle2, XCircle, Info, Clock, DollarSign, ShieldCheck } from "lucide-react";
 import { useAIRecommendations } from "@/intelligence/hooks/useIntelligence";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 export const Route = createFileRoute("/intelligence/recommendations")({
   head: () => ({ meta: [{ title: "AI Recommendations — Anderoute Intelligence" }] }),
@@ -18,6 +19,13 @@ function RecommendationsPage() {
   const [expanded, setExpanded] = useState<string | null>(recommendations[0]?.id ?? null);
   const [decisions, setDecisions] = useState<Record<string, "approved" | "rejected">>({});
 
+  const totals = useMemo(() => ({
+    pending: recommendations.filter((r) => !decisions[r.id]).length,
+    needsApproval: recommendations.filter((r) => r.approval_required !== "none" && !decisions[r.id]).length,
+    timeSaved: recommendations.reduce((a, r) => a + (r.estimated_time_saved_min ?? 0), 0),
+    costSaved: recommendations.reduce((a, r) => a + Math.max(0, -(r.estimated_cost_impact ?? 0)), 0),
+  }), [recommendations, decisions]);
+
   return (
     <AppShell>
       <div className="space-y-6">
@@ -26,6 +34,7 @@ function RecommendationsPage() {
             <Sparkles className="size-5 text-violet-300" />
             <h1 className="text-xl font-semibold">AI Recommendation Center</h1>
             <Badge variant="outline" className="border-violet-500/40 text-violet-200">Human-in-the-loop</Badge>
+            <MockBadge />
           </div>
           <p className="text-xs text-muted-foreground">
             Every recommendation explains itself. High-impact actions require approval. All decisions
@@ -33,6 +42,14 @@ function RecommendationsPage() {
           </p>
           <IntelligenceNav />
         </header>
+
+        <div className="grid gap-3 md:grid-cols-4">
+          <Stat icon={Sparkles}    tone="text-violet-300"  label="Pending"          value={totals.pending} sub="awaiting decision" />
+          <Stat icon={ShieldCheck} tone="text-amber-300"   label="Needs approval"   value={totals.needsApproval} sub="dispatcher / manager" />
+          <Stat icon={Clock}       tone="text-teal-300"    label="Time saved (est)" value={`${totals.timeSaved}m`} sub="if all approved" />
+          <Stat icon={DollarSign}  tone="text-emerald-300" label="Cost avoided"     value={`$${totals.costSaved.toFixed(0)}`} sub="placeholder" />
+        </div>
+
 
         <div className="grid gap-4 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-2">
