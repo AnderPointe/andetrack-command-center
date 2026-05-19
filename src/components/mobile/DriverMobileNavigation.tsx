@@ -21,13 +21,13 @@ export function DriverMobileNavigation() {
   const nextTurn = route.turnByTurnSteps[route.currentStep + 1];
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-surface-2 py-6 px-4">
+    <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-surface-2 via-background to-surface-2 py-6 px-4">
       <div className="mx-auto max-w-md">
-        <div className="rounded-[2.2rem] border-[10px] border-foreground/10 bg-background shadow-2xl overflow-hidden">
+        <div className="rounded-[2.4rem] border-[10px] border-foreground/10 bg-background shadow-[var(--shadow-lg)] overflow-hidden">
           {/* Status bar */}
           <div className="bg-sidebar text-sidebar-foreground px-5 py-2 flex items-center justify-between text-[11px]">
-            <span>9:41</span>
-            <span className="font-medium">Navigating · {load.id}</span>
+            <span className="tabular-nums font-medium">9:41</span>
+            <span className="font-semibold tracking-wide">NAVIGATING · {load.id}</span>
             <span className="inline-flex items-center gap-1">
               <span className="size-1.5 rounded-full bg-success animate-pulse" /> GPS
             </span>
