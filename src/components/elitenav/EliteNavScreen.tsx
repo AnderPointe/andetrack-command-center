@@ -508,48 +508,174 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
 }
 
 function MapCanvas({ progress, phase }: { progress: number; phase: Phase }) {
-  // Coords are arbitrary points along the SVG path for marker positioning
+  void phase;
+  // Route control points
   const pickupAt = { x: 14, y: 80 };
   const dropAt = { x: 88, y: 18 };
-  // Interpolated driver position
-  const t = progress / 100;
-  const driverX = pickupAt.x + (dropAt.x - pickupAt.x) * t;
-  const driverY = pickupAt.y + (dropAt.y - pickupAt.y) * t - Math.sin(t * Math.PI) * 10;
+  const c1 = { x: 32, y: 64 };
+  const c2 = { x: 64, y: 28 };
+  const routeD = `M ${pickupAt.x} ${pickupAt.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${dropAt.x} ${dropAt.y}`;
+
+  // Interpolated driver position along cubic bezier
+  const t = Math.min(1, Math.max(0, progress / 100));
+  const bz = (p0: number, p1: number, p2: number, p3: number, u: number) => {
+    const v = 1 - u;
+    return v * v * v * p0 + 3 * v * v * u * p1 + 3 * v * u * u * p2 + u * u * u * p3;
+  };
+  const driverX = bz(pickupAt.x, c1.x, c2.x, dropAt.x, t);
+  const driverY = bz(pickupAt.y, c1.y, c2.y, dropAt.y, t);
+  // Heading via derivative
+  const dt = 0.01;
+  const u2 = Math.min(1, t + dt);
+  const hx = bz(pickupAt.x, c1.x, c2.x, dropAt.x, u2) - driverX;
+  const hy = bz(pickupAt.y, c1.y, c2.y, dropAt.y, u2) - driverY;
+  const heading = (Math.atan2(hy, hx) * 180) / Math.PI;
 
   return (
     <div className="absolute inset-0 bg-sidebar">
-      {/* Dark grid */}
-      <div className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }} />
-      {/* Radial glow */}
-      <div className="absolute inset-0"
+      {/* Base land tint */}
+      <div
+        className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 20% 80%, color-mix(in oklab, var(--teal) 28%, transparent), transparent 45%), radial-gradient(circle at 85% 18%, color-mix(in oklab, var(--orange) 22%, transparent), transparent 45%)",
-        }} />
+            "radial-gradient(ellipse at 30% 70%, color-mix(in oklab, var(--teal) 14%, transparent), transparent 55%), radial-gradient(ellipse at 80% 25%, color-mix(in oklab, var(--orange) 12%, transparent), transparent 55%), linear-gradient(180deg, color-mix(in oklab, var(--sidebar) 92%, white 8%), var(--sidebar))",
+        }}
+      />
 
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {/* Roads (faux) */}
-        <g stroke="color-mix(in oklab, white 14%, transparent)" strokeWidth="0.6" fill="none">
-          <path d="M 0 70 L 100 60" />
-          <path d="M 40 0 L 50 100" />
-          <path d="M 0 40 Q 50 50 100 30" />
+      {/* Fine grid */}
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, color-mix(in oklab, white 5%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, white 5%, transparent) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      {/* Coarse grid */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, color-mix(in oklab, white 10%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, white 10%, transparent) 1px, transparent 1px)",
+          backgroundSize: "112px 112px",
+        }}
+      />
+
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="routeGrad" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stopColor="var(--teal)" />
+            <stop offset="65%" stopColor="var(--teal)" />
+            <stop offset="100%" stopColor="var(--orange)" />
+          </linearGradient>
+          <radialGradient id="cometGlow" r="50%">
+            <stop offset="0%" stopColor="white" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="var(--teal)" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* Water bodies */}
+        <g fill="color-mix(in oklab, var(--info) 30%, var(--sidebar) 70%)" opacity="0.45">
+          <path d="M -4 6 Q 22 18 18 36 Q 14 50 -4 44 Z" />
+          <path d="M 70 92 Q 86 84 104 92 L 104 104 L 70 104 Z" />
         </g>
-        {/* Route shadow */}
-        <path d={`M ${pickupAt.x} ${pickupAt.y} Q 45 40 ${dropAt.x} ${dropAt.y}`}
-          stroke="black" strokeOpacity="0.4" strokeWidth="3.6" fill="none" strokeLinecap="round" />
-        {/* Traveled */}
-        <path d={`M ${pickupAt.x} ${pickupAt.y} Q 45 40 ${dropAt.x} ${dropAt.y}`}
-          stroke="var(--teal)" strokeWidth="1.8" fill="none" strokeLinecap="round"
-          pathLength={100} strokeDasharray={`${progress} 100`} />
-        {/* Remaining */}
-        <path d={`M ${pickupAt.x} ${pickupAt.y} Q 45 40 ${dropAt.x} ${dropAt.y}`}
-          stroke="var(--orange)" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeDasharray="2 2"
-          className="route-flow" opacity={0.7} />
+        {/* Parks */}
+        <g fill="color-mix(in oklab, var(--success) 28%, var(--sidebar) 72%)" opacity="0.32">
+          <path d="M 56 70 Q 68 64 74 74 Q 72 84 60 84 Q 52 80 56 70 Z" />
+          <rect x="6" y="58" width="14" height="9" rx="2" />
+        </g>
+
+        {/* Highways — wide base + bright stripe */}
+        <g fill="none" strokeLinecap="round">
+          <path
+            d="M -4 70 Q 30 64 60 60 T 104 56"
+            stroke="color-mix(in oklab, white 8%, transparent)"
+            strokeWidth="3.4"
+          />
+          <path
+            d="M -4 70 Q 30 64 60 60 T 104 56"
+            stroke="color-mix(in oklab, var(--orange) 60%, white 10%)"
+            strokeWidth="1"
+            strokeDasharray="2 2"
+            opacity="0.55"
+          />
+          <path
+            d="M 40 -4 Q 46 30 52 60 T 60 104"
+            stroke="color-mix(in oklab, white 6%, transparent)"
+            strokeWidth="2.4"
+          />
+        </g>
+        {/* Streets */}
+        <g
+          stroke="color-mix(in oklab, white 10%, transparent)"
+          strokeWidth="0.5"
+          fill="none"
+        >
+          <path d="M 0 28 L 100 22" />
+          <path d="M 0 86 L 100 78" />
+          <path d="M 18 0 L 24 100" />
+          <path d="M 74 0 L 80 100" />
+          <path d="M 0 50 Q 50 56 100 46" />
+        </g>
+
+        {/* Route shadow / casing */}
+        <path
+          d={routeD}
+          stroke="black"
+          strokeOpacity="0.45"
+          strokeWidth="4.4"
+          fill="none"
+          strokeLinecap="round"
+        />
+        {/* Traveled segment — gradient + glow */}
+        <path
+          d={routeD}
+          stroke="url(#routeGrad)"
+          strokeWidth="2.4"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={100}
+          strokeDasharray={`${progress} 100`}
+          style={{ filter: "drop-shadow(0 0 1.5px var(--teal))" }}
+        />
+        {/* Traveled shimmer overlay */}
+        <path
+          d={routeD}
+          stroke="white"
+          strokeOpacity="0.35"
+          strokeWidth="0.6"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={100}
+          strokeDasharray={`${progress} 100`}
+          className="route-traveled-shimmer"
+        />
+        {/* Remaining — dashed flow */}
+        <path
+          d={routeD}
+          stroke="var(--orange)"
+          strokeWidth="1.4"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={100}
+          strokeDasharray={`0 ${progress} 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2`}
+          className="route-flow"
+          opacity={0.85}
+        />
+        {/* Comet head racing */}
+        <path
+          d={routeD}
+          stroke="white"
+          strokeWidth="2.2"
+          fill="none"
+          strokeLinecap="round"
+          className="route-comet"
+          opacity={0.9}
+        />
       </svg>
 
       {/* Pickup marker */}
@@ -558,24 +684,61 @@ function MapCanvas({ progress, phase }: { progress: number; phase: Phase }) {
       <Marker x={dropAt.x} y={dropAt.y} color="var(--orange)" label="D" />
 
       {/* Driver position */}
-      <motion.div
+      <div
         className="absolute"
-        style={{ left: `${driverX}%`, top: `${driverY}%`, transform: "translate(-50%, -50%)" }}
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ duration: 1.8, repeat: Infinity }}
+        style={{
+          left: `${driverX}%`,
+          top: `${driverY}%`,
+          transform: "translate(-50%, -50%)",
+        }}
       >
         <div className="relative">
-          <div className="absolute -inset-3 rounded-full bg-teal/30 animate-ping" />
-          <div className="relative size-8 rounded-full bg-teal grid place-items-center text-teal-foreground border-2 border-background shadow-[var(--shadow-md)]">
-            <Truck className="size-4" />
+          {/* Breathing rings */}
+          <span className="absolute inset-0 -m-3 rounded-full bg-teal/30 ring-pulse" />
+          <span className="absolute inset-0 -m-3 rounded-full bg-teal/20 ring-pulse delay-1" />
+          <span className="absolute inset-0 -m-3 rounded-full bg-teal/10 ring-pulse delay-2" />
+          {/* Heading cone */}
+          <div
+            className="absolute left-1/2 top-1/2"
+            style={{
+              transform: `translate(-50%, -50%) rotate(${heading}deg)`,
+            }}
+          >
+            <div
+              className="origin-center"
+              style={{
+                width: 0,
+                height: 0,
+                borderLeft: "10px solid transparent",
+                borderRight: "10px solid transparent",
+                borderBottom: "26px solid color-mix(in oklab, var(--teal) 55%, transparent)",
+                marginTop: "-30px",
+                filter: "blur(2px)",
+              }}
+            />
           </div>
+          {/* Puck */}
+          <motion.div
+            animate={{ scale: [1, 1.06, 1] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative size-9 rounded-full bg-gradient-to-br from-teal to-info grid place-items-center text-teal-foreground border-[2.5px] border-background shadow-[var(--shadow-lg)]"
+          >
+            <Truck className="size-4" />
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Traffic indicator */}
-      <div className="absolute top-3 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-background/85 backdrop-blur border border-border text-[10px] font-semibold">
-        <span className="size-1.5 rounded-full bg-warning" /> Traffic · Moderate
+      <div className="absolute top-3 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-background/85 backdrop-blur border border-border text-[10px] font-semibold tracking-wide shadow-[var(--shadow-sm)]">
+        <span className="relative flex size-1.5">
+          <span className="absolute inset-0 rounded-full bg-warning animate-ping opacity-70" />
+          <span className="relative rounded-full bg-warning size-1.5" />
+        </span>
+        Traffic · Moderate · +4 min
       </div>
+
+      {/* Map vignette overlay */}
+      <div className="absolute inset-0 map-vignette" />
     </div>
   );
 }
