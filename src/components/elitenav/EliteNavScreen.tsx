@@ -13,6 +13,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { ProofOfDeliveryDialog } from "./ProofOfDeliveryDialog";
 import {
   eliteVehicleProfile, eliteManeuvers, initialCoPilotFeed,
   suggestedCommands, initialDispatchSync, denyReasons,
@@ -483,22 +484,13 @@ export function EliteNavScreen() {
         </DialogContent>
       </Dialog>
 
-      {/* POD placeholder */}
-      <Dialog open={podOpen} onOpenChange={setPodOpen}>
-        <DialogContent>
-          <DialogHeader><DialogTitle className="flex items-center gap-2"><PackageCheck className="size-4 text-teal" /> Proof of Delivery</DialogTitle></DialogHeader>
-          <div className="rounded-xl border-2 border-dashed border-border p-8 grid place-items-center text-center">
-            <Camera className="size-10 text-muted-foreground mb-2" />
-            <div className="text-sm font-medium">Capture POD signature & photo</div>
-            <div className="text-xs text-muted-foreground mt-1">Placeholder — camera & e-signature integration</div>
-          </div>
-          <DialogFooter>
-            <Button className="bg-teal text-teal-foreground hover:bg-teal/90" onClick={() => { setPodOpen(false); pushSync("pod", "POD captured · delivery complete"); }}>
-              <CheckCircle2 className="size-4 mr-1" /> Confirm Delivery
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* POD capture */}
+      <ProofOfDeliveryDialog
+        open={podOpen}
+        onOpenChange={setPodOpen}
+        onSubmit={() => pushSync("pod", "POD captured · delivery complete")}
+      />
+
     </div>
   );
 }
