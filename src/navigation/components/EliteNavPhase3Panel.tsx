@@ -124,7 +124,7 @@ export function EliteNavPhase3Panel({
     }
 
     // Bind session into provider state so start() has full context.
-    (getNavigationProvider(providerId) as any).session = session;
+    (getNavigationProvider(providerId) as unknown as { session: typeof session }).session = session;
   }
 
   async function handleStart() {
@@ -142,7 +142,7 @@ export function EliteNavPhase3Panel({
 
   function handleSimulateOffRoute() {
     const p = getNavigationProvider(providerId);
-    if (p instanceof MockNavigationProvider) p.simulateOffRoute();
+    if (isMockProvider(p)) p.simulateOffRoute();
   }
 
   const canStart =
