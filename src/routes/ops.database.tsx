@@ -5,8 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   useBackupRecovery, useVulnerabilities, useVendorRisk, useRetentionRules,
+  useRlsCoverage, useIsolationTests, useEdgeFnBoundaries,
 } from "@/security/hooks/useSecurityData";
-import { HardDriveDownload, Bug, Building2, Recycle, Database } from "lucide-react";
+import { HardDriveDownload, Bug, Building2, Recycle, Database, ShieldCheck, Network, Server } from "lucide-react";
 
 export const Route = createFileRoute("/ops/database")({
   head: () => ({ meta: [{ title: "Database & Hardening — Anderoute" }] }),
