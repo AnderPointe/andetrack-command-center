@@ -45,6 +45,7 @@ import { Route as OpsObservabilityRouteImport } from './routes/ops.observability
 import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
 import { Route as OpsDatabaseRouteImport } from './routes/ops.database'
 import { Route as OpsCenterRouteImport } from './routes/ops.center'
+import { Route as LaunchSuccessRouteImport } from './routes/launch.success'
 import { Route as LaunchSalesRouteImport } from './routes/launch.sales'
 import { Route as LaunchRoiRouteImport } from './routes/launch.roi'
 import { Route as LaunchPricingRouteImport } from './routes/launch.pricing'
@@ -265,6 +266,11 @@ const OpsDatabaseRoute = OpsDatabaseRouteImport.update({
 const OpsCenterRoute = OpsCenterRouteImport.update({
   id: '/ops/center',
   path: '/ops/center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchSuccessRoute = LaunchSuccessRouteImport.update({
+  id: '/launch/success',
+  path: '/launch/success',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchSalesRoute = LaunchSalesRouteImport.update({
@@ -531,6 +537,7 @@ export interface FileRoutesByFullPath {
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
+  '/launch/success': typeof LaunchSuccessRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -609,6 +616,7 @@ export interface FileRoutesByTo {
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
+  '/launch/success': typeof LaunchSuccessRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -688,6 +696,7 @@ export interface FileRoutesById {
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/roi': typeof LaunchRoiRoute
   '/launch/sales': typeof LaunchSalesRoute
+  '/launch/success': typeof LaunchSuccessRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -768,6 +777,7 @@ export interface FileRouteTypes {
     | '/launch/pricing'
     | '/launch/roi'
     | '/launch/sales'
+    | '/launch/success'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -846,6 +856,7 @@ export interface FileRouteTypes {
     | '/launch/pricing'
     | '/launch/roi'
     | '/launch/sales'
+    | '/launch/success'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -924,6 +935,7 @@ export interface FileRouteTypes {
     | '/launch/pricing'
     | '/launch/roi'
     | '/launch/sales'
+    | '/launch/success'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -1001,6 +1013,7 @@ export interface RootRouteChildren {
   LaunchPricingRoute: typeof LaunchPricingRoute
   LaunchRoiRoute: typeof LaunchRoiRoute
   LaunchSalesRoute: typeof LaunchSalesRoute
+  LaunchSuccessRoute: typeof LaunchSuccessRoute
   OpsCenterRoute: typeof OpsCenterRoute
   OpsDatabaseRoute: typeof OpsDatabaseRoute
   OpsIncidentsRoute: typeof OpsIncidentsRoute
@@ -1266,6 +1279,13 @@ declare module '@tanstack/react-router' {
       path: '/ops/center'
       fullPath: '/ops/center'
       preLoaderRoute: typeof OpsCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/success': {
+      id: '/launch/success'
+      path: '/launch/success'
+      fullPath: '/launch/success'
+      preLoaderRoute: typeof LaunchSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/sales': {
@@ -1662,6 +1682,7 @@ const rootRouteChildren: RootRouteChildren = {
   LaunchPricingRoute: LaunchPricingRoute,
   LaunchRoiRoute: LaunchRoiRoute,
   LaunchSalesRoute: LaunchSalesRoute,
+  LaunchSuccessRoute: LaunchSuccessRoute,
   OpsCenterRoute: OpsCenterRoute,
   OpsDatabaseRoute: OpsDatabaseRoute,
   OpsIncidentsRoute: OpsIncidentsRoute,
