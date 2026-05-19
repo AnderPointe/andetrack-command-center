@@ -49,6 +49,7 @@ import { Route as LaunchPricingRouteImport } from './routes/launch.pricing'
 import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
 import { Route as LaunchOnboardingRouteImport } from './routes/launch.onboarding'
 import { Route as LaunchMarketingRouteImport } from './routes/launch.marketing'
+import { Route as LaunchDocumentationRouteImport } from './routes/launch.documentation'
 import { Route as LaunchDemoRouteImport } from './routes/launch.demo'
 import { Route as IntelligenceRiskRouteImport } from './routes/intelligence.risk'
 import { Route as IntelligenceRecommendationsRouteImport } from './routes/intelligence.recommendations'
@@ -283,6 +284,11 @@ const LaunchMarketingRoute = LaunchMarketingRouteImport.update({
   path: '/launch/marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaunchDocumentationRoute = LaunchDocumentationRouteImport.update({
+  id: '/launch/documentation',
+  path: '/launch/documentation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaunchDemoRoute = LaunchDemoRouteImport.update({
   id: '/launch/demo',
   path: '/launch/demo',
@@ -499,6 +505,7 @@ export interface FileRoutesByFullPath {
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
+  '/launch/documentation': typeof LaunchDocumentationRoute
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
@@ -573,6 +580,7 @@ export interface FileRoutesByTo {
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
+  '/launch/documentation': typeof LaunchDocumentationRoute
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
@@ -648,6 +656,7 @@ export interface FileRoutesById {
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
+  '/launch/documentation': typeof LaunchDocumentationRoute
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
@@ -724,6 +733,7 @@ export interface FileRouteTypes {
     | '/intelligence/recommendations'
     | '/intelligence/risk'
     | '/launch/demo'
+    | '/launch/documentation'
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
@@ -798,6 +808,7 @@ export interface FileRouteTypes {
     | '/intelligence/recommendations'
     | '/intelligence/risk'
     | '/launch/demo'
+    | '/launch/documentation'
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
@@ -872,6 +883,7 @@ export interface FileRouteTypes {
     | '/intelligence/recommendations'
     | '/intelligence/risk'
     | '/launch/demo'
+    | '/launch/documentation'
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
@@ -945,6 +957,7 @@ export interface RootRouteChildren {
   IntelligenceRecommendationsRoute: typeof IntelligenceRecommendationsRoute
   IntelligenceRiskRoute: typeof IntelligenceRiskRoute
   LaunchDemoRoute: typeof LaunchDemoRoute
+  LaunchDocumentationRoute: typeof LaunchDocumentationRoute
   LaunchMarketingRoute: typeof LaunchMarketingRoute
   LaunchOnboardingRoute: typeof LaunchOnboardingRoute
   LaunchOverviewRoute: typeof LaunchOverviewRoute
@@ -1242,6 +1255,13 @@ declare module '@tanstack/react-router' {
       path: '/launch/marketing'
       fullPath: '/launch/marketing'
       preLoaderRoute: typeof LaunchMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/documentation': {
+      id: '/launch/documentation'
+      path: '/launch/documentation'
+      fullPath: '/launch/documentation'
+      preLoaderRoute: typeof LaunchDocumentationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/demo': {
@@ -1574,6 +1594,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntelligenceRecommendationsRoute: IntelligenceRecommendationsRoute,
   IntelligenceRiskRoute: IntelligenceRiskRoute,
   LaunchDemoRoute: LaunchDemoRoute,
+  LaunchDocumentationRoute: LaunchDocumentationRoute,
   LaunchMarketingRoute: LaunchMarketingRoute,
   LaunchOnboardingRoute: LaunchOnboardingRoute,
   LaunchOverviewRoute: LaunchOverviewRoute,
