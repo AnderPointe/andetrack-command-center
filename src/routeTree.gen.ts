@@ -45,6 +45,17 @@ import { Route as OpsObservabilityRouteImport } from './routes/ops.observability
 import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
 import { Route as OpsDatabaseRouteImport } from './routes/ops.database'
 import { Route as OpsCenterRouteImport } from './routes/ops.center'
+import { Route as IntelligenceRiskRouteImport } from './routes/intelligence.risk'
+import { Route as IntelligenceRecommendationsRouteImport } from './routes/intelligence.recommendations'
+import { Route as IntelligencePhase9OverviewRouteImport } from './routes/intelligence.phase9-overview'
+import { Route as IntelligenceOverviewRouteImport } from './routes/intelligence.overview'
+import { Route as IntelligenceHandoffRouteImport } from './routes/intelligence.handoff'
+import { Route as IntelligenceGovernanceRouteImport } from './routes/intelligence.governance'
+import { Route as IntelligenceExecutiveRouteImport } from './routes/intelligence.executive'
+import { Route as IntelligenceDispatchRouteImport } from './routes/intelligence.dispatch'
+import { Route as IntelligenceCustomersRouteImport } from './routes/intelligence.customers'
+import { Route as IntelligenceCapacityRouteImport } from './routes/intelligence.capacity'
+import { Route as IntelligenceAlertsRouteImport } from './routes/intelligence.alerts'
 import { Route as IntegrationsWebhooksRouteImport } from './routes/integrations.webhooks'
 import { Route as IntegrationsHubRouteImport } from './routes/integrations.hub'
 import { Route as IntegrationsHealthRouteImport } from './routes/integrations.health'
@@ -246,6 +257,63 @@ const OpsCenterRoute = OpsCenterRouteImport.update({
   path: '/ops/center',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IntelligenceRiskRoute = IntelligenceRiskRouteImport.update({
+  id: '/intelligence/risk',
+  path: '/intelligence/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceRecommendationsRoute =
+  IntelligenceRecommendationsRouteImport.update({
+    id: '/intelligence/recommendations',
+    path: '/intelligence/recommendations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IntelligencePhase9OverviewRoute =
+  IntelligencePhase9OverviewRouteImport.update({
+    id: '/intelligence/phase9-overview',
+    path: '/intelligence/phase9-overview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IntelligenceOverviewRoute = IntelligenceOverviewRouteImport.update({
+  id: '/intelligence/overview',
+  path: '/intelligence/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceHandoffRoute = IntelligenceHandoffRouteImport.update({
+  id: '/intelligence/handoff',
+  path: '/intelligence/handoff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceGovernanceRoute = IntelligenceGovernanceRouteImport.update({
+  id: '/intelligence/governance',
+  path: '/intelligence/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceExecutiveRoute = IntelligenceExecutiveRouteImport.update({
+  id: '/intelligence/executive',
+  path: '/intelligence/executive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceDispatchRoute = IntelligenceDispatchRouteImport.update({
+  id: '/intelligence/dispatch',
+  path: '/intelligence/dispatch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceCustomersRoute = IntelligenceCustomersRouteImport.update({
+  id: '/intelligence/customers',
+  path: '/intelligence/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceCapacityRoute = IntelligenceCapacityRouteImport.update({
+  id: '/intelligence/capacity',
+  path: '/intelligence/capacity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceAlertsRoute = IntelligenceAlertsRouteImport.update({
+  id: '/intelligence/alerts',
+  path: '/intelligence/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IntegrationsWebhooksRoute = IntegrationsWebhooksRouteImport.update({
   id: '/integrations/webhooks',
   path: '/integrations/webhooks',
@@ -381,6 +449,17 @@ export interface FileRoutesByFullPath {
   '/integrations/health': typeof IntegrationsHealthRoute
   '/integrations/hub': typeof IntegrationsHubRoute
   '/integrations/webhooks': typeof IntegrationsWebhooksRoute
+  '/intelligence/alerts': typeof IntelligenceAlertsRoute
+  '/intelligence/capacity': typeof IntelligenceCapacityRoute
+  '/intelligence/customers': typeof IntelligenceCustomersRoute
+  '/intelligence/dispatch': typeof IntelligenceDispatchRoute
+  '/intelligence/executive': typeof IntelligenceExecutiveRoute
+  '/intelligence/governance': typeof IntelligenceGovernanceRoute
+  '/intelligence/handoff': typeof IntelligenceHandoffRoute
+  '/intelligence/overview': typeof IntelligenceOverviewRoute
+  '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
+  '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
+  '/intelligence/risk': typeof IntelligenceRiskRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -438,6 +517,17 @@ export interface FileRoutesByTo {
   '/integrations/health': typeof IntegrationsHealthRoute
   '/integrations/hub': typeof IntegrationsHubRoute
   '/integrations/webhooks': typeof IntegrationsWebhooksRoute
+  '/intelligence/alerts': typeof IntelligenceAlertsRoute
+  '/intelligence/capacity': typeof IntelligenceCapacityRoute
+  '/intelligence/customers': typeof IntelligenceCustomersRoute
+  '/intelligence/dispatch': typeof IntelligenceDispatchRoute
+  '/intelligence/executive': typeof IntelligenceExecutiveRoute
+  '/intelligence/governance': typeof IntelligenceGovernanceRoute
+  '/intelligence/handoff': typeof IntelligenceHandoffRoute
+  '/intelligence/overview': typeof IntelligenceOverviewRoute
+  '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
+  '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
+  '/intelligence/risk': typeof IntelligenceRiskRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -496,6 +586,17 @@ export interface FileRoutesById {
   '/integrations/health': typeof IntegrationsHealthRoute
   '/integrations/hub': typeof IntegrationsHubRoute
   '/integrations/webhooks': typeof IntegrationsWebhooksRoute
+  '/intelligence/alerts': typeof IntelligenceAlertsRoute
+  '/intelligence/capacity': typeof IntelligenceCapacityRoute
+  '/intelligence/customers': typeof IntelligenceCustomersRoute
+  '/intelligence/dispatch': typeof IntelligenceDispatchRoute
+  '/intelligence/executive': typeof IntelligenceExecutiveRoute
+  '/intelligence/governance': typeof IntelligenceGovernanceRoute
+  '/intelligence/handoff': typeof IntelligenceHandoffRoute
+  '/intelligence/overview': typeof IntelligenceOverviewRoute
+  '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
+  '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
+  '/intelligence/risk': typeof IntelligenceRiskRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -555,6 +656,17 @@ export interface FileRouteTypes {
     | '/integrations/health'
     | '/integrations/hub'
     | '/integrations/webhooks'
+    | '/intelligence/alerts'
+    | '/intelligence/capacity'
+    | '/intelligence/customers'
+    | '/intelligence/dispatch'
+    | '/intelligence/executive'
+    | '/intelligence/governance'
+    | '/intelligence/handoff'
+    | '/intelligence/overview'
+    | '/intelligence/phase9-overview'
+    | '/intelligence/recommendations'
+    | '/intelligence/risk'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -612,6 +724,17 @@ export interface FileRouteTypes {
     | '/integrations/health'
     | '/integrations/hub'
     | '/integrations/webhooks'
+    | '/intelligence/alerts'
+    | '/intelligence/capacity'
+    | '/intelligence/customers'
+    | '/intelligence/dispatch'
+    | '/intelligence/executive'
+    | '/intelligence/governance'
+    | '/intelligence/handoff'
+    | '/intelligence/overview'
+    | '/intelligence/phase9-overview'
+    | '/intelligence/recommendations'
+    | '/intelligence/risk'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -669,6 +792,17 @@ export interface FileRouteTypes {
     | '/integrations/health'
     | '/integrations/hub'
     | '/integrations/webhooks'
+    | '/intelligence/alerts'
+    | '/intelligence/capacity'
+    | '/intelligence/customers'
+    | '/intelligence/dispatch'
+    | '/intelligence/executive'
+    | '/intelligence/governance'
+    | '/intelligence/handoff'
+    | '/intelligence/overview'
+    | '/intelligence/phase9-overview'
+    | '/intelligence/recommendations'
+    | '/intelligence/risk'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -725,6 +859,17 @@ export interface RootRouteChildren {
   IntegrationsHealthRoute: typeof IntegrationsHealthRoute
   IntegrationsHubRoute: typeof IntegrationsHubRoute
   IntegrationsWebhooksRoute: typeof IntegrationsWebhooksRoute
+  IntelligenceAlertsRoute: typeof IntelligenceAlertsRoute
+  IntelligenceCapacityRoute: typeof IntelligenceCapacityRoute
+  IntelligenceCustomersRoute: typeof IntelligenceCustomersRoute
+  IntelligenceDispatchRoute: typeof IntelligenceDispatchRoute
+  IntelligenceExecutiveRoute: typeof IntelligenceExecutiveRoute
+  IntelligenceGovernanceRoute: typeof IntelligenceGovernanceRoute
+  IntelligenceHandoffRoute: typeof IntelligenceHandoffRoute
+  IntelligenceOverviewRoute: typeof IntelligenceOverviewRoute
+  IntelligencePhase9OverviewRoute: typeof IntelligencePhase9OverviewRoute
+  IntelligenceRecommendationsRoute: typeof IntelligenceRecommendationsRoute
+  IntelligenceRiskRoute: typeof IntelligenceRiskRoute
   OpsCenterRoute: typeof OpsCenterRoute
   OpsDatabaseRoute: typeof OpsDatabaseRoute
   OpsIncidentsRoute: typeof OpsIncidentsRoute
@@ -992,6 +1137,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpsCenterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/intelligence/risk': {
+      id: '/intelligence/risk'
+      path: '/intelligence/risk'
+      fullPath: '/intelligence/risk'
+      preLoaderRoute: typeof IntelligenceRiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/recommendations': {
+      id: '/intelligence/recommendations'
+      path: '/intelligence/recommendations'
+      fullPath: '/intelligence/recommendations'
+      preLoaderRoute: typeof IntelligenceRecommendationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/phase9-overview': {
+      id: '/intelligence/phase9-overview'
+      path: '/intelligence/phase9-overview'
+      fullPath: '/intelligence/phase9-overview'
+      preLoaderRoute: typeof IntelligencePhase9OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/overview': {
+      id: '/intelligence/overview'
+      path: '/intelligence/overview'
+      fullPath: '/intelligence/overview'
+      preLoaderRoute: typeof IntelligenceOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/handoff': {
+      id: '/intelligence/handoff'
+      path: '/intelligence/handoff'
+      fullPath: '/intelligence/handoff'
+      preLoaderRoute: typeof IntelligenceHandoffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/governance': {
+      id: '/intelligence/governance'
+      path: '/intelligence/governance'
+      fullPath: '/intelligence/governance'
+      preLoaderRoute: typeof IntelligenceGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/executive': {
+      id: '/intelligence/executive'
+      path: '/intelligence/executive'
+      fullPath: '/intelligence/executive'
+      preLoaderRoute: typeof IntelligenceExecutiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/dispatch': {
+      id: '/intelligence/dispatch'
+      path: '/intelligence/dispatch'
+      fullPath: '/intelligence/dispatch'
+      preLoaderRoute: typeof IntelligenceDispatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/customers': {
+      id: '/intelligence/customers'
+      path: '/intelligence/customers'
+      fullPath: '/intelligence/customers'
+      preLoaderRoute: typeof IntelligenceCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/capacity': {
+      id: '/intelligence/capacity'
+      path: '/intelligence/capacity'
+      fullPath: '/intelligence/capacity'
+      preLoaderRoute: typeof IntelligenceCapacityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence/alerts': {
+      id: '/intelligence/alerts'
+      path: '/intelligence/alerts'
+      fullPath: '/intelligence/alerts'
+      preLoaderRoute: typeof IntelligenceAlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/integrations/webhooks': {
       id: '/integrations/webhooks'
       path: '/integrations/webhooks'
@@ -1218,6 +1440,17 @@ const rootRouteChildren: RootRouteChildren = {
   IntegrationsHealthRoute: IntegrationsHealthRoute,
   IntegrationsHubRoute: IntegrationsHubRoute,
   IntegrationsWebhooksRoute: IntegrationsWebhooksRoute,
+  IntelligenceAlertsRoute: IntelligenceAlertsRoute,
+  IntelligenceCapacityRoute: IntelligenceCapacityRoute,
+  IntelligenceCustomersRoute: IntelligenceCustomersRoute,
+  IntelligenceDispatchRoute: IntelligenceDispatchRoute,
+  IntelligenceExecutiveRoute: IntelligenceExecutiveRoute,
+  IntelligenceGovernanceRoute: IntelligenceGovernanceRoute,
+  IntelligenceHandoffRoute: IntelligenceHandoffRoute,
+  IntelligenceOverviewRoute: IntelligenceOverviewRoute,
+  IntelligencePhase9OverviewRoute: IntelligencePhase9OverviewRoute,
+  IntelligenceRecommendationsRoute: IntelligenceRecommendationsRoute,
+  IntelligenceRiskRoute: IntelligenceRiskRoute,
   OpsCenterRoute: OpsCenterRoute,
   OpsDatabaseRoute: OpsDatabaseRoute,
   OpsIncidentsRoute: OpsIncidentsRoute,
