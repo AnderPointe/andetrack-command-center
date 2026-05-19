@@ -184,9 +184,15 @@ function ProductionSettings() {
               <li key={slug} className="rounded bg-white/5 px-2 py-1 font-mono">docs/{slug}.md — {label}</li>
             ))}
           </ul>
-          <div className="mt-2 text-[11px] text-zinc-400">
-            Existing Phase 5 lab still lives at{" "}
-            <Link to="/driver/notifications-lab" className="text-emerald-300 underline">/driver/notifications-lab</Link>.
+          <div className="mt-2 flex flex-wrap gap-x-3 text-[11px] text-zinc-400">
+            <span>
+              Lab:{" "}
+              <Link to="/driver/notifications-lab" className="text-emerald-300 underline">/driver/notifications-lab</Link>
+            </span>
+            <span>
+              Monitoring:{" "}
+              <Link to="/settings/production-monitoring" className="text-emerald-300 underline">/settings/production-monitoring</Link>
+            </span>
           </div>
         </div>
       </div>

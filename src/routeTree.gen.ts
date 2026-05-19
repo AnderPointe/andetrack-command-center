@@ -27,6 +27,7 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as SettingsProductionMonitoringRouteImport } from './routes/settings.production-monitoring'
 import { Route as SettingsProductionRouteImport } from './routes/settings.production'
 import { Route as DriverPhase5DemoRouteImport } from './routes/driver.phase5-demo'
 import { Route as DriverNotificationsLabRouteImport } from './routes/driver.notifications-lab'
@@ -127,6 +128,12 @@ const DriverIndexRoute = DriverIndexRouteImport.update({
   path: '/driver/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsProductionMonitoringRoute =
+  SettingsProductionMonitoringRouteImport.update({
+    id: '/production-monitoring',
+    path: '/production-monitoring',
+    getParentRoute: () => SettingsRoute,
+  } as any)
 const SettingsProductionRoute = SettingsProductionRouteImport.update({
   id: '/production',
   path: '/production',
@@ -200,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
   '/settings/production': typeof SettingsProductionRoute
+  '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -229,6 +237,7 @@ export interface FileRoutesByTo {
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
   '/settings/production': typeof SettingsProductionRoute
+  '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -259,6 +268,7 @@ export interface FileRoutesById {
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
   '/driver/phase5-demo': typeof DriverPhase5DemoRoute
   '/settings/production': typeof SettingsProductionRoute
+  '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
     | '/settings/production'
+    | '/settings/production-monitoring'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -319,6 +330,7 @@ export interface FileRouteTypes {
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
     | '/settings/production'
+    | '/settings/production-monitoring'
     | '/driver'
   id:
     | '__root__'
@@ -348,6 +360,7 @@ export interface FileRouteTypes {
     | '/driver/notifications-lab'
     | '/driver/phase5-demo'
     | '/settings/production'
+    | '/settings/production-monitoring'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -508,6 +521,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings/production-monitoring': {
+      id: '/settings/production-monitoring'
+      path: '/production-monitoring'
+      fullPath: '/settings/production-monitoring'
+      preLoaderRoute: typeof SettingsProductionMonitoringRouteImport
+      parentRoute: typeof SettingsRoute
+    }
     '/settings/production': {
       id: '/settings/production'
       path: '/production'
@@ -576,10 +596,12 @@ declare module '@tanstack/react-router' {
 
 interface SettingsRouteChildren {
   SettingsProductionRoute: typeof SettingsProductionRoute
+  SettingsProductionMonitoringRoute: typeof SettingsProductionMonitoringRoute
 }
 
 const SettingsRouteChildren: SettingsRouteChildren = {
   SettingsProductionRoute: SettingsProductionRoute,
+  SettingsProductionMonitoringRoute: SettingsProductionMonitoringRoute,
 }
 
 const SettingsRouteWithChildren = SettingsRoute._addFileChildren(
