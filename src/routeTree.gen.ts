@@ -28,6 +28,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
 import { Route as SettingsProductionRouteImport } from './routes/settings.production'
+import { Route as DriverPhase5DemoRouteImport } from './routes/driver.phase5-demo'
 import { Route as DriverNotificationsLabRouteImport } from './routes/driver.notifications-lab'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
 import { Route as DriverNavLabRouteImport } from './routes/driver.nav-lab'
@@ -131,6 +132,11 @@ const SettingsProductionRoute = SettingsProductionRouteImport.update({
   path: '/production',
   getParentRoute: () => SettingsRoute,
 } as any)
+const DriverPhase5DemoRoute = DriverPhase5DemoRouteImport.update({
+  id: '/driver/phase5-demo',
+  path: '/driver/phase5-demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DriverNotificationsLabRoute = DriverNotificationsLabRouteImport.update({
   id: '/driver/notifications-lab',
   path: '/driver/notifications-lab',
@@ -192,6 +198,7 @@ export interface FileRoutesByFullPath {
   '/driver/nav-lab': typeof DriverNavLabRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
+  '/driver/phase5-demo': typeof DriverPhase5DemoRoute
   '/settings/production': typeof SettingsProductionRoute
   '/driver/': typeof DriverIndexRoute
 }
@@ -220,6 +227,7 @@ export interface FileRoutesByTo {
   '/driver/nav-lab': typeof DriverNavLabRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
+  '/driver/phase5-demo': typeof DriverPhase5DemoRoute
   '/settings/production': typeof SettingsProductionRoute
   '/driver': typeof DriverIndexRoute
 }
@@ -249,6 +257,7 @@ export interface FileRoutesById {
   '/driver/nav-lab': typeof DriverNavLabRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/driver/notifications-lab': typeof DriverNotificationsLabRoute
+  '/driver/phase5-demo': typeof DriverPhase5DemoRoute
   '/settings/production': typeof SettingsProductionRoute
   '/driver/': typeof DriverIndexRoute
 }
@@ -279,6 +288,7 @@ export interface FileRouteTypes {
     | '/driver/nav-lab'
     | '/driver/navigation'
     | '/driver/notifications-lab'
+    | '/driver/phase5-demo'
     | '/settings/production'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
@@ -307,6 +317,7 @@ export interface FileRouteTypes {
     | '/driver/nav-lab'
     | '/driver/navigation'
     | '/driver/notifications-lab'
+    | '/driver/phase5-demo'
     | '/settings/production'
     | '/driver'
   id:
@@ -335,6 +346,7 @@ export interface FileRouteTypes {
     | '/driver/nav-lab'
     | '/driver/navigation'
     | '/driver/notifications-lab'
+    | '/driver/phase5-demo'
     | '/settings/production'
     | '/driver/'
   fileRoutesById: FileRoutesById
@@ -364,6 +376,7 @@ export interface RootRouteChildren {
   DriverNavLabRoute: typeof DriverNavLabRoute
   DriverNavigationRoute: typeof DriverNavigationRoute
   DriverNotificationsLabRoute: typeof DriverNotificationsLabRoute
+  DriverPhase5DemoRoute: typeof DriverPhase5DemoRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -502,6 +515,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsProductionRouteImport
       parentRoute: typeof SettingsRoute
     }
+    '/driver/phase5-demo': {
+      id: '/driver/phase5-demo'
+      path: '/driver/phase5-demo'
+      fullPath: '/driver/phase5-demo'
+      preLoaderRoute: typeof DriverPhase5DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/driver/notifications-lab': {
       id: '/driver/notifications-lab'
       path: '/driver/notifications-lab'
@@ -591,6 +611,7 @@ const rootRouteChildren: RootRouteChildren = {
   DriverNavLabRoute: DriverNavLabRoute,
   DriverNavigationRoute: DriverNavigationRoute,
   DriverNotificationsLabRoute: DriverNotificationsLabRoute,
+  DriverPhase5DemoRoute: DriverPhase5DemoRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
