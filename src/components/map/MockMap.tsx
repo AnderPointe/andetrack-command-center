@@ -5,18 +5,33 @@ interface Props {
   height?: number;
   /** 0..1 progress along route */
   progress: number;
+  /** Optional congestion segment expressed as [from, to] along the route 0..1. */
+  congestion?: { from: number; to: number; level?: "light" | "moderate" | "heavy" } | null;
 }
 
 /**
  * Production-grade stylized basemap. Renders dark cartography with water,
- * parks, building footprints, arterials, surface streets, freeway shields,
- * compass, scale bar, and an animated hero route polyline. Public API
- * matches the future Mapbox/HERE adapter.
+ * parks, building footprints, rail, arterials, surface streets, freeway
+ * shields, district labels, compass, scale bar, ambient scanline sweep,
+ * traffic-congestion segment, and an animated hero route polyline. Public
+ * API matches the future Mapbox/HERE adapter.
  */
-export function MockMap({ width = 1200, height = 720, progress }: Props) {
+export function MockMap({
+  width = 1200,
+  height = 720,
+  progress,
+  congestion = { from: 0.42, to: 0.62, level: "moderate" },
+}: Props) {
   const clamped = Math.min(1, Math.max(0, progress));
   const ROUTE_D =
     "M 140 600 C 280 540 320 460 420 440 S 620 380 720 320 S 940 220 1080 160";
+
+  const congestionStroke =
+    congestion?.level === "heavy"
+      ? "#ef4444"
+      : congestion?.level === "light"
+      ? "#fbbf24"
+      : "#fb923c";
 
   return (
     <svg
@@ -49,6 +64,11 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
           <stop offset="0%" stopColor="#0b2436" />
           <stop offset="100%" stopColor="#071a26" />
         </linearGradient>
+        <linearGradient id="scan-grad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="rgba(45,212,191,0)" />
+          <stop offset="50%" stopColor="rgba(45,212,191,0.18)" />
+          <stop offset="100%" stopColor="rgba(45,212,191,0)" />
+        </linearGradient>
         <filter id="route-glow" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="6" />
         </filter>
@@ -57,6 +77,19 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
       <rect width={width} height={height} fill="url(#map-bg)" />
       <rect width={width} height={height} fill="url(#map-grid-fine)" />
       <rect width={width} height={height} fill="url(#map-grid)" />
+
+      {/* Ambient mission-control scanline sweep */}
+      <motion.rect
+        y={0}
+        width={width}
+        height={height}
+        fill="url(#scan-grad)"
+        initial={{ x: -width }}
+        animate={{ x: width }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+        opacity={0.5}
+        pointerEvents="none"
+      />
 
       {/* Water with shoreline */}
       <path
@@ -69,6 +102,9 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
         strokeWidth="1"
         fill="none"
       />
+      <text x="640" y="630" textAnchor="middle" fontSize="11" fill="rgba(148,180,210,0.35)" letterSpacing="6">
+        TRINITY RIVER
+      </text>
 
       {/* Parks */}
       <g>
@@ -82,6 +118,15 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
         </text>
       </g>
 
+      {/* District labels — distant, low-contrast */}
+      <g fontSize="9" fill="rgba(148,163,184,0.32)" letterSpacing="4">
+        <text x="160" y="120" textAnchor="middle">DOWNTOWN</text>
+        <text x="600" y="80" textAnchor="middle">DESIGN DISTRICT</text>
+        <text x="1040" y="100" textAnchor="middle">UPTOWN</text>
+        <text x="500" y="700" textAnchor="middle">RIVERSIDE</text>
+        <text x="980" y="500" textAnchor="middle">LOGISTICS PARK</text>
+      </g>
+
       {/* Building footprints */}
       <g fill="rgba(148,163,184,0.06)" stroke="rgba(148,163,184,0.08)">
         {[
@@ -93,6 +138,24 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
         ].map(([x, y, w, h], i) => (
           <rect key={i} x={x} y={y} width={w} height={h} rx="2" />
         ))}
+      </g>
+
+      {/* Rail line with cross-ties */}
+      <g>
+        <path
+          d="M 0 360 Q 360 340 720 380 T 1240 360"
+          stroke="rgba(148,163,184,0.18)"
+          strokeWidth="2"
+          fill="none"
+        />
+        <path
+          d="M 0 360 Q 360 340 720 380 T 1240 360"
+          stroke="rgba(148,163,184,0.25)"
+          strokeWidth="6"
+          fill="none"
+          strokeDasharray="2 14"
+          opacity="0.5"
+        />
       </g>
 
       {/* Arterials — casing + fill + centerline */}
@@ -154,6 +217,21 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
         fill="none"
         strokeLinecap="round"
       />
+      {/* Traffic congestion overlay segment */}
+      {congestion && (
+        <path
+          d={ROUTE_D}
+          stroke={congestionStroke}
+          strokeWidth="11"
+          fill="none"
+          strokeLinecap="round"
+          pathLength={1}
+          strokeDasharray={`${congestion.to - congestion.from} 1`}
+          strokeDashoffset={-congestion.from}
+          opacity="0.85"
+          style={{ filter: `drop-shadow(0 0 8px ${congestionStroke}aa)` }}
+        />
+      )}
       {/* Traveled — animated reveal */}
       <motion.path
         d={ROUTE_D}
@@ -168,7 +246,7 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
         transition={{ duration: 1.2, ease: "easeOut" }}
         style={{ filter: "drop-shadow(0 0 10px rgba(45,212,191,0.55))" }}
       />
-      {/* Moving chevrons along route */}
+      {/* Moving chevrons along route — primary */}
       <motion.path
         d={ROUTE_D}
         stroke="rgba(255,255,255,0.55)"
@@ -178,6 +256,17 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
         strokeDasharray="2 22"
         animate={{ strokeDashoffset: [0, -48] }}
         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+      />
+      {/* Energy pulse — faster, faint */}
+      <motion.path
+        d={ROUTE_D}
+        stroke="rgba(94,234,212,0.7)"
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+        strokeDasharray="1 32"
+        animate={{ strokeDashoffset: [0, -132] }}
+        transition={{ duration: 1.4, repeat: Infinity, ease: "linear" }}
       />
 
       {/* Pickup marker */}
@@ -213,6 +302,13 @@ export function MockMap({ width = 1200, height = 720, progress }: Props) {
         <rect x="40" y="3" width="40" height="3" fill="rgba(226,232,240,0.5)" />
         <text x="0" y="-4" fontSize="9" fill="#94a3b8">0</text>
         <text x="80" y="-4" textAnchor="end" fontSize="9" fill="#94a3b8">2 mi</text>
+      </g>
+
+      {/* Attribution */}
+      <g transform={`translate(${width - 12} ${height - 10})`}>
+        <text textAnchor="end" fontSize="8" fill="rgba(148,163,184,0.5)" letterSpacing="1">
+          ANDEROUTE BASEMAP · MOCK TILES · v2.1
+        </text>
       </g>
 
       <rect width={width} height={height} fill="url(#vignette)" pointerEvents="none" />
