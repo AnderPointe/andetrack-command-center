@@ -223,7 +223,7 @@ export function EliteNavScreen({ onExit }: Props) {
       <SafetyModeOverlay active={safety} />
 
       {/* Top stack */}
-      <div className="absolute inset-x-0 top-0 z-20 p-2 pt-12 sm:p-4 sm:pt-14">
+      <div className="absolute inset-x-0 top-0 z-20 p-2 pt-3 sm:p-4 sm:pt-4">
         <div className="mx-auto grid max-w-6xl gap-2 sm:gap-3 lg:grid-cols-[1fr_auto]">
           <NavigationHeader
             step={currentStep}
@@ -232,7 +232,7 @@ export function EliteNavScreen({ onExit }: Props) {
             big={safety}
             onClick={() => setShowSteps(true)}
           />
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex flex-wrap items-center justify-end gap-2">
             <span className={`rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider ${
               STATUS_META[status].tone === "alert"
                 ? "border-red-400/40 bg-red-500/10 text-red-200"
