@@ -45,7 +45,9 @@ import { Route as OpsObservabilityRouteImport } from './routes/ops.observability
 import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
 import { Route as OpsDatabaseRouteImport } from './routes/ops.database'
 import { Route as OpsCenterRouteImport } from './routes/ops.center'
+import { Route as LaunchPricingRouteImport } from './routes/launch.pricing'
 import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
+import { Route as LaunchOnboardingRouteImport } from './routes/launch.onboarding'
 import { Route as LaunchMarketingRouteImport } from './routes/launch.marketing'
 import { Route as LaunchDemoRouteImport } from './routes/launch.demo'
 import { Route as IntelligenceRiskRouteImport } from './routes/intelligence.risk'
@@ -261,9 +263,19 @@ const OpsCenterRoute = OpsCenterRouteImport.update({
   path: '/ops/center',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaunchPricingRoute = LaunchPricingRouteImport.update({
+  id: '/launch/pricing',
+  path: '/launch/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaunchOverviewRoute = LaunchOverviewRouteImport.update({
   id: '/launch/overview',
   path: '/launch/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchOnboardingRoute = LaunchOnboardingRouteImport.update({
+  id: '/launch/onboarding',
+  path: '/launch/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchMarketingRoute = LaunchMarketingRouteImport.update({
@@ -488,7 +500,9 @@ export interface FileRoutesByFullPath {
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
   '/launch/marketing': typeof LaunchMarketingRoute
+  '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pricing': typeof LaunchPricingRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -560,7 +574,9 @@ export interface FileRoutesByTo {
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
   '/launch/marketing': typeof LaunchMarketingRoute
+  '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pricing': typeof LaunchPricingRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -633,7 +649,9 @@ export interface FileRoutesById {
   '/intelligence/risk': typeof IntelligenceRiskRoute
   '/launch/demo': typeof LaunchDemoRoute
   '/launch/marketing': typeof LaunchMarketingRoute
+  '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pricing': typeof LaunchPricingRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -707,7 +725,9 @@ export interface FileRouteTypes {
     | '/intelligence/risk'
     | '/launch/demo'
     | '/launch/marketing'
+    | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/pricing'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -779,7 +799,9 @@ export interface FileRouteTypes {
     | '/intelligence/risk'
     | '/launch/demo'
     | '/launch/marketing'
+    | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/pricing'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -851,7 +873,9 @@ export interface FileRouteTypes {
     | '/intelligence/risk'
     | '/launch/demo'
     | '/launch/marketing'
+    | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/pricing'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -922,7 +946,9 @@ export interface RootRouteChildren {
   IntelligenceRiskRoute: typeof IntelligenceRiskRoute
   LaunchDemoRoute: typeof LaunchDemoRoute
   LaunchMarketingRoute: typeof LaunchMarketingRoute
+  LaunchOnboardingRoute: typeof LaunchOnboardingRoute
   LaunchOverviewRoute: typeof LaunchOverviewRoute
+  LaunchPricingRoute: typeof LaunchPricingRoute
   OpsCenterRoute: typeof OpsCenterRoute
   OpsDatabaseRoute: typeof OpsDatabaseRoute
   OpsIncidentsRoute: typeof OpsIncidentsRoute
@@ -1190,11 +1216,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpsCenterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/launch/pricing': {
+      id: '/launch/pricing'
+      path: '/launch/pricing'
+      fullPath: '/launch/pricing'
+      preLoaderRoute: typeof LaunchPricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/launch/overview': {
       id: '/launch/overview'
       path: '/launch/overview'
       fullPath: '/launch/overview'
       preLoaderRoute: typeof LaunchOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/onboarding': {
+      id: '/launch/onboarding'
+      path: '/launch/onboarding'
+      fullPath: '/launch/onboarding'
+      preLoaderRoute: typeof LaunchOnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/marketing': {
@@ -1535,7 +1575,9 @@ const rootRouteChildren: RootRouteChildren = {
   IntelligenceRiskRoute: IntelligenceRiskRoute,
   LaunchDemoRoute: LaunchDemoRoute,
   LaunchMarketingRoute: LaunchMarketingRoute,
+  LaunchOnboardingRoute: LaunchOnboardingRoute,
   LaunchOverviewRoute: LaunchOverviewRoute,
+  LaunchPricingRoute: LaunchPricingRoute,
   OpsCenterRoute: OpsCenterRoute,
   OpsDatabaseRoute: OpsDatabaseRoute,
   OpsIncidentsRoute: OpsIncidentsRoute,
@@ -1551,3 +1593,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
