@@ -59,16 +59,14 @@ function Phase9Overview() {
         </header>
 
         <section className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-          {AREAS.map(({ to, icon: Icon, title, tags, tone }) => (
-            <Link key={to} to={to}>
+          {AREAS.map(({ to, icon: Icon, area, result, tone }) => (
+            <Link key={area} to={to}>
               <Card className={`h-full border bg-white/[0.02] p-4 transition-colors hover:bg-white/[0.04] ${TONE[tone]}`}>
                 <div className="flex items-center gap-2">
                   <Icon className="size-4" />
-                  <h3 className="text-sm font-medium text-foreground">{title}</h3>
+                  <h3 className="text-sm font-medium text-foreground">{area}</h3>
                 </div>
-                <div className="mt-2 flex flex-wrap gap-1 text-[10px]">
-                  {tags.map((t) => <span key={t} className="rounded border border-white/10 px-2 py-0.5 text-muted-foreground">{t}</span>)}
-                </div>
+                <p className="mt-2 text-xs text-muted-foreground">{result}</p>
               </Card>
             </Link>
           ))}
