@@ -6,8 +6,8 @@
  * `executeVoiceIntent()` so the same dispatch table works for Web Speech,
  * Mock, or future SDKs.
  */
-import { supabase } from "@/integrations/supabase/client";
 import { getNavigationProvider } from "../providers/registry";
+import { insertWithQueue } from "../voice/offlineQueue";
 import type { NavigationProviderId } from "../types/navigation";
 import type { VoiceIntent } from "../types/voice";
 
@@ -87,19 +87,27 @@ async function logStatus(
   transcript: string,
 ): Promise<VoiceExecutionResult> {
   ctx.speak?.(spoken);
-  try {
-    await supabase.from("voice_command_events").insert({
+  await insertWithQueue("voice_command_events", {
+    company_id: ctx.companyId,
+    driver_id: ctx.driverId,
+    session_id: ctx.sessionId ?? null,
+    transcript,
+    intent: `status.${status}`,
+    confidence: 0.95,
+    handled: true,
+    handler_result: { status },
+  });
+  // Dispatch automation: delay also pushes a normal-priority voice note so
+  // dispatchers see it in their inbox + event feed without extra UI work.
+  if (status === "delayed") {
+    await insertWithQueue("dispatch_voice_messages", {
       company_id: ctx.companyId,
+      dispatcher_id: ctx.driverId,
       driver_id: ctx.driverId,
       session_id: ctx.sessionId ?? null,
-      transcript,
-      intent: `status.${status}`,
-      confidence: 0.95,
-      handled: true,
-      handler_result: { status },
+      message: `Driver reports delay: "${transcript}"`,
+      priority: "high",
     });
-  } catch (err) {
-    console.warn("voice status log failed", err);
   }
   return { handled: true, spoken, side_effect: `status_${status}` };
 }
@@ -113,17 +121,13 @@ async function sendDispatchMessage(
     return { handled: true, spoken: "What should I send to dispatch?" };
   }
   ctx.speak?.("Sent to dispatch.");
-  try {
-    await supabase.from("dispatch_voice_messages").insert({
-      company_id: ctx.companyId,
-      dispatcher_id: ctx.driverId, // driver→dispatch uses driver as author; dispatcher reads via company scope
-      driver_id: ctx.driverId,
-      session_id: ctx.sessionId ?? null,
-      message,
-      priority: "normal",
-    });
-  } catch (err) {
-    console.warn("dispatch message failed", err);
-  }
+  await insertWithQueue("dispatch_voice_messages", {
+    company_id: ctx.companyId,
+    dispatcher_id: ctx.driverId, // driver→dispatch uses driver as author; dispatcher reads via company scope
+    driver_id: ctx.driverId,
+    session_id: ctx.sessionId ?? null,
+    message,
+    priority: "normal",
+  });
   return { handled: true, spoken: "Sent to dispatch.", side_effect: "dispatch_message_sent" };
 }
