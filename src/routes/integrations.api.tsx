@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
+import { EnterpriseNav } from "@/components/enterprise/EnterpriseNav";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { ALL_API_SCOPES, type ApiScope } from "@/enterprise/types";
-import { Key, Plus, Eye, EyeOff, Trash2, RotateCw, Copy } from "lucide-react";
+import { Key, Plus, Eye, EyeOff, Trash2, RotateCw, Copy, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/integrations/api")({
   head: () => ({ meta: [{ title: "API Marketplace — Anderoute" }] }),
