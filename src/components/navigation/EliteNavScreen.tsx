@@ -63,19 +63,54 @@ export function EliteNavScreen({ onExit }: Props) {
   const [syncEvents, setSyncEvents] = useState<DispatchSyncEvent[]>(mockDispatchSync);
   const [transcript, setTranscript] = useState<CoPilotTranscriptEntry[]>([]);
 
-  // Mock GPS / ETA tick
-  useEffect(() => {
-    if (!routeStarted) return;
-    const id = window.setInterval(() => {
-      setProgress((p) => Math.min(1, p + 0.006));
-      setRemainingMiles((r) => Math.max(0, +(r - 0.4).toFixed(1)));
-      setEtaMin((e) => Math.max(0, e + (Math.random() > 0.65 ? -1 : Math.random() > 0.7 ? 1 : 0)));
-      setSpeed(() => 52 + Math.floor(Math.random() * 14));
-    }, 2200);
-    return () => window.clearInterval(id);
-  }, [routeStarted]);
+  // Phase 2 — realtime telemetry state
+  const [consent, setConsent] = useState(false);
+  const [showPermission, setShowPermission] = useState(false);
+  const [trackingMode, setTrackingMode] = useState<"off" | "active_load">("off");
+  const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
+  const [batteryLevel, setBatteryLevel] = useState<number>(0.92);
+  const [gpsActive, setGpsActive] = useState(false);
+  const [headingDeg, setHeadingDeg] = useState<number>(174);
 
-  // Mock dispatch sync stream
+  // Drive the mock GPS stream once the driver consents AND starts the route.
+  const streamCfg = useMemo<MockStreamConfig | null>(
+    () =>
+      routeStarted && consent
+        ? {
+            driverId: mockDriver.id,
+            companyId: "demo",
+            vehicleId: mockVehicle.id,
+            activeLoadId: mockShipment.id,
+            waypoints: DEMO_ROUTE_DALLAS_HOUSTON,
+            totalMiles: mockRoute.totalMiles,
+            intervalMs: 2000,
+            averageMph: 58,
+            trackingMode: "active_load",
+            driverStatus: status,
+          }
+        : null,
+    [routeStarted, consent, status],
+  );
+
+  useDriverLocationStream(streamCfg, {
+    enabled: routeStarted && consent,
+    onEvent: (e) => {
+      setProgress(Math.min(1, ((mockRoute.totalMiles - (e.remaining_miles ?? 0)) / mockRoute.totalMiles)));
+      if (e.remaining_miles != null) setRemainingMiles(+e.remaining_miles.toFixed(1));
+      if (e.eta_minutes != null) setEtaMin(e.eta_minutes);
+      if (e.speed_mph != null) setSpeed(Math.round(e.speed_mph));
+      if (e.heading != null) setHeadingDeg(e.heading);
+      if (e.battery_level != null) setBatteryLevel(e.battery_level);
+      setGpsActive(true);
+      setTrackingMode("active_load");
+      setLastSyncedAt(new Date().toISOString());
+      // Phase 3: forward to recordLocationEvent + upsertDriverLiveState once a
+      // real authenticated driver row exists. The mock driver_id won't satisfy
+      // the RLS check (driver_id IN drivers WHERE user_id = auth.uid()).
+    },
+  });
+
+  // Mock dispatch sync stream (legacy preview chatter)
   useEffect(() => {
     if (!routeStarted) return;
     const id = window.setInterval(() => {
@@ -96,8 +131,13 @@ export function EliteNavScreen({ onExit }: Props) {
   const pct = progressPct(route);
   const currentStep = mockRoute.steps[stepIdx] ?? mockRoute.steps[mockRoute.steps.length - 1];
   const upcoming = mockRoute.steps[stepIdx + 1];
+  const etaDelta = etaMin - mockRoute.etaMinutes;
 
   const handleStart = () => {
+    if (!consent) {
+      setShowPermission(true);
+      return;
+    }
     setRouteStarted(true);
     setSafety(true);
     setStatus("en_route_pickup");
@@ -106,6 +146,8 @@ export function EliteNavScreen({ onExit }: Props) {
   const handleStop = () => {
     setRouteStarted(false);
     setSafety(false);
+    setTrackingMode("off");
+    setGpsActive(false);
   };
 
   const handleVoice = (cmd: VoiceCommand, source: "voice" | "quick" = "quick") => {
