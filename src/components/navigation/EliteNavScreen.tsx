@@ -324,6 +324,38 @@ export function EliteNavScreen({ onExit }: Props) {
                 big
               />
             )}
+
+            {/* Mobile-only compact ETA + telemetry strip (driver phones get no side panel) */}
+            {!safety && (
+              <div className="grid grid-cols-3 gap-2 rounded-2xl border border-white/10 bg-[#0a1218]/85 p-2.5 backdrop-blur-xl lg:hidden">
+                <div className="rounded-xl border border-white/5 bg-white/[0.02] px-2 py-1.5">
+                  <div className="text-[9px] uppercase tracking-widest text-slate-500">ETA</div>
+                  <div className="text-sm font-bold text-slate-50">{etaMin}<span className="ml-0.5 text-[10px] font-medium text-slate-400">min</span></div>
+                  {etaDelta !== 0 && (
+                    <div className={`text-[10px] font-medium ${etaDelta > 5 ? "text-amber-300" : etaDelta > 15 ? "text-red-300" : "text-emerald-300"}`}>
+                      {etaDelta > 0 ? `+${etaDelta}` : etaDelta} min
+                    </div>
+                  )}
+                </div>
+                <div className="rounded-xl border border-white/5 bg-white/[0.02] px-2 py-1.5">
+                  <div className="text-[9px] uppercase tracking-widest text-slate-500">Speed</div>
+                  <div className="text-sm font-bold text-slate-50">{speed}<span className="ml-0.5 text-[10px] font-medium text-slate-400">mph</span></div>
+                  <div className="text-[10px] font-medium text-slate-500">limit 65</div>
+                </div>
+                <div className="rounded-xl border border-white/5 bg-white/[0.02] px-2 py-1.5">
+                  <div className="text-[9px] uppercase tracking-widest text-slate-500">Remain</div>
+                  <div className="text-sm font-bold text-slate-50">{remainingMiles.toFixed(0)}<span className="ml-0.5 text-[10px] font-medium text-slate-400">mi</span></div>
+                  <div className="text-[10px] font-medium text-slate-500">to drop</div>
+                </div>
+                <div className="col-span-3 flex flex-wrap items-center gap-1.5 pt-0.5">
+                  <DriverSyncIndicator connected={routeStarted && gpsActive} lastSyncedAt={lastSyncedAt} />
+                  <GPSStatusBadge active={gpsActive} stale={false} />
+                  <TrackingModeBadge mode={trackingMode} />
+                  <BatteryStatusBadge level={batteryLevel} />
+                </div>
+              </div>
+            )}
+
             <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#0e1820]/90 to-[#0a1218]/95 p-3 backdrop-blur-xl">
               <RouteProgressBar progress={pct} totalMiles={mockRoute.totalMiles} remainingMiles={remainingMiles} />
             </div>
