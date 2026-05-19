@@ -45,6 +45,20 @@ import { Route as OpsObservabilityRouteImport } from './routes/ops.observability
 import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
 import { Route as OpsDatabaseRouteImport } from './routes/ops.database'
 import { Route as OpsCenterRouteImport } from './routes/ops.center'
+import { Route as LaunchSupportRouteImport } from './routes/launch.support'
+import { Route as LaunchSuccessRouteImport } from './routes/launch.success'
+import { Route as LaunchSalesRouteImport } from './routes/launch.sales'
+import { Route as LaunchRoiRouteImport } from './routes/launch.roi'
+import { Route as LaunchRoadmapRouteImport } from './routes/launch.roadmap'
+import { Route as LaunchReleaseNotesRouteImport } from './routes/launch.release-notes'
+import { Route as LaunchPricingRouteImport } from './routes/launch.pricing'
+import { Route as LaunchPilotRouteImport } from './routes/launch.pilot'
+import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
+import { Route as LaunchOnboardingRouteImport } from './routes/launch.onboarding'
+import { Route as LaunchMarketingRouteImport } from './routes/launch.marketing'
+import { Route as LaunchDocumentationRouteImport } from './routes/launch.documentation'
+import { Route as LaunchDemoRouteImport } from './routes/launch.demo'
+import { Route as LaunchBrandRouteImport } from './routes/launch.brand'
 import { Route as IntelligenceRiskRouteImport } from './routes/intelligence.risk'
 import { Route as IntelligenceRecommendationsRouteImport } from './routes/intelligence.recommendations'
 import { Route as IntelligencePhase9OverviewRouteImport } from './routes/intelligence.phase9-overview'
@@ -258,6 +272,76 @@ const OpsCenterRoute = OpsCenterRouteImport.update({
   path: '/ops/center',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaunchSupportRoute = LaunchSupportRouteImport.update({
+  id: '/launch/support',
+  path: '/launch/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchSuccessRoute = LaunchSuccessRouteImport.update({
+  id: '/launch/success',
+  path: '/launch/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchSalesRoute = LaunchSalesRouteImport.update({
+  id: '/launch/sales',
+  path: '/launch/sales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchRoiRoute = LaunchRoiRouteImport.update({
+  id: '/launch/roi',
+  path: '/launch/roi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchRoadmapRoute = LaunchRoadmapRouteImport.update({
+  id: '/launch/roadmap',
+  path: '/launch/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchReleaseNotesRoute = LaunchReleaseNotesRouteImport.update({
+  id: '/launch/release-notes',
+  path: '/launch/release-notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchPricingRoute = LaunchPricingRouteImport.update({
+  id: '/launch/pricing',
+  path: '/launch/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchPilotRoute = LaunchPilotRouteImport.update({
+  id: '/launch/pilot',
+  path: '/launch/pilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchOverviewRoute = LaunchOverviewRouteImport.update({
+  id: '/launch/overview',
+  path: '/launch/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchOnboardingRoute = LaunchOnboardingRouteImport.update({
+  id: '/launch/onboarding',
+  path: '/launch/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchMarketingRoute = LaunchMarketingRouteImport.update({
+  id: '/launch/marketing',
+  path: '/launch/marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchDocumentationRoute = LaunchDocumentationRouteImport.update({
+  id: '/launch/documentation',
+  path: '/launch/documentation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchDemoRoute = LaunchDemoRouteImport.update({
+  id: '/launch/demo',
+  path: '/launch/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchBrandRoute = LaunchBrandRouteImport.update({
+  id: '/launch/brand',
+  path: '/launch/brand',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IntelligenceRiskRoute = IntelligenceRiskRouteImport.update({
   id: '/intelligence/risk',
   path: '/intelligence/risk',
@@ -468,6 +552,20 @@ export interface FileRoutesByFullPath {
   '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
+  '/launch/brand': typeof LaunchBrandRoute
+  '/launch/demo': typeof LaunchDemoRoute
+  '/launch/documentation': typeof LaunchDocumentationRoute
+  '/launch/marketing': typeof LaunchMarketingRoute
+  '/launch/onboarding': typeof LaunchOnboardingRoute
+  '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pilot': typeof LaunchPilotRoute
+  '/launch/pricing': typeof LaunchPricingRoute
+  '/launch/release-notes': typeof LaunchReleaseNotesRoute
+  '/launch/roadmap': typeof LaunchRoadmapRoute
+  '/launch/roi': typeof LaunchRoiRoute
+  '/launch/sales': typeof LaunchSalesRoute
+  '/launch/success': typeof LaunchSuccessRoute
+  '/launch/support': typeof LaunchSupportRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -537,6 +635,20 @@ export interface FileRoutesByTo {
   '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
+  '/launch/brand': typeof LaunchBrandRoute
+  '/launch/demo': typeof LaunchDemoRoute
+  '/launch/documentation': typeof LaunchDocumentationRoute
+  '/launch/marketing': typeof LaunchMarketingRoute
+  '/launch/onboarding': typeof LaunchOnboardingRoute
+  '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pilot': typeof LaunchPilotRoute
+  '/launch/pricing': typeof LaunchPricingRoute
+  '/launch/release-notes': typeof LaunchReleaseNotesRoute
+  '/launch/roadmap': typeof LaunchRoadmapRoute
+  '/launch/roi': typeof LaunchRoiRoute
+  '/launch/sales': typeof LaunchSalesRoute
+  '/launch/success': typeof LaunchSuccessRoute
+  '/launch/support': typeof LaunchSupportRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -607,6 +719,20 @@ export interface FileRoutesById {
   '/intelligence/phase9-overview': typeof IntelligencePhase9OverviewRoute
   '/intelligence/recommendations': typeof IntelligenceRecommendationsRoute
   '/intelligence/risk': typeof IntelligenceRiskRoute
+  '/launch/brand': typeof LaunchBrandRoute
+  '/launch/demo': typeof LaunchDemoRoute
+  '/launch/documentation': typeof LaunchDocumentationRoute
+  '/launch/marketing': typeof LaunchMarketingRoute
+  '/launch/onboarding': typeof LaunchOnboardingRoute
+  '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/pilot': typeof LaunchPilotRoute
+  '/launch/pricing': typeof LaunchPricingRoute
+  '/launch/release-notes': typeof LaunchReleaseNotesRoute
+  '/launch/roadmap': typeof LaunchRoadmapRoute
+  '/launch/roi': typeof LaunchRoiRoute
+  '/launch/sales': typeof LaunchSalesRoute
+  '/launch/success': typeof LaunchSuccessRoute
+  '/launch/support': typeof LaunchSupportRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -678,6 +804,20 @@ export interface FileRouteTypes {
     | '/intelligence/phase9-overview'
     | '/intelligence/recommendations'
     | '/intelligence/risk'
+    | '/launch/brand'
+    | '/launch/demo'
+    | '/launch/documentation'
+    | '/launch/marketing'
+    | '/launch/onboarding'
+    | '/launch/overview'
+    | '/launch/pilot'
+    | '/launch/pricing'
+    | '/launch/release-notes'
+    | '/launch/roadmap'
+    | '/launch/roi'
+    | '/launch/sales'
+    | '/launch/success'
+    | '/launch/support'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -747,6 +887,20 @@ export interface FileRouteTypes {
     | '/intelligence/phase9-overview'
     | '/intelligence/recommendations'
     | '/intelligence/risk'
+    | '/launch/brand'
+    | '/launch/demo'
+    | '/launch/documentation'
+    | '/launch/marketing'
+    | '/launch/onboarding'
+    | '/launch/overview'
+    | '/launch/pilot'
+    | '/launch/pricing'
+    | '/launch/release-notes'
+    | '/launch/roadmap'
+    | '/launch/roi'
+    | '/launch/sales'
+    | '/launch/success'
+    | '/launch/support'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -816,6 +970,20 @@ export interface FileRouteTypes {
     | '/intelligence/phase9-overview'
     | '/intelligence/recommendations'
     | '/intelligence/risk'
+    | '/launch/brand'
+    | '/launch/demo'
+    | '/launch/documentation'
+    | '/launch/marketing'
+    | '/launch/onboarding'
+    | '/launch/overview'
+    | '/launch/pilot'
+    | '/launch/pricing'
+    | '/launch/release-notes'
+    | '/launch/roadmap'
+    | '/launch/roi'
+    | '/launch/sales'
+    | '/launch/success'
+    | '/launch/support'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -884,6 +1052,20 @@ export interface RootRouteChildren {
   IntelligencePhase9OverviewRoute: typeof IntelligencePhase9OverviewRoute
   IntelligenceRecommendationsRoute: typeof IntelligenceRecommendationsRoute
   IntelligenceRiskRoute: typeof IntelligenceRiskRoute
+  LaunchBrandRoute: typeof LaunchBrandRoute
+  LaunchDemoRoute: typeof LaunchDemoRoute
+  LaunchDocumentationRoute: typeof LaunchDocumentationRoute
+  LaunchMarketingRoute: typeof LaunchMarketingRoute
+  LaunchOnboardingRoute: typeof LaunchOnboardingRoute
+  LaunchOverviewRoute: typeof LaunchOverviewRoute
+  LaunchPilotRoute: typeof LaunchPilotRoute
+  LaunchPricingRoute: typeof LaunchPricingRoute
+  LaunchReleaseNotesRoute: typeof LaunchReleaseNotesRoute
+  LaunchRoadmapRoute: typeof LaunchRoadmapRoute
+  LaunchRoiRoute: typeof LaunchRoiRoute
+  LaunchSalesRoute: typeof LaunchSalesRoute
+  LaunchSuccessRoute: typeof LaunchSuccessRoute
+  LaunchSupportRoute: typeof LaunchSupportRoute
   OpsCenterRoute: typeof OpsCenterRoute
   OpsDatabaseRoute: typeof OpsDatabaseRoute
   OpsIncidentsRoute: typeof OpsIncidentsRoute
@@ -1149,6 +1331,104 @@ declare module '@tanstack/react-router' {
       path: '/ops/center'
       fullPath: '/ops/center'
       preLoaderRoute: typeof OpsCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/support': {
+      id: '/launch/support'
+      path: '/launch/support'
+      fullPath: '/launch/support'
+      preLoaderRoute: typeof LaunchSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/success': {
+      id: '/launch/success'
+      path: '/launch/success'
+      fullPath: '/launch/success'
+      preLoaderRoute: typeof LaunchSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/sales': {
+      id: '/launch/sales'
+      path: '/launch/sales'
+      fullPath: '/launch/sales'
+      preLoaderRoute: typeof LaunchSalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/roi': {
+      id: '/launch/roi'
+      path: '/launch/roi'
+      fullPath: '/launch/roi'
+      preLoaderRoute: typeof LaunchRoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/roadmap': {
+      id: '/launch/roadmap'
+      path: '/launch/roadmap'
+      fullPath: '/launch/roadmap'
+      preLoaderRoute: typeof LaunchRoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/release-notes': {
+      id: '/launch/release-notes'
+      path: '/launch/release-notes'
+      fullPath: '/launch/release-notes'
+      preLoaderRoute: typeof LaunchReleaseNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/pricing': {
+      id: '/launch/pricing'
+      path: '/launch/pricing'
+      fullPath: '/launch/pricing'
+      preLoaderRoute: typeof LaunchPricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/pilot': {
+      id: '/launch/pilot'
+      path: '/launch/pilot'
+      fullPath: '/launch/pilot'
+      preLoaderRoute: typeof LaunchPilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/overview': {
+      id: '/launch/overview'
+      path: '/launch/overview'
+      fullPath: '/launch/overview'
+      preLoaderRoute: typeof LaunchOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/onboarding': {
+      id: '/launch/onboarding'
+      path: '/launch/onboarding'
+      fullPath: '/launch/onboarding'
+      preLoaderRoute: typeof LaunchOnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/marketing': {
+      id: '/launch/marketing'
+      path: '/launch/marketing'
+      fullPath: '/launch/marketing'
+      preLoaderRoute: typeof LaunchMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/documentation': {
+      id: '/launch/documentation'
+      path: '/launch/documentation'
+      fullPath: '/launch/documentation'
+      preLoaderRoute: typeof LaunchDocumentationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/demo': {
+      id: '/launch/demo'
+      path: '/launch/demo'
+      fullPath: '/launch/demo'
+      preLoaderRoute: typeof LaunchDemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/brand': {
+      id: '/launch/brand'
+      path: '/launch/brand'
+      fullPath: '/launch/brand'
+      preLoaderRoute: typeof LaunchBrandRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/intelligence/risk': {
@@ -1473,6 +1753,20 @@ const rootRouteChildren: RootRouteChildren = {
   IntelligencePhase9OverviewRoute: IntelligencePhase9OverviewRoute,
   IntelligenceRecommendationsRoute: IntelligenceRecommendationsRoute,
   IntelligenceRiskRoute: IntelligenceRiskRoute,
+  LaunchBrandRoute: LaunchBrandRoute,
+  LaunchDemoRoute: LaunchDemoRoute,
+  LaunchDocumentationRoute: LaunchDocumentationRoute,
+  LaunchMarketingRoute: LaunchMarketingRoute,
+  LaunchOnboardingRoute: LaunchOnboardingRoute,
+  LaunchOverviewRoute: LaunchOverviewRoute,
+  LaunchPilotRoute: LaunchPilotRoute,
+  LaunchPricingRoute: LaunchPricingRoute,
+  LaunchReleaseNotesRoute: LaunchReleaseNotesRoute,
+  LaunchRoadmapRoute: LaunchRoadmapRoute,
+  LaunchRoiRoute: LaunchRoiRoute,
+  LaunchSalesRoute: LaunchSalesRoute,
+  LaunchSuccessRoute: LaunchSuccessRoute,
+  LaunchSupportRoute: LaunchSupportRoute,
   OpsCenterRoute: OpsCenterRoute,
   OpsDatabaseRoute: OpsDatabaseRoute,
   OpsIncidentsRoute: OpsIncidentsRoute,
