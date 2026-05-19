@@ -256,6 +256,18 @@ export class MockNavigationProvider extends BaseNavigationProvider implements Mo
       120,
     );
   }
+
+  /** Dev helper — jump the puck forward by N simulated seconds. */
+  fastForward(seconds: number) {
+    if (!this.route) return;
+    const ticks = Math.max(1, Math.round(seconds / 1.5));
+    for (let i = 0; i < ticks; i++) this.tick();
+  }
+
+  /** Dev helper — change the simulated cruise speed. */
+  setSpeedMph(mph: number) {
+    this.speedMph = Math.max(5, Math.min(85, mph));
+  }
 }
 
 function buildSyntheticGeometry(
