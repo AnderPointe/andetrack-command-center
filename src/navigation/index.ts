@@ -27,3 +27,7 @@ export * as CoPilotBrain from "./services/copilotNavigationBrain";
 
 export * from "./hooks";
 export * from "./utils/maneuverIcons";
+export * from "./utils/navigationState";
+export * from "./utils/routeValidation";
+export { isMockProvider } from "./types/providers";
+export type { MockNavigationControls } from "./types/providers";
