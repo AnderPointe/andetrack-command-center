@@ -136,11 +136,25 @@ export function DeliveriesPanel() {
                 showConfirmButton={!driverId} // dispatcher-style helper
                 onConfirm={() => confirmMut.mutate(pod.id)}
                 confirming={confirmMut.isPending && confirmMut.variables === pod.id}
+                onOpen={() => setSelectedId(pod.id)}
               />
             ))}
           </ul>
         </ScrollArea>
       )}
+
+      <PODDetailDrawer
+        pod={pods.find((p) => p.id === selectedId) ?? null}
+        load={(() => {
+          const p = pods.find((pp) => pp.id === selectedId);
+          return p?.load_id ? loadById.get(p.load_id) ?? null : null;
+        })()}
+        open={!!selectedId}
+        onOpenChange={(o) => !o && setSelectedId(null)}
+        showConfirmAction={!driverId}
+        confirming={confirmMut.isPending && confirmMut.variables === selectedId}
+        onConfirm={() => selectedId && confirmMut.mutate(selectedId)}
+      />
     </div>
   );
 }
