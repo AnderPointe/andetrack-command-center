@@ -75,29 +75,6 @@ import { Route as DispatchCommandCenterRouteImport } from './routes/dispatch.com
 import { Route as DataImportExportRouteImport } from './routes/data.import-export'
 import { Route as ComplianceSoc2RouteImport } from './routes/compliance.soc2'
 import { Route as AdminPlatformRouteImport } from './routes/admin.platform'
-import { Route as IntelligenceOverviewRouteImport } from './routes/intelligence.overview'
-import { Route as IntelligenceRiskRouteImport } from './routes/intelligence.risk'
-import { Route as IntelligenceRecommendationsRouteImport } from './routes/intelligence.recommendations'
-import { Route as IntelligenceDispatchRouteImport } from './routes/intelligence.dispatch'
-import { Route as IntelligenceExecutiveRouteImport } from './routes/intelligence.executive'
-import { Route as IntelligenceCapacityRouteImport } from './routes/intelligence.capacity'
-import { Route as IntelligenceHandoffRouteImport } from './routes/intelligence.handoff'
-import { Route as IntelligenceCustomersRouteImport } from './routes/intelligence.customers'
-import { Route as IntelligenceAlertsRouteImport } from './routes/intelligence.alerts'
-import { Route as IntelligenceGovernanceRouteImport } from './routes/intelligence.governance'
-import { Route as IntelligencePhase9OverviewRouteImport } from './routes/intelligence.phase9-overview'
-
-const IntelligenceOverviewRoute = IntelligenceOverviewRouteImport.update({ id: '/intelligence/overview', path: '/intelligence/overview', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceRiskRoute = IntelligenceRiskRouteImport.update({ id: '/intelligence/risk', path: '/intelligence/risk', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceRecommendationsRoute = IntelligenceRecommendationsRouteImport.update({ id: '/intelligence/recommendations', path: '/intelligence/recommendations', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceDispatchRoute = IntelligenceDispatchRouteImport.update({ id: '/intelligence/dispatch', path: '/intelligence/dispatch', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceExecutiveRoute = IntelligenceExecutiveRouteImport.update({ id: '/intelligence/executive', path: '/intelligence/executive', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceCapacityRoute = IntelligenceCapacityRouteImport.update({ id: '/intelligence/capacity', path: '/intelligence/capacity', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceHandoffRoute = IntelligenceHandoffRouteImport.update({ id: '/intelligence/handoff', path: '/intelligence/handoff', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceCustomersRoute = IntelligenceCustomersRouteImport.update({ id: '/intelligence/customers', path: '/intelligence/customers', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceAlertsRoute = IntelligenceAlertsRouteImport.update({ id: '/intelligence/alerts', path: '/intelligence/alerts', getParentRoute: () => rootRouteImport } as any)
-const IntelligenceGovernanceRoute = IntelligenceGovernanceRouteImport.update({ id: '/intelligence/governance', path: '/intelligence/governance', getParentRoute: () => rootRouteImport } as any)
-const IntelligencePhase9OverviewRoute = IntelligencePhase9OverviewRouteImport.update({ id: '/intelligence/phase9-overview', path: '/intelligence/phase9-overview', getParentRoute: () => rootRouteImport } as any)
 
 const VehiclesRoute = VehiclesRouteImport.update({
   id: '/vehicles',
