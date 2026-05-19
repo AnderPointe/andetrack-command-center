@@ -51,6 +51,7 @@ export function EliteNavScreen({ onExit }: Props) {
 
   const [coPilotFeed, setCoPilotFeed] = useState<CoPilotMessage[]>(mockCoPilotFeed);
   const [syncEvents, setSyncEvents] = useState<DispatchSyncEvent[]>(mockDispatchSync);
+  const [transcript, setTranscript] = useState<CoPilotTranscriptEntry[]>([]);
 
   // Mock GPS / ETA tick
   useEffect(() => {
