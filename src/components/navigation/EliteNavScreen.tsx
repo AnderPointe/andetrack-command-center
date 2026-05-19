@@ -127,7 +127,7 @@ export function EliteNavScreen({ onExit }: Props) {
   };
 
   return (
-    <div className="relative h-[calc(100vh-3.5rem)] w-full overflow-hidden bg-[#0a0e12]">
+    <div className="relative h-[calc(100vh-3.5rem)] w-full overflow-hidden bg-[#070b10]">
       {/* Map */}
       <div className="absolute inset-0">
         <MockMap progress={progress} />
@@ -139,8 +139,8 @@ export function EliteNavScreen({ onExit }: Props) {
       <SafetyModeOverlay active={safety} />
 
       {/* Top stack */}
-      <div className="absolute inset-x-0 top-0 z-20 p-3 sm:p-4">
-        <div className="mx-auto grid max-w-6xl gap-3 lg:grid-cols-[1fr_auto]">
+      <div className="absolute inset-x-0 top-0 z-20 p-2 pt-12 sm:p-4 sm:pt-14">
+        <div className="mx-auto grid max-w-6xl gap-2 sm:gap-3 lg:grid-cols-[1fr_auto]">
           <NavigationHeader
             step={currentStep}
             upcoming={upcoming}
@@ -149,7 +149,7 @@ export function EliteNavScreen({ onExit }: Props) {
             onClick={() => setShowSteps(true)}
           />
           <div className="flex items-center justify-end gap-2">
-            <span className={`rounded-full border px-2.5 py-1 text-[10px] uppercase tracking-wider ${
+            <span className={`rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider ${
               STATUS_META[status].tone === "alert"
                 ? "border-red-400/40 bg-red-500/10 text-red-200"
                 : STATUS_META[status].tone === "success"
@@ -163,14 +163,14 @@ export function EliteNavScreen({ onExit }: Props) {
                 onClick={handleStart}
                 className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-teal-500 to-teal-400 px-4 py-1.5 text-xs font-semibold text-slate-950 shadow-[0_10px_30px_-10px_rgba(45,212,191,0.7)] hover:from-teal-400"
               >
-                <Play className="h-3.5 w-3.5" /> Start Route
+                <Play className="h-3.5 w-3.5" /> Begin Dispatch
               </button>
             ) : (
               <button
                 onClick={handleStop}
                 className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-slate-200 hover:bg-white/10"
               >
-                <Square className="h-3.5 w-3.5" /> End Route
+                <Square className="h-3.5 w-3.5" /> End Trip
               </button>
             )}
           </div>
@@ -179,7 +179,7 @@ export function EliteNavScreen({ onExit }: Props) {
 
       {/* Side panel — hidden in safety mode */}
       {!safety && (
-        <div className="absolute right-3 top-28 z-20 hidden w-[340px] space-y-3 lg:block">
+        <div className="absolute right-3 top-32 z-20 hidden w-[340px] space-y-3 lg:block">
           <ETACard
             etaMinutes={etaMin}
             remainingMiles={remainingMiles}
@@ -203,9 +203,9 @@ export function EliteNavScreen({ onExit }: Props) {
       )}
 
       {/* Bottom stack */}
-      <div className="absolute inset-x-0 bottom-0 z-20 p-3 sm:p-4">
-        <div className="mx-auto grid max-w-6xl gap-3 lg:grid-cols-[1fr_360px]">
-          <div className="space-y-3">
+      <div className="absolute inset-x-0 bottom-0 z-20 p-2 sm:p-4">
+        <div className="mx-auto grid max-w-6xl gap-2 sm:gap-3 lg:grid-cols-[1fr_360px]">
+          <div className="space-y-2 sm:space-y-3">
             {safety && (
               <ETACard
                 etaMinutes={etaMin}
@@ -218,7 +218,7 @@ export function EliteNavScreen({ onExit }: Props) {
                 big
               />
             )}
-            <div className="rounded-2xl border border-white/10 bg-[#0d141a]/85 p-3 backdrop-blur-xl">
+            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#0e1820]/90 to-[#0a1218]/95 p-3 backdrop-blur-xl">
               <RouteProgressBar progress={pct} totalMiles={mockRoute.totalMiles} remainingMiles={remainingMiles} />
             </div>
             <NavigationBottomTray
@@ -236,8 +236,8 @@ export function EliteNavScreen({ onExit }: Props) {
         </div>
       </div>
 
-      {/* Mobile/tablet sync indicator */}
-      <div className="absolute right-3 top-3 z-20 hidden md:block lg:hidden">
+      {/* Tablet sync indicator */}
+      <div className="absolute right-3 top-3 z-20 hidden w-[260px] md:block lg:hidden">
         <DispatchSyncIndicator events={syncEvents} />
       </div>
 
