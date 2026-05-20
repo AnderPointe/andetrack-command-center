@@ -45,6 +45,24 @@ import { Route as OpsObservabilityRouteImport } from './routes/ops.observability
 import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
 import { Route as OpsDatabaseRouteImport } from './routes/ops.database'
 import { Route as OpsCenterRouteImport } from './routes/ops.center'
+import { Route as MvpUserStoriesRouteImport } from './routes/mvp.user-stories'
+import { Route as MvpTrainingRouteImport } from './routes/mvp.training'
+import { Route as MvpTechDebtRouteImport } from './routes/mvp.tech-debt'
+import { Route as MvpSprintsRouteImport } from './routes/mvp.sprints'
+import { Route as MvpSecurityRouteImport } from './routes/mvp.security'
+import { Route as MvpRoadmapRouteImport } from './routes/mvp.roadmap'
+import { Route as MvpRisksRouteImport } from './routes/mvp.risks'
+import { Route as MvpReleaseRouteImport } from './routes/mvp.release'
+import { Route as MvpQaRouteImport } from './routes/mvp.qa'
+import { Route as MvpPilotRouteImport } from './routes/mvp.pilot'
+import { Route as MvpOverviewRouteImport } from './routes/mvp.overview'
+import { Route as MvpFeatureMatrixRouteImport } from './routes/mvp.feature-matrix'
+import { Route as MvpDemoScriptRouteImport } from './routes/mvp.demo-script'
+import { Route as MvpCutlineRouteImport } from './routes/mvp.cutline'
+import { Route as MvpCostsRouteImport } from './routes/mvp.costs'
+import { Route as MvpBuildVsBuyRouteImport } from './routes/mvp.build-vs-buy'
+import { Route as MvpBacklogRouteImport } from './routes/mvp.backlog'
+import { Route as MvpAdrsRouteImport } from './routes/mvp.adrs'
 import { Route as LaunchSupportRouteImport } from './routes/launch.support'
 import { Route as LaunchSuccessRouteImport } from './routes/launch.success'
 import { Route as LaunchSalesRouteImport } from './routes/launch.sales'
@@ -271,6 +289,96 @@ const OpsDatabaseRoute = OpsDatabaseRouteImport.update({
 const OpsCenterRoute = OpsCenterRouteImport.update({
   id: '/ops/center',
   path: '/ops/center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpUserStoriesRoute = MvpUserStoriesRouteImport.update({
+  id: '/mvp/user-stories',
+  path: '/mvp/user-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpTrainingRoute = MvpTrainingRouteImport.update({
+  id: '/mvp/training',
+  path: '/mvp/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpTechDebtRoute = MvpTechDebtRouteImport.update({
+  id: '/mvp/tech-debt',
+  path: '/mvp/tech-debt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpSprintsRoute = MvpSprintsRouteImport.update({
+  id: '/mvp/sprints',
+  path: '/mvp/sprints',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpSecurityRoute = MvpSecurityRouteImport.update({
+  id: '/mvp/security',
+  path: '/mvp/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpRoadmapRoute = MvpRoadmapRouteImport.update({
+  id: '/mvp/roadmap',
+  path: '/mvp/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpRisksRoute = MvpRisksRouteImport.update({
+  id: '/mvp/risks',
+  path: '/mvp/risks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpReleaseRoute = MvpReleaseRouteImport.update({
+  id: '/mvp/release',
+  path: '/mvp/release',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpQaRoute = MvpQaRouteImport.update({
+  id: '/mvp/qa',
+  path: '/mvp/qa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpPilotRoute = MvpPilotRouteImport.update({
+  id: '/mvp/pilot',
+  path: '/mvp/pilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpOverviewRoute = MvpOverviewRouteImport.update({
+  id: '/mvp/overview',
+  path: '/mvp/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpFeatureMatrixRoute = MvpFeatureMatrixRouteImport.update({
+  id: '/mvp/feature-matrix',
+  path: '/mvp/feature-matrix',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpDemoScriptRoute = MvpDemoScriptRouteImport.update({
+  id: '/mvp/demo-script',
+  path: '/mvp/demo-script',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpCutlineRoute = MvpCutlineRouteImport.update({
+  id: '/mvp/cutline',
+  path: '/mvp/cutline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpCostsRoute = MvpCostsRouteImport.update({
+  id: '/mvp/costs',
+  path: '/mvp/costs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpBuildVsBuyRoute = MvpBuildVsBuyRouteImport.update({
+  id: '/mvp/build-vs-buy',
+  path: '/mvp/build-vs-buy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpBacklogRoute = MvpBacklogRouteImport.update({
+  id: '/mvp/backlog',
+  path: '/mvp/backlog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MvpAdrsRoute = MvpAdrsRouteImport.update({
+  id: '/mvp/adrs',
+  path: '/mvp/adrs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LaunchSupportRoute = LaunchSupportRouteImport.update({
@@ -573,6 +681,24 @@ export interface FileRoutesByFullPath {
   '/launch/sales': typeof LaunchSalesRoute
   '/launch/success': typeof LaunchSuccessRoute
   '/launch/support': typeof LaunchSupportRoute
+  '/mvp/adrs': typeof MvpAdrsRoute
+  '/mvp/backlog': typeof MvpBacklogRoute
+  '/mvp/build-vs-buy': typeof MvpBuildVsBuyRoute
+  '/mvp/costs': typeof MvpCostsRoute
+  '/mvp/cutline': typeof MvpCutlineRoute
+  '/mvp/demo-script': typeof MvpDemoScriptRoute
+  '/mvp/feature-matrix': typeof MvpFeatureMatrixRoute
+  '/mvp/overview': typeof MvpOverviewRoute
+  '/mvp/pilot': typeof MvpPilotRoute
+  '/mvp/qa': typeof MvpQaRoute
+  '/mvp/release': typeof MvpReleaseRoute
+  '/mvp/risks': typeof MvpRisksRoute
+  '/mvp/roadmap': typeof MvpRoadmapRoute
+  '/mvp/security': typeof MvpSecurityRoute
+  '/mvp/sprints': typeof MvpSprintsRoute
+  '/mvp/tech-debt': typeof MvpTechDebtRoute
+  '/mvp/training': typeof MvpTrainingRoute
+  '/mvp/user-stories': typeof MvpUserStoriesRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -657,6 +783,24 @@ export interface FileRoutesByTo {
   '/launch/sales': typeof LaunchSalesRoute
   '/launch/success': typeof LaunchSuccessRoute
   '/launch/support': typeof LaunchSupportRoute
+  '/mvp/adrs': typeof MvpAdrsRoute
+  '/mvp/backlog': typeof MvpBacklogRoute
+  '/mvp/build-vs-buy': typeof MvpBuildVsBuyRoute
+  '/mvp/costs': typeof MvpCostsRoute
+  '/mvp/cutline': typeof MvpCutlineRoute
+  '/mvp/demo-script': typeof MvpDemoScriptRoute
+  '/mvp/feature-matrix': typeof MvpFeatureMatrixRoute
+  '/mvp/overview': typeof MvpOverviewRoute
+  '/mvp/pilot': typeof MvpPilotRoute
+  '/mvp/qa': typeof MvpQaRoute
+  '/mvp/release': typeof MvpReleaseRoute
+  '/mvp/risks': typeof MvpRisksRoute
+  '/mvp/roadmap': typeof MvpRoadmapRoute
+  '/mvp/security': typeof MvpSecurityRoute
+  '/mvp/sprints': typeof MvpSprintsRoute
+  '/mvp/tech-debt': typeof MvpTechDebtRoute
+  '/mvp/training': typeof MvpTrainingRoute
+  '/mvp/user-stories': typeof MvpUserStoriesRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -742,6 +886,24 @@ export interface FileRoutesById {
   '/launch/sales': typeof LaunchSalesRoute
   '/launch/success': typeof LaunchSuccessRoute
   '/launch/support': typeof LaunchSupportRoute
+  '/mvp/adrs': typeof MvpAdrsRoute
+  '/mvp/backlog': typeof MvpBacklogRoute
+  '/mvp/build-vs-buy': typeof MvpBuildVsBuyRoute
+  '/mvp/costs': typeof MvpCostsRoute
+  '/mvp/cutline': typeof MvpCutlineRoute
+  '/mvp/demo-script': typeof MvpDemoScriptRoute
+  '/mvp/feature-matrix': typeof MvpFeatureMatrixRoute
+  '/mvp/overview': typeof MvpOverviewRoute
+  '/mvp/pilot': typeof MvpPilotRoute
+  '/mvp/qa': typeof MvpQaRoute
+  '/mvp/release': typeof MvpReleaseRoute
+  '/mvp/risks': typeof MvpRisksRoute
+  '/mvp/roadmap': typeof MvpRoadmapRoute
+  '/mvp/security': typeof MvpSecurityRoute
+  '/mvp/sprints': typeof MvpSprintsRoute
+  '/mvp/tech-debt': typeof MvpTechDebtRoute
+  '/mvp/training': typeof MvpTrainingRoute
+  '/mvp/user-stories': typeof MvpUserStoriesRoute
   '/ops/center': typeof OpsCenterRoute
   '/ops/database': typeof OpsDatabaseRoute
   '/ops/incidents': typeof OpsIncidentsRoute
@@ -828,6 +990,24 @@ export interface FileRouteTypes {
     | '/launch/sales'
     | '/launch/success'
     | '/launch/support'
+    | '/mvp/adrs'
+    | '/mvp/backlog'
+    | '/mvp/build-vs-buy'
+    | '/mvp/costs'
+    | '/mvp/cutline'
+    | '/mvp/demo-script'
+    | '/mvp/feature-matrix'
+    | '/mvp/overview'
+    | '/mvp/pilot'
+    | '/mvp/qa'
+    | '/mvp/release'
+    | '/mvp/risks'
+    | '/mvp/roadmap'
+    | '/mvp/security'
+    | '/mvp/sprints'
+    | '/mvp/tech-debt'
+    | '/mvp/training'
+    | '/mvp/user-stories'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -912,6 +1092,24 @@ export interface FileRouteTypes {
     | '/launch/sales'
     | '/launch/success'
     | '/launch/support'
+    | '/mvp/adrs'
+    | '/mvp/backlog'
+    | '/mvp/build-vs-buy'
+    | '/mvp/costs'
+    | '/mvp/cutline'
+    | '/mvp/demo-script'
+    | '/mvp/feature-matrix'
+    | '/mvp/overview'
+    | '/mvp/pilot'
+    | '/mvp/qa'
+    | '/mvp/release'
+    | '/mvp/risks'
+    | '/mvp/roadmap'
+    | '/mvp/security'
+    | '/mvp/sprints'
+    | '/mvp/tech-debt'
+    | '/mvp/training'
+    | '/mvp/user-stories'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -996,6 +1194,24 @@ export interface FileRouteTypes {
     | '/launch/sales'
     | '/launch/success'
     | '/launch/support'
+    | '/mvp/adrs'
+    | '/mvp/backlog'
+    | '/mvp/build-vs-buy'
+    | '/mvp/costs'
+    | '/mvp/cutline'
+    | '/mvp/demo-script'
+    | '/mvp/feature-matrix'
+    | '/mvp/overview'
+    | '/mvp/pilot'
+    | '/mvp/qa'
+    | '/mvp/release'
+    | '/mvp/risks'
+    | '/mvp/roadmap'
+    | '/mvp/security'
+    | '/mvp/sprints'
+    | '/mvp/tech-debt'
+    | '/mvp/training'
+    | '/mvp/user-stories'
     | '/ops/center'
     | '/ops/database'
     | '/ops/incidents'
@@ -1079,6 +1295,24 @@ export interface RootRouteChildren {
   LaunchSalesRoute: typeof LaunchSalesRoute
   LaunchSuccessRoute: typeof LaunchSuccessRoute
   LaunchSupportRoute: typeof LaunchSupportRoute
+  MvpAdrsRoute: typeof MvpAdrsRoute
+  MvpBacklogRoute: typeof MvpBacklogRoute
+  MvpBuildVsBuyRoute: typeof MvpBuildVsBuyRoute
+  MvpCostsRoute: typeof MvpCostsRoute
+  MvpCutlineRoute: typeof MvpCutlineRoute
+  MvpDemoScriptRoute: typeof MvpDemoScriptRoute
+  MvpFeatureMatrixRoute: typeof MvpFeatureMatrixRoute
+  MvpOverviewRoute: typeof MvpOverviewRoute
+  MvpPilotRoute: typeof MvpPilotRoute
+  MvpQaRoute: typeof MvpQaRoute
+  MvpReleaseRoute: typeof MvpReleaseRoute
+  MvpRisksRoute: typeof MvpRisksRoute
+  MvpRoadmapRoute: typeof MvpRoadmapRoute
+  MvpSecurityRoute: typeof MvpSecurityRoute
+  MvpSprintsRoute: typeof MvpSprintsRoute
+  MvpTechDebtRoute: typeof MvpTechDebtRoute
+  MvpTrainingRoute: typeof MvpTrainingRoute
+  MvpUserStoriesRoute: typeof MvpUserStoriesRoute
   OpsCenterRoute: typeof OpsCenterRoute
   OpsDatabaseRoute: typeof OpsDatabaseRoute
   OpsIncidentsRoute: typeof OpsIncidentsRoute
@@ -1344,6 +1578,132 @@ declare module '@tanstack/react-router' {
       path: '/ops/center'
       fullPath: '/ops/center'
       preLoaderRoute: typeof OpsCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/user-stories': {
+      id: '/mvp/user-stories'
+      path: '/mvp/user-stories'
+      fullPath: '/mvp/user-stories'
+      preLoaderRoute: typeof MvpUserStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/training': {
+      id: '/mvp/training'
+      path: '/mvp/training'
+      fullPath: '/mvp/training'
+      preLoaderRoute: typeof MvpTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/tech-debt': {
+      id: '/mvp/tech-debt'
+      path: '/mvp/tech-debt'
+      fullPath: '/mvp/tech-debt'
+      preLoaderRoute: typeof MvpTechDebtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/sprints': {
+      id: '/mvp/sprints'
+      path: '/mvp/sprints'
+      fullPath: '/mvp/sprints'
+      preLoaderRoute: typeof MvpSprintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/security': {
+      id: '/mvp/security'
+      path: '/mvp/security'
+      fullPath: '/mvp/security'
+      preLoaderRoute: typeof MvpSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/roadmap': {
+      id: '/mvp/roadmap'
+      path: '/mvp/roadmap'
+      fullPath: '/mvp/roadmap'
+      preLoaderRoute: typeof MvpRoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/risks': {
+      id: '/mvp/risks'
+      path: '/mvp/risks'
+      fullPath: '/mvp/risks'
+      preLoaderRoute: typeof MvpRisksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/release': {
+      id: '/mvp/release'
+      path: '/mvp/release'
+      fullPath: '/mvp/release'
+      preLoaderRoute: typeof MvpReleaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/qa': {
+      id: '/mvp/qa'
+      path: '/mvp/qa'
+      fullPath: '/mvp/qa'
+      preLoaderRoute: typeof MvpQaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/pilot': {
+      id: '/mvp/pilot'
+      path: '/mvp/pilot'
+      fullPath: '/mvp/pilot'
+      preLoaderRoute: typeof MvpPilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/overview': {
+      id: '/mvp/overview'
+      path: '/mvp/overview'
+      fullPath: '/mvp/overview'
+      preLoaderRoute: typeof MvpOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/feature-matrix': {
+      id: '/mvp/feature-matrix'
+      path: '/mvp/feature-matrix'
+      fullPath: '/mvp/feature-matrix'
+      preLoaderRoute: typeof MvpFeatureMatrixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/demo-script': {
+      id: '/mvp/demo-script'
+      path: '/mvp/demo-script'
+      fullPath: '/mvp/demo-script'
+      preLoaderRoute: typeof MvpDemoScriptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/cutline': {
+      id: '/mvp/cutline'
+      path: '/mvp/cutline'
+      fullPath: '/mvp/cutline'
+      preLoaderRoute: typeof MvpCutlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/costs': {
+      id: '/mvp/costs'
+      path: '/mvp/costs'
+      fullPath: '/mvp/costs'
+      preLoaderRoute: typeof MvpCostsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/build-vs-buy': {
+      id: '/mvp/build-vs-buy'
+      path: '/mvp/build-vs-buy'
+      fullPath: '/mvp/build-vs-buy'
+      preLoaderRoute: typeof MvpBuildVsBuyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/backlog': {
+      id: '/mvp/backlog'
+      path: '/mvp/backlog'
+      fullPath: '/mvp/backlog'
+      preLoaderRoute: typeof MvpBacklogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mvp/adrs': {
+      id: '/mvp/adrs'
+      path: '/mvp/adrs'
+      fullPath: '/mvp/adrs'
+      preLoaderRoute: typeof MvpAdrsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/support': {
@@ -1788,6 +2148,24 @@ const rootRouteChildren: RootRouteChildren = {
   LaunchSalesRoute: LaunchSalesRoute,
   LaunchSuccessRoute: LaunchSuccessRoute,
   LaunchSupportRoute: LaunchSupportRoute,
+  MvpAdrsRoute: MvpAdrsRoute,
+  MvpBacklogRoute: MvpBacklogRoute,
+  MvpBuildVsBuyRoute: MvpBuildVsBuyRoute,
+  MvpCostsRoute: MvpCostsRoute,
+  MvpCutlineRoute: MvpCutlineRoute,
+  MvpDemoScriptRoute: MvpDemoScriptRoute,
+  MvpFeatureMatrixRoute: MvpFeatureMatrixRoute,
+  MvpOverviewRoute: MvpOverviewRoute,
+  MvpPilotRoute: MvpPilotRoute,
+  MvpQaRoute: MvpQaRoute,
+  MvpReleaseRoute: MvpReleaseRoute,
+  MvpRisksRoute: MvpRisksRoute,
+  MvpRoadmapRoute: MvpRoadmapRoute,
+  MvpSecurityRoute: MvpSecurityRoute,
+  MvpSprintsRoute: MvpSprintsRoute,
+  MvpTechDebtRoute: MvpTechDebtRoute,
+  MvpTrainingRoute: MvpTrainingRoute,
+  MvpUserStoriesRoute: MvpUserStoriesRoute,
   OpsCenterRoute: OpsCenterRoute,
   OpsDatabaseRoute: OpsDatabaseRoute,
   OpsIncidentsRoute: OpsIncidentsRoute,
