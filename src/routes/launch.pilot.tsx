@@ -3,7 +3,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { LaunchNav } from "@/components/launch/LaunchNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PILOT_METRICS } from "@/launch/data/mockLaunch";
+import { PILOT_METRICS, PILOT_TRACKS } from "@/launch/data/mockLaunch";
 import { Users } from "lucide-react";
 
 export const Route = createFileRoute("/launch/pilot")({
