@@ -40,6 +40,7 @@ import { Route as SecurityOverviewRouteImport } from './routes/security.overview
 import { Route as SecurityCenterRouteImport } from './routes/security.center'
 import { Route as RatingQuoteRouteImport } from './routes/rating.quote'
 import { Route as PortalNewRequestRouteImport } from './routes/portal.new-request'
+import { Route as PilotPhase13OverviewRouteImport } from './routes/pilot.phase13-overview'
 import { Route as OptimizationCenterRouteImport } from './routes/optimization.center'
 import { Route as OpsObservabilityRouteImport } from './routes/ops.observability'
 import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
@@ -266,6 +267,11 @@ const PortalNewRequestRoute = PortalNewRequestRouteImport.update({
   id: '/new-request',
   path: '/new-request',
   getParentRoute: () => PortalRoute,
+} as any)
+const PilotPhase13OverviewRoute = PilotPhase13OverviewRouteImport.update({
+  id: '/pilot/phase13-overview',
+  path: '/pilot/phase13-overview',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const OptimizationCenterRoute = OptimizationCenterRouteImport.update({
   id: '/optimization/center',
@@ -711,6 +717,7 @@ export interface FileRoutesByFullPath {
   '/ops/incidents': typeof OpsIncidentsRoute
   '/ops/observability': typeof OpsObservabilityRoute
   '/optimization/center': typeof OptimizationCenterRoute
+  '/pilot/phase13-overview': typeof PilotPhase13OverviewRoute
   '/portal/new-request': typeof PortalNewRequestRoute
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
@@ -814,6 +821,7 @@ export interface FileRoutesByTo {
   '/ops/incidents': typeof OpsIncidentsRoute
   '/ops/observability': typeof OpsObservabilityRoute
   '/optimization/center': typeof OptimizationCenterRoute
+  '/pilot/phase13-overview': typeof PilotPhase13OverviewRoute
   '/portal/new-request': typeof PortalNewRequestRoute
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
@@ -918,6 +926,7 @@ export interface FileRoutesById {
   '/ops/incidents': typeof OpsIncidentsRoute
   '/ops/observability': typeof OpsObservabilityRoute
   '/optimization/center': typeof OptimizationCenterRoute
+  '/pilot/phase13-overview': typeof PilotPhase13OverviewRoute
   '/portal/new-request': typeof PortalNewRequestRoute
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
@@ -1023,6 +1032,7 @@ export interface FileRouteTypes {
     | '/ops/incidents'
     | '/ops/observability'
     | '/optimization/center'
+    | '/pilot/phase13-overview'
     | '/portal/new-request'
     | '/rating/quote'
     | '/security/center'
@@ -1126,6 +1136,7 @@ export interface FileRouteTypes {
     | '/ops/incidents'
     | '/ops/observability'
     | '/optimization/center'
+    | '/pilot/phase13-overview'
     | '/portal/new-request'
     | '/rating/quote'
     | '/security/center'
@@ -1229,6 +1240,7 @@ export interface FileRouteTypes {
     | '/ops/incidents'
     | '/ops/observability'
     | '/optimization/center'
+    | '/pilot/phase13-overview'
     | '/portal/new-request'
     | '/rating/quote'
     | '/security/center'
@@ -1331,6 +1343,7 @@ export interface RootRouteChildren {
   OpsIncidentsRoute: typeof OpsIncidentsRoute
   OpsObservabilityRoute: typeof OpsObservabilityRoute
   OptimizationCenterRoute: typeof OptimizationCenterRoute
+  PilotPhase13OverviewRoute: typeof PilotPhase13OverviewRoute
   RatingQuoteRoute: typeof RatingQuoteRoute
   SecurityCenterRoute: typeof SecurityCenterRoute
   SecurityOverviewRoute: typeof SecurityOverviewRoute
@@ -1557,6 +1570,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/portal/new-request'
       preLoaderRoute: typeof PortalNewRequestRouteImport
       parentRoute: typeof PortalRoute
+    }
+    '/pilot/phase13-overview': {
+      id: '/pilot/phase13-overview'
+      path: '/pilot/phase13-overview'
+      fullPath: '/pilot/phase13-overview'
+      preLoaderRoute: typeof PilotPhase13OverviewRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/optimization/center': {
       id: '/optimization/center'
@@ -2192,6 +2212,7 @@ const rootRouteChildren: RootRouteChildren = {
   OpsIncidentsRoute: OpsIncidentsRoute,
   OpsObservabilityRoute: OpsObservabilityRoute,
   OptimizationCenterRoute: OptimizationCenterRoute,
+  PilotPhase13OverviewRoute: PilotPhase13OverviewRoute,
   RatingQuoteRoute: RatingQuoteRoute,
   SecurityCenterRoute: SecurityCenterRoute,
   SecurityOverviewRoute: SecurityOverviewRoute,
