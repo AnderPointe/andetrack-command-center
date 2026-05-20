@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { AppShell } from "@/components/layout/AppShell";
+import { PilotNav } from "@/components/pilot/PilotNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
