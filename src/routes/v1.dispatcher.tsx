@@ -16,7 +16,7 @@ function Page() {
       title="Dispatcher Workflow Stabilization"
       blurb="Load board, map clarity, alert prioritization, and audit timeline polish for the dispatcher dashboard."
     >
-      <ChecklistCard group={DISPATCHER_STABILIZATION} />
+      <ChecklistCard group={DISPATCHER_STABILIZATION} hint="Audit timeline + exception handling are linked blockers for V1 GA." />
     </V1Page>
   );
 }
