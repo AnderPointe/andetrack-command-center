@@ -29,6 +29,27 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V11SupportRouteImport } from './routes/v11.support'
+import { Route as V11StripeRouteImport } from './routes/v11.stripe'
+import { Route as V11SecurityRouteImport } from './routes/v11.security'
+import { Route as V11ScopeRouteImport } from './routes/v11.scope'
+import { Route as V11ReportsRouteImport } from './routes/v11.reports'
+import { Route as V11PortalRouteImport } from './routes/v11.portal'
+import { Route as V11PermissionsRouteImport } from './routes/v11.permissions'
+import { Route as V11OverviewRouteImport } from './routes/v11.overview'
+import { Route as V11OnboardingRouteImport } from './routes/v11.onboarding'
+import { Route as V11OfflineRouteImport } from './routes/v11.offline'
+import { Route as V11NotificationsRouteImport } from './routes/v11.notifications'
+import { Route as V11NavigationRouteImport } from './routes/v11.navigation'
+import { Route as V11NavCutlineRouteImport } from './routes/v11.nav-cutline'
+import { Route as V11ImportsRouteImport } from './routes/v11.imports'
+import { Route as V11GrowthRouteImport } from './routes/v11.growth'
+import { Route as V11EtaRouteImport } from './routes/v11.eta'
+import { Route as V11DispatcherRouteImport } from './routes/v11.dispatcher'
+import { Route as V11DemoRouteImport } from './routes/v11.demo'
+import { Route as V11DataQualityRouteImport } from './routes/v11.data-quality'
+import { Route as V11CopilotRouteImport } from './routes/v11.copilot'
+import { Route as V11BillingRouteImport } from './routes/v11.billing'
 import { Route as V1TrainingRouteImport } from './routes/v1.training'
 import { Route as V1SupportRouteImport } from './routes/v1.support'
 import { Route as V1SecurityRouteImport } from './routes/v1.security'
@@ -258,6 +279,111 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11SupportRoute = V11SupportRouteImport.update({
+  id: '/v11/support',
+  path: '/v11/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11StripeRoute = V11StripeRouteImport.update({
+  id: '/v11/stripe',
+  path: '/v11/stripe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11SecurityRoute = V11SecurityRouteImport.update({
+  id: '/v11/security',
+  path: '/v11/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11ScopeRoute = V11ScopeRouteImport.update({
+  id: '/v11/scope',
+  path: '/v11/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11ReportsRoute = V11ReportsRouteImport.update({
+  id: '/v11/reports',
+  path: '/v11/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11PortalRoute = V11PortalRouteImport.update({
+  id: '/v11/portal',
+  path: '/v11/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11PermissionsRoute = V11PermissionsRouteImport.update({
+  id: '/v11/permissions',
+  path: '/v11/permissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11OverviewRoute = V11OverviewRouteImport.update({
+  id: '/v11/overview',
+  path: '/v11/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11OnboardingRoute = V11OnboardingRouteImport.update({
+  id: '/v11/onboarding',
+  path: '/v11/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11OfflineRoute = V11OfflineRouteImport.update({
+  id: '/v11/offline',
+  path: '/v11/offline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11NotificationsRoute = V11NotificationsRouteImport.update({
+  id: '/v11/notifications',
+  path: '/v11/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11NavigationRoute = V11NavigationRouteImport.update({
+  id: '/v11/navigation',
+  path: '/v11/navigation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11NavCutlineRoute = V11NavCutlineRouteImport.update({
+  id: '/v11/nav-cutline',
+  path: '/v11/nav-cutline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11ImportsRoute = V11ImportsRouteImport.update({
+  id: '/v11/imports',
+  path: '/v11/imports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11GrowthRoute = V11GrowthRouteImport.update({
+  id: '/v11/growth',
+  path: '/v11/growth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11EtaRoute = V11EtaRouteImport.update({
+  id: '/v11/eta',
+  path: '/v11/eta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11DispatcherRoute = V11DispatcherRouteImport.update({
+  id: '/v11/dispatcher',
+  path: '/v11/dispatcher',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11DemoRoute = V11DemoRouteImport.update({
+  id: '/v11/demo',
+  path: '/v11/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11DataQualityRoute = V11DataQualityRouteImport.update({
+  id: '/v11/data-quality',
+  path: '/v11/data-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11CopilotRoute = V11CopilotRouteImport.update({
+  id: '/v11/copilot',
+  path: '/v11/copilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V11BillingRoute = V11BillingRouteImport.update({
+  id: '/v11/billing',
+  path: '/v11/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V1TrainingRoute = V1TrainingRouteImport.update({
@@ -1065,6 +1191,27 @@ export interface FileRoutesByFullPath {
   '/v1/security': typeof V1SecurityRoute
   '/v1/support': typeof V1SupportRoute
   '/v1/training': typeof V1TrainingRoute
+  '/v11/billing': typeof V11BillingRoute
+  '/v11/copilot': typeof V11CopilotRoute
+  '/v11/data-quality': typeof V11DataQualityRoute
+  '/v11/demo': typeof V11DemoRoute
+  '/v11/dispatcher': typeof V11DispatcherRoute
+  '/v11/eta': typeof V11EtaRoute
+  '/v11/growth': typeof V11GrowthRoute
+  '/v11/imports': typeof V11ImportsRoute
+  '/v11/nav-cutline': typeof V11NavCutlineRoute
+  '/v11/navigation': typeof V11NavigationRoute
+  '/v11/notifications': typeof V11NotificationsRoute
+  '/v11/offline': typeof V11OfflineRoute
+  '/v11/onboarding': typeof V11OnboardingRoute
+  '/v11/overview': typeof V11OverviewRoute
+  '/v11/permissions': typeof V11PermissionsRoute
+  '/v11/portal': typeof V11PortalRoute
+  '/v11/reports': typeof V11ReportsRoute
+  '/v11/scope': typeof V11ScopeRoute
+  '/v11/security': typeof V11SecurityRoute
+  '/v11/stripe': typeof V11StripeRoute
+  '/v11/support': typeof V11SupportRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -1217,6 +1364,27 @@ export interface FileRoutesByTo {
   '/v1/security': typeof V1SecurityRoute
   '/v1/support': typeof V1SupportRoute
   '/v1/training': typeof V1TrainingRoute
+  '/v11/billing': typeof V11BillingRoute
+  '/v11/copilot': typeof V11CopilotRoute
+  '/v11/data-quality': typeof V11DataQualityRoute
+  '/v11/demo': typeof V11DemoRoute
+  '/v11/dispatcher': typeof V11DispatcherRoute
+  '/v11/eta': typeof V11EtaRoute
+  '/v11/growth': typeof V11GrowthRoute
+  '/v11/imports': typeof V11ImportsRoute
+  '/v11/nav-cutline': typeof V11NavCutlineRoute
+  '/v11/navigation': typeof V11NavigationRoute
+  '/v11/notifications': typeof V11NotificationsRoute
+  '/v11/offline': typeof V11OfflineRoute
+  '/v11/onboarding': typeof V11OnboardingRoute
+  '/v11/overview': typeof V11OverviewRoute
+  '/v11/permissions': typeof V11PermissionsRoute
+  '/v11/portal': typeof V11PortalRoute
+  '/v11/reports': typeof V11ReportsRoute
+  '/v11/scope': typeof V11ScopeRoute
+  '/v11/security': typeof V11SecurityRoute
+  '/v11/stripe': typeof V11StripeRoute
+  '/v11/support': typeof V11SupportRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -1370,6 +1538,27 @@ export interface FileRoutesById {
   '/v1/security': typeof V1SecurityRoute
   '/v1/support': typeof V1SupportRoute
   '/v1/training': typeof V1TrainingRoute
+  '/v11/billing': typeof V11BillingRoute
+  '/v11/copilot': typeof V11CopilotRoute
+  '/v11/data-quality': typeof V11DataQualityRoute
+  '/v11/demo': typeof V11DemoRoute
+  '/v11/dispatcher': typeof V11DispatcherRoute
+  '/v11/eta': typeof V11EtaRoute
+  '/v11/growth': typeof V11GrowthRoute
+  '/v11/imports': typeof V11ImportsRoute
+  '/v11/nav-cutline': typeof V11NavCutlineRoute
+  '/v11/navigation': typeof V11NavigationRoute
+  '/v11/notifications': typeof V11NotificationsRoute
+  '/v11/offline': typeof V11OfflineRoute
+  '/v11/onboarding': typeof V11OnboardingRoute
+  '/v11/overview': typeof V11OverviewRoute
+  '/v11/permissions': typeof V11PermissionsRoute
+  '/v11/portal': typeof V11PortalRoute
+  '/v11/reports': typeof V11ReportsRoute
+  '/v11/scope': typeof V11ScopeRoute
+  '/v11/security': typeof V11SecurityRoute
+  '/v11/stripe': typeof V11StripeRoute
+  '/v11/support': typeof V11SupportRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -1524,6 +1713,27 @@ export interface FileRouteTypes {
     | '/v1/security'
     | '/v1/support'
     | '/v1/training'
+    | '/v11/billing'
+    | '/v11/copilot'
+    | '/v11/data-quality'
+    | '/v11/demo'
+    | '/v11/dispatcher'
+    | '/v11/eta'
+    | '/v11/growth'
+    | '/v11/imports'
+    | '/v11/nav-cutline'
+    | '/v11/navigation'
+    | '/v11/notifications'
+    | '/v11/offline'
+    | '/v11/onboarding'
+    | '/v11/overview'
+    | '/v11/permissions'
+    | '/v11/portal'
+    | '/v11/reports'
+    | '/v11/scope'
+    | '/v11/security'
+    | '/v11/stripe'
+    | '/v11/support'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -1676,6 +1886,27 @@ export interface FileRouteTypes {
     | '/v1/security'
     | '/v1/support'
     | '/v1/training'
+    | '/v11/billing'
+    | '/v11/copilot'
+    | '/v11/data-quality'
+    | '/v11/demo'
+    | '/v11/dispatcher'
+    | '/v11/eta'
+    | '/v11/growth'
+    | '/v11/imports'
+    | '/v11/nav-cutline'
+    | '/v11/navigation'
+    | '/v11/notifications'
+    | '/v11/offline'
+    | '/v11/onboarding'
+    | '/v11/overview'
+    | '/v11/permissions'
+    | '/v11/portal'
+    | '/v11/reports'
+    | '/v11/scope'
+    | '/v11/security'
+    | '/v11/stripe'
+    | '/v11/support'
     | '/driver'
   id:
     | '__root__'
@@ -1828,6 +2059,27 @@ export interface FileRouteTypes {
     | '/v1/security'
     | '/v1/support'
     | '/v1/training'
+    | '/v11/billing'
+    | '/v11/copilot'
+    | '/v11/data-quality'
+    | '/v11/demo'
+    | '/v11/dispatcher'
+    | '/v11/eta'
+    | '/v11/growth'
+    | '/v11/imports'
+    | '/v11/nav-cutline'
+    | '/v11/navigation'
+    | '/v11/notifications'
+    | '/v11/offline'
+    | '/v11/onboarding'
+    | '/v11/overview'
+    | '/v11/permissions'
+    | '/v11/portal'
+    | '/v11/reports'
+    | '/v11/scope'
+    | '/v11/security'
+    | '/v11/stripe'
+    | '/v11/support'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -1973,6 +2225,27 @@ export interface RootRouteChildren {
   V1SecurityRoute: typeof V1SecurityRoute
   V1SupportRoute: typeof V1SupportRoute
   V1TrainingRoute: typeof V1TrainingRoute
+  V11BillingRoute: typeof V11BillingRoute
+  V11CopilotRoute: typeof V11CopilotRoute
+  V11DataQualityRoute: typeof V11DataQualityRoute
+  V11DemoRoute: typeof V11DemoRoute
+  V11DispatcherRoute: typeof V11DispatcherRoute
+  V11EtaRoute: typeof V11EtaRoute
+  V11GrowthRoute: typeof V11GrowthRoute
+  V11ImportsRoute: typeof V11ImportsRoute
+  V11NavCutlineRoute: typeof V11NavCutlineRoute
+  V11NavigationRoute: typeof V11NavigationRoute
+  V11NotificationsRoute: typeof V11NotificationsRoute
+  V11OfflineRoute: typeof V11OfflineRoute
+  V11OnboardingRoute: typeof V11OnboardingRoute
+  V11OverviewRoute: typeof V11OverviewRoute
+  V11PermissionsRoute: typeof V11PermissionsRoute
+  V11PortalRoute: typeof V11PortalRoute
+  V11ReportsRoute: typeof V11ReportsRoute
+  V11ScopeRoute: typeof V11ScopeRoute
+  V11SecurityRoute: typeof V11SecurityRoute
+  V11StripeRoute: typeof V11StripeRoute
+  V11SupportRoute: typeof V11SupportRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -2116,6 +2389,153 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/support': {
+      id: '/v11/support'
+      path: '/v11/support'
+      fullPath: '/v11/support'
+      preLoaderRoute: typeof V11SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/stripe': {
+      id: '/v11/stripe'
+      path: '/v11/stripe'
+      fullPath: '/v11/stripe'
+      preLoaderRoute: typeof V11StripeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/security': {
+      id: '/v11/security'
+      path: '/v11/security'
+      fullPath: '/v11/security'
+      preLoaderRoute: typeof V11SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/scope': {
+      id: '/v11/scope'
+      path: '/v11/scope'
+      fullPath: '/v11/scope'
+      preLoaderRoute: typeof V11ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/reports': {
+      id: '/v11/reports'
+      path: '/v11/reports'
+      fullPath: '/v11/reports'
+      preLoaderRoute: typeof V11ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/portal': {
+      id: '/v11/portal'
+      path: '/v11/portal'
+      fullPath: '/v11/portal'
+      preLoaderRoute: typeof V11PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/permissions': {
+      id: '/v11/permissions'
+      path: '/v11/permissions'
+      fullPath: '/v11/permissions'
+      preLoaderRoute: typeof V11PermissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/overview': {
+      id: '/v11/overview'
+      path: '/v11/overview'
+      fullPath: '/v11/overview'
+      preLoaderRoute: typeof V11OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/onboarding': {
+      id: '/v11/onboarding'
+      path: '/v11/onboarding'
+      fullPath: '/v11/onboarding'
+      preLoaderRoute: typeof V11OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/offline': {
+      id: '/v11/offline'
+      path: '/v11/offline'
+      fullPath: '/v11/offline'
+      preLoaderRoute: typeof V11OfflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/notifications': {
+      id: '/v11/notifications'
+      path: '/v11/notifications'
+      fullPath: '/v11/notifications'
+      preLoaderRoute: typeof V11NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/navigation': {
+      id: '/v11/navigation'
+      path: '/v11/navigation'
+      fullPath: '/v11/navigation'
+      preLoaderRoute: typeof V11NavigationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/nav-cutline': {
+      id: '/v11/nav-cutline'
+      path: '/v11/nav-cutline'
+      fullPath: '/v11/nav-cutline'
+      preLoaderRoute: typeof V11NavCutlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/imports': {
+      id: '/v11/imports'
+      path: '/v11/imports'
+      fullPath: '/v11/imports'
+      preLoaderRoute: typeof V11ImportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/growth': {
+      id: '/v11/growth'
+      path: '/v11/growth'
+      fullPath: '/v11/growth'
+      preLoaderRoute: typeof V11GrowthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/eta': {
+      id: '/v11/eta'
+      path: '/v11/eta'
+      fullPath: '/v11/eta'
+      preLoaderRoute: typeof V11EtaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/dispatcher': {
+      id: '/v11/dispatcher'
+      path: '/v11/dispatcher'
+      fullPath: '/v11/dispatcher'
+      preLoaderRoute: typeof V11DispatcherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/demo': {
+      id: '/v11/demo'
+      path: '/v11/demo'
+      fullPath: '/v11/demo'
+      preLoaderRoute: typeof V11DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/data-quality': {
+      id: '/v11/data-quality'
+      path: '/v11/data-quality'
+      fullPath: '/v11/data-quality'
+      preLoaderRoute: typeof V11DataQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/copilot': {
+      id: '/v11/copilot'
+      path: '/v11/copilot'
+      fullPath: '/v11/copilot'
+      preLoaderRoute: typeof V11CopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v11/billing': {
+      id: '/v11/billing'
+      path: '/v11/billing'
+      fullPath: '/v11/billing'
+      preLoaderRoute: typeof V11BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v1/training': {
@@ -3226,6 +3646,27 @@ const rootRouteChildren: RootRouteChildren = {
   V1SecurityRoute: V1SecurityRoute,
   V1SupportRoute: V1SupportRoute,
   V1TrainingRoute: V1TrainingRoute,
+  V11BillingRoute: V11BillingRoute,
+  V11CopilotRoute: V11CopilotRoute,
+  V11DataQualityRoute: V11DataQualityRoute,
+  V11DemoRoute: V11DemoRoute,
+  V11DispatcherRoute: V11DispatcherRoute,
+  V11EtaRoute: V11EtaRoute,
+  V11GrowthRoute: V11GrowthRoute,
+  V11ImportsRoute: V11ImportsRoute,
+  V11NavCutlineRoute: V11NavCutlineRoute,
+  V11NavigationRoute: V11NavigationRoute,
+  V11NotificationsRoute: V11NotificationsRoute,
+  V11OfflineRoute: V11OfflineRoute,
+  V11OnboardingRoute: V11OnboardingRoute,
+  V11OverviewRoute: V11OverviewRoute,
+  V11PermissionsRoute: V11PermissionsRoute,
+  V11PortalRoute: V11PortalRoute,
+  V11ReportsRoute: V11ReportsRoute,
+  V11ScopeRoute: V11ScopeRoute,
+  V11SecurityRoute: V11SecurityRoute,
+  V11StripeRoute: V11StripeRoute,
+  V11SupportRoute: V11SupportRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
