@@ -40,7 +40,31 @@ import { Route as SecurityOverviewRouteImport } from './routes/security.overview
 import { Route as SecurityCenterRouteImport } from './routes/security.center'
 import { Route as RatingQuoteRouteImport } from './routes/rating.quote'
 import { Route as PortalNewRequestRouteImport } from './routes/portal.new-request'
+import { Route as PilotWeeklyReviewRouteImport } from './routes/pilot.weekly-review'
+import { Route as PilotTrainingRouteImport } from './routes/pilot.training'
+import { Route as PilotTestsRouteImport } from './routes/pilot.tests'
+import { Route as PilotSurveysRouteImport } from './routes/pilot.surveys'
+import { Route as PilotSupportRouteImport } from './routes/pilot.support'
+import { Route as PilotSmokeTestRouteImport } from './routes/pilot.smoke-test'
+import { Route as PilotRollbackRouteImport } from './routes/pilot.rollback'
+import { Route as PilotRlsRouteImport } from './routes/pilot.rls'
+import { Route as PilotReleaseCandidateRouteImport } from './routes/pilot.release-candidate'
 import { Route as PilotPhase13OverviewRouteImport } from './routes/pilot.phase13-overview'
+import { Route as PilotMetricsRouteImport } from './routes/pilot.metrics'
+import { Route as PilotGoLiveRouteImport } from './routes/pilot.go-live'
+import { Route as PilotFirstLiveLoadRouteImport } from './routes/pilot.first-live-load'
+import { Route as PilotFeedbackRouteImport } from './routes/pilot.feedback'
+import { Route as PilotEscalationRouteImport } from './routes/pilot.escalation'
+import { Route as PilotEnvironmentRouteImport } from './routes/pilot.environment'
+import { Route as PilotDocsRouteImport } from './routes/pilot.docs'
+import { Route as PilotDataProtectionRouteImport } from './routes/pilot.data-protection'
+import { Route as PilotDataChecklistRouteImport } from './routes/pilot.data-checklist'
+import { Route as PilotDailyReviewRouteImport } from './routes/pilot.daily-review'
+import { Route as PilotCompanySetupRouteImport } from './routes/pilot.company-setup'
+import { Route as PilotBugsRouteImport } from './routes/pilot.bugs'
+import { Route as PilotBugFixSprintRouteImport } from './routes/pilot.bug-fix-sprint'
+import { Route as PilotBlockersRouteImport } from './routes/pilot.blockers'
+import { Route as PilotAcceptanceRouteImport } from './routes/pilot.acceptance'
 import { Route as OptimizationCenterRouteImport } from './routes/optimization.center'
 import { Route as OpsObservabilityRouteImport } from './routes/ops.observability'
 import { Route as OpsIncidentsRouteImport } from './routes/ops.incidents'
@@ -268,9 +292,129 @@ const PortalNewRequestRoute = PortalNewRequestRouteImport.update({
   path: '/new-request',
   getParentRoute: () => PortalRoute,
 } as any)
+const PilotWeeklyReviewRoute = PilotWeeklyReviewRouteImport.update({
+  id: '/pilot/weekly-review',
+  path: '/pilot/weekly-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotTrainingRoute = PilotTrainingRouteImport.update({
+  id: '/pilot/training',
+  path: '/pilot/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotTestsRoute = PilotTestsRouteImport.update({
+  id: '/pilot/tests',
+  path: '/pilot/tests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotSurveysRoute = PilotSurveysRouteImport.update({
+  id: '/pilot/surveys',
+  path: '/pilot/surveys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotSupportRoute = PilotSupportRouteImport.update({
+  id: '/pilot/support',
+  path: '/pilot/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotSmokeTestRoute = PilotSmokeTestRouteImport.update({
+  id: '/pilot/smoke-test',
+  path: '/pilot/smoke-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotRollbackRoute = PilotRollbackRouteImport.update({
+  id: '/pilot/rollback',
+  path: '/pilot/rollback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotRlsRoute = PilotRlsRouteImport.update({
+  id: '/pilot/rls',
+  path: '/pilot/rls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotReleaseCandidateRoute = PilotReleaseCandidateRouteImport.update({
+  id: '/pilot/release-candidate',
+  path: '/pilot/release-candidate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PilotPhase13OverviewRoute = PilotPhase13OverviewRouteImport.update({
   id: '/pilot/phase13-overview',
   path: '/pilot/phase13-overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotMetricsRoute = PilotMetricsRouteImport.update({
+  id: '/pilot/metrics',
+  path: '/pilot/metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotGoLiveRoute = PilotGoLiveRouteImport.update({
+  id: '/pilot/go-live',
+  path: '/pilot/go-live',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotFirstLiveLoadRoute = PilotFirstLiveLoadRouteImport.update({
+  id: '/pilot/first-live-load',
+  path: '/pilot/first-live-load',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotFeedbackRoute = PilotFeedbackRouteImport.update({
+  id: '/pilot/feedback',
+  path: '/pilot/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotEscalationRoute = PilotEscalationRouteImport.update({
+  id: '/pilot/escalation',
+  path: '/pilot/escalation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotEnvironmentRoute = PilotEnvironmentRouteImport.update({
+  id: '/pilot/environment',
+  path: '/pilot/environment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotDocsRoute = PilotDocsRouteImport.update({
+  id: '/pilot/docs',
+  path: '/pilot/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotDataProtectionRoute = PilotDataProtectionRouteImport.update({
+  id: '/pilot/data-protection',
+  path: '/pilot/data-protection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotDataChecklistRoute = PilotDataChecklistRouteImport.update({
+  id: '/pilot/data-checklist',
+  path: '/pilot/data-checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotDailyReviewRoute = PilotDailyReviewRouteImport.update({
+  id: '/pilot/daily-review',
+  path: '/pilot/daily-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotCompanySetupRoute = PilotCompanySetupRouteImport.update({
+  id: '/pilot/company-setup',
+  path: '/pilot/company-setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotBugsRoute = PilotBugsRouteImport.update({
+  id: '/pilot/bugs',
+  path: '/pilot/bugs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotBugFixSprintRoute = PilotBugFixSprintRouteImport.update({
+  id: '/pilot/bug-fix-sprint',
+  path: '/pilot/bug-fix-sprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotBlockersRoute = PilotBlockersRouteImport.update({
+  id: '/pilot/blockers',
+  path: '/pilot/blockers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PilotAcceptanceRoute = PilotAcceptanceRouteImport.update({
+  id: '/pilot/acceptance',
+  path: '/pilot/acceptance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OptimizationCenterRoute = OptimizationCenterRouteImport.update({
@@ -717,7 +861,31 @@ export interface FileRoutesByFullPath {
   '/ops/incidents': typeof OpsIncidentsRoute
   '/ops/observability': typeof OpsObservabilityRoute
   '/optimization/center': typeof OptimizationCenterRoute
+  '/pilot/acceptance': typeof PilotAcceptanceRoute
+  '/pilot/blockers': typeof PilotBlockersRoute
+  '/pilot/bug-fix-sprint': typeof PilotBugFixSprintRoute
+  '/pilot/bugs': typeof PilotBugsRoute
+  '/pilot/company-setup': typeof PilotCompanySetupRoute
+  '/pilot/daily-review': typeof PilotDailyReviewRoute
+  '/pilot/data-checklist': typeof PilotDataChecklistRoute
+  '/pilot/data-protection': typeof PilotDataProtectionRoute
+  '/pilot/docs': typeof PilotDocsRoute
+  '/pilot/environment': typeof PilotEnvironmentRoute
+  '/pilot/escalation': typeof PilotEscalationRoute
+  '/pilot/feedback': typeof PilotFeedbackRoute
+  '/pilot/first-live-load': typeof PilotFirstLiveLoadRoute
+  '/pilot/go-live': typeof PilotGoLiveRoute
+  '/pilot/metrics': typeof PilotMetricsRoute
   '/pilot/phase13-overview': typeof PilotPhase13OverviewRoute
+  '/pilot/release-candidate': typeof PilotReleaseCandidateRoute
+  '/pilot/rls': typeof PilotRlsRoute
+  '/pilot/rollback': typeof PilotRollbackRoute
+  '/pilot/smoke-test': typeof PilotSmokeTestRoute
+  '/pilot/support': typeof PilotSupportRoute
+  '/pilot/surveys': typeof PilotSurveysRoute
+  '/pilot/tests': typeof PilotTestsRoute
+  '/pilot/training': typeof PilotTrainingRoute
+  '/pilot/weekly-review': typeof PilotWeeklyReviewRoute
   '/portal/new-request': typeof PortalNewRequestRoute
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
@@ -821,7 +989,31 @@ export interface FileRoutesByTo {
   '/ops/incidents': typeof OpsIncidentsRoute
   '/ops/observability': typeof OpsObservabilityRoute
   '/optimization/center': typeof OptimizationCenterRoute
+  '/pilot/acceptance': typeof PilotAcceptanceRoute
+  '/pilot/blockers': typeof PilotBlockersRoute
+  '/pilot/bug-fix-sprint': typeof PilotBugFixSprintRoute
+  '/pilot/bugs': typeof PilotBugsRoute
+  '/pilot/company-setup': typeof PilotCompanySetupRoute
+  '/pilot/daily-review': typeof PilotDailyReviewRoute
+  '/pilot/data-checklist': typeof PilotDataChecklistRoute
+  '/pilot/data-protection': typeof PilotDataProtectionRoute
+  '/pilot/docs': typeof PilotDocsRoute
+  '/pilot/environment': typeof PilotEnvironmentRoute
+  '/pilot/escalation': typeof PilotEscalationRoute
+  '/pilot/feedback': typeof PilotFeedbackRoute
+  '/pilot/first-live-load': typeof PilotFirstLiveLoadRoute
+  '/pilot/go-live': typeof PilotGoLiveRoute
+  '/pilot/metrics': typeof PilotMetricsRoute
   '/pilot/phase13-overview': typeof PilotPhase13OverviewRoute
+  '/pilot/release-candidate': typeof PilotReleaseCandidateRoute
+  '/pilot/rls': typeof PilotRlsRoute
+  '/pilot/rollback': typeof PilotRollbackRoute
+  '/pilot/smoke-test': typeof PilotSmokeTestRoute
+  '/pilot/support': typeof PilotSupportRoute
+  '/pilot/surveys': typeof PilotSurveysRoute
+  '/pilot/tests': typeof PilotTestsRoute
+  '/pilot/training': typeof PilotTrainingRoute
+  '/pilot/weekly-review': typeof PilotWeeklyReviewRoute
   '/portal/new-request': typeof PortalNewRequestRoute
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
@@ -926,7 +1118,31 @@ export interface FileRoutesById {
   '/ops/incidents': typeof OpsIncidentsRoute
   '/ops/observability': typeof OpsObservabilityRoute
   '/optimization/center': typeof OptimizationCenterRoute
+  '/pilot/acceptance': typeof PilotAcceptanceRoute
+  '/pilot/blockers': typeof PilotBlockersRoute
+  '/pilot/bug-fix-sprint': typeof PilotBugFixSprintRoute
+  '/pilot/bugs': typeof PilotBugsRoute
+  '/pilot/company-setup': typeof PilotCompanySetupRoute
+  '/pilot/daily-review': typeof PilotDailyReviewRoute
+  '/pilot/data-checklist': typeof PilotDataChecklistRoute
+  '/pilot/data-protection': typeof PilotDataProtectionRoute
+  '/pilot/docs': typeof PilotDocsRoute
+  '/pilot/environment': typeof PilotEnvironmentRoute
+  '/pilot/escalation': typeof PilotEscalationRoute
+  '/pilot/feedback': typeof PilotFeedbackRoute
+  '/pilot/first-live-load': typeof PilotFirstLiveLoadRoute
+  '/pilot/go-live': typeof PilotGoLiveRoute
+  '/pilot/metrics': typeof PilotMetricsRoute
   '/pilot/phase13-overview': typeof PilotPhase13OverviewRoute
+  '/pilot/release-candidate': typeof PilotReleaseCandidateRoute
+  '/pilot/rls': typeof PilotRlsRoute
+  '/pilot/rollback': typeof PilotRollbackRoute
+  '/pilot/smoke-test': typeof PilotSmokeTestRoute
+  '/pilot/support': typeof PilotSupportRoute
+  '/pilot/surveys': typeof PilotSurveysRoute
+  '/pilot/tests': typeof PilotTestsRoute
+  '/pilot/training': typeof PilotTrainingRoute
+  '/pilot/weekly-review': typeof PilotWeeklyReviewRoute
   '/portal/new-request': typeof PortalNewRequestRoute
   '/rating/quote': typeof RatingQuoteRoute
   '/security/center': typeof SecurityCenterRoute
@@ -1032,7 +1248,31 @@ export interface FileRouteTypes {
     | '/ops/incidents'
     | '/ops/observability'
     | '/optimization/center'
+    | '/pilot/acceptance'
+    | '/pilot/blockers'
+    | '/pilot/bug-fix-sprint'
+    | '/pilot/bugs'
+    | '/pilot/company-setup'
+    | '/pilot/daily-review'
+    | '/pilot/data-checklist'
+    | '/pilot/data-protection'
+    | '/pilot/docs'
+    | '/pilot/environment'
+    | '/pilot/escalation'
+    | '/pilot/feedback'
+    | '/pilot/first-live-load'
+    | '/pilot/go-live'
+    | '/pilot/metrics'
     | '/pilot/phase13-overview'
+    | '/pilot/release-candidate'
+    | '/pilot/rls'
+    | '/pilot/rollback'
+    | '/pilot/smoke-test'
+    | '/pilot/support'
+    | '/pilot/surveys'
+    | '/pilot/tests'
+    | '/pilot/training'
+    | '/pilot/weekly-review'
     | '/portal/new-request'
     | '/rating/quote'
     | '/security/center'
@@ -1136,7 +1376,31 @@ export interface FileRouteTypes {
     | '/ops/incidents'
     | '/ops/observability'
     | '/optimization/center'
+    | '/pilot/acceptance'
+    | '/pilot/blockers'
+    | '/pilot/bug-fix-sprint'
+    | '/pilot/bugs'
+    | '/pilot/company-setup'
+    | '/pilot/daily-review'
+    | '/pilot/data-checklist'
+    | '/pilot/data-protection'
+    | '/pilot/docs'
+    | '/pilot/environment'
+    | '/pilot/escalation'
+    | '/pilot/feedback'
+    | '/pilot/first-live-load'
+    | '/pilot/go-live'
+    | '/pilot/metrics'
     | '/pilot/phase13-overview'
+    | '/pilot/release-candidate'
+    | '/pilot/rls'
+    | '/pilot/rollback'
+    | '/pilot/smoke-test'
+    | '/pilot/support'
+    | '/pilot/surveys'
+    | '/pilot/tests'
+    | '/pilot/training'
+    | '/pilot/weekly-review'
     | '/portal/new-request'
     | '/rating/quote'
     | '/security/center'
@@ -1240,7 +1504,31 @@ export interface FileRouteTypes {
     | '/ops/incidents'
     | '/ops/observability'
     | '/optimization/center'
+    | '/pilot/acceptance'
+    | '/pilot/blockers'
+    | '/pilot/bug-fix-sprint'
+    | '/pilot/bugs'
+    | '/pilot/company-setup'
+    | '/pilot/daily-review'
+    | '/pilot/data-checklist'
+    | '/pilot/data-protection'
+    | '/pilot/docs'
+    | '/pilot/environment'
+    | '/pilot/escalation'
+    | '/pilot/feedback'
+    | '/pilot/first-live-load'
+    | '/pilot/go-live'
+    | '/pilot/metrics'
     | '/pilot/phase13-overview'
+    | '/pilot/release-candidate'
+    | '/pilot/rls'
+    | '/pilot/rollback'
+    | '/pilot/smoke-test'
+    | '/pilot/support'
+    | '/pilot/surveys'
+    | '/pilot/tests'
+    | '/pilot/training'
+    | '/pilot/weekly-review'
     | '/portal/new-request'
     | '/rating/quote'
     | '/security/center'
@@ -1343,7 +1631,31 @@ export interface RootRouteChildren {
   OpsIncidentsRoute: typeof OpsIncidentsRoute
   OpsObservabilityRoute: typeof OpsObservabilityRoute
   OptimizationCenterRoute: typeof OptimizationCenterRoute
+  PilotAcceptanceRoute: typeof PilotAcceptanceRoute
+  PilotBlockersRoute: typeof PilotBlockersRoute
+  PilotBugFixSprintRoute: typeof PilotBugFixSprintRoute
+  PilotBugsRoute: typeof PilotBugsRoute
+  PilotCompanySetupRoute: typeof PilotCompanySetupRoute
+  PilotDailyReviewRoute: typeof PilotDailyReviewRoute
+  PilotDataChecklistRoute: typeof PilotDataChecklistRoute
+  PilotDataProtectionRoute: typeof PilotDataProtectionRoute
+  PilotDocsRoute: typeof PilotDocsRoute
+  PilotEnvironmentRoute: typeof PilotEnvironmentRoute
+  PilotEscalationRoute: typeof PilotEscalationRoute
+  PilotFeedbackRoute: typeof PilotFeedbackRoute
+  PilotFirstLiveLoadRoute: typeof PilotFirstLiveLoadRoute
+  PilotGoLiveRoute: typeof PilotGoLiveRoute
+  PilotMetricsRoute: typeof PilotMetricsRoute
   PilotPhase13OverviewRoute: typeof PilotPhase13OverviewRoute
+  PilotReleaseCandidateRoute: typeof PilotReleaseCandidateRoute
+  PilotRlsRoute: typeof PilotRlsRoute
+  PilotRollbackRoute: typeof PilotRollbackRoute
+  PilotSmokeTestRoute: typeof PilotSmokeTestRoute
+  PilotSupportRoute: typeof PilotSupportRoute
+  PilotSurveysRoute: typeof PilotSurveysRoute
+  PilotTestsRoute: typeof PilotTestsRoute
+  PilotTrainingRoute: typeof PilotTrainingRoute
+  PilotWeeklyReviewRoute: typeof PilotWeeklyReviewRoute
   RatingQuoteRoute: typeof RatingQuoteRoute
   SecurityCenterRoute: typeof SecurityCenterRoute
   SecurityOverviewRoute: typeof SecurityOverviewRoute
@@ -1571,11 +1883,179 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalNewRequestRouteImport
       parentRoute: typeof PortalRoute
     }
+    '/pilot/weekly-review': {
+      id: '/pilot/weekly-review'
+      path: '/pilot/weekly-review'
+      fullPath: '/pilot/weekly-review'
+      preLoaderRoute: typeof PilotWeeklyReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/training': {
+      id: '/pilot/training'
+      path: '/pilot/training'
+      fullPath: '/pilot/training'
+      preLoaderRoute: typeof PilotTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/tests': {
+      id: '/pilot/tests'
+      path: '/pilot/tests'
+      fullPath: '/pilot/tests'
+      preLoaderRoute: typeof PilotTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/surveys': {
+      id: '/pilot/surveys'
+      path: '/pilot/surveys'
+      fullPath: '/pilot/surveys'
+      preLoaderRoute: typeof PilotSurveysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/support': {
+      id: '/pilot/support'
+      path: '/pilot/support'
+      fullPath: '/pilot/support'
+      preLoaderRoute: typeof PilotSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/smoke-test': {
+      id: '/pilot/smoke-test'
+      path: '/pilot/smoke-test'
+      fullPath: '/pilot/smoke-test'
+      preLoaderRoute: typeof PilotSmokeTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/rollback': {
+      id: '/pilot/rollback'
+      path: '/pilot/rollback'
+      fullPath: '/pilot/rollback'
+      preLoaderRoute: typeof PilotRollbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/rls': {
+      id: '/pilot/rls'
+      path: '/pilot/rls'
+      fullPath: '/pilot/rls'
+      preLoaderRoute: typeof PilotRlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/release-candidate': {
+      id: '/pilot/release-candidate'
+      path: '/pilot/release-candidate'
+      fullPath: '/pilot/release-candidate'
+      preLoaderRoute: typeof PilotReleaseCandidateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pilot/phase13-overview': {
       id: '/pilot/phase13-overview'
       path: '/pilot/phase13-overview'
       fullPath: '/pilot/phase13-overview'
       preLoaderRoute: typeof PilotPhase13OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/metrics': {
+      id: '/pilot/metrics'
+      path: '/pilot/metrics'
+      fullPath: '/pilot/metrics'
+      preLoaderRoute: typeof PilotMetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/go-live': {
+      id: '/pilot/go-live'
+      path: '/pilot/go-live'
+      fullPath: '/pilot/go-live'
+      preLoaderRoute: typeof PilotGoLiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/first-live-load': {
+      id: '/pilot/first-live-load'
+      path: '/pilot/first-live-load'
+      fullPath: '/pilot/first-live-load'
+      preLoaderRoute: typeof PilotFirstLiveLoadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/feedback': {
+      id: '/pilot/feedback'
+      path: '/pilot/feedback'
+      fullPath: '/pilot/feedback'
+      preLoaderRoute: typeof PilotFeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/escalation': {
+      id: '/pilot/escalation'
+      path: '/pilot/escalation'
+      fullPath: '/pilot/escalation'
+      preLoaderRoute: typeof PilotEscalationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/environment': {
+      id: '/pilot/environment'
+      path: '/pilot/environment'
+      fullPath: '/pilot/environment'
+      preLoaderRoute: typeof PilotEnvironmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/docs': {
+      id: '/pilot/docs'
+      path: '/pilot/docs'
+      fullPath: '/pilot/docs'
+      preLoaderRoute: typeof PilotDocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/data-protection': {
+      id: '/pilot/data-protection'
+      path: '/pilot/data-protection'
+      fullPath: '/pilot/data-protection'
+      preLoaderRoute: typeof PilotDataProtectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/data-checklist': {
+      id: '/pilot/data-checklist'
+      path: '/pilot/data-checklist'
+      fullPath: '/pilot/data-checklist'
+      preLoaderRoute: typeof PilotDataChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/daily-review': {
+      id: '/pilot/daily-review'
+      path: '/pilot/daily-review'
+      fullPath: '/pilot/daily-review'
+      preLoaderRoute: typeof PilotDailyReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/company-setup': {
+      id: '/pilot/company-setup'
+      path: '/pilot/company-setup'
+      fullPath: '/pilot/company-setup'
+      preLoaderRoute: typeof PilotCompanySetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/bugs': {
+      id: '/pilot/bugs'
+      path: '/pilot/bugs'
+      fullPath: '/pilot/bugs'
+      preLoaderRoute: typeof PilotBugsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/bug-fix-sprint': {
+      id: '/pilot/bug-fix-sprint'
+      path: '/pilot/bug-fix-sprint'
+      fullPath: '/pilot/bug-fix-sprint'
+      preLoaderRoute: typeof PilotBugFixSprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/blockers': {
+      id: '/pilot/blockers'
+      path: '/pilot/blockers'
+      fullPath: '/pilot/blockers'
+      preLoaderRoute: typeof PilotBlockersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilot/acceptance': {
+      id: '/pilot/acceptance'
+      path: '/pilot/acceptance'
+      fullPath: '/pilot/acceptance'
+      preLoaderRoute: typeof PilotAcceptanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/optimization/center': {
@@ -2212,7 +2692,31 @@ const rootRouteChildren: RootRouteChildren = {
   OpsIncidentsRoute: OpsIncidentsRoute,
   OpsObservabilityRoute: OpsObservabilityRoute,
   OptimizationCenterRoute: OptimizationCenterRoute,
+  PilotAcceptanceRoute: PilotAcceptanceRoute,
+  PilotBlockersRoute: PilotBlockersRoute,
+  PilotBugFixSprintRoute: PilotBugFixSprintRoute,
+  PilotBugsRoute: PilotBugsRoute,
+  PilotCompanySetupRoute: PilotCompanySetupRoute,
+  PilotDailyReviewRoute: PilotDailyReviewRoute,
+  PilotDataChecklistRoute: PilotDataChecklistRoute,
+  PilotDataProtectionRoute: PilotDataProtectionRoute,
+  PilotDocsRoute: PilotDocsRoute,
+  PilotEnvironmentRoute: PilotEnvironmentRoute,
+  PilotEscalationRoute: PilotEscalationRoute,
+  PilotFeedbackRoute: PilotFeedbackRoute,
+  PilotFirstLiveLoadRoute: PilotFirstLiveLoadRoute,
+  PilotGoLiveRoute: PilotGoLiveRoute,
+  PilotMetricsRoute: PilotMetricsRoute,
   PilotPhase13OverviewRoute: PilotPhase13OverviewRoute,
+  PilotReleaseCandidateRoute: PilotReleaseCandidateRoute,
+  PilotRlsRoute: PilotRlsRoute,
+  PilotRollbackRoute: PilotRollbackRoute,
+  PilotSmokeTestRoute: PilotSmokeTestRoute,
+  PilotSupportRoute: PilotSupportRoute,
+  PilotSurveysRoute: PilotSurveysRoute,
+  PilotTestsRoute: PilotTestsRoute,
+  PilotTrainingRoute: PilotTrainingRoute,
+  PilotWeeklyReviewRoute: PilotWeeklyReviewRoute,
   RatingQuoteRoute: RatingQuoteRoute,
   SecurityCenterRoute: SecurityCenterRoute,
   SecurityOverviewRoute: SecurityOverviewRoute,
