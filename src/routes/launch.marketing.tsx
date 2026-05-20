@@ -78,6 +78,31 @@ function Marketing() {
         </Card>
 
         <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="text-sm font-medium">Value pillars</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            {VALUE_PILLARS.map((p) => (
+              <div key={p.title} className="rounded border border-white/10 bg-white/[0.01] p-3">
+                <div className="text-sm font-medium text-teal-200">{p.title}</div>
+                <p className="mt-1 text-xs text-muted-foreground">{p.copy}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="border-teal-500/20 bg-gradient-to-br from-teal-500/5 to-transparent p-5">
+          <h2 className="text-sm font-medium">Proof points <span className="text-xs text-amber-300">(illustrative targets)</span></h2>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {PROOF_POINTS.map((p) => (
+              <div key={p.label} className="rounded border border-white/10 bg-white/[0.02] p-3">
+                <div className="text-2xl font-semibold text-teal-200">{p.stat}</div>
+                <div className="text-sm font-medium">{p.label}</div>
+                <div className="text-xs text-muted-foreground">{p.note}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
           <h2 className="text-sm font-medium">Site map</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             {PAGES.map((p) => <Badge key={p} variant="outline" className="border-white/15">{p}</Badge>)}
