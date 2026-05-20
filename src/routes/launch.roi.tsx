@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { ROI_PRESETS } from "@/launch/data/mockLaunch";
 import { Calculator } from "lucide-react";
 
 export const Route = createFileRoute("/launch/roi")({
