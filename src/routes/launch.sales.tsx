@@ -46,6 +46,22 @@ function Sales() {
         </header>
 
         <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="flex items-center gap-2 text-sm font-medium"><Target className="size-4 text-teal-300" /> Ideal customer profile</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-3 text-xs">
+            <Block title="Best fit" tone="emerald" items={ICP.bestFit} />
+            <Block title="Not a fit" tone="rose"    items={ICP.notFit} />
+            <Block title="Buying triggers" tone="teal" items={ICP.triggers} />
+          </div>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="flex items-center gap-2 text-sm font-medium"><HelpCircle className="size-4 text-teal-300" /> Discovery questions</h2>
+          <ol className="mt-3 list-decimal pl-5 text-xs text-muted-foreground space-y-1">
+            {DISCOVERY_QUESTIONS.map((q) => <li key={q}>{q}</li>)}
+          </ol>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
           <h2 className="text-sm font-medium">Demo lengths</h2>
           <div className="mt-3 grid gap-2 md:grid-cols-4">
             {DEMOS.map((d) => (
