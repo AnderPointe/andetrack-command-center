@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Banknote } from "lucide-react";
 import { V1Page } from "@/components/v1/V1Page";
-import { ChecklistCard } from "./v1.driver";
+import { ChecklistCard } from "@/components/v1/ChecklistCard";
 import { COMMERCIAL_CHECKS } from "@/v1/data/mockPhase14";
 
 export const Route = createFileRoute("/v1/commercial")({
