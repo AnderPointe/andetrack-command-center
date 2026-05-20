@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { ROI_PRESETS } from "@/launch/data/mockLaunch";
 import { Calculator } from "lucide-react";
 
 export const Route = createFileRoute("/launch/roi")({
@@ -55,6 +57,19 @@ function ROI() {
           <LaunchNav />
         </header>
 
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Quick presets</div>
+          <div className="flex flex-wrap gap-2">
+            {ROI_PRESETS.map((p) => (
+              <Button key={p.id} size="sm" variant="outline" onClick={() => {
+                setDrivers(p.drivers);
+                setLoadsPerDay(p.loadsPerDay);
+                setSoftwareCost(p.softwareCost);
+              }}>{p.label}</Button>
+            ))}
+          </div>
+        </Card>
+
         <div className="grid gap-6 lg:grid-cols-2">
           <Card className="border-white/10 bg-white/[0.02] p-5">
             <h2 className="text-sm font-medium">Inputs</h2>
@@ -78,14 +93,25 @@ function ROI() {
             <div className="mt-4 border-t border-white/10 pt-4">
               <div className="text-xs uppercase tracking-wider text-muted-foreground">Total monthly</div>
               <div className="text-3xl font-semibold text-teal-200">{fmt(calc.total)}</div>
-              <div className="mt-1 text-xs text-muted-foreground">
-                Payback period: ~{calc.paybackMonths.toFixed(1)} months (vs. current software)
+              <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                <Stat label="Annual" value={fmt(calc.total * 12)} />
+                <Stat label="Per driver/mo" value={drivers > 0 ? fmt(calc.total / drivers) : "—"} />
+                <Stat label="Payback" value={`${calc.paybackMonths.toFixed(1)} mo`} />
               </div>
             </div>
           </Card>
         </div>
       </div>
     </AppShell>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded border border-white/10 bg-white/[0.02] p-2">
+      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
+      <div className="text-sm font-semibold text-teal-200">{value}</div>
+    </div>
   );
 }
 

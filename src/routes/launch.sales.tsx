@@ -4,8 +4,8 @@ import { LaunchNav } from "@/components/launch/LaunchNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { COLLATERAL } from "@/launch/data/mockLaunch";
-import { Sparkles, FileText } from "lucide-react";
+import { COLLATERAL, ICP, DISCOVERY_QUESTIONS } from "@/launch/data/mockLaunch";
+import { Sparkles, FileText, Target, HelpCircle } from "lucide-react";
 
 export const Route = createFileRoute("/launch/sales")({
   head: () => ({ meta: [{ title: "Sales Kit — Anderoute" }] }),
@@ -44,6 +44,22 @@ function Sales() {
           </div>
           <LaunchNav />
         </header>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="flex items-center gap-2 text-sm font-medium"><Target className="size-4 text-teal-300" /> Ideal customer profile</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-3 text-xs">
+            <Block title="Best fit" tone="emerald" items={ICP.bestFit} />
+            <Block title="Not a fit" tone="rose"    items={ICP.notFit} />
+            <Block title="Buying triggers" tone="teal" items={ICP.triggers} />
+          </div>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="flex items-center gap-2 text-sm font-medium"><HelpCircle className="size-4 text-teal-300" /> Discovery questions</h2>
+          <ol className="mt-3 list-decimal pl-5 text-xs text-muted-foreground space-y-1">
+            {DISCOVERY_QUESTIONS.map((q) => <li key={q}>{q}</li>)}
+          </ol>
+        </Card>
 
         <Card className="border-white/10 bg-white/[0.02] p-5">
           <h2 className="text-sm font-medium">Demo lengths</h2>
@@ -89,5 +105,22 @@ function Sales() {
         </Card>
       </div>
     </AppShell>
+  );
+}
+
+const TONES: Record<string, string> = {
+  emerald: "border-emerald-500/30 text-emerald-200",
+  rose:    "border-rose-500/30 text-rose-200",
+  teal:    "border-teal-500/30 text-teal-200",
+};
+
+function Block({ title, tone, items }: { title: string; tone: string; items: string[] }) {
+  return (
+    <div className={`rounded border bg-white/[0.01] p-3 ${TONES[tone]}`}>
+      <div className="text-xs font-medium uppercase tracking-wider">{title}</div>
+      <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
+        {items.map((i) => <li key={i}>· {i}</li>)}
+      </ul>
+    </div>
   );
 }

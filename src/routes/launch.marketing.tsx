@@ -3,7 +3,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { LaunchNav } from "@/components/launch/LaunchNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { POSITIONING, TAGLINES } from "@/launch/data/mockLaunch";
+import { POSITIONING, TAGLINES, VALUE_PILLARS, PROOF_POINTS } from "@/launch/data/mockLaunch";
 import { Megaphone } from "lucide-react";
 
 export const Route = createFileRoute("/launch/marketing")({
@@ -74,6 +74,31 @@ function Marketing() {
                 <ul className="mt-1 list-disc pl-4 text-muted-foreground">{POSITIONING.advantages.map((a) => <li key={a}>{a}</li>)}</ul>
               </div>
             </div>
+          </div>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="text-sm font-medium">Value pillars</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            {VALUE_PILLARS.map((p) => (
+              <div key={p.title} className="rounded border border-white/10 bg-white/[0.01] p-3">
+                <div className="text-sm font-medium text-teal-200">{p.title}</div>
+                <p className="mt-1 text-xs text-muted-foreground">{p.copy}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="border-teal-500/20 bg-gradient-to-br from-teal-500/5 to-transparent p-5">
+          <h2 className="text-sm font-medium">Proof points <span className="text-xs text-amber-300">(illustrative targets)</span></h2>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {PROOF_POINTS.map((p) => (
+              <div key={p.label} className="rounded border border-white/10 bg-white/[0.02] p-3">
+                <div className="text-2xl font-semibold text-teal-200">{p.stat}</div>
+                <div className="text-sm font-medium">{p.label}</div>
+                <div className="text-xs text-muted-foreground">{p.note}</div>
+              </div>
+            ))}
           </div>
         </Card>
 

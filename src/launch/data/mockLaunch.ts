@@ -304,3 +304,117 @@ export const BRAND_TOKENS = [
   { token: "Typography",      value: "Geist / system stack", note: "Headings: tight tracking" },
   { token: "Radius",          value: "0.75rem default", note: "Cards 1rem" },
 ];
+
+/* ---------------- Phase 10 polish: stronger packaging primitives ---------------- */
+
+export const VALUE_PILLARS = [
+  { icon: "Radio",    title: "Realtime-first",      copy: "Live GPS, dispatch, and customer tracking on the same stream — not nightly report exports." },
+  { icon: "Truck",    title: "Truck-aware routing", copy: "EliteNav respects height, weight, HazMat and HOS — built in, not bolted on." },
+  { icon: "Sparkles", title: "Explainable AI",      copy: "Every CoPilot recommendation shows reasoning, confidence, and audit trail before a human approves." },
+  { icon: "Users",    title: "Multi-stakeholder",   copy: "Dispatchers, drivers, customers, and executives each get a purpose-built surface." },
+  { icon: "Shield",   title: "Enterprise-grade",    copy: "SOC 2-ready, RLS-enforced tenant isolation, SSO/SAML, full audit." },
+  { icon: "Plug",     title: "Open integrations",   copy: "EDI 204/214, REST API, webhooks, broker + TMS connectors via the Integration Hub." },
+] as const;
+
+export const PROOF_POINTS = [
+  { stat: "−30%",  label: "Status calls", note: "Customer portal + proactive AI updates (illustrative target)" },
+  { stat: "+15%",  label: "ETA accuracy", note: "ETA confidence engine + live GPS" },
+  { stat: "+5–10%",label: "On-time delivery", note: "Predictive risk + dispatcher approval workflow" },
+  { stat: "2–6 wk",label: "Time to go-live", note: "Wizards + structured onboarding" },
+  { stat: "100%",  label: "AI actions audited", note: "Every recommendation and approval logged" },
+  { stat: "1 pane",label: "Replaces 5+ tools", note: "Dispatch · GPS · portal · alerts · reporting" },
+];
+
+export interface MatrixRow { feature: string; starter: string | boolean; professional: string | boolean; fleet: string | boolean; enterprise: string | boolean; }
+export const COMPARISON_MATRIX: MatrixRow[] = [
+  { feature: "Live dispatch map",         starter: "Basic",   professional: true, fleet: true, enterprise: true },
+  { feature: "Driver app + EliteNav",     starter: true,      professional: true, fleet: true, enterprise: true },
+  { feature: "Customer portal",           starter: "Link",    professional: true, fleet: true, enterprise: "White-label" },
+  { feature: "CoPilot AI",                starter: false,     professional: "Basic", fleet: "Advanced", enterprise: "Advanced + custom" },
+  { feature: "Predictive risk",           starter: false,     professional: false, fleet: true, enterprise: true },
+  { feature: "Integrations Hub",          starter: false,     professional: "Webhooks", fleet: "EDI + API", enterprise: "Custom + SLA" },
+  { feature: "RBAC + SSO/SAML",           starter: false,     professional: "RBAC", fleet: "RBAC", enterprise: "SSO/SAML" },
+  { feature: "Audit log retention",       starter: "30 days", professional: "90 days", fleet: "1 year", enterprise: "Custom" },
+  { feature: "Dispatcher seats",          starter: "2",       professional: "5", fleet: "Unlimited", enterprise: "Unlimited" },
+  { feature: "Support SLA",               starter: "Email",   professional: "Email + chat", fleet: "Priority", enterprise: "Dedicated CSM" },
+];
+
+export const ROI_PRESETS = [
+  { id: "small",   label: "Small (5 drivers)",   drivers: 5,   loadsPerDay: 25,  softwareCost: 600 },
+  { id: "growing", label: "Growing (25 drivers)",drivers: 25,  loadsPerDay: 120, softwareCost: 2400 },
+  { id: "fleet",   label: "Fleet (75 drivers)",  drivers: 75,  loadsPerDay: 350, softwareCost: 7500 },
+  { id: "ent",     label: "Enterprise (200)",    drivers: 200, loadsPerDay: 900, softwareCost: 18000 },
+];
+
+export const ONBOARDING_PHASES = [
+  { phase: "Sales → kickoff",   stages: ["sales", "demo", "pilot"] },
+  { phase: "Account setup",     stages: ["account", "company", "users"] },
+  { phase: "Data import",       stages: ["drivers", "vehicles", "customers", "loads"] },
+  { phase: "Rollout",           stages: ["driver-app", "gps", "training", "portal", "integrations"] },
+  { phase: "Go-live + review",  stages: ["go-live", "review"] },
+];
+
+export const HEALTH_DIMENSIONS = [
+  { key: "adoption",  label: "Driver + dispatch adoption", weight: 30 },
+  { key: "usage",     label: "Product usage (loads in app)",weight: 25 },
+  { key: "outcomes",  label: "Outcomes (OTP, ETA accuracy)",weight: 20 },
+  { key: "support",   label: "Support load (inverse)",     weight: 10 },
+  { key: "advocacy",  label: "CSAT / NPS / references",    weight: 10 },
+  { key: "expansion", label: "Expansion signals",          weight: 5  },
+];
+
+export const ICP = {
+  bestFit: [
+    "Couriers + final-mile fleets (10–200 drivers)",
+    "Hotshot + box-truck operators",
+    "Regional freight carriers needing visibility",
+    "3PLs running multiple driver pools",
+  ],
+  notFit: [
+    "Single-driver owner-operators (use a TMS)",
+    "Pure freight brokerages without driver ops",
+    "Enterprises requiring full WMS replacement",
+  ],
+  triggers: [
+    "Status-call overload from customers",
+    "Adding a new shipper requiring tracking",
+    "Outgrown spreadsheets + consumer GPS",
+    "New compliance / SOC 2 requirement",
+  ],
+};
+
+export const DISCOVERY_QUESTIONS = [
+  "How many loads do you move per day, and by what equipment mix?",
+  "How many dispatchers + drivers today, and what's the growth plan?",
+  "What's the cost of one late delivery (penalty + relationship)?",
+  "How much time do dispatchers spend on status calls each day?",
+  "Which TMS / GPS / EDI / broker systems must we integrate with?",
+  "Who approves customer-facing updates today — and how fast?",
+  "What's your current customer visibility experience like?",
+  "Do you have SOC 2, SSO, or data-residency requirements?",
+];
+
+export const DEMO_KEY_MOMENTS = [
+  { step: 3,  why: "AI recommendation with explanation — proves explainable AI." },
+  { step: 6,  why: "EliteNav truck-aware route — proves driver-grade navigation." },
+  { step: 9,  why: "Predictive delay flag — proves proactive operations." },
+  { step: 12, why: "POD lands in portal — proves end-to-end visibility." },
+  { step: 14, why: "Exec ops health update — proves executive intelligence loop." },
+];
+
+export const PILOT_TRACKS = [
+  { name: "30-day Sprint",       audience: "Small operators",   focus: "Core dispatch + driver + portal", outcome: "Go/no-go on Starter or Professional" },
+  { name: "60-day Standard",     audience: "Growing fleets",    focus: "+ CoPilot + first integration",  outcome: "Conversion to Professional / Fleet Command" },
+  { name: "90-day Enterprise",   audience: "Larger fleets",     focus: "+ EDI + SSO + custom workflows", outcome: "Annual Enterprise contract" },
+];
+
+export const HELP_TOPICS = [
+  { topic: "How do I create a load?",            category: "Dispatcher" },
+  { topic: "How do I assign a driver?",          category: "Dispatcher" },
+  { topic: "Why is my GPS not updating?",        category: "Driver" },
+  { topic: "How do I capture POD?",              category: "Driver" },
+  { topic: "How does my customer track a load?", category: "Customer" },
+  { topic: "How do I invite a new user?",        category: "Admin" },
+  { topic: "How does CoPilot approval work?",    category: "AI" },
+  { topic: "How do I export billing data?",      category: "Billing" },
+];

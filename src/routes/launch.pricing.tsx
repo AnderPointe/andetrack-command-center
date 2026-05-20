@@ -4,8 +4,8 @@ import { LaunchNav } from "@/components/launch/LaunchNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { PRICING_TIERS, ADDONS } from "@/launch/data/mockLaunch";
-import { DollarSign, Check } from "lucide-react";
+import { PRICING_TIERS, ADDONS, COMPARISON_MATRIX } from "@/launch/data/mockLaunch";
+import { DollarSign, Check, X } from "lucide-react";
 
 export const Route = createFileRoute("/launch/pricing")({
   head: () => ({ meta: [{ title: "Pricing Strategy — Anderoute" }] }),
@@ -49,6 +49,40 @@ function Pricing() {
             </Card>
           ))}
         </section>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="text-sm font-medium">Tier comparison</h2>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full min-w-[640px] text-xs">
+              <thead>
+                <tr className="text-left text-muted-foreground">
+                  <th className="py-2 pr-4 font-normal">Feature</th>
+                  <th className="py-2 px-2 font-normal">Starter</th>
+                  <th className="py-2 px-2 font-normal text-teal-200">Professional</th>
+                  <th className="py-2 px-2 font-normal">Fleet Command</th>
+                  <th className="py-2 px-2 font-normal">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON_MATRIX.map((row) => (
+                  <tr key={row.feature} className="border-t border-white/5">
+                    <td className="py-2 pr-4">{row.feature}</td>
+                    {(["starter","professional","fleet","enterprise"] as const).map((k) => {
+                      const v = row[k];
+                      return (
+                        <td key={k} className="py-2 px-2">
+                          {v === true ? <Check className="size-3.5 text-emerald-300" /> :
+                           v === false ? <X className="size-3.5 text-muted-foreground/50" /> :
+                           <span className="text-muted-foreground">{v}</span>}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
 
         <Card className="border-white/10 bg-white/[0.02] p-5">
           <h2 className="text-sm font-medium">Add-ons</h2>

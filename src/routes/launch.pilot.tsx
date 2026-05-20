@@ -3,7 +3,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { LaunchNav } from "@/components/launch/LaunchNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PILOT_METRICS } from "@/launch/data/mockLaunch";
+import { PILOT_METRICS, PILOT_TRACKS } from "@/launch/data/mockLaunch";
 import { Users } from "lucide-react";
 
 export const Route = createFileRoute("/launch/pilot")({
@@ -51,6 +51,20 @@ function Pilot() {
                 <div className="text-sm font-medium text-teal-200">{p.name}</div>
                 <div className="mt-1 text-xs text-muted-foreground">Goal: {p.goal}</div>
                 <div className="text-xs text-muted-foreground">Exit: {p.exit}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="text-sm font-medium">Pilot tracks</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            {PILOT_TRACKS.map((t) => (
+              <div key={t.name} className="rounded border border-teal-500/20 bg-teal-500/[0.03] p-3">
+                <div className="text-sm font-semibold text-teal-200">{t.name}</div>
+                <div className="mt-1 text-xs text-muted-foreground">{t.audience}</div>
+                <div className="mt-2 text-xs"><span className="text-muted-foreground">Focus:</span> {t.focus}</div>
+                <div className="text-xs"><span className="text-muted-foreground">Outcome:</span> {t.outcome}</div>
               </div>
             ))}
           </div>

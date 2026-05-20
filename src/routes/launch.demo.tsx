@@ -6,8 +6,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { DEMO_STEPS, DEMO_PERSONAS } from "@/launch/data/mockLaunch";
-import { PlayCircle, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
+import { DEMO_STEPS, DEMO_PERSONAS, DEMO_KEY_MOMENTS } from "@/launch/data/mockLaunch";
+import { PlayCircle, RotateCcw, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 export const Route = createFileRoute("/launch/demo")({
   head: () => ({ meta: [{ title: "Demo Mode — Anderoute" }] }),
@@ -84,24 +84,47 @@ function DemoMode() {
           </div>
         </Card>
 
+        <Card className="border-violet-500/20 bg-violet-500/[0.03] p-4">
+          <h3 className="flex items-center gap-2 text-sm font-medium text-violet-200">
+            <Star className="size-4" /> Key "wow" moments
+          </h3>
+          <ul className="mt-2 space-y-1 text-xs">
+            {DEMO_KEY_MOMENTS.map((m) => {
+              const s = DEMO_STEPS[m.step - 1];
+              return (
+                <li key={m.step}
+                  onClick={() => setStep(m.step - 1)}
+                  className="cursor-pointer rounded border border-white/10 bg-white/[0.01] p-2 hover:bg-white/[0.03]">
+                  <span className="text-violet-300">Step {m.step}:</span>{" "}
+                  <span className="font-medium">{s.title}</span>{" "}
+                  <span className="text-muted-foreground">— {m.why}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </Card>
+
         <Card className="border-white/10 bg-white/[0.02] p-4">
-          <h3 className="mb-2 text-sm font-medium">All steps</h3>
+          <h3 className="mb-2 text-sm font-medium">All steps {persona !== "owner" ? `(filtered: ${persona})` : ""}</h3>
           <ol className="space-y-1.5 text-xs">
-            {DEMO_STEPS.map((s, i) => (
-              <li
-                key={s.id}
-                onClick={() => setStep(i)}
-                className={`cursor-pointer rounded border px-3 py-2 transition-colors ${
-                  i === step
-                    ? "border-teal-400/40 bg-teal-500/10"
-                    : "border-white/10 bg-white/[0.01] hover:bg-white/[0.03]"
-                }`}
-              >
-                <span className="text-muted-foreground">{String(i + 1).padStart(2, "0")}.</span>{" "}
-                <span className="font-medium">{s.title}</span>{" "}
-                <span className="text-muted-foreground">— {s.persona}</span>
-              </li>
-            ))}
+            {DEMO_STEPS.map((s, i) => {
+              const dim = persona !== "owner" && s.persona.toLowerCase() !== persona;
+              return (
+                <li
+                  key={s.id}
+                  onClick={() => setStep(i)}
+                  className={`cursor-pointer rounded border px-3 py-2 transition-colors ${
+                    i === step
+                      ? "border-teal-400/40 bg-teal-500/10"
+                      : "border-white/10 bg-white/[0.01] hover:bg-white/[0.03]"
+                  } ${dim ? "opacity-40" : ""}`}
+                >
+                  <span className="text-muted-foreground">{String(i + 1).padStart(2, "0")}.</span>{" "}
+                  <span className="font-medium">{s.title}</span>{" "}
+                  <span className="text-muted-foreground">— {s.persona}</span>
+                </li>
+              );
+            })}
           </ol>
         </Card>
       </div>

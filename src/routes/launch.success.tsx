@@ -4,7 +4,7 @@ import { LaunchNav } from "@/components/launch/LaunchNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { SUCCESS_ACCOUNTS } from "@/launch/data/mockLaunch";
+import { SUCCESS_ACCOUNTS, HEALTH_DIMENSIONS } from "@/launch/data/mockLaunch";
 import { Users } from "lucide-react";
 
 export const Route = createFileRoute("/launch/success")({
@@ -51,8 +51,20 @@ function Success() {
           ))}
         </section>
 
-        <Card className="border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground">
-          Health = adoption + product usage + support load + risk flags. Final scoring weights validated during pilot.
+        <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="text-sm font-medium">Health score breakdown</h2>
+          <div className="mt-3 space-y-2">
+            {HEALTH_DIMENSIONS.map((d) => (
+              <div key={d.key} className="flex items-center gap-3 rounded border border-white/10 bg-white/[0.01] p-2.5 text-sm">
+                <div className="flex-1">{d.label}</div>
+                <div className="h-1.5 w-32 overflow-hidden rounded bg-white/5">
+                  <div className="h-full bg-teal-400/60" style={{ width: `${d.weight * 2}%` }} />
+                </div>
+                <Badge variant="outline" className="border-teal-500/30 text-teal-200">{d.weight}%</Badge>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-xs text-muted-foreground">Weights validated during pilot; CSM reviews quarterly.</p>
         </Card>
       </div>
     </AppShell>
