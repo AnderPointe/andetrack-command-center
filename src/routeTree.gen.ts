@@ -53,6 +53,7 @@ import { Route as LaunchRoadmapRouteImport } from './routes/launch.roadmap'
 import { Route as LaunchReleaseNotesRouteImport } from './routes/launch.release-notes'
 import { Route as LaunchPricingRouteImport } from './routes/launch.pricing'
 import { Route as LaunchPilotRouteImport } from './routes/launch.pilot'
+import { Route as LaunchPhase10OverviewRouteImport } from './routes/launch.phase10-overview'
 import { Route as LaunchOverviewRouteImport } from './routes/launch.overview'
 import { Route as LaunchOnboardingRouteImport } from './routes/launch.onboarding'
 import { Route as LaunchMarketingRouteImport } from './routes/launch.marketing'
@@ -312,6 +313,11 @@ const LaunchPilotRoute = LaunchPilotRouteImport.update({
   path: '/launch/pilot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LaunchPhase10OverviewRoute = LaunchPhase10OverviewRouteImport.update({
+  id: '/launch/phase10-overview',
+  path: '/launch/phase10-overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LaunchOverviewRoute = LaunchOverviewRouteImport.update({
   id: '/launch/overview',
   path: '/launch/overview',
@@ -558,6 +564,7 @@ export interface FileRoutesByFullPath {
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/phase10-overview': typeof LaunchPhase10OverviewRoute
   '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/release-notes': typeof LaunchReleaseNotesRoute
@@ -641,6 +648,7 @@ export interface FileRoutesByTo {
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/phase10-overview': typeof LaunchPhase10OverviewRoute
   '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/release-notes': typeof LaunchReleaseNotesRoute
@@ -725,6 +733,7 @@ export interface FileRoutesById {
   '/launch/marketing': typeof LaunchMarketingRoute
   '/launch/onboarding': typeof LaunchOnboardingRoute
   '/launch/overview': typeof LaunchOverviewRoute
+  '/launch/phase10-overview': typeof LaunchPhase10OverviewRoute
   '/launch/pilot': typeof LaunchPilotRoute
   '/launch/pricing': typeof LaunchPricingRoute
   '/launch/release-notes': typeof LaunchReleaseNotesRoute
@@ -810,6 +819,7 @@ export interface FileRouteTypes {
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/phase10-overview'
     | '/launch/pilot'
     | '/launch/pricing'
     | '/launch/release-notes'
@@ -893,6 +903,7 @@ export interface FileRouteTypes {
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/phase10-overview'
     | '/launch/pilot'
     | '/launch/pricing'
     | '/launch/release-notes'
@@ -976,6 +987,7 @@ export interface FileRouteTypes {
     | '/launch/marketing'
     | '/launch/onboarding'
     | '/launch/overview'
+    | '/launch/phase10-overview'
     | '/launch/pilot'
     | '/launch/pricing'
     | '/launch/release-notes'
@@ -1058,6 +1070,7 @@ export interface RootRouteChildren {
   LaunchMarketingRoute: typeof LaunchMarketingRoute
   LaunchOnboardingRoute: typeof LaunchOnboardingRoute
   LaunchOverviewRoute: typeof LaunchOverviewRoute
+  LaunchPhase10OverviewRoute: typeof LaunchPhase10OverviewRoute
   LaunchPilotRoute: typeof LaunchPilotRoute
   LaunchPricingRoute: typeof LaunchPricingRoute
   LaunchReleaseNotesRoute: typeof LaunchReleaseNotesRoute
@@ -1387,6 +1400,13 @@ declare module '@tanstack/react-router' {
       path: '/launch/pilot'
       fullPath: '/launch/pilot'
       preLoaderRoute: typeof LaunchPilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch/phase10-overview': {
+      id: '/launch/phase10-overview'
+      path: '/launch/phase10-overview'
+      fullPath: '/launch/phase10-overview'
+      preLoaderRoute: typeof LaunchPhase10OverviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/launch/overview': {
@@ -1759,6 +1779,7 @@ const rootRouteChildren: RootRouteChildren = {
   LaunchMarketingRoute: LaunchMarketingRoute,
   LaunchOnboardingRoute: LaunchOnboardingRoute,
   LaunchOverviewRoute: LaunchOverviewRoute,
+  LaunchPhase10OverviewRoute: LaunchPhase10OverviewRoute,
   LaunchPilotRoute: LaunchPilotRoute,
   LaunchPricingRoute: LaunchPricingRoute,
   LaunchReleaseNotesRoute: LaunchReleaseNotesRoute,
