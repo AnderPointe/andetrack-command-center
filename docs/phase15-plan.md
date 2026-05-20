@@ -1,50 +1,48 @@
-# Phase 15 — V1.1 Expansion & Production Growth
+# Phase 15 — V1.1 expansion
 
-Phase 15 builds on a successfully launched V1 to grow the product
-commercially and harden the navigation + billing stack.
+Phase 15 moves Anderoute from stable V1 into V1.1 by adding the
+highest-value post-pilot improvements without jumping to enterprise scope.
 
-## Themes
+## What V1.1 adds
 
-1. **Real navigation SDK integration** — replace the mock provider with a
-   production turn-by-turn provider (Mapbox or HERE, with truck-routing
-   constraints) behind the existing `NavigationProvider` interface.
-2. **Improved ETA** — incorporate live traffic, dwell history, and load
-   profile; expose confidence intervals.
-3. **Billing activation** — turn on subscription billing for converted
-   pilots; meter on active drivers and active loads.
-4. **Driver / vehicle / customer imports** — CSV importers with validation
-   and dry-run preview.
-5. **Better offline mode** — persistent queue, retry policy, and clear
-   user feedback when GPS / POD is queued.
-6. **Better notifications** — per-role preferences, quiet hours,
-   templated copy, and delivery analytics.
-7. **More reports** — exception report, on-time performance, customer
-   visibility, dispatcher productivity.
-8. **Customer growth** — onboard customers #2 and #3 with the V1.1 build;
-   formalize CS playbook from Phase 14.
+- Improved ETA engine with confidence + window status
+- Navigation SDK readiness (Mapbox, Google, HERE, Trimble, Mock fallback)
+- Basic billing activation (Stripe via Edge Functions)
+- Driver / vehicle / customer CSV imports
+- Offline + sync improvements with idempotency keys
+- Notification reliability dashboard + templates
+- Customer portal V1.1 (timeline, POD, filters, history)
+- Dispatcher load-board filters and activity timeline
+- 10 practical reports
+- CoPilot V1.1 (rules-based, clearly labeled)
+- Permission matrix UI
+- Production onboarding workflow
+- Production growth dashboard
+- Support V1.1 (SLAs, known issues)
+- Data quality dashboard
+- V1.1 security review
 
-## Explicit non-goals (defer to V2)
+## Explicit non-goals
 
-- Full optimization engine
-- Full predictive AI
-- EDI production
+- Full EDI production
+- API marketplace
+- Full predictive AI / optimization
 - Android Auto / CarPlay
 - White-label custom domains
 - SOC 2 automation
+- Live Stripe billing automation (V1.5)
+- Native turn-by-turn (V1.5)
 
-## Entry criteria from Phase 14
+## Entry / exit criteria
 
-- V1 readiness ≥ 90%; all P0/P1 bugs released
-- ≥ 1 paying customer signed
-- Regression suite green
-- Customer health ≥ 75 on the pilot account
-- Support SLA breach rate < 10%
+Entry: V1 GA cleared in Phase 14 with ≥ 1 pilot customer signed.
 
-## Exit criteria
+Exit: All V1.1 routes deliver, schema + RLS deployed, Stripe boundary docs
+shipped, V1.1 security review ≥ 90%, demo flow runs end-to-end. Phase 16
+plan committed.
 
-- 3+ paying customers live on V1.1
-- Real navigation SDK live for ≥ 50% of active drivers
-- Billing collects monthly without manual intervention
-- Notification delivery ≥ 97%
-- GPS update success ≥ 95%
-- Phase 16 plan defined (V2 intelligence + integrations)
+See also:
+- `docs/phase15-schema.sql`
+- `docs/phase15-rls.sql`
+- `docs/phase15-edge-function-plan.md`
+- `docs/phase16-plan.md`
