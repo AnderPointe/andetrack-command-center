@@ -464,3 +464,118 @@ export function v11Stats() {
     deferred: V11_SCOPE.filter((s) => s.status === "deferred").length,
   };
 }
+
+// ---------------- Polish utilities ----------------
+
+/** Detailed ETA confidence reasons used by the ETA route. */
+export function etaConfidenceReasons(s: ETAShipment): { label: string; tone: Tone }[] {
+  const out: { label: string; tone: Tone }[] = [];
+  if (s.gpsAgeSec <= 30) out.push({ label: `GPS fresh (${s.gpsAgeSec}s)`, tone: "good" });
+  else if (s.gpsAgeSec <= 120) out.push({ label: `GPS warm (${s.gpsAgeSec}s)`, tone: "info" });
+  else if (s.gpsAgeSec <= 600) out.push({ label: `GPS aging (${Math.round(s.gpsAgeSec / 60)}m)`, tone: "warn" });
+  else out.push({ label: `GPS stale (${Math.round(s.gpsAgeSec / 60)}m)`, tone: "bad" });
+
+  if (s.avgSpeedMph >= 50) out.push({ label: `Speed ${s.avgSpeedMph} mph on plan`, tone: "good" });
+  else if (s.avgSpeedMph >= 40) out.push({ label: `Speed ${s.avgSpeedMph} mph below plan`, tone: "warn" });
+  else out.push({ label: `Speed ${s.avgSpeedMph} mph well below plan`, tone: "bad" });
+
+  if (s.manualBufferMin > 0) out.push({ label: `Dispatcher buffer +${s.manualBufferMin}m`, tone: "info" });
+  if (s.delayRiskPct >= 60) out.push({ label: `Delay risk ${s.delayRiskPct}%`, tone: "bad" });
+  else if (s.delayRiskPct >= 30) out.push({ label: `Delay risk ${s.delayRiskPct}%`, tone: "warn" });
+  else out.push({ label: `Delay risk ${s.delayRiskPct}%`, tone: "good" });
+  return out;
+}
+
+/** Saved dispatcher load views — V1.1 polish for load board filters. */
+export const SAVED_LOAD_VIEWS = [
+  { id: "v1", name: "At-risk windows",        filters: "status: at_risk OR late",                  owner: "dispatch" },
+  { id: "v2", name: "Unassigned next 4h",     filters: "assignment: none, pickup: <4h",            owner: "dispatch" },
+  { id: "v3", name: "Delivered no POD",       filters: "status: delivered, pod: missing",          owner: "dispatch" },
+  { id: "v4", name: "Northwind active",       filters: "customer: Northwind, status: <delivered",  owner: "shared"   },
+  { id: "v5", name: "My drivers on-duty",     filters: "driver.assigned_to_me, status: on_duty",   owner: "me"       },
+];
+
+/** Stripe trust boundary — what runs where. */
+export const STRIPE_TRUST_BOUNDARY = [
+  { layer: "Browser",         runs: "Stripe.js redirect only",              secret: false, note: "Publishable key only" },
+  { layer: "Server function", runs: "Checkout / portal session creation",   secret: true,  note: "Reads STRIPE_SECRET_KEY at runtime" },
+  { layer: "Public route",    runs: "stripe-webhook signature verify",      secret: true,  note: "Verifies signature before any write" },
+  { layer: "Database",        runs: "billing_* tables (RLS company-scoped)", secret: false, note: "No raw card data stored" },
+];
+
+/** Permission test run aggregate. */
+export const PERMISSION_TEST_RUNS = [
+  { role: "driver",     permission: "Create / assign loads",       expected: false, actual: false },
+  { role: "customer",   permission: "View other customers loads",  expected: false, actual: false },
+  { role: "dispatcher", permission: "Manage company billing",      expected: false, actual: false },
+  { role: "admin",      permission: "CSV import (drivers)",        expected: true,  actual: true  },
+  { role: "driver",     permission: "Submit POD",                  expected: true,  actual: true  },
+  { role: "customer",   permission: "View own shipments + POD",    expected: true,  actual: true  },
+];
+
+/** Per-template notification delivery stats. */
+export const NOTIF_TEMPLATE_STATS = [
+  { id: "load_new",         delivery: 0.991, open: 0.82 },
+  { id: "load_expiring",    delivery: 0.988, open: 0.77 },
+  { id: "load_accepted",    delivery: 0.995, open: 0.66 },
+  { id: "driver_delayed",   delivery: 0.962, open: 0.71 },
+  { id: "driver_delivered", delivery: 0.974, open: 0.69 },
+  { id: "pod_submitted",    delivery: 0.969, open: 0.58 },
+  { id: "customer_update",  delivery: 0.942, open: 0.61 },
+];
+
+/** Onboarding progress helpers. */
+export function onboardingProgress() {
+  const done = ONBOARDING_TASKS.filter((t) => t.done).length;
+  const pct = Math.round((done / ONBOARDING_TASKS.length) * 100);
+  const nextBlocker = ONBOARDING_TASKS.find((t) => !t.done)?.label ?? "All tasks complete";
+  return { done, total: ONBOARDING_TASKS.length, pct, nextBlocker, daysToGoLive: 12 };
+}
+
+/** Cleanup recipes for data quality issues. */
+export const DATA_QUALITY_RECIPES: Record<string, string> = {
+  load_missing_customer:    "Assign customer from dispatch board or archive draft.",
+  shipment_missing_eta:     "Re-run ETA engine or set manual ETA from dispatch.",
+  driver_no_vehicle:        "Assign default vehicle in driver profile.",
+  vehicle_bad_type:         "Reclassify vehicle in fleet settings.",
+  customer_missing_contact: "Request contact via customer portal invite.",
+  load_missing_coords:      "Geocode address via server function geocode-load.",
+  completed_no_pod:         "Prompt driver to upload POD or mark exception.",
+  driver_state_stale:       "Send driver a heartbeat ping; auto-clear after sync.",
+  csv_duplicate:            "Merge using idempotency_key in import audit.",
+};
+
+/** Navigation provider readiness score. */
+export function navProviderScore(p: NavProvider): number {
+  const flags = [p.tokenConfigured, p.mobileSdkReady, p.webMapReady, p.routeTest, p.turnByTurnTest, p.rerouteTest, p.etaSyncTest];
+  return Math.round((flags.filter(Boolean).length / flags.length) * 100);
+}
+
+/** Nav SDK gate decision — preferred provider for V1.1 launch. */
+export function navPreferredProvider() {
+  const scored = NAV_PROVIDERS
+    .filter((p) => p.id !== "mock")
+    .map((p) => ({ id: p.id, label: p.label, score: navProviderScore(p) }))
+    .sort((a, b) => b.score - a.score);
+  return { preferred: scored[0], all: scored };
+}
+
+/** V1.1 decision log — keeps the team aligned on scope cuts. */
+export const V11_DECISION_LOG = [
+  { at: "2026-05-04", decision: "Defer Android Auto + CarPlay to V1.5",              reason: "Approval lead time, low pilot demand" },
+  { at: "2026-05-07", decision: "Mock nav stays as fallback in V1.1",                reason: "Cost cap risk before usage caps land" },
+  { at: "2026-05-09", decision: "CSV imports limited to drivers/vehicles/customers", reason: "Avoid scope creep; load import in V1.5" },
+  { at: "2026-05-12", decision: "CoPilot stays rules-based, labelled clearly",       reason: "Trust signal; LLM rollout in V1.5" },
+  { at: "2026-05-15", decision: "Truck routing validation deferred to V1.5",         reason: "Provider tier + verification cost" },
+];
+
+/** Stripe / billing UX checklist (activation, not security). */
+export const BILLING_UX_CHECKLIST = [
+  { id: "trial-banner", label: "Trial countdown banner in app shell",     done: true },
+  { id: "upgrade-cta",  label: "Upgrade CTA on usage > 80% of plan",      done: true },
+  { id: "portal-link",  label: "One-click Stripe customer portal",        done: true },
+  { id: "fail-recover", label: "Past-due recovery flow with retry",       done: false },
+  { id: "invoice-dl",   label: "Invoice download from billing page",      done: true },
+  { id: "plan-compare", label: "Plan compare with recommended highlight", done: true },
+];
+

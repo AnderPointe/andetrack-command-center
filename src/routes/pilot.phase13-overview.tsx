@@ -352,9 +352,9 @@ function Phase13Overview() {
             <li>· <code className="rounded bg-black/30 px-1 py-0.5 text-[10px] text-teal-200/80">docs/qa/pilot-smoke-test.md</code> — smoke test runbook</li>
           </ul>
           <div className="mt-2">
-            See also <Link to="/build/phase12-overview" className="text-teal-300 underline-offset-2 hover:underline">/build/phase12-overview</Link>{" "}
-            and <Link to="/mvp/pilot" className="text-teal-300 underline-offset-2 hover:underline">/mvp/pilot</Link>.
+            See also <Link to="/mvp/pilot" className="text-teal-300 underline-offset-2 hover:underline">/mvp/pilot</Link>.
           </div>
+
         </Card>
       </div>
     </AppShell>

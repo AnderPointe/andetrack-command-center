@@ -5,7 +5,7 @@ import { StatTile } from "@/components/v1/StatTile";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { BILLING_OVERVIEW, BILLING_INVOICES, PLANS } from "@/v11/data/mockPhase15";
+import { BILLING_OVERVIEW, BILLING_INVOICES, PLANS, BILLING_UX_CHECKLIST } from "@/v11/data/mockPhase15";
 
 export const Route = createFileRoute("/v11/billing")({
   head: () => ({ meta: [{ title: "V1.1 Billing · Anderoute" }] }),
@@ -18,31 +18,46 @@ function meter(used: number, limit: number) {
 
 function Page() {
   const b = BILLING_OVERVIEW;
+  const trialDays = Math.max(0, Math.ceil((new Date(b.trialEndsIso).getTime() - Date.now()) / 86_400_000));
+  const uxDone = BILLING_UX_CHECKLIST.filter((c) => c.done).length;
+  const overLimit = Object.values(b.usage).some((v) => meter(v.used, v.limit) >= 80);
   return (
     <V11Page
       icon={<CreditCard className="size-6 text-fuchsia-300" />}
       title="Billing Activation"
-      blurb="Trial → paid readiness. Subscription status, plan, usage meters, invoices, and billing contact. Stripe wiring lives behind Edge Functions; nothing sensitive in this UI."
+      blurb="Trial → paid activation UX. Subscription status, usage meters with 80% alerts, plan compare with recommended highlight, one-click Stripe portal."
     >
       <div className="grid gap-3 md:grid-cols-4">
         <StatTile label="Subscription" value={b.status.toUpperCase()} hint={`Plan: ${b.plan}`} tone={b.status === "active" ? "good" : b.status === "trial" ? "warn" : "bad"} />
-        <StatTile label="Trial ends" value={new Date(b.trialEndsIso).toLocaleDateString()} tone="info" />
-        <StatTile label="Drivers used" value={`${b.usage.drivers.used}/${b.usage.drivers.limit}`} tone={meter(b.usage.drivers.used, b.usage.drivers.limit) > 90 ? "warn" : "good"} />
-        <StatTile label="Loads MTD" value={`${b.usage.loadsThisMo.used}/${b.usage.loadsThisMo.limit}`} tone={meter(b.usage.loadsThisMo.used, b.usage.loadsThisMo.limit) > 90 ? "warn" : "good"} />
+        <StatTile label="Trial remaining" value={`${trialDays}d`} hint={`ends ${new Date(b.trialEndsIso).toLocaleDateString()}`} tone={trialDays > 7 ? "info" : trialDays > 3 ? "warn" : "bad"} />
+        <StatTile label="Usage alerts" value={overLimit ? "On" : "Off"} hint="meter ≥80%" tone={overLimit ? "warn" : "good"} />
+        <StatTile label="UX checklist" value={`${uxDone}/${BILLING_UX_CHECKLIST.length}`} tone={uxDone === BILLING_UX_CHECKLIST.length ? "good" : "warn"} />
       </div>
+
+      {trialDays <= 14 && (
+        <Card className="border-fuchsia-500/30 bg-fuchsia-500/[0.06] p-3 text-sm">
+          <Badge variant="outline" className="border-fuchsia-500/40 text-fuchsia-300">Trial ends in {trialDays} days</Badge>{" "}
+          <span className="text-fuchsia-100/90">Upgrade now to keep dispatch, drivers, and customer portal active.</span>
+        </Card>
+      )}
 
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h2 className="text-sm font-semibold">Usage meters</h2>
         <div className="mt-3 space-y-3">
-          {Object.entries(b.usage).map(([k, v]) => (
-            <div key={k}>
-              <div className="flex items-center justify-between text-xs">
-                <span className="capitalize">{k.replace(/([A-Z])/g, " $1")}</span>
-                <span>{v.used} / {v.limit}</span>
+          {Object.entries(b.usage).map(([k, v]) => {
+            const pct = meter(v.used, v.limit);
+            return (
+              <div key={k}>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="capitalize">{k.replace(/([A-Z])/g, " $1")}</span>
+                  <span className={pct >= 90 ? "text-rose-300" : pct >= 80 ? "text-amber-300" : "text-muted-foreground"}>
+                    {v.used} / {v.limit} ({pct}%)
+                  </span>
+                </div>
+                <Progress value={pct} className="mt-1 h-1.5" />
               </div>
-              <Progress value={meter(v.used, v.limit)} className="mt-1 h-1.5" />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </Card>
 
@@ -60,6 +75,20 @@ function Page() {
                 <li>{p.drivers} drivers · {p.loadsPerMo} loads/mo</li>
                 <li>{p.copilot ? "✓ CoPilot included" : "— CoPilot add-on"}</li>
               </ul>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Activation UX checklist</h2>
+        <div className="mt-3 space-y-2 text-sm">
+          {BILLING_UX_CHECKLIST.map((c) => (
+            <div key={c.id} className="flex items-center justify-between rounded-lg border border-white/10 bg-black/20 px-3 py-2">
+              <span>{c.label}</span>
+              <Badge variant="outline" className={c.done ? "border-emerald-500/30 text-emerald-300" : "border-amber-500/30 text-amber-300"}>
+                {c.done ? "Done" : "Open"}
+              </Badge>
             </div>
           ))}
         </div>
