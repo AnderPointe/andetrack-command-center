@@ -4,8 +4,8 @@ import { LaunchNav } from "@/components/launch/LaunchNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { COLLATERAL } from "@/launch/data/mockLaunch";
-import { Sparkles, FileText } from "lucide-react";
+import { COLLATERAL, ICP, DISCOVERY_QUESTIONS } from "@/launch/data/mockLaunch";
+import { Sparkles, FileText, Target, HelpCircle } from "lucide-react";
 
 export const Route = createFileRoute("/launch/sales")({
   head: () => ({ meta: [{ title: "Sales Kit — Anderoute" }] }),
