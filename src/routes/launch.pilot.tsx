@@ -57,6 +57,20 @@ function Pilot() {
         </Card>
 
         <Card className="border-white/10 bg-white/[0.02] p-5">
+          <h2 className="text-sm font-medium">Pilot tracks</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            {PILOT_TRACKS.map((t) => (
+              <div key={t.name} className="rounded border border-teal-500/20 bg-teal-500/[0.03] p-3">
+                <div className="text-sm font-semibold text-teal-200">{t.name}</div>
+                <div className="mt-1 text-xs text-muted-foreground">{t.audience}</div>
+                <div className="mt-2 text-xs"><span className="text-muted-foreground">Focus:</span> {t.focus}</div>
+                <div className="text-xs"><span className="text-muted-foreground">Outcome:</span> {t.outcome}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-5">
           <h2 className="text-sm font-medium">Pilot package</h2>
           <ul className="mt-3 space-y-1 text-sm text-muted-foreground">
             {PILOT_PACKAGE.map((p) => <li key={p}>· {p}</li>)}
