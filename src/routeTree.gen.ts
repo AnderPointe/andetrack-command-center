@@ -29,11 +29,29 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V1TrainingRouteImport } from './routes/v1.training'
+import { Route as V1SupportRouteImport } from './routes/v1.support'
+import { Route as V1SecurityRouteImport } from './routes/v1.security'
+import { Route as V1ScalingRouteImport } from './routes/v1.scaling'
+import { Route as V1RoadmapRouteImport } from './routes/v1.roadmap'
+import { Route as V1ReportsRouteImport } from './routes/v1.reports'
+import { Route as V1ReleaseRouteImport } from './routes/v1.release'
+import { Route as V1RegressionRouteImport } from './routes/v1.regression'
 import { Route as V1PrioritizationRouteImport } from './routes/v1.prioritization'
+import { Route as V1PortalRouteImport } from './routes/v1.portal'
 import { Route as V1OverviewRouteImport } from './routes/v1.overview'
+import { Route as V1OnboardingRouteImport } from './routes/v1.onboarding'
+import { Route as V1NotificationsRouteImport } from './routes/v1.notifications'
 import { Route as V1MetricsRouteImport } from './routes/v1.metrics'
+import { Route as V1GpsRouteImport } from './routes/v1.gps'
 import { Route as V1FeedbackRouteImport } from './routes/v1.feedback'
+import { Route as V1DriverRouteImport } from './routes/v1.driver'
+import { Route as V1DispatcherRouteImport } from './routes/v1.dispatcher'
+import { Route as V1DataQualityRouteImport } from './routes/v1.data-quality'
 import { Route as V1CutlineRouteImport } from './routes/v1.cutline'
+import { Route as V1CustomerSuccessRouteImport } from './routes/v1.customer-success'
+import { Route as V1ConversionRouteImport } from './routes/v1.conversion'
+import { Route as V1CommercialRouteImport } from './routes/v1.commercial'
 import { Route as V1BugsRouteImport } from './routes/v1.bugs'
 import { Route as SettingsWhiteLabelRouteImport } from './routes/settings.white-label'
 import { Route as SettingsProductionMonitoringRouteImport } from './routes/settings.production-monitoring'
@@ -242,9 +260,54 @@ const DriverIndexRoute = DriverIndexRouteImport.update({
   path: '/driver/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V1TrainingRoute = V1TrainingRouteImport.update({
+  id: '/v1/training',
+  path: '/v1/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1SupportRoute = V1SupportRouteImport.update({
+  id: '/v1/support',
+  path: '/v1/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1SecurityRoute = V1SecurityRouteImport.update({
+  id: '/v1/security',
+  path: '/v1/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1ScalingRoute = V1ScalingRouteImport.update({
+  id: '/v1/scaling',
+  path: '/v1/scaling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1RoadmapRoute = V1RoadmapRouteImport.update({
+  id: '/v1/roadmap',
+  path: '/v1/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1ReportsRoute = V1ReportsRouteImport.update({
+  id: '/v1/reports',
+  path: '/v1/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1ReleaseRoute = V1ReleaseRouteImport.update({
+  id: '/v1/release',
+  path: '/v1/release',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1RegressionRoute = V1RegressionRouteImport.update({
+  id: '/v1/regression',
+  path: '/v1/regression',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V1PrioritizationRoute = V1PrioritizationRouteImport.update({
   id: '/v1/prioritization',
   path: '/v1/prioritization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1PortalRoute = V1PortalRouteImport.update({
+  id: '/v1/portal',
+  path: '/v1/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V1OverviewRoute = V1OverviewRouteImport.update({
@@ -252,9 +315,24 @@ const V1OverviewRoute = V1OverviewRouteImport.update({
   path: '/v1/overview',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V1OnboardingRoute = V1OnboardingRouteImport.update({
+  id: '/v1/onboarding',
+  path: '/v1/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1NotificationsRoute = V1NotificationsRouteImport.update({
+  id: '/v1/notifications',
+  path: '/v1/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V1MetricsRoute = V1MetricsRouteImport.update({
   id: '/v1/metrics',
   path: '/v1/metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1GpsRoute = V1GpsRouteImport.update({
+  id: '/v1/gps',
+  path: '/v1/gps',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V1FeedbackRoute = V1FeedbackRouteImport.update({
@@ -262,9 +340,39 @@ const V1FeedbackRoute = V1FeedbackRouteImport.update({
   path: '/v1/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V1DriverRoute = V1DriverRouteImport.update({
+  id: '/v1/driver',
+  path: '/v1/driver',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1DispatcherRoute = V1DispatcherRouteImport.update({
+  id: '/v1/dispatcher',
+  path: '/v1/dispatcher',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1DataQualityRoute = V1DataQualityRouteImport.update({
+  id: '/v1/data-quality',
+  path: '/v1/data-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V1CutlineRoute = V1CutlineRouteImport.update({
   id: '/v1/cutline',
   path: '/v1/cutline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1CustomerSuccessRoute = V1CustomerSuccessRouteImport.update({
+  id: '/v1/customer-success',
+  path: '/v1/customer-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1ConversionRoute = V1ConversionRouteImport.update({
+  id: '/v1/conversion',
+  path: '/v1/conversion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V1CommercialRoute = V1CommercialRouteImport.update({
+  id: '/v1/commercial',
+  path: '/v1/commercial',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V1BugsRoute = V1BugsRouteImport.update({
@@ -934,11 +1042,29 @@ export interface FileRoutesByFullPath {
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/settings/white-label': typeof SettingsWhiteLabelRoute
   '/v1/bugs': typeof V1BugsRoute
+  '/v1/commercial': typeof V1CommercialRoute
+  '/v1/conversion': typeof V1ConversionRoute
+  '/v1/customer-success': typeof V1CustomerSuccessRoute
   '/v1/cutline': typeof V1CutlineRoute
+  '/v1/data-quality': typeof V1DataQualityRoute
+  '/v1/dispatcher': typeof V1DispatcherRoute
+  '/v1/driver': typeof V1DriverRoute
   '/v1/feedback': typeof V1FeedbackRoute
+  '/v1/gps': typeof V1GpsRoute
   '/v1/metrics': typeof V1MetricsRoute
+  '/v1/notifications': typeof V1NotificationsRoute
+  '/v1/onboarding': typeof V1OnboardingRoute
   '/v1/overview': typeof V1OverviewRoute
+  '/v1/portal': typeof V1PortalRoute
   '/v1/prioritization': typeof V1PrioritizationRoute
+  '/v1/regression': typeof V1RegressionRoute
+  '/v1/release': typeof V1ReleaseRoute
+  '/v1/reports': typeof V1ReportsRoute
+  '/v1/roadmap': typeof V1RoadmapRoute
+  '/v1/scaling': typeof V1ScalingRoute
+  '/v1/security': typeof V1SecurityRoute
+  '/v1/support': typeof V1SupportRoute
+  '/v1/training': typeof V1TrainingRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -1068,11 +1194,29 @@ export interface FileRoutesByTo {
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/settings/white-label': typeof SettingsWhiteLabelRoute
   '/v1/bugs': typeof V1BugsRoute
+  '/v1/commercial': typeof V1CommercialRoute
+  '/v1/conversion': typeof V1ConversionRoute
+  '/v1/customer-success': typeof V1CustomerSuccessRoute
   '/v1/cutline': typeof V1CutlineRoute
+  '/v1/data-quality': typeof V1DataQualityRoute
+  '/v1/dispatcher': typeof V1DispatcherRoute
+  '/v1/driver': typeof V1DriverRoute
   '/v1/feedback': typeof V1FeedbackRoute
+  '/v1/gps': typeof V1GpsRoute
   '/v1/metrics': typeof V1MetricsRoute
+  '/v1/notifications': typeof V1NotificationsRoute
+  '/v1/onboarding': typeof V1OnboardingRoute
   '/v1/overview': typeof V1OverviewRoute
+  '/v1/portal': typeof V1PortalRoute
   '/v1/prioritization': typeof V1PrioritizationRoute
+  '/v1/regression': typeof V1RegressionRoute
+  '/v1/release': typeof V1ReleaseRoute
+  '/v1/reports': typeof V1ReportsRoute
+  '/v1/roadmap': typeof V1RoadmapRoute
+  '/v1/scaling': typeof V1ScalingRoute
+  '/v1/security': typeof V1SecurityRoute
+  '/v1/support': typeof V1SupportRoute
+  '/v1/training': typeof V1TrainingRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -1203,11 +1347,29 @@ export interface FileRoutesById {
   '/settings/production-monitoring': typeof SettingsProductionMonitoringRoute
   '/settings/white-label': typeof SettingsWhiteLabelRoute
   '/v1/bugs': typeof V1BugsRoute
+  '/v1/commercial': typeof V1CommercialRoute
+  '/v1/conversion': typeof V1ConversionRoute
+  '/v1/customer-success': typeof V1CustomerSuccessRoute
   '/v1/cutline': typeof V1CutlineRoute
+  '/v1/data-quality': typeof V1DataQualityRoute
+  '/v1/dispatcher': typeof V1DispatcherRoute
+  '/v1/driver': typeof V1DriverRoute
   '/v1/feedback': typeof V1FeedbackRoute
+  '/v1/gps': typeof V1GpsRoute
   '/v1/metrics': typeof V1MetricsRoute
+  '/v1/notifications': typeof V1NotificationsRoute
+  '/v1/onboarding': typeof V1OnboardingRoute
   '/v1/overview': typeof V1OverviewRoute
+  '/v1/portal': typeof V1PortalRoute
   '/v1/prioritization': typeof V1PrioritizationRoute
+  '/v1/regression': typeof V1RegressionRoute
+  '/v1/release': typeof V1ReleaseRoute
+  '/v1/reports': typeof V1ReportsRoute
+  '/v1/roadmap': typeof V1RoadmapRoute
+  '/v1/scaling': typeof V1ScalingRoute
+  '/v1/security': typeof V1SecurityRoute
+  '/v1/support': typeof V1SupportRoute
+  '/v1/training': typeof V1TrainingRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -1339,11 +1501,29 @@ export interface FileRouteTypes {
     | '/settings/production-monitoring'
     | '/settings/white-label'
     | '/v1/bugs'
+    | '/v1/commercial'
+    | '/v1/conversion'
+    | '/v1/customer-success'
     | '/v1/cutline'
+    | '/v1/data-quality'
+    | '/v1/dispatcher'
+    | '/v1/driver'
     | '/v1/feedback'
+    | '/v1/gps'
     | '/v1/metrics'
+    | '/v1/notifications'
+    | '/v1/onboarding'
     | '/v1/overview'
+    | '/v1/portal'
     | '/v1/prioritization'
+    | '/v1/regression'
+    | '/v1/release'
+    | '/v1/reports'
+    | '/v1/roadmap'
+    | '/v1/scaling'
+    | '/v1/security'
+    | '/v1/support'
+    | '/v1/training'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -1473,11 +1653,29 @@ export interface FileRouteTypes {
     | '/settings/production-monitoring'
     | '/settings/white-label'
     | '/v1/bugs'
+    | '/v1/commercial'
+    | '/v1/conversion'
+    | '/v1/customer-success'
     | '/v1/cutline'
+    | '/v1/data-quality'
+    | '/v1/dispatcher'
+    | '/v1/driver'
     | '/v1/feedback'
+    | '/v1/gps'
     | '/v1/metrics'
+    | '/v1/notifications'
+    | '/v1/onboarding'
     | '/v1/overview'
+    | '/v1/portal'
     | '/v1/prioritization'
+    | '/v1/regression'
+    | '/v1/release'
+    | '/v1/reports'
+    | '/v1/roadmap'
+    | '/v1/scaling'
+    | '/v1/security'
+    | '/v1/support'
+    | '/v1/training'
     | '/driver'
   id:
     | '__root__'
@@ -1607,11 +1805,29 @@ export interface FileRouteTypes {
     | '/settings/production-monitoring'
     | '/settings/white-label'
     | '/v1/bugs'
+    | '/v1/commercial'
+    | '/v1/conversion'
+    | '/v1/customer-success'
     | '/v1/cutline'
+    | '/v1/data-quality'
+    | '/v1/dispatcher'
+    | '/v1/driver'
     | '/v1/feedback'
+    | '/v1/gps'
     | '/v1/metrics'
+    | '/v1/notifications'
+    | '/v1/onboarding'
     | '/v1/overview'
+    | '/v1/portal'
     | '/v1/prioritization'
+    | '/v1/regression'
+    | '/v1/release'
+    | '/v1/reports'
+    | '/v1/roadmap'
+    | '/v1/scaling'
+    | '/v1/security'
+    | '/v1/support'
+    | '/v1/training'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -1734,11 +1950,29 @@ export interface RootRouteChildren {
   SecurityPhase8OverviewRoute: typeof SecurityPhase8OverviewRoute
   SecurityPrivacyRoute: typeof SecurityPrivacyRoute
   V1BugsRoute: typeof V1BugsRoute
+  V1CommercialRoute: typeof V1CommercialRoute
+  V1ConversionRoute: typeof V1ConversionRoute
+  V1CustomerSuccessRoute: typeof V1CustomerSuccessRoute
   V1CutlineRoute: typeof V1CutlineRoute
+  V1DataQualityRoute: typeof V1DataQualityRoute
+  V1DispatcherRoute: typeof V1DispatcherRoute
+  V1DriverRoute: typeof V1DriverRoute
   V1FeedbackRoute: typeof V1FeedbackRoute
+  V1GpsRoute: typeof V1GpsRoute
   V1MetricsRoute: typeof V1MetricsRoute
+  V1NotificationsRoute: typeof V1NotificationsRoute
+  V1OnboardingRoute: typeof V1OnboardingRoute
   V1OverviewRoute: typeof V1OverviewRoute
+  V1PortalRoute: typeof V1PortalRoute
   V1PrioritizationRoute: typeof V1PrioritizationRoute
+  V1RegressionRoute: typeof V1RegressionRoute
+  V1ReleaseRoute: typeof V1ReleaseRoute
+  V1ReportsRoute: typeof V1ReportsRoute
+  V1RoadmapRoute: typeof V1RoadmapRoute
+  V1ScalingRoute: typeof V1ScalingRoute
+  V1SecurityRoute: typeof V1SecurityRoute
+  V1SupportRoute: typeof V1SupportRoute
+  V1TrainingRoute: typeof V1TrainingRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -1884,11 +2118,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v1/training': {
+      id: '/v1/training'
+      path: '/v1/training'
+      fullPath: '/v1/training'
+      preLoaderRoute: typeof V1TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/support': {
+      id: '/v1/support'
+      path: '/v1/support'
+      fullPath: '/v1/support'
+      preLoaderRoute: typeof V1SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/security': {
+      id: '/v1/security'
+      path: '/v1/security'
+      fullPath: '/v1/security'
+      preLoaderRoute: typeof V1SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/scaling': {
+      id: '/v1/scaling'
+      path: '/v1/scaling'
+      fullPath: '/v1/scaling'
+      preLoaderRoute: typeof V1ScalingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/roadmap': {
+      id: '/v1/roadmap'
+      path: '/v1/roadmap'
+      fullPath: '/v1/roadmap'
+      preLoaderRoute: typeof V1RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/reports': {
+      id: '/v1/reports'
+      path: '/v1/reports'
+      fullPath: '/v1/reports'
+      preLoaderRoute: typeof V1ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/release': {
+      id: '/v1/release'
+      path: '/v1/release'
+      fullPath: '/v1/release'
+      preLoaderRoute: typeof V1ReleaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/regression': {
+      id: '/v1/regression'
+      path: '/v1/regression'
+      fullPath: '/v1/regression'
+      preLoaderRoute: typeof V1RegressionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v1/prioritization': {
       id: '/v1/prioritization'
       path: '/v1/prioritization'
       fullPath: '/v1/prioritization'
       preLoaderRoute: typeof V1PrioritizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/portal': {
+      id: '/v1/portal'
+      path: '/v1/portal'
+      fullPath: '/v1/portal'
+      preLoaderRoute: typeof V1PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v1/overview': {
@@ -1898,11 +2195,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V1OverviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v1/onboarding': {
+      id: '/v1/onboarding'
+      path: '/v1/onboarding'
+      fullPath: '/v1/onboarding'
+      preLoaderRoute: typeof V1OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/notifications': {
+      id: '/v1/notifications'
+      path: '/v1/notifications'
+      fullPath: '/v1/notifications'
+      preLoaderRoute: typeof V1NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v1/metrics': {
       id: '/v1/metrics'
       path: '/v1/metrics'
       fullPath: '/v1/metrics'
       preLoaderRoute: typeof V1MetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/gps': {
+      id: '/v1/gps'
+      path: '/v1/gps'
+      fullPath: '/v1/gps'
+      preLoaderRoute: typeof V1GpsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v1/feedback': {
@@ -1912,11 +2230,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V1FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v1/driver': {
+      id: '/v1/driver'
+      path: '/v1/driver'
+      fullPath: '/v1/driver'
+      preLoaderRoute: typeof V1DriverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/dispatcher': {
+      id: '/v1/dispatcher'
+      path: '/v1/dispatcher'
+      fullPath: '/v1/dispatcher'
+      preLoaderRoute: typeof V1DispatcherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/data-quality': {
+      id: '/v1/data-quality'
+      path: '/v1/data-quality'
+      fullPath: '/v1/data-quality'
+      preLoaderRoute: typeof V1DataQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v1/cutline': {
       id: '/v1/cutline'
       path: '/v1/cutline'
       fullPath: '/v1/cutline'
       preLoaderRoute: typeof V1CutlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/customer-success': {
+      id: '/v1/customer-success'
+      path: '/v1/customer-success'
+      fullPath: '/v1/customer-success'
+      preLoaderRoute: typeof V1CustomerSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/conversion': {
+      id: '/v1/conversion'
+      path: '/v1/conversion'
+      fullPath: '/v1/conversion'
+      preLoaderRoute: typeof V1ConversionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v1/commercial': {
+      id: '/v1/commercial'
+      path: '/v1/commercial'
+      fullPath: '/v1/commercial'
+      preLoaderRoute: typeof V1CommercialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v1/bugs': {
@@ -2843,11 +3203,29 @@ const rootRouteChildren: RootRouteChildren = {
   SecurityPhase8OverviewRoute: SecurityPhase8OverviewRoute,
   SecurityPrivacyRoute: SecurityPrivacyRoute,
   V1BugsRoute: V1BugsRoute,
+  V1CommercialRoute: V1CommercialRoute,
+  V1ConversionRoute: V1ConversionRoute,
+  V1CustomerSuccessRoute: V1CustomerSuccessRoute,
   V1CutlineRoute: V1CutlineRoute,
+  V1DataQualityRoute: V1DataQualityRoute,
+  V1DispatcherRoute: V1DispatcherRoute,
+  V1DriverRoute: V1DriverRoute,
   V1FeedbackRoute: V1FeedbackRoute,
+  V1GpsRoute: V1GpsRoute,
   V1MetricsRoute: V1MetricsRoute,
+  V1NotificationsRoute: V1NotificationsRoute,
+  V1OnboardingRoute: V1OnboardingRoute,
   V1OverviewRoute: V1OverviewRoute,
+  V1PortalRoute: V1PortalRoute,
   V1PrioritizationRoute: V1PrioritizationRoute,
+  V1RegressionRoute: V1RegressionRoute,
+  V1ReleaseRoute: V1ReleaseRoute,
+  V1ReportsRoute: V1ReportsRoute,
+  V1RoadmapRoute: V1RoadmapRoute,
+  V1ScalingRoute: V1ScalingRoute,
+  V1SecurityRoute: V1SecurityRoute,
+  V1SupportRoute: V1SupportRoute,
+  V1TrainingRoute: V1TrainingRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
