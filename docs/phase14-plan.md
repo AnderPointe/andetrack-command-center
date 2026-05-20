@@ -17,6 +17,28 @@ repeatable V1 release and a small number of paying customers.
 - No white-label custom domains
 - No full billing automation (manual invoicing is fine)
 
+## Handoff from Phase 13 (entry criteria)
+
+Phase 14 does not start until Phase 13 hands over a clean signed-off
+package. Required artifacts:
+
+1. **Pilot launch gate = GO** at `/pilot/phase13-overview` (composite
+   `computePilotGate` returns `ready: true`).
+2. **Open P0 bugs = 0** and **gate tests passing 100%**.
+3. **RLS validation** at `/pilot/rls` shows 0 FAIL, 0 PENDING.
+4. **First live load wizard** at `/pilot/first-live-load` completed end-to-end
+   without manual override.
+5. **Pilot acceptance** at `/pilot/acceptance` — all `gate: true` criteria met.
+6. **Daily + weekly reviews** running for ≥ 2 consecutive weeks.
+7. **Pilot feedback themes** clustered with sentiment + role tags
+   (`/pilot/feedback`) — feeds the Phase 14 backlog.
+8. **Rollback plan approved** and rehearsed at least once.
+9. **Support escalation L1–L5** documented and tested.
+10. **Pilot metrics baseline** captured at `/pilot/metrics` so Phase 14
+    can compare against a real number, not a target string.
+
+If any item is missing, stay in Phase 13 polish — do not open Phase 14 work.
+
 ## Workstreams
 
 1. **Pilot retro → backlog** — convert `pilot_feedback`, bug trends, and NPS

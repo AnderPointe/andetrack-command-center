@@ -19,12 +19,25 @@ const TONE: Record<string, string> = {
 function Page() {
   const pass = SMOKE_TESTS.filter((s) => s.status === "pass").length;
   const fail = SMOKE_TESTS.filter((s) => s.status === "fail").length;
+  const pending = SMOKE_TESTS.filter((s) => s.status === "pending").length;
+  const ready = fail === 0 && pending === 0;
+  const failures = SMOKE_TESTS.filter((s) => s.status === "fail");
+
   return (
     <PilotPage
       icon={<Stethoscope className="size-6 text-teal-300" />}
       title="Production Smoke Test"
-      blurb="Pre-flight checklist run against the pilot environment before each go-live decision."
+      blurb="Pre-flight checklist run against the pilot environment before each go-live decision. Any failure or pending check holds launch."
     >
+      <Card className={`border p-4 text-sm ${ready ? "border-emerald-500/30 bg-emerald-500/5 text-emerald-200" : "border-rose-500/30 bg-rose-500/5 text-rose-200"}`}>
+        <div className="flex items-center justify-between">
+          <span>{ready ? "Smoke test green — clear to launch" : `${fail} failure(s) / ${pending} pending — launch held`}</span>
+          <Badge variant="outline" className={ready ? "border-emerald-500/40 text-emerald-200" : "border-rose-500/40 text-rose-200"}>
+            {ready ? "GO" : "NO-GO"}
+          </Badge>
+        </div>
+      </Card>
+
       <div className="grid gap-3 md:grid-cols-3">
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <div className="text-xs uppercase tracking-wide text-muted-foreground">Pass</div>
@@ -35,10 +48,24 @@ function Page() {
           <div className="mt-1 text-2xl font-semibold text-rose-300">{fail}</div>
         </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
-          <div className="text-xs uppercase tracking-wide text-muted-foreground">Total</div>
-          <div className="mt-1 text-2xl font-semibold">{SMOKE_TESTS.length}</div>
+          <div className="text-xs uppercase tracking-wide text-muted-foreground">Pending</div>
+          <div className="mt-1 text-2xl font-semibold text-muted-foreground">{pending}</div>
         </Card>
       </div>
+
+      {failures.length > 0 && (
+        <Card className="border-rose-500/30 bg-rose-500/5 p-4">
+          <h2 className="text-sm font-semibold text-rose-200">Blocking failures</h2>
+          <ul className="mt-2 space-y-1 text-sm">
+            {failures.map((s) => (
+              <li key={s.id} className="flex items-center gap-2">
+                <span className="font-mono text-xs text-muted-foreground">{s.id}</span>
+                <span>{s.test}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+      )}
 
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <div className="space-y-2">
