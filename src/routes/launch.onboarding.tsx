@@ -45,18 +45,28 @@ function Onboarding() {
           <Progress value={pct} className="mt-4" />
         </Card>
 
-        <Card className="border-white/10 bg-white/[0.02] p-5">
-          <h2 className="text-sm font-medium">Stages</h2>
-          <ol className="mt-3 grid gap-2 md:grid-cols-2">
-            {ONBOARDING_STAGES.map((s, i) => (
-              <li key={s.id} className="flex items-center gap-2 rounded border border-white/10 bg-white/[0.01] p-3 text-sm">
-                {s.done ? <CheckCircle2 className="size-4 text-emerald-300" /> : <Circle className="size-4 text-muted-foreground" />}
-                <span className="text-muted-foreground">{String(i + 1).padStart(2, "0")}.</span>
-                <span className={s.done ? "" : "text-muted-foreground"}>{s.label}</span>
-              </li>
-            ))}
-          </ol>
-        </Card>
+        <div className="space-y-3">
+          {ONBOARDING_PHASES.map((phase) => {
+            const stages = ONBOARDING_STAGES.filter((s) => phase.stages.includes(s.id));
+            const phaseDone = stages.filter((s) => s.done).length;
+            return (
+              <Card key={phase.phase} className="border-white/10 bg-white/[0.02] p-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-medium text-teal-200">{phase.phase}</h3>
+                  <span className="text-xs text-muted-foreground">{phaseDone} / {stages.length}</span>
+                </div>
+                <ol className="mt-3 grid gap-2 md:grid-cols-2">
+                  {stages.map((s) => (
+                    <li key={s.id} className="flex items-center gap-2 rounded border border-white/10 bg-white/[0.01] p-2.5 text-sm">
+                      {s.done ? <CheckCircle2 className="size-4 text-emerald-300" /> : <Circle className="size-4 text-muted-foreground" />}
+                      <span className={s.done ? "" : "text-muted-foreground"}>{s.label}</span>
+                    </li>
+                  ))}
+                </ol>
+              </Card>
+            );
+          })}
+        </div>
 
         <Card className="border-white/10 bg-white/[0.02] p-5">
           <h2 className="text-sm font-medium">Wizards & checklists (scaffolded)</h2>
