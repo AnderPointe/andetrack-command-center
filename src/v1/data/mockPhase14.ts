@@ -616,3 +616,106 @@ export function v1ReadinessScore(): number {
   const dqOk   = DATA_QUALITY_ISSUES.reduce((a, d) => a + d.count, 0) === 0 ? 1 : 0.7;
   return Math.round((regPct * 0.3 + relPct * 0.3 + secPct * 0.2 + scPct * 0.1 + dqOk * 0.1) * 100);
 }
+
+export function v1ReadinessBreakdown() {
+  const regPct = Math.round(
+    (REGRESSION_TESTS.filter((t) => t.status === "pass").length / REGRESSION_TESTS.length) * 100,
+  );
+  const relPct = Math.round(
+    (V1_RELEASE_CHECKLIST.items.filter((i) => i.done).length / V1_RELEASE_CHECKLIST.items.length) * 100,
+  );
+  const secPct = Math.round(
+    (SECURITY_REVIEW.filter((s) => s.ok).length / SECURITY_REVIEW.length) * 100,
+  );
+  const scPct = Math.round(
+    (SCALING_CHECKS.filter((s) => s.status === "ok").length / SCALING_CHECKS.length) * 100,
+  );
+  const dqIssues = DATA_QUALITY_ISSUES.reduce((a, d) => a + d.count, 0);
+  return [
+    { id: "reg",  label: "Regression",   pct: regPct, weight: 30 },
+    { id: "rel",  label: "Release ready", pct: relPct, weight: 30 },
+    { id: "sec",  label: "Security",     pct: secPct, weight: 20 },
+    { id: "scal", label: "Scaling",      pct: scPct,  weight: 10 },
+    { id: "dq",   label: "Data quality", pct: dqIssues === 0 ? 100 : 70, weight: 10, note: `${dqIssues} flagged records` },
+  ];
+}
+
+export function v1Blockers() {
+  const out: { id: string; label: string; source: string; severity: "critical" | "high" | "medium" }[] = [];
+  for (const b of BUGS) {
+    if ((b.priority === "P0" || b.priority === "P1") && b.status !== "released" && b.status !== "fixed") {
+      out.push({ id: b.id, label: b.title, source: `Bug · ${b.priority}`, severity: b.severity === "critical" ? "critical" : "high" });
+    }
+  }
+  for (const t of REGRESSION_TESTS) {
+    if (t.status === "fail") out.push({ id: t.id, label: `Regression: ${t.workflow}`, source: "Regression", severity: "high" });
+  }
+  for (const s of SCALING_CHECKS) {
+    if (s.status === "fail") out.push({ id: s.id, label: s.label, source: "Scaling", severity: "high" });
+  }
+  for (const s of SECURITY_REVIEW) {
+    if (!s.ok) out.push({ id: s.id, label: s.label, source: "Security", severity: "medium" });
+  }
+  return out;
+}
+
+export function feedbackStats() {
+  const by = (k: FeedbackStatus) => FEEDBACK.filter((f) => f.status === k).length;
+  return {
+    total: FEEDBACK.length,
+    new: by("new"),
+    accepted: by("accepted") + by("planned") + by("in_progress"),
+    released: by("released"),
+    declined: by("declined"),
+    highImpact: FEEDBACK.filter((f) => f.impact === "high").length,
+  };
+}
+
+export function bugStats() {
+  const open = (p: BugItem["priority"]) =>
+    BUGS.filter((b) => b.priority === p && b.status !== "released" && b.status !== "fixed").length;
+  return {
+    p0: open("P0"),
+    p1: open("P1"),
+    p2: open("P2"),
+    fixed: BUGS.filter((b) => b.status === "fixed").length,
+    released: BUGS.filter((b) => b.status === "released").length,
+    total: BUGS.length,
+  };
+}
+
+export function supportStats() {
+  return {
+    open: SUPPORT_TICKETS.filter((t) => t.status !== "resolved").length,
+    breached: SUPPORT_TICKETS.filter((t) => t.status !== "resolved" && t.openHours > t.slaHours).length,
+    p1Open: SUPPORT_TICKETS.filter((t) => t.priority === "P1" && t.status !== "resolved").length,
+    resolved: SUPPORT_TICKETS.filter((t) => t.status === "resolved").length,
+  };
+}
+
+export function cutlineStats() {
+  return (["must", "should", "nice", "post_v1", "enterprise_later"] as V1Priority[]).map((p) => ({
+    priority: p,
+    count: V1_FEATURES.filter((f) => f.priority === p).length,
+    ready: V1_FEATURES.filter((f) => f.priority === p && (f.status === "ready" || f.status === "shipped")).length,
+  }));
+}
+
+// thresholds shared by GPS + notification reliability tiles
+export function reliabilityTone(id: string, value: string): "good" | "warn" | "bad" | "default" {
+  const num = parseFloat(value);
+  if (Number.isNaN(num)) return "default";
+  const goodAbove: Record<string, number> = { rc: 98, opn: 70 };
+  const goodBelow: Record<string, number> = { stl: 5, rd: 2, dup: 1, wer: 1, fld: 3, lat: 2, dt: 5 };
+  if (id in goodAbove) {
+    if (num >= goodAbove[id]) return "good";
+    if (num >= goodAbove[id] - 5) return "warn";
+    return "bad";
+  }
+  if (id in goodBelow) {
+    if (num <= goodBelow[id]) return "good";
+    if (num <= goodBelow[id] * 2) return "warn";
+    return "bad";
+  }
+  return "default";
+}
