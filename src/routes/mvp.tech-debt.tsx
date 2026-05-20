@@ -27,6 +27,9 @@ function Debt() {
             <Wrench className="size-6 text-cyan-300" />
             <h1 className="text-2xl font-semibold">Technical Debt Register</h1>
           </div>
+          <p className="text-xs text-muted-foreground">
+            P0 items must close before pilot prod. P1 closes during Sprint 7 hardening.
+          </p>
           <MvpNav />
         </header>
 
@@ -36,7 +39,8 @@ function Debt() {
               <div key={d.id} className="grid grid-cols-12 items-center gap-2 py-2">
                 <code className="col-span-1 text-xs text-muted-foreground">{d.id}</code>
                 <div className="col-span-2 text-xs text-cyan-200">{d.area}</div>
-                <div className="col-span-7">{d.item}</div>
+                <div className="col-span-5">{d.item}</div>
+                <div className="col-span-2 text-xs text-muted-foreground">{d.impact}</div>
                 <div className="col-span-1"><Badge variant="outline" className={TONE[d.priority]}>{d.priority}</Badge></div>
                 <div className="col-span-1 text-right text-xs text-muted-foreground">{d.effort}</div>
               </div>

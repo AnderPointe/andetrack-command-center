@@ -3,7 +3,8 @@ import { AppShell } from "@/components/layout/AppShell";
 import { MvpNav } from "@/components/mvp/MvpNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ShieldCheck } from "lucide-react";
+import { RLS_TESTS } from "@/mvp/data/mockMvp";
+import { ShieldCheck, Lock } from "lucide-react";
 
 export const Route = createFileRoute("/mvp/security")({
   head: () => ({ meta: [{ title: "Security Cutline — Anderoute" }] }),
@@ -59,6 +60,23 @@ function SecurityPage() {
             <ul className="mt-2 space-y-1 text-sm">{DEFER.map((d) => <li key={d}>· {d}</li>)}</ul>
           </Card>
         </div>
+
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <div className="flex items-center gap-2">
+            <Lock className="size-4 text-cyan-300" />
+            <h3 className="text-sm font-medium">RLS coverage by table</h3>
+          </div>
+          <div className="mt-3 divide-y divide-white/5 text-sm">
+            {RLS_TESTS.map((r) => (
+              <div key={r.id} className="grid grid-cols-12 items-center gap-2 py-2">
+                <code className="col-span-1 text-xs text-muted-foreground">{r.id}</code>
+                <div className="col-span-2 text-xs text-cyan-200">{r.table}</div>
+                <div className="col-span-6">{r.rule}</div>
+                <div className="col-span-3 text-right text-xs text-muted-foreground">{r.coverage}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </AppShell>
   );

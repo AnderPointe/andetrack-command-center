@@ -3,7 +3,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { MvpNav } from "@/components/mvp/MvpNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { COST_ITEMS } from "@/mvp/data/mockMvp";
+import { COST_ITEMS, COST_TOTALS } from "@/mvp/data/mockMvp";
 import { DollarSign } from "lucide-react";
 
 export const Route = createFileRoute("/mvp/costs")({
@@ -24,6 +24,25 @@ function Costs() {
           <p className="text-xs text-muted-foreground">Rough pilot-stage estimates. Refine per provider before GA.</p>
           <MvpNav />
         </header>
+
+        <div className="grid gap-3 md:grid-cols-3">
+          <Card className="border-emerald-500/20 bg-emerald-500/[0.03] p-4">
+            <div className="text-xs uppercase tracking-wider text-emerald-200">Monthly low</div>
+            <div className="mt-1 text-2xl font-semibold">{COST_TOTALS.monthlyLow}</div>
+          </Card>
+          <Card className="border-amber-500/20 bg-amber-500/[0.03] p-4">
+            <div className="text-xs uppercase tracking-wider text-amber-200">Monthly high</div>
+            <div className="mt-1 text-2xl font-semibold">{COST_TOTALS.monthlyHigh}</div>
+          </Card>
+          <Card className="border-white/10 bg-white/[0.02] p-4">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground">One-time</div>
+            <div className="mt-1 text-2xl font-semibold">{COST_TOTALS.oneTime}</div>
+          </Card>
+        </div>
+
+        <Card className="border-white/10 bg-white/[0.02] p-3 text-xs text-muted-foreground">
+          {COST_TOTALS.notes}
+        </Card>
 
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <div className="divide-y divide-white/5 text-sm">

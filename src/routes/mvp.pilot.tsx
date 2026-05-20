@@ -22,6 +22,7 @@ const PROFILE = [
 ];
 
 function Pilot() {
+  const categories = Array.from(new Set(PILOT_CHECKLIST.map((c) => c.category)));
   return (
     <AppShell>
       <div className="space-y-6">
@@ -43,24 +44,35 @@ function Pilot() {
 
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-medium">Launch checklist</h3>
-          <ul className="mt-3 grid gap-2 md:grid-cols-2 text-sm">
-            {PILOT_CHECKLIST.map((c) => (
-              <li key={c.id} className="flex items-center gap-2 rounded border border-white/10 bg-white/[0.01] p-2.5">
-                <Circle className="size-4 text-muted-foreground" />
-                <code className="text-xs text-muted-foreground">{c.id}</code>
-                <span className="flex-1">{c.item}</span>
-              </li>
+          <div className="mt-3 space-y-3">
+            {categories.map((cat) => (
+              <div key={cat}>
+                <div className="text-[11px] uppercase tracking-wider text-cyan-200">{cat}</div>
+                <ul className="mt-1 grid gap-2 md:grid-cols-2 text-sm">
+                  {PILOT_CHECKLIST.filter((c) => c.category === cat).map((c) => (
+                    <li key={c.id} className="flex items-center gap-2 rounded border border-white/10 bg-white/[0.01] p-2.5">
+                      <Circle className="size-4 text-muted-foreground" />
+                      <code className="text-xs text-muted-foreground">{c.id}</code>
+                      <span className="flex-1">{c.item}</span>
+                      <Badge variant="outline" className="border-white/15 text-xs text-muted-foreground">{c.owner}</Badge>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </Card>
 
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-medium">Success metrics</h3>
           <div className="mt-3 grid gap-2 md:grid-cols-2">
             {PILOT_METRICS.map((m) => (
-              <div key={m.name} className="flex items-center justify-between rounded border border-white/10 bg-white/[0.01] p-3 text-sm">
-                <span>{m.name}</span>
-                <Badge variant="outline" className="border-emerald-500/30 text-emerald-200">{m.target}</Badge>
+              <div key={m.name} className="rounded border border-white/10 bg-white/[0.01] p-3 text-sm">
+                <div className="flex items-center justify-between">
+                  <span>{m.name}</span>
+                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-200">{m.target}</Badge>
+                </div>
+                <div className="mt-1 text-xs text-muted-foreground">{m.how}</div>
               </div>
             ))}
           </div>
