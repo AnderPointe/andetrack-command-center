@@ -47,6 +47,17 @@ function LaunchOverview() {
             <Badge variant="outline" className="border-teal-500/30 text-teal-200">Pilot-ready</Badge>
           </div>
           <Progress value={overall} className="mt-4" />
+          <div className="mt-4 grid grid-cols-4 gap-2 text-center text-xs">
+            {(["ready","in_progress","blocked","not_started"] as const).map((s) => {
+              const n = READINESS.filter((r) => r.status === s).length;
+              return (
+                <div key={s} className="rounded border border-white/10 bg-white/[0.02] p-2">
+                  <div className={`text-lg font-semibold ${COLORS[s]}`}>{n}</div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{s.replace("_"," ")}</div>
+                </div>
+              );
+            })}
+          </div>
         </Card>
 
         <section className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -67,6 +78,15 @@ function LaunchOverview() {
             );
           })}
         </section>
+
+        <Card className="border-amber-500/20 bg-amber-500/[0.03] p-4">
+          <h3 className="text-sm font-medium text-amber-200">Top blockers to GA</h3>
+          <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
+            {[...READINESS].sort((a,b) => a.score - b.score).slice(0, 4).map((r) => (
+              <li key={r.id}>· <span className="text-foreground">{r.area}</span> ({r.score}%) — {r.notes}</li>
+            ))}
+          </ul>
+        </Card>
 
         <Card className="border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground">
           Phase 10 packages Anderoute for customers, owners, and investors.
