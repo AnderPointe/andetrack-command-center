@@ -4,7 +4,7 @@ import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { API_KEYS, API_LOGS } from "@/v2/data/mockPhase17";
+import { API_KEYS, API_LOGS, API_KEY_LIFECYCLE } from "@/v2/data/mockPhase17";
 
 export const Route = createFileRoute("/v2/api-keys")({
   head: () => ({ meta: [{ title: "API Keys · Anderoute" }] }),
