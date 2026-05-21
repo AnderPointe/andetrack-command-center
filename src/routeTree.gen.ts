@@ -29,6 +29,31 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V35VendorPacketRouteImport } from './routes/v35.vendor-packet'
+import { Route as V35VehicleHealthRouteImport } from './routes/v35.vehicle-health'
+import { Route as V35TelematicsRouteImport } from './routes/v35.telematics'
+import { Route as V35ScopeRouteImport } from './routes/v35.scope'
+import { Route as V35ReportsRouteImport } from './routes/v35.reports'
+import { Route as V35QuestionnaireRouteImport } from './routes/v35.questionnaire'
+import { Route as V35ProcurementRouteImport } from './routes/v35.procurement'
+import { Route as V35PlatformRevenueRouteImport } from './routes/v35.platform-revenue'
+import { Route as V35PartnershipsRouteImport } from './routes/v35.partnerships'
+import { Route as V35PartnerPortalRouteImport } from './routes/v35.partner-portal'
+import { Route as V35PartnerApiRouteImport } from './routes/v35.partner-api'
+import { Route as V35OverviewRouteImport } from './routes/v35.overview'
+import { Route as V35MultiRegionRouteImport } from './routes/v35.multi-region'
+import { Route as V35MarketplaceMonetizationRouteImport } from './routes/v35.marketplace-monetization'
+import { Route as V35DriverBehaviorRouteImport } from './routes/v35.driver-behavior'
+import { Route as V35DemoRouteImport } from './routes/v35.demo'
+import { Route as V35CustomerSuccessRouteImport } from './routes/v35.customer-success'
+import { Route as V35ComplianceRouteImport } from './routes/v35.compliance'
+import { Route as V35CommercialOpsRouteImport } from './routes/v35.commercial-ops'
+import { Route as V35CertificationRouteImport } from './routes/v35.certification'
+import { Route as V35CarrierVerificationRouteImport } from './routes/v35.carrier-verification'
+import { Route as V35CarrierSettlementRouteImport } from './routes/v35.carrier-settlement'
+import { Route as V35CarrierPerformanceRouteImport } from './routes/v35.carrier-performance'
+import { Route as V35CarrierNetworkRouteImport } from './routes/v35.carrier-network'
+import { Route as V35CarrierComplianceRouteImport } from './routes/v35.carrier-compliance'
 import { Route as V3VoiceIntentsRouteImport } from './routes/v3.voice-intents'
 import { Route as V3VoiceRouteImport } from './routes/v3.voice'
 import { Route as V3TelematicsRouteImport } from './routes/v3.telematics'
@@ -373,6 +398,132 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35VendorPacketRoute = V35VendorPacketRouteImport.update({
+  id: '/v35/vendor-packet',
+  path: '/v35/vendor-packet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35VehicleHealthRoute = V35VehicleHealthRouteImport.update({
+  id: '/v35/vehicle-health',
+  path: '/v35/vehicle-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35TelematicsRoute = V35TelematicsRouteImport.update({
+  id: '/v35/telematics',
+  path: '/v35/telematics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35ScopeRoute = V35ScopeRouteImport.update({
+  id: '/v35/scope',
+  path: '/v35/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35ReportsRoute = V35ReportsRouteImport.update({
+  id: '/v35/reports',
+  path: '/v35/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35QuestionnaireRoute = V35QuestionnaireRouteImport.update({
+  id: '/v35/questionnaire',
+  path: '/v35/questionnaire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35ProcurementRoute = V35ProcurementRouteImport.update({
+  id: '/v35/procurement',
+  path: '/v35/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35PlatformRevenueRoute = V35PlatformRevenueRouteImport.update({
+  id: '/v35/platform-revenue',
+  path: '/v35/platform-revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35PartnershipsRoute = V35PartnershipsRouteImport.update({
+  id: '/v35/partnerships',
+  path: '/v35/partnerships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35PartnerPortalRoute = V35PartnerPortalRouteImport.update({
+  id: '/v35/partner-portal',
+  path: '/v35/partner-portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35PartnerApiRoute = V35PartnerApiRouteImport.update({
+  id: '/v35/partner-api',
+  path: '/v35/partner-api',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35OverviewRoute = V35OverviewRouteImport.update({
+  id: '/v35/overview',
+  path: '/v35/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35MultiRegionRoute = V35MultiRegionRouteImport.update({
+  id: '/v35/multi-region',
+  path: '/v35/multi-region',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35MarketplaceMonetizationRoute =
+  V35MarketplaceMonetizationRouteImport.update({
+    id: '/v35/marketplace-monetization',
+    path: '/v35/marketplace-monetization',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const V35DriverBehaviorRoute = V35DriverBehaviorRouteImport.update({
+  id: '/v35/driver-behavior',
+  path: '/v35/driver-behavior',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35DemoRoute = V35DemoRouteImport.update({
+  id: '/v35/demo',
+  path: '/v35/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CustomerSuccessRoute = V35CustomerSuccessRouteImport.update({
+  id: '/v35/customer-success',
+  path: '/v35/customer-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35ComplianceRoute = V35ComplianceRouteImport.update({
+  id: '/v35/compliance',
+  path: '/v35/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CommercialOpsRoute = V35CommercialOpsRouteImport.update({
+  id: '/v35/commercial-ops',
+  path: '/v35/commercial-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CertificationRoute = V35CertificationRouteImport.update({
+  id: '/v35/certification',
+  path: '/v35/certification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CarrierVerificationRoute = V35CarrierVerificationRouteImport.update({
+  id: '/v35/carrier-verification',
+  path: '/v35/carrier-verification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CarrierSettlementRoute = V35CarrierSettlementRouteImport.update({
+  id: '/v35/carrier-settlement',
+  path: '/v35/carrier-settlement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CarrierPerformanceRoute = V35CarrierPerformanceRouteImport.update({
+  id: '/v35/carrier-performance',
+  path: '/v35/carrier-performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CarrierNetworkRoute = V35CarrierNetworkRouteImport.update({
+  id: '/v35/carrier-network',
+  path: '/v35/carrier-network',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V35CarrierComplianceRoute = V35CarrierComplianceRouteImport.update({
+  id: '/v35/carrier-compliance',
+  path: '/v35/carrier-compliance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V3VoiceIntentsRoute = V3VoiceIntentsRouteImport.update({
@@ -1871,6 +2022,31 @@ export interface FileRoutesByFullPath {
   '/v3/telematics': typeof V3TelematicsRoute
   '/v3/voice': typeof V3VoiceRoute
   '/v3/voice-intents': typeof V3VoiceIntentsRoute
+  '/v35/carrier-compliance': typeof V35CarrierComplianceRoute
+  '/v35/carrier-network': typeof V35CarrierNetworkRoute
+  '/v35/carrier-performance': typeof V35CarrierPerformanceRoute
+  '/v35/carrier-settlement': typeof V35CarrierSettlementRoute
+  '/v35/carrier-verification': typeof V35CarrierVerificationRoute
+  '/v35/certification': typeof V35CertificationRoute
+  '/v35/commercial-ops': typeof V35CommercialOpsRoute
+  '/v35/compliance': typeof V35ComplianceRoute
+  '/v35/customer-success': typeof V35CustomerSuccessRoute
+  '/v35/demo': typeof V35DemoRoute
+  '/v35/driver-behavior': typeof V35DriverBehaviorRoute
+  '/v35/marketplace-monetization': typeof V35MarketplaceMonetizationRoute
+  '/v35/multi-region': typeof V35MultiRegionRoute
+  '/v35/overview': typeof V35OverviewRoute
+  '/v35/partner-api': typeof V35PartnerApiRoute
+  '/v35/partner-portal': typeof V35PartnerPortalRoute
+  '/v35/partnerships': typeof V35PartnershipsRoute
+  '/v35/platform-revenue': typeof V35PlatformRevenueRoute
+  '/v35/procurement': typeof V35ProcurementRoute
+  '/v35/questionnaire': typeof V35QuestionnaireRoute
+  '/v35/reports': typeof V35ReportsRoute
+  '/v35/scope': typeof V35ScopeRoute
+  '/v35/telematics': typeof V35TelematicsRoute
+  '/v35/vehicle-health': typeof V35VehicleHealthRoute
+  '/v35/vendor-packet': typeof V35VendorPacketRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -2138,6 +2314,31 @@ export interface FileRoutesByTo {
   '/v3/telematics': typeof V3TelematicsRoute
   '/v3/voice': typeof V3VoiceRoute
   '/v3/voice-intents': typeof V3VoiceIntentsRoute
+  '/v35/carrier-compliance': typeof V35CarrierComplianceRoute
+  '/v35/carrier-network': typeof V35CarrierNetworkRoute
+  '/v35/carrier-performance': typeof V35CarrierPerformanceRoute
+  '/v35/carrier-settlement': typeof V35CarrierSettlementRoute
+  '/v35/carrier-verification': typeof V35CarrierVerificationRoute
+  '/v35/certification': typeof V35CertificationRoute
+  '/v35/commercial-ops': typeof V35CommercialOpsRoute
+  '/v35/compliance': typeof V35ComplianceRoute
+  '/v35/customer-success': typeof V35CustomerSuccessRoute
+  '/v35/demo': typeof V35DemoRoute
+  '/v35/driver-behavior': typeof V35DriverBehaviorRoute
+  '/v35/marketplace-monetization': typeof V35MarketplaceMonetizationRoute
+  '/v35/multi-region': typeof V35MultiRegionRoute
+  '/v35/overview': typeof V35OverviewRoute
+  '/v35/partner-api': typeof V35PartnerApiRoute
+  '/v35/partner-portal': typeof V35PartnerPortalRoute
+  '/v35/partnerships': typeof V35PartnershipsRoute
+  '/v35/platform-revenue': typeof V35PlatformRevenueRoute
+  '/v35/procurement': typeof V35ProcurementRoute
+  '/v35/questionnaire': typeof V35QuestionnaireRoute
+  '/v35/reports': typeof V35ReportsRoute
+  '/v35/scope': typeof V35ScopeRoute
+  '/v35/telematics': typeof V35TelematicsRoute
+  '/v35/vehicle-health': typeof V35VehicleHealthRoute
+  '/v35/vendor-packet': typeof V35VendorPacketRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -2406,6 +2607,31 @@ export interface FileRoutesById {
   '/v3/telematics': typeof V3TelematicsRoute
   '/v3/voice': typeof V3VoiceRoute
   '/v3/voice-intents': typeof V3VoiceIntentsRoute
+  '/v35/carrier-compliance': typeof V35CarrierComplianceRoute
+  '/v35/carrier-network': typeof V35CarrierNetworkRoute
+  '/v35/carrier-performance': typeof V35CarrierPerformanceRoute
+  '/v35/carrier-settlement': typeof V35CarrierSettlementRoute
+  '/v35/carrier-verification': typeof V35CarrierVerificationRoute
+  '/v35/certification': typeof V35CertificationRoute
+  '/v35/commercial-ops': typeof V35CommercialOpsRoute
+  '/v35/compliance': typeof V35ComplianceRoute
+  '/v35/customer-success': typeof V35CustomerSuccessRoute
+  '/v35/demo': typeof V35DemoRoute
+  '/v35/driver-behavior': typeof V35DriverBehaviorRoute
+  '/v35/marketplace-monetization': typeof V35MarketplaceMonetizationRoute
+  '/v35/multi-region': typeof V35MultiRegionRoute
+  '/v35/overview': typeof V35OverviewRoute
+  '/v35/partner-api': typeof V35PartnerApiRoute
+  '/v35/partner-portal': typeof V35PartnerPortalRoute
+  '/v35/partnerships': typeof V35PartnershipsRoute
+  '/v35/platform-revenue': typeof V35PlatformRevenueRoute
+  '/v35/procurement': typeof V35ProcurementRoute
+  '/v35/questionnaire': typeof V35QuestionnaireRoute
+  '/v35/reports': typeof V35ReportsRoute
+  '/v35/scope': typeof V35ScopeRoute
+  '/v35/telematics': typeof V35TelematicsRoute
+  '/v35/vehicle-health': typeof V35VehicleHealthRoute
+  '/v35/vendor-packet': typeof V35VendorPacketRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -2675,6 +2901,31 @@ export interface FileRouteTypes {
     | '/v3/telematics'
     | '/v3/voice'
     | '/v3/voice-intents'
+    | '/v35/carrier-compliance'
+    | '/v35/carrier-network'
+    | '/v35/carrier-performance'
+    | '/v35/carrier-settlement'
+    | '/v35/carrier-verification'
+    | '/v35/certification'
+    | '/v35/commercial-ops'
+    | '/v35/compliance'
+    | '/v35/customer-success'
+    | '/v35/demo'
+    | '/v35/driver-behavior'
+    | '/v35/marketplace-monetization'
+    | '/v35/multi-region'
+    | '/v35/overview'
+    | '/v35/partner-api'
+    | '/v35/partner-portal'
+    | '/v35/partnerships'
+    | '/v35/platform-revenue'
+    | '/v35/procurement'
+    | '/v35/questionnaire'
+    | '/v35/reports'
+    | '/v35/scope'
+    | '/v35/telematics'
+    | '/v35/vehicle-health'
+    | '/v35/vendor-packet'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -2942,6 +3193,31 @@ export interface FileRouteTypes {
     | '/v3/telematics'
     | '/v3/voice'
     | '/v3/voice-intents'
+    | '/v35/carrier-compliance'
+    | '/v35/carrier-network'
+    | '/v35/carrier-performance'
+    | '/v35/carrier-settlement'
+    | '/v35/carrier-verification'
+    | '/v35/certification'
+    | '/v35/commercial-ops'
+    | '/v35/compliance'
+    | '/v35/customer-success'
+    | '/v35/demo'
+    | '/v35/driver-behavior'
+    | '/v35/marketplace-monetization'
+    | '/v35/multi-region'
+    | '/v35/overview'
+    | '/v35/partner-api'
+    | '/v35/partner-portal'
+    | '/v35/partnerships'
+    | '/v35/platform-revenue'
+    | '/v35/procurement'
+    | '/v35/questionnaire'
+    | '/v35/reports'
+    | '/v35/scope'
+    | '/v35/telematics'
+    | '/v35/vehicle-health'
+    | '/v35/vendor-packet'
     | '/driver'
   id:
     | '__root__'
@@ -3209,6 +3485,31 @@ export interface FileRouteTypes {
     | '/v3/telematics'
     | '/v3/voice'
     | '/v3/voice-intents'
+    | '/v35/carrier-compliance'
+    | '/v35/carrier-network'
+    | '/v35/carrier-performance'
+    | '/v35/carrier-settlement'
+    | '/v35/carrier-verification'
+    | '/v35/certification'
+    | '/v35/commercial-ops'
+    | '/v35/compliance'
+    | '/v35/customer-success'
+    | '/v35/demo'
+    | '/v35/driver-behavior'
+    | '/v35/marketplace-monetization'
+    | '/v35/multi-region'
+    | '/v35/overview'
+    | '/v35/partner-api'
+    | '/v35/partner-portal'
+    | '/v35/partnerships'
+    | '/v35/platform-revenue'
+    | '/v35/procurement'
+    | '/v35/questionnaire'
+    | '/v35/reports'
+    | '/v35/scope'
+    | '/v35/telematics'
+    | '/v35/vehicle-health'
+    | '/v35/vendor-packet'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -3469,6 +3770,31 @@ export interface RootRouteChildren {
   V3TelematicsRoute: typeof V3TelematicsRoute
   V3VoiceRoute: typeof V3VoiceRoute
   V3VoiceIntentsRoute: typeof V3VoiceIntentsRoute
+  V35CarrierComplianceRoute: typeof V35CarrierComplianceRoute
+  V35CarrierNetworkRoute: typeof V35CarrierNetworkRoute
+  V35CarrierPerformanceRoute: typeof V35CarrierPerformanceRoute
+  V35CarrierSettlementRoute: typeof V35CarrierSettlementRoute
+  V35CarrierVerificationRoute: typeof V35CarrierVerificationRoute
+  V35CertificationRoute: typeof V35CertificationRoute
+  V35CommercialOpsRoute: typeof V35CommercialOpsRoute
+  V35ComplianceRoute: typeof V35ComplianceRoute
+  V35CustomerSuccessRoute: typeof V35CustomerSuccessRoute
+  V35DemoRoute: typeof V35DemoRoute
+  V35DriverBehaviorRoute: typeof V35DriverBehaviorRoute
+  V35MarketplaceMonetizationRoute: typeof V35MarketplaceMonetizationRoute
+  V35MultiRegionRoute: typeof V35MultiRegionRoute
+  V35OverviewRoute: typeof V35OverviewRoute
+  V35PartnerApiRoute: typeof V35PartnerApiRoute
+  V35PartnerPortalRoute: typeof V35PartnerPortalRoute
+  V35PartnershipsRoute: typeof V35PartnershipsRoute
+  V35PlatformRevenueRoute: typeof V35PlatformRevenueRoute
+  V35ProcurementRoute: typeof V35ProcurementRoute
+  V35QuestionnaireRoute: typeof V35QuestionnaireRoute
+  V35ReportsRoute: typeof V35ReportsRoute
+  V35ScopeRoute: typeof V35ScopeRoute
+  V35TelematicsRoute: typeof V35TelematicsRoute
+  V35VehicleHealthRoute: typeof V35VehicleHealthRoute
+  V35VendorPacketRoute: typeof V35VendorPacketRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -3612,6 +3938,181 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/vendor-packet': {
+      id: '/v35/vendor-packet'
+      path: '/v35/vendor-packet'
+      fullPath: '/v35/vendor-packet'
+      preLoaderRoute: typeof V35VendorPacketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/vehicle-health': {
+      id: '/v35/vehicle-health'
+      path: '/v35/vehicle-health'
+      fullPath: '/v35/vehicle-health'
+      preLoaderRoute: typeof V35VehicleHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/telematics': {
+      id: '/v35/telematics'
+      path: '/v35/telematics'
+      fullPath: '/v35/telematics'
+      preLoaderRoute: typeof V35TelematicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/scope': {
+      id: '/v35/scope'
+      path: '/v35/scope'
+      fullPath: '/v35/scope'
+      preLoaderRoute: typeof V35ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/reports': {
+      id: '/v35/reports'
+      path: '/v35/reports'
+      fullPath: '/v35/reports'
+      preLoaderRoute: typeof V35ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/questionnaire': {
+      id: '/v35/questionnaire'
+      path: '/v35/questionnaire'
+      fullPath: '/v35/questionnaire'
+      preLoaderRoute: typeof V35QuestionnaireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/procurement': {
+      id: '/v35/procurement'
+      path: '/v35/procurement'
+      fullPath: '/v35/procurement'
+      preLoaderRoute: typeof V35ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/platform-revenue': {
+      id: '/v35/platform-revenue'
+      path: '/v35/platform-revenue'
+      fullPath: '/v35/platform-revenue'
+      preLoaderRoute: typeof V35PlatformRevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/partnerships': {
+      id: '/v35/partnerships'
+      path: '/v35/partnerships'
+      fullPath: '/v35/partnerships'
+      preLoaderRoute: typeof V35PartnershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/partner-portal': {
+      id: '/v35/partner-portal'
+      path: '/v35/partner-portal'
+      fullPath: '/v35/partner-portal'
+      preLoaderRoute: typeof V35PartnerPortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/partner-api': {
+      id: '/v35/partner-api'
+      path: '/v35/partner-api'
+      fullPath: '/v35/partner-api'
+      preLoaderRoute: typeof V35PartnerApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/overview': {
+      id: '/v35/overview'
+      path: '/v35/overview'
+      fullPath: '/v35/overview'
+      preLoaderRoute: typeof V35OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/multi-region': {
+      id: '/v35/multi-region'
+      path: '/v35/multi-region'
+      fullPath: '/v35/multi-region'
+      preLoaderRoute: typeof V35MultiRegionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/marketplace-monetization': {
+      id: '/v35/marketplace-monetization'
+      path: '/v35/marketplace-monetization'
+      fullPath: '/v35/marketplace-monetization'
+      preLoaderRoute: typeof V35MarketplaceMonetizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/driver-behavior': {
+      id: '/v35/driver-behavior'
+      path: '/v35/driver-behavior'
+      fullPath: '/v35/driver-behavior'
+      preLoaderRoute: typeof V35DriverBehaviorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/demo': {
+      id: '/v35/demo'
+      path: '/v35/demo'
+      fullPath: '/v35/demo'
+      preLoaderRoute: typeof V35DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/customer-success': {
+      id: '/v35/customer-success'
+      path: '/v35/customer-success'
+      fullPath: '/v35/customer-success'
+      preLoaderRoute: typeof V35CustomerSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/compliance': {
+      id: '/v35/compliance'
+      path: '/v35/compliance'
+      fullPath: '/v35/compliance'
+      preLoaderRoute: typeof V35ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/commercial-ops': {
+      id: '/v35/commercial-ops'
+      path: '/v35/commercial-ops'
+      fullPath: '/v35/commercial-ops'
+      preLoaderRoute: typeof V35CommercialOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/certification': {
+      id: '/v35/certification'
+      path: '/v35/certification'
+      fullPath: '/v35/certification'
+      preLoaderRoute: typeof V35CertificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/carrier-verification': {
+      id: '/v35/carrier-verification'
+      path: '/v35/carrier-verification'
+      fullPath: '/v35/carrier-verification'
+      preLoaderRoute: typeof V35CarrierVerificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/carrier-settlement': {
+      id: '/v35/carrier-settlement'
+      path: '/v35/carrier-settlement'
+      fullPath: '/v35/carrier-settlement'
+      preLoaderRoute: typeof V35CarrierSettlementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/carrier-performance': {
+      id: '/v35/carrier-performance'
+      path: '/v35/carrier-performance'
+      fullPath: '/v35/carrier-performance'
+      preLoaderRoute: typeof V35CarrierPerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/carrier-network': {
+      id: '/v35/carrier-network'
+      path: '/v35/carrier-network'
+      fullPath: '/v35/carrier-network'
+      preLoaderRoute: typeof V35CarrierNetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v35/carrier-compliance': {
+      id: '/v35/carrier-compliance'
+      path: '/v35/carrier-compliance'
+      fullPath: '/v35/carrier-compliance'
+      preLoaderRoute: typeof V35CarrierComplianceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v3/voice-intents': {
@@ -5642,6 +6143,31 @@ const rootRouteChildren: RootRouteChildren = {
   V3TelematicsRoute: V3TelematicsRoute,
   V3VoiceRoute: V3VoiceRoute,
   V3VoiceIntentsRoute: V3VoiceIntentsRoute,
+  V35CarrierComplianceRoute: V35CarrierComplianceRoute,
+  V35CarrierNetworkRoute: V35CarrierNetworkRoute,
+  V35CarrierPerformanceRoute: V35CarrierPerformanceRoute,
+  V35CarrierSettlementRoute: V35CarrierSettlementRoute,
+  V35CarrierVerificationRoute: V35CarrierVerificationRoute,
+  V35CertificationRoute: V35CertificationRoute,
+  V35CommercialOpsRoute: V35CommercialOpsRoute,
+  V35ComplianceRoute: V35ComplianceRoute,
+  V35CustomerSuccessRoute: V35CustomerSuccessRoute,
+  V35DemoRoute: V35DemoRoute,
+  V35DriverBehaviorRoute: V35DriverBehaviorRoute,
+  V35MarketplaceMonetizationRoute: V35MarketplaceMonetizationRoute,
+  V35MultiRegionRoute: V35MultiRegionRoute,
+  V35OverviewRoute: V35OverviewRoute,
+  V35PartnerApiRoute: V35PartnerApiRoute,
+  V35PartnerPortalRoute: V35PartnerPortalRoute,
+  V35PartnershipsRoute: V35PartnershipsRoute,
+  V35PlatformRevenueRoute: V35PlatformRevenueRoute,
+  V35ProcurementRoute: V35ProcurementRoute,
+  V35QuestionnaireRoute: V35QuestionnaireRoute,
+  V35ReportsRoute: V35ReportsRoute,
+  V35ScopeRoute: V35ScopeRoute,
+  V35TelematicsRoute: V35TelematicsRoute,
+  V35VehicleHealthRoute: V35VehicleHealthRoute,
+  V35VendorPacketRoute: V35VendorPacketRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
