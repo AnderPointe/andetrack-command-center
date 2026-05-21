@@ -11,6 +11,18 @@ export const Route = createFileRoute("/v5/data-room")({
     <V5Page icon={<FolderArchive className="size-6 text-fuchsia-300" />} title="Data Room Maturity"
       blurb="Investor / acquisition readiness checklist, document vault placeholders, and due-diligence request tracking.">
       <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Readiness overview</h3>
+        <div className="mt-3 grid grid-cols-4 gap-2 text-center text-xs">
+          <div><div className="text-2xl font-semibold text-emerald-300">{DATA_ROOM_PROGRESS.complete}</div><div className="text-muted-foreground">Complete</div></div>
+          <div><div className="text-2xl font-semibold text-sky-300">{DATA_ROOM_PROGRESS.in_progress}</div><div className="text-muted-foreground">In progress</div></div>
+          <div><div className="text-2xl font-semibold text-amber-300">{DATA_ROOM_PROGRESS.placeholder}</div><div className="text-muted-foreground">Placeholder</div></div>
+          <div><div className="text-2xl font-semibold text-fuchsia-300">{Math.round((DATA_ROOM_PROGRESS.complete / DATA_ROOM_PROGRESS.total) * 100)}%</div><div className="text-muted-foreground">Ready</div></div>
+        </div>
+        <div className="mt-3 h-2 overflow-hidden rounded bg-white/5">
+          <div className="h-full bg-emerald-400/70" style={{ width: `${(DATA_ROOM_PROGRESS.complete / DATA_ROOM_PROGRESS.total) * 100}%` }} />
+        </div>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Checklist</h3>
         <div className="mt-2">
           <SimpleTable rows={DATA_ROOM} columns={[
