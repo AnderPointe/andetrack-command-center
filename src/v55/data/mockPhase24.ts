@@ -332,3 +332,65 @@ export const V55_REPORTS = [
 ];
 
 export const v55ReadinessScore = () => LEADERSHIP.overall;
+
+// ===== Phase 24 polish — trends, alerts, narrative chrome =====
+
+export const LEADERSHIP_ALERTS = [
+  { id: "LA1", severity: "high",   area: "Marketplace",  msg: "SE coverage below 80% — recruiting sprint active" },
+  { id: "LA2", severity: "medium", area: "Brand",        msg: "Category narrative push not yet launched" },
+  { id: "LA3", severity: "medium", area: "Expansion",    msg: "3 expansion plays unstarted this quarter" },
+  { id: "LA4", severity: "low",    area: "Investor",     msg: "Data room legal section still placeholder" },
+];
+
+export const DEFENSIBILITY_TREND = [
+  { q: "Q-3", score: 74 }, { q: "Q-2", score: 77 },
+  { q: "Q-1", score: 80 }, { q: "Q0",  score: 82 },
+];
+
+export const MONETIZATION_TREND = [
+  { q: "Q-3", arr_m: 9.1,  growth: 21 },
+  { q: "Q-2", arr_m: 10.2, growth: 24 },
+  { q: "Q-1", arr_m: 11.3, growth: 26 },
+  { q: "Q0",  arr_m: 12.4, growth: 28 },
+];
+
+export const BOARD_TRENDS = [
+  { q: "Q-3", arr: 9.1,  nrr: 109, gmv: 28, coverage: 84 },
+  { q: "Q-2", arr: 10.2, nrr: 112, gmv: 33, coverage: 87 },
+  { q: "Q-1", arr: 11.3, nrr: 115, gmv: 38, coverage: 89 },
+  { q: "Q0",  arr: 12.4, nrr: 118, gmv: 42, coverage: 91 },
+];
+
+export const RETENTION_TREND = [
+  { q: "Q-3", grr: 91, nrr: 109 },
+  { q: "Q-2", grr: 92, nrr: 112 },
+  { q: "Q-1", grr: 93, nrr: 115 },
+  { q: "Q0",  grr: 94, nrr: 118 },
+];
+
+export const RELIABILITY_TREND = [
+  { d: "W-3", uptime: 99.91, p95: 260 },
+  { d: "W-2", uptime: 99.93, p95: 250 },
+  { d: "W-1", uptime: 99.95, p95: 240 },
+  { d: "W0",  uptime: 99.94, p95: 240 },
+];
+
+export const COMPETITIVE_WIN_RATE = {
+  win_pct: 62, loss_pct: 24, no_decision_pct: 14,
+  vs_legacy_tms: 68, vs_load_board: 71, vs_telematics_only: 74, vs_regional: 58,
+};
+
+export const CATEGORY_PROOF_HIGHLIGHTS = [
+  "AI recommendations require human approval — no autonomous dispatch.",
+  "SOC 2 audit in flight with 91% evidence freshness.",
+  "Top-10 enterprise logos signed with active executive sponsors.",
+  "23 active partners across telematics, EDI, fuel, mobile and broker categories.",
+  "Multi-region marketplace with 6 active regions; SE coverage tracked.",
+];
+
+export const DATA_ROOM_PROGRESS = () => {
+  const counts = { complete: 0, in_progress: 0, placeholder: 0 };
+  for (const x of DATA_ROOM) counts[x.status as keyof typeof counts]++;
+  const total = DATA_ROOM.length;
+  return { ...counts, total, pct: Math.round((counts.complete / total) * 100) };
+};
