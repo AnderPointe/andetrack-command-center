@@ -3,7 +3,7 @@ import { FolderArchive } from "lucide-react";
 import { V5Page } from "@/components/v5/V5Page";
 import { SimpleTable, StatusPill } from "@/components/v5/ui-bits";
 import { Card } from "@/components/ui/card";
-import { DATA_ROOM, DD_REQUESTS } from "@/v5/data/mockPhase23";
+import { DATA_ROOM, DD_REQUESTS, DATA_ROOM_PROGRESS } from "@/v5/data/mockPhase23";
 
 export const Route = createFileRoute("/v5/data-room")({
   head: () => ({ meta: [{ title: "Data Room · Anderoute V5" }] }),
