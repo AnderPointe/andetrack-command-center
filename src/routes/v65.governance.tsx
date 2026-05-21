@@ -1,15 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Crown } from "lucide-react";
 import { V65Page } from "@/components/v65/V65Page";
-import { SimpleTable } from "@/components/v65/ui-bits";
+import { SimpleTable, StatusPill } from "@/components/v65/ui-bits";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { useStrategicGovernance } from "@/v65/hooks";
+import { useStrategicGovernance, useGovernanceAlerts } from "@/v65/hooks";
 
 export const Route = createFileRoute("/v65/governance")({
   head: () => ({ meta: [{ title: "Strategic Governance · V6.5 · Anderoute" }] }),
   component: () => {
     const { domains, decisions } = useStrategicGovernance();
+    const { alerts } = useGovernanceAlerts();
     return (
       <V65Page icon={<Crown className="size-6 text-cyan-300" />} title="Strategic Governance Center"
         blurb="Board, executive, financial, product, marketplace, AI, security, compliance, partner, data, risk, and roadmap governance with cadence + decision log.">
@@ -27,6 +28,21 @@ export const Route = createFileRoute("/v65/governance")({
               </div>
             ))}
           </div>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Governance alerts</h3>
+          <ul className="mt-2 space-y-1.5 text-xs">
+            {alerts.map((a, i) => (
+              <li key={i} className="flex items-start gap-2 rounded-md border border-white/10 bg-black/20 p-2">
+                <StatusPill status={a.sev} />
+                <div className="flex-1">
+                  <div className="font-medium">{a.domain}</div>
+                  <div className="text-muted-foreground">{a.msg}</div>
+                </div>
+                <span className="text-[10px] text-muted-foreground">{a.owner}</span>
+              </li>
+            ))}
+          </ul>
         </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Recent governance decisions</h3>

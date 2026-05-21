@@ -4,15 +4,23 @@ import { V65Page } from "@/components/v65/V65Page";
 import { SimpleTable, StatusPill } from "@/components/v65/ui-bits";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useAdvancedPartnerMarketplace } from "@/v65/hooks";
+import { useAdvancedPartnerMarketplace, usePartnerMarketplaceHealth } from "@/v65/hooks";
+import { ScoreCard } from "@/components/v65/ui-bits";
 
 export const Route = createFileRoute("/v65/partner-marketplace")({
   head: () => ({ meta: [{ title: "Partner Marketplace · V6.5 · Anderoute" }] }),
   component: () => {
     const { categories, listings } = useAdvancedPartnerMarketplace();
+    const { health } = usePartnerMarketplaceHealth();
     return (
       <V65Page icon={<Boxes className="size-6 text-cyan-300" />} title="Advanced Partner Marketplace"
         blurb="Telematics, EDI, API, TMS, accounting, fuel cards, maintenance, insurance (placeholder), carrier networks, hardware, document storage, notification, AI, maps, portal add-ons.">
+        <div className="grid gap-3 md:grid-cols-4">
+          <ScoreCard label="Approved partners"   value={health.approved * 10} tone="emerald" />
+          <ScoreCard label="Pending review"      value={health.pending * 25} tone="amber" />
+          <ScoreCard label="Cert coverage"       value={health.certification_coverage_pct} tone="sky" />
+          <ScoreCard label="Avg review days (pl)" value={Math.round(health.avg_review_days_pl * 10)} tone="violet" />
+        </div>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Categories</h3>
           <div className="mt-2 flex flex-wrap gap-1.5">

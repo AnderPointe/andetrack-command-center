@@ -3,12 +3,13 @@ import { Wallet } from "lucide-react";
 import { V65Page } from "@/components/v65/V65Page";
 import { ScoreCard, SimpleTable, StatusPill } from "@/components/v65/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useEnterpriseFinancialControls } from "@/v65/hooks";
+import { useEnterpriseFinancialControls, useFinancialControlTrend } from "@/v65/hooks";
 
 export const Route = createFileRoute("/v65/financial-controls")({
   head: () => ({ meta: [{ title: "Financial Controls · V6.5 · Anderoute" }] }),
   component: () => {
     const { controls, queue, audit } = useEnterpriseFinancialControls();
+    const { trend, owners } = useFinancialControlTrend();
     return (
       <V65Page icon={<Wallet className="size-6 text-cyan-300" />} title="Enterprise Financial Controls"
         blurb="Billing, subscriptions, usage, marketplace fees, API overages, carrier settlement, revenue recognition, refunds, manual adjustments, audit trail. All financial figures are placeholders.">
@@ -18,6 +19,33 @@ export const Route = createFileRoute("/v65/financial-controls")({
             value={Math.round(controls.areas.filter(a => a.exceptions === 0).length / controls.areas.length * 100)} tone="emerald" />
           <ScoreCard label="Exceptions outstanding"
             value={Math.min(100, controls.areas.reduce((s, a) => s + a.exceptions, 0) * 6)} tone="rose" />
+        </div>
+        <div className="grid gap-3 md:grid-cols-2">
+          <Card className="border-white/10 bg-white/[0.02] p-4">
+            <h3 className="text-sm font-semibold">Control score trend (6w)</h3>
+            <div className="mt-2 space-y-1.5 text-xs">
+              {trend.map(t => (
+                <div key={t.week} className="flex items-center gap-2">
+                  <span className="w-10 text-muted-foreground">{t.week}</span>
+                  <div className="flex-1 h-2 rounded bg-white/5 overflow-hidden">
+                    <div className="h-full bg-emerald-400/70" style={{ width: `${t.score}%` }} />
+                  </div>
+                  <span className="font-mono w-12 text-right text-emerald-300">{t.score}</span>
+                  <span className="font-mono w-12 text-right text-rose-300">{t.exceptions}x</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+          <Card className="border-white/10 bg-white/[0.02] p-4">
+            <h3 className="text-sm font-semibold">Owner workload</h3>
+            <div className="mt-2">
+              <SimpleTable rows={owners} columns={[
+                { key: "owner",      label: "Owner" },
+                { key: "open",       label: "Open" },
+                { key: "closed_30d", label: "Closed 30d" },
+              ]} />
+            </div>
+          </Card>
         </div>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Control areas</h3>

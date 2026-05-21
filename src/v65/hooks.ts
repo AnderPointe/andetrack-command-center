@@ -24,3 +24,18 @@ export const useComplianceControlOperations    = () => ({ rows: M.COMPLIANCE_CON
 export const useMarketplaceOperatingControls   = () => ({ rules: M.MARKETPLACE_CONTROLS });
 export const useLongTermStrategicOperatingModel= () => ({ horizons: M.OPERATING_HORIZONS, pillars: M.OPERATING_PILLARS });
 export const useReportsV65                     = () => ({ reports: M.V65_REPORTS });
+
+// Phase 26 polish overlays
+export const useStrategicOperatingTrend        = () => ({ trend: M.STRATEGIC_OPERATING_TREND, alerts: M.STRATEGIC_OPERATING_ALERTS });
+export const useFinancialControlTrend          = () => ({ trend: M.FINANCIAL_CONTROL_TREND, owners: M.FINANCIAL_CONTROL_OWNERS });
+export const useBillingTrend                   = () => ({ trend: M.BILLING_TREND_7D });
+export const useRevenueRecChecklist            = () => ({ steps: M.REVENUE_REC_CHECKLIST });
+export const useMarketplaceFinancialTrend      = () => ({ trend: M.MKT_FINANCIAL_TREND });
+export const useApiBillingTopPartners          = () => ({ partners: M.API_BILLING_TOP_PARTNERS });
+export const useGlobalReadinessChecklist       = () => ({ items: M.GLOBAL_READINESS_CHECKLIST });
+export const usePartnerMarketplaceHealth       = () => ({ health: M.PARTNER_MARKETPLACE_HEALTH });
+export const useGovernanceAlerts               = () => ({ alerts: M.GOVERNANCE_ALERTS });
+export const useRiskMatrixSummary              = () => ({ summary: M.RISK_MATRIX_SUMMARY });
+export const useProductLineInvestmentPlan      = () => ({ plan: M.PRODUCT_LINE_INVESTMENT });
+export const useEconomicsTrend                 = () => ({ trend: M.ECONOMICS_TREND });
+export const useOperatingModelAlerts           = () => ({ alerts: M.OPERATING_MODEL_ALERTS });

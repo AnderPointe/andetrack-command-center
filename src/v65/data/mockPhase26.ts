@@ -387,3 +387,130 @@ export const V65_REPORTS = [
   "Marketplace controls",
   "Long-term operating model",
 ];
+
+// ───────────────────────── Phase 26 polish overlays ─────────────────────────
+
+export const STRATEGIC_OPERATING_TREND = [
+  { week: "W-5", overall: 78, financial: 70, global: 44, partner: 74 },
+  { week: "W-4", overall: 80, financial: 72, global: 47, partner: 76 },
+  { week: "W-3", overall: 82, financial: 74, global: 49, partner: 78 },
+  { week: "W-2", overall: 84, financial: 76, global: 50, partner: 79 },
+  { week: "W-1", overall: 85, financial: 77, global: 51, partner: 80 },
+  { week: "W-0", overall: 86, financial: 78, global: 52, partner: 81 },
+];
+
+export const STRATEGIC_OPERATING_ALERTS = [
+  { sev: "high", area: "Financial controls", msg: "2 failed payments past 72h SLA",     owner: "CFO" },
+  { sev: "high", area: "Marketplace",        msg: "Settlement queue 7 (target ≤4)",     owner: "COO" },
+  { sev: "med",  area: "AI governance",      msg: "Explainability drop on rate model",  owner: "AI Gov" },
+  { sev: "med",  area: "Global readiness",   msg: "Canada PIPEDA review pending",       owner: "Strategy" },
+  { sev: "low",  area: "Partner ecosystem",  msg: "NavTrack Pro security review open",  owner: "Partnerships" },
+];
+
+export const FINANCIAL_CONTROL_TREND = [
+  { week: "W-5", score: 72, exceptions: 18 },
+  { week: "W-4", score: 73, exceptions: 16 },
+  { week: "W-3", score: 75, exceptions: 14 },
+  { week: "W-2", score: 76, exceptions: 13 },
+  { week: "W-1", score: 77, exceptions: 12 },
+  { week: "W-0", score: 78, exceptions: 11 },
+];
+
+export const FINANCIAL_CONTROL_OWNERS = [
+  { owner: "CFO",      open: 6, closed_30d: 14 },
+  { owner: "Billing",  open: 3, closed_30d: 21 },
+  { owner: "RevOps",   open: 2, closed_30d:  9 },
+];
+
+export const BILLING_TREND_7D = [
+  { day: "Mon", invoices: 42, failed: 1, fees: 4800 },
+  { day: "Tue", invoices: 51, failed: 0, fees: 5210 },
+  { day: "Wed", invoices: 49, failed: 2, fees: 5040 },
+  { day: "Thu", invoices: 55, failed: 1, fees: 5610 },
+  { day: "Fri", invoices: 47, failed: 0, fees: 4880 },
+  { day: "Sat", invoices: 22, failed: 0, fees: 2310 },
+  { day: "Sun", invoices: 19, failed: 0, fees: 1980 },
+];
+
+export const REVENUE_REC_CHECKLIST = [
+  { step: "Map subscription service periods",  status: "complete" },
+  { step: "Classify usage billing events",     status: "complete" },
+  { step: "Classify marketplace fees",         status: "complete" },
+  { step: "Map implementation milestones",     status: "in_progress" },
+  { step: "Define partner rev share % policy", status: "open" },
+  { step: "Document refund/credit policy",     status: "open" },
+  { step: "Finance sign-off on automation",    status: "blocked" },
+];
+
+export const MKT_FINANCIAL_TREND = [
+  { week: "W-4", txns: 1840, fees_pl: 28100, disputes: 5 },
+  { week: "W-3", txns: 2010, fees_pl: 30420, disputes: 4 },
+  { week: "W-2", txns: 2240, fees_pl: 33810, disputes: 6 },
+  { week: "W-1", txns: 2480, fees_pl: 36120, disputes: 3 },
+  { week: "W-0", txns: 2710, fees_pl: 38040, disputes: 3 },
+];
+
+export const API_BILLING_TOP_PARTNERS = [
+  { partner: "Acme Telematics", calls_30d: 1_240_000, overage: 12, revshare_pl: "$1.1k" },
+  { partner: "ShipFlow API",    calls_30d:   980_400, overage:  8, revshare_pl: "$0.8k" },
+  { partner: "Project44",       calls_30d:   810_220, overage:  6, revshare_pl: "$0.7k" },
+  { partner: "NavTrack Pro",    calls_30d:   420_110, overage:  4, revshare_pl: "$0.3k" },
+  { partner: "FuelCard Co.",    calls_30d:   180_540, overage:  2, revshare_pl: "$0.2k" },
+];
+
+export const GLOBAL_READINESS_CHECKLIST = [
+  { country: "Canada", item: "PIPEDA privacy review",   status: "in_progress", owner: "Privacy" },
+  { country: "Canada", item: "CAD billing path",        status: "open",        owner: "Billing" },
+  { country: "Canada", item: "NSC transport mapping",   status: "research",    owner: "Compliance" },
+  { country: "Mexico", item: "LFPDPPP privacy review",  status: "research",    owner: "Privacy" },
+  { country: "Mexico", item: "MXN billing path",        status: "open",        owner: "Billing" },
+  { country: "EU",     item: "GDPR posture review",     status: "research",    owner: "Privacy" },
+  { country: "UK",     item: "UK-GDPR posture review",  status: "research",    owner: "Privacy" },
+];
+
+export const PARTNER_MARKETPLACE_HEALTH = {
+  approved:    5,
+  pending:     1,
+  design:      1,
+  rejected_30d:0,
+  avg_review_days_pl: 4.2,
+  certification_coverage_pct: 71,
+  revshare_active_pl: 4,
+};
+
+export const GOVERNANCE_ALERTS = [
+  { sev: "high", domain: "Financial",   msg: "Recognition mapping exception open >30d",  owner: "CFO" },
+  { sev: "med",  domain: "AI",          msg: "Rate model explainability re-tag pending", owner: "AI Gov" },
+  { sev: "med",  domain: "Partner",     msg: "NavTrack Pro security review pending",     owner: "Pty" },
+  { sev: "low",  domain: "Roadmap",     msg: "Q+2 horizon focus to be re-confirmed",     owner: "Strategy" },
+];
+
+export const RISK_MATRIX_SUMMARY = {
+  total: 12,
+  passing: 7,
+  exceptions: 2,
+  needs_remediation: 2,
+  pending: 1,
+  coverage_pct: 92,
+};
+
+export const PRODUCT_LINE_INVESTMENT = [
+  { line: "CoPilot AI",          invest: "+25%", thesis: "Strategic differentiation" },
+  { line: "Carrier Marketplace", invest: "+20%", thesis: "Network effects + take rate" },
+  { line: "Partner Marketplace", invest: "+30%", thesis: "Ecosystem leverage" },
+  { line: "Enterprise Gov",      invest: "+15%", thesis: "Upmarket motion" },
+  { line: "Reporting v1",        invest: "-40%", thesis: "Sunset legacy" },
+];
+
+export const ECONOMICS_TREND = [
+  { q: "Q-3", arr_pl: 12.2, nrr_pl: 116, gm_pl: 71 },
+  { q: "Q-2", arr_pl: 13.4, nrr_pl: 118, gm_pl: 72 },
+  { q: "Q-1", arr_pl: 14.6, nrr_pl: 120, gm_pl: 73 },
+  { q: "Q-0", arr_pl: 15.8, nrr_pl: 122, gm_pl: 74 },
+];
+
+export const OPERATING_MODEL_ALERTS = [
+  { horizon: "Current quarter", risk: "Financial control remediation slipping 1w",  sev: "high" },
+  { horizon: "Next quarter",    risk: "Localization plumbing capacity unconfirmed", sev: "med"  },
+  { horizon: "Annual plan",     risk: "Canada pilot dependent on PIPEDA closure",   sev: "med"  },
+];

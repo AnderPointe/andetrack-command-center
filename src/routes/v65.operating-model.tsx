@@ -3,12 +3,14 @@ import { Map } from "lucide-react";
 import { V65Page } from "@/components/v65/V65Page";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { useLongTermStrategicOperatingModel } from "@/v65/hooks";
+import { StatusPill } from "@/components/v65/ui-bits";
+import { useLongTermStrategicOperatingModel, useOperatingModelAlerts } from "@/v65/hooks";
 
 export const Route = createFileRoute("/v65/operating-model")({
   head: () => ({ meta: [{ title: "Operating Model · V6.5 · Anderoute" }] }),
   component: () => {
     const { horizons, pillars } = useLongTermStrategicOperatingModel();
+    const { alerts } = useOperatingModelAlerts();
     return (
       <V65Page icon={<Map className="size-6 text-cyan-300" />} title="Long-Term Strategic Operating Model"
         blurb="Current quarter → 36 months. Operating pillars across product, marketplace, revenue, customer success, support, security, partnerships, reliability, mobile, AI, global, financial.">
@@ -22,6 +24,18 @@ export const Route = createFileRoute("/v65/operating-model")({
               </li>
             ))}
           </ol>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Horizon risk alerts</h3>
+          <ul className="mt-2 space-y-1.5 text-xs">
+            {alerts.map((a, i) => (
+              <li key={i} className="flex items-center gap-2 rounded-md border border-white/10 bg-black/20 p-2">
+                <StatusPill status={a.sev} />
+                <span className="text-cyan-300">{a.horizon}</span>
+                <span className="text-muted-foreground">· {a.risk}</span>
+              </li>
+            ))}
+          </ul>
         </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Operating pillars</h3>
