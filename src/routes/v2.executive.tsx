@@ -4,7 +4,7 @@ import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { StatTile } from "@/components/v1/StatTile";
-import { EXEC_KPIS, TREND_LOADS, TREND_ONTIME, TREND_UTIL } from "@/v2/data/mockPhase17";
+import { EXEC_KPIS, TREND_LOADS, TREND_ONTIME, TREND_UTIL, TREND_NOTES } from "@/v2/data/mockPhase17";
 
 export const Route = createFileRoute("/v2/executive")({
   head: () => ({ meta: [{ title: "Executive · Anderoute" }] }),
