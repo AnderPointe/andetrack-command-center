@@ -3,7 +3,7 @@ import { Palette } from "lucide-react";
 import { V25Page } from "@/components/v25/V25Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { WHITELABEL_SETTINGS, WHITELABEL_VALIDATION } from "@/v25/data/mockPhase18";
+import { WHITELABEL_SETTINGS, WHITELABEL_VALIDATION, WHITELABEL_PORTAL_SECTIONS } from "@/v25/data/mockPhase18";
 
 export const Route = createFileRoute("/v25/white-label")({
   head: () => ({ meta: [{ title: "White-label Portal · Anderoute" }] }),
