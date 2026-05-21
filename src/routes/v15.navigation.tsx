@@ -3,7 +3,7 @@ import { Map } from "lucide-react";
 import { V15Page } from "@/components/v15/V15Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { NAV_PROVIDERS } from "@/v15/data/mockPhase16";
+import { NAV_PROVIDERS, NAV_INTERFACE_METHODS } from "@/v15/data/mockPhase16";
 
 export const Route = createFileRoute("/v15/navigation")({
   head: () => ({ meta: [{ title: "V1.5 Navigation Providers · Anderoute" }] }),
