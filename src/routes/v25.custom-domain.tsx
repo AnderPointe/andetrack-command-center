@@ -3,7 +3,7 @@ import { Globe2 } from "lucide-react";
 import { V25Page } from "@/components/v25/V25Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CUSTOM_DOMAINS, DNS_RECORD_EXAMPLE } from "@/v25/data/mockPhase18";
+import { CUSTOM_DOMAINS, DNS_RECORD_EXAMPLE, DOMAIN_SETUP_STEPS } from "@/v25/data/mockPhase18";
 
 const tone: Record<string, string> = { Active: "border-emerald-500/30 text-emerald-300", "DNS verified": "border-sky-500/30 text-sky-300", "Pending DNS": "border-amber-500/30 text-amber-300", Failed: "border-rose-500/30 text-rose-300" };
 
