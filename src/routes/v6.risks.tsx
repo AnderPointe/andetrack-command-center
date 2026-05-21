@@ -3,12 +3,13 @@ import { AlertTriangle } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { SimpleTable, StatusPill, KpiGrid } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useStrategicRiskPortfolio } from "@/v6/hooks";
+import { useStrategicRiskPortfolio, useRiskTrend } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/risks")({
   head: () => ({ meta: [{ title: "Strategic Risks · V6" }] }),
   component: () => {
     const { risks } = useStrategicRiskPortfolio();
+    const { trend } = useRiskTrend();
     const high = risks.filter(r => r.sev === "high").length;
     const med  = risks.filter(r => r.sev === "medium").length;
     const low  = risks.filter(r => r.sev === "low").length;

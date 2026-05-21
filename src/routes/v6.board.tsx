@@ -13,6 +13,20 @@ export const Route = createFileRoute("/v6/board")({
     return (
       <V6Page icon={<Briefcase className="size-6 text-emerald-300" />} title="Board Governance Operating System"
         blurb="Meeting calendar, agenda + packet builder, KPI/risk review, decision and action tracking, QOR and investor update workflows.">
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Board KPI scorecard</h3>
+          <div className="mt-2 grid gap-2 md:grid-cols-3">
+            {kpis.map(k => {
+              const hit = k.v >= k.target;
+              return (
+                <div key={k.k} className="rounded border border-white/10 bg-black/20 p-3 text-xs">
+                  <div className="flex justify-between"><span className="text-muted-foreground">{k.k}</span><span className={hit ? "text-emerald-300" : "text-amber-300"}>{hit ? "on" : "below"}</span></div>
+                  <div className="mt-1 flex justify-between"><span className="tabular-nums">{k.v}</span><span className="text-muted-foreground">target {k.target}</span></div>
+                </div>
+              );
+            })}
+          </div>
+        </Card>
         <div className="grid gap-3 md:grid-cols-2">
           <Card className="border-white/10 bg-white/[0.02] p-4">
             <h3 className="text-sm font-semibold">Meetings</h3>

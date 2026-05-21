@@ -3,12 +3,13 @@ import { Trophy } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { SimpleTable, StatusPill, ScoreCard } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useStrategicExitIPOReadiness } from "@/v6/hooks";
+import { useStrategicExitIPOReadiness, useExitPhases } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/exit-readiness")({
   head: () => ({ meta: [{ title: "Exit / IPO Readiness · V6" }] }),
   component: () => {
     const { items } = useStrategicExitIPOReadiness();
+    const { phases } = useExitPhases();
     const overall = Math.round(items.reduce((s, i) => s + i.score, 0) / items.length);
     const dataRoom = items.find(i => i.area.startsWith("Data room"))?.score ?? 0;
     const financial = items.find(i => i.area.startsWith("Financial"))?.score ?? 0;
