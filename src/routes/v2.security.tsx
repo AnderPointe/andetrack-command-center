@@ -46,6 +46,43 @@ function Page() {
           </div>
         </Card>
       ))}
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">RLS policy examples</h2>
+        <p className="mt-1 text-xs text-muted-foreground">Every V2 table is company-scoped. AI approval writes require an explicit admin/owner role. Customer-facing tables go through <span className="font-mono">customer_users</span>.</p>
+        <div className="mt-3 space-y-2">
+          {V2_RLS_EXAMPLES.map((r) => (
+            <div key={r.table} className="rounded-md border border-white/10 bg-black/30 p-3">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-mono text-violet-300">{r.table}</span>
+                <span className="text-muted-foreground">{r.policy}</span>
+              </div>
+              <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-[11px] text-foreground/80">{r.sql}</pre>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Edge function / server route separation</h2>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground">
+              <tr><th className="p-2">Function</th><th className="p-2">Runtime</th><th className="p-2">Trust zone</th><th className="p-2">Note</th></tr>
+            </thead>
+            <tbody>
+              {V2_EDGE_FN_SEPARATION.map((f) => (
+                <tr key={f.fn} className="border-t border-white/10">
+                  <td className="p-2 font-mono text-xs">{f.fn}</td>
+                  <td className="p-2 text-xs">{f.runtime}</td>
+                  <td className="p-2"><Badge variant="outline" className="border-white/15">{f.trust}</Badge></td>
+                  <td className="p-2 text-xs text-muted-foreground">{f.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
     </V2Page>
   );
 }
