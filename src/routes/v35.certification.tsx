@@ -4,7 +4,7 @@ import { V35Page } from "@/components/v35/V35Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { CERT_PROJECTS, CERT_TASKS, CERT_GAPS } from "@/v35/data/mockPhase20";
+import { CERT_PROJECTS, CERT_TASKS, CERT_GAPS, CERT_TIMELINE } from "@/v35/data/mockPhase20";
 
 export const Route = createFileRoute("/v35/certification")({
   head: () => ({ meta: [{ title: "Certification Execution · Anderoute V3.5" }] }),
@@ -24,6 +24,16 @@ export const Route = createFileRoute("/v35/certification")({
           </Card>
         ))}
       </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Execution timeline</h3>
+        <ul className="mt-2 space-y-1 text-sm">{CERT_TIMELINE.map((t) => (
+          <li key={t.milestone} className="flex items-center justify-between rounded border border-white/10 bg-black/20 px-2 py-1.5">
+            <span>{t.milestone}</span>
+            <span className="font-mono text-xs text-muted-foreground mr-2">{t.date}</span>
+            <Badge variant="outline" className={t.status === "done" ? "border-emerald-500/40 text-emerald-300" : t.status === "in_progress" ? "border-sky-500/40 text-sky-300" : "border-amber-500/40 text-amber-300"}>{t.status}</Badge>
+          </li>
+        ))}</ul>
+      </Card>
       <div className="grid gap-3 md:grid-cols-2">
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Task board</h3>
