@@ -3,12 +3,13 @@ import { Activity } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { ScoreCard, KpiGrid, SimpleTable, StatusPill } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { usePlatformReliabilityMaturity } from "@/v6/hooks";
+import { usePlatformReliabilityMaturity, useReliabilitySLOs } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/reliability")({
   head: () => ({ meta: [{ title: "Reliability · V6" }] }),
   component: () => {
     const { metrics: m, trend, postmortems } = usePlatformReliabilityMaturity();
+    const { slos } = useReliabilitySLOs();
     return (
       <V6Page icon={<Activity className="size-6 text-emerald-300" />} title="Platform Reliability Maturity"
         blurb="Uptime (placeholder), latencies, GPS / route / notification / webhook / EDI / billing reliability, mobile crash-free (placeholder), incident rate, error budget, postmortems and action plans.">
@@ -28,6 +29,17 @@ export const Route = createFileRoute("/v6/reliability")({
           { label: "Critical incidents 30d", value: m.critical_incidents_30d },
           { label: "Billing provider", value: `${m.billing_provider}%` },
         ]} />
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">SLOs &amp; error-budget burn</h3>
+          <div className="mt-2">
+            <SimpleTable rows={slos} columns={[
+              { key: "slo",    label: "SLO" },
+              { key: "target", label: "Target" },
+              { key: "actual", label: "Actual" },
+              { key: "burn",   label: "Budget burn %", render: (r) => <span className={r.burn > 50 ? "text-rose-300" : r.burn > 25 ? "text-amber-300" : "text-emerald-300"}>{r.burn}%</span> },
+            ]} />
+          </div>
+        </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Uptime trend</h3>
           <div className="mt-3 space-y-2 text-xs">

@@ -3,12 +3,13 @@ import { Store } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { ScoreCard, KpiGrid, SimpleTable } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useMarketplaceLiquidityIntelligence } from "@/v6/hooks";
+import { useMarketplaceLiquidityIntelligence, useLiquidityTrend } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/liquidity")({
   head: () => ({ meta: [{ title: "Marketplace Liquidity · V6" }] }),
   component: () => {
     const { liquidity: l, lanes, heatmap } = useMarketplaceLiquidityIntelligence();
+    const { trend } = useLiquidityTrend();
     return (
       <V6Page icon={<Store className="size-6 text-emerald-300" />} title="Marketplace Liquidity Intelligence (V6)"
         blurb="Liquidity, coverage, bids/load, time-to-award, uncovered rate, regional supply/demand, lane density, carrier acceptance/fall-off and marketplace trust.">
@@ -25,6 +26,18 @@ export const Route = createFileRoute("/v6/liquidity")({
           { label: "Uncovered", value: `${l.uncovered_rate}%` },
           { label: "Carrier acceptance", value: `${l.acceptance}%` },
         ]} />
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Liquidity score trend (4w)</h3>
+          <div className="mt-3 flex items-end gap-2 h-24">
+            {trend.map(t => (
+              <div key={t.w} className="flex flex-1 flex-col items-center gap-1">
+                <div className="w-full rounded-t bg-emerald-400/70" style={{ height: `${t.score}%` }} />
+                <div className="text-[10px] text-muted-foreground">{t.w}</div>
+                <div className="text-[10px] text-emerald-200">{t.score}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Lane liquidity matrix</h3>
           <div className="mt-2">

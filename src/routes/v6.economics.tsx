@@ -3,12 +3,13 @@ import { DollarSign } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { ScoreCard, KpiGrid, SimpleTable } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { usePlatformEconomics } from "@/v6/hooks";
+import { usePlatformEconomics, useEconomicsTrend } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/economics")({
   head: () => ({ meta: [{ title: "Platform Economics · V6" }] }),
   component: () => {
     const { economics: e, segments, regions } = usePlatformEconomics();
+    const { trend } = useEconomicsTrend();
     const lines = [
       { line: "SaaS",                arr: e.saas },
       { line: "Marketplace",         arr: e.marketplace },
@@ -45,6 +46,19 @@ export const Route = createFileRoute("/v6/economics")({
             <div className="mt-2"><SimpleTable rows={segments} columns={[{ key: "seg", label: "Segment" }, { key: "arr", label: "ARR (pl)" }, { key: "share", label: "Share %" }]} /></div>
           </Card>
         </div>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">ARR / NRR / Gross margin trend (placeholders)</h3>
+          <div className="mt-3 grid grid-cols-4 gap-3 text-xs">
+            {trend.map(t => (
+              <div key={t.q} className="rounded border border-white/10 bg-black/20 p-2">
+                <div className="text-muted-foreground">{t.q}</div>
+                <div className="mt-1 flex justify-between"><span>ARR</span><span className="text-emerald-300">${t.arr}M</span></div>
+                <div className="flex justify-between"><span>NRR</span><span className="text-sky-300">{t.nrr}%</span></div>
+                <div className="flex justify-between"><span>GM</span><span className="text-amber-300">{t.gm}%</span></div>
+              </div>
+            ))}
+          </div>
+        </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Revenue index by region (placeholder)</h3>
           <div className="mt-2 grid grid-cols-3 gap-2 text-xs md:grid-cols-5">

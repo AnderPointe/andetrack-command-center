@@ -24,3 +24,15 @@ export const useCustomerPartnerEcosystemMaturity = () => ({ areas: M.CUSTOMER_PA
 export const useProductDefensibilityMaturity     = () => ({ factors: M.DEFENSIBILITY_FACTORS });
 export const useCategoryNarrativeMarketEducation = () => ({ assets: M.NARRATIVE_ASSETS });
 export const useReportsV6                        = () => ({ reports: M.V6_REPORTS });
+
+// Phase 25 polish: enriched executive overlays
+export const useCategoryAlerts                   = () => ({ alerts: M.CATEGORY_ALERTS, pillarTrend: M.CATEGORY_PILLAR_TREND });
+export const useNetworkFlow                      = () => ({ flow: M.NETWORK_FLOW, subsystems: M.NETWORK_SUBSYSTEM_HEALTH });
+export const useAutomationTowerTrend             = () => ({ trend: M.AUTOMATION_TOWER_TREND });
+export const useAIGovAlerts                      = () => ({ alerts: M.AI_GOV_ALERTS });
+export const useLiquidityTrend                   = () => ({ trend: M.LIQUIDITY_TREND });
+export const useEconomicsTrend                   = () => ({ trend: M.ECONOMICS_TREND });
+export const useBoardKpis                        = () => ({ kpis: M.BOARD_KPIS });
+export const useReliabilitySLOs                  = () => ({ slos: M.RELIABILITY_SLOS });
+export const useRiskTrend                        = () => ({ trend: M.RISK_TREND });
+export const useExitPhases                       = () => ({ phases: M.EXIT_PHASES });

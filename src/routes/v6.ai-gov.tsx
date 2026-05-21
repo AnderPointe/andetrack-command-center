@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Brain } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
-import { ScoreCard, KpiGrid } from "@/components/v6/ui-bits";
+import { ScoreCard, KpiGrid, StatusPill } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useAIGovernanceMaturityV6 } from "@/v6/hooks";
+import { useAIGovernanceMaturityV6, useAIGovAlerts } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/ai-gov")({
   head: () => ({ meta: [{ title: "AI Governance · V6" }] }),
   component: () => {
     const { gov, trend } = useAIGovernanceMaturityV6();
+    const { alerts } = useAIGovAlerts();
     const accept = Math.round((gov.recs_accepted / gov.recs_generated_24h) * 100);
     return (
       <V6Page icon={<Brain className="size-6 text-emerald-300" />} title="AI Governance Maturity (V6)"
@@ -43,6 +44,17 @@ export const Route = createFileRoute("/v6/ai-gov")({
             ))}
           </div>
           <p className="mt-2 text-[11px] text-muted-foreground">Emerald = accepted, sky = generated.</p>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Governance alerts</h3>
+          <ul className="mt-2 space-y-1.5 text-xs">
+            {alerts.map(a => (
+              <li key={a.id} className="flex items-center gap-2">
+                <StatusPill status={a.sev} />
+                <span className="text-muted-foreground">{a.note}</span>
+              </li>
+            ))}
+          </ul>
         </Card>
       </V6Page>
     );

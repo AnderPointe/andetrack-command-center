@@ -376,3 +376,102 @@ export const V6_REPORTS = [
   "Reliability maturity","Certification evidence","Revenue quality","Product defensibility",
   "Data room readiness",
 ];
+
+// ---------- Phase 25 polish: trends, alerts, executive overlays ----------
+
+export const CATEGORY_ALERTS = [
+  { id: "cl1", area: "Investor readiness", sev: "high",   note: "Financial reporting placeholder gating exit score" },
+  { id: "cl2", area: "Revenue maturity",   sev: "medium", note: "Top 3 customers = 32% of ARR (pl)" },
+  { id: "cl3", area: "Marketplace",        sev: "medium", note: "Southeast flatbed coverage 18% below demand" },
+  { id: "cl4", area: "Brand / narrative",  sev: "low",    note: "Customer proof library still in progress" },
+];
+export const CATEGORY_PILLAR_TREND = [
+  { pillar: "Product",      q0: 90, qm3: 84 },
+  { pillar: "Marketplace",  q0: 84, qm3: 74 },
+  { pillar: "AI ops",       q0: 86, qm3: 78 },
+  { pillar: "Revenue",      q0: 80, qm3: 71 },
+  { pillar: "Security",     q0: 89, qm3: 82 },
+  { pillar: "Defensibility",q0: 86, qm3: 78 },
+  { pillar: "Investor",     q0: 64, qm3: 52 },
+  { pillar: "Reliability",  q0: 91, qm3: 86 },
+];
+
+export const NETWORK_FLOW = [
+  { stage: "Load created",      count: 5_820, ok: 5_780 },
+  { stage: "Carrier matched",   count: 5_780, ok: 5_640 },
+  { stage: "Dispatched",        count: 5_640, ok: 5_590 },
+  { stage: "In transit",        count: 5_590, ok: 5_540 },
+  { stage: "POD captured",      count: 5_540, ok: 5_510 },
+  { stage: "Invoiced",          count: 5_510, ok: 5_488 },
+];
+export const NETWORK_SUBSYSTEM_HEALTH = [
+  { sys: "Dispatch",      score: 92 },
+  { sys: "EliteNav GPS",  score: 95 },
+  { sys: "CoPilot AI",    score: 88 },
+  { sys: "Marketplace",   score: 84 },
+  { sys: "API platform",  score: 91 },
+  { sys: "EDI platform",  score: 87 },
+  { sys: "Webhooks",      score: 89 },
+  { sys: "Notifications", score: 90 },
+  { sys: "Portal",        score: 86 },
+  { sys: "Billing",       score: 93 },
+];
+
+export const AUTOMATION_TOWER_TREND = [
+  { d: "Mon", approved: 188, rejected: 6,  overrides: 12 },
+  { d: "Tue", approved: 210, rejected: 9,  overrides: 14 },
+  { d: "Wed", approved: 225, rejected: 7,  overrides: 11 },
+  { d: "Thu", approved: 218, rejected: 9,  overrides: 13 },
+  { d: "Fri", approved: 234, rejected: 8,  overrides: 10 },
+  { d: "Sat", approved: 162, rejected: 4,  overrides: 7  },
+  { d: "Sun", approved: 178, rejected: 5,  overrides: 8  },
+];
+
+export const AI_GOV_ALERTS = [
+  { id: "ai1", sev: "medium", note: "Explainability coverage 86% — target 95%" },
+  { id: "ai2", sev: "low",    note: "Bias review queue: 2 models pending sign-off" },
+  { id: "ai3", sev: "low",    note: "Cost per accepted rec trending up 6% WoW" },
+];
+
+export const LIQUIDITY_TREND = [
+  { w: "W-3", score: 76 }, { w: "W-2", score: 78 },
+  { w: "W-1", score: 80 }, { w: "W0",  score: 81 },
+];
+
+export const ECONOMICS_TREND = [
+  { q: "Q-3", arr: 11.8, nrr: 112, gm: 67 },
+  { q: "Q-2", arr: 13.0, nrr: 116, gm: 69 },
+  { q: "Q-1", arr: 14.4, nrr: 119, gm: 70 },
+  { q: "Q0",  arr: 15.8, nrr: 121, gm: 71 },
+];
+
+export const BOARD_KPIS = [
+  { k: "Category leadership", v: 91, target: 90 },
+  { k: "ARR ($M, pl)",        v: 15.8, target: 16 },
+  { k: "NRR % (pl)",          v: 121, target: 120 },
+  { k: "Uptime (pl)",         v: 99.95, target: 99.95 },
+  { k: "SOC 2 evidence",      v: 83, target: 90 },
+  { k: "Liquidity",           v: 81, target: 85 },
+];
+
+export const RELIABILITY_SLOS = [
+  { slo: "Dispatch API uptime",      target: 99.95, actual: 99.96, burn: 18 },
+  { slo: "Realtime fan-out p95",     target: 250,   actual: 220,   burn: 22 },
+  { slo: "Webhook delivery 24h",     target: 99,    actual: 98.9,  burn: 55 },
+  { slo: "Mobile crash-free (pl)",   target: 99.5,  actual: 99.6,  burn: 12 },
+  { slo: "EDI ack latency (s)",      target: 60,    actual: 42,    burn: 9  },
+];
+
+export const RISK_TREND = [
+  { q: "Q-3", high: 4, medium: 7, low: 5 },
+  { q: "Q-2", high: 3, medium: 8, low: 4 },
+  { q: "Q-1", high: 2, medium: 8, low: 4 },
+  { q: "Q0",  high: 1, medium: 9, low: 4 },
+];
+
+export const EXIT_PHASES = [
+  { phase: "Pre-readiness",   complete: true,  note: "Operating model, board cadence, basic data room" },
+  { phase: "Diligence-ready", complete: false, note: "Revenue quality, audit evidence, financial reporting" },
+  { phase: "Process-ready",   complete: false, note: "Customer refs, legal pack, banker deck — placeholders" },
+];
+

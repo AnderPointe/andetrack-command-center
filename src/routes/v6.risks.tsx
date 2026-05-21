@@ -3,12 +3,13 @@ import { AlertTriangle } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { SimpleTable, StatusPill, KpiGrid } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useStrategicRiskPortfolio } from "@/v6/hooks";
+import { useStrategicRiskPortfolio, useRiskTrend } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/risks")({
   head: () => ({ meta: [{ title: "Strategic Risks · V6" }] }),
   component: () => {
     const { risks } = useStrategicRiskPortfolio();
+    const { trend } = useRiskTrend();
     const high = risks.filter(r => r.sev === "high").length;
     const med  = risks.filter(r => r.sev === "medium").length;
     const low  = risks.filter(r => r.sev === "low").length;
@@ -23,6 +24,21 @@ export const Route = createFileRoute("/v6/risks")({
           { label: "Medium", value: med },
           { label: "Low", value: low },
         ]} />
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Severity trend (4 quarters)</h3>
+          <div className="mt-3 grid grid-cols-4 gap-2 h-28 items-end">
+            {trend.map(t => (
+              <div key={t.q} className="flex flex-col items-center gap-1">
+                <div className="flex items-end h-20 gap-0.5">
+                  <div className="w-3 rounded-t bg-rose-400/70" style={{ height: `${t.high*12}%` }} title={`High ${t.high}`} />
+                  <div className="w-3 rounded-t bg-amber-400/70" style={{ height: `${t.medium*8}%` }} title={`Med ${t.medium}`} />
+                  <div className="w-3 rounded-t bg-emerald-400/70" style={{ height: `${t.low*8}%` }} title={`Low ${t.low}`} />
+                </div>
+                <div className="text-[10px] text-muted-foreground">{t.q}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Heatmap by category</h3>
           <div className="mt-3 grid gap-2 md:grid-cols-3">
