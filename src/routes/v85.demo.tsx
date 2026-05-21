@@ -38,10 +38,33 @@ export const Route = createFileRoute("/v85/demo")({
       {who:"CEO",step:"Open Executive Stewardship Dashboard",outcome:"11 exec priorities · 3 cross-functional blockers"},
       {who:"Board",step:"Lock board packet for 2026-06-24 review",outcome:"Sign off API overage + CA pilot + ON reefer"},
     ];
-    return (<V85Page icon={<ListChecks className="size-6 text-fuchsia-300" />} title="V8.5 Demo Flow" blurb="17-step executive walkthrough.">
+    return (<V85Page icon={<ListChecks className="size-6 text-fuchsia-300" />} title="V8.5 Demo Flow" blurb="17-step executive walkthrough with role guidance and RLS policy references.">
       <ExecBanner h={headline} />
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Role guidance</h3>
+        <div className="mt-2 grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+          {guidance.map((g) => (
+            <div key={g.role} className={`rounded-lg border ${toneMap[g.tone]} bg-white/[0.02] p-3 text-sm`}>
+              <div className="text-xs uppercase tracking-wide opacity-80">{g.role}</div>
+              <div className="mt-1">{g.focus}</div>
+            </div>
+          ))}
+        </div>
+      </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4"><ol className="space-y-2 text-sm">{STEPS.map((s,i)=>(<li key={i} className="grid grid-cols-[2rem_9rem_1fr_1fr] items-start gap-2 border-b border-white/5 pb-2 last:border-0"><span className="text-muted-foreground">{i+1}.</span><span className="font-medium text-fuchsia-200">{s.who}</span><span>{s.step}</span><span className="text-xs text-muted-foreground">{s.outcome}</span></li>))}</ol></Card>
       <OverlayStrip items={overlays as any} title="Executive overlays — all V8.5 modules" />
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">RLS policy references</h3>
+        <p className="mt-1 text-xs text-muted-foreground">Mock-only — see <code>docs/phase30-rls.sql</code> for the full set.</p>
+        <div className="mt-2 space-y-2">
+          {rls.map((r) => (
+            <div key={r.table} className="rounded-lg border border-white/10 bg-black/30 p-3 text-sm">
+              <div className="flex items-center justify-between"><span className="font-mono text-xs text-fuchsia-200">{r.table}</span><span className="text-xs text-muted-foreground">{r.policy}</span></div>
+              <pre className="mt-2 overflow-x-auto text-[11px] text-muted-foreground">{r.sql}</pre>
+            </div>
+          ))}
+        </div>
+      </Card>
     </V85Page>);
   },
 });
