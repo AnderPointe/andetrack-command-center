@@ -32,9 +32,11 @@ export const Route = createFileRoute("/v75/demo")({
     const { summary: approvalSummary } = useExecutiveGlobalLaunchGovernance();
     const { audit } = useAdvancedFinancialAuditReadiness();
     const { discipline } = useGlobalMarketplaceDiscipline();
+    const headline = useV75ExecHeadline();
     return (
       <V75Page icon={<ListChecks className="size-6 text-indigo-300" />} title="V7.5 Demo Flow"
         blurb="Guided executive walkthrough of Anderoute V7.5 global expansion execution — Canada controlled pilot scenario.">
+        <ExecBanner h={headline} />
         <KpiGrid cols={4} items={[
           { label: "Execution readiness", value: `${score.overall}%`, sub: "Trend +10 (6w)" },
           { label: "Open blockers", value: blockers.length, sub: `${blockers.filter(b => b.severity === "high").length} high` },
