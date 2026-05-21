@@ -22,6 +22,20 @@ export const Route = createFileRoute("/v6/exit-readiness")({
           <ScoreCard label="Financial reporting (pl)" value={financial} tone="rose" />
         </div>
         <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Readiness phases</h3>
+          <ol className="mt-2 space-y-2 text-xs">
+            {phases.map((p, i) => (
+              <li key={p.phase} className="flex items-start gap-2">
+                <span className={`mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full border text-[10px] ${p.complete ? "border-emerald-400/60 bg-emerald-400/20 text-emerald-200" : "border-amber-400/40 text-amber-200"}`}>{i+1}</span>
+                <div>
+                  <div className={p.complete ? "text-emerald-200" : "text-foreground"}>{p.phase}{p.complete && " · complete"}</div>
+                  <div className="text-muted-foreground">{p.note}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
           <SimpleTable rows={items} columns={[
             { key: "area",   label: "Area" },
             { key: "score",  label: "Score" },
