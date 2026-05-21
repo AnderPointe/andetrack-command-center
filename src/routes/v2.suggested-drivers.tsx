@@ -27,7 +27,7 @@ function Page() {
     >
       <div className="grid gap-3 md:grid-cols-2">
         {OPT_CANDIDATES.slice().sort((a, b) => b.score - a.score).map((c) => {
-          const conf = confidence(c.score);
+          const conf = confidenceBand(c.score);
           return (
             <Card key={c.driverId} className="border-white/10 bg-white/[0.02] p-4 text-sm">
               <div className="flex items-center justify-between">
@@ -35,8 +35,9 @@ function Page() {
                   <div className="font-medium">{c.driver}</div>
                   <div className="text-xs text-muted-foreground">{c.driverId} · {c.vehicleType}</div>
                 </div>
-                <Badge variant="outline" className={conf.tone}>{conf.label}</Badge>
+                <Badge variant="outline" className={toneClass[conf.tone]}>{conf.label} confidence</Badge>
               </div>
+              <div className="mt-1 text-xs text-muted-foreground">{conf.note}</div>
               <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1 text-xs">
                 <div><span className="text-muted-foreground">Status:</span> {c.status.replace("_", " ")}</div>
                 <div><span className="text-muted-foreground">Distance:</span> {c.distanceMi} mi</div>
