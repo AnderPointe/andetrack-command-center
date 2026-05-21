@@ -3,7 +3,7 @@ import { Crown } from "lucide-react";
 import { V5Page } from "@/components/v5/V5Page";
 import { KpiGrid, SimpleTable, StatusPill } from "@/components/v5/ui-bits";
 import { Card } from "@/components/ui/card";
-import { BOARD_KPIS, BOARD_RISKS, BOARD_DECISIONS } from "@/v5/data/mockPhase23";
+import { BOARD_KPIS, BOARD_RISKS, BOARD_DECISIONS, BOARD_TRENDS } from "@/v5/data/mockPhase23";
 
 export const Route = createFileRoute("/v5/board")({
   head: () => ({ meta: [{ title: "Board Reporting · Anderoute V5" }] }),
