@@ -11,6 +11,21 @@ export const Route = createFileRoute("/v5/board")({
     <V5Page icon={<Crown className="size-6 text-fuchsia-300" />} title="Executive & Board Reporting"
       blurb="Quarterly operating review builder: KPIs, strategic risks, decisions needed, and next-quarter priorities.">
       <KpiGrid cols={3} items={BOARD_KPIS} />
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">QoQ trend · customers & GMV index</h3>
+        <div className="mt-3 flex items-end gap-3 h-28">
+          {BOARD_TRENDS.map(t => (
+            <div key={t.quarter} className="flex flex-1 flex-col items-center gap-1">
+              <div className="flex w-full items-end gap-1 h-24">
+                <div className="flex-1 rounded-t bg-sky-400/60" style={{ height: `${(t.customers / 160) * 100}%` }} />
+                <div className="flex-1 rounded-t bg-fuchsia-400/60" style={{ height: `${(t.gmv_idx / 120) * 100}%` }} />
+              </div>
+              <div className="text-[10px] text-muted-foreground">{t.quarter} · {t.customers} · {t.gmv_idx}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-2 text-[10px] text-muted-foreground">Sky = customers · Fuchsia = GMV index (mock).</div>
+      </Card>
       <div className="grid gap-3 md:grid-cols-2">
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <h3 className="text-sm font-semibold">Strategic risks</h3>
