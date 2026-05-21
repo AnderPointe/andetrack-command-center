@@ -29,19 +29,32 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V45SupportRouteImport } from './routes/v45.support'
 import { Route as V45Soc2RouteImport } from './routes/v45.soc2'
 import { Route as V45ScopeRouteImport } from './routes/v45.scope'
+import { Route as V45RevenueOpsRouteImport } from './routes/v45.revenue-ops'
+import { Route as V45ReportsRouteImport } from './routes/v45.reports'
+import { Route as V45ProcurementRouteImport } from './routes/v45.procurement'
 import { Route as V45PlaybooksMarketplaceRouteImport } from './routes/v45.playbooks-marketplace'
+import { Route as V45PlaybooksRouteImport } from './routes/v45.playbooks'
+import { Route as V45PlatformMetricsRouteImport } from './routes/v45.platform-metrics'
+import { Route as V45PartnershipsRouteImport } from './routes/v45.partnerships'
+import { Route as V45PartnerEcosystemRouteImport } from './routes/v45.partner-ecosystem'
 import { Route as V45OverviewRouteImport } from './routes/v45.overview'
+import { Route as V45NationalOpsRouteImport } from './routes/v45.national-ops'
 import { Route as V45MobileLaunchRouteImport } from './routes/v45.mobile-launch'
 import { Route as V45MarketplaceOpsRouteImport } from './routes/v45.marketplace-ops'
+import { Route as V45EnterpriseCustomersRouteImport } from './routes/v45.enterprise-customers'
 import { Route as V45DisputesRouteImport } from './routes/v45.disputes'
+import { Route as V45CustomerSuccessRouteImport } from './routes/v45.customer-success'
 import { Route as V45CertificationRouteImport } from './routes/v45.certification'
 import { Route as V45CarrierQualityRouteImport } from './routes/v45.carrier-quality'
 import { Route as V45CarplayRouteImport } from './routes/v45.carplay'
 import { Route as V45AutomationRouteImport } from './routes/v45.automation'
 import { Route as V45ApprovalsRouteImport } from './routes/v45.approvals'
 import { Route as V45AndroidAutoRouteImport } from './routes/v45.android-auto'
+import { Route as V45AiGovernanceRouteImport } from './routes/v45.ai-governance'
+import { Route as V45AcquisitionRouteImport } from './routes/v45.acquisition'
 import { Route as V4SupportRouteImport } from './routes/v4.support'
 import { Route as V4ScopeRouteImport } from './routes/v4.scope'
 import { Route as V4ReportsRouteImport } from './routes/v4.reports'
@@ -436,6 +449,11 @@ const DriverIndexRoute = DriverIndexRouteImport.update({
   path: '/driver/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V45SupportRoute = V45SupportRouteImport.update({
+  id: '/v45/support',
+  path: '/v45/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V45Soc2Route = V45Soc2RouteImport.update({
   id: '/v45/soc2',
   path: '/v45/soc2',
@@ -446,14 +464,54 @@ const V45ScopeRoute = V45ScopeRouteImport.update({
   path: '/v45/scope',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V45RevenueOpsRoute = V45RevenueOpsRouteImport.update({
+  id: '/v45/revenue-ops',
+  path: '/v45/revenue-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45ReportsRoute = V45ReportsRouteImport.update({
+  id: '/v45/reports',
+  path: '/v45/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45ProcurementRoute = V45ProcurementRouteImport.update({
+  id: '/v45/procurement',
+  path: '/v45/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V45PlaybooksMarketplaceRoute = V45PlaybooksMarketplaceRouteImport.update({
   id: '/v45/playbooks-marketplace',
   path: '/v45/playbooks-marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V45PlaybooksRoute = V45PlaybooksRouteImport.update({
+  id: '/v45/playbooks',
+  path: '/v45/playbooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45PlatformMetricsRoute = V45PlatformMetricsRouteImport.update({
+  id: '/v45/platform-metrics',
+  path: '/v45/platform-metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45PartnershipsRoute = V45PartnershipsRouteImport.update({
+  id: '/v45/partnerships',
+  path: '/v45/partnerships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45PartnerEcosystemRoute = V45PartnerEcosystemRouteImport.update({
+  id: '/v45/partner-ecosystem',
+  path: '/v45/partner-ecosystem',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V45OverviewRoute = V45OverviewRouteImport.update({
   id: '/v45/overview',
   path: '/v45/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45NationalOpsRoute = V45NationalOpsRouteImport.update({
+  id: '/v45/national-ops',
+  path: '/v45/national-ops',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V45MobileLaunchRoute = V45MobileLaunchRouteImport.update({
@@ -466,9 +524,19 @@ const V45MarketplaceOpsRoute = V45MarketplaceOpsRouteImport.update({
   path: '/v45/marketplace-ops',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V45EnterpriseCustomersRoute = V45EnterpriseCustomersRouteImport.update({
+  id: '/v45/enterprise-customers',
+  path: '/v45/enterprise-customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V45DisputesRoute = V45DisputesRouteImport.update({
   id: '/v45/disputes',
   path: '/v45/disputes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45CustomerSuccessRoute = V45CustomerSuccessRouteImport.update({
+  id: '/v45/customer-success',
+  path: '/v45/customer-success',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V45CertificationRoute = V45CertificationRouteImport.update({
@@ -499,6 +567,16 @@ const V45ApprovalsRoute = V45ApprovalsRouteImport.update({
 const V45AndroidAutoRoute = V45AndroidAutoRouteImport.update({
   id: '/v45/android-auto',
   path: '/v45/android-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45AiGovernanceRoute = V45AiGovernanceRouteImport.update({
+  id: '/v45/ai-governance',
+  path: '/v45/ai-governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45AcquisitionRoute = V45AcquisitionRouteImport.update({
+  id: '/v45/acquisition',
+  path: '/v45/acquisition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V4SupportRoute = V4SupportRouteImport.update({
@@ -2286,19 +2364,32 @@ export interface FileRoutesByFullPath {
   '/v4/reports': typeof V4ReportsRoute
   '/v4/scope': typeof V4ScopeRoute
   '/v4/support': typeof V4SupportRoute
+  '/v45/acquisition': typeof V45AcquisitionRoute
+  '/v45/ai-governance': typeof V45AiGovernanceRoute
   '/v45/android-auto': typeof V45AndroidAutoRoute
   '/v45/approvals': typeof V45ApprovalsRoute
   '/v45/automation': typeof V45AutomationRoute
   '/v45/carplay': typeof V45CarplayRoute
   '/v45/carrier-quality': typeof V45CarrierQualityRoute
   '/v45/certification': typeof V45CertificationRoute
+  '/v45/customer-success': typeof V45CustomerSuccessRoute
   '/v45/disputes': typeof V45DisputesRoute
+  '/v45/enterprise-customers': typeof V45EnterpriseCustomersRoute
   '/v45/marketplace-ops': typeof V45MarketplaceOpsRoute
   '/v45/mobile-launch': typeof V45MobileLaunchRoute
+  '/v45/national-ops': typeof V45NationalOpsRoute
   '/v45/overview': typeof V45OverviewRoute
+  '/v45/partner-ecosystem': typeof V45PartnerEcosystemRoute
+  '/v45/partnerships': typeof V45PartnershipsRoute
+  '/v45/platform-metrics': typeof V45PlatformMetricsRoute
+  '/v45/playbooks': typeof V45PlaybooksRoute
   '/v45/playbooks-marketplace': typeof V45PlaybooksMarketplaceRoute
+  '/v45/procurement': typeof V45ProcurementRoute
+  '/v45/reports': typeof V45ReportsRoute
+  '/v45/revenue-ops': typeof V45RevenueOpsRoute
   '/v45/scope': typeof V45ScopeRoute
   '/v45/soc2': typeof V45Soc2Route
+  '/v45/support': typeof V45SupportRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -2614,19 +2705,32 @@ export interface FileRoutesByTo {
   '/v4/reports': typeof V4ReportsRoute
   '/v4/scope': typeof V4ScopeRoute
   '/v4/support': typeof V4SupportRoute
+  '/v45/acquisition': typeof V45AcquisitionRoute
+  '/v45/ai-governance': typeof V45AiGovernanceRoute
   '/v45/android-auto': typeof V45AndroidAutoRoute
   '/v45/approvals': typeof V45ApprovalsRoute
   '/v45/automation': typeof V45AutomationRoute
   '/v45/carplay': typeof V45CarplayRoute
   '/v45/carrier-quality': typeof V45CarrierQualityRoute
   '/v45/certification': typeof V45CertificationRoute
+  '/v45/customer-success': typeof V45CustomerSuccessRoute
   '/v45/disputes': typeof V45DisputesRoute
+  '/v45/enterprise-customers': typeof V45EnterpriseCustomersRoute
   '/v45/marketplace-ops': typeof V45MarketplaceOpsRoute
   '/v45/mobile-launch': typeof V45MobileLaunchRoute
+  '/v45/national-ops': typeof V45NationalOpsRoute
   '/v45/overview': typeof V45OverviewRoute
+  '/v45/partner-ecosystem': typeof V45PartnerEcosystemRoute
+  '/v45/partnerships': typeof V45PartnershipsRoute
+  '/v45/platform-metrics': typeof V45PlatformMetricsRoute
+  '/v45/playbooks': typeof V45PlaybooksRoute
   '/v45/playbooks-marketplace': typeof V45PlaybooksMarketplaceRoute
+  '/v45/procurement': typeof V45ProcurementRoute
+  '/v45/reports': typeof V45ReportsRoute
+  '/v45/revenue-ops': typeof V45RevenueOpsRoute
   '/v45/scope': typeof V45ScopeRoute
   '/v45/soc2': typeof V45Soc2Route
+  '/v45/support': typeof V45SupportRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -2943,19 +3047,32 @@ export interface FileRoutesById {
   '/v4/reports': typeof V4ReportsRoute
   '/v4/scope': typeof V4ScopeRoute
   '/v4/support': typeof V4SupportRoute
+  '/v45/acquisition': typeof V45AcquisitionRoute
+  '/v45/ai-governance': typeof V45AiGovernanceRoute
   '/v45/android-auto': typeof V45AndroidAutoRoute
   '/v45/approvals': typeof V45ApprovalsRoute
   '/v45/automation': typeof V45AutomationRoute
   '/v45/carplay': typeof V45CarplayRoute
   '/v45/carrier-quality': typeof V45CarrierQualityRoute
   '/v45/certification': typeof V45CertificationRoute
+  '/v45/customer-success': typeof V45CustomerSuccessRoute
   '/v45/disputes': typeof V45DisputesRoute
+  '/v45/enterprise-customers': typeof V45EnterpriseCustomersRoute
   '/v45/marketplace-ops': typeof V45MarketplaceOpsRoute
   '/v45/mobile-launch': typeof V45MobileLaunchRoute
+  '/v45/national-ops': typeof V45NationalOpsRoute
   '/v45/overview': typeof V45OverviewRoute
+  '/v45/partner-ecosystem': typeof V45PartnerEcosystemRoute
+  '/v45/partnerships': typeof V45PartnershipsRoute
+  '/v45/platform-metrics': typeof V45PlatformMetricsRoute
+  '/v45/playbooks': typeof V45PlaybooksRoute
   '/v45/playbooks-marketplace': typeof V45PlaybooksMarketplaceRoute
+  '/v45/procurement': typeof V45ProcurementRoute
+  '/v45/reports': typeof V45ReportsRoute
+  '/v45/revenue-ops': typeof V45RevenueOpsRoute
   '/v45/scope': typeof V45ScopeRoute
   '/v45/soc2': typeof V45Soc2Route
+  '/v45/support': typeof V45SupportRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -3273,19 +3390,32 @@ export interface FileRouteTypes {
     | '/v4/reports'
     | '/v4/scope'
     | '/v4/support'
+    | '/v45/acquisition'
+    | '/v45/ai-governance'
     | '/v45/android-auto'
     | '/v45/approvals'
     | '/v45/automation'
     | '/v45/carplay'
     | '/v45/carrier-quality'
     | '/v45/certification'
+    | '/v45/customer-success'
     | '/v45/disputes'
+    | '/v45/enterprise-customers'
     | '/v45/marketplace-ops'
     | '/v45/mobile-launch'
+    | '/v45/national-ops'
     | '/v45/overview'
+    | '/v45/partner-ecosystem'
+    | '/v45/partnerships'
+    | '/v45/platform-metrics'
+    | '/v45/playbooks'
     | '/v45/playbooks-marketplace'
+    | '/v45/procurement'
+    | '/v45/reports'
+    | '/v45/revenue-ops'
     | '/v45/scope'
     | '/v45/soc2'
+    | '/v45/support'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -3601,19 +3731,32 @@ export interface FileRouteTypes {
     | '/v4/reports'
     | '/v4/scope'
     | '/v4/support'
+    | '/v45/acquisition'
+    | '/v45/ai-governance'
     | '/v45/android-auto'
     | '/v45/approvals'
     | '/v45/automation'
     | '/v45/carplay'
     | '/v45/carrier-quality'
     | '/v45/certification'
+    | '/v45/customer-success'
     | '/v45/disputes'
+    | '/v45/enterprise-customers'
     | '/v45/marketplace-ops'
     | '/v45/mobile-launch'
+    | '/v45/national-ops'
     | '/v45/overview'
+    | '/v45/partner-ecosystem'
+    | '/v45/partnerships'
+    | '/v45/platform-metrics'
+    | '/v45/playbooks'
     | '/v45/playbooks-marketplace'
+    | '/v45/procurement'
+    | '/v45/reports'
+    | '/v45/revenue-ops'
     | '/v45/scope'
     | '/v45/soc2'
+    | '/v45/support'
     | '/driver'
   id:
     | '__root__'
@@ -3929,19 +4072,32 @@ export interface FileRouteTypes {
     | '/v4/reports'
     | '/v4/scope'
     | '/v4/support'
+    | '/v45/acquisition'
+    | '/v45/ai-governance'
     | '/v45/android-auto'
     | '/v45/approvals'
     | '/v45/automation'
     | '/v45/carplay'
     | '/v45/carrier-quality'
     | '/v45/certification'
+    | '/v45/customer-success'
     | '/v45/disputes'
+    | '/v45/enterprise-customers'
     | '/v45/marketplace-ops'
     | '/v45/mobile-launch'
+    | '/v45/national-ops'
     | '/v45/overview'
+    | '/v45/partner-ecosystem'
+    | '/v45/partnerships'
+    | '/v45/platform-metrics'
+    | '/v45/playbooks'
     | '/v45/playbooks-marketplace'
+    | '/v45/procurement'
+    | '/v45/reports'
+    | '/v45/revenue-ops'
     | '/v45/scope'
     | '/v45/soc2'
+    | '/v45/support'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -4250,19 +4406,32 @@ export interface RootRouteChildren {
   V4ReportsRoute: typeof V4ReportsRoute
   V4ScopeRoute: typeof V4ScopeRoute
   V4SupportRoute: typeof V4SupportRoute
+  V45AcquisitionRoute: typeof V45AcquisitionRoute
+  V45AiGovernanceRoute: typeof V45AiGovernanceRoute
   V45AndroidAutoRoute: typeof V45AndroidAutoRoute
   V45ApprovalsRoute: typeof V45ApprovalsRoute
   V45AutomationRoute: typeof V45AutomationRoute
   V45CarplayRoute: typeof V45CarplayRoute
   V45CarrierQualityRoute: typeof V45CarrierQualityRoute
   V45CertificationRoute: typeof V45CertificationRoute
+  V45CustomerSuccessRoute: typeof V45CustomerSuccessRoute
   V45DisputesRoute: typeof V45DisputesRoute
+  V45EnterpriseCustomersRoute: typeof V45EnterpriseCustomersRoute
   V45MarketplaceOpsRoute: typeof V45MarketplaceOpsRoute
   V45MobileLaunchRoute: typeof V45MobileLaunchRoute
+  V45NationalOpsRoute: typeof V45NationalOpsRoute
   V45OverviewRoute: typeof V45OverviewRoute
+  V45PartnerEcosystemRoute: typeof V45PartnerEcosystemRoute
+  V45PartnershipsRoute: typeof V45PartnershipsRoute
+  V45PlatformMetricsRoute: typeof V45PlatformMetricsRoute
+  V45PlaybooksRoute: typeof V45PlaybooksRoute
   V45PlaybooksMarketplaceRoute: typeof V45PlaybooksMarketplaceRoute
+  V45ProcurementRoute: typeof V45ProcurementRoute
+  V45ReportsRoute: typeof V45ReportsRoute
+  V45RevenueOpsRoute: typeof V45RevenueOpsRoute
   V45ScopeRoute: typeof V45ScopeRoute
   V45Soc2Route: typeof V45Soc2Route
+  V45SupportRoute: typeof V45SupportRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -4408,6 +4577,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v45/support': {
+      id: '/v45/support'
+      path: '/v45/support'
+      fullPath: '/v45/support'
+      preLoaderRoute: typeof V45SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v45/soc2': {
       id: '/v45/soc2'
       path: '/v45/soc2'
@@ -4422,6 +4598,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V45ScopeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v45/revenue-ops': {
+      id: '/v45/revenue-ops'
+      path: '/v45/revenue-ops'
+      fullPath: '/v45/revenue-ops'
+      preLoaderRoute: typeof V45RevenueOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/reports': {
+      id: '/v45/reports'
+      path: '/v45/reports'
+      fullPath: '/v45/reports'
+      preLoaderRoute: typeof V45ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/procurement': {
+      id: '/v45/procurement'
+      path: '/v45/procurement'
+      fullPath: '/v45/procurement'
+      preLoaderRoute: typeof V45ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v45/playbooks-marketplace': {
       id: '/v45/playbooks-marketplace'
       path: '/v45/playbooks-marketplace'
@@ -4429,11 +4626,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V45PlaybooksMarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v45/playbooks': {
+      id: '/v45/playbooks'
+      path: '/v45/playbooks'
+      fullPath: '/v45/playbooks'
+      preLoaderRoute: typeof V45PlaybooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/platform-metrics': {
+      id: '/v45/platform-metrics'
+      path: '/v45/platform-metrics'
+      fullPath: '/v45/platform-metrics'
+      preLoaderRoute: typeof V45PlatformMetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/partnerships': {
+      id: '/v45/partnerships'
+      path: '/v45/partnerships'
+      fullPath: '/v45/partnerships'
+      preLoaderRoute: typeof V45PartnershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/partner-ecosystem': {
+      id: '/v45/partner-ecosystem'
+      path: '/v45/partner-ecosystem'
+      fullPath: '/v45/partner-ecosystem'
+      preLoaderRoute: typeof V45PartnerEcosystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v45/overview': {
       id: '/v45/overview'
       path: '/v45/overview'
       fullPath: '/v45/overview'
       preLoaderRoute: typeof V45OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/national-ops': {
+      id: '/v45/national-ops'
+      path: '/v45/national-ops'
+      fullPath: '/v45/national-ops'
+      preLoaderRoute: typeof V45NationalOpsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v45/mobile-launch': {
@@ -4450,11 +4682,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V45MarketplaceOpsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v45/enterprise-customers': {
+      id: '/v45/enterprise-customers'
+      path: '/v45/enterprise-customers'
+      fullPath: '/v45/enterprise-customers'
+      preLoaderRoute: typeof V45EnterpriseCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v45/disputes': {
       id: '/v45/disputes'
       path: '/v45/disputes'
       fullPath: '/v45/disputes'
       preLoaderRoute: typeof V45DisputesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/customer-success': {
+      id: '/v45/customer-success'
+      path: '/v45/customer-success'
+      fullPath: '/v45/customer-success'
+      preLoaderRoute: typeof V45CustomerSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v45/certification': {
@@ -4497,6 +4743,20 @@ declare module '@tanstack/react-router' {
       path: '/v45/android-auto'
       fullPath: '/v45/android-auto'
       preLoaderRoute: typeof V45AndroidAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/ai-governance': {
+      id: '/v45/ai-governance'
+      path: '/v45/ai-governance'
+      fullPath: '/v45/ai-governance'
+      preLoaderRoute: typeof V45AiGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/acquisition': {
+      id: '/v45/acquisition'
+      path: '/v45/acquisition'
+      fullPath: '/v45/acquisition'
+      preLoaderRoute: typeof V45AcquisitionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v4/support': {
@@ -6911,19 +7171,32 @@ const rootRouteChildren: RootRouteChildren = {
   V4ReportsRoute: V4ReportsRoute,
   V4ScopeRoute: V4ScopeRoute,
   V4SupportRoute: V4SupportRoute,
+  V45AcquisitionRoute: V45AcquisitionRoute,
+  V45AiGovernanceRoute: V45AiGovernanceRoute,
   V45AndroidAutoRoute: V45AndroidAutoRoute,
   V45ApprovalsRoute: V45ApprovalsRoute,
   V45AutomationRoute: V45AutomationRoute,
   V45CarplayRoute: V45CarplayRoute,
   V45CarrierQualityRoute: V45CarrierQualityRoute,
   V45CertificationRoute: V45CertificationRoute,
+  V45CustomerSuccessRoute: V45CustomerSuccessRoute,
   V45DisputesRoute: V45DisputesRoute,
+  V45EnterpriseCustomersRoute: V45EnterpriseCustomersRoute,
   V45MarketplaceOpsRoute: V45MarketplaceOpsRoute,
   V45MobileLaunchRoute: V45MobileLaunchRoute,
+  V45NationalOpsRoute: V45NationalOpsRoute,
   V45OverviewRoute: V45OverviewRoute,
+  V45PartnerEcosystemRoute: V45PartnerEcosystemRoute,
+  V45PartnershipsRoute: V45PartnershipsRoute,
+  V45PlatformMetricsRoute: V45PlatformMetricsRoute,
+  V45PlaybooksRoute: V45PlaybooksRoute,
   V45PlaybooksMarketplaceRoute: V45PlaybooksMarketplaceRoute,
+  V45ProcurementRoute: V45ProcurementRoute,
+  V45ReportsRoute: V45ReportsRoute,
+  V45RevenueOpsRoute: V45RevenueOpsRoute,
   V45ScopeRoute: V45ScopeRoute,
   V45Soc2Route: V45Soc2Route,
+  V45SupportRoute: V45SupportRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
