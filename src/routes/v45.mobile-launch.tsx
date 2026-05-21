@@ -3,13 +3,17 @@ import { Smartphone, Check, Circle } from "lucide-react";
 import { V45Page } from "@/components/v45/V45Page";
 import { ScoreCard, KpiGrid } from "@/components/v45/ui-bits";
 import { Card } from "@/components/ui/card";
-import { MOBILE_LAUNCH } from "@/v45/data/mockPhase22";
+import { MOBILE_LAUNCH, MOBILE_CRASH_TREND } from "@/v45/data/mockPhase22";
 
 function Checklist({ title, items, score }: { title: string; items: { item: string; done: boolean }[]; score: number }) {
+  const done = items.filter(i => i.done).length;
   return (
     <Card className="border-white/10 bg-white/[0.02] p-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold">{title}</h3>
+        <div>
+          <h3 className="text-sm font-semibold">{title}</h3>
+          <div className="text-[10px] text-muted-foreground">{done}/{items.length} complete</div>
+        </div>
         <div className="text-2xl font-semibold">{score}%</div>
       </div>
       <ul className="mt-3 space-y-1 text-xs">
@@ -33,7 +37,7 @@ export const Route = createFileRoute("/v45/mobile-launch")({
         <ScoreCard label="iOS readiness" value={MOBILE_LAUNCH.ios} tone="sky" />
         <ScoreCard label="Android readiness" value={MOBILE_LAUNCH.android} tone="emerald" />
         <ScoreCard label="Rollout" value={MOBILE_LAUNCH.rollout_pct} tone="violet" />
-        <ScoreCard label="Crash-free (placeholder)" value={Math.round(MOBILE_LAUNCH.crash_free_sessions)} tone="emerald" />
+        <ScoreCard label="Crash-free" value={Math.round(MOBILE_LAUNCH.crash_free_sessions)} tone="emerald" />
       </div>
       <KpiGrid cols={4} items={[
         { label: "Forced update policy", value: "Defined" },
@@ -41,6 +45,23 @@ export const Route = createFileRoute("/v45/mobile-launch")({
         { label: "Internal testing", value: "Live" },
         { label: "Production rollout", value: `${MOBILE_LAUNCH.rollout_pct}%` },
       ]} />
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Crash-free sessions (7d, placeholder)</h3>
+        <div className="mt-3 grid grid-cols-7 items-end gap-2 h-28">
+          {MOBILE_CRASH_TREND.map(d => (
+            <div key={d.day} className="flex flex-col items-center gap-1">
+              <div className="flex items-end h-20 gap-0.5">
+                <div className="w-3 rounded-t bg-sky-400/70" style={{ height: `${(d.ios - 99) * 80}%` }} title={`iOS ${d.ios}%`} />
+                <div className="w-3 rounded-t bg-emerald-400/70" style={{ height: `${(d.android - 99) * 80}%` }} title={`Android ${d.android}%`} />
+              </div>
+              <div className="text-[10px] text-muted-foreground">{d.day}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-2 text-[10px] text-muted-foreground">Bars scaled around 99% baseline · sky = iOS · emerald = Android</div>
+      </Card>
+
       <div className="grid gap-3 md:grid-cols-2">
         <Checklist title="iOS checklist" items={MOBILE_LAUNCH.ios_checklist} score={MOBILE_LAUNCH.ios} />
         <Checklist title="Android checklist" items={MOBILE_LAUNCH.android_checklist} score={MOBILE_LAUNCH.android} />

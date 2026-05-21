@@ -440,4 +440,90 @@ export const EDGE_FN_PLAN = [
   { group: "Maturity",      fn: "calculate-platform-operating-metrics", runtime: "TanStack server fn", reason: "Aggregations" },
   { group: "External",      fn: "stripe-webhook",                      runtime: "Supabase Edge Function", reason: "Signed external webhook" },
   { group: "External",      fn: "samsara-webhook",                     runtime: "Supabase Edge Function", reason: "Signed external webhook" },
+  { group: "External",      fn: "appstore-webhook",                    runtime: "Supabase Edge Function", reason: "Signed external webhook" },
+  { group: "External",      fn: "playstore-webhook",                   runtime: "Supabase Edge Function", reason: "Signed external webhook" },
+  { group: "External",      fn: "edi-inbound",                         runtime: "Supabase Edge Function", reason: "Raw HTTP, mTLS" },
+];
+
+// ---------- Polish additions ----------
+
+export const AUTOMATION_TREND = [
+  { week: "W-7", success: 91.2, override: 8.4 },
+  { week: "W-6", success: 92.0, override: 7.9 },
+  { week: "W-5", success: 92.8, override: 7.4 },
+  { week: "W-4", success: 93.1, override: 7.1 },
+  { week: "W-3", success: 93.6, override: 6.8 },
+  { week: "W-2", success: 93.9, override: 6.4 },
+  { week: "W-1", success: 94.2, override: 6.1 },
+];
+
+export const AUTOMATION_OUTCOMES = [
+  { id: "out-9001", action: "Driver reassignment", actor: "M. Lopez",  decision: "approved", impact: "ETA -34m", ts: "12m ago" },
+  { id: "out-9002", action: "Customer update",     actor: "auto",      decision: "executed", impact: "Email sent · 1 acct", ts: "18m ago" },
+  { id: "out-9003", action: "Carrier award",       actor: "S. Cohen",  decision: "approved", impact: "Awarded Atlas Freight", ts: "32m ago" },
+  { id: "out-9004", action: "Carrier suspension",  actor: "K. Nguyen", decision: "escalated", impact: "Pending review", ts: "1h ago" },
+  { id: "out-9005", action: "EDI 990 reply",       actor: "auto",      decision: "executed", impact: "ACK sent", ts: "1h ago" },
+  { id: "out-9006", action: "Driver reassignment", actor: "R. Patel",  decision: "rejected", impact: "Kept original driver", ts: "2h ago" },
+];
+
+export const MARKETPLACE_TREND = [
+  { day: "Mon", posted: 240, awarded: 212, disputes: 1 },
+  { day: "Tue", posted: 268, awarded: 241, disputes: 2 },
+  { day: "Wed", posted: 285, awarded: 248, disputes: 1 },
+  { day: "Thu", posted: 302, awarded: 271, disputes: 1 },
+  { day: "Fri", posted: 318, awarded: 286, disputes: 2 },
+  { day: "Sat", posted: 215, awarded: 198, disputes: 0 },
+  { day: "Sun", posted: 192, awarded: 176, disputes: 0 },
+];
+
+export const SOC2_TREND = [
+  { week: "W-6", readiness: 54, evidence: 26, exceptions: 9 },
+  { week: "W-5", readiness: 58, evidence: 29, exceptions: 8 },
+  { week: "W-4", readiness: 61, evidence: 31, exceptions: 7 },
+  { week: "W-3", readiness: 63, evidence: 33, exceptions: 6 },
+  { week: "W-2", readiness: 66, evidence: 34, exceptions: 5 },
+  { week: "W-1", readiness: 68, evidence: 34, exceptions: 5 },
+];
+
+export const MOBILE_CRASH_TREND = [
+  { day: "Mon", ios: 99.5, android: 99.2 },
+  { day: "Tue", ios: 99.4, android: 99.3 },
+  { day: "Wed", ios: 99.6, android: 99.1 },
+  { day: "Thu", ios: 99.5, android: 99.4 },
+  { day: "Fri", ios: 99.4, android: 99.4 },
+  { day: "Sat", ios: 99.6, android: 99.5 },
+  { day: "Sun", ios: 99.5, android: 99.4 },
+];
+
+export const PARTNERSHIP_PIPELINE = [
+  { stage: "Exploration",  count: 4, value: 0 },
+  { stage: "Diligence",    count: 3, value: 120_000 },
+  { stage: "Integrating",  count: 2, value: 280_000 },
+  { stage: "Launch ready", count: 3, value: 410_000 },
+  { stage: "Live",         count: 7, value: 920_000 },
+];
+
+export const AI_GOVERNANCE_TREND = [
+  { week: "W-6", approval: 0.88, acceptance: 0.81, violations: 7 },
+  { week: "W-5", approval: 0.89, acceptance: 0.83, violations: 6 },
+  { week: "W-4", approval: 0.90, acceptance: 0.84, violations: 5 },
+  { week: "W-3", approval: 0.91, acceptance: 0.85, violations: 5 },
+  { week: "W-2", approval: 0.91, acceptance: 0.85, violations: 4 },
+  { week: "W-1", approval: 0.92, acceptance: 0.86, violations: 4 },
+];
+
+export const NATIONAL_ALERTS = [
+  { region: "Southeast", severity: "high",   issue: "No regional owner assigned", action: "Hire/assign regional lead" },
+  { region: "Southeast", severity: "high",   issue: "Carrier coverage gap (Flatbed FL/GA)", action: "Expand recruitment in FL/GA" },
+  { region: "South",     severity: "medium", issue: "Reefer gap on TX/LA corridor", action: "Onboard 4 reefer carriers" },
+  { region: "West",      severity: "low",    issue: "Box truck gap Pacific NW", action: "Recruit PNW box-truck carriers" },
+];
+
+export const DEMO_HIGHLIGHTS = [
+  { label: "Open approvals",        value: APPROVAL_QUEUE.filter(a => a.status === "pending").length },
+  { label: "Open disputes",         value: MARKETPLACE_DISPUTES.filter(d => d.status !== "Resolved").length },
+  { label: "SOC 2 remediation",     value: SOC2_CONTROLS.filter(c => c.status === "Needs Remediation").length },
+  { label: "Regions without owner", value: NATIONAL_REGIONS.filter(r => r.owner === "—").length },
+  { label: "Watchlist carriers",    value: CARRIER_QUALITY.filter(c => c.status === "watchlist").length },
+  { label: "Acquisition score",     value: `${ACQUISITION_READINESS.overall}%` },
 ];
