@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ListChecks } from "lucide-react";
 import { V75Page } from "@/components/v75/V75Page";
 import { Card } from "@/components/ui/card";
-import { KpiGrid } from "@/components/v75/ui-bits";
-import { useGlobalExpansionExecution, useExecutiveGlobalLaunchGovernance, useAdvancedFinancialAuditReadiness, useGlobalMarketplaceDiscipline } from "@/v75/hooks";
+import { KpiGrid, ExecBanner } from "@/components/v75/ui-bits";
+import { useGlobalExpansionExecution, useExecutiveGlobalLaunchGovernance, useAdvancedFinancialAuditReadiness, useGlobalMarketplaceDiscipline, useV75ExecHeadline } from "@/v75/hooks";
 
 const STEPS = [
   { who: "CEO",          to: "/v75/expansion",            title: "Open Global Expansion Execution Center", detail: "Canada Controlled Pilot · Mexico Planning · EU Research. Trend +10 pts in 6 weeks." },
