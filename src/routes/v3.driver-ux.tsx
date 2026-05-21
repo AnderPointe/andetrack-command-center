@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
 import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { DRIVER_UX_DISTRACTION } from "@/v3/data/mockPhase19";
 
 const PRINCIPLES = [
   "Large readable text", "Low distraction", "One-tap actions", "Voice-first actions",
@@ -27,6 +29,15 @@ export const Route = createFileRoute("/v3/driver-ux")({
         <ul className="mt-2 grid grid-cols-2 gap-1.5 text-sm md:grid-cols-3">
           {PRINCIPLES.map((p) => (<li key={p} className="rounded border border-white/10 bg-black/20 px-2 py-1">{p}</li>))}
         </ul>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Distraction policy by screen</h2>
+        <table className="mt-2 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-1">Screen</th><th className="p-1">Level</th><th className="p-1">Rule</th></tr></thead>
+          <tbody>{DRIVER_UX_DISTRACTION.map((d) => (
+            <tr key={d.screen} className="border-t border-white/10"><td className="p-1 font-medium">{d.screen}</td><td className="p-1"><Badge variant="outline" className="border-sky-500/40 text-sky-300">{d.distraction}</Badge></td><td className="p-1 text-xs text-muted-foreground">{d.rule}</td></tr>
+          ))}</tbody>
+        </table>
       </Card>
       <div className="grid gap-3 md:grid-cols-2">
         {FLOWS.map((f) => (

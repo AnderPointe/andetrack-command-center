@@ -332,3 +332,136 @@ export const V3_DEMO_STEPS = [
   { step: 21, actor: "Executive",     action: "Opens certification readiness dashboard" },
   { step: 22, actor: "Security",      action: "Generates vendor questionnaire + review packet" },
 ];
+
+// ---------- 16. Polish — Native architecture ----------
+export const NATIVE_APP_ARCHITECTURE = [
+  { layer: "UI",            tech: "React Native + Expo Router",   note: "Shared design tokens with web V2.5" },
+  { layer: "State",         tech: "TanStack Query + Zustand",     note: "Cache hydration from offline queue" },
+  { layer: "Sync",          tech: "Supabase + offline_action_queue", note: "Priority + retry + conflict resolver" },
+  { layer: "Voice",         tech: "VoiceProvider registry",       note: "Mock / mobile speech / realtime AI" },
+  { layer: "Navigation",    tech: "EliteNav adapter",             note: "Mapbox + truck routing (HERE/Trimble)" },
+  { layer: "Native modules",tech: "Android CarAppService / iOS CPTemplate", note: "Planning only — no certification claim" },
+  { layer: "Telematics",    tech: "Provider adapters",            note: "Placeholder for Samsara / Motive / Geotab" },
+  { layer: "Observability", tech: "App health beacons",           note: "Posted to record-driver-app-health" },
+];
+
+export const DRIVER_UX_DISTRACTION = [
+  { screen: "DriverHome",       distraction: "low",      rule: "Max 3 cards, voice-first secondary actions" },
+  { screen: "DriverLoadOffer",  distraction: "low",      rule: "Accept / Deny only while driving; details parked-only" },
+  { screen: "DriverEliteNav",   distraction: "minimal",  rule: "Driving-safety mode hides all chrome below 5 mph idle" },
+  { screen: "DriverCoPilot",    distraction: "low",      rule: "Push-to-talk + read-back; never auto-execute irreversible" },
+  { screen: "DriverPOD",        distraction: "parked",   rule: "Capture only when speed = 0 for 5s" },
+  { screen: "DriverDocuments",  distraction: "parked",   rule: "Hidden in driving mode" },
+];
+
+// ---------- 17. Android Auto / CarPlay templates ----------
+export const ANDROID_AUTO_TEMPLATES = [
+  { template: "NavigationTemplate",     anderoute_use: "Turn-by-turn + maneuver bar", status: "in_progress" },
+  { template: "MapWithContentTemplate", anderoute_use: "Active load card overlay",    status: "in_progress" },
+  { template: "MessageTemplate",        anderoute_use: "Dispatch quick replies",      status: "todo" },
+  { template: "LongMessageTemplate",    anderoute_use: "Special instructions (parked)", status: "todo" },
+  { template: "GridTemplate",           anderoute_use: "Status quick-picks",          status: "todo" },
+  { template: "PaneTemplate",           anderoute_use: "Next stop summary",           status: "todo" },
+];
+export const CARPLAY_TEMPLATES = [
+  { template: "CPMapTemplate",        anderoute_use: "Route + alerts overlay",       status: "in_progress" },
+  { template: "CPNavigationSession",  anderoute_use: "Turn-by-turn maneuvers",       status: "in_progress" },
+  { template: "CPListTemplate",       anderoute_use: "Stops list (parked-only)",     status: "todo" },
+  { template: "CPAlertTemplate",      anderoute_use: "Driver-safe alerts",           status: "todo" },
+  { template: "CPVoiceControlTemplate", anderoute_use: "Push-to-talk CoPilot",       status: "todo" },
+];
+
+// ---------- 18. Voice confirmation + architecture ----------
+export const VOICE_CONFIRMATION_FLOW = [
+  { intent: "load.mark_delivered",  irreversible: true,  confirm: "read_back_yes_no", spoken: "Mark SHP-{id} delivered. Say 'yes' to confirm." },
+  { intent: "status.delayed",       irreversible: false, confirm: "read_back_yes_no", spoken: "Tell dispatch you'll be 25 minutes late. Send?" },
+  { intent: "dispatch.report_issue",irreversible: false, confirm: "read_back_yes_no", spoken: "Report issue: '{text}'. Send to dispatch?" },
+  { intent: "nav.reroute",          irreversible: false, confirm: "tap_or_voice",     spoken: "Rerouting around closure. Confirm." },
+  { intent: "nav.repeat",           irreversible: false, confirm: "none",             spoken: "Repeating last instruction." },
+  { intent: "status.arrived_pickup",irreversible: false, confirm: "geofence_assist",  spoken: "Mark arrived at Acme pickup?" },
+];
+export const VOICE_ARCHITECTURE = [
+  { stage: "Wake / PTT",        responsibility: "Mobile UI",        impl: "Hold-to-talk button + hardware media key" },
+  { stage: "STT",               responsibility: "VoiceProvider",    impl: "Mobile speech | Realtime AI | Mock" },
+  { stage: "Intent detection",  responsibility: "LocalCommandParser + CoPilot", impl: "Local first, AI fallback for ambiguity" },
+  { stage: "Safety policy",     responsibility: "DrivingSafetyMode",impl: "Word cap by mode + irreversible gate" },
+  { stage: "Confirmation",      responsibility: "CoPilot",          impl: "Read-back yes/no for irreversible intents" },
+  { stage: "Execution",         responsibility: "Server fn",        impl: "process-voice-command (queued offline)" },
+  { stage: "TTS",               responsibility: "VoiceProvider",    impl: "Driver-safe phrasing ≤ 18 words while driving" },
+  { stage: "Audit",             responsibility: "voice_transcript_events", impl: "Retention + export per security role" },
+];
+
+// ---------- 19. Telematics connect workflow ----------
+export const TELEMATICS_CONNECT_STEPS = [
+  { id: "tc1", step: "Admin selects provider",         status: "ready" },
+  { id: "tc2", step: "Provide API credentials (vault)",status: "placeholder" },
+  { id: "tc3", step: "Discover vehicles + drivers",    status: "placeholder" },
+  { id: "tc4", step: "Map telematics ↔ Anderoute units", status: "ready" },
+  { id: "tc5", step: "Backfill 24h location batch",    status: "placeholder" },
+  { id: "tc6", step: "Subscribe to live updates",      status: "placeholder" },
+  { id: "tc7", step: "Health monitor active",          status: "ready" },
+];
+
+// ---------- 20. Fleet hardware stats ----------
+export const FLEET_HARDWARE_STATS = [
+  { kind: "Driver tablets",  total: 85, healthy: 80, placeholder: 0 },
+  { kind: "GPS trackers",    total: 92, healthy: 88, placeholder: 4 },
+  { kind: "Dashcams",        total: 60, healthy: 0,  placeholder: 60 },
+  { kind: "ELDs",            total: 85, healthy: 0,  placeholder: 85 },
+  { kind: "Temp sensors",    total: 22, healthy: 0,  placeholder: 22 },
+];
+
+// ---------- 21. Carrier onboarding ----------
+export const CARRIER_ONBOARDING_STEPS = [
+  { id: "co1", phase: "Invite",      step: "Send carrier invite",          status: "ready" },
+  { id: "co2", phase: "Profile",     step: "Equipment + regions captured", status: "ready" },
+  { id: "co3", phase: "Compliance",  step: "Upload MC authority + COI",    status: "ready" },
+  { id: "co4", phase: "Compliance",  step: "Safety rating placeholder",    status: "placeholder" },
+  { id: "co5", phase: "Banking",     step: "W-9 + remit details",          status: "placeholder" },
+  { id: "co6", phase: "Activation",  step: "Admin approves carrier",       status: "ready" },
+  { id: "co7", phase: "Activation",  step: "Carrier sees first eligible loads", status: "ready" },
+];
+
+// ---------- 22. Offline conflict playbook ----------
+export const OFFLINE_CONFLICT_PLAYBOOK = [
+  { conflict: "Status updated server-side after offline change", resolution: "Prefer most-recent driver action; show diff" },
+  { conflict: "POD photo uploaded twice",                        resolution: "Hash dedupe — keep first, mark second as duplicate" },
+  { conflict: "Voice command conflicts with manual action",      resolution: "Ask driver to reconfirm voice intent" },
+  { conflict: "Load reassigned during offline window",           resolution: "Reject offline queue items; notify driver" },
+];
+
+// ---------- 23. Observability alerts ----------
+export const OBSERVABILITY_ALERTS = [
+  { id: "ob1", severity: "warn",  driver: "D-204", issue: "App below recommended version (1.3.7 < 1.4.2)", action: "Push update reminder" },
+  { id: "ob2", severity: "warn",  driver: "D-204", issue: "Background location limited",                   action: "Re-request consent" },
+  { id: "ob3", severity: "high",  driver: "D-402", issue: "App below min version (1.2.0)",                 action: "Block until upgrade" },
+  { id: "ob4", severity: "info",  driver: "D-118", issue: "Sync gap > 5 min observed at 09:14",            action: "Auto-resolved" },
+];
+
+// ---------- 24. Enterprise admin audit ----------
+export const ENTERPRISE_ADMIN_AUDIT = [
+  { ts: "2026-05-19 11:02", actor: "admin@acme",  change: "mobile_policy_settings.mp_1", from: "off", to: "on" },
+  { ts: "2026-05-19 10:48", actor: "admin@acme",  change: "feature_flag_groups.ff_pilot", from: "[copilot_v3]", to: "[copilot_v3, push_to_talk]" },
+  { ts: "2026-05-18 16:21", actor: "security@acme", change: "voice_transcript_retention", from: "30d", to: "90d" },
+];
+
+// ---------- 25. Edge function vs server fn separation ----------
+export const EDGE_FUNCTION_SEPARATION = [
+  { fn: "record-driver-app-health",       runtime: "TanStack server fn", reason: "App-internal write, RLS-scoped" },
+  { fn: "sync-offline-action-queue",      runtime: "TanStack server fn", reason: "Auth-bound batch, retries idempotent" },
+  { fn: "process-voice-command",          runtime: "TanStack server fn", reason: "Auth-bound; Lovable AI gateway" },
+  { fn: "sync-telematics-provider",       runtime: "Supabase Edge Function", reason: "External webhooks land in Postgres directly" },
+  { fn: "post-marketplace-load",          runtime: "TanStack server fn", reason: "Internal CRUD with RLS" },
+  { fn: "carrier-bid-webhook",            runtime: "Supabase Edge Function", reason: "External carrier system callback" },
+  { fn: "generate-security-questionnaire",runtime: "TanStack server fn", reason: "Internal export, signed URL response" },
+  { fn: "calculate-certification-readiness-score", runtime: "Scheduled job", reason: "Nightly cron + materialized view refresh" },
+];
+
+// ---------- 26. RLS templates ----------
+export const RLS_TEMPLATES = [
+  { table: "offline_action_queue",     sql: "create policy offline_queue_self on public.offline_action_queue for all to authenticated using (driver_id = auth.uid()) with check (driver_id = auth.uid());" },
+  { table: "voice_transcript_events",  sql: "create policy voice_self_read on public.voice_transcript_events for select to authenticated using (driver_id = auth.uid() or public.has_role(auth.uid(), current_company(), 'security'));" },
+  { table: "telematics_location_events", sql: "create policy telematics_company on public.telematics_location_events for select to authenticated using (company_id = current_company());" },
+  { table: "carrier_bids",             sql: "create policy bids_two_sided on public.carrier_bids for select to authenticated using (carrier_id = current_carrier() or load_company_id = current_company());" },
+];
+

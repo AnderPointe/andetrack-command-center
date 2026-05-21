@@ -3,13 +3,22 @@ import { Cpu } from "lucide-react";
 import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { FLEET_HARDWARE } from "@/v3/data/mockPhase19";
+import { FLEET_HARDWARE, FLEET_HARDWARE_STATS } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/fleet-hardware")({
   head: () => ({ meta: [{ title: "Fleet Hardware · Anderoute V3" }] }),
   component: () => (
     <V3Page icon={<Cpu className="size-6 text-sky-300" />} title="Fleet Hardware Integration Readiness"
       blurb="Inventory + assignment scaffolding for tablets, GPS trackers, dashcams, ELDs, temp sensors, and trailer trackers. Most categories are placeholder.">
+      <div className="grid gap-3 md:grid-cols-5">
+        {FLEET_HARDWARE_STATS.map((s) => (
+          <Card key={s.kind} className="border-white/10 bg-white/[0.02] p-3 text-sm">
+            <div className="text-xs text-muted-foreground">{s.kind}</div>
+            <div className="text-xl font-semibold">{s.healthy}/{s.total}</div>
+            <div className="mt-1 text-[10px] uppercase tracking-wide text-amber-300">{s.placeholder} placeholder</div>
+          </Card>
+        ))}
+      </div>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <table className="w-full text-sm"><thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-2">Kind</th><th className="p-2">Model</th><th className="p-2">Assigned</th><th className="p-2">Health</th></tr></thead>
           <tbody>{FLEET_HARDWARE.map((h) => (

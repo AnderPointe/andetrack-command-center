@@ -3,7 +3,7 @@ import { Mic } from "lucide-react";
 import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { VOICE_PROVIDERS, VOICE_TRANSCRIPTS, VOICE_SAFETY_POLICY } from "@/v3/data/mockPhase19";
+import { VOICE_PROVIDERS, VOICE_TRANSCRIPTS, VOICE_SAFETY_POLICY, VOICE_CONFIRMATION_FLOW, VOICE_ARCHITECTURE } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/voice")({
   head: () => ({ meta: [{ title: "Advanced Voice · Anderoute V3" }] }),
@@ -32,6 +32,24 @@ export const Route = createFileRoute("/v3/voice")({
           </table>
         </Card>
       </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Voice architecture stages</h2>
+        <table className="mt-2 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-1">Stage</th><th className="p-1">Owner</th><th className="p-1">Implementation</th></tr></thead>
+          <tbody>{VOICE_ARCHITECTURE.map((s) => (
+            <tr key={s.stage} className="border-t border-white/10"><td className="p-1 font-medium">{s.stage}</td><td className="p-1 text-xs text-muted-foreground">{s.responsibility}</td><td className="p-1 text-xs text-muted-foreground">{s.impl}</td></tr>
+          ))}</tbody>
+        </table>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Voice confirmation flow</h2>
+        <table className="mt-2 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-1">Intent</th><th className="p-1">Irreversible</th><th className="p-1">Confirm</th><th className="p-1">Spoken prompt</th></tr></thead>
+          <tbody>{VOICE_CONFIRMATION_FLOW.map((c) => (
+            <tr key={c.intent} className="border-t border-white/10"><td className="p-1 font-mono text-xs">{c.intent}</td><td className="p-1">{c.irreversible ? <Badge variant="outline" className="border-rose-500/40 text-rose-300">yes</Badge> : <span className="text-xs text-muted-foreground">no</span>}</td><td className="p-1 text-xs">{c.confirm}</td><td className="p-1 text-xs text-muted-foreground">"{c.spoken}"</td></tr>
+          ))}</tbody>
+        </table>
+      </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h2 className="text-sm font-semibold">Recent voice transcript audit</h2>
         <table className="mt-2 w-full text-sm">
