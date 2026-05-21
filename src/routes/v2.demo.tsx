@@ -3,6 +3,7 @@ import { ListChecks } from "lucide-react";
 import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { DEMO_TRACKS } from "@/v2/data/mockPhase17";
 
 export const Route = createFileRoute("/v2/demo")({
   head: () => ({ meta: [{ title: "V2 Demo · Anderoute" }] }),
