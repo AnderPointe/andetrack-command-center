@@ -25,11 +25,11 @@ const STEPS = [
   { who: "CEO",            step: "Generate Board Global Strategy Report",                 outcome: "12-section report with global priorities for next quarter" },
 ];
 
-const ROLE_GUIDANCE: { role: string; tone: string; lines: string[] }[] = [
-  { role: "CEO",  tone: "violet",  lines: ["Hold scale > 75 through Canada pilot resolution", "Sign off board strategy report ahead of board"] },
-  { role: "COO",  tone: "sky",     lines: ["Close 2 open Canada executive decisions this week", "Re-baseline operating model after Q close"] },
-  { role: "CFO",  tone: "amber",   lines: ["Approve API overage control fix + re-test in 7d", "Confirm revenue recon placeholder framing in board pack"] },
-  { role: "CCO",  tone: "emerald", lines: ["Resolve 1 critical compliance exception this week", "Schedule Canada mobile-evidence capture"] },
+const ROLE_GUIDANCE: { role: string; cls: string; titleCls: string; lines: string[] }[] = [
+  { role: "CEO",  cls: "border-violet-400/30 bg-violet-400/5",   titleCls: "text-violet-200",  lines: ["Hold scale > 75 through Canada pilot resolution", "Sign off board strategy report ahead of board"] },
+  { role: "COO",  cls: "border-sky-400/30 bg-sky-400/5",         titleCls: "text-sky-200",     lines: ["Close 2 open Canada executive decisions this week", "Re-baseline operating model after Q close"] },
+  { role: "CFO",  cls: "border-amber-400/30 bg-amber-400/5",     titleCls: "text-amber-200",   lines: ["Approve API overage control fix + re-test in 7d", "Confirm revenue recon placeholder framing in board pack"] },
+  { role: "CCO",  cls: "border-emerald-400/30 bg-emerald-400/5", titleCls: "text-emerald-200", lines: ["Resolve 1 critical compliance exception this week", "Schedule Canada mobile-evidence capture"] },
 ];
 
 export const Route = createFileRoute("/v8/demo")({
