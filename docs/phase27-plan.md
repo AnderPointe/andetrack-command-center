@@ -1,36 +1,34 @@
-# Phase 27 — V7 global logistics operating network (planned, not started)
+# Phase 27 — V7 global logistics operating network (shipped)
 
-Phase 27 advances Anderoute toward V7: global logistics operating network,
-regulated enterprise controls, advanced marketplace intelligence, platform
-financial maturity, and global partner ecosystem expansion.
+Anderoute V7 advances strategic operating maturity into a global-ready
+logistics operating network. This phase scaffolds executive-grade
+oversight for international expansion, regulated controls, advanced
+marketplace intelligence, platform financial maturity, and a global
+partner ecosystem — without asserting compliance, audit, or autonomous
+dispatch capabilities that are not yet evidenced.
 
-## Focus areas
-- Global logistics operating network (multi-region operating cadence)
-- Regulated enterprise controls (industry + region-specific control packs)
-- Advanced marketplace intelligence (lane economics, capacity forecasting,
-  fraud signals — all with human approval gates)
-- Platform financial maturity (revenue recognition execution placeholder,
-  multi-entity billing placeholder, FX placeholder, audit-evidence-driven
-  controls)
-- Global partner ecosystem expansion (regional partner tiers, certified
-  integrators, partner marketplace economics)
-- Customer trust operations (status page, transparency reports, security
-  disclosures — drafted, not asserted as certifications)
-- Multi-product release operations + change management
-- Enterprise contract operations (MSA / DPA / regional addendum library)
-- 36–60 month operating model
+## Routes (under `/v7/*`)
+- overview, scope, network, readiness, country-matrix
+- data-residency, cross-border
+- regulated-controls, compliance-matrix, ai-gov
+- marketplace-intel, trust-safety
+- financial-maturity, audit-readiness, revenue-ops
+- partner-ecosystem, intl-marketplace, enterprise-customers, support-model
+- exec-dashboard, risk-register, roadmap, reports, demo
 
 ## Deferred (still)
 - Fully autonomous dispatch
-- Autonomous vehicle workflows
-- International customs production workflows
+- Final global compliance / SOC 2 / ISO certification claims
+- Financial audit readiness assertion
+- Global customs production workflows
 - Insurance underwriting automation
-- Final certification / IPO / acquisition claims without audit evidence
-- Guaranteed liquidity / accuracy claims
+- Autonomous vehicle workflows
+- Android Auto / CarPlay approval claims
 
-## Deliverables (planned)
-- `/v7/*` route surface
-- `V7Nav`, `V7Page`, shared primitives
-- Mock dataset + hooks
-- Schema, RLS, server-function plan
-- V7 demo flow + Phase 28 plan
+## Deliverables
+- `src/v7/data/mockPhase27.ts`, `src/v7/hooks.ts`
+- `src/components/v7/V7Nav`, `V7Page`, `ui-bits`
+- 24 routes in `src/routes/v7.*.tsx`
+- `docs/phase27-schema.sql`, `docs/phase27-rls.sql`,
+  `docs/phase27-edge-function-plan.md`
+- `docs/phase28-plan.md` (V7.5 outline)
