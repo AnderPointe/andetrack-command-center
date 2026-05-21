@@ -46,6 +46,7 @@ function Page() {
             <Badge variant="outline" className="border-emerald-500/30 text-emerald-300">+18%</Badge>
           </div>
           <Spark data={TREND_LOADS} color="hsl(155 80% 60%)" />
+          <div className="mt-2 text-xs text-muted-foreground">{TREND_NOTES.loads}</div>
         </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <div className="flex items-center justify-between text-sm">
@@ -53,6 +54,7 @@ function Page() {
             <Badge variant="outline" className="border-amber-500/30 text-amber-300">-2 pp</Badge>
           </div>
           <Spark data={TREND_ONTIME} color="hsl(40 90% 60%)" />
+          <div className="mt-2 text-xs text-muted-foreground">{TREND_NOTES.ontime}</div>
         </Card>
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <div className="flex items-center justify-between text-sm">
@@ -60,6 +62,7 @@ function Page() {
             <Badge variant="outline" className="border-emerald-500/30 text-emerald-300">+8 pp</Badge>
           </div>
           <Spark data={TREND_UTIL} color="hsl(265 90% 70%)" />
+          <div className="mt-2 text-xs text-muted-foreground">{TREND_NOTES.util}</div>
         </Card>
       </div>
     </V2Page>
