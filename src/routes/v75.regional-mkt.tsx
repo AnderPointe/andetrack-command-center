@@ -8,10 +8,23 @@ import { useRegionalMarketplaceActivation } from "@/v75/hooks";
 export const Route = createFileRoute("/v75/regional-mkt")({
   head: () => ({ meta: [{ title: "Regional Marketplace Activation · V7.5 · Anderoute" }] }),
   component: () => {
-    const { regions } = useRegionalMarketplaceActivation();
+    const { regions, checklist } = useRegionalMarketplaceActivation();
     return (
       <V75Page icon={<MapPin className="size-6 text-indigo-300" />} title="Regional Marketplace Activation"
         blurb="12-step regional activation: demand, supply, equipment, partner, support, compliance, fee controls, quality controls, dispute workflow, go-live.">
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Activation readiness checklist</h3>
+          <SimpleTable rows={checklist as any} columns={[
+            { key: "region",     label: "Region" },
+            { key: "demand",     label: "Demand",     render: (r: any) => r.demand ? "✓" : "—" },
+            { key: "supply",     label: "Supply",     render: (r: any) => r.supply ? "✓" : "—" },
+            { key: "equipment",  label: "Equipment",  render: (r: any) => r.equipment ? "✓" : "—" },
+            { key: "partner",    label: "Partner",    render: (r: any) => r.partner ? "✓" : "—" },
+            { key: "support",    label: "Support",    render: (r: any) => r.support ? "✓" : "—" },
+            { key: "compliance", label: "Compliance", render: (r: any) => r.compliance ? "✓" : "—" },
+          ]} />
+        </Card>
+
         <Card className="border-white/10 bg-white/[0.02] p-4">
           <SimpleTable rows={regions as any} columns={[
             { key: "region",     label: "Region" },
