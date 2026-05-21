@@ -46,6 +46,7 @@ import { Route as V45MobileLaunchRouteImport } from './routes/v45.mobile-launch'
 import { Route as V45MarketplaceOpsRouteImport } from './routes/v45.marketplace-ops'
 import { Route as V45EnterpriseCustomersRouteImport } from './routes/v45.enterprise-customers'
 import { Route as V45DisputesRouteImport } from './routes/v45.disputes'
+import { Route as V45DemoRouteImport } from './routes/v45.demo'
 import { Route as V45CustomerSuccessRouteImport } from './routes/v45.customer-success'
 import { Route as V45CertificationRouteImport } from './routes/v45.certification'
 import { Route as V45CarrierQualityRouteImport } from './routes/v45.carrier-quality'
@@ -532,6 +533,11 @@ const V45EnterpriseCustomersRoute = V45EnterpriseCustomersRouteImport.update({
 const V45DisputesRoute = V45DisputesRouteImport.update({
   id: '/v45/disputes',
   path: '/v45/disputes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45DemoRoute = V45DemoRouteImport.update({
+  id: '/v45/demo',
+  path: '/v45/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V45CustomerSuccessRoute = V45CustomerSuccessRouteImport.update({
@@ -2373,6 +2379,7 @@ export interface FileRoutesByFullPath {
   '/v45/carrier-quality': typeof V45CarrierQualityRoute
   '/v45/certification': typeof V45CertificationRoute
   '/v45/customer-success': typeof V45CustomerSuccessRoute
+  '/v45/demo': typeof V45DemoRoute
   '/v45/disputes': typeof V45DisputesRoute
   '/v45/enterprise-customers': typeof V45EnterpriseCustomersRoute
   '/v45/marketplace-ops': typeof V45MarketplaceOpsRoute
@@ -2714,6 +2721,7 @@ export interface FileRoutesByTo {
   '/v45/carrier-quality': typeof V45CarrierQualityRoute
   '/v45/certification': typeof V45CertificationRoute
   '/v45/customer-success': typeof V45CustomerSuccessRoute
+  '/v45/demo': typeof V45DemoRoute
   '/v45/disputes': typeof V45DisputesRoute
   '/v45/enterprise-customers': typeof V45EnterpriseCustomersRoute
   '/v45/marketplace-ops': typeof V45MarketplaceOpsRoute
@@ -3056,6 +3064,7 @@ export interface FileRoutesById {
   '/v45/carrier-quality': typeof V45CarrierQualityRoute
   '/v45/certification': typeof V45CertificationRoute
   '/v45/customer-success': typeof V45CustomerSuccessRoute
+  '/v45/demo': typeof V45DemoRoute
   '/v45/disputes': typeof V45DisputesRoute
   '/v45/enterprise-customers': typeof V45EnterpriseCustomersRoute
   '/v45/marketplace-ops': typeof V45MarketplaceOpsRoute
@@ -3399,6 +3408,7 @@ export interface FileRouteTypes {
     | '/v45/carrier-quality'
     | '/v45/certification'
     | '/v45/customer-success'
+    | '/v45/demo'
     | '/v45/disputes'
     | '/v45/enterprise-customers'
     | '/v45/marketplace-ops'
@@ -3740,6 +3750,7 @@ export interface FileRouteTypes {
     | '/v45/carrier-quality'
     | '/v45/certification'
     | '/v45/customer-success'
+    | '/v45/demo'
     | '/v45/disputes'
     | '/v45/enterprise-customers'
     | '/v45/marketplace-ops'
@@ -4081,6 +4092,7 @@ export interface FileRouteTypes {
     | '/v45/carrier-quality'
     | '/v45/certification'
     | '/v45/customer-success'
+    | '/v45/demo'
     | '/v45/disputes'
     | '/v45/enterprise-customers'
     | '/v45/marketplace-ops'
@@ -4415,6 +4427,7 @@ export interface RootRouteChildren {
   V45CarrierQualityRoute: typeof V45CarrierQualityRoute
   V45CertificationRoute: typeof V45CertificationRoute
   V45CustomerSuccessRoute: typeof V45CustomerSuccessRoute
+  V45DemoRoute: typeof V45DemoRoute
   V45DisputesRoute: typeof V45DisputesRoute
   V45EnterpriseCustomersRoute: typeof V45EnterpriseCustomersRoute
   V45MarketplaceOpsRoute: typeof V45MarketplaceOpsRoute
@@ -4694,6 +4707,13 @@ declare module '@tanstack/react-router' {
       path: '/v45/disputes'
       fullPath: '/v45/disputes'
       preLoaderRoute: typeof V45DisputesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/demo': {
+      id: '/v45/demo'
+      path: '/v45/demo'
+      fullPath: '/v45/demo'
+      preLoaderRoute: typeof V45DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v45/customer-success': {
@@ -7180,6 +7200,7 @@ const rootRouteChildren: RootRouteChildren = {
   V45CarrierQualityRoute: V45CarrierQualityRoute,
   V45CertificationRoute: V45CertificationRoute,
   V45CustomerSuccessRoute: V45CustomerSuccessRoute,
+  V45DemoRoute: V45DemoRoute,
   V45DisputesRoute: V45DisputesRoute,
   V45EnterpriseCustomersRoute: V45EnterpriseCustomersRoute,
   V45MarketplaceOpsRoute: V45MarketplaceOpsRoute,

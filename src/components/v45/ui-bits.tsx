@@ -3,9 +3,17 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { ReactNode } from "react";
 
+const COL_MAP: Record<number, string> = {
+  2: "md:grid-cols-2",
+  3: "md:grid-cols-3",
+  4: "md:grid-cols-4",
+  5: "md:grid-cols-5",
+  6: "md:grid-cols-6",
+};
+
 export function KpiGrid({ items, cols = 4 }: { items: { label: string; value: ReactNode; sub?: string }[]; cols?: number }) {
   return (
-    <div className={`grid gap-3 md:grid-cols-${cols}`}>
+    <div className={`grid gap-3 ${COL_MAP[cols] ?? "md:grid-cols-4"}`}>
       {items.map(k => (
         <Card key={k.label} className="border-white/10 bg-white/[0.02] p-3">
           <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{k.label}</div>
