@@ -23,3 +23,4 @@ export const useExecutiveGlobalLaunchGovernance= () => ({ approvals: M.LAUNCH_AP
 export const useGlobalOperatingCadence         = () => ({ cadences: M.OPERATING_CADENCES, load: M.CADENCE_LOAD });
 export const useInternationalCustomerSuccess   = () => ({ customers: M.INTL_CUSTOMERS, summary: M.INTL_CUSTOMER_SUMMARY });
 export const useReportsV75                     = () => ({ reports: M.V75_REPORTS });
+export const useV75ExecHeadline                = () => M.V75_EXEC_HEADLINE;

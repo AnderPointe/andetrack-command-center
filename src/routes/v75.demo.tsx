@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ListChecks } from "lucide-react";
 import { V75Page } from "@/components/v75/V75Page";
 import { Card } from "@/components/ui/card";
-import { KpiGrid } from "@/components/v75/ui-bits";
-import { useGlobalExpansionExecution, useExecutiveGlobalLaunchGovernance, useAdvancedFinancialAuditReadiness, useGlobalMarketplaceDiscipline } from "@/v75/hooks";
+import { KpiGrid, ExecBanner } from "@/components/v75/ui-bits";
+import { useGlobalExpansionExecution, useExecutiveGlobalLaunchGovernance, useAdvancedFinancialAuditReadiness, useGlobalMarketplaceDiscipline, useV75ExecHeadline } from "@/v75/hooks";
 
 const STEPS = [
   { who: "CEO",          to: "/v75/expansion",            title: "Open Global Expansion Execution Center", detail: "Canada Controlled Pilot · Mexico Planning · EU Research. Trend +10 pts in 6 weeks." },
@@ -32,9 +32,11 @@ export const Route = createFileRoute("/v75/demo")({
     const { summary: approvalSummary } = useExecutiveGlobalLaunchGovernance();
     const { audit } = useAdvancedFinancialAuditReadiness();
     const { discipline } = useGlobalMarketplaceDiscipline();
+    const headline = useV75ExecHeadline();
     return (
       <V75Page icon={<ListChecks className="size-6 text-indigo-300" />} title="V7.5 Demo Flow"
         blurb="Guided executive walkthrough of Anderoute V7.5 global expansion execution — Canada controlled pilot scenario.">
+        <ExecBanner h={headline} />
         <KpiGrid cols={4} items={[
           { label: "Execution readiness", value: `${score.overall}%`, sub: "Trend +10 (6w)" },
           { label: "Open blockers", value: blockers.length, sub: `${blockers.filter(b => b.severity === "high").length} high` },

@@ -432,3 +432,16 @@ export const INTL_CUSTOMER_SUMMARY = {
   avg_adoption: Math.round(INTL_CUSTOMERS.reduce((s, c) => s + c.adoption, 0) / INTL_CUSTOMERS.length),
   at_risk: INTL_CUSTOMERS.filter(c => c.renewal_risk !== "low").length,
 };
+
+export const V75_EXEC_HEADLINE = {
+  status: "amber" as const,
+  headline: "Canada controlled pilot ready — FR localization + data residency exception are the gating blockers.",
+  detail: "Execution readiness +10pts in 6 weeks. Approve pilot with conditions; Mexico/EU stay in research; financial audit + revenue recon remain placeholders.",
+  signals: [
+    { label: "Execution readiness", value: `${V75_EXECUTION_READINESS.overall}%`, tone: "warn" as const },
+    { label: "High alerts",         value: V75_EXECUTION_ALERTS.filter(a => a.severity === "high").length, tone: "bad" as const },
+    { label: "Audit readiness",     value: `${FINANCIAL_AUDIT_V75.score}%`, tone: "warn" as const },
+    { label: "Pending approvals",   value: LAUNCH_APPROVAL_SUMMARY.pending, tone: "warn" as const },
+  ],
+  next_decision: { who: "Exec Committee", what: "Approve Canada pilot with conditions", due: "2026-07-15" },
+};

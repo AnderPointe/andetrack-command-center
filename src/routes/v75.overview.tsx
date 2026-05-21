@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Gauge } from "lucide-react";
 import { V75Page } from "@/components/v75/V75Page";
-import { ScoreCard, KpiGrid, SimpleTable, StatusPill } from "@/components/v75/ui-bits";
+import { ScoreCard, KpiGrid, SimpleTable, StatusPill, ExecBanner } from "@/components/v75/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useV75Scope, useGlobalExpansionExecution, useAdvancedFinancialAuditReadiness, useGlobalMarketplaceDiscipline, useExecutiveGlobalLaunchGovernance } from "@/v75/hooks";
+import { useV75Scope, useGlobalExpansionExecution, useAdvancedFinancialAuditReadiness, useGlobalMarketplaceDiscipline, useExecutiveGlobalLaunchGovernance, useV75ExecHeadline } from "@/v75/hooks";
 
 export const Route = createFileRoute("/v75/overview")({
   head: () => ({ meta: [{ title: "V7.5 Overview · Anderoute" }] }),
@@ -13,9 +13,11 @@ export const Route = createFileRoute("/v75/overview")({
     const { audit } = useAdvancedFinancialAuditReadiness();
     const { discipline } = useGlobalMarketplaceDiscipline();
     const { summary: approvalSummary } = useExecutiveGlobalLaunchGovernance();
+    const headline = useV75ExecHeadline();
     return (
       <V75Page icon={<Gauge className="size-6 text-indigo-300" />} title="Anderoute V7.5 — Global Expansion Execution"
         blurb="Controlled country pilots, regulated customer onboarding, advanced financial audit readiness, international partner launches, regional marketplace activation, and executive global launch governance. No compliance/audit/autonomous claims.">
+        <ExecBanner h={headline} />
         <div className="grid gap-3 md:grid-cols-4">
           <ScoreCard label="Execution readiness"   value={score.overall} tone="sky" />
           <ScoreCard label="Financial audit"       value={audit.score}    tone="amber" />
