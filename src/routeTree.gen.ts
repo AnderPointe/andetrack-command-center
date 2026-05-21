@@ -29,6 +29,10 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V45ScopeRouteImport } from './routes/v45.scope'
+import { Route as V45OverviewRouteImport } from './routes/v45.overview'
+import { Route as V45AutomationRouteImport } from './routes/v45.automation'
+import { Route as V45ApprovalsRouteImport } from './routes/v45.approvals'
 import { Route as V4SupportRouteImport } from './routes/v4.support'
 import { Route as V4ScopeRouteImport } from './routes/v4.scope'
 import { Route as V4ReportsRouteImport } from './routes/v4.reports'
@@ -421,6 +425,26 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45ScopeRoute = V45ScopeRouteImport.update({
+  id: '/v45/scope',
+  path: '/v45/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45OverviewRoute = V45OverviewRouteImport.update({
+  id: '/v45/overview',
+  path: '/v45/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45AutomationRoute = V45AutomationRouteImport.update({
+  id: '/v45/automation',
+  path: '/v45/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V45ApprovalsRoute = V45ApprovalsRouteImport.update({
+  id: '/v45/approvals',
+  path: '/v45/approvals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V4SupportRoute = V4SupportRouteImport.update({
@@ -2208,6 +2232,10 @@ export interface FileRoutesByFullPath {
   '/v4/reports': typeof V4ReportsRoute
   '/v4/scope': typeof V4ScopeRoute
   '/v4/support': typeof V4SupportRoute
+  '/v45/approvals': typeof V45ApprovalsRoute
+  '/v45/automation': typeof V45AutomationRoute
+  '/v45/overview': typeof V45OverviewRoute
+  '/v45/scope': typeof V45ScopeRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -2523,6 +2551,10 @@ export interface FileRoutesByTo {
   '/v4/reports': typeof V4ReportsRoute
   '/v4/scope': typeof V4ScopeRoute
   '/v4/support': typeof V4SupportRoute
+  '/v45/approvals': typeof V45ApprovalsRoute
+  '/v45/automation': typeof V45AutomationRoute
+  '/v45/overview': typeof V45OverviewRoute
+  '/v45/scope': typeof V45ScopeRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -2839,6 +2871,10 @@ export interface FileRoutesById {
   '/v4/reports': typeof V4ReportsRoute
   '/v4/scope': typeof V4ScopeRoute
   '/v4/support': typeof V4SupportRoute
+  '/v45/approvals': typeof V45ApprovalsRoute
+  '/v45/automation': typeof V45AutomationRoute
+  '/v45/overview': typeof V45OverviewRoute
+  '/v45/scope': typeof V45ScopeRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -3156,6 +3192,10 @@ export interface FileRouteTypes {
     | '/v4/reports'
     | '/v4/scope'
     | '/v4/support'
+    | '/v45/approvals'
+    | '/v45/automation'
+    | '/v45/overview'
+    | '/v45/scope'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -3471,6 +3511,10 @@ export interface FileRouteTypes {
     | '/v4/reports'
     | '/v4/scope'
     | '/v4/support'
+    | '/v45/approvals'
+    | '/v45/automation'
+    | '/v45/overview'
+    | '/v45/scope'
     | '/driver'
   id:
     | '__root__'
@@ -3786,6 +3830,10 @@ export interface FileRouteTypes {
     | '/v4/reports'
     | '/v4/scope'
     | '/v4/support'
+    | '/v45/approvals'
+    | '/v45/automation'
+    | '/v45/overview'
+    | '/v45/scope'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -4094,6 +4142,10 @@ export interface RootRouteChildren {
   V4ReportsRoute: typeof V4ReportsRoute
   V4ScopeRoute: typeof V4ScopeRoute
   V4SupportRoute: typeof V4SupportRoute
+  V45ApprovalsRoute: typeof V45ApprovalsRoute
+  V45AutomationRoute: typeof V45AutomationRoute
+  V45OverviewRoute: typeof V45OverviewRoute
+  V45ScopeRoute: typeof V45ScopeRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -4237,6 +4289,34 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/scope': {
+      id: '/v45/scope'
+      path: '/v45/scope'
+      fullPath: '/v45/scope'
+      preLoaderRoute: typeof V45ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/overview': {
+      id: '/v45/overview'
+      path: '/v45/overview'
+      fullPath: '/v45/overview'
+      preLoaderRoute: typeof V45OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/automation': {
+      id: '/v45/automation'
+      path: '/v45/automation'
+      fullPath: '/v45/automation'
+      preLoaderRoute: typeof V45AutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v45/approvals': {
+      id: '/v45/approvals'
+      path: '/v45/approvals'
+      fullPath: '/v45/approvals'
+      preLoaderRoute: typeof V45ApprovalsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v4/support': {
@@ -6651,6 +6731,10 @@ const rootRouteChildren: RootRouteChildren = {
   V4ReportsRoute: V4ReportsRoute,
   V4ScopeRoute: V4ScopeRoute,
   V4SupportRoute: V4SupportRoute,
+  V45ApprovalsRoute: V45ApprovalsRoute,
+  V45AutomationRoute: V45AutomationRoute,
+  V45OverviewRoute: V45OverviewRoute,
+  V45ScopeRoute: V45ScopeRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
