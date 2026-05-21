@@ -29,6 +29,30 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V7TrustSafetyRouteImport } from './routes/v7.trust-safety'
+import { Route as V7SupportModelRouteImport } from './routes/v7.support-model'
+import { Route as V7ScopeRouteImport } from './routes/v7.scope'
+import { Route as V7RoadmapRouteImport } from './routes/v7.roadmap'
+import { Route as V7RiskRegisterRouteImport } from './routes/v7.risk-register'
+import { Route as V7RevenueOpsRouteImport } from './routes/v7.revenue-ops'
+import { Route as V7ReportsRouteImport } from './routes/v7.reports'
+import { Route as V7RegulatedControlsRouteImport } from './routes/v7.regulated-controls'
+import { Route as V7ReadinessRouteImport } from './routes/v7.readiness'
+import { Route as V7PartnerEcosystemRouteImport } from './routes/v7.partner-ecosystem'
+import { Route as V7OverviewRouteImport } from './routes/v7.overview'
+import { Route as V7NetworkRouteImport } from './routes/v7.network'
+import { Route as V7MarketplaceIntelRouteImport } from './routes/v7.marketplace-intel'
+import { Route as V7IntlMarketplaceRouteImport } from './routes/v7.intl-marketplace'
+import { Route as V7FinancialMaturityRouteImport } from './routes/v7.financial-maturity'
+import { Route as V7ExecDashboardRouteImport } from './routes/v7.exec-dashboard'
+import { Route as V7EnterpriseCustomersRouteImport } from './routes/v7.enterprise-customers'
+import { Route as V7DemoRouteImport } from './routes/v7.demo'
+import { Route as V7DataResidencyRouteImport } from './routes/v7.data-residency'
+import { Route as V7CrossBorderRouteImport } from './routes/v7.cross-border'
+import { Route as V7CountryMatrixRouteImport } from './routes/v7.country-matrix'
+import { Route as V7ComplianceMatrixRouteImport } from './routes/v7.compliance-matrix'
+import { Route as V7AuditReadinessRouteImport } from './routes/v7.audit-readiness'
+import { Route as V7AiGovRouteImport } from './routes/v7.ai-gov'
 import { Route as V65ScopeRouteImport } from './routes/v65.scope'
 import { Route as V65RiskMatrixRouteImport } from './routes/v65.risk-matrix'
 import { Route as V65RevenueRecRouteImport } from './routes/v65.revenue-rec'
@@ -548,6 +572,126 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7TrustSafetyRoute = V7TrustSafetyRouteImport.update({
+  id: '/v7/trust-safety',
+  path: '/v7/trust-safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7SupportModelRoute = V7SupportModelRouteImport.update({
+  id: '/v7/support-model',
+  path: '/v7/support-model',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7ScopeRoute = V7ScopeRouteImport.update({
+  id: '/v7/scope',
+  path: '/v7/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7RoadmapRoute = V7RoadmapRouteImport.update({
+  id: '/v7/roadmap',
+  path: '/v7/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7RiskRegisterRoute = V7RiskRegisterRouteImport.update({
+  id: '/v7/risk-register',
+  path: '/v7/risk-register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7RevenueOpsRoute = V7RevenueOpsRouteImport.update({
+  id: '/v7/revenue-ops',
+  path: '/v7/revenue-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7ReportsRoute = V7ReportsRouteImport.update({
+  id: '/v7/reports',
+  path: '/v7/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7RegulatedControlsRoute = V7RegulatedControlsRouteImport.update({
+  id: '/v7/regulated-controls',
+  path: '/v7/regulated-controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7ReadinessRoute = V7ReadinessRouteImport.update({
+  id: '/v7/readiness',
+  path: '/v7/readiness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7PartnerEcosystemRoute = V7PartnerEcosystemRouteImport.update({
+  id: '/v7/partner-ecosystem',
+  path: '/v7/partner-ecosystem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7OverviewRoute = V7OverviewRouteImport.update({
+  id: '/v7/overview',
+  path: '/v7/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7NetworkRoute = V7NetworkRouteImport.update({
+  id: '/v7/network',
+  path: '/v7/network',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7MarketplaceIntelRoute = V7MarketplaceIntelRouteImport.update({
+  id: '/v7/marketplace-intel',
+  path: '/v7/marketplace-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7IntlMarketplaceRoute = V7IntlMarketplaceRouteImport.update({
+  id: '/v7/intl-marketplace',
+  path: '/v7/intl-marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7FinancialMaturityRoute = V7FinancialMaturityRouteImport.update({
+  id: '/v7/financial-maturity',
+  path: '/v7/financial-maturity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7ExecDashboardRoute = V7ExecDashboardRouteImport.update({
+  id: '/v7/exec-dashboard',
+  path: '/v7/exec-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7EnterpriseCustomersRoute = V7EnterpriseCustomersRouteImport.update({
+  id: '/v7/enterprise-customers',
+  path: '/v7/enterprise-customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7DemoRoute = V7DemoRouteImport.update({
+  id: '/v7/demo',
+  path: '/v7/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7DataResidencyRoute = V7DataResidencyRouteImport.update({
+  id: '/v7/data-residency',
+  path: '/v7/data-residency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7CrossBorderRoute = V7CrossBorderRouteImport.update({
+  id: '/v7/cross-border',
+  path: '/v7/cross-border',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7CountryMatrixRoute = V7CountryMatrixRouteImport.update({
+  id: '/v7/country-matrix',
+  path: '/v7/country-matrix',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7ComplianceMatrixRoute = V7ComplianceMatrixRouteImport.update({
+  id: '/v7/compliance-matrix',
+  path: '/v7/compliance-matrix',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7AuditReadinessRoute = V7AuditReadinessRouteImport.update({
+  id: '/v7/audit-readiness',
+  path: '/v7/audit-readiness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V7AiGovRoute = V7AiGovRouteImport.update({
+  id: '/v7/ai-gov',
+  path: '/v7/ai-gov',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V65ScopeRoute = V65ScopeRouteImport.update({
@@ -3097,6 +3241,30 @@ export interface FileRoutesByFullPath {
   '/v65/revenue-rec': typeof V65RevenueRecRoute
   '/v65/risk-matrix': typeof V65RiskMatrixRoute
   '/v65/scope': typeof V65ScopeRoute
+  '/v7/ai-gov': typeof V7AiGovRoute
+  '/v7/audit-readiness': typeof V7AuditReadinessRoute
+  '/v7/compliance-matrix': typeof V7ComplianceMatrixRoute
+  '/v7/country-matrix': typeof V7CountryMatrixRoute
+  '/v7/cross-border': typeof V7CrossBorderRoute
+  '/v7/data-residency': typeof V7DataResidencyRoute
+  '/v7/demo': typeof V7DemoRoute
+  '/v7/enterprise-customers': typeof V7EnterpriseCustomersRoute
+  '/v7/exec-dashboard': typeof V7ExecDashboardRoute
+  '/v7/financial-maturity': typeof V7FinancialMaturityRoute
+  '/v7/intl-marketplace': typeof V7IntlMarketplaceRoute
+  '/v7/marketplace-intel': typeof V7MarketplaceIntelRoute
+  '/v7/network': typeof V7NetworkRoute
+  '/v7/overview': typeof V7OverviewRoute
+  '/v7/partner-ecosystem': typeof V7PartnerEcosystemRoute
+  '/v7/readiness': typeof V7ReadinessRoute
+  '/v7/regulated-controls': typeof V7RegulatedControlsRoute
+  '/v7/reports': typeof V7ReportsRoute
+  '/v7/revenue-ops': typeof V7RevenueOpsRoute
+  '/v7/risk-register': typeof V7RiskRegisterRoute
+  '/v7/roadmap': typeof V7RoadmapRoute
+  '/v7/scope': typeof V7ScopeRoute
+  '/v7/support-model': typeof V7SupportModelRoute
+  '/v7/trust-safety': typeof V7TrustSafetyRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -3539,6 +3707,30 @@ export interface FileRoutesByTo {
   '/v65/revenue-rec': typeof V65RevenueRecRoute
   '/v65/risk-matrix': typeof V65RiskMatrixRoute
   '/v65/scope': typeof V65ScopeRoute
+  '/v7/ai-gov': typeof V7AiGovRoute
+  '/v7/audit-readiness': typeof V7AuditReadinessRoute
+  '/v7/compliance-matrix': typeof V7ComplianceMatrixRoute
+  '/v7/country-matrix': typeof V7CountryMatrixRoute
+  '/v7/cross-border': typeof V7CrossBorderRoute
+  '/v7/data-residency': typeof V7DataResidencyRoute
+  '/v7/demo': typeof V7DemoRoute
+  '/v7/enterprise-customers': typeof V7EnterpriseCustomersRoute
+  '/v7/exec-dashboard': typeof V7ExecDashboardRoute
+  '/v7/financial-maturity': typeof V7FinancialMaturityRoute
+  '/v7/intl-marketplace': typeof V7IntlMarketplaceRoute
+  '/v7/marketplace-intel': typeof V7MarketplaceIntelRoute
+  '/v7/network': typeof V7NetworkRoute
+  '/v7/overview': typeof V7OverviewRoute
+  '/v7/partner-ecosystem': typeof V7PartnerEcosystemRoute
+  '/v7/readiness': typeof V7ReadinessRoute
+  '/v7/regulated-controls': typeof V7RegulatedControlsRoute
+  '/v7/reports': typeof V7ReportsRoute
+  '/v7/revenue-ops': typeof V7RevenueOpsRoute
+  '/v7/risk-register': typeof V7RiskRegisterRoute
+  '/v7/roadmap': typeof V7RoadmapRoute
+  '/v7/scope': typeof V7ScopeRoute
+  '/v7/support-model': typeof V7SupportModelRoute
+  '/v7/trust-safety': typeof V7TrustSafetyRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -3982,6 +4174,30 @@ export interface FileRoutesById {
   '/v65/revenue-rec': typeof V65RevenueRecRoute
   '/v65/risk-matrix': typeof V65RiskMatrixRoute
   '/v65/scope': typeof V65ScopeRoute
+  '/v7/ai-gov': typeof V7AiGovRoute
+  '/v7/audit-readiness': typeof V7AuditReadinessRoute
+  '/v7/compliance-matrix': typeof V7ComplianceMatrixRoute
+  '/v7/country-matrix': typeof V7CountryMatrixRoute
+  '/v7/cross-border': typeof V7CrossBorderRoute
+  '/v7/data-residency': typeof V7DataResidencyRoute
+  '/v7/demo': typeof V7DemoRoute
+  '/v7/enterprise-customers': typeof V7EnterpriseCustomersRoute
+  '/v7/exec-dashboard': typeof V7ExecDashboardRoute
+  '/v7/financial-maturity': typeof V7FinancialMaturityRoute
+  '/v7/intl-marketplace': typeof V7IntlMarketplaceRoute
+  '/v7/marketplace-intel': typeof V7MarketplaceIntelRoute
+  '/v7/network': typeof V7NetworkRoute
+  '/v7/overview': typeof V7OverviewRoute
+  '/v7/partner-ecosystem': typeof V7PartnerEcosystemRoute
+  '/v7/readiness': typeof V7ReadinessRoute
+  '/v7/regulated-controls': typeof V7RegulatedControlsRoute
+  '/v7/reports': typeof V7ReportsRoute
+  '/v7/revenue-ops': typeof V7RevenueOpsRoute
+  '/v7/risk-register': typeof V7RiskRegisterRoute
+  '/v7/roadmap': typeof V7RoadmapRoute
+  '/v7/scope': typeof V7ScopeRoute
+  '/v7/support-model': typeof V7SupportModelRoute
+  '/v7/trust-safety': typeof V7TrustSafetyRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -4426,6 +4642,30 @@ export interface FileRouteTypes {
     | '/v65/revenue-rec'
     | '/v65/risk-matrix'
     | '/v65/scope'
+    | '/v7/ai-gov'
+    | '/v7/audit-readiness'
+    | '/v7/compliance-matrix'
+    | '/v7/country-matrix'
+    | '/v7/cross-border'
+    | '/v7/data-residency'
+    | '/v7/demo'
+    | '/v7/enterprise-customers'
+    | '/v7/exec-dashboard'
+    | '/v7/financial-maturity'
+    | '/v7/intl-marketplace'
+    | '/v7/marketplace-intel'
+    | '/v7/network'
+    | '/v7/overview'
+    | '/v7/partner-ecosystem'
+    | '/v7/readiness'
+    | '/v7/regulated-controls'
+    | '/v7/reports'
+    | '/v7/revenue-ops'
+    | '/v7/risk-register'
+    | '/v7/roadmap'
+    | '/v7/scope'
+    | '/v7/support-model'
+    | '/v7/trust-safety'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -4868,6 +5108,30 @@ export interface FileRouteTypes {
     | '/v65/revenue-rec'
     | '/v65/risk-matrix'
     | '/v65/scope'
+    | '/v7/ai-gov'
+    | '/v7/audit-readiness'
+    | '/v7/compliance-matrix'
+    | '/v7/country-matrix'
+    | '/v7/cross-border'
+    | '/v7/data-residency'
+    | '/v7/demo'
+    | '/v7/enterprise-customers'
+    | '/v7/exec-dashboard'
+    | '/v7/financial-maturity'
+    | '/v7/intl-marketplace'
+    | '/v7/marketplace-intel'
+    | '/v7/network'
+    | '/v7/overview'
+    | '/v7/partner-ecosystem'
+    | '/v7/readiness'
+    | '/v7/regulated-controls'
+    | '/v7/reports'
+    | '/v7/revenue-ops'
+    | '/v7/risk-register'
+    | '/v7/roadmap'
+    | '/v7/scope'
+    | '/v7/support-model'
+    | '/v7/trust-safety'
     | '/driver'
   id:
     | '__root__'
@@ -5310,6 +5574,30 @@ export interface FileRouteTypes {
     | '/v65/revenue-rec'
     | '/v65/risk-matrix'
     | '/v65/scope'
+    | '/v7/ai-gov'
+    | '/v7/audit-readiness'
+    | '/v7/compliance-matrix'
+    | '/v7/country-matrix'
+    | '/v7/cross-border'
+    | '/v7/data-residency'
+    | '/v7/demo'
+    | '/v7/enterprise-customers'
+    | '/v7/exec-dashboard'
+    | '/v7/financial-maturity'
+    | '/v7/intl-marketplace'
+    | '/v7/marketplace-intel'
+    | '/v7/network'
+    | '/v7/overview'
+    | '/v7/partner-ecosystem'
+    | '/v7/readiness'
+    | '/v7/regulated-controls'
+    | '/v7/reports'
+    | '/v7/revenue-ops'
+    | '/v7/risk-register'
+    | '/v7/roadmap'
+    | '/v7/scope'
+    | '/v7/support-model'
+    | '/v7/trust-safety'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -5745,6 +6033,30 @@ export interface RootRouteChildren {
   V65RevenueRecRoute: typeof V65RevenueRecRoute
   V65RiskMatrixRoute: typeof V65RiskMatrixRoute
   V65ScopeRoute: typeof V65ScopeRoute
+  V7AiGovRoute: typeof V7AiGovRoute
+  V7AuditReadinessRoute: typeof V7AuditReadinessRoute
+  V7ComplianceMatrixRoute: typeof V7ComplianceMatrixRoute
+  V7CountryMatrixRoute: typeof V7CountryMatrixRoute
+  V7CrossBorderRoute: typeof V7CrossBorderRoute
+  V7DataResidencyRoute: typeof V7DataResidencyRoute
+  V7DemoRoute: typeof V7DemoRoute
+  V7EnterpriseCustomersRoute: typeof V7EnterpriseCustomersRoute
+  V7ExecDashboardRoute: typeof V7ExecDashboardRoute
+  V7FinancialMaturityRoute: typeof V7FinancialMaturityRoute
+  V7IntlMarketplaceRoute: typeof V7IntlMarketplaceRoute
+  V7MarketplaceIntelRoute: typeof V7MarketplaceIntelRoute
+  V7NetworkRoute: typeof V7NetworkRoute
+  V7OverviewRoute: typeof V7OverviewRoute
+  V7PartnerEcosystemRoute: typeof V7PartnerEcosystemRoute
+  V7ReadinessRoute: typeof V7ReadinessRoute
+  V7RegulatedControlsRoute: typeof V7RegulatedControlsRoute
+  V7ReportsRoute: typeof V7ReportsRoute
+  V7RevenueOpsRoute: typeof V7RevenueOpsRoute
+  V7RiskRegisterRoute: typeof V7RiskRegisterRoute
+  V7RoadmapRoute: typeof V7RoadmapRoute
+  V7ScopeRoute: typeof V7ScopeRoute
+  V7SupportModelRoute: typeof V7SupportModelRoute
+  V7TrustSafetyRoute: typeof V7TrustSafetyRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -5888,6 +6200,174 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/trust-safety': {
+      id: '/v7/trust-safety'
+      path: '/v7/trust-safety'
+      fullPath: '/v7/trust-safety'
+      preLoaderRoute: typeof V7TrustSafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/support-model': {
+      id: '/v7/support-model'
+      path: '/v7/support-model'
+      fullPath: '/v7/support-model'
+      preLoaderRoute: typeof V7SupportModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/scope': {
+      id: '/v7/scope'
+      path: '/v7/scope'
+      fullPath: '/v7/scope'
+      preLoaderRoute: typeof V7ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/roadmap': {
+      id: '/v7/roadmap'
+      path: '/v7/roadmap'
+      fullPath: '/v7/roadmap'
+      preLoaderRoute: typeof V7RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/risk-register': {
+      id: '/v7/risk-register'
+      path: '/v7/risk-register'
+      fullPath: '/v7/risk-register'
+      preLoaderRoute: typeof V7RiskRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/revenue-ops': {
+      id: '/v7/revenue-ops'
+      path: '/v7/revenue-ops'
+      fullPath: '/v7/revenue-ops'
+      preLoaderRoute: typeof V7RevenueOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/reports': {
+      id: '/v7/reports'
+      path: '/v7/reports'
+      fullPath: '/v7/reports'
+      preLoaderRoute: typeof V7ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/regulated-controls': {
+      id: '/v7/regulated-controls'
+      path: '/v7/regulated-controls'
+      fullPath: '/v7/regulated-controls'
+      preLoaderRoute: typeof V7RegulatedControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/readiness': {
+      id: '/v7/readiness'
+      path: '/v7/readiness'
+      fullPath: '/v7/readiness'
+      preLoaderRoute: typeof V7ReadinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/partner-ecosystem': {
+      id: '/v7/partner-ecosystem'
+      path: '/v7/partner-ecosystem'
+      fullPath: '/v7/partner-ecosystem'
+      preLoaderRoute: typeof V7PartnerEcosystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/overview': {
+      id: '/v7/overview'
+      path: '/v7/overview'
+      fullPath: '/v7/overview'
+      preLoaderRoute: typeof V7OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/network': {
+      id: '/v7/network'
+      path: '/v7/network'
+      fullPath: '/v7/network'
+      preLoaderRoute: typeof V7NetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/marketplace-intel': {
+      id: '/v7/marketplace-intel'
+      path: '/v7/marketplace-intel'
+      fullPath: '/v7/marketplace-intel'
+      preLoaderRoute: typeof V7MarketplaceIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/intl-marketplace': {
+      id: '/v7/intl-marketplace'
+      path: '/v7/intl-marketplace'
+      fullPath: '/v7/intl-marketplace'
+      preLoaderRoute: typeof V7IntlMarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/financial-maturity': {
+      id: '/v7/financial-maturity'
+      path: '/v7/financial-maturity'
+      fullPath: '/v7/financial-maturity'
+      preLoaderRoute: typeof V7FinancialMaturityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/exec-dashboard': {
+      id: '/v7/exec-dashboard'
+      path: '/v7/exec-dashboard'
+      fullPath: '/v7/exec-dashboard'
+      preLoaderRoute: typeof V7ExecDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/enterprise-customers': {
+      id: '/v7/enterprise-customers'
+      path: '/v7/enterprise-customers'
+      fullPath: '/v7/enterprise-customers'
+      preLoaderRoute: typeof V7EnterpriseCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/demo': {
+      id: '/v7/demo'
+      path: '/v7/demo'
+      fullPath: '/v7/demo'
+      preLoaderRoute: typeof V7DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/data-residency': {
+      id: '/v7/data-residency'
+      path: '/v7/data-residency'
+      fullPath: '/v7/data-residency'
+      preLoaderRoute: typeof V7DataResidencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/cross-border': {
+      id: '/v7/cross-border'
+      path: '/v7/cross-border'
+      fullPath: '/v7/cross-border'
+      preLoaderRoute: typeof V7CrossBorderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/country-matrix': {
+      id: '/v7/country-matrix'
+      path: '/v7/country-matrix'
+      fullPath: '/v7/country-matrix'
+      preLoaderRoute: typeof V7CountryMatrixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/compliance-matrix': {
+      id: '/v7/compliance-matrix'
+      path: '/v7/compliance-matrix'
+      fullPath: '/v7/compliance-matrix'
+      preLoaderRoute: typeof V7ComplianceMatrixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/audit-readiness': {
+      id: '/v7/audit-readiness'
+      path: '/v7/audit-readiness'
+      fullPath: '/v7/audit-readiness'
+      preLoaderRoute: typeof V7AuditReadinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v7/ai-gov': {
+      id: '/v7/ai-gov'
+      path: '/v7/ai-gov'
+      fullPath: '/v7/ai-gov'
+      preLoaderRoute: typeof V7AiGovRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v65/scope': {
@@ -9318,6 +9798,30 @@ const rootRouteChildren: RootRouteChildren = {
   V65RevenueRecRoute: V65RevenueRecRoute,
   V65RiskMatrixRoute: V65RiskMatrixRoute,
   V65ScopeRoute: V65ScopeRoute,
+  V7AiGovRoute: V7AiGovRoute,
+  V7AuditReadinessRoute: V7AuditReadinessRoute,
+  V7ComplianceMatrixRoute: V7ComplianceMatrixRoute,
+  V7CountryMatrixRoute: V7CountryMatrixRoute,
+  V7CrossBorderRoute: V7CrossBorderRoute,
+  V7DataResidencyRoute: V7DataResidencyRoute,
+  V7DemoRoute: V7DemoRoute,
+  V7EnterpriseCustomersRoute: V7EnterpriseCustomersRoute,
+  V7ExecDashboardRoute: V7ExecDashboardRoute,
+  V7FinancialMaturityRoute: V7FinancialMaturityRoute,
+  V7IntlMarketplaceRoute: V7IntlMarketplaceRoute,
+  V7MarketplaceIntelRoute: V7MarketplaceIntelRoute,
+  V7NetworkRoute: V7NetworkRoute,
+  V7OverviewRoute: V7OverviewRoute,
+  V7PartnerEcosystemRoute: V7PartnerEcosystemRoute,
+  V7ReadinessRoute: V7ReadinessRoute,
+  V7RegulatedControlsRoute: V7RegulatedControlsRoute,
+  V7ReportsRoute: V7ReportsRoute,
+  V7RevenueOpsRoute: V7RevenueOpsRoute,
+  V7RiskRegisterRoute: V7RiskRegisterRoute,
+  V7RoadmapRoute: V7RoadmapRoute,
+  V7ScopeRoute: V7ScopeRoute,
+  V7SupportModelRoute: V7SupportModelRoute,
+  V7TrustSafetyRoute: V7TrustSafetyRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
