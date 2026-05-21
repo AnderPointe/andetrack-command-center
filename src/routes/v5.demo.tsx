@@ -35,9 +35,25 @@ export const Route = createFileRoute("/v5/demo")({
           </li>
         ))}
       </ol>
-      <Card className="border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground">
-        Architecture: internal logic runs as <strong>TanStack server functions</strong> with RLS via <code>requireSupabaseAuth</code>. External webhooks (Stripe, Samsara, App Store, EDI partners) live in signature-verified <strong>server routes under <code>/api/public/*</code></strong>. No autonomous dispatch.
-      </Card>
+      <div className="grid gap-3 md:grid-cols-2">
+        <Card className="border-white/10 bg-white/[0.02] p-4 text-xs">
+          <h3 className="text-sm font-semibold">RLS policy stance</h3>
+          <ul className="mt-2 space-y-1 text-muted-foreground">
+            <li>· Platform-owner-only tables (maturity, board, data room)</li>
+            <li>· Company-scoped tables (liquidity, lanes, carriers) keyed on <code>company_id</code></li>
+            <li>· Security-lead scoped (SOC 2 controls, exceptions)</li>
+            <li>· No anonymous policies — RLS backs every server-fn check</li>
+          </ul>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4 text-xs">
+          <h3 className="text-sm font-semibold">Server boundary</h3>
+          <ul className="mt-2 space-y-1 text-muted-foreground">
+            <li>· Internal logic → <strong>TanStack server functions</strong> + <code>requireSupabaseAuth</code></li>
+            <li>· External webhooks (Stripe, Samsara, App Store, EDI) → signature-verified <strong>server routes under <code>/api/public/*</code></strong></li>
+            <li>· No fully autonomous dispatch — human-approved AI only</li>
+          </ul>
+        </Card>
+      </div>
     </V5Page>
   ),
 });
