@@ -292,12 +292,172 @@ export const EDGE_FN_PLAN_V4 = [
 ];
 
 export const DEMO_STEPS_V4 = [
-  "Platform owner opens Enterprise Launch Command Center → V4 readiness 84% with 3 blockers.",
-  "Strategic Integration Dashboard → Mapbox, Stripe, Twilio live; Samsara in security review.",
-  "National Carrier Network Dashboard → strong Texas/Midwest, gap in Southeast; recommendation generated.",
-  "Multi-Region Dispatch → West Texas high load + low driver availability surfaced.",
-  "Compliance Operations Center → quarterly access review done; 1 support-access exception in review.",
+  "Platform owner opens Enterprise Launch Command Center → V4 readiness 84% with 3 blockers and a live executive summary.",
+  "Strategic Integration Dashboard → Mapbox, Stripe, Twilio live; Samsara in security review; readiness rollup by category.",
+  "Partner Launch Tracker → 6 partners across pipeline stages with owner + next-step indicators.",
+  "Carrier Marketplace Scale → 412 active carriers, 23 open bids, bid comparison, disputes board, suspension queue.",
+  "National Carrier Network Dashboard → strong Texas/Midwest, Southeast gap with prioritized recruitment recommendation.",
+  "Multi-Region Dispatch → West Texas high load + low driver availability surfaced with regional alerts.",
+  "Large-Fleet Performance → 1,840 drivers, 14.2k GPS events/min, API p95 184ms, GPS staleness 1.5%.",
+  "Enterprise Onboarding Factory → 14-stage repeatable template with owners and SLA per stage.",
+  "Customer Lifecycle → at-risk PortSide Movers flagged (health 54) with renewal in 60 days.",
+  "Compliance Operations Center → access review done; 1 support-access exception in review; vendor + DR upcoming.",
   "Mobile Certification → App Store 78%, Google Play 72%; Android Auto safety 70%; CarPlay entitlement pending.",
-  "Enterprise Revenue Ops → SaaS, marketplace, API and support revenue lines shown with renewals + expansions.",
+  "Enterprise Support → SLA attainment 96%, 2 P1 active, escalation routing to Eng on-call.",
+  "Governance → quarterly role review + API key rotation + AI action audit in flight.",
   "National Operations Intelligence → regional health, marketplace coverage, expansion recommendations.",
+  "Enterprise Revenue Ops → MRR by line, renewals, expansions, NRR placeholder; PortSide flagged.",
+  "Partner Revenue Ops → revenue share table and scheduled partner payout pipeline.",
+  "AI Governance V4 → approval thresholds enforced, action audit, monthly cost cap 53% consumed.",
 ];
+
+// ───────────────── Polish: KPIs, trends, ownership ─────────────────
+export const LAUNCH_KPIS = [
+  { label: "Days to GA",          value: "38",   trend: -4 },
+  { label: "Open blockers",       value: "3",    trend: -1 },
+  { label: "Critical incidents",  value: "0",    trend:  0 },
+  { label: "Pipeline",            value: "$4.2M",trend: +0.4 },
+  { label: "Launch confidence",   value: "84%",  trend: +2 },
+  { label: "Exec sign-offs",      value: "6/8",  trend: +1 },
+];
+
+export const READINESS_TREND = [
+  { week: "W-6", overall: 71 }, { week: "W-5", overall: 74 },
+  { week: "W-4", overall: 76 }, { week: "W-3", overall: 79 },
+  { week: "W-2", overall: 81 }, { week: "W-1", overall: 83 }, { week: "Now", overall: 84 },
+];
+
+export const INTEGRATION_ROLLUP = [
+  { category: "Telematics",  live: 0, in_flight: 2, planned: 0, readiness: 55 },
+  { category: "Accounting",  live: 1, in_flight: 0, planned: 0, readiness: 100 },
+  { category: "Map/Routing", live: 1, in_flight: 0, planned: 0, readiness: 100 },
+  { category: "Billing",     live: 1, in_flight: 0, planned: 0, readiness: 100 },
+  { category: "Fuel",        live: 0, in_flight: 1, planned: 0, readiness: 60 },
+  { category: "Maintenance", live: 0, in_flight: 1, planned: 0, readiness: 35 },
+  { category: "Notify",      live: 1, in_flight: 0, planned: 0, readiness: 100 },
+  { category: "Broker",      live: 0, in_flight: 1, planned: 0, readiness: 65 },
+  { category: "EDI",         live: 0, in_flight: 1, planned: 0, readiness: 80 },
+];
+
+export const MARKETPLACE_FUNNEL = [
+  { stage: "Invited",    count: 1240 },
+  { stage: "Onboarded",  count: 612  },
+  { stage: "Verified",   count: 487  },
+  { stage: "Active",     count: 412  },
+  { stage: "Top tier",   count: 96   },
+];
+export const MARKETPLACE_TRENDS = {
+  award_rate_pct: 71, avg_award_time_min: 18, on_time_pct: 93,
+  dispute_rate_pct: 0.7, suspension_rate_pct: 1.0,
+};
+export const SUSPENSIONS = [
+  { id: "s1", carrier: "BlueRoad LLC", reason: "Insurance lapsed",         since: "2026-05-19", review: "2026-06-01" },
+  { id: "s2", carrier: "Quick Haul Co", reason: "3 late deliveries / 30d", since: "2026-05-21", review: "2026-06-04" },
+];
+
+export const ONBOARDING_STAGES_DETAIL = [
+  { stage: "Sales handoff",          owner: "AE → IM",      sla_days: 1,  status: "automated" },
+  { stage: "Procurement review",     owner: "Procurement",  sla_days: 5,  status: "checklist" },
+  { stage: "Security review",        owner: "Security",     sla_days: 7,  status: "checklist" },
+  { stage: "Technical discovery",    owner: "Solutions",    sla_days: 5,  status: "template" },
+  { stage: "Data migration planning",owner: "Solutions",    sla_days: 7,  status: "template" },
+  { stage: "User setup",             owner: "Onboarding",   sla_days: 2,  status: "automated" },
+  { stage: "Driver setup",           owner: "Onboarding",   sla_days: 3,  status: "automated" },
+  { stage: "Vehicle setup",          owner: "Onboarding",   sla_days: 2,  status: "automated" },
+  { stage: "Customer setup",         owner: "Onboarding",   sla_days: 2,  status: "automated" },
+  { stage: "Integration setup",      owner: "Integrations", sla_days: 7,  status: "template" },
+  { stage: "Pilot planning",         owner: "CS",           sla_days: 5,  status: "template" },
+  { stage: "Training",               owner: "CS",           sla_days: 5,  status: "curriculum" },
+  { stage: "Go-live",                owner: "CS + Eng",     sla_days: 1,  status: "runbook" },
+  { stage: "Post-launch review",     owner: "CS",           sla_days: 14, status: "template" },
+];
+export const ONBOARDING_KPIS = {
+  active_implementations: 4, avg_time_to_go_live_days: 38,
+  on_track_pct: 75, blocked: 1, last_quarter_go_lives: 6,
+};
+
+export const LIFECYCLE_KPIS = {
+  arr_total: 1188000, nrr_pct: 112, gross_churn_pct: 4.1,
+  expansion_arr: 96000, renewals_next_90d: 3, at_risk_arr: 96000,
+};
+
+export const COMPLIANCE_KPIS = {
+  open_tasks: 4, overdue: 0, exceptions: 1,
+  evidence_coverage_pct: 78, last_audit_test: "2026-05-12",
+};
+
+export const MOBILE_RELEASE_GATES = [
+  { gate: "Privacy labels complete",        status: "in_progress" },
+  { gate: "Data safety form complete",      status: "in_progress" },
+  { gate: "Background location justified",  status: "done" },
+  { gate: "Mic permission justified",       status: "in_progress" },
+  { gate: "Crash-free sessions > 99.5%",    status: "done" },
+  { gate: "Rollout plan signed off",        status: "planned" },
+];
+
+export const ANDROID_AUTO_SAFETY = [
+  { check: "Driver distraction policy", status: "pass" },
+  { check: "Glance time < 2s",          status: "pass" },
+  { check: "Voice-first interaction",   status: "in_progress" },
+  { check: "No video / no scrolling",   status: "pass" },
+  { check: "Touch target compliance",   status: "in_progress" },
+];
+export const CARPLAY_SAFETY = [
+  { check: "Apple driver distraction guidelines", status: "in_progress" },
+  { check: "Siri integration scope",              status: "planned" },
+  { check: "Background audio handling",           status: "planned" },
+  { check: "Template-only UI",                    status: "pass" },
+];
+
+export const SUPPORT_TRENDS = [
+  { week: "W-4", csat: 4.5, sla: 94, escalations: 3 },
+  { week: "W-3", csat: 4.6, sla: 95, escalations: 2 },
+  { week: "W-2", csat: 4.6, sla: 96, escalations: 4 },
+  { week: "W-1", csat: 4.7, sla: 96, escalations: 2 },
+  { week: "Now", csat: 4.7, sla: 96, escalations: 2 },
+];
+
+export const GOVERNANCE_KPIS = {
+  api_keys_total: 412, api_keys_overdue_rotation: 7,
+  privileged_users: 38, dormant_accounts: 4,
+  ai_actions_30d: 11820, ai_actions_human_approved_30d: 1184,
+};
+
+export const REGION_ALERTS = [
+  { region: "Southeast",  level: "warn", msg: "Carrier coverage below 50% on freight" },
+  { region: "West Texas", level: "warn", msg: "Driver utilization > 70% — risk of overrun" },
+  { region: "Northeast",  level: "info", msg: "Flatbed demand rising 12% WoW" },
+];
+
+export const REVENUE_TRENDS = [
+  { month: "Feb", mrr: 268000 }, { month: "Mar", mrr: 281000 },
+  { month: "Apr", mrr: 294000 }, { month: "May", mrr: 306000 },
+];
+
+export const PARTNER_PAYOUTS = [
+  { partner: "Samsara",       period: "May 2026", due: "2026-06-05", amount: 14200, status: "scheduled" },
+  { partner: "DAT",           period: "May 2026", due: "2026-06-05", amount:  9800, status: "scheduled" },
+  { partner: "Stripe Billing",period: "May 2026", due: "2026-06-03", amount:  6400, status: "paid" },
+  { partner: "PayCargo",      period: "May 2026", due: "2026-06-05", amount:  3100, status: "scheduled" },
+];
+
+export const REPORTS_V4 = [
+  { name: "Enterprise launch readiness",   cat: "Launch",       formats: ["CSV","PDF"], schedule: "weekly" },
+  { name: "Strategic integration status",  cat: "Integrations", formats: ["CSV","PDF"], schedule: "weekly" },
+  { name: "Partner launch pipeline",       cat: "Partners",     formats: ["CSV"],       schedule: "weekly" },
+  { name: "Carrier marketplace scale",     cat: "Marketplace",  formats: ["CSV","PDF"], schedule: "daily"  },
+  { name: "National carrier coverage",     cat: "Network",      formats: ["CSV","PDF"], schedule: "weekly" },
+  { name: "Multi-region operations",       cat: "Dispatch",     formats: ["CSV"],       schedule: "daily"  },
+  { name: "Large fleet performance",       cat: "Fleet",        formats: ["CSV","PDF"], schedule: "hourly" },
+  { name: "Compliance operations",         cat: "Compliance",   formats: ["PDF"],       schedule: "monthly"},
+  { name: "Mobile certification readiness",cat: "Mobile",       formats: ["PDF"],       schedule: "weekly" },
+  { name: "Android Auto readiness",        cat: "Mobile",       formats: ["PDF"],       schedule: "weekly" },
+  { name: "CarPlay readiness",             cat: "Mobile",       formats: ["PDF"],       schedule: "weekly" },
+  { name: "Enterprise support performance",cat: "Support",      formats: ["CSV","PDF"], schedule: "weekly" },
+  { name: "Governance review status",      cat: "Governance",   formats: ["PDF"],       schedule: "monthly"},
+  { name: "National operations intelligence",cat: "Ops",        formats: ["CSV","PDF"], schedule: "weekly" },
+  { name: "Enterprise revenue operations", cat: "Revenue",      formats: ["CSV","PDF"], schedule: "monthly"},
+  { name: "Partner revenue & payouts",     cat: "Revenue",      formats: ["CSV"],       schedule: "monthly"},
+  { name: "AI governance report",          cat: "AI",           formats: ["PDF"],       schedule: "monthly"},
+];
+
