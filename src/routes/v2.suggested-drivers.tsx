@@ -4,18 +4,14 @@ import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { OPT_LOAD, OPT_CANDIDATES } from "@/v2/data/mockPhase17";
+import { OPT_LOAD, OPT_CANDIDATES, confidenceBand } from "@/v2/data/mockPhase17";
 
-export const Route = createFileRoute("/v2/suggested-drivers")({
-  head: () => ({ meta: [{ title: "Suggested Drivers · Anderoute" }] }),
-  component: Page,
-});
-
-function confidence(score: number) {
-  if (score >= 85) return { label: "High confidence", tone: "border-emerald-500/30 text-emerald-300" };
-  if (score >= 70) return { label: "Medium confidence", tone: "border-sky-500/30 text-sky-300" };
-  return { label: "Low confidence", tone: "border-amber-500/30 text-amber-300" };
-}
+const toneClass: Record<string, string> = {
+  good: "border-emerald-500/30 text-emerald-300",
+  info: "border-sky-500/30 text-sky-300",
+  warn: "border-amber-500/30 text-amber-300",
+  bad:  "border-rose-500/30 text-rose-300",
+};
 
 function Page() {
   return (
