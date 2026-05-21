@@ -20,6 +20,21 @@ export const Route = createFileRoute("/v5/category")({
           ]} />
         </div>
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Category proof points</h3>
+        <div className="mt-2 grid gap-2 md:grid-cols-2">
+          {CATEGORY_PROOF_POINTS.map(p => (
+            <div key={p.theme} className="rounded border border-white/10 bg-white/[0.02] p-3">
+              <div className="text-xs uppercase tracking-wide text-muted-foreground">{p.theme}</div>
+              <div className="mt-1 text-sm font-semibold text-fuchsia-200">{p.metric}</div>
+              <div className="text-[11px] text-muted-foreground">{p.evidence}</div>
+            </div>
+          ))}
+        </div>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground">
+        Category narrative: <strong>National-scale logistics OS with human-approved AI</strong>. Avoid claims of analyst recognition or guaranteed market share — those remain placeholder until verified externally.
+      </Card>
     </V5Page>
   ),
 });
