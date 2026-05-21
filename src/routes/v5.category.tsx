@@ -3,7 +3,7 @@ import { Crown } from "lucide-react";
 import { V5Page } from "@/components/v5/V5Page";
 import { SimpleTable, StatusPill } from "@/components/v5/ui-bits";
 import { Card } from "@/components/ui/card";
-import { POSITIONING_AREAS } from "@/v5/data/mockPhase23";
+import { POSITIONING_AREAS, CATEGORY_PROOF_POINTS } from "@/v5/data/mockPhase23";
 
 export const Route = createFileRoute("/v5/category")({
   head: () => ({ meta: [{ title: "Category Leadership · Anderoute V5" }] }),
