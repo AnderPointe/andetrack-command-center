@@ -3,6 +3,7 @@ import { Lock } from "lucide-react";
 import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ENTERPRISE_GROUPS } from "@/v2/data/mockPhase17";
 
 export const Route = createFileRoute("/v2/enterprise")({
   head: () => ({ meta: [{ title: "Enterprise Controls · Anderoute" }] }),
