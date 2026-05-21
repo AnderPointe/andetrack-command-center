@@ -4,7 +4,7 @@ import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { CARPLAY_CHECKLIST, CARPLAY_ENTITLEMENT } from "@/v3/data/mockPhase19";
+import { CARPLAY_CHECKLIST, CARPLAY_ENTITLEMENT, CARPLAY_TEMPLATES } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/carplay")({
   head: () => ({ meta: [{ title: "CarPlay Planning · Anderoute V3" }] }),
@@ -35,6 +35,15 @@ export const Route = createFileRoute("/v3/carplay")({
               </li>
             ))}
           </ul>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">CarPlay template mapping</h3>
+          <table className="mt-2 w-full text-sm">
+            <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-1">Template</th><th className="p-1">Anderoute use</th><th className="p-1">Status</th></tr></thead>
+            <tbody>{CARPLAY_TEMPLATES.map((t) => (
+              <tr key={t.template} className="border-t border-white/10"><td className="p-1 font-mono text-xs">{t.template}</td><td className="p-1 text-muted-foreground">{t.anderoute_use}</td><td className="p-1"><Badge variant="outline" className={t.status === "in_progress" ? "border-sky-500/40 text-sky-300" : "border-amber-500/40 text-amber-300"}>{t.status}</Badge></td></tr>
+            ))}</tbody>
+          </table>
         </Card>
       </V3Page>
     );

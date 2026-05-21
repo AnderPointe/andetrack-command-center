@@ -4,7 +4,7 @@ import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { TELEMATICS_PROVIDERS, TELEMATICS_VEHICLE_MAP, TELEMATICS_HEALTH, TELEMATICS_SYNC_LOG } from "@/v3/data/mockPhase19";
+import { TELEMATICS_PROVIDERS, TELEMATICS_VEHICLE_MAP, TELEMATICS_HEALTH, TELEMATICS_SYNC_LOG, TELEMATICS_CONNECT_STEPS } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/telematics")({
   head: () => ({ meta: [{ title: "Telematics · Anderoute V3" }] }),
@@ -35,6 +35,12 @@ export const Route = createFileRoute("/v3/telematics")({
             ))}</tbody></table>
         </Card>
       </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Connect workflow</h3>
+        <ol className="mt-2 grid gap-1.5 text-sm md:grid-cols-2">{TELEMATICS_CONNECT_STEPS.map((s, i) => (
+          <li key={s.id} className="flex items-center justify-between rounded border border-white/10 bg-black/20 px-2 py-1.5"><span><span className="mr-2 font-mono text-xs text-sky-300">{i + 1}.</span>{s.step}</span><Badge variant="outline" className={s.status === "ready" ? "border-emerald-500/40 text-emerald-300" : "border-amber-500/40 text-amber-300"}>{s.status}</Badge></li>
+        ))}</ol>
+      </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Recent sync log</h3>
         <table className="mt-2 w-full text-sm"><thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-1">Time</th><th className="p-1">Provider</th><th className="p-1">Event</th><th className="p-1">Result</th><th className="p-1">Count</th></tr></thead>

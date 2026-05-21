@@ -4,7 +4,7 @@ import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { MOBILE_OBSERVABILITY, MOBILE_VERSION_POLICY } from "@/v3/data/mockPhase19";
+import { MOBILE_OBSERVABILITY, MOBILE_VERSION_POLICY, OBSERVABILITY_ALERTS } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/observability")({
   head: () => ({ meta: [{ title: "Mobile Observability · Anderoute V3" }] }),
@@ -28,6 +28,15 @@ export const Route = createFileRoute("/v3/observability")({
               <td className="p-2 font-mono">{d.offline_queue}</td>
             </tr>
           ))}</tbody></table>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Active observability alerts</h3>
+        <ul className="mt-2 space-y-1.5 text-sm">{OBSERVABILITY_ALERTS.map((a) => (
+          <li key={a.id} className="flex items-center justify-between rounded border border-white/10 bg-black/20 px-2 py-1.5">
+            <span><Badge variant="outline" className={a.severity === "high" ? "mr-2 border-rose-500/40 text-rose-300" : a.severity === "warn" ? "mr-2 border-amber-500/40 text-amber-300" : "mr-2 border-sky-500/40 text-sky-300"}>{a.severity}</Badge><span className="font-mono text-xs">{a.driver}</span> · {a.issue}</span>
+            <span className="text-xs text-muted-foreground">{a.action}</span>
+          </li>
+        ))}</ul>
       </Card>
     </V3Page>
   ),

@@ -4,7 +4,7 @@ import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { CERT_READINESS } from "@/v3/data/mockPhase19";
+import { CERT_READINESS, EDGE_FUNCTION_SEPARATION, RLS_TEMPLATES } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/certification")({
   head: () => ({ meta: [{ title: "Certification Readiness · Anderoute V3" }] }),
@@ -27,6 +27,26 @@ export const Route = createFileRoute("/v3/certification")({
               <div className="mt-1 text-[10px] uppercase tracking-wide text-muted-foreground">{c.status.replace("_", " ")}</div>
             </div>
           ))}</div>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Edge Function vs server fn separation</h3>
+          <table className="mt-2 w-full text-sm">
+            <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-2">Function</th><th className="p-2">Runtime</th><th className="p-2">Why</th></tr></thead>
+            <tbody>{EDGE_FUNCTION_SEPARATION.map((f) => (
+              <tr key={f.fn} className="border-t border-white/10"><td className="p-2 font-mono text-xs">{f.fn}</td><td className="p-2"><Badge variant="outline" className="border-sky-500/40 text-sky-300">{f.runtime}</Badge></td><td className="p-2 text-xs text-muted-foreground">{f.reason}</td></tr>
+            ))}</tbody>
+          </table>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">RLS policy templates</h3>
+          <ul className="mt-2 space-y-2 text-sm">
+            {RLS_TEMPLATES.map((r) => (
+              <li key={r.table} className="rounded border border-white/10 bg-black/40 p-2">
+                <div className="font-mono text-xs text-sky-300">{r.table}</div>
+                <pre className="mt-1 overflow-x-auto whitespace-pre-wrap text-[11px] text-muted-foreground">{r.sql}</pre>
+              </li>
+            ))}
+          </ul>
         </Card>
       </V3Page>
     );

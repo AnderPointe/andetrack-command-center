@@ -3,7 +3,7 @@ import { Settings2 } from "lucide-react";
 import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MOBILE_POLICY_SETTINGS, FEATURE_FLAG_GROUPS } from "@/v3/data/mockPhase19";
+import { MOBILE_POLICY_SETTINGS, FEATURE_FLAG_GROUPS, ENTERPRISE_ADMIN_AUDIT } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/admin")({
   head: () => ({ meta: [{ title: "Enterprise Admin · Anderoute V3" }] }),
@@ -27,6 +27,15 @@ export const Route = createFileRoute("/v3/admin")({
           ))}</ul>
         </Card>
       </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Recent admin changes</h3>
+        <table className="mt-2 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-2">Time</th><th className="p-2">Actor</th><th className="p-2">Change</th><th className="p-2">From → To</th></tr></thead>
+          <tbody>{ENTERPRISE_ADMIN_AUDIT.map((a, i) => (
+            <tr key={i} className="border-t border-white/10"><td className="p-2 font-mono text-xs">{a.ts}</td><td className="p-2 font-mono text-xs">{a.actor}</td><td className="p-2">{a.change}</td><td className="p-2 text-xs text-muted-foreground">{a.from} → {a.to}</td></tr>
+          ))}</tbody>
+        </table>
+      </Card>
     </V3Page>
   ),
 });

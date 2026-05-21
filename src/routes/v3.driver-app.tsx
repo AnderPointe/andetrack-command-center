@@ -3,7 +3,7 @@ import { Smartphone } from "lucide-react";
 import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { DRIVER_SCREENS, DRIVER_PERMISSIONS, DRIVER_NEXT_ACTIONS } from "@/v3/data/mockPhase19";
+import { DRIVER_SCREENS, DRIVER_PERMISSIONS, DRIVER_NEXT_ACTIONS, NATIVE_APP_ARCHITECTURE } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/driver-app")({
   head: () => ({ meta: [{ title: "Native Driver App · Anderoute V3" }] }),
@@ -34,6 +34,15 @@ export const Route = createFileRoute("/v3/driver-app")({
           </ul>
         </Card>
       </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Native app architecture</h2>
+        <table className="mt-2 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-1">Layer</th><th className="p-1">Tech</th><th className="p-1">Note</th></tr></thead>
+          <tbody>{NATIVE_APP_ARCHITECTURE.map((l) => (
+            <tr key={l.layer} className="border-t border-white/10"><td className="p-1 font-medium">{l.layer}</td><td className="p-1 text-muted-foreground">{l.tech}</td><td className="p-1 text-xs text-muted-foreground">{l.note}</td></tr>
+          ))}</tbody>
+        </table>
+      </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h2 className="text-sm font-semibold">Driver next-best action engine</h2>
         <ul className="mt-2 space-y-1.5 text-sm">

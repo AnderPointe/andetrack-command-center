@@ -3,7 +3,7 @@ import { WifiOff } from "lucide-react";
 import { V3Page } from "@/components/v3/V3Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { OFFLINE_QUEUE } from "@/v3/data/mockPhase19";
+import { OFFLINE_QUEUE, OFFLINE_CONFLICT_PLAYBOOK } from "@/v3/data/mockPhase19";
 
 export const Route = createFileRoute("/v3/offline")({
   head: () => ({ meta: [{ title: "Mobile Offline · Anderoute V3" }] }),
@@ -16,6 +16,15 @@ export const Route = createFileRoute("/v3/offline")({
           <tbody>{OFFLINE_QUEUE.map((q) => (
             <tr key={q.id} className="border-t border-white/10"><td className="p-2 font-mono text-xs">{q.driver}</td><td className="p-2">{q.kind}</td><td className="p-2 font-mono text-xs">{q.created}</td><td className="p-2 font-mono">{q.retries}</td><td className="p-2"><Badge variant="outline" className={q.priority === "high" ? "border-rose-500/40 text-rose-300" : q.priority === "normal" ? "border-sky-500/40 text-sky-300" : "border-white/15 text-muted-foreground"}>{q.priority}</Badge></td><td className="p-2">{q.conflict ? <Badge variant="outline" className="border-amber-500/40 text-amber-300">resolve</Badge> : <span className="text-xs text-muted-foreground">—</span>}</td></tr>
           ))}</tbody></table>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Conflict resolution playbook</h2>
+        <table className="mt-2 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-2">Conflict</th><th className="p-2">Resolution</th></tr></thead>
+          <tbody>{OFFLINE_CONFLICT_PLAYBOOK.map((c, i) => (
+            <tr key={i} className="border-t border-white/10"><td className="p-2">{c.conflict}</td><td className="p-2 text-muted-foreground">{c.resolution}</td></tr>
+          ))}</tbody>
+        </table>
       </Card>
     </V3Page>
   ),
