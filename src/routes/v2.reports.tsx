@@ -39,6 +39,21 @@ function Page() {
         </Card>
       ))}
 
+      <div className="grid gap-3 md:grid-cols-2">
+        <Card className="border-white/10 bg-white/[0.02] p-4 text-sm">
+          <h2 className="font-semibold">Filters available</h2>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {REPORT_FILTERS.map((f) => <Badge key={f} variant="outline" className="border-white/15">{f}</Badge>)}
+          </div>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4 text-sm">
+          <h2 className="font-semibold">Export formats</h2>
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {REPORT_EXPORTS.map((f) => <Badge key={f} variant="outline" className="border-white/15">{f}</Badge>)}
+          </div>
+        </Card>
+      </div>
+
       <Card className="border-white/10 bg-white/[0.02] p-4 text-sm text-muted-foreground">
         <Badge variant="outline" className="border-white/15 text-muted-foreground">V2.5</Badge>{" "}
         Scheduled report delivery and report-as-an-API are deferred to V2.5.
