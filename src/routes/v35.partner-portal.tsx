@@ -3,13 +3,28 @@ import { Building2 } from "lucide-react";
 import { V35Page } from "@/components/v35/V35Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PARTNER_TYPES, PARTNERS } from "@/v35/data/mockPhase20";
+import { PARTNER_TYPES, PARTNERS, PARTNER_PORTAL_MODULES } from "@/v35/data/mockPhase20";
+
+const STATUS_COLOR: Record<string, string> = {
+  live: "border-emerald-500/40 text-emerald-300",
+  beta: "border-sky-500/40 text-sky-300",
+  placeholder: "border-amber-500/40 text-amber-300",
+};
 
 export const Route = createFileRoute("/v35/partner-portal")({
   head: () => ({ meta: [{ title: "Partner Portal · Anderoute V3.5" }] }),
   component: () => (
     <V35Page icon={<Building2 className="size-6 text-amber-300" />} title="Partner Portal Foundation"
-      blurb="Multi-type partner workspace: dashboard, opportunities, integration status, support, billing placeholder.">
+      blurb="Multi-type partner workspace: overview, opportunities, integration, co-marketing, support, billing placeholder.">
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Portal modules</h3>
+        <div className="mt-2 grid gap-1.5 text-sm md:grid-cols-2">{PARTNER_PORTAL_MODULES.map((m) => (
+          <div key={m.module} className="flex items-center justify-between rounded border border-white/10 bg-black/20 px-2 py-1.5">
+            <span>{m.module}</span>
+            <Badge variant="outline" className={STATUS_COLOR[m.status]}>{m.status}</Badge>
+          </div>
+        ))}</div>
+      </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Partner types</h3>
         <div className="mt-2 flex flex-wrap gap-1.5">{PARTNER_TYPES.map((t) => (
