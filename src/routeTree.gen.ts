@@ -29,6 +29,30 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V2WebhooksRouteImport } from './routes/v2.webhooks'
+import { Route as V2SuggestedDriversRouteImport } from './routes/v2.suggested-drivers'
+import { Route as V2SecurityRouteImport } from './routes/v2.security'
+import { Route as V2ScopeRouteImport } from './routes/v2.scope'
+import { Route as V2RiskRouteImport } from './routes/v2.risk'
+import { Route as V2ReportsRouteImport } from './routes/v2.reports'
+import { Route as V2PortalRouteImport } from './routes/v2.portal'
+import { Route as V2PermissionsRouteImport } from './routes/v2.permissions'
+import { Route as V2OverviewRouteImport } from './routes/v2.overview'
+import { Route as V2OptimizationRouteImport } from './routes/v2.optimization'
+import { Route as V2IntegrationHealthRouteImport } from './routes/v2.integration-health'
+import { Route as V2FeatureFlagsRouteImport } from './routes/v2.feature-flags'
+import { Route as V2ExecutiveRouteImport } from './routes/v2.executive'
+import { Route as V2EnterpriseRouteImport } from './routes/v2.enterprise'
+import { Route as V2EdiTransactionsRouteImport } from './routes/v2.edi-transactions'
+import { Route as V2EdiRouteImport } from './routes/v2.edi'
+import { Route as V2DemoRouteImport } from './routes/v2.demo'
+import { Route as V2CustomerImpactRouteImport } from './routes/v2.customer-impact'
+import { Route as V2CopilotRouteImport } from './routes/v2.copilot'
+import { Route as V2AuditRouteImport } from './routes/v2.audit'
+import { Route as V2ApprovalsRouteImport } from './routes/v2.approvals'
+import { Route as V2ApiMarketplaceRouteImport } from './routes/v2.api-marketplace'
+import { Route as V2ApiKeysRouteImport } from './routes/v2.api-keys'
+import { Route as V2AiOpsRouteImport } from './routes/v2.ai-ops'
 import { Route as V15WebhooksRouteImport } from './routes/v15.webhooks'
 import { Route as V15StripeRouteImport } from './routes/v15.stripe'
 import { Route as V15SessionsRouteImport } from './routes/v15.sessions'
@@ -301,6 +325,126 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2WebhooksRoute = V2WebhooksRouteImport.update({
+  id: '/v2/webhooks',
+  path: '/v2/webhooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2SuggestedDriversRoute = V2SuggestedDriversRouteImport.update({
+  id: '/v2/suggested-drivers',
+  path: '/v2/suggested-drivers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2SecurityRoute = V2SecurityRouteImport.update({
+  id: '/v2/security',
+  path: '/v2/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2ScopeRoute = V2ScopeRouteImport.update({
+  id: '/v2/scope',
+  path: '/v2/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2RiskRoute = V2RiskRouteImport.update({
+  id: '/v2/risk',
+  path: '/v2/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2ReportsRoute = V2ReportsRouteImport.update({
+  id: '/v2/reports',
+  path: '/v2/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2PortalRoute = V2PortalRouteImport.update({
+  id: '/v2/portal',
+  path: '/v2/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2PermissionsRoute = V2PermissionsRouteImport.update({
+  id: '/v2/permissions',
+  path: '/v2/permissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2OverviewRoute = V2OverviewRouteImport.update({
+  id: '/v2/overview',
+  path: '/v2/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2OptimizationRoute = V2OptimizationRouteImport.update({
+  id: '/v2/optimization',
+  path: '/v2/optimization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2IntegrationHealthRoute = V2IntegrationHealthRouteImport.update({
+  id: '/v2/integration-health',
+  path: '/v2/integration-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2FeatureFlagsRoute = V2FeatureFlagsRouteImport.update({
+  id: '/v2/feature-flags',
+  path: '/v2/feature-flags',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2ExecutiveRoute = V2ExecutiveRouteImport.update({
+  id: '/v2/executive',
+  path: '/v2/executive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2EnterpriseRoute = V2EnterpriseRouteImport.update({
+  id: '/v2/enterprise',
+  path: '/v2/enterprise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2EdiTransactionsRoute = V2EdiTransactionsRouteImport.update({
+  id: '/v2/edi-transactions',
+  path: '/v2/edi-transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2EdiRoute = V2EdiRouteImport.update({
+  id: '/v2/edi',
+  path: '/v2/edi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2DemoRoute = V2DemoRouteImport.update({
+  id: '/v2/demo',
+  path: '/v2/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2CustomerImpactRoute = V2CustomerImpactRouteImport.update({
+  id: '/v2/customer-impact',
+  path: '/v2/customer-impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2CopilotRoute = V2CopilotRouteImport.update({
+  id: '/v2/copilot',
+  path: '/v2/copilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2AuditRoute = V2AuditRouteImport.update({
+  id: '/v2/audit',
+  path: '/v2/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2ApprovalsRoute = V2ApprovalsRouteImport.update({
+  id: '/v2/approvals',
+  path: '/v2/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2ApiMarketplaceRoute = V2ApiMarketplaceRouteImport.update({
+  id: '/v2/api-marketplace',
+  path: '/v2/api-marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2ApiKeysRoute = V2ApiKeysRouteImport.update({
+  id: '/v2/api-keys',
+  path: '/v2/api-keys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V2AiOpsRoute = V2AiOpsRouteImport.update({
+  id: '/v2/ai-ops',
+  path: '/v2/ai-ops',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V15WebhooksRoute = V15WebhooksRouteImport.update({
@@ -1366,6 +1510,30 @@ export interface FileRoutesByFullPath {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v2/ai-ops': typeof V2AiOpsRoute
+  '/v2/api-keys': typeof V2ApiKeysRoute
+  '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
+  '/v2/approvals': typeof V2ApprovalsRoute
+  '/v2/audit': typeof V2AuditRoute
+  '/v2/copilot': typeof V2CopilotRoute
+  '/v2/customer-impact': typeof V2CustomerImpactRoute
+  '/v2/demo': typeof V2DemoRoute
+  '/v2/edi': typeof V2EdiRoute
+  '/v2/edi-transactions': typeof V2EdiTransactionsRoute
+  '/v2/enterprise': typeof V2EnterpriseRoute
+  '/v2/executive': typeof V2ExecutiveRoute
+  '/v2/feature-flags': typeof V2FeatureFlagsRoute
+  '/v2/integration-health': typeof V2IntegrationHealthRoute
+  '/v2/optimization': typeof V2OptimizationRoute
+  '/v2/overview': typeof V2OverviewRoute
+  '/v2/permissions': typeof V2PermissionsRoute
+  '/v2/portal': typeof V2PortalRoute
+  '/v2/reports': typeof V2ReportsRoute
+  '/v2/risk': typeof V2RiskRoute
+  '/v2/scope': typeof V2ScopeRoute
+  '/v2/security': typeof V2SecurityRoute
+  '/v2/suggested-drivers': typeof V2SuggestedDriversRoute
+  '/v2/webhooks': typeof V2WebhooksRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -1561,6 +1729,30 @@ export interface FileRoutesByTo {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v2/ai-ops': typeof V2AiOpsRoute
+  '/v2/api-keys': typeof V2ApiKeysRoute
+  '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
+  '/v2/approvals': typeof V2ApprovalsRoute
+  '/v2/audit': typeof V2AuditRoute
+  '/v2/copilot': typeof V2CopilotRoute
+  '/v2/customer-impact': typeof V2CustomerImpactRoute
+  '/v2/demo': typeof V2DemoRoute
+  '/v2/edi': typeof V2EdiRoute
+  '/v2/edi-transactions': typeof V2EdiTransactionsRoute
+  '/v2/enterprise': typeof V2EnterpriseRoute
+  '/v2/executive': typeof V2ExecutiveRoute
+  '/v2/feature-flags': typeof V2FeatureFlagsRoute
+  '/v2/integration-health': typeof V2IntegrationHealthRoute
+  '/v2/optimization': typeof V2OptimizationRoute
+  '/v2/overview': typeof V2OverviewRoute
+  '/v2/permissions': typeof V2PermissionsRoute
+  '/v2/portal': typeof V2PortalRoute
+  '/v2/reports': typeof V2ReportsRoute
+  '/v2/risk': typeof V2RiskRoute
+  '/v2/scope': typeof V2ScopeRoute
+  '/v2/security': typeof V2SecurityRoute
+  '/v2/suggested-drivers': typeof V2SuggestedDriversRoute
+  '/v2/webhooks': typeof V2WebhooksRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -1757,6 +1949,30 @@ export interface FileRoutesById {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v2/ai-ops': typeof V2AiOpsRoute
+  '/v2/api-keys': typeof V2ApiKeysRoute
+  '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
+  '/v2/approvals': typeof V2ApprovalsRoute
+  '/v2/audit': typeof V2AuditRoute
+  '/v2/copilot': typeof V2CopilotRoute
+  '/v2/customer-impact': typeof V2CustomerImpactRoute
+  '/v2/demo': typeof V2DemoRoute
+  '/v2/edi': typeof V2EdiRoute
+  '/v2/edi-transactions': typeof V2EdiTransactionsRoute
+  '/v2/enterprise': typeof V2EnterpriseRoute
+  '/v2/executive': typeof V2ExecutiveRoute
+  '/v2/feature-flags': typeof V2FeatureFlagsRoute
+  '/v2/integration-health': typeof V2IntegrationHealthRoute
+  '/v2/optimization': typeof V2OptimizationRoute
+  '/v2/overview': typeof V2OverviewRoute
+  '/v2/permissions': typeof V2PermissionsRoute
+  '/v2/portal': typeof V2PortalRoute
+  '/v2/reports': typeof V2ReportsRoute
+  '/v2/risk': typeof V2RiskRoute
+  '/v2/scope': typeof V2ScopeRoute
+  '/v2/security': typeof V2SecurityRoute
+  '/v2/suggested-drivers': typeof V2SuggestedDriversRoute
+  '/v2/webhooks': typeof V2WebhooksRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -1954,6 +2170,30 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v2/ai-ops'
+    | '/v2/api-keys'
+    | '/v2/api-marketplace'
+    | '/v2/approvals'
+    | '/v2/audit'
+    | '/v2/copilot'
+    | '/v2/customer-impact'
+    | '/v2/demo'
+    | '/v2/edi'
+    | '/v2/edi-transactions'
+    | '/v2/enterprise'
+    | '/v2/executive'
+    | '/v2/feature-flags'
+    | '/v2/integration-health'
+    | '/v2/optimization'
+    | '/v2/overview'
+    | '/v2/permissions'
+    | '/v2/portal'
+    | '/v2/reports'
+    | '/v2/risk'
+    | '/v2/scope'
+    | '/v2/security'
+    | '/v2/suggested-drivers'
+    | '/v2/webhooks'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -2149,6 +2389,30 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v2/ai-ops'
+    | '/v2/api-keys'
+    | '/v2/api-marketplace'
+    | '/v2/approvals'
+    | '/v2/audit'
+    | '/v2/copilot'
+    | '/v2/customer-impact'
+    | '/v2/demo'
+    | '/v2/edi'
+    | '/v2/edi-transactions'
+    | '/v2/enterprise'
+    | '/v2/executive'
+    | '/v2/feature-flags'
+    | '/v2/integration-health'
+    | '/v2/optimization'
+    | '/v2/overview'
+    | '/v2/permissions'
+    | '/v2/portal'
+    | '/v2/reports'
+    | '/v2/risk'
+    | '/v2/scope'
+    | '/v2/security'
+    | '/v2/suggested-drivers'
+    | '/v2/webhooks'
     | '/driver'
   id:
     | '__root__'
@@ -2344,6 +2608,30 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v2/ai-ops'
+    | '/v2/api-keys'
+    | '/v2/api-marketplace'
+    | '/v2/approvals'
+    | '/v2/audit'
+    | '/v2/copilot'
+    | '/v2/customer-impact'
+    | '/v2/demo'
+    | '/v2/edi'
+    | '/v2/edi-transactions'
+    | '/v2/enterprise'
+    | '/v2/executive'
+    | '/v2/feature-flags'
+    | '/v2/integration-health'
+    | '/v2/optimization'
+    | '/v2/overview'
+    | '/v2/permissions'
+    | '/v2/portal'
+    | '/v2/reports'
+    | '/v2/risk'
+    | '/v2/scope'
+    | '/v2/security'
+    | '/v2/suggested-drivers'
+    | '/v2/webhooks'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -2532,6 +2820,30 @@ export interface RootRouteChildren {
   V15SessionsRoute: typeof V15SessionsRoute
   V15StripeRoute: typeof V15StripeRoute
   V15WebhooksRoute: typeof V15WebhooksRoute
+  V2AiOpsRoute: typeof V2AiOpsRoute
+  V2ApiKeysRoute: typeof V2ApiKeysRoute
+  V2ApiMarketplaceRoute: typeof V2ApiMarketplaceRoute
+  V2ApprovalsRoute: typeof V2ApprovalsRoute
+  V2AuditRoute: typeof V2AuditRoute
+  V2CopilotRoute: typeof V2CopilotRoute
+  V2CustomerImpactRoute: typeof V2CustomerImpactRoute
+  V2DemoRoute: typeof V2DemoRoute
+  V2EdiRoute: typeof V2EdiRoute
+  V2EdiTransactionsRoute: typeof V2EdiTransactionsRoute
+  V2EnterpriseRoute: typeof V2EnterpriseRoute
+  V2ExecutiveRoute: typeof V2ExecutiveRoute
+  V2FeatureFlagsRoute: typeof V2FeatureFlagsRoute
+  V2IntegrationHealthRoute: typeof V2IntegrationHealthRoute
+  V2OptimizationRoute: typeof V2OptimizationRoute
+  V2OverviewRoute: typeof V2OverviewRoute
+  V2PermissionsRoute: typeof V2PermissionsRoute
+  V2PortalRoute: typeof V2PortalRoute
+  V2ReportsRoute: typeof V2ReportsRoute
+  V2RiskRoute: typeof V2RiskRoute
+  V2ScopeRoute: typeof V2ScopeRoute
+  V2SecurityRoute: typeof V2SecurityRoute
+  V2SuggestedDriversRoute: typeof V2SuggestedDriversRoute
+  V2WebhooksRoute: typeof V2WebhooksRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -2675,6 +2987,174 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/webhooks': {
+      id: '/v2/webhooks'
+      path: '/v2/webhooks'
+      fullPath: '/v2/webhooks'
+      preLoaderRoute: typeof V2WebhooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/suggested-drivers': {
+      id: '/v2/suggested-drivers'
+      path: '/v2/suggested-drivers'
+      fullPath: '/v2/suggested-drivers'
+      preLoaderRoute: typeof V2SuggestedDriversRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/security': {
+      id: '/v2/security'
+      path: '/v2/security'
+      fullPath: '/v2/security'
+      preLoaderRoute: typeof V2SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/scope': {
+      id: '/v2/scope'
+      path: '/v2/scope'
+      fullPath: '/v2/scope'
+      preLoaderRoute: typeof V2ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/risk': {
+      id: '/v2/risk'
+      path: '/v2/risk'
+      fullPath: '/v2/risk'
+      preLoaderRoute: typeof V2RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/reports': {
+      id: '/v2/reports'
+      path: '/v2/reports'
+      fullPath: '/v2/reports'
+      preLoaderRoute: typeof V2ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/portal': {
+      id: '/v2/portal'
+      path: '/v2/portal'
+      fullPath: '/v2/portal'
+      preLoaderRoute: typeof V2PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/permissions': {
+      id: '/v2/permissions'
+      path: '/v2/permissions'
+      fullPath: '/v2/permissions'
+      preLoaderRoute: typeof V2PermissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/overview': {
+      id: '/v2/overview'
+      path: '/v2/overview'
+      fullPath: '/v2/overview'
+      preLoaderRoute: typeof V2OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/optimization': {
+      id: '/v2/optimization'
+      path: '/v2/optimization'
+      fullPath: '/v2/optimization'
+      preLoaderRoute: typeof V2OptimizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/integration-health': {
+      id: '/v2/integration-health'
+      path: '/v2/integration-health'
+      fullPath: '/v2/integration-health'
+      preLoaderRoute: typeof V2IntegrationHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/feature-flags': {
+      id: '/v2/feature-flags'
+      path: '/v2/feature-flags'
+      fullPath: '/v2/feature-flags'
+      preLoaderRoute: typeof V2FeatureFlagsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/executive': {
+      id: '/v2/executive'
+      path: '/v2/executive'
+      fullPath: '/v2/executive'
+      preLoaderRoute: typeof V2ExecutiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/enterprise': {
+      id: '/v2/enterprise'
+      path: '/v2/enterprise'
+      fullPath: '/v2/enterprise'
+      preLoaderRoute: typeof V2EnterpriseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/edi-transactions': {
+      id: '/v2/edi-transactions'
+      path: '/v2/edi-transactions'
+      fullPath: '/v2/edi-transactions'
+      preLoaderRoute: typeof V2EdiTransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/edi': {
+      id: '/v2/edi'
+      path: '/v2/edi'
+      fullPath: '/v2/edi'
+      preLoaderRoute: typeof V2EdiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/demo': {
+      id: '/v2/demo'
+      path: '/v2/demo'
+      fullPath: '/v2/demo'
+      preLoaderRoute: typeof V2DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/customer-impact': {
+      id: '/v2/customer-impact'
+      path: '/v2/customer-impact'
+      fullPath: '/v2/customer-impact'
+      preLoaderRoute: typeof V2CustomerImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/copilot': {
+      id: '/v2/copilot'
+      path: '/v2/copilot'
+      fullPath: '/v2/copilot'
+      preLoaderRoute: typeof V2CopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/audit': {
+      id: '/v2/audit'
+      path: '/v2/audit'
+      fullPath: '/v2/audit'
+      preLoaderRoute: typeof V2AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/approvals': {
+      id: '/v2/approvals'
+      path: '/v2/approvals'
+      fullPath: '/v2/approvals'
+      preLoaderRoute: typeof V2ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/api-marketplace': {
+      id: '/v2/api-marketplace'
+      path: '/v2/api-marketplace'
+      fullPath: '/v2/api-marketplace'
+      preLoaderRoute: typeof V2ApiMarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/api-keys': {
+      id: '/v2/api-keys'
+      path: '/v2/api-keys'
+      fullPath: '/v2/api-keys'
+      preLoaderRoute: typeof V2ApiKeysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v2/ai-ops': {
+      id: '/v2/ai-ops'
+      path: '/v2/ai-ops'
+      fullPath: '/v2/ai-ops'
+      preLoaderRoute: typeof V2AiOpsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v15/webhooks': {
@@ -4129,6 +4609,30 @@ const rootRouteChildren: RootRouteChildren = {
   V15SessionsRoute: V15SessionsRoute,
   V15StripeRoute: V15StripeRoute,
   V15WebhooksRoute: V15WebhooksRoute,
+  V2AiOpsRoute: V2AiOpsRoute,
+  V2ApiKeysRoute: V2ApiKeysRoute,
+  V2ApiMarketplaceRoute: V2ApiMarketplaceRoute,
+  V2ApprovalsRoute: V2ApprovalsRoute,
+  V2AuditRoute: V2AuditRoute,
+  V2CopilotRoute: V2CopilotRoute,
+  V2CustomerImpactRoute: V2CustomerImpactRoute,
+  V2DemoRoute: V2DemoRoute,
+  V2EdiRoute: V2EdiRoute,
+  V2EdiTransactionsRoute: V2EdiTransactionsRoute,
+  V2EnterpriseRoute: V2EnterpriseRoute,
+  V2ExecutiveRoute: V2ExecutiveRoute,
+  V2FeatureFlagsRoute: V2FeatureFlagsRoute,
+  V2IntegrationHealthRoute: V2IntegrationHealthRoute,
+  V2OptimizationRoute: V2OptimizationRoute,
+  V2OverviewRoute: V2OverviewRoute,
+  V2PermissionsRoute: V2PermissionsRoute,
+  V2PortalRoute: V2PortalRoute,
+  V2ReportsRoute: V2ReportsRoute,
+  V2RiskRoute: V2RiskRoute,
+  V2ScopeRoute: V2ScopeRoute,
+  V2SecurityRoute: V2SecurityRoute,
+  V2SuggestedDriversRoute: V2SuggestedDriversRoute,
+  V2WebhooksRoute: V2WebhooksRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
