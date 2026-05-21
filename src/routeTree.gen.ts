@@ -29,6 +29,30 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V75SupportRouteImport } from './routes/v75.support'
+import { Route as V75ScopeRouteImport } from './routes/v75.scope'
+import { Route as V75RevenueReconRouteImport } from './routes/v75.revenue-recon'
+import { Route as V75ReportsRouteImport } from './routes/v75.reports'
+import { Route as V75RegulatedOnboardingRouteImport } from './routes/v75.regulated-onboarding'
+import { Route as V75RegionalRiskRouteImport } from './routes/v75.regional-risk'
+import { Route as V75RegionalMktRouteImport } from './routes/v75.regional-mkt'
+import { Route as V75PartnerLaunchRouteImport } from './routes/v75.partner-launch'
+import { Route as V75PartnerCertRouteImport } from './routes/v75.partner-cert'
+import { Route as V75OverviewRouteImport } from './routes/v75.overview'
+import { Route as V75MarketplaceDisciplineRouteImport } from './routes/v75.marketplace-discipline'
+import { Route as V75LaunchGovernanceRouteImport } from './routes/v75.launch-governance'
+import { Route as V75IntlCustomersRouteImport } from './routes/v75.intl-customers'
+import { Route as V75GlobalRevenueRouteImport } from './routes/v75.global-revenue'
+import { Route as V75FinancialAuditRouteImport } from './routes/v75.financial-audit'
+import { Route as V75ExpansionRouteImport } from './routes/v75.expansion'
+import { Route as V75DemoRouteImport } from './routes/v75.demo'
+import { Route as V75DataResidencyRouteImport } from './routes/v75.data-residency'
+import { Route as V75CrossBorderRouteImport } from './routes/v75.cross-border'
+import { Route as V75CountryPilotRouteImport } from './routes/v75.country-pilot'
+import { Route as V75CountryLaunchRouteImport } from './routes/v75.country-launch'
+import { Route as V75ControlPackRouteImport } from './routes/v75.control-pack'
+import { Route as V75ComplianceRouteImport } from './routes/v75.compliance'
+import { Route as V75CadenceRouteImport } from './routes/v75.cadence'
 import { Route as V7TrustSafetyRouteImport } from './routes/v7.trust-safety'
 import { Route as V7SupportModelRouteImport } from './routes/v7.support-model'
 import { Route as V7ScopeRouteImport } from './routes/v7.scope'
@@ -572,6 +596,127 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75SupportRoute = V75SupportRouteImport.update({
+  id: '/v75/support',
+  path: '/v75/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75ScopeRoute = V75ScopeRouteImport.update({
+  id: '/v75/scope',
+  path: '/v75/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75RevenueReconRoute = V75RevenueReconRouteImport.update({
+  id: '/v75/revenue-recon',
+  path: '/v75/revenue-recon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75ReportsRoute = V75ReportsRouteImport.update({
+  id: '/v75/reports',
+  path: '/v75/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75RegulatedOnboardingRoute = V75RegulatedOnboardingRouteImport.update({
+  id: '/v75/regulated-onboarding',
+  path: '/v75/regulated-onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75RegionalRiskRoute = V75RegionalRiskRouteImport.update({
+  id: '/v75/regional-risk',
+  path: '/v75/regional-risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75RegionalMktRoute = V75RegionalMktRouteImport.update({
+  id: '/v75/regional-mkt',
+  path: '/v75/regional-mkt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75PartnerLaunchRoute = V75PartnerLaunchRouteImport.update({
+  id: '/v75/partner-launch',
+  path: '/v75/partner-launch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75PartnerCertRoute = V75PartnerCertRouteImport.update({
+  id: '/v75/partner-cert',
+  path: '/v75/partner-cert',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75OverviewRoute = V75OverviewRouteImport.update({
+  id: '/v75/overview',
+  path: '/v75/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75MarketplaceDisciplineRoute =
+  V75MarketplaceDisciplineRouteImport.update({
+    id: '/v75/marketplace-discipline',
+    path: '/v75/marketplace-discipline',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const V75LaunchGovernanceRoute = V75LaunchGovernanceRouteImport.update({
+  id: '/v75/launch-governance',
+  path: '/v75/launch-governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75IntlCustomersRoute = V75IntlCustomersRouteImport.update({
+  id: '/v75/intl-customers',
+  path: '/v75/intl-customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75GlobalRevenueRoute = V75GlobalRevenueRouteImport.update({
+  id: '/v75/global-revenue',
+  path: '/v75/global-revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75FinancialAuditRoute = V75FinancialAuditRouteImport.update({
+  id: '/v75/financial-audit',
+  path: '/v75/financial-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75ExpansionRoute = V75ExpansionRouteImport.update({
+  id: '/v75/expansion',
+  path: '/v75/expansion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75DemoRoute = V75DemoRouteImport.update({
+  id: '/v75/demo',
+  path: '/v75/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75DataResidencyRoute = V75DataResidencyRouteImport.update({
+  id: '/v75/data-residency',
+  path: '/v75/data-residency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75CrossBorderRoute = V75CrossBorderRouteImport.update({
+  id: '/v75/cross-border',
+  path: '/v75/cross-border',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75CountryPilotRoute = V75CountryPilotRouteImport.update({
+  id: '/v75/country-pilot',
+  path: '/v75/country-pilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75CountryLaunchRoute = V75CountryLaunchRouteImport.update({
+  id: '/v75/country-launch',
+  path: '/v75/country-launch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75ControlPackRoute = V75ControlPackRouteImport.update({
+  id: '/v75/control-pack',
+  path: '/v75/control-pack',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75ComplianceRoute = V75ComplianceRouteImport.update({
+  id: '/v75/compliance',
+  path: '/v75/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V75CadenceRoute = V75CadenceRouteImport.update({
+  id: '/v75/cadence',
+  path: '/v75/cadence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V7TrustSafetyRoute = V7TrustSafetyRouteImport.update({
@@ -3265,6 +3410,30 @@ export interface FileRoutesByFullPath {
   '/v7/scope': typeof V7ScopeRoute
   '/v7/support-model': typeof V7SupportModelRoute
   '/v7/trust-safety': typeof V7TrustSafetyRoute
+  '/v75/cadence': typeof V75CadenceRoute
+  '/v75/compliance': typeof V75ComplianceRoute
+  '/v75/control-pack': typeof V75ControlPackRoute
+  '/v75/country-launch': typeof V75CountryLaunchRoute
+  '/v75/country-pilot': typeof V75CountryPilotRoute
+  '/v75/cross-border': typeof V75CrossBorderRoute
+  '/v75/data-residency': typeof V75DataResidencyRoute
+  '/v75/demo': typeof V75DemoRoute
+  '/v75/expansion': typeof V75ExpansionRoute
+  '/v75/financial-audit': typeof V75FinancialAuditRoute
+  '/v75/global-revenue': typeof V75GlobalRevenueRoute
+  '/v75/intl-customers': typeof V75IntlCustomersRoute
+  '/v75/launch-governance': typeof V75LaunchGovernanceRoute
+  '/v75/marketplace-discipline': typeof V75MarketplaceDisciplineRoute
+  '/v75/overview': typeof V75OverviewRoute
+  '/v75/partner-cert': typeof V75PartnerCertRoute
+  '/v75/partner-launch': typeof V75PartnerLaunchRoute
+  '/v75/regional-mkt': typeof V75RegionalMktRoute
+  '/v75/regional-risk': typeof V75RegionalRiskRoute
+  '/v75/regulated-onboarding': typeof V75RegulatedOnboardingRoute
+  '/v75/reports': typeof V75ReportsRoute
+  '/v75/revenue-recon': typeof V75RevenueReconRoute
+  '/v75/scope': typeof V75ScopeRoute
+  '/v75/support': typeof V75SupportRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -3731,6 +3900,30 @@ export interface FileRoutesByTo {
   '/v7/scope': typeof V7ScopeRoute
   '/v7/support-model': typeof V7SupportModelRoute
   '/v7/trust-safety': typeof V7TrustSafetyRoute
+  '/v75/cadence': typeof V75CadenceRoute
+  '/v75/compliance': typeof V75ComplianceRoute
+  '/v75/control-pack': typeof V75ControlPackRoute
+  '/v75/country-launch': typeof V75CountryLaunchRoute
+  '/v75/country-pilot': typeof V75CountryPilotRoute
+  '/v75/cross-border': typeof V75CrossBorderRoute
+  '/v75/data-residency': typeof V75DataResidencyRoute
+  '/v75/demo': typeof V75DemoRoute
+  '/v75/expansion': typeof V75ExpansionRoute
+  '/v75/financial-audit': typeof V75FinancialAuditRoute
+  '/v75/global-revenue': typeof V75GlobalRevenueRoute
+  '/v75/intl-customers': typeof V75IntlCustomersRoute
+  '/v75/launch-governance': typeof V75LaunchGovernanceRoute
+  '/v75/marketplace-discipline': typeof V75MarketplaceDisciplineRoute
+  '/v75/overview': typeof V75OverviewRoute
+  '/v75/partner-cert': typeof V75PartnerCertRoute
+  '/v75/partner-launch': typeof V75PartnerLaunchRoute
+  '/v75/regional-mkt': typeof V75RegionalMktRoute
+  '/v75/regional-risk': typeof V75RegionalRiskRoute
+  '/v75/regulated-onboarding': typeof V75RegulatedOnboardingRoute
+  '/v75/reports': typeof V75ReportsRoute
+  '/v75/revenue-recon': typeof V75RevenueReconRoute
+  '/v75/scope': typeof V75ScopeRoute
+  '/v75/support': typeof V75SupportRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -4198,6 +4391,30 @@ export interface FileRoutesById {
   '/v7/scope': typeof V7ScopeRoute
   '/v7/support-model': typeof V7SupportModelRoute
   '/v7/trust-safety': typeof V7TrustSafetyRoute
+  '/v75/cadence': typeof V75CadenceRoute
+  '/v75/compliance': typeof V75ComplianceRoute
+  '/v75/control-pack': typeof V75ControlPackRoute
+  '/v75/country-launch': typeof V75CountryLaunchRoute
+  '/v75/country-pilot': typeof V75CountryPilotRoute
+  '/v75/cross-border': typeof V75CrossBorderRoute
+  '/v75/data-residency': typeof V75DataResidencyRoute
+  '/v75/demo': typeof V75DemoRoute
+  '/v75/expansion': typeof V75ExpansionRoute
+  '/v75/financial-audit': typeof V75FinancialAuditRoute
+  '/v75/global-revenue': typeof V75GlobalRevenueRoute
+  '/v75/intl-customers': typeof V75IntlCustomersRoute
+  '/v75/launch-governance': typeof V75LaunchGovernanceRoute
+  '/v75/marketplace-discipline': typeof V75MarketplaceDisciplineRoute
+  '/v75/overview': typeof V75OverviewRoute
+  '/v75/partner-cert': typeof V75PartnerCertRoute
+  '/v75/partner-launch': typeof V75PartnerLaunchRoute
+  '/v75/regional-mkt': typeof V75RegionalMktRoute
+  '/v75/regional-risk': typeof V75RegionalRiskRoute
+  '/v75/regulated-onboarding': typeof V75RegulatedOnboardingRoute
+  '/v75/reports': typeof V75ReportsRoute
+  '/v75/revenue-recon': typeof V75RevenueReconRoute
+  '/v75/scope': typeof V75ScopeRoute
+  '/v75/support': typeof V75SupportRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -4666,6 +4883,30 @@ export interface FileRouteTypes {
     | '/v7/scope'
     | '/v7/support-model'
     | '/v7/trust-safety'
+    | '/v75/cadence'
+    | '/v75/compliance'
+    | '/v75/control-pack'
+    | '/v75/country-launch'
+    | '/v75/country-pilot'
+    | '/v75/cross-border'
+    | '/v75/data-residency'
+    | '/v75/demo'
+    | '/v75/expansion'
+    | '/v75/financial-audit'
+    | '/v75/global-revenue'
+    | '/v75/intl-customers'
+    | '/v75/launch-governance'
+    | '/v75/marketplace-discipline'
+    | '/v75/overview'
+    | '/v75/partner-cert'
+    | '/v75/partner-launch'
+    | '/v75/regional-mkt'
+    | '/v75/regional-risk'
+    | '/v75/regulated-onboarding'
+    | '/v75/reports'
+    | '/v75/revenue-recon'
+    | '/v75/scope'
+    | '/v75/support'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -5132,6 +5373,30 @@ export interface FileRouteTypes {
     | '/v7/scope'
     | '/v7/support-model'
     | '/v7/trust-safety'
+    | '/v75/cadence'
+    | '/v75/compliance'
+    | '/v75/control-pack'
+    | '/v75/country-launch'
+    | '/v75/country-pilot'
+    | '/v75/cross-border'
+    | '/v75/data-residency'
+    | '/v75/demo'
+    | '/v75/expansion'
+    | '/v75/financial-audit'
+    | '/v75/global-revenue'
+    | '/v75/intl-customers'
+    | '/v75/launch-governance'
+    | '/v75/marketplace-discipline'
+    | '/v75/overview'
+    | '/v75/partner-cert'
+    | '/v75/partner-launch'
+    | '/v75/regional-mkt'
+    | '/v75/regional-risk'
+    | '/v75/regulated-onboarding'
+    | '/v75/reports'
+    | '/v75/revenue-recon'
+    | '/v75/scope'
+    | '/v75/support'
     | '/driver'
   id:
     | '__root__'
@@ -5598,6 +5863,30 @@ export interface FileRouteTypes {
     | '/v7/scope'
     | '/v7/support-model'
     | '/v7/trust-safety'
+    | '/v75/cadence'
+    | '/v75/compliance'
+    | '/v75/control-pack'
+    | '/v75/country-launch'
+    | '/v75/country-pilot'
+    | '/v75/cross-border'
+    | '/v75/data-residency'
+    | '/v75/demo'
+    | '/v75/expansion'
+    | '/v75/financial-audit'
+    | '/v75/global-revenue'
+    | '/v75/intl-customers'
+    | '/v75/launch-governance'
+    | '/v75/marketplace-discipline'
+    | '/v75/overview'
+    | '/v75/partner-cert'
+    | '/v75/partner-launch'
+    | '/v75/regional-mkt'
+    | '/v75/regional-risk'
+    | '/v75/regulated-onboarding'
+    | '/v75/reports'
+    | '/v75/revenue-recon'
+    | '/v75/scope'
+    | '/v75/support'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -6057,6 +6346,30 @@ export interface RootRouteChildren {
   V7ScopeRoute: typeof V7ScopeRoute
   V7SupportModelRoute: typeof V7SupportModelRoute
   V7TrustSafetyRoute: typeof V7TrustSafetyRoute
+  V75CadenceRoute: typeof V75CadenceRoute
+  V75ComplianceRoute: typeof V75ComplianceRoute
+  V75ControlPackRoute: typeof V75ControlPackRoute
+  V75CountryLaunchRoute: typeof V75CountryLaunchRoute
+  V75CountryPilotRoute: typeof V75CountryPilotRoute
+  V75CrossBorderRoute: typeof V75CrossBorderRoute
+  V75DataResidencyRoute: typeof V75DataResidencyRoute
+  V75DemoRoute: typeof V75DemoRoute
+  V75ExpansionRoute: typeof V75ExpansionRoute
+  V75FinancialAuditRoute: typeof V75FinancialAuditRoute
+  V75GlobalRevenueRoute: typeof V75GlobalRevenueRoute
+  V75IntlCustomersRoute: typeof V75IntlCustomersRoute
+  V75LaunchGovernanceRoute: typeof V75LaunchGovernanceRoute
+  V75MarketplaceDisciplineRoute: typeof V75MarketplaceDisciplineRoute
+  V75OverviewRoute: typeof V75OverviewRoute
+  V75PartnerCertRoute: typeof V75PartnerCertRoute
+  V75PartnerLaunchRoute: typeof V75PartnerLaunchRoute
+  V75RegionalMktRoute: typeof V75RegionalMktRoute
+  V75RegionalRiskRoute: typeof V75RegionalRiskRoute
+  V75RegulatedOnboardingRoute: typeof V75RegulatedOnboardingRoute
+  V75ReportsRoute: typeof V75ReportsRoute
+  V75RevenueReconRoute: typeof V75RevenueReconRoute
+  V75ScopeRoute: typeof V75ScopeRoute
+  V75SupportRoute: typeof V75SupportRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -6200,6 +6513,174 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/support': {
+      id: '/v75/support'
+      path: '/v75/support'
+      fullPath: '/v75/support'
+      preLoaderRoute: typeof V75SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/scope': {
+      id: '/v75/scope'
+      path: '/v75/scope'
+      fullPath: '/v75/scope'
+      preLoaderRoute: typeof V75ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/revenue-recon': {
+      id: '/v75/revenue-recon'
+      path: '/v75/revenue-recon'
+      fullPath: '/v75/revenue-recon'
+      preLoaderRoute: typeof V75RevenueReconRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/reports': {
+      id: '/v75/reports'
+      path: '/v75/reports'
+      fullPath: '/v75/reports'
+      preLoaderRoute: typeof V75ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/regulated-onboarding': {
+      id: '/v75/regulated-onboarding'
+      path: '/v75/regulated-onboarding'
+      fullPath: '/v75/regulated-onboarding'
+      preLoaderRoute: typeof V75RegulatedOnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/regional-risk': {
+      id: '/v75/regional-risk'
+      path: '/v75/regional-risk'
+      fullPath: '/v75/regional-risk'
+      preLoaderRoute: typeof V75RegionalRiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/regional-mkt': {
+      id: '/v75/regional-mkt'
+      path: '/v75/regional-mkt'
+      fullPath: '/v75/regional-mkt'
+      preLoaderRoute: typeof V75RegionalMktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/partner-launch': {
+      id: '/v75/partner-launch'
+      path: '/v75/partner-launch'
+      fullPath: '/v75/partner-launch'
+      preLoaderRoute: typeof V75PartnerLaunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/partner-cert': {
+      id: '/v75/partner-cert'
+      path: '/v75/partner-cert'
+      fullPath: '/v75/partner-cert'
+      preLoaderRoute: typeof V75PartnerCertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/overview': {
+      id: '/v75/overview'
+      path: '/v75/overview'
+      fullPath: '/v75/overview'
+      preLoaderRoute: typeof V75OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/marketplace-discipline': {
+      id: '/v75/marketplace-discipline'
+      path: '/v75/marketplace-discipline'
+      fullPath: '/v75/marketplace-discipline'
+      preLoaderRoute: typeof V75MarketplaceDisciplineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/launch-governance': {
+      id: '/v75/launch-governance'
+      path: '/v75/launch-governance'
+      fullPath: '/v75/launch-governance'
+      preLoaderRoute: typeof V75LaunchGovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/intl-customers': {
+      id: '/v75/intl-customers'
+      path: '/v75/intl-customers'
+      fullPath: '/v75/intl-customers'
+      preLoaderRoute: typeof V75IntlCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/global-revenue': {
+      id: '/v75/global-revenue'
+      path: '/v75/global-revenue'
+      fullPath: '/v75/global-revenue'
+      preLoaderRoute: typeof V75GlobalRevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/financial-audit': {
+      id: '/v75/financial-audit'
+      path: '/v75/financial-audit'
+      fullPath: '/v75/financial-audit'
+      preLoaderRoute: typeof V75FinancialAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/expansion': {
+      id: '/v75/expansion'
+      path: '/v75/expansion'
+      fullPath: '/v75/expansion'
+      preLoaderRoute: typeof V75ExpansionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/demo': {
+      id: '/v75/demo'
+      path: '/v75/demo'
+      fullPath: '/v75/demo'
+      preLoaderRoute: typeof V75DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/data-residency': {
+      id: '/v75/data-residency'
+      path: '/v75/data-residency'
+      fullPath: '/v75/data-residency'
+      preLoaderRoute: typeof V75DataResidencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/cross-border': {
+      id: '/v75/cross-border'
+      path: '/v75/cross-border'
+      fullPath: '/v75/cross-border'
+      preLoaderRoute: typeof V75CrossBorderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/country-pilot': {
+      id: '/v75/country-pilot'
+      path: '/v75/country-pilot'
+      fullPath: '/v75/country-pilot'
+      preLoaderRoute: typeof V75CountryPilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/country-launch': {
+      id: '/v75/country-launch'
+      path: '/v75/country-launch'
+      fullPath: '/v75/country-launch'
+      preLoaderRoute: typeof V75CountryLaunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/control-pack': {
+      id: '/v75/control-pack'
+      path: '/v75/control-pack'
+      fullPath: '/v75/control-pack'
+      preLoaderRoute: typeof V75ControlPackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/compliance': {
+      id: '/v75/compliance'
+      path: '/v75/compliance'
+      fullPath: '/v75/compliance'
+      preLoaderRoute: typeof V75ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v75/cadence': {
+      id: '/v75/cadence'
+      path: '/v75/cadence'
+      fullPath: '/v75/cadence'
+      preLoaderRoute: typeof V75CadenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v7/trust-safety': {
@@ -9822,6 +10303,30 @@ const rootRouteChildren: RootRouteChildren = {
   V7ScopeRoute: V7ScopeRoute,
   V7SupportModelRoute: V7SupportModelRoute,
   V7TrustSafetyRoute: V7TrustSafetyRoute,
+  V75CadenceRoute: V75CadenceRoute,
+  V75ComplianceRoute: V75ComplianceRoute,
+  V75ControlPackRoute: V75ControlPackRoute,
+  V75CountryLaunchRoute: V75CountryLaunchRoute,
+  V75CountryPilotRoute: V75CountryPilotRoute,
+  V75CrossBorderRoute: V75CrossBorderRoute,
+  V75DataResidencyRoute: V75DataResidencyRoute,
+  V75DemoRoute: V75DemoRoute,
+  V75ExpansionRoute: V75ExpansionRoute,
+  V75FinancialAuditRoute: V75FinancialAuditRoute,
+  V75GlobalRevenueRoute: V75GlobalRevenueRoute,
+  V75IntlCustomersRoute: V75IntlCustomersRoute,
+  V75LaunchGovernanceRoute: V75LaunchGovernanceRoute,
+  V75MarketplaceDisciplineRoute: V75MarketplaceDisciplineRoute,
+  V75OverviewRoute: V75OverviewRoute,
+  V75PartnerCertRoute: V75PartnerCertRoute,
+  V75PartnerLaunchRoute: V75PartnerLaunchRoute,
+  V75RegionalMktRoute: V75RegionalMktRoute,
+  V75RegionalRiskRoute: V75RegionalRiskRoute,
+  V75RegulatedOnboardingRoute: V75RegulatedOnboardingRoute,
+  V75ReportsRoute: V75ReportsRoute,
+  V75RevenueReconRoute: V75RevenueReconRoute,
+  V75ScopeRoute: V75ScopeRoute,
+  V75SupportRoute: V75SupportRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
