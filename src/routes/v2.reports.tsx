@@ -4,7 +4,7 @@ import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { REPORTS } from "@/v2/data/mockPhase17";
+import { REPORTS, REPORT_FILTERS, REPORT_EXPORTS } from "@/v2/data/mockPhase17";
 
 export const Route = createFileRoute("/v2/reports")({
   head: () => ({ meta: [{ title: "Advanced Reports · Anderoute" }] }),
