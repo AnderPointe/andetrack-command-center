@@ -3,7 +3,7 @@ import { FileCheck2 } from "lucide-react";
 import { V5Page } from "@/components/v5/V5Page";
 import { SimpleTable, StatusPill } from "@/components/v5/ui-bits";
 import { Card } from "@/components/ui/card";
-import { SOC2_CONTROLS, SOC2_EXCEPTIONS } from "@/v5/data/mockPhase23";
+import { SOC2_CONTROLS, SOC2_EXCEPTIONS, SOC2_TREND } from "@/v5/data/mockPhase23";
 
 export const Route = createFileRoute("/v5/soc2")({
   head: () => ({ meta: [{ title: "SOC 2 Completion · Anderoute V5" }] }),
