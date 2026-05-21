@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ListChecks } from "lucide-react";
 import { V8Page } from "@/components/v8/V8Page";
-import { ExecBanner } from "@/components/v8/ui-bits";
+import { ExecBanner, OverlayStrip } from "@/components/v8/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useV8ExecHeadline } from "@/v8/hooks";
+import { useV8ExecHeadline, useV8ExecutionOverlays } from "@/v8/hooks";
 
 const STEPS = [
   { who: "CEO",            step: "Open Global Operating Network Scale Dashboard",         outcome: "Scale score 76 · USA active · Canada controlled pilot · Mexico planning · EU/UK research" },
@@ -25,16 +25,40 @@ const STEPS = [
   { who: "CEO",            step: "Generate Board Global Strategy Report",                 outcome: "12-section report with global priorities for next quarter" },
 ];
 
+const ROLE_GUIDANCE: { role: string; cls: string; titleCls: string; lines: string[] }[] = [
+  { role: "CEO",  cls: "border-violet-400/30 bg-violet-400/5",   titleCls: "text-violet-200",  lines: ["Hold scale > 75 through Canada pilot resolution", "Sign off board strategy report ahead of board"] },
+  { role: "COO",  cls: "border-sky-400/30 bg-sky-400/5",         titleCls: "text-sky-200",     lines: ["Close 2 open Canada executive decisions this week", "Re-baseline operating model after Q close"] },
+  { role: "CFO",  cls: "border-amber-400/30 bg-amber-400/5",     titleCls: "text-amber-200",   lines: ["Approve API overage control fix + re-test in 7d", "Confirm revenue recon placeholder framing in board pack"] },
+  { role: "CCO",  cls: "border-emerald-400/30 bg-emerald-400/5", titleCls: "text-emerald-200", lines: ["Resolve 1 critical compliance exception this week", "Schedule Canada mobile-evidence capture"] },
+];
+
 export const Route = createFileRoute("/v8/demo")({
   head: () => ({ meta: [{ title: "V8 Demo Flow · Anderoute" }] }),
   component: () => {
     const headline = useV8ExecHeadline();
+    const overlays = useV8ExecutionOverlays();
     return (
       <V8Page icon={<ListChecks className="size-6 text-violet-300" />} title="V8 Demo Flow — Canada controlled pilot"
-        blurb="17-step executive walkthrough of V8 global operating network scale: from global scale dashboard to country command to board report.">
+        blurb="17-step executive walkthrough of V8 global operating network scale: from global scale dashboard to country command to board report. Role-grouped guidance shows what each executive owns this week.">
         <ExecBanner h={headline} />
+
         <Card className="border-white/10 bg-white/[0.02] p-4">
-          <ol className="space-y-2 text-sm">
+          <h3 className="text-sm font-semibold">Role-specific guidance — this week</h3>
+          <div className="mt-2 grid gap-2 md:grid-cols-2 lg:grid-cols-4">
+            {ROLE_GUIDANCE.map((g) => (
+              <div key={g.role} className={`rounded-md border p-3 text-sm ${g.cls}`}>
+                <div className={`font-semibold ${g.titleCls}`}>{g.role}</div>
+                <ul className="mt-1 list-disc pl-4 text-xs text-muted-foreground">
+                  {g.lines.map((l) => <li key={l}>{l}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">17-step walkthrough</h3>
+          <ol className="mt-2 space-y-2 text-sm">
             {STEPS.map((s, i) => (
               <li key={i} className="grid grid-cols-[2rem_8rem_1fr_1fr] items-start gap-2 border-b border-white/5 pb-2 last:border-0">
                 <span className="text-muted-foreground">{i + 1}.</span>
@@ -45,6 +69,8 @@ export const Route = createFileRoute("/v8/demo")({
             ))}
           </ol>
         </Card>
+
+        <OverlayStrip items={overlays} title="Executive overlays — all V8 modules" />
       </V8Page>
     );
   },

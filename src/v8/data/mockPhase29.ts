@@ -409,3 +409,29 @@ export const V8_EXEC_HEADLINE = {
   ],
   next_decision: { who: "CEO + COO + CFO", what: "Approve Canada pilot extension + reefer carrier recruitment + API overage control fix", due: "this week" },
 };
+
+// Per-module executive overlays — role-specific framing that sits on top of
+// the underlying scoreboards. Mock-only; intent is to make each V8 surface
+// usable by the named role without re-deriving context.
+export const V8_EXECUTION_OVERLAYS = [
+  { area: "Global Operating Network Scale",  role: "CEO",        focus: "Hold scale > 75 while Canada pilot resolves",                    decision: "Approve pilot extension at next ops review" },
+  { area: "Country Operating Command",       role: "COO",        focus: "Canada health 79 — close 2 open executive decisions",            decision: "Lock reefer carrier owner this week" },
+  { area: "International Marketplace",       role: "Marketplace", focus: "ON corridor reefer coverage is the only red signal",            decision: "Fund 2 reefer carriers in ON before Q+1" },
+  { area: "Regional Marketplace Liquidity",  role: "Marketplace", focus: "Lane heatmap shows TX↔ON improving, ON↔QC thin",                decision: "Promote 1 carrier from pilot to verified" },
+  { area: "International Carrier Operations", role: "Carrier ops", focus: "ON Logistics under review — verify or revoke",                 decision: "Decision due Friday, owner: Carrier ops lead" },
+  { area: "Cross-Border Operating Controls", role: "Compliance",  focus: "Placeholder checklist — no production customs workflow yet",    decision: "Confirm scope boundary with CCO" },
+  { area: "Financial Control Maturity",      role: "CFO",        focus: "Maturity 71 — API overage control is the gating test",           decision: "Approve control fix + re-test in 7d" },
+  { area: "Revenue Reconciliation Maturity", role: "Finance",    focus: "26 unmatched events — ownership assigned, not yet GAAP",         decision: "Confirm placeholder framing in board pack" },
+  { area: "Global Billing & Usage",          role: "Billing ops", focus: "USA queue: 2 failed payments · CAD invoicing in placeholder",   decision: "Retry + dunning by EOW" },
+  { area: "Advanced Compliance Execution",   role: "CCO",        focus: "Owners + evidence + exceptions all tracked, 1 critical",         decision: "Resolve critical exception this week" },
+  { area: "Country Compliance Execution",    role: "CCO",        focus: "Canada: privacy + data residency in progress · AI gov passing",  decision: "Schedule mobile evidence capture" },
+  { area: "Global Customer Success",         role: "CS lead",    focus: "Cross-Pac Shipping at-risk · 4 expansion opportunities",         decision: "Save play on Cross-Pac before renewal" },
+  { area: "International Support Ops",       role: "Support",    focus: "SLA 88-96 across regions · 1 critical CA escalation",            decision: "Escalation review by close of day" },
+  { area: "Global Partner Operations",       role: "Partner",    focus: "US partners live · CA telematics in pilot · Quebec Fuel planning", decision: "Greenlight CA telematics verified state" },
+  { area: "Executive Strategic Governance",  role: "Exec team",  focus: "6 open decisions, oldest 9d — Canada pilot extension is top",    decision: "Close 3 oldest at Friday exec meeting" },
+  { area: "Board Global Strategy",           role: "CEO",        focus: "12-section report ready · global priorities for next quarter",   decision: "Sign off ahead of board" },
+  { area: "Global Risk & Control Center",    role: "Risk",       focus: "Top 3: country launch, compliance evidence, data residency",     decision: "Confirm mitigation owners for top 3" },
+  { area: "Global Product Adoption",         role: "CPO",        focus: "Canada adoption gaps: CoPilot, EDI, customer portal",            decision: "Add Canada-specific enablement plan" },
+  { area: "Regional Expansion Decision",     role: "Strategy",   focus: "Canada continue · Mexico continue planning · EU/UK defer",       decision: "Document defer rationale in next memo" },
+  { area: "Long-Term Operating Model",       role: "COO",        focus: "Maturity 73 · 13 areas with owners + cadence locked",            decision: "Re-baseline after Q close" },
+];

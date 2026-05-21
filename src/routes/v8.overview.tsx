@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Gauge } from "lucide-react";
 import { V8Page } from "@/components/v8/V8Page";
-import { ScoreCard, KpiGrid, ExecBanner, SimpleTable, StatusPill } from "@/components/v8/ui-bits";
+import { ScoreCard, KpiGrid, ExecBanner, SimpleTable, StatusPill, OverlayStrip } from "@/components/v8/ui-bits";
 import { Card } from "@/components/ui/card";
 import {
   useV8Scope, useGlobalOperatingNetworkScale, useFinancialControlMaturity,
   useAdvancedComplianceExecution, useExecutiveStrategicGovernance, useV8ExecHeadline,
+  useV8ExecutionOverlays,
 } from "@/v8/hooks";
 
 export const Route = createFileRoute("/v8/overview")({
@@ -17,6 +18,8 @@ export const Route = createFileRoute("/v8/overview")({
     const { summary: comp } = useAdvancedComplianceExecution();
     const { summary: dec } = useExecutiveStrategicGovernance();
     const headline = useV8ExecHeadline();
+    const overlays = useV8ExecutionOverlays();
+    const topOverlays = overlays.slice(0, 6);
     return (
       <V8Page icon={<Gauge className="size-6 text-violet-300" />} title="Anderoute V8 — Global Operating Network Scale"
         blurb="Country-level operating execution, mature financial controls, international marketplace operations, advanced compliance execution, global partner & customer success, executive strategic governance. No final audit / compliance / autonomous claims.">
@@ -49,6 +52,7 @@ export const Route = createFileRoute("/v8/overview")({
             { key: "notes",  label: "Notes" },
           ]} />
         </Card>
+        <OverlayStrip items={topOverlays} title="Executive overlays — top 6" />
         <Card className="border-white/10 bg-white/[0.02] p-4 text-sm">
           <h2 className="font-semibold">Jump in</h2>
           <ul className="mt-2 grid gap-1 text-muted-foreground md:grid-cols-3">
