@@ -14,7 +14,7 @@ export const Route = createFileRoute("/v8/network-scale")({
         blurb="Active countries, regions, customers, drivers, carriers, marketplace, API/EDI, mobile, CoPilot, support, and revenue — at platform scale.">
         <div className="grid gap-3 md:grid-cols-4">
           <ScoreCard label="Scale score" value={scale.score} tone="sky" />
-          <ScoreCard label="Trend Δ" value={`+${scale.trend_pts}`} tone="emerald" />
+          <ScoreCard label="Trend Δ pts" value={scale.trend_pts} tone="emerald" />
           <ScoreCard label="Countries active" value={scale.countries_active} tone="emerald" />
           <ScoreCard label="Countries in motion" value={scale.countries_pilot + scale.countries_planning + scale.countries_research} tone="amber" />
         </div>

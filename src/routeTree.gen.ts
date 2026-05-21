@@ -29,6 +29,30 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V8SupportOpsRouteImport } from './routes/v8.support-ops'
+import { Route as V8ScopeRouteImport } from './routes/v8.scope'
+import { Route as V8RiskControlRouteImport } from './routes/v8.risk-control'
+import { Route as V8RevenueReconRouteImport } from './routes/v8.revenue-recon'
+import { Route as V8ReportsRouteImport } from './routes/v8.reports'
+import { Route as V8RegionalLiquidityRouteImport } from './routes/v8.regional-liquidity'
+import { Route as V8PartnerOpsRouteImport } from './routes/v8.partner-ops'
+import { Route as V8OverviewRouteImport } from './routes/v8.overview'
+import { Route as V8OperatingModelRouteImport } from './routes/v8.operating-model'
+import { Route as V8NetworkScaleRouteImport } from './routes/v8.network-scale'
+import { Route as V8IntlMarketplaceRouteImport } from './routes/v8.intl-marketplace'
+import { Route as V8GovernanceRouteImport } from './routes/v8.governance'
+import { Route as V8FinancialMaturityRouteImport } from './routes/v8.financial-maturity'
+import { Route as V8ExpansionDecisionRouteImport } from './routes/v8.expansion-decision'
+import { Route as V8DemoRouteImport } from './routes/v8.demo'
+import { Route as V8CustomerSuccessRouteImport } from './routes/v8.customer-success'
+import { Route as V8CrossBorderRouteImport } from './routes/v8.cross-border'
+import { Route as V8CountryComplianceRouteImport } from './routes/v8.country-compliance'
+import { Route as V8CountryCommandRouteImport } from './routes/v8.country-command'
+import { Route as V8ComplianceRouteImport } from './routes/v8.compliance'
+import { Route as V8CarrierOpsRouteImport } from './routes/v8.carrier-ops'
+import { Route as V8BoardReportRouteImport } from './routes/v8.board-report'
+import { Route as V8BillingControlsRouteImport } from './routes/v8.billing-controls'
+import { Route as V8AdoptionRouteImport } from './routes/v8.adoption'
 import { Route as V75SupportRouteImport } from './routes/v75.support'
 import { Route as V75ScopeRouteImport } from './routes/v75.scope'
 import { Route as V75RevenueReconRouteImport } from './routes/v75.revenue-recon'
@@ -596,6 +620,126 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8SupportOpsRoute = V8SupportOpsRouteImport.update({
+  id: '/v8/support-ops',
+  path: '/v8/support-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8ScopeRoute = V8ScopeRouteImport.update({
+  id: '/v8/scope',
+  path: '/v8/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8RiskControlRoute = V8RiskControlRouteImport.update({
+  id: '/v8/risk-control',
+  path: '/v8/risk-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8RevenueReconRoute = V8RevenueReconRouteImport.update({
+  id: '/v8/revenue-recon',
+  path: '/v8/revenue-recon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8ReportsRoute = V8ReportsRouteImport.update({
+  id: '/v8/reports',
+  path: '/v8/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8RegionalLiquidityRoute = V8RegionalLiquidityRouteImport.update({
+  id: '/v8/regional-liquidity',
+  path: '/v8/regional-liquidity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8PartnerOpsRoute = V8PartnerOpsRouteImport.update({
+  id: '/v8/partner-ops',
+  path: '/v8/partner-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8OverviewRoute = V8OverviewRouteImport.update({
+  id: '/v8/overview',
+  path: '/v8/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8OperatingModelRoute = V8OperatingModelRouteImport.update({
+  id: '/v8/operating-model',
+  path: '/v8/operating-model',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8NetworkScaleRoute = V8NetworkScaleRouteImport.update({
+  id: '/v8/network-scale',
+  path: '/v8/network-scale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8IntlMarketplaceRoute = V8IntlMarketplaceRouteImport.update({
+  id: '/v8/intl-marketplace',
+  path: '/v8/intl-marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8GovernanceRoute = V8GovernanceRouteImport.update({
+  id: '/v8/governance',
+  path: '/v8/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8FinancialMaturityRoute = V8FinancialMaturityRouteImport.update({
+  id: '/v8/financial-maturity',
+  path: '/v8/financial-maturity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8ExpansionDecisionRoute = V8ExpansionDecisionRouteImport.update({
+  id: '/v8/expansion-decision',
+  path: '/v8/expansion-decision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8DemoRoute = V8DemoRouteImport.update({
+  id: '/v8/demo',
+  path: '/v8/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8CustomerSuccessRoute = V8CustomerSuccessRouteImport.update({
+  id: '/v8/customer-success',
+  path: '/v8/customer-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8CrossBorderRoute = V8CrossBorderRouteImport.update({
+  id: '/v8/cross-border',
+  path: '/v8/cross-border',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8CountryComplianceRoute = V8CountryComplianceRouteImport.update({
+  id: '/v8/country-compliance',
+  path: '/v8/country-compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8CountryCommandRoute = V8CountryCommandRouteImport.update({
+  id: '/v8/country-command',
+  path: '/v8/country-command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8ComplianceRoute = V8ComplianceRouteImport.update({
+  id: '/v8/compliance',
+  path: '/v8/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8CarrierOpsRoute = V8CarrierOpsRouteImport.update({
+  id: '/v8/carrier-ops',
+  path: '/v8/carrier-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8BoardReportRoute = V8BoardReportRouteImport.update({
+  id: '/v8/board-report',
+  path: '/v8/board-report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8BillingControlsRoute = V8BillingControlsRouteImport.update({
+  id: '/v8/billing-controls',
+  path: '/v8/billing-controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V8AdoptionRoute = V8AdoptionRouteImport.update({
+  id: '/v8/adoption',
+  path: '/v8/adoption',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V75SupportRoute = V75SupportRouteImport.update({
@@ -3434,6 +3578,30 @@ export interface FileRoutesByFullPath {
   '/v75/revenue-recon': typeof V75RevenueReconRoute
   '/v75/scope': typeof V75ScopeRoute
   '/v75/support': typeof V75SupportRoute
+  '/v8/adoption': typeof V8AdoptionRoute
+  '/v8/billing-controls': typeof V8BillingControlsRoute
+  '/v8/board-report': typeof V8BoardReportRoute
+  '/v8/carrier-ops': typeof V8CarrierOpsRoute
+  '/v8/compliance': typeof V8ComplianceRoute
+  '/v8/country-command': typeof V8CountryCommandRoute
+  '/v8/country-compliance': typeof V8CountryComplianceRoute
+  '/v8/cross-border': typeof V8CrossBorderRoute
+  '/v8/customer-success': typeof V8CustomerSuccessRoute
+  '/v8/demo': typeof V8DemoRoute
+  '/v8/expansion-decision': typeof V8ExpansionDecisionRoute
+  '/v8/financial-maturity': typeof V8FinancialMaturityRoute
+  '/v8/governance': typeof V8GovernanceRoute
+  '/v8/intl-marketplace': typeof V8IntlMarketplaceRoute
+  '/v8/network-scale': typeof V8NetworkScaleRoute
+  '/v8/operating-model': typeof V8OperatingModelRoute
+  '/v8/overview': typeof V8OverviewRoute
+  '/v8/partner-ops': typeof V8PartnerOpsRoute
+  '/v8/regional-liquidity': typeof V8RegionalLiquidityRoute
+  '/v8/reports': typeof V8ReportsRoute
+  '/v8/revenue-recon': typeof V8RevenueReconRoute
+  '/v8/risk-control': typeof V8RiskControlRoute
+  '/v8/scope': typeof V8ScopeRoute
+  '/v8/support-ops': typeof V8SupportOpsRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -3924,6 +4092,30 @@ export interface FileRoutesByTo {
   '/v75/revenue-recon': typeof V75RevenueReconRoute
   '/v75/scope': typeof V75ScopeRoute
   '/v75/support': typeof V75SupportRoute
+  '/v8/adoption': typeof V8AdoptionRoute
+  '/v8/billing-controls': typeof V8BillingControlsRoute
+  '/v8/board-report': typeof V8BoardReportRoute
+  '/v8/carrier-ops': typeof V8CarrierOpsRoute
+  '/v8/compliance': typeof V8ComplianceRoute
+  '/v8/country-command': typeof V8CountryCommandRoute
+  '/v8/country-compliance': typeof V8CountryComplianceRoute
+  '/v8/cross-border': typeof V8CrossBorderRoute
+  '/v8/customer-success': typeof V8CustomerSuccessRoute
+  '/v8/demo': typeof V8DemoRoute
+  '/v8/expansion-decision': typeof V8ExpansionDecisionRoute
+  '/v8/financial-maturity': typeof V8FinancialMaturityRoute
+  '/v8/governance': typeof V8GovernanceRoute
+  '/v8/intl-marketplace': typeof V8IntlMarketplaceRoute
+  '/v8/network-scale': typeof V8NetworkScaleRoute
+  '/v8/operating-model': typeof V8OperatingModelRoute
+  '/v8/overview': typeof V8OverviewRoute
+  '/v8/partner-ops': typeof V8PartnerOpsRoute
+  '/v8/regional-liquidity': typeof V8RegionalLiquidityRoute
+  '/v8/reports': typeof V8ReportsRoute
+  '/v8/revenue-recon': typeof V8RevenueReconRoute
+  '/v8/risk-control': typeof V8RiskControlRoute
+  '/v8/scope': typeof V8ScopeRoute
+  '/v8/support-ops': typeof V8SupportOpsRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -4415,6 +4607,30 @@ export interface FileRoutesById {
   '/v75/revenue-recon': typeof V75RevenueReconRoute
   '/v75/scope': typeof V75ScopeRoute
   '/v75/support': typeof V75SupportRoute
+  '/v8/adoption': typeof V8AdoptionRoute
+  '/v8/billing-controls': typeof V8BillingControlsRoute
+  '/v8/board-report': typeof V8BoardReportRoute
+  '/v8/carrier-ops': typeof V8CarrierOpsRoute
+  '/v8/compliance': typeof V8ComplianceRoute
+  '/v8/country-command': typeof V8CountryCommandRoute
+  '/v8/country-compliance': typeof V8CountryComplianceRoute
+  '/v8/cross-border': typeof V8CrossBorderRoute
+  '/v8/customer-success': typeof V8CustomerSuccessRoute
+  '/v8/demo': typeof V8DemoRoute
+  '/v8/expansion-decision': typeof V8ExpansionDecisionRoute
+  '/v8/financial-maturity': typeof V8FinancialMaturityRoute
+  '/v8/governance': typeof V8GovernanceRoute
+  '/v8/intl-marketplace': typeof V8IntlMarketplaceRoute
+  '/v8/network-scale': typeof V8NetworkScaleRoute
+  '/v8/operating-model': typeof V8OperatingModelRoute
+  '/v8/overview': typeof V8OverviewRoute
+  '/v8/partner-ops': typeof V8PartnerOpsRoute
+  '/v8/regional-liquidity': typeof V8RegionalLiquidityRoute
+  '/v8/reports': typeof V8ReportsRoute
+  '/v8/revenue-recon': typeof V8RevenueReconRoute
+  '/v8/risk-control': typeof V8RiskControlRoute
+  '/v8/scope': typeof V8ScopeRoute
+  '/v8/support-ops': typeof V8SupportOpsRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -4907,6 +5123,30 @@ export interface FileRouteTypes {
     | '/v75/revenue-recon'
     | '/v75/scope'
     | '/v75/support'
+    | '/v8/adoption'
+    | '/v8/billing-controls'
+    | '/v8/board-report'
+    | '/v8/carrier-ops'
+    | '/v8/compliance'
+    | '/v8/country-command'
+    | '/v8/country-compliance'
+    | '/v8/cross-border'
+    | '/v8/customer-success'
+    | '/v8/demo'
+    | '/v8/expansion-decision'
+    | '/v8/financial-maturity'
+    | '/v8/governance'
+    | '/v8/intl-marketplace'
+    | '/v8/network-scale'
+    | '/v8/operating-model'
+    | '/v8/overview'
+    | '/v8/partner-ops'
+    | '/v8/regional-liquidity'
+    | '/v8/reports'
+    | '/v8/revenue-recon'
+    | '/v8/risk-control'
+    | '/v8/scope'
+    | '/v8/support-ops'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -5397,6 +5637,30 @@ export interface FileRouteTypes {
     | '/v75/revenue-recon'
     | '/v75/scope'
     | '/v75/support'
+    | '/v8/adoption'
+    | '/v8/billing-controls'
+    | '/v8/board-report'
+    | '/v8/carrier-ops'
+    | '/v8/compliance'
+    | '/v8/country-command'
+    | '/v8/country-compliance'
+    | '/v8/cross-border'
+    | '/v8/customer-success'
+    | '/v8/demo'
+    | '/v8/expansion-decision'
+    | '/v8/financial-maturity'
+    | '/v8/governance'
+    | '/v8/intl-marketplace'
+    | '/v8/network-scale'
+    | '/v8/operating-model'
+    | '/v8/overview'
+    | '/v8/partner-ops'
+    | '/v8/regional-liquidity'
+    | '/v8/reports'
+    | '/v8/revenue-recon'
+    | '/v8/risk-control'
+    | '/v8/scope'
+    | '/v8/support-ops'
     | '/driver'
   id:
     | '__root__'
@@ -5887,6 +6151,30 @@ export interface FileRouteTypes {
     | '/v75/revenue-recon'
     | '/v75/scope'
     | '/v75/support'
+    | '/v8/adoption'
+    | '/v8/billing-controls'
+    | '/v8/board-report'
+    | '/v8/carrier-ops'
+    | '/v8/compliance'
+    | '/v8/country-command'
+    | '/v8/country-compliance'
+    | '/v8/cross-border'
+    | '/v8/customer-success'
+    | '/v8/demo'
+    | '/v8/expansion-decision'
+    | '/v8/financial-maturity'
+    | '/v8/governance'
+    | '/v8/intl-marketplace'
+    | '/v8/network-scale'
+    | '/v8/operating-model'
+    | '/v8/overview'
+    | '/v8/partner-ops'
+    | '/v8/regional-liquidity'
+    | '/v8/reports'
+    | '/v8/revenue-recon'
+    | '/v8/risk-control'
+    | '/v8/scope'
+    | '/v8/support-ops'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -6370,6 +6658,30 @@ export interface RootRouteChildren {
   V75RevenueReconRoute: typeof V75RevenueReconRoute
   V75ScopeRoute: typeof V75ScopeRoute
   V75SupportRoute: typeof V75SupportRoute
+  V8AdoptionRoute: typeof V8AdoptionRoute
+  V8BillingControlsRoute: typeof V8BillingControlsRoute
+  V8BoardReportRoute: typeof V8BoardReportRoute
+  V8CarrierOpsRoute: typeof V8CarrierOpsRoute
+  V8ComplianceRoute: typeof V8ComplianceRoute
+  V8CountryCommandRoute: typeof V8CountryCommandRoute
+  V8CountryComplianceRoute: typeof V8CountryComplianceRoute
+  V8CrossBorderRoute: typeof V8CrossBorderRoute
+  V8CustomerSuccessRoute: typeof V8CustomerSuccessRoute
+  V8DemoRoute: typeof V8DemoRoute
+  V8ExpansionDecisionRoute: typeof V8ExpansionDecisionRoute
+  V8FinancialMaturityRoute: typeof V8FinancialMaturityRoute
+  V8GovernanceRoute: typeof V8GovernanceRoute
+  V8IntlMarketplaceRoute: typeof V8IntlMarketplaceRoute
+  V8NetworkScaleRoute: typeof V8NetworkScaleRoute
+  V8OperatingModelRoute: typeof V8OperatingModelRoute
+  V8OverviewRoute: typeof V8OverviewRoute
+  V8PartnerOpsRoute: typeof V8PartnerOpsRoute
+  V8RegionalLiquidityRoute: typeof V8RegionalLiquidityRoute
+  V8ReportsRoute: typeof V8ReportsRoute
+  V8RevenueReconRoute: typeof V8RevenueReconRoute
+  V8RiskControlRoute: typeof V8RiskControlRoute
+  V8ScopeRoute: typeof V8ScopeRoute
+  V8SupportOpsRoute: typeof V8SupportOpsRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -6513,6 +6825,174 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/support-ops': {
+      id: '/v8/support-ops'
+      path: '/v8/support-ops'
+      fullPath: '/v8/support-ops'
+      preLoaderRoute: typeof V8SupportOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/scope': {
+      id: '/v8/scope'
+      path: '/v8/scope'
+      fullPath: '/v8/scope'
+      preLoaderRoute: typeof V8ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/risk-control': {
+      id: '/v8/risk-control'
+      path: '/v8/risk-control'
+      fullPath: '/v8/risk-control'
+      preLoaderRoute: typeof V8RiskControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/revenue-recon': {
+      id: '/v8/revenue-recon'
+      path: '/v8/revenue-recon'
+      fullPath: '/v8/revenue-recon'
+      preLoaderRoute: typeof V8RevenueReconRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/reports': {
+      id: '/v8/reports'
+      path: '/v8/reports'
+      fullPath: '/v8/reports'
+      preLoaderRoute: typeof V8ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/regional-liquidity': {
+      id: '/v8/regional-liquidity'
+      path: '/v8/regional-liquidity'
+      fullPath: '/v8/regional-liquidity'
+      preLoaderRoute: typeof V8RegionalLiquidityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/partner-ops': {
+      id: '/v8/partner-ops'
+      path: '/v8/partner-ops'
+      fullPath: '/v8/partner-ops'
+      preLoaderRoute: typeof V8PartnerOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/overview': {
+      id: '/v8/overview'
+      path: '/v8/overview'
+      fullPath: '/v8/overview'
+      preLoaderRoute: typeof V8OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/operating-model': {
+      id: '/v8/operating-model'
+      path: '/v8/operating-model'
+      fullPath: '/v8/operating-model'
+      preLoaderRoute: typeof V8OperatingModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/network-scale': {
+      id: '/v8/network-scale'
+      path: '/v8/network-scale'
+      fullPath: '/v8/network-scale'
+      preLoaderRoute: typeof V8NetworkScaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/intl-marketplace': {
+      id: '/v8/intl-marketplace'
+      path: '/v8/intl-marketplace'
+      fullPath: '/v8/intl-marketplace'
+      preLoaderRoute: typeof V8IntlMarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/governance': {
+      id: '/v8/governance'
+      path: '/v8/governance'
+      fullPath: '/v8/governance'
+      preLoaderRoute: typeof V8GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/financial-maturity': {
+      id: '/v8/financial-maturity'
+      path: '/v8/financial-maturity'
+      fullPath: '/v8/financial-maturity'
+      preLoaderRoute: typeof V8FinancialMaturityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/expansion-decision': {
+      id: '/v8/expansion-decision'
+      path: '/v8/expansion-decision'
+      fullPath: '/v8/expansion-decision'
+      preLoaderRoute: typeof V8ExpansionDecisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/demo': {
+      id: '/v8/demo'
+      path: '/v8/demo'
+      fullPath: '/v8/demo'
+      preLoaderRoute: typeof V8DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/customer-success': {
+      id: '/v8/customer-success'
+      path: '/v8/customer-success'
+      fullPath: '/v8/customer-success'
+      preLoaderRoute: typeof V8CustomerSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/cross-border': {
+      id: '/v8/cross-border'
+      path: '/v8/cross-border'
+      fullPath: '/v8/cross-border'
+      preLoaderRoute: typeof V8CrossBorderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/country-compliance': {
+      id: '/v8/country-compliance'
+      path: '/v8/country-compliance'
+      fullPath: '/v8/country-compliance'
+      preLoaderRoute: typeof V8CountryComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/country-command': {
+      id: '/v8/country-command'
+      path: '/v8/country-command'
+      fullPath: '/v8/country-command'
+      preLoaderRoute: typeof V8CountryCommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/compliance': {
+      id: '/v8/compliance'
+      path: '/v8/compliance'
+      fullPath: '/v8/compliance'
+      preLoaderRoute: typeof V8ComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/carrier-ops': {
+      id: '/v8/carrier-ops'
+      path: '/v8/carrier-ops'
+      fullPath: '/v8/carrier-ops'
+      preLoaderRoute: typeof V8CarrierOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/board-report': {
+      id: '/v8/board-report'
+      path: '/v8/board-report'
+      fullPath: '/v8/board-report'
+      preLoaderRoute: typeof V8BoardReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/billing-controls': {
+      id: '/v8/billing-controls'
+      path: '/v8/billing-controls'
+      fullPath: '/v8/billing-controls'
+      preLoaderRoute: typeof V8BillingControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v8/adoption': {
+      id: '/v8/adoption'
+      path: '/v8/adoption'
+      fullPath: '/v8/adoption'
+      preLoaderRoute: typeof V8AdoptionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v75/support': {
@@ -10327,6 +10807,30 @@ const rootRouteChildren: RootRouteChildren = {
   V75RevenueReconRoute: V75RevenueReconRoute,
   V75ScopeRoute: V75ScopeRoute,
   V75SupportRoute: V75SupportRoute,
+  V8AdoptionRoute: V8AdoptionRoute,
+  V8BillingControlsRoute: V8BillingControlsRoute,
+  V8BoardReportRoute: V8BoardReportRoute,
+  V8CarrierOpsRoute: V8CarrierOpsRoute,
+  V8ComplianceRoute: V8ComplianceRoute,
+  V8CountryCommandRoute: V8CountryCommandRoute,
+  V8CountryComplianceRoute: V8CountryComplianceRoute,
+  V8CrossBorderRoute: V8CrossBorderRoute,
+  V8CustomerSuccessRoute: V8CustomerSuccessRoute,
+  V8DemoRoute: V8DemoRoute,
+  V8ExpansionDecisionRoute: V8ExpansionDecisionRoute,
+  V8FinancialMaturityRoute: V8FinancialMaturityRoute,
+  V8GovernanceRoute: V8GovernanceRoute,
+  V8IntlMarketplaceRoute: V8IntlMarketplaceRoute,
+  V8NetworkScaleRoute: V8NetworkScaleRoute,
+  V8OperatingModelRoute: V8OperatingModelRoute,
+  V8OverviewRoute: V8OverviewRoute,
+  V8PartnerOpsRoute: V8PartnerOpsRoute,
+  V8RegionalLiquidityRoute: V8RegionalLiquidityRoute,
+  V8ReportsRoute: V8ReportsRoute,
+  V8RevenueReconRoute: V8RevenueReconRoute,
+  V8RiskControlRoute: V8RiskControlRoute,
+  V8ScopeRoute: V8ScopeRoute,
+  V8SupportOpsRoute: V8SupportOpsRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
