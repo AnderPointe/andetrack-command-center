@@ -1,48 +1,33 @@
 # Phase 16 — V1.5 plan
 
-Phase 16 moves V1.1 from "prepared" to "in production" along the three
-levers Phase 15 deliberately deferred: real navigation, real billing
-revenue, and smarter CoPilot.
+V1.5 moves Anderoute from V1.1 production growth into real navigation provider
+implementation, production billing launch, basic webhook integrations, and
+smarter rules-based CoPilot. Routes live under `/v15/*`.
 
-## Themes
+## In scope
+- Navigation provider abstraction (mock, Mapbox, Google, HERE/Trimble placeholders)
+- Route session tracking, route line rendering, ETA sync, reroute placeholder
+- Provider health dashboard
+- Billing production: Stripe checkout + customer portal sessions, subscription enforcement, usage meters
+- Plan limits and feature gates
+- Basic integrations + webhook starter (HMAC signed, retry policy)
+- CoPilot V1.5 operational rules (still rules-based, smarter context)
+- Driver navigation V1.5 UI, dispatcher route visibility, customer portal V1.5
+- Paid customer operations, V1.5 reports, V1.5 security review
 
-1. **Real navigation SDK in production** — turn on Mapbox Navigation SDK
-   for ≥50% of active drivers behind a per-company feature flag. Native
-   turn-by-turn + reroute. Truck restriction validation deferred to V2.
-2. **Billing in production** — Stripe live mode. Auto-collect monthly.
-   Dunning emails. Past-due → soft suspension after grace.
-3. **Basic integrations** — outbound webhooks for load lifecycle events,
-   inbound REST for load creation, signed via HMAC. No marketplace yet.
-4. **CoPilot intelligence** — replace rules with Lovable AI Gateway
-   (`google/gemini-2.5-flash`) using operational context from V1.1.
-   Keep rules engine as fallback when LLM is unavailable.
-5. **Mobile polish** — battery / background tracking improvements;
-   notification reliability ≥98%; offline queue UX hardened.
-6. **Customer growth** — onboard customers #4-#6 on V1.5; formalize the
-   onboarding template defined in Phase 15.
+## Deferred (out of V1.5)
+Full turn-by-turn native voice, background native navigation, Android Auto,
+CarPlay, full EDI, API marketplace, advanced predictive AI, SOC 2 automation.
 
-## Explicit non-goals (defer to V2)
+## Schema additions
+See `docs/phase16-schema.sql`.
 
-- Full EDI
-- API marketplace
-- Full predictive AI / optimization engine
-- Android Auto / CarPlay
-- White-label custom domains
-- SOC 2 automation
+## RLS examples
+See `docs/phase16-rls.sql`.
 
-## Entry criteria from Phase 15
+## Edge functions
+See `docs/phase16-edge-function-plan.md`.
 
-- V1.1 readiness ≥ 85%
-- ≥ 1 paying customer live on V1.1
-- Notification delivery ≥ 97%
-- All V1.1 security review controls cleared
-- CSV imports used by at least one production customer
-
-## Exit criteria
-
-- ≥ 3 paying customers live on V1.5
-- Real navigation SDK active for ≥ 50% of active drivers
-- Stripe live billing collects monthly with < 5% dunning rate
-- Notification delivery ≥ 98%
-- CoPilot LLM responses ≥ 90% rated useful by dispatchers
-- Phase 17 plan defined (V2 intelligence + integrations expansion)
+## Phase 17
+See `docs/phase17-plan.md` — V2 AI Operations Intelligence, optimization engine,
+EDI beta, API marketplace beta, advanced reporting, enterprise controls.

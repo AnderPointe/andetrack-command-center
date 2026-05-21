@@ -29,6 +29,29 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V15WebhooksRouteImport } from './routes/v15.webhooks'
+import { Route as V15StripeRouteImport } from './routes/v15.stripe'
+import { Route as V15SessionsRouteImport } from './routes/v15.sessions'
+import { Route as V15SecurityRouteImport } from './routes/v15.security'
+import { Route as V15ScopeRouteImport } from './routes/v15.scope'
+import { Route as V15RerouteRouteImport } from './routes/v15.reroute'
+import { Route as V15ReportsRouteImport } from './routes/v15.reports'
+import { Route as V15RenderingRouteImport } from './routes/v15.rendering'
+import { Route as V15ProviderHealthRouteImport } from './routes/v15.provider-health'
+import { Route as V15PortalRouteImport } from './routes/v15.portal'
+import { Route as V15PlanLimitsRouteImport } from './routes/v15.plan-limits'
+import { Route as V15PaidCustomersRouteImport } from './routes/v15.paid-customers'
+import { Route as V15OverviewRouteImport } from './routes/v15.overview'
+import { Route as V15NavigationRouteImport } from './routes/v15.navigation'
+import { Route as V15MapboxRouteImport } from './routes/v15.mapbox'
+import { Route as V15IntegrationsRouteImport } from './routes/v15.integrations'
+import { Route as V15GoogleRouteImport } from './routes/v15.google'
+import { Route as V15EtaSyncRouteImport } from './routes/v15.eta-sync'
+import { Route as V15DriverNavRouteImport } from './routes/v15.driver-nav'
+import { Route as V15DispatcherRoutesRouteImport } from './routes/v15.dispatcher-routes'
+import { Route as V15DemoRouteImport } from './routes/v15.demo'
+import { Route as V15CopilotRouteImport } from './routes/v15.copilot'
+import { Route as V15BillingRouteImport } from './routes/v15.billing'
 import { Route as V11SupportRouteImport } from './routes/v11.support'
 import { Route as V11StripeRouteImport } from './routes/v11.stripe'
 import { Route as V11SecurityRouteImport } from './routes/v11.security'
@@ -278,6 +301,121 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15WebhooksRoute = V15WebhooksRouteImport.update({
+  id: '/v15/webhooks',
+  path: '/v15/webhooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15StripeRoute = V15StripeRouteImport.update({
+  id: '/v15/stripe',
+  path: '/v15/stripe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15SessionsRoute = V15SessionsRouteImport.update({
+  id: '/v15/sessions',
+  path: '/v15/sessions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15SecurityRoute = V15SecurityRouteImport.update({
+  id: '/v15/security',
+  path: '/v15/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15ScopeRoute = V15ScopeRouteImport.update({
+  id: '/v15/scope',
+  path: '/v15/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15RerouteRoute = V15RerouteRouteImport.update({
+  id: '/v15/reroute',
+  path: '/v15/reroute',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15ReportsRoute = V15ReportsRouteImport.update({
+  id: '/v15/reports',
+  path: '/v15/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15RenderingRoute = V15RenderingRouteImport.update({
+  id: '/v15/rendering',
+  path: '/v15/rendering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15ProviderHealthRoute = V15ProviderHealthRouteImport.update({
+  id: '/v15/provider-health',
+  path: '/v15/provider-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15PortalRoute = V15PortalRouteImport.update({
+  id: '/v15/portal',
+  path: '/v15/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15PlanLimitsRoute = V15PlanLimitsRouteImport.update({
+  id: '/v15/plan-limits',
+  path: '/v15/plan-limits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15PaidCustomersRoute = V15PaidCustomersRouteImport.update({
+  id: '/v15/paid-customers',
+  path: '/v15/paid-customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15OverviewRoute = V15OverviewRouteImport.update({
+  id: '/v15/overview',
+  path: '/v15/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15NavigationRoute = V15NavigationRouteImport.update({
+  id: '/v15/navigation',
+  path: '/v15/navigation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15MapboxRoute = V15MapboxRouteImport.update({
+  id: '/v15/mapbox',
+  path: '/v15/mapbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15IntegrationsRoute = V15IntegrationsRouteImport.update({
+  id: '/v15/integrations',
+  path: '/v15/integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15GoogleRoute = V15GoogleRouteImport.update({
+  id: '/v15/google',
+  path: '/v15/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15EtaSyncRoute = V15EtaSyncRouteImport.update({
+  id: '/v15/eta-sync',
+  path: '/v15/eta-sync',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15DriverNavRoute = V15DriverNavRouteImport.update({
+  id: '/v15/driver-nav',
+  path: '/v15/driver-nav',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15DispatcherRoutesRoute = V15DispatcherRoutesRouteImport.update({
+  id: '/v15/dispatcher-routes',
+  path: '/v15/dispatcher-routes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15DemoRoute = V15DemoRouteImport.update({
+  id: '/v15/demo',
+  path: '/v15/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15CopilotRoute = V15CopilotRouteImport.update({
+  id: '/v15/copilot',
+  path: '/v15/copilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15BillingRoute = V15BillingRouteImport.update({
+  id: '/v15/billing',
+  path: '/v15/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V11SupportRoute = V11SupportRouteImport.update({
@@ -1205,6 +1343,29 @@ export interface FileRoutesByFullPath {
   '/v11/security': typeof V11SecurityRoute
   '/v11/stripe': typeof V11StripeRoute
   '/v11/support': typeof V11SupportRoute
+  '/v15/billing': typeof V15BillingRoute
+  '/v15/copilot': typeof V15CopilotRoute
+  '/v15/demo': typeof V15DemoRoute
+  '/v15/dispatcher-routes': typeof V15DispatcherRoutesRoute
+  '/v15/driver-nav': typeof V15DriverNavRoute
+  '/v15/eta-sync': typeof V15EtaSyncRoute
+  '/v15/google': typeof V15GoogleRoute
+  '/v15/integrations': typeof V15IntegrationsRoute
+  '/v15/mapbox': typeof V15MapboxRoute
+  '/v15/navigation': typeof V15NavigationRoute
+  '/v15/overview': typeof V15OverviewRoute
+  '/v15/paid-customers': typeof V15PaidCustomersRoute
+  '/v15/plan-limits': typeof V15PlanLimitsRoute
+  '/v15/portal': typeof V15PortalRoute
+  '/v15/provider-health': typeof V15ProviderHealthRoute
+  '/v15/rendering': typeof V15RenderingRoute
+  '/v15/reports': typeof V15ReportsRoute
+  '/v15/reroute': typeof V15RerouteRoute
+  '/v15/scope': typeof V15ScopeRoute
+  '/v15/security': typeof V15SecurityRoute
+  '/v15/sessions': typeof V15SessionsRoute
+  '/v15/stripe': typeof V15StripeRoute
+  '/v15/webhooks': typeof V15WebhooksRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -1377,6 +1538,29 @@ export interface FileRoutesByTo {
   '/v11/security': typeof V11SecurityRoute
   '/v11/stripe': typeof V11StripeRoute
   '/v11/support': typeof V11SupportRoute
+  '/v15/billing': typeof V15BillingRoute
+  '/v15/copilot': typeof V15CopilotRoute
+  '/v15/demo': typeof V15DemoRoute
+  '/v15/dispatcher-routes': typeof V15DispatcherRoutesRoute
+  '/v15/driver-nav': typeof V15DriverNavRoute
+  '/v15/eta-sync': typeof V15EtaSyncRoute
+  '/v15/google': typeof V15GoogleRoute
+  '/v15/integrations': typeof V15IntegrationsRoute
+  '/v15/mapbox': typeof V15MapboxRoute
+  '/v15/navigation': typeof V15NavigationRoute
+  '/v15/overview': typeof V15OverviewRoute
+  '/v15/paid-customers': typeof V15PaidCustomersRoute
+  '/v15/plan-limits': typeof V15PlanLimitsRoute
+  '/v15/portal': typeof V15PortalRoute
+  '/v15/provider-health': typeof V15ProviderHealthRoute
+  '/v15/rendering': typeof V15RenderingRoute
+  '/v15/reports': typeof V15ReportsRoute
+  '/v15/reroute': typeof V15RerouteRoute
+  '/v15/scope': typeof V15ScopeRoute
+  '/v15/security': typeof V15SecurityRoute
+  '/v15/sessions': typeof V15SessionsRoute
+  '/v15/stripe': typeof V15StripeRoute
+  '/v15/webhooks': typeof V15WebhooksRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -1550,6 +1734,29 @@ export interface FileRoutesById {
   '/v11/security': typeof V11SecurityRoute
   '/v11/stripe': typeof V11StripeRoute
   '/v11/support': typeof V11SupportRoute
+  '/v15/billing': typeof V15BillingRoute
+  '/v15/copilot': typeof V15CopilotRoute
+  '/v15/demo': typeof V15DemoRoute
+  '/v15/dispatcher-routes': typeof V15DispatcherRoutesRoute
+  '/v15/driver-nav': typeof V15DriverNavRoute
+  '/v15/eta-sync': typeof V15EtaSyncRoute
+  '/v15/google': typeof V15GoogleRoute
+  '/v15/integrations': typeof V15IntegrationsRoute
+  '/v15/mapbox': typeof V15MapboxRoute
+  '/v15/navigation': typeof V15NavigationRoute
+  '/v15/overview': typeof V15OverviewRoute
+  '/v15/paid-customers': typeof V15PaidCustomersRoute
+  '/v15/plan-limits': typeof V15PlanLimitsRoute
+  '/v15/portal': typeof V15PortalRoute
+  '/v15/provider-health': typeof V15ProviderHealthRoute
+  '/v15/rendering': typeof V15RenderingRoute
+  '/v15/reports': typeof V15ReportsRoute
+  '/v15/reroute': typeof V15RerouteRoute
+  '/v15/scope': typeof V15ScopeRoute
+  '/v15/security': typeof V15SecurityRoute
+  '/v15/sessions': typeof V15SessionsRoute
+  '/v15/stripe': typeof V15StripeRoute
+  '/v15/webhooks': typeof V15WebhooksRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -1724,6 +1931,29 @@ export interface FileRouteTypes {
     | '/v11/security'
     | '/v11/stripe'
     | '/v11/support'
+    | '/v15/billing'
+    | '/v15/copilot'
+    | '/v15/demo'
+    | '/v15/dispatcher-routes'
+    | '/v15/driver-nav'
+    | '/v15/eta-sync'
+    | '/v15/google'
+    | '/v15/integrations'
+    | '/v15/mapbox'
+    | '/v15/navigation'
+    | '/v15/overview'
+    | '/v15/paid-customers'
+    | '/v15/plan-limits'
+    | '/v15/portal'
+    | '/v15/provider-health'
+    | '/v15/rendering'
+    | '/v15/reports'
+    | '/v15/reroute'
+    | '/v15/scope'
+    | '/v15/security'
+    | '/v15/sessions'
+    | '/v15/stripe'
+    | '/v15/webhooks'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -1896,6 +2126,29 @@ export interface FileRouteTypes {
     | '/v11/security'
     | '/v11/stripe'
     | '/v11/support'
+    | '/v15/billing'
+    | '/v15/copilot'
+    | '/v15/demo'
+    | '/v15/dispatcher-routes'
+    | '/v15/driver-nav'
+    | '/v15/eta-sync'
+    | '/v15/google'
+    | '/v15/integrations'
+    | '/v15/mapbox'
+    | '/v15/navigation'
+    | '/v15/overview'
+    | '/v15/paid-customers'
+    | '/v15/plan-limits'
+    | '/v15/portal'
+    | '/v15/provider-health'
+    | '/v15/rendering'
+    | '/v15/reports'
+    | '/v15/reroute'
+    | '/v15/scope'
+    | '/v15/security'
+    | '/v15/sessions'
+    | '/v15/stripe'
+    | '/v15/webhooks'
     | '/driver'
   id:
     | '__root__'
@@ -2068,6 +2321,29 @@ export interface FileRouteTypes {
     | '/v11/security'
     | '/v11/stripe'
     | '/v11/support'
+    | '/v15/billing'
+    | '/v15/copilot'
+    | '/v15/demo'
+    | '/v15/dispatcher-routes'
+    | '/v15/driver-nav'
+    | '/v15/eta-sync'
+    | '/v15/google'
+    | '/v15/integrations'
+    | '/v15/mapbox'
+    | '/v15/navigation'
+    | '/v15/overview'
+    | '/v15/paid-customers'
+    | '/v15/plan-limits'
+    | '/v15/portal'
+    | '/v15/provider-health'
+    | '/v15/rendering'
+    | '/v15/reports'
+    | '/v15/reroute'
+    | '/v15/scope'
+    | '/v15/security'
+    | '/v15/sessions'
+    | '/v15/stripe'
+    | '/v15/webhooks'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -2233,6 +2509,29 @@ export interface RootRouteChildren {
   V11SecurityRoute: typeof V11SecurityRoute
   V11StripeRoute: typeof V11StripeRoute
   V11SupportRoute: typeof V11SupportRoute
+  V15BillingRoute: typeof V15BillingRoute
+  V15CopilotRoute: typeof V15CopilotRoute
+  V15DemoRoute: typeof V15DemoRoute
+  V15DispatcherRoutesRoute: typeof V15DispatcherRoutesRoute
+  V15DriverNavRoute: typeof V15DriverNavRoute
+  V15EtaSyncRoute: typeof V15EtaSyncRoute
+  V15GoogleRoute: typeof V15GoogleRoute
+  V15IntegrationsRoute: typeof V15IntegrationsRoute
+  V15MapboxRoute: typeof V15MapboxRoute
+  V15NavigationRoute: typeof V15NavigationRoute
+  V15OverviewRoute: typeof V15OverviewRoute
+  V15PaidCustomersRoute: typeof V15PaidCustomersRoute
+  V15PlanLimitsRoute: typeof V15PlanLimitsRoute
+  V15PortalRoute: typeof V15PortalRoute
+  V15ProviderHealthRoute: typeof V15ProviderHealthRoute
+  V15RenderingRoute: typeof V15RenderingRoute
+  V15ReportsRoute: typeof V15ReportsRoute
+  V15RerouteRoute: typeof V15RerouteRoute
+  V15ScopeRoute: typeof V15ScopeRoute
+  V15SecurityRoute: typeof V15SecurityRoute
+  V15SessionsRoute: typeof V15SessionsRoute
+  V15StripeRoute: typeof V15StripeRoute
+  V15WebhooksRoute: typeof V15WebhooksRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -2376,6 +2675,167 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/webhooks': {
+      id: '/v15/webhooks'
+      path: '/v15/webhooks'
+      fullPath: '/v15/webhooks'
+      preLoaderRoute: typeof V15WebhooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/stripe': {
+      id: '/v15/stripe'
+      path: '/v15/stripe'
+      fullPath: '/v15/stripe'
+      preLoaderRoute: typeof V15StripeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/sessions': {
+      id: '/v15/sessions'
+      path: '/v15/sessions'
+      fullPath: '/v15/sessions'
+      preLoaderRoute: typeof V15SessionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/security': {
+      id: '/v15/security'
+      path: '/v15/security'
+      fullPath: '/v15/security'
+      preLoaderRoute: typeof V15SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/scope': {
+      id: '/v15/scope'
+      path: '/v15/scope'
+      fullPath: '/v15/scope'
+      preLoaderRoute: typeof V15ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/reroute': {
+      id: '/v15/reroute'
+      path: '/v15/reroute'
+      fullPath: '/v15/reroute'
+      preLoaderRoute: typeof V15RerouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/reports': {
+      id: '/v15/reports'
+      path: '/v15/reports'
+      fullPath: '/v15/reports'
+      preLoaderRoute: typeof V15ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/rendering': {
+      id: '/v15/rendering'
+      path: '/v15/rendering'
+      fullPath: '/v15/rendering'
+      preLoaderRoute: typeof V15RenderingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/provider-health': {
+      id: '/v15/provider-health'
+      path: '/v15/provider-health'
+      fullPath: '/v15/provider-health'
+      preLoaderRoute: typeof V15ProviderHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/portal': {
+      id: '/v15/portal'
+      path: '/v15/portal'
+      fullPath: '/v15/portal'
+      preLoaderRoute: typeof V15PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/plan-limits': {
+      id: '/v15/plan-limits'
+      path: '/v15/plan-limits'
+      fullPath: '/v15/plan-limits'
+      preLoaderRoute: typeof V15PlanLimitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/paid-customers': {
+      id: '/v15/paid-customers'
+      path: '/v15/paid-customers'
+      fullPath: '/v15/paid-customers'
+      preLoaderRoute: typeof V15PaidCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/overview': {
+      id: '/v15/overview'
+      path: '/v15/overview'
+      fullPath: '/v15/overview'
+      preLoaderRoute: typeof V15OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/navigation': {
+      id: '/v15/navigation'
+      path: '/v15/navigation'
+      fullPath: '/v15/navigation'
+      preLoaderRoute: typeof V15NavigationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/mapbox': {
+      id: '/v15/mapbox'
+      path: '/v15/mapbox'
+      fullPath: '/v15/mapbox'
+      preLoaderRoute: typeof V15MapboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/integrations': {
+      id: '/v15/integrations'
+      path: '/v15/integrations'
+      fullPath: '/v15/integrations'
+      preLoaderRoute: typeof V15IntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/google': {
+      id: '/v15/google'
+      path: '/v15/google'
+      fullPath: '/v15/google'
+      preLoaderRoute: typeof V15GoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/eta-sync': {
+      id: '/v15/eta-sync'
+      path: '/v15/eta-sync'
+      fullPath: '/v15/eta-sync'
+      preLoaderRoute: typeof V15EtaSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/driver-nav': {
+      id: '/v15/driver-nav'
+      path: '/v15/driver-nav'
+      fullPath: '/v15/driver-nav'
+      preLoaderRoute: typeof V15DriverNavRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/dispatcher-routes': {
+      id: '/v15/dispatcher-routes'
+      path: '/v15/dispatcher-routes'
+      fullPath: '/v15/dispatcher-routes'
+      preLoaderRoute: typeof V15DispatcherRoutesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/demo': {
+      id: '/v15/demo'
+      path: '/v15/demo'
+      fullPath: '/v15/demo'
+      preLoaderRoute: typeof V15DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/copilot': {
+      id: '/v15/copilot'
+      path: '/v15/copilot'
+      fullPath: '/v15/copilot'
+      preLoaderRoute: typeof V15CopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/billing': {
+      id: '/v15/billing'
+      path: '/v15/billing'
+      fullPath: '/v15/billing'
+      preLoaderRoute: typeof V15BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v11/support': {
@@ -3646,18 +4106,31 @@ const rootRouteChildren: RootRouteChildren = {
   V11SecurityRoute: V11SecurityRoute,
   V11StripeRoute: V11StripeRoute,
   V11SupportRoute: V11SupportRoute,
+  V15BillingRoute: V15BillingRoute,
+  V15CopilotRoute: V15CopilotRoute,
+  V15DemoRoute: V15DemoRoute,
+  V15DispatcherRoutesRoute: V15DispatcherRoutesRoute,
+  V15DriverNavRoute: V15DriverNavRoute,
+  V15EtaSyncRoute: V15EtaSyncRoute,
+  V15GoogleRoute: V15GoogleRoute,
+  V15IntegrationsRoute: V15IntegrationsRoute,
+  V15MapboxRoute: V15MapboxRoute,
+  V15NavigationRoute: V15NavigationRoute,
+  V15OverviewRoute: V15OverviewRoute,
+  V15PaidCustomersRoute: V15PaidCustomersRoute,
+  V15PlanLimitsRoute: V15PlanLimitsRoute,
+  V15PortalRoute: V15PortalRoute,
+  V15ProviderHealthRoute: V15ProviderHealthRoute,
+  V15RenderingRoute: V15RenderingRoute,
+  V15ReportsRoute: V15ReportsRoute,
+  V15RerouteRoute: V15RerouteRoute,
+  V15ScopeRoute: V15ScopeRoute,
+  V15SecurityRoute: V15SecurityRoute,
+  V15SessionsRoute: V15SessionsRoute,
+  V15StripeRoute: V15StripeRoute,
+  V15WebhooksRoute: V15WebhooksRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
