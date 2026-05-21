@@ -29,6 +29,31 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V5TrustSafetyRouteImport } from './routes/v5.trust-safety'
+import { Route as V5SupportRouteImport } from './routes/v5.support'
+import { Route as V5SupplyDemandRouteImport } from './routes/v5.supply-demand'
+import { Route as V5Soc2RouteImport } from './routes/v5.soc2'
+import { Route as V5ScopeRouteImport } from './routes/v5.scope'
+import { Route as V5RevenueOpsRouteImport } from './routes/v5.revenue-ops'
+import { Route as V5ReportsRouteImport } from './routes/v5.reports'
+import { Route as V5PartnershipsRouteImport } from './routes/v5.partnerships'
+import { Route as V5PartnerEcosystemRouteImport } from './routes/v5.partner-ecosystem'
+import { Route as V5OverviewRouteImport } from './routes/v5.overview'
+import { Route as V5OperatingMetricsRouteImport } from './routes/v5.operating-metrics'
+import { Route as V5NationalOpsRouteImport } from './routes/v5.national-ops'
+import { Route as V5MaturityRouteImport } from './routes/v5.maturity'
+import { Route as V5LiquidityRouteImport } from './routes/v5.liquidity'
+import { Route as V5LaneCoverageRouteImport } from './routes/v5.lane-coverage'
+import { Route as V5GrowthRouteImport } from './routes/v5.growth'
+import { Route as V5GovernanceRouteImport } from './routes/v5.governance'
+import { Route as V5DemoRouteImport } from './routes/v5.demo'
+import { Route as V5DataRoomRouteImport } from './routes/v5.data-room'
+import { Route as V5CustomerSuccessRouteImport } from './routes/v5.customer-success'
+import { Route as V5CompetitiveRouteImport } from './routes/v5.competitive'
+import { Route as V5CertificationRouteImport } from './routes/v5.certification'
+import { Route as V5CategoryRouteImport } from './routes/v5.category'
+import { Route as V5CarrierQualityRouteImport } from './routes/v5.carrier-quality'
+import { Route as V5BoardRouteImport } from './routes/v5.board'
 import { Route as V45SupportRouteImport } from './routes/v45.support'
 import { Route as V45Soc2RouteImport } from './routes/v45.soc2'
 import { Route as V45ScopeRouteImport } from './routes/v45.scope'
@@ -448,6 +473,131 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5TrustSafetyRoute = V5TrustSafetyRouteImport.update({
+  id: '/v5/trust-safety',
+  path: '/v5/trust-safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5SupportRoute = V5SupportRouteImport.update({
+  id: '/v5/support',
+  path: '/v5/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5SupplyDemandRoute = V5SupplyDemandRouteImport.update({
+  id: '/v5/supply-demand',
+  path: '/v5/supply-demand',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5Soc2Route = V5Soc2RouteImport.update({
+  id: '/v5/soc2',
+  path: '/v5/soc2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5ScopeRoute = V5ScopeRouteImport.update({
+  id: '/v5/scope',
+  path: '/v5/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5RevenueOpsRoute = V5RevenueOpsRouteImport.update({
+  id: '/v5/revenue-ops',
+  path: '/v5/revenue-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5ReportsRoute = V5ReportsRouteImport.update({
+  id: '/v5/reports',
+  path: '/v5/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5PartnershipsRoute = V5PartnershipsRouteImport.update({
+  id: '/v5/partnerships',
+  path: '/v5/partnerships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5PartnerEcosystemRoute = V5PartnerEcosystemRouteImport.update({
+  id: '/v5/partner-ecosystem',
+  path: '/v5/partner-ecosystem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5OverviewRoute = V5OverviewRouteImport.update({
+  id: '/v5/overview',
+  path: '/v5/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5OperatingMetricsRoute = V5OperatingMetricsRouteImport.update({
+  id: '/v5/operating-metrics',
+  path: '/v5/operating-metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5NationalOpsRoute = V5NationalOpsRouteImport.update({
+  id: '/v5/national-ops',
+  path: '/v5/national-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5MaturityRoute = V5MaturityRouteImport.update({
+  id: '/v5/maturity',
+  path: '/v5/maturity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5LiquidityRoute = V5LiquidityRouteImport.update({
+  id: '/v5/liquidity',
+  path: '/v5/liquidity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5LaneCoverageRoute = V5LaneCoverageRouteImport.update({
+  id: '/v5/lane-coverage',
+  path: '/v5/lane-coverage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5GrowthRoute = V5GrowthRouteImport.update({
+  id: '/v5/growth',
+  path: '/v5/growth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5GovernanceRoute = V5GovernanceRouteImport.update({
+  id: '/v5/governance',
+  path: '/v5/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5DemoRoute = V5DemoRouteImport.update({
+  id: '/v5/demo',
+  path: '/v5/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5DataRoomRoute = V5DataRoomRouteImport.update({
+  id: '/v5/data-room',
+  path: '/v5/data-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5CustomerSuccessRoute = V5CustomerSuccessRouteImport.update({
+  id: '/v5/customer-success',
+  path: '/v5/customer-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5CompetitiveRoute = V5CompetitiveRouteImport.update({
+  id: '/v5/competitive',
+  path: '/v5/competitive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5CertificationRoute = V5CertificationRouteImport.update({
+  id: '/v5/certification',
+  path: '/v5/certification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5CategoryRoute = V5CategoryRouteImport.update({
+  id: '/v5/category',
+  path: '/v5/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5CarrierQualityRoute = V5CarrierQualityRouteImport.update({
+  id: '/v5/carrier-quality',
+  path: '/v5/carrier-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V5BoardRoute = V5BoardRouteImport.update({
+  id: '/v5/board',
+  path: '/v5/board',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V45SupportRoute = V45SupportRouteImport.update({
@@ -2397,6 +2547,31 @@ export interface FileRoutesByFullPath {
   '/v45/scope': typeof V45ScopeRoute
   '/v45/soc2': typeof V45Soc2Route
   '/v45/support': typeof V45SupportRoute
+  '/v5/board': typeof V5BoardRoute
+  '/v5/carrier-quality': typeof V5CarrierQualityRoute
+  '/v5/category': typeof V5CategoryRoute
+  '/v5/certification': typeof V5CertificationRoute
+  '/v5/competitive': typeof V5CompetitiveRoute
+  '/v5/customer-success': typeof V5CustomerSuccessRoute
+  '/v5/data-room': typeof V5DataRoomRoute
+  '/v5/demo': typeof V5DemoRoute
+  '/v5/governance': typeof V5GovernanceRoute
+  '/v5/growth': typeof V5GrowthRoute
+  '/v5/lane-coverage': typeof V5LaneCoverageRoute
+  '/v5/liquidity': typeof V5LiquidityRoute
+  '/v5/maturity': typeof V5MaturityRoute
+  '/v5/national-ops': typeof V5NationalOpsRoute
+  '/v5/operating-metrics': typeof V5OperatingMetricsRoute
+  '/v5/overview': typeof V5OverviewRoute
+  '/v5/partner-ecosystem': typeof V5PartnerEcosystemRoute
+  '/v5/partnerships': typeof V5PartnershipsRoute
+  '/v5/reports': typeof V5ReportsRoute
+  '/v5/revenue-ops': typeof V5RevenueOpsRoute
+  '/v5/scope': typeof V5ScopeRoute
+  '/v5/soc2': typeof V5Soc2Route
+  '/v5/supply-demand': typeof V5SupplyDemandRoute
+  '/v5/support': typeof V5SupportRoute
+  '/v5/trust-safety': typeof V5TrustSafetyRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -2739,6 +2914,31 @@ export interface FileRoutesByTo {
   '/v45/scope': typeof V45ScopeRoute
   '/v45/soc2': typeof V45Soc2Route
   '/v45/support': typeof V45SupportRoute
+  '/v5/board': typeof V5BoardRoute
+  '/v5/carrier-quality': typeof V5CarrierQualityRoute
+  '/v5/category': typeof V5CategoryRoute
+  '/v5/certification': typeof V5CertificationRoute
+  '/v5/competitive': typeof V5CompetitiveRoute
+  '/v5/customer-success': typeof V5CustomerSuccessRoute
+  '/v5/data-room': typeof V5DataRoomRoute
+  '/v5/demo': typeof V5DemoRoute
+  '/v5/governance': typeof V5GovernanceRoute
+  '/v5/growth': typeof V5GrowthRoute
+  '/v5/lane-coverage': typeof V5LaneCoverageRoute
+  '/v5/liquidity': typeof V5LiquidityRoute
+  '/v5/maturity': typeof V5MaturityRoute
+  '/v5/national-ops': typeof V5NationalOpsRoute
+  '/v5/operating-metrics': typeof V5OperatingMetricsRoute
+  '/v5/overview': typeof V5OverviewRoute
+  '/v5/partner-ecosystem': typeof V5PartnerEcosystemRoute
+  '/v5/partnerships': typeof V5PartnershipsRoute
+  '/v5/reports': typeof V5ReportsRoute
+  '/v5/revenue-ops': typeof V5RevenueOpsRoute
+  '/v5/scope': typeof V5ScopeRoute
+  '/v5/soc2': typeof V5Soc2Route
+  '/v5/supply-demand': typeof V5SupplyDemandRoute
+  '/v5/support': typeof V5SupportRoute
+  '/v5/trust-safety': typeof V5TrustSafetyRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -3082,6 +3282,31 @@ export interface FileRoutesById {
   '/v45/scope': typeof V45ScopeRoute
   '/v45/soc2': typeof V45Soc2Route
   '/v45/support': typeof V45SupportRoute
+  '/v5/board': typeof V5BoardRoute
+  '/v5/carrier-quality': typeof V5CarrierQualityRoute
+  '/v5/category': typeof V5CategoryRoute
+  '/v5/certification': typeof V5CertificationRoute
+  '/v5/competitive': typeof V5CompetitiveRoute
+  '/v5/customer-success': typeof V5CustomerSuccessRoute
+  '/v5/data-room': typeof V5DataRoomRoute
+  '/v5/demo': typeof V5DemoRoute
+  '/v5/governance': typeof V5GovernanceRoute
+  '/v5/growth': typeof V5GrowthRoute
+  '/v5/lane-coverage': typeof V5LaneCoverageRoute
+  '/v5/liquidity': typeof V5LiquidityRoute
+  '/v5/maturity': typeof V5MaturityRoute
+  '/v5/national-ops': typeof V5NationalOpsRoute
+  '/v5/operating-metrics': typeof V5OperatingMetricsRoute
+  '/v5/overview': typeof V5OverviewRoute
+  '/v5/partner-ecosystem': typeof V5PartnerEcosystemRoute
+  '/v5/partnerships': typeof V5PartnershipsRoute
+  '/v5/reports': typeof V5ReportsRoute
+  '/v5/revenue-ops': typeof V5RevenueOpsRoute
+  '/v5/scope': typeof V5ScopeRoute
+  '/v5/soc2': typeof V5Soc2Route
+  '/v5/supply-demand': typeof V5SupplyDemandRoute
+  '/v5/support': typeof V5SupportRoute
+  '/v5/trust-safety': typeof V5TrustSafetyRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -3426,6 +3651,31 @@ export interface FileRouteTypes {
     | '/v45/scope'
     | '/v45/soc2'
     | '/v45/support'
+    | '/v5/board'
+    | '/v5/carrier-quality'
+    | '/v5/category'
+    | '/v5/certification'
+    | '/v5/competitive'
+    | '/v5/customer-success'
+    | '/v5/data-room'
+    | '/v5/demo'
+    | '/v5/governance'
+    | '/v5/growth'
+    | '/v5/lane-coverage'
+    | '/v5/liquidity'
+    | '/v5/maturity'
+    | '/v5/national-ops'
+    | '/v5/operating-metrics'
+    | '/v5/overview'
+    | '/v5/partner-ecosystem'
+    | '/v5/partnerships'
+    | '/v5/reports'
+    | '/v5/revenue-ops'
+    | '/v5/scope'
+    | '/v5/soc2'
+    | '/v5/supply-demand'
+    | '/v5/support'
+    | '/v5/trust-safety'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -3768,6 +4018,31 @@ export interface FileRouteTypes {
     | '/v45/scope'
     | '/v45/soc2'
     | '/v45/support'
+    | '/v5/board'
+    | '/v5/carrier-quality'
+    | '/v5/category'
+    | '/v5/certification'
+    | '/v5/competitive'
+    | '/v5/customer-success'
+    | '/v5/data-room'
+    | '/v5/demo'
+    | '/v5/governance'
+    | '/v5/growth'
+    | '/v5/lane-coverage'
+    | '/v5/liquidity'
+    | '/v5/maturity'
+    | '/v5/national-ops'
+    | '/v5/operating-metrics'
+    | '/v5/overview'
+    | '/v5/partner-ecosystem'
+    | '/v5/partnerships'
+    | '/v5/reports'
+    | '/v5/revenue-ops'
+    | '/v5/scope'
+    | '/v5/soc2'
+    | '/v5/supply-demand'
+    | '/v5/support'
+    | '/v5/trust-safety'
     | '/driver'
   id:
     | '__root__'
@@ -4110,6 +4385,31 @@ export interface FileRouteTypes {
     | '/v45/scope'
     | '/v45/soc2'
     | '/v45/support'
+    | '/v5/board'
+    | '/v5/carrier-quality'
+    | '/v5/category'
+    | '/v5/certification'
+    | '/v5/competitive'
+    | '/v5/customer-success'
+    | '/v5/data-room'
+    | '/v5/demo'
+    | '/v5/governance'
+    | '/v5/growth'
+    | '/v5/lane-coverage'
+    | '/v5/liquidity'
+    | '/v5/maturity'
+    | '/v5/national-ops'
+    | '/v5/operating-metrics'
+    | '/v5/overview'
+    | '/v5/partner-ecosystem'
+    | '/v5/partnerships'
+    | '/v5/reports'
+    | '/v5/revenue-ops'
+    | '/v5/scope'
+    | '/v5/soc2'
+    | '/v5/supply-demand'
+    | '/v5/support'
+    | '/v5/trust-safety'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -4445,6 +4745,31 @@ export interface RootRouteChildren {
   V45ScopeRoute: typeof V45ScopeRoute
   V45Soc2Route: typeof V45Soc2Route
   V45SupportRoute: typeof V45SupportRoute
+  V5BoardRoute: typeof V5BoardRoute
+  V5CarrierQualityRoute: typeof V5CarrierQualityRoute
+  V5CategoryRoute: typeof V5CategoryRoute
+  V5CertificationRoute: typeof V5CertificationRoute
+  V5CompetitiveRoute: typeof V5CompetitiveRoute
+  V5CustomerSuccessRoute: typeof V5CustomerSuccessRoute
+  V5DataRoomRoute: typeof V5DataRoomRoute
+  V5DemoRoute: typeof V5DemoRoute
+  V5GovernanceRoute: typeof V5GovernanceRoute
+  V5GrowthRoute: typeof V5GrowthRoute
+  V5LaneCoverageRoute: typeof V5LaneCoverageRoute
+  V5LiquidityRoute: typeof V5LiquidityRoute
+  V5MaturityRoute: typeof V5MaturityRoute
+  V5NationalOpsRoute: typeof V5NationalOpsRoute
+  V5OperatingMetricsRoute: typeof V5OperatingMetricsRoute
+  V5OverviewRoute: typeof V5OverviewRoute
+  V5PartnerEcosystemRoute: typeof V5PartnerEcosystemRoute
+  V5PartnershipsRoute: typeof V5PartnershipsRoute
+  V5ReportsRoute: typeof V5ReportsRoute
+  V5RevenueOpsRoute: typeof V5RevenueOpsRoute
+  V5ScopeRoute: typeof V5ScopeRoute
+  V5Soc2Route: typeof V5Soc2Route
+  V5SupplyDemandRoute: typeof V5SupplyDemandRoute
+  V5SupportRoute: typeof V5SupportRoute
+  V5TrustSafetyRoute: typeof V5TrustSafetyRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -4588,6 +4913,181 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/trust-safety': {
+      id: '/v5/trust-safety'
+      path: '/v5/trust-safety'
+      fullPath: '/v5/trust-safety'
+      preLoaderRoute: typeof V5TrustSafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/support': {
+      id: '/v5/support'
+      path: '/v5/support'
+      fullPath: '/v5/support'
+      preLoaderRoute: typeof V5SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/supply-demand': {
+      id: '/v5/supply-demand'
+      path: '/v5/supply-demand'
+      fullPath: '/v5/supply-demand'
+      preLoaderRoute: typeof V5SupplyDemandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/soc2': {
+      id: '/v5/soc2'
+      path: '/v5/soc2'
+      fullPath: '/v5/soc2'
+      preLoaderRoute: typeof V5Soc2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/scope': {
+      id: '/v5/scope'
+      path: '/v5/scope'
+      fullPath: '/v5/scope'
+      preLoaderRoute: typeof V5ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/revenue-ops': {
+      id: '/v5/revenue-ops'
+      path: '/v5/revenue-ops'
+      fullPath: '/v5/revenue-ops'
+      preLoaderRoute: typeof V5RevenueOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/reports': {
+      id: '/v5/reports'
+      path: '/v5/reports'
+      fullPath: '/v5/reports'
+      preLoaderRoute: typeof V5ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/partnerships': {
+      id: '/v5/partnerships'
+      path: '/v5/partnerships'
+      fullPath: '/v5/partnerships'
+      preLoaderRoute: typeof V5PartnershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/partner-ecosystem': {
+      id: '/v5/partner-ecosystem'
+      path: '/v5/partner-ecosystem'
+      fullPath: '/v5/partner-ecosystem'
+      preLoaderRoute: typeof V5PartnerEcosystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/overview': {
+      id: '/v5/overview'
+      path: '/v5/overview'
+      fullPath: '/v5/overview'
+      preLoaderRoute: typeof V5OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/operating-metrics': {
+      id: '/v5/operating-metrics'
+      path: '/v5/operating-metrics'
+      fullPath: '/v5/operating-metrics'
+      preLoaderRoute: typeof V5OperatingMetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/national-ops': {
+      id: '/v5/national-ops'
+      path: '/v5/national-ops'
+      fullPath: '/v5/national-ops'
+      preLoaderRoute: typeof V5NationalOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/maturity': {
+      id: '/v5/maturity'
+      path: '/v5/maturity'
+      fullPath: '/v5/maturity'
+      preLoaderRoute: typeof V5MaturityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/liquidity': {
+      id: '/v5/liquidity'
+      path: '/v5/liquidity'
+      fullPath: '/v5/liquidity'
+      preLoaderRoute: typeof V5LiquidityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/lane-coverage': {
+      id: '/v5/lane-coverage'
+      path: '/v5/lane-coverage'
+      fullPath: '/v5/lane-coverage'
+      preLoaderRoute: typeof V5LaneCoverageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/growth': {
+      id: '/v5/growth'
+      path: '/v5/growth'
+      fullPath: '/v5/growth'
+      preLoaderRoute: typeof V5GrowthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/governance': {
+      id: '/v5/governance'
+      path: '/v5/governance'
+      fullPath: '/v5/governance'
+      preLoaderRoute: typeof V5GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/demo': {
+      id: '/v5/demo'
+      path: '/v5/demo'
+      fullPath: '/v5/demo'
+      preLoaderRoute: typeof V5DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/data-room': {
+      id: '/v5/data-room'
+      path: '/v5/data-room'
+      fullPath: '/v5/data-room'
+      preLoaderRoute: typeof V5DataRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/customer-success': {
+      id: '/v5/customer-success'
+      path: '/v5/customer-success'
+      fullPath: '/v5/customer-success'
+      preLoaderRoute: typeof V5CustomerSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/competitive': {
+      id: '/v5/competitive'
+      path: '/v5/competitive'
+      fullPath: '/v5/competitive'
+      preLoaderRoute: typeof V5CompetitiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/certification': {
+      id: '/v5/certification'
+      path: '/v5/certification'
+      fullPath: '/v5/certification'
+      preLoaderRoute: typeof V5CertificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/category': {
+      id: '/v5/category'
+      path: '/v5/category'
+      fullPath: '/v5/category'
+      preLoaderRoute: typeof V5CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/carrier-quality': {
+      id: '/v5/carrier-quality'
+      path: '/v5/carrier-quality'
+      fullPath: '/v5/carrier-quality'
+      preLoaderRoute: typeof V5CarrierQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v5/board': {
+      id: '/v5/board'
+      path: '/v5/board'
+      fullPath: '/v5/board'
+      preLoaderRoute: typeof V5BoardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v45/support': {
@@ -7218,6 +7718,31 @@ const rootRouteChildren: RootRouteChildren = {
   V45ScopeRoute: V45ScopeRoute,
   V45Soc2Route: V45Soc2Route,
   V45SupportRoute: V45SupportRoute,
+  V5BoardRoute: V5BoardRoute,
+  V5CarrierQualityRoute: V5CarrierQualityRoute,
+  V5CategoryRoute: V5CategoryRoute,
+  V5CertificationRoute: V5CertificationRoute,
+  V5CompetitiveRoute: V5CompetitiveRoute,
+  V5CustomerSuccessRoute: V5CustomerSuccessRoute,
+  V5DataRoomRoute: V5DataRoomRoute,
+  V5DemoRoute: V5DemoRoute,
+  V5GovernanceRoute: V5GovernanceRoute,
+  V5GrowthRoute: V5GrowthRoute,
+  V5LaneCoverageRoute: V5LaneCoverageRoute,
+  V5LiquidityRoute: V5LiquidityRoute,
+  V5MaturityRoute: V5MaturityRoute,
+  V5NationalOpsRoute: V5NationalOpsRoute,
+  V5OperatingMetricsRoute: V5OperatingMetricsRoute,
+  V5OverviewRoute: V5OverviewRoute,
+  V5PartnerEcosystemRoute: V5PartnerEcosystemRoute,
+  V5PartnershipsRoute: V5PartnershipsRoute,
+  V5ReportsRoute: V5ReportsRoute,
+  V5RevenueOpsRoute: V5RevenueOpsRoute,
+  V5ScopeRoute: V5ScopeRoute,
+  V5Soc2Route: V5Soc2Route,
+  V5SupplyDemandRoute: V5SupplyDemandRoute,
+  V5SupportRoute: V5SupportRoute,
+  V5TrustSafetyRoute: V5TrustSafetyRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport

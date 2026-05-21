@@ -1,32 +1,29 @@
-# Phase 23 — V5 national-scale platform maturity (plan)
+# Phase 23 — V5 National-Scale Maturity
 
-## Theme
-National-scale platform maturity, enterprise-grade marketplace liquidity, certification completion tracking, advanced strategic partnerships, and category leadership positioning.
+V5 moves Anderoute to a category-leading logistics operating platform: marketplace liquidity management, national supply/demand intelligence, certification execution tracking, executive/board reporting, category leadership positioning, mature revenue ops, mature customer success, mature support, enterprise governance, strategic growth planning, and data room readiness.
 
-## Candidate scope
-- National marketplace liquidity dashboards (depth, fill, regional balance, surge)
-- Certification completion tracking once auditor evidence exists (SOC 2 Type II, ISO 27001)
-- Advanced telematics-driven coaching (still human-approved)
-- Strategic partnership co-sell motions
-- Category leadership / analyst readiness packs (Gartner-style)
-- Enterprise reference program at scale
-- Multi-region failover playbooks
-- Platform health SLO program
-- Acquisition data-room V2
-- Public trust center placeholder
-- Pricing maturity / packaging V2
+## Routes
+All under `/v5/*` (see `src/components/v5/V5Nav.tsx` for the full list of 25 modules).
 
-## Still deferred
-- Fully autonomous dispatch
-- Autonomous vehicle workflows
-- Final certification claims without auditor sign-off
-- Global customs / international localization
-- Full insurance underwriting / factoring production
+## Components
+- Shared: `V5Nav`, `V5Page`, `ui-bits` (re-exports KpiGrid/ScoreCard/StatusPill/SimpleTable from v45).
+- Module dashboards are implemented directly inside each route file using the shared primitives to keep the surface area light.
 
-## Acceptance criteria (draft)
-- Liquidity dashboards live with regional gap surfacing
-- Certification completion module gated on evidence
-- Co-sell motion tracker live
-- Analyst readiness pack generator
-- Trust center placeholder published
-- Multi-region failover playbooks rehearsed
+## Data & hooks
+- `src/v5/data/mockPhase23.ts` — mock dataset for every module.
+- `src/v5/hooks.ts` — 23 hooks (`useV5Scope`, `useMarketplaceLiquidity`, `useSOC2Completion`, etc.) that abstract the mock layer and are ready to swap for `createServerFn` calls.
+
+## Constraints
+- No fully autonomous dispatch.
+- No certification claims without tracked evidence.
+- No Android Auto / CarPlay approval claims.
+- All AI recommendations remain human-approved.
+- All numbers are mock and labeled as such.
+
+## Backend plan
+- See `docs/phase23-schema.sql` for tables.
+- See `docs/phase23-rls.sql` for RLS examples.
+- See `docs/phase23-edge-function-plan.md` for server-fn vs Edge Function split.
+
+## Demo
+`/v5/demo` walks executives, ops leaders, marketplace managers, security, revenue, and strategy through the full V5 surface.
