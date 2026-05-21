@@ -20,6 +20,7 @@ export const Route = createFileRoute("/v25/demo")({
           ))}
         </ol>
       </Card>
+      <OverlayStrip title="Per-module execution context" items={V25_EXECUTION_OVERLAYS} />
     </V25Page>
   ),
 });
