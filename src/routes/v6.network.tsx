@@ -3,12 +3,14 @@ import { Network } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { ScoreCard, KpiGrid, StatusPill } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useIntelligentLogisticsNetwork } from "@/v6/hooks";
+import { Progress } from "@/components/ui/progress";
+import { useIntelligentLogisticsNetwork, useNetworkFlow } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/network")({
   head: () => ({ meta: [{ title: "Logistics Network · V6" }] }),
   component: () => {
     const { volume: v, health, alerts } = useIntelligentLogisticsNetwork();
+    const { flow, subsystems } = useNetworkFlow();
     return (
       <V6Page icon={<Network className="size-6 text-emerald-300" />} title="Intelligent Logistics Network Command Center"
         blurb="Anderoute as a connected logistics operating network: companies, drivers, carriers, customers, loads, GPS, navigation, marketplace, API, EDI, webhooks, portal, CoPilot, automation, support, revenue.">
