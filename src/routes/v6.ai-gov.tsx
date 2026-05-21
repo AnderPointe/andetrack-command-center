@@ -45,6 +45,17 @@ export const Route = createFileRoute("/v6/ai-gov")({
           </div>
           <p className="mt-2 text-[11px] text-muted-foreground">Emerald = accepted, sky = generated.</p>
         </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Governance alerts</h3>
+          <ul className="mt-2 space-y-1.5 text-xs">
+            {alerts.map(a => (
+              <li key={a.id} className="flex items-center gap-2">
+                <StatusPill status={a.sev} />
+                <span className="text-muted-foreground">{a.note}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
       </V6Page>
     );
   },

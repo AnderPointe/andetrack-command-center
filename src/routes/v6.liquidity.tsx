@@ -3,12 +3,13 @@ import { Store } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
 import { ScoreCard, KpiGrid, SimpleTable } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useMarketplaceLiquidityIntelligence } from "@/v6/hooks";
+import { useMarketplaceLiquidityIntelligence, useLiquidityTrend } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/liquidity")({
   head: () => ({ meta: [{ title: "Marketplace Liquidity · V6" }] }),
   component: () => {
     const { liquidity: l, lanes, heatmap } = useMarketplaceLiquidityIntelligence();
+    const { trend } = useLiquidityTrend();
     return (
       <V6Page icon={<Store className="size-6 text-emerald-300" />} title="Marketplace Liquidity Intelligence (V6)"
         blurb="Liquidity, coverage, bids/load, time-to-award, uncovered rate, regional supply/demand, lane density, carrier acceptance/fall-off and marketplace trust.">
