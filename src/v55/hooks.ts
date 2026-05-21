@@ -2,6 +2,15 @@
 import * as M from "./data/mockPhase24";
 
 export const useV55Scope                       = () => ({ matrix: M.V55_FEATURE_MATRIX, deferred: M.V55_DEFERRED, score: M.LEADERSHIP.overall });
+export const useLeadershipAlerts               = () => ({ alerts: M.LEADERSHIP_ALERTS });
+export const useDefensibilityTrend             = () => ({ trend: M.DEFENSIBILITY_TREND });
+export const useMonetizationTrend              = () => ({ trend: M.MONETIZATION_TREND });
+export const useBoardTrends                    = () => ({ trends: M.BOARD_TRENDS });
+export const useRetentionTrend                 = () => ({ trend: M.RETENTION_TREND });
+export const useReliabilityTrend               = () => ({ trend: M.RELIABILITY_TREND });
+export const useCompetitiveWinRate             = () => ({ stats: M.COMPETITIVE_WIN_RATE });
+export const useCategoryProofHighlights        = () => ({ points: M.CATEGORY_PROOF_HIGHLIGHTS });
+export const useDataRoomProgress               = () => M.DATA_ROOM_PROGRESS();
 export const useMarketLeadership               = () => ({ leadership: M.LEADERSHIP, trend: M.LEADERSHIP_TREND, gaps: M.LEADERSHIP_GAPS });
 export const usePlatformDefensibility          = () => ({ defensibility: M.DEFENSIBILITY });
 export const useStrategicMoats                 = () => ({ moats: M.MOATS });
