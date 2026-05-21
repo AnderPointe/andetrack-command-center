@@ -46,6 +46,17 @@ export const Route = createFileRoute("/v5/supply-demand")({
           ]} />
         </div>
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">National coverage alerts</h3>
+        <div className="mt-2">
+          <SimpleTable rows={NATIONAL_ALERTS} columns={[
+            { key: "region",   label: "Region" },
+            { key: "severity", label: "Severity", render: r => <StatusPill status={r.severity} /> },
+            { key: "issue",    label: "Issue" },
+            { key: "action",   label: "Recommended action" },
+          ]} />
+        </div>
+      </Card>
       <Card className="border-amber-400/30 bg-amber-500/[0.04] p-4 text-xs text-amber-200">
         Demand forecasting placeholder — no predictive guarantees claimed. Human review required before acting on recommendations.
       </Card>
