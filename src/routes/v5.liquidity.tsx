@@ -3,7 +3,7 @@ import { Store } from "lucide-react";
 import { V5Page } from "@/components/v5/V5Page";
 import { KpiGrid, ScoreCard, SimpleTable, StatusPill } from "@/components/v5/ui-bits";
 import { Card } from "@/components/ui/card";
-import { LIQUIDITY, LIQUIDITY_TREND, UNCOVERED_LOADS } from "@/v5/data/mockPhase23";
+import { LIQUIDITY, LIQUIDITY_TREND, MARKETPLACE_LIQUIDITY_TREND, UNCOVERED_LOADS } from "@/v5/data/mockPhase23";
 
 export const Route = createFileRoute("/v5/liquidity")({
   head: () => ({ meta: [{ title: "Marketplace Liquidity · Anderoute V5" }] }),
