@@ -3,7 +3,22 @@ import { Activity } from "lucide-react";
 import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PROVIDER_HEALTH } from "@/v2/data/mockPhase17";
+import { PROVIDER_HEALTH, PROVIDER_TREND_24H } from "@/v2/data/mockPhase17";
+
+function MiniSpark({ data }: { data: number[] }) {
+  const min = Math.min(...data), max = Math.max(...data);
+  const w = 120, h = 24;
+  const pts = data.map((v, i) => {
+    const x = (i / (data.length - 1)) * w;
+    const y = h - ((v - min) / Math.max(1, max - min)) * h;
+    return `${x},${y}`;
+  }).join(" ");
+  return (
+    <svg width={w} height={h} className="overflow-visible">
+      <polyline fill="none" stroke="hsl(265 90% 70%)" strokeWidth="1.5" points={pts} />
+    </svg>
+  );
+}
 
 export const Route = createFileRoute("/v2/integration-health")({
   head: () => ({ meta: [{ title: "Integration Health · Anderoute" }] }),
