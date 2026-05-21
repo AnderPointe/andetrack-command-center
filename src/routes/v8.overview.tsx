@@ -52,6 +52,7 @@ export const Route = createFileRoute("/v8/overview")({
             { key: "notes",  label: "Notes" },
           ]} />
         </Card>
+        <OverlayStrip items={topOverlays} title="Executive overlays — top 6" />
         <Card className="border-white/10 bg-white/[0.02] p-4 text-sm">
           <h2 className="font-semibold">Jump in</h2>
           <ul className="mt-2 grid gap-1 text-muted-foreground md:grid-cols-3">
