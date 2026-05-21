@@ -3,7 +3,7 @@ import { Cpu } from "lucide-react";
 import { V2Page } from "@/components/v2/V2Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { OPT_LOAD, OPT_CANDIDATES } from "@/v2/data/mockPhase17";
+import { OPT_LOAD, OPT_CANDIDATES, OPT_WEIGHTS } from "@/v2/data/mockPhase17";
 
 export const Route = createFileRoute("/v2/optimization")({
   head: () => ({ meta: [{ title: "Optimization Engine · Anderoute" }] }),
