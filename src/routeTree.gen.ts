@@ -29,6 +29,28 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V3VoiceIntentsRouteImport } from './routes/v3.voice-intents'
+import { Route as V3VoiceRouteImport } from './routes/v3.voice'
+import { Route as V3TelematicsRouteImport } from './routes/v3.telematics'
+import { Route as V3ScopeRouteImport } from './routes/v3.scope'
+import { Route as V3ReportsRouteImport } from './routes/v3.reports'
+import { Route as V3QuestionnaireRouteImport } from './routes/v3.questionnaire'
+import { Route as V3OverviewRouteImport } from './routes/v3.overview'
+import { Route as V3OfflineRouteImport } from './routes/v3.offline'
+import { Route as V3ObservabilityRouteImport } from './routes/v3.observability'
+import { Route as V3MarketplaceRouteImport } from './routes/v3.marketplace'
+import { Route as V3FleetHardwareRouteImport } from './routes/v3.fleet-hardware'
+import { Route as V3EnterpriseOnboardingRouteImport } from './routes/v3.enterprise-onboarding'
+import { Route as V3EngagementRouteImport } from './routes/v3.engagement'
+import { Route as V3DriverUxRouteImport } from './routes/v3.driver-ux'
+import { Route as V3DriverAppRouteImport } from './routes/v3.driver-app'
+import { Route as V3DemoRouteImport } from './routes/v3.demo'
+import { Route as V3CertificationRouteImport } from './routes/v3.certification'
+import { Route as V3CarrierProfilesRouteImport } from './routes/v3.carrier-profiles'
+import { Route as V3CarrierComplianceRouteImport } from './routes/v3.carrier-compliance'
+import { Route as V3CarplayRouteImport } from './routes/v3.carplay'
+import { Route as V3AndroidAutoRouteImport } from './routes/v3.android-auto'
+import { Route as V3AdminRouteImport } from './routes/v3.admin'
 import { Route as V25WhiteLabelRouteImport } from './routes/v25.white-label'
 import { Route as V25SecurityRouteImport } from './routes/v25.security'
 import { Route as V25ScopeRouteImport } from './routes/v25.scope'
@@ -351,6 +373,116 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3VoiceIntentsRoute = V3VoiceIntentsRouteImport.update({
+  id: '/v3/voice-intents',
+  path: '/v3/voice-intents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3VoiceRoute = V3VoiceRouteImport.update({
+  id: '/v3/voice',
+  path: '/v3/voice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3TelematicsRoute = V3TelematicsRouteImport.update({
+  id: '/v3/telematics',
+  path: '/v3/telematics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3ScopeRoute = V3ScopeRouteImport.update({
+  id: '/v3/scope',
+  path: '/v3/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3ReportsRoute = V3ReportsRouteImport.update({
+  id: '/v3/reports',
+  path: '/v3/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3QuestionnaireRoute = V3QuestionnaireRouteImport.update({
+  id: '/v3/questionnaire',
+  path: '/v3/questionnaire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3OverviewRoute = V3OverviewRouteImport.update({
+  id: '/v3/overview',
+  path: '/v3/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3OfflineRoute = V3OfflineRouteImport.update({
+  id: '/v3/offline',
+  path: '/v3/offline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3ObservabilityRoute = V3ObservabilityRouteImport.update({
+  id: '/v3/observability',
+  path: '/v3/observability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3MarketplaceRoute = V3MarketplaceRouteImport.update({
+  id: '/v3/marketplace',
+  path: '/v3/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3FleetHardwareRoute = V3FleetHardwareRouteImport.update({
+  id: '/v3/fleet-hardware',
+  path: '/v3/fleet-hardware',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3EnterpriseOnboardingRoute = V3EnterpriseOnboardingRouteImport.update({
+  id: '/v3/enterprise-onboarding',
+  path: '/v3/enterprise-onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3EngagementRoute = V3EngagementRouteImport.update({
+  id: '/v3/engagement',
+  path: '/v3/engagement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3DriverUxRoute = V3DriverUxRouteImport.update({
+  id: '/v3/driver-ux',
+  path: '/v3/driver-ux',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3DriverAppRoute = V3DriverAppRouteImport.update({
+  id: '/v3/driver-app',
+  path: '/v3/driver-app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3DemoRoute = V3DemoRouteImport.update({
+  id: '/v3/demo',
+  path: '/v3/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3CertificationRoute = V3CertificationRouteImport.update({
+  id: '/v3/certification',
+  path: '/v3/certification',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3CarrierProfilesRoute = V3CarrierProfilesRouteImport.update({
+  id: '/v3/carrier-profiles',
+  path: '/v3/carrier-profiles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3CarrierComplianceRoute = V3CarrierComplianceRouteImport.update({
+  id: '/v3/carrier-compliance',
+  path: '/v3/carrier-compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3CarplayRoute = V3CarplayRouteImport.update({
+  id: '/v3/carplay',
+  path: '/v3/carplay',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3AndroidAutoRoute = V3AndroidAutoRouteImport.update({
+  id: '/v3/android-auto',
+  path: '/v3/android-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V3AdminRoute = V3AdminRouteImport.update({
+  id: '/v3/admin',
+  path: '/v3/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V25WhiteLabelRoute = V25WhiteLabelRouteImport.update({
@@ -1717,6 +1849,28 @@ export interface FileRoutesByFullPath {
   '/v25/scope': typeof V25ScopeRoute
   '/v25/security': typeof V25SecurityRoute
   '/v25/white-label': typeof V25WhiteLabelRoute
+  '/v3/admin': typeof V3AdminRoute
+  '/v3/android-auto': typeof V3AndroidAutoRoute
+  '/v3/carplay': typeof V3CarplayRoute
+  '/v3/carrier-compliance': typeof V3CarrierComplianceRoute
+  '/v3/carrier-profiles': typeof V3CarrierProfilesRoute
+  '/v3/certification': typeof V3CertificationRoute
+  '/v3/demo': typeof V3DemoRoute
+  '/v3/driver-app': typeof V3DriverAppRoute
+  '/v3/driver-ux': typeof V3DriverUxRoute
+  '/v3/engagement': typeof V3EngagementRoute
+  '/v3/enterprise-onboarding': typeof V3EnterpriseOnboardingRoute
+  '/v3/fleet-hardware': typeof V3FleetHardwareRoute
+  '/v3/marketplace': typeof V3MarketplaceRoute
+  '/v3/observability': typeof V3ObservabilityRoute
+  '/v3/offline': typeof V3OfflineRoute
+  '/v3/overview': typeof V3OverviewRoute
+  '/v3/questionnaire': typeof V3QuestionnaireRoute
+  '/v3/reports': typeof V3ReportsRoute
+  '/v3/scope': typeof V3ScopeRoute
+  '/v3/telematics': typeof V3TelematicsRoute
+  '/v3/voice': typeof V3VoiceRoute
+  '/v3/voice-intents': typeof V3VoiceIntentsRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -1962,6 +2116,28 @@ export interface FileRoutesByTo {
   '/v25/scope': typeof V25ScopeRoute
   '/v25/security': typeof V25SecurityRoute
   '/v25/white-label': typeof V25WhiteLabelRoute
+  '/v3/admin': typeof V3AdminRoute
+  '/v3/android-auto': typeof V3AndroidAutoRoute
+  '/v3/carplay': typeof V3CarplayRoute
+  '/v3/carrier-compliance': typeof V3CarrierComplianceRoute
+  '/v3/carrier-profiles': typeof V3CarrierProfilesRoute
+  '/v3/certification': typeof V3CertificationRoute
+  '/v3/demo': typeof V3DemoRoute
+  '/v3/driver-app': typeof V3DriverAppRoute
+  '/v3/driver-ux': typeof V3DriverUxRoute
+  '/v3/engagement': typeof V3EngagementRoute
+  '/v3/enterprise-onboarding': typeof V3EnterpriseOnboardingRoute
+  '/v3/fleet-hardware': typeof V3FleetHardwareRoute
+  '/v3/marketplace': typeof V3MarketplaceRoute
+  '/v3/observability': typeof V3ObservabilityRoute
+  '/v3/offline': typeof V3OfflineRoute
+  '/v3/overview': typeof V3OverviewRoute
+  '/v3/questionnaire': typeof V3QuestionnaireRoute
+  '/v3/reports': typeof V3ReportsRoute
+  '/v3/scope': typeof V3ScopeRoute
+  '/v3/telematics': typeof V3TelematicsRoute
+  '/v3/voice': typeof V3VoiceRoute
+  '/v3/voice-intents': typeof V3VoiceIntentsRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -2208,6 +2384,28 @@ export interface FileRoutesById {
   '/v25/scope': typeof V25ScopeRoute
   '/v25/security': typeof V25SecurityRoute
   '/v25/white-label': typeof V25WhiteLabelRoute
+  '/v3/admin': typeof V3AdminRoute
+  '/v3/android-auto': typeof V3AndroidAutoRoute
+  '/v3/carplay': typeof V3CarplayRoute
+  '/v3/carrier-compliance': typeof V3CarrierComplianceRoute
+  '/v3/carrier-profiles': typeof V3CarrierProfilesRoute
+  '/v3/certification': typeof V3CertificationRoute
+  '/v3/demo': typeof V3DemoRoute
+  '/v3/driver-app': typeof V3DriverAppRoute
+  '/v3/driver-ux': typeof V3DriverUxRoute
+  '/v3/engagement': typeof V3EngagementRoute
+  '/v3/enterprise-onboarding': typeof V3EnterpriseOnboardingRoute
+  '/v3/fleet-hardware': typeof V3FleetHardwareRoute
+  '/v3/marketplace': typeof V3MarketplaceRoute
+  '/v3/observability': typeof V3ObservabilityRoute
+  '/v3/offline': typeof V3OfflineRoute
+  '/v3/overview': typeof V3OverviewRoute
+  '/v3/questionnaire': typeof V3QuestionnaireRoute
+  '/v3/reports': typeof V3ReportsRoute
+  '/v3/scope': typeof V3ScopeRoute
+  '/v3/telematics': typeof V3TelematicsRoute
+  '/v3/voice': typeof V3VoiceRoute
+  '/v3/voice-intents': typeof V3VoiceIntentsRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -2455,6 +2653,28 @@ export interface FileRouteTypes {
     | '/v25/scope'
     | '/v25/security'
     | '/v25/white-label'
+    | '/v3/admin'
+    | '/v3/android-auto'
+    | '/v3/carplay'
+    | '/v3/carrier-compliance'
+    | '/v3/carrier-profiles'
+    | '/v3/certification'
+    | '/v3/demo'
+    | '/v3/driver-app'
+    | '/v3/driver-ux'
+    | '/v3/engagement'
+    | '/v3/enterprise-onboarding'
+    | '/v3/fleet-hardware'
+    | '/v3/marketplace'
+    | '/v3/observability'
+    | '/v3/offline'
+    | '/v3/overview'
+    | '/v3/questionnaire'
+    | '/v3/reports'
+    | '/v3/scope'
+    | '/v3/telematics'
+    | '/v3/voice'
+    | '/v3/voice-intents'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -2700,6 +2920,28 @@ export interface FileRouteTypes {
     | '/v25/scope'
     | '/v25/security'
     | '/v25/white-label'
+    | '/v3/admin'
+    | '/v3/android-auto'
+    | '/v3/carplay'
+    | '/v3/carrier-compliance'
+    | '/v3/carrier-profiles'
+    | '/v3/certification'
+    | '/v3/demo'
+    | '/v3/driver-app'
+    | '/v3/driver-ux'
+    | '/v3/engagement'
+    | '/v3/enterprise-onboarding'
+    | '/v3/fleet-hardware'
+    | '/v3/marketplace'
+    | '/v3/observability'
+    | '/v3/offline'
+    | '/v3/overview'
+    | '/v3/questionnaire'
+    | '/v3/reports'
+    | '/v3/scope'
+    | '/v3/telematics'
+    | '/v3/voice'
+    | '/v3/voice-intents'
     | '/driver'
   id:
     | '__root__'
@@ -2945,6 +3187,28 @@ export interface FileRouteTypes {
     | '/v25/scope'
     | '/v25/security'
     | '/v25/white-label'
+    | '/v3/admin'
+    | '/v3/android-auto'
+    | '/v3/carplay'
+    | '/v3/carrier-compliance'
+    | '/v3/carrier-profiles'
+    | '/v3/certification'
+    | '/v3/demo'
+    | '/v3/driver-app'
+    | '/v3/driver-ux'
+    | '/v3/engagement'
+    | '/v3/enterprise-onboarding'
+    | '/v3/fleet-hardware'
+    | '/v3/marketplace'
+    | '/v3/observability'
+    | '/v3/offline'
+    | '/v3/overview'
+    | '/v3/questionnaire'
+    | '/v3/reports'
+    | '/v3/scope'
+    | '/v3/telematics'
+    | '/v3/voice'
+    | '/v3/voice-intents'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -3183,6 +3447,28 @@ export interface RootRouteChildren {
   V25ScopeRoute: typeof V25ScopeRoute
   V25SecurityRoute: typeof V25SecurityRoute
   V25WhiteLabelRoute: typeof V25WhiteLabelRoute
+  V3AdminRoute: typeof V3AdminRoute
+  V3AndroidAutoRoute: typeof V3AndroidAutoRoute
+  V3CarplayRoute: typeof V3CarplayRoute
+  V3CarrierComplianceRoute: typeof V3CarrierComplianceRoute
+  V3CarrierProfilesRoute: typeof V3CarrierProfilesRoute
+  V3CertificationRoute: typeof V3CertificationRoute
+  V3DemoRoute: typeof V3DemoRoute
+  V3DriverAppRoute: typeof V3DriverAppRoute
+  V3DriverUxRoute: typeof V3DriverUxRoute
+  V3EngagementRoute: typeof V3EngagementRoute
+  V3EnterpriseOnboardingRoute: typeof V3EnterpriseOnboardingRoute
+  V3FleetHardwareRoute: typeof V3FleetHardwareRoute
+  V3MarketplaceRoute: typeof V3MarketplaceRoute
+  V3ObservabilityRoute: typeof V3ObservabilityRoute
+  V3OfflineRoute: typeof V3OfflineRoute
+  V3OverviewRoute: typeof V3OverviewRoute
+  V3QuestionnaireRoute: typeof V3QuestionnaireRoute
+  V3ReportsRoute: typeof V3ReportsRoute
+  V3ScopeRoute: typeof V3ScopeRoute
+  V3TelematicsRoute: typeof V3TelematicsRoute
+  V3VoiceRoute: typeof V3VoiceRoute
+  V3VoiceIntentsRoute: typeof V3VoiceIntentsRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -3326,6 +3612,160 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/voice-intents': {
+      id: '/v3/voice-intents'
+      path: '/v3/voice-intents'
+      fullPath: '/v3/voice-intents'
+      preLoaderRoute: typeof V3VoiceIntentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/voice': {
+      id: '/v3/voice'
+      path: '/v3/voice'
+      fullPath: '/v3/voice'
+      preLoaderRoute: typeof V3VoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/telematics': {
+      id: '/v3/telematics'
+      path: '/v3/telematics'
+      fullPath: '/v3/telematics'
+      preLoaderRoute: typeof V3TelematicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/scope': {
+      id: '/v3/scope'
+      path: '/v3/scope'
+      fullPath: '/v3/scope'
+      preLoaderRoute: typeof V3ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/reports': {
+      id: '/v3/reports'
+      path: '/v3/reports'
+      fullPath: '/v3/reports'
+      preLoaderRoute: typeof V3ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/questionnaire': {
+      id: '/v3/questionnaire'
+      path: '/v3/questionnaire'
+      fullPath: '/v3/questionnaire'
+      preLoaderRoute: typeof V3QuestionnaireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/overview': {
+      id: '/v3/overview'
+      path: '/v3/overview'
+      fullPath: '/v3/overview'
+      preLoaderRoute: typeof V3OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/offline': {
+      id: '/v3/offline'
+      path: '/v3/offline'
+      fullPath: '/v3/offline'
+      preLoaderRoute: typeof V3OfflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/observability': {
+      id: '/v3/observability'
+      path: '/v3/observability'
+      fullPath: '/v3/observability'
+      preLoaderRoute: typeof V3ObservabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/marketplace': {
+      id: '/v3/marketplace'
+      path: '/v3/marketplace'
+      fullPath: '/v3/marketplace'
+      preLoaderRoute: typeof V3MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/fleet-hardware': {
+      id: '/v3/fleet-hardware'
+      path: '/v3/fleet-hardware'
+      fullPath: '/v3/fleet-hardware'
+      preLoaderRoute: typeof V3FleetHardwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/enterprise-onboarding': {
+      id: '/v3/enterprise-onboarding'
+      path: '/v3/enterprise-onboarding'
+      fullPath: '/v3/enterprise-onboarding'
+      preLoaderRoute: typeof V3EnterpriseOnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/engagement': {
+      id: '/v3/engagement'
+      path: '/v3/engagement'
+      fullPath: '/v3/engagement'
+      preLoaderRoute: typeof V3EngagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/driver-ux': {
+      id: '/v3/driver-ux'
+      path: '/v3/driver-ux'
+      fullPath: '/v3/driver-ux'
+      preLoaderRoute: typeof V3DriverUxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/driver-app': {
+      id: '/v3/driver-app'
+      path: '/v3/driver-app'
+      fullPath: '/v3/driver-app'
+      preLoaderRoute: typeof V3DriverAppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/demo': {
+      id: '/v3/demo'
+      path: '/v3/demo'
+      fullPath: '/v3/demo'
+      preLoaderRoute: typeof V3DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/certification': {
+      id: '/v3/certification'
+      path: '/v3/certification'
+      fullPath: '/v3/certification'
+      preLoaderRoute: typeof V3CertificationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/carrier-profiles': {
+      id: '/v3/carrier-profiles'
+      path: '/v3/carrier-profiles'
+      fullPath: '/v3/carrier-profiles'
+      preLoaderRoute: typeof V3CarrierProfilesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/carrier-compliance': {
+      id: '/v3/carrier-compliance'
+      path: '/v3/carrier-compliance'
+      fullPath: '/v3/carrier-compliance'
+      preLoaderRoute: typeof V3CarrierComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/carplay': {
+      id: '/v3/carplay'
+      path: '/v3/carplay'
+      fullPath: '/v3/carplay'
+      preLoaderRoute: typeof V3CarplayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/android-auto': {
+      id: '/v3/android-auto'
+      path: '/v3/android-auto'
+      fullPath: '/v3/android-auto'
+      preLoaderRoute: typeof V3AndroidAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v3/admin': {
+      id: '/v3/admin'
+      path: '/v3/admin'
+      fullPath: '/v3/admin'
+      preLoaderRoute: typeof V3AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v25/white-label': {
@@ -5180,6 +5620,28 @@ const rootRouteChildren: RootRouteChildren = {
   V25ScopeRoute: V25ScopeRoute,
   V25SecurityRoute: V25SecurityRoute,
   V25WhiteLabelRoute: V25WhiteLabelRoute,
+  V3AdminRoute: V3AdminRoute,
+  V3AndroidAutoRoute: V3AndroidAutoRoute,
+  V3CarplayRoute: V3CarplayRoute,
+  V3CarrierComplianceRoute: V3CarrierComplianceRoute,
+  V3CarrierProfilesRoute: V3CarrierProfilesRoute,
+  V3CertificationRoute: V3CertificationRoute,
+  V3DemoRoute: V3DemoRoute,
+  V3DriverAppRoute: V3DriverAppRoute,
+  V3DriverUxRoute: V3DriverUxRoute,
+  V3EngagementRoute: V3EngagementRoute,
+  V3EnterpriseOnboardingRoute: V3EnterpriseOnboardingRoute,
+  V3FleetHardwareRoute: V3FleetHardwareRoute,
+  V3MarketplaceRoute: V3MarketplaceRoute,
+  V3ObservabilityRoute: V3ObservabilityRoute,
+  V3OfflineRoute: V3OfflineRoute,
+  V3OverviewRoute: V3OverviewRoute,
+  V3QuestionnaireRoute: V3QuestionnaireRoute,
+  V3ReportsRoute: V3ReportsRoute,
+  V3ScopeRoute: V3ScopeRoute,
+  V3TelematicsRoute: V3TelematicsRoute,
+  V3VoiceRoute: V3VoiceRoute,
+  V3VoiceIntentsRoute: V3VoiceIntentsRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
