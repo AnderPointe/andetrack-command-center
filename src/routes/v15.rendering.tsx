@@ -39,6 +39,26 @@ function Page() {
       </Card>
 
       <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Render layer stack (z-order)</h2>
+        <p className="mt-1 text-xs text-muted-foreground">Provider geometry, telemetry trail, and fallback are visually distinct on every map.</p>
+        <table className="mt-3 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground">
+            <tr><th className="p-2">z</th><th className="p-2">Layer</th><th className="p-2">Source</th><th className="p-2">Style</th></tr>
+          </thead>
+          <tbody>
+            {[...ROUTE_RENDER_LAYERS].sort((a, b) => a.zIndex - b.zIndex).map((l) => (
+              <tr key={l.id} className="border-t border-white/10">
+                <td className="p-2 font-mono text-xs">{l.zIndex}</td>
+                <td className="p-2">{l.label}</td>
+                <td className="p-2"><Badge variant="outline" className="border-white/15 text-xs text-muted-foreground">{l.source}</Badge></td>
+                <td className="p-2 text-xs text-muted-foreground">{l.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Card>
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
         <h2 className="text-sm font-semibold">Live event timeline</h2>
         <div className="mt-3 space-y-2 text-sm">
           {NAV_EVENTS.map((e) => (
