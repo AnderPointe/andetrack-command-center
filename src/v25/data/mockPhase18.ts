@@ -500,3 +500,131 @@ export function v25ReadinessScore() {
   const sum = V25_READINESS.byArea.reduce((a, x) => a + x.score, 0);
   return Math.round(sum / V25_READINESS.byArea.length);
 }
+
+// ---------- Phase 18 polish — additive enterprise context ----------
+
+/** EDI error resolution queue surfaced from failed transmissions. */
+export const EDI_ERROR_QUEUE = [
+  { id: "err_001", tx: "edi_2405", partner: "Pied Piper Carriers", doc: "204", code: "MAP_MISSING_FIELD", field: "G62*70", severity: "high",   detail: "Missing pickup window — mapping v1 has no default.", suggestion: "Upgrade to mapping v2 (defaults pickup window from delivery − 6h).", owner: "integrations" },
+  { id: "err_002", tx: "edi_2407", partner: "Initech Distribution", doc: "204", code: "PARTNER_TEST_MODE", field: "ISA*15",  severity: "info",   detail: "Partner is in test mode — auto-rejected with 990.",   suggestion: "Move partner to production after 5 clean samples.",            owner: "integrations" },
+  { id: "err_003", tx: "edi_2411", partner: "Pied Piper Carriers", doc: "997", code: "ACK_TIMEOUT",       field: "—",       severity: "medium", detail: "997 ACK not received within 30 min SLA.",             suggestion: "Retry queued; escalate if 3rd attempt fails.",                  owner: "ops" },
+  { id: "err_004", tx: "edi_2412", partner: "Globex Freight",      doc: "214", code: "TRANSPORT_5XX",     field: "AS2",     severity: "medium", detail: "Partner AS2 endpoint returned 503.",                  suggestion: "Auto-retry with backoff; partner notified at attempt 4.",       owner: "ops" },
+];
+
+export const EDI_ERROR_CODES = [
+  { code: "MAP_MISSING_FIELD", action: "Update mapping or supply default; reprocess." },
+  { code: "MAP_BAD_FORMAT",    action: "Fix transform rule; reprocess." },
+  { code: "PARTNER_TEST_MODE", action: "Promote partner to production." },
+  { code: "ACK_TIMEOUT",       action: "Retry; if persistent, contact partner." },
+  { code: "TRANSPORT_5XX",     action: "Backoff retry; surface to reliability dashboard." },
+  { code: "CONTROL_DUPLICATE", action: "Reject; investigate sequence reset." },
+  { code: "AUTH_FAIL",         action: "Rotate credential; alert admin." },
+];
+
+/** Per-scenario contributing factors so the dispatcher sees the math. */
+export const SCENARIO_FACTORS = [
+  { scenario: "sc_001", factor: "Driver match", weight: 35, signal: "Vehicle + CDL + HOS available" },
+  { scenario: "sc_001", factor: "Deadhead",     weight: 25, signal: "−38 mi vs alternative" },
+  { scenario: "sc_001", factor: "Customer SLA", weight: 20, signal: "Acme tier-1; protects window" },
+  { scenario: "sc_001", factor: "ETA confidence", weight: 20, signal: "86% historical on-route" },
+  { scenario: "sc_003", factor: "Workload balance", weight: 40, signal: "Evens M.Alvarez vs R.Patel" },
+  { scenario: "sc_003", factor: "Compliance",   weight: 30, signal: "Both drivers cleared for lane" },
+  { scenario: "sc_003", factor: "Miles delta",  weight: 30, signal: "−12 mi net" },
+];
+
+/** API gateway security posture review. */
+export const API_GATEWAY_SECURITY = [
+  { id: "sec_g1",  control: "Keys stored hashed (sha-256)",          status: "enforced" },
+  { id: "sec_g2",  control: "Per-key scopes least-privilege",        status: "enforced" },
+  { id: "sec_g3",  control: "Per-tenant rate-limit isolation",       status: "enforced" },
+  { id: "sec_g4",  control: "Idempotency keys required for writes",  status: "enforced" },
+  { id: "sec_g5",  control: "PII masking in logs",                   status: "enforced" },
+  { id: "sec_g6",  control: "Webhook signature verification (HMAC)", status: "enforced" },
+  { id: "sec_g7",  control: "Cross-tenant data leak tests",          status: "scheduled" },
+  { id: "sec_g8",  control: "Key rotation reminder (90 days)",       status: "enforced" },
+];
+
+/** Customer communication approval policy + recent action log. */
+export const COMM_APPROVAL_POLICY = [
+  { type: "Shipment delayed",    autoDraft: true,  requiresApproval: true,  channelDefault: "email" },
+  { type: "ETA updated",         autoDraft: true,  requiresApproval: true,  channelDefault: "sms" },
+  { type: "POD available",       autoDraft: true,  requiresApproval: false, channelDefault: "email" },
+  { type: "Delivery completed",  autoDraft: true,  requiresApproval: false, channelDefault: "email" },
+  { type: "Exception reported",  autoDraft: true,  requiresApproval: true,  channelDefault: "email" },
+  { type: "Customer action req", autoDraft: false, requiresApproval: true,  channelDefault: "email" },
+];
+
+/** White-label preview metadata. */
+export const WHITELABEL_PORTAL_SECTIONS = [
+  { id: "ps1", section: "Header (logo + title)",     covered: true },
+  { id: "ps2", section: "Shipment list",             covered: true },
+  { id: "ps3", section: "Tracking timeline",         covered: true },
+  { id: "ps4", section: "POD viewer",                covered: true },
+  { id: "ps5", section: "Branded transactional email", covered: true },
+  { id: "ps6", section: "Auth screen (login)",       covered: true },
+  { id: "ps7", section: "Anderoute footer hidden",   covered: true },
+];
+
+/** Custom-domain setup walkthrough. */
+export const DOMAIN_SETUP_STEPS = [
+  { id: "d1", step: "Admin enters customer domain in portal settings" },
+  { id: "d2", step: "Anderoute issues TXT verify token + CNAME target" },
+  { id: "d3", step: "Customer DNS team adds records at their registrar" },
+  { id: "d4", step: "verify-dns-record cron polls every 5 min for 60 min" },
+  { id: "d5", step: "Once verified, SSL certificate issued (Let's Encrypt placeholder)" },
+  { id: "d6", step: "Domain marked Active; portal serves on custom URL" },
+  { id: "d7", step: "Cert auto-renews 30 days before expiry" },
+];
+
+/** Scaling watch alerts triggered by thresholds. */
+export const SCALING_ALERTS = [
+  { id: "sa1", area: "GPS event volume",        threshold: "12k/min", at: "11,400/min", level: "warn", action: "Pre-flight sharding plan; verify write target." },
+  { id: "sa2", area: "Reports query perf",      threshold: "p95 3s",  at: "p95 2.8s",   level: "warn", action: "Plan materialized views for monthly reports." },
+  { id: "sa3", area: "Webhook delivery volume", threshold: "5k/hr",   at: "4,200/hr",   level: "info", action: "Within capacity; no action." },
+];
+
+/** Location → driver / load distribution matrix. */
+export const LOCATION_OPS_MATRIX = [
+  { location: "Dallas HQ",         drivers: 84, activeLoads: 41, idle: 7,  onTime: 96.8 },
+  { location: "Houston Yard",      drivers: 47, activeLoads: 22, idle: 4,  onTime: 95.4 },
+  { location: "Atlanta Terminal",  drivers: 62, activeLoads: 28, idle: 6,  onTime: 94.1 },
+  { location: "Phoenix Warehouse", drivers: 31, activeLoads: 14, idle: 3,  onTime: 95.9 },
+  { location: "SoCal Region",      drivers: 23, activeLoads: 11, idle: 2,  onTime: 93.2 },
+];
+
+/** Retention summary for the V2.5 retention dashboard. */
+export const RETENTION_SUMMARY = {
+  policies: 12,
+  underLegalHold: 4,
+  pendingCleanup: 2,
+  bytesReclaimed30d: "428 GB",
+  nextCleanupAt: "2026-05-22 02:00",
+};
+
+/** Recent audit export runs. */
+export const AUDIT_EXPORT_RUNS = [
+  { id: "ax1", at: "2026-05-21 14:22", actor: "admin_7",     filter: "company=Acme, range=24h",       format: "CSV",  rows: 1247, status: "done"    },
+  { id: "ax2", at: "2026-05-20 09:10", actor: "security_2",  filter: "event=EDI*, range=7d",          format: "JSON", rows: 412,  status: "done"    },
+  { id: "ax3", at: "2026-05-18 16:01", actor: "admin_7",     filter: "actor=dispatcher_42, range=30d",format: "CSV",  rows: 2841, status: "done"    },
+  { id: "ax4", at: "2026-05-21 14:55", actor: "admin_7",     filter: "company=Acme, range=90d",       format: "PDF",  rows: 0,    status: "queued"  },
+];
+
+/** Enterprise onboarding owner activity for go-live tracking. */
+export const ONBOARDING_OWNER_LOAD = [
+  { owner: "admin",        open: 1, done: 3, blocked: 0 },
+  { owner: "ops",          open: 0, done: 2, blocked: 0 },
+  { owner: "integrations", open: 3, done: 0, blocked: 1 },
+  { owner: "billing",      open: 0, done: 1, blocked: 0 },
+  { owner: "team",         open: 1, done: 0, blocked: 0 },
+  { owner: "csm",          open: 1, done: 0, blocked: 0 },
+];
+
+/** KPI tiles for the enterprise reports dashboard. */
+export const ENTERPRISE_REPORT_KPIS = [
+  { id: "kpi1", label: "EDI success rate",       value: "96.2%",  delta: "-0.3pp", tone: "warn" },
+  { id: "kpi2", label: "API monthly recurring",  value: "$24.7k", delta: "+8.4%",  tone: "good" },
+  { id: "kpi3", label: "Optimization $ saved",   value: "$8.2k",  delta: "+12%",   tone: "good" },
+  { id: "kpi4", label: "On-time delivery",       value: "95.4%",  delta: "+0.7pp", tone: "good" },
+  { id: "kpi5", label: "Driver utilization",     value: "83%",    delta: "+1.5pp", tone: "good" },
+  { id: "kpi6", label: "Customer comm approvals",value: "147",    delta: "+22",    tone: "info" },
+];
