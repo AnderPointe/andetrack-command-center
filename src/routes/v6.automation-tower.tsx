@@ -31,11 +31,27 @@ export const Route = createFileRoute("/v6/automation-tower")({
             ]} />
           </div>
         </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Approvals trend (7d)</h3>
+          <div className="mt-3 grid grid-cols-7 items-end gap-2 h-32">
+            {trend.map(t => (
+              <div key={t.d} className="flex flex-col items-center gap-1">
+                <div className="flex items-end h-24 gap-0.5">
+                  <div className="w-2.5 rounded-t bg-emerald-400/70" style={{ height: `${(t.approved/250)*100}%` }} title={`Approved ${t.approved}`} />
+                  <div className="w-2.5 rounded-t bg-rose-400/60" style={{ height: `${t.rejected*4}%` }} title={`Rejected ${t.rejected}`} />
+                  <div className="w-2.5 rounded-t bg-amber-400/60" style={{ height: `${t.overrides*4}%` }} title={`Override ${t.overrides}`} />
+                </div>
+                <div className="text-[10px] text-muted-foreground">{t.d}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 text-[10px] text-muted-foreground">Green = approved · Red = rejected (×4) · Amber = manual override (×4)</div>
+        </Card>
         <Card className="border-rose-400/30 bg-rose-500/[0.04] p-4">
           <h3 className="text-sm font-semibold text-rose-200">Policy violations</h3>
           <ul className="mt-2 space-y-1 text-xs">
             {tower.violations.map(v => (
-              <li key={v.id} className="flex justify-between"><span>{v.policy}</span><span className="text-muted-foreground">{v.action}</span><span className="text-emerald-300">{v.outcome}</span></li>
+              <li key={v.id} className="grid grid-cols-3 gap-2"><span>{v.policy}</span><span className="text-muted-foreground">{v.action}</span><span className="text-emerald-300">{v.outcome}</span></li>
             ))}
           </ul>
         </Card>

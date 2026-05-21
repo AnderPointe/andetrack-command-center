@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Brain } from "lucide-react";
 import { V6Page } from "@/components/v6/V6Page";
-import { ScoreCard, KpiGrid } from "@/components/v6/ui-bits";
+import { ScoreCard, KpiGrid, StatusPill } from "@/components/v6/ui-bits";
 import { Card } from "@/components/ui/card";
-import { useAIGovernanceMaturityV6 } from "@/v6/hooks";
+import { useAIGovernanceMaturityV6, useAIGovAlerts } from "@/v6/hooks";
 
 export const Route = createFileRoute("/v6/ai-gov")({
   head: () => ({ meta: [{ title: "AI Governance · V6" }] }),
   component: () => {
     const { gov, trend } = useAIGovernanceMaturityV6();
+    const { alerts } = useAIGovAlerts();
     const accept = Math.round((gov.recs_accepted / gov.recs_generated_24h) * 100);
     return (
       <V6Page icon={<Brain className="size-6 text-emerald-300" />} title="AI Governance Maturity (V6)"
