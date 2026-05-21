@@ -24,3 +24,6 @@ export const useRegionalExpansionDecision       = () => ({ rows: M.EXPANSION_DEC
 export const useLongTermGlobalOperatingModel    = () => ({ model: M.OPERATING_MODEL, summary: M.OPERATING_MODEL_SUMMARY });
 export const useReportsV8                       = () => ({ reports: M.V8_REPORTS });
 export const useV8ExecHeadline                  = () => M.V8_EXEC_HEADLINE;
+export const useV8ExecutionOverlays              = () => M.V8_EXECUTION_OVERLAYS;
+export const useV8ExecutionOverlay               = (area: string) =>
+  M.V8_EXECUTION_OVERLAYS.find((o) => o.area.toLowerCase() === area.toLowerCase()) ?? null;
