@@ -3,7 +3,7 @@ import { Headphones } from "lucide-react";
 import { V4Page } from "@/components/v4/V4Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { SUPPORT_TIERS, SUPPORT_QUEUE, ESCALATIONS } from "@/v4/data/mockPhase21";
+import { SUPPORT_TIERS, SUPPORT_QUEUE, ESCALATIONS, SUPPORT_TRENDS } from "@/v4/data/mockPhase21";
 
 export const Route = createFileRoute("/v4/support")({
   head: () => ({ meta: [{ title: "Enterprise Support · Anderoute" }] }),
@@ -25,6 +25,24 @@ export const Route = createFileRoute("/v4/support")({
           </Card>
         ))}
       </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Support trends</h3>
+        <div className="mt-2 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="text-xs uppercase text-muted-foreground"><tr>
+              {["Week","CSAT","SLA %","Escalations"].map(h => <th key={h} className="px-2 py-1 text-left">{h}</th>)}
+            </tr></thead>
+            <tbody>{SUPPORT_TRENDS.map(t => (
+              <tr key={t.week} className="border-t border-white/10">
+                <td className="px-2 py-1 font-medium">{t.week}</td>
+                <td className="px-2 py-1">{t.csat}</td>
+                <td className="px-2 py-1">{t.sla}%</td>
+                <td className="px-2 py-1">{t.escalations}</td>
+              </tr>))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Escalations</h3>
         <ul className="mt-2 space-y-1 text-sm">{ESCALATIONS.map(e => (
