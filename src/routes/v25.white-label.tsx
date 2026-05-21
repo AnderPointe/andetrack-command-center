@@ -3,7 +3,7 @@ import { Palette } from "lucide-react";
 import { V25Page } from "@/components/v25/V25Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { WHITELABEL_SETTINGS, WHITELABEL_VALIDATION } from "@/v25/data/mockPhase18";
+import { WHITELABEL_SETTINGS, WHITELABEL_VALIDATION, WHITELABEL_PORTAL_SECTIONS } from "@/v25/data/mockPhase18";
 
 export const Route = createFileRoute("/v25/white-label")({
   head: () => ({ meta: [{ title: "White-label Portal · Anderoute" }] }),
@@ -42,6 +42,14 @@ export const Route = createFileRoute("/v25/white-label")({
           </div>
           <div className="mt-3 rounded p-3" style={{ background: s.primary }}><div className="text-sm">Your shipment is on the way. Track in real time.</div></div>
           <div className="mt-3 text-xs opacity-70">{s.footerText}</div>
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h2 className="text-sm font-semibold">Branded portal coverage</h2>
+          <div className="mt-2 grid gap-1 md:grid-cols-2 text-sm">
+            {WHITELABEL_PORTAL_SECTIONS.map((p) => (
+              <div key={p.id} className="flex items-center gap-2"><span className={p.covered ? "text-emerald-400" : "text-amber-400"}>{p.covered ? "✓" : "○"}</span>{p.section}</div>
+            ))}
+          </div>
         </Card>
       </V25Page>
     );

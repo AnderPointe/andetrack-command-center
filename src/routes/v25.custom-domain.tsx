@@ -3,7 +3,7 @@ import { Globe2 } from "lucide-react";
 import { V25Page } from "@/components/v25/V25Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CUSTOM_DOMAINS, DNS_RECORD_EXAMPLE } from "@/v25/data/mockPhase18";
+import { CUSTOM_DOMAINS, DNS_RECORD_EXAMPLE, DOMAIN_SETUP_STEPS } from "@/v25/data/mockPhase18";
 
 const tone: Record<string, string> = { Active: "border-emerald-500/30 text-emerald-300", "DNS verified": "border-sky-500/30 text-sky-300", "Pending DNS": "border-amber-500/30 text-amber-300", Failed: "border-rose-500/30 text-rose-300" };
 
@@ -38,6 +38,14 @@ export const Route = createFileRoute("/v25/custom-domain")({
             ))}
           </tbody>
         </table>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Domain activation flow</h2>
+        <ol className="mt-2 space-y-1 text-sm">
+          {DOMAIN_SETUP_STEPS.map((s, i) => (
+            <li key={s.id} className="flex gap-2"><span className="w-5 text-right font-mono text-xs text-muted-foreground">{i + 1}.</span><span>{s.step}</span></li>
+          ))}
+        </ol>
       </Card>
     </V25Page>
   ),

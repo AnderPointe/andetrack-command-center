@@ -3,7 +3,7 @@ import { MapPinned } from "lucide-react";
 import { V25Page } from "@/components/v25/V25Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { COMPANY_LOCATIONS, REGION_PERFORMANCE } from "@/v25/data/mockPhase18";
+import { COMPANY_LOCATIONS, REGION_PERFORMANCE, LOCATION_OPS_MATRIX } from "@/v25/data/mockPhase18";
 
 export const Route = createFileRoute("/v25/locations")({
   head: () => ({ meta: [{ title: "Multi-location Operations · Anderoute" }] }),
@@ -30,6 +30,15 @@ export const Route = createFileRoute("/v25/locations")({
             </div>
           ))}
         </div>
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Location operations matrix</h2>
+        <table className="mt-3 w-full text-sm">
+          <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground"><tr><th className="p-2">Location</th><th className="p-2">Drivers</th><th className="p-2">Active loads</th><th className="p-2">Idle</th><th className="p-2">On-time</th></tr></thead>
+          <tbody>{LOCATION_OPS_MATRIX.map((m) => (
+            <tr key={m.location} className="border-t border-white/10"><td className="p-2">{m.location}</td><td className="p-2 font-mono text-xs">{m.drivers}</td><td className="p-2 font-mono text-xs">{m.activeLoads}</td><td className="p-2 font-mono text-xs">{m.idle}</td><td className="p-2"><Badge variant="outline" className="border-emerald-500/30 text-emerald-300">{m.onTime}%</Badge></td></tr>
+          ))}</tbody>
+        </table>
       </Card>
     </V25Page>
   ),
