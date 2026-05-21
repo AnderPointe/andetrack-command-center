@@ -1,41 +1,61 @@
-# Phase 22 — V4.5 Plan (preview)
+# Phase 22 — V4.5 Operational Maturity
 
-Move Anderoute from V4 enterprise launch into V4.5 automation maturity and national marketplace operations.
+## Goal
+Move Anderoute into V4.5 operational maturity: human-approved automation, national marketplace operations, certification execution, mobile launch execution, acquisition readiness, customer success / support maturity, AI governance maturity, revenue ops maturity, partner ecosystem, and national operating model.
 
-## Themes
-- Automation maturity (with human approval gates retained — no fully autonomous dispatch).
-- National marketplace operations at scale.
-- Advanced enterprise certifications (SOC 2 evidence pipeline, no certification claims without audit).
-- Mobile launch execution (App Store / Google Play submission tracking; Android Auto + CarPlay submission only after entitlement/approval).
-- Strategic acquisition / partnership readiness.
+## In scope
+See `V45_SCOPE.included` in `src/v45/data/mockPhase22.ts`.
 
-## Candidate modules
-- Automation maturity dashboard with rule library, approval gates, rollback log.
-- National marketplace operations command center.
-- SOC 2 evidence pipeline (controls, owners, evidence artifacts, audit window).
-- Mobile launch submission tracker (binaries, screenshots, privacy disclosures, review correspondence).
-- Acquisition-readiness data room (financials, security, IP, customers, partners).
-- Carrier marketplace health scoring v2.
-- Partner expansion playbooks.
-- Revenue forecasting + scenario planning.
-- Executive board reporting pack.
-- Pricing and packaging studio.
+## Deferred
+- Fully autonomous dispatch
+- Final certification claims without auditor evidence
+- Autonomous vehicle workflows
+- Global customs workflows
+- Full insurance underwriting
+- Full factoring / settlement production
+- International localization
 
-## Explicit non-goals (kept deferred)
-- Fully autonomous dispatch.
-- Certification claims without audit evidence.
-- Android Auto / CarPlay live claims without Google/Apple approval.
-- DOT/FMCSA full compliance automation.
-- International customs / cross-border legal automation.
+## Routes
+All under `/v45/*`:
+overview, scope, automation, approvals, marketplace-ops, playbooks-marketplace,
+carrier-quality, disputes, certification, soc2, mobile-launch, android-auto,
+carplay, partnerships, acquisition, procurement, enterprise-customers,
+customer-success, support, ai-governance, revenue-ops, partner-ecosystem,
+playbooks, national-ops, platform-metrics, reports, demo.
 
-## Outputs to produce in Phase 22
-1. V4.5 scope board + feature matrix.
-2. Automation maturity dashboard.
-3. SOC 2 evidence pipeline.
-4. Mobile launch submission tracker.
-5. Acquisition-readiness data room.
-6. National marketplace command center.
-7. Schema + RLS additions.
-8. Edge function / server function plan.
-9. V4.5 demo flow.
-10. Phase 23 outline.
+## Components
+`V45Page`, `V45Nav`, `ui-bits` (KpiGrid, ScoreCard, StatusPill, SimpleTable),
+plus per-route compositions for ScopeBoard, FeatureMatrix, AutomationMaturityDashboard,
+HumanApprovedAutomationCenter, NationalMarketplaceOperationsCenter,
+MarketplacePlaybookLibrary, CarrierQualityDashboard, MarketplaceDisputeDashboard,
+EnterpriseCertificationExecution, SOC2ControlMatrix, MobileLaunchExecutionCenter,
+AndroidAutoExecutionMaturity, CarPlayExecutionMaturity, StrategicPartnershipReadiness,
+AcquisitionReadinessDashboard, ProcurementPacketBuilder,
+EnterpriseCustomerMaturityDashboard, CustomerSuccessMaturityDashboard,
+SupportOperationsMaturity, AIGovernanceMaturityDashboard,
+RevenueOperationsMaturityDashboard, PartnerEcosystemDashboard,
+OperationalPlaybookLibrary, NationalOperatingModel, PlatformOperatingMetrics.
+
+## Hooks
+Hooks (`useV45Scope`, `useAutomationMaturity`, `useHumanApprovedAutomation`,
+`useMarketplaceOperations`, `useMarketplacePlaybooks`, `useCarrierQuality`,
+`useMarketplaceDisputes`, `useCertificationExecution`, `useSOC2Execution`,
+`useMobileLaunchExecution`, `useAndroidAutoExecutionMaturity`,
+`useCarPlayExecutionMaturity`, `useStrategicPartnershipReadiness`,
+`useAcquisitionReadiness`, `useProcurementPacket`,
+`useEnterpriseCustomerMaturity`, `useCustomerSuccessMaturity`,
+`useSupportMaturity`, `useAIGovernanceMaturity`,
+`useRevenueOperationsMaturity`, `usePartnerEcosystem`,
+`useOperationalPlaybooks`, `useNationalOperatingModel`,
+`usePlatformOperatingMetrics`) are exposed via `src/v45/hooks.ts` and return
+the matching mock dataset from `mockPhase22.ts`. Wire them to server functions
+when the Supabase schema in `docs/phase22-schema.sql` is migrated.
+
+## Demo flow
+See `/v45/demo` — scripted walkthrough across 7 actors.
+
+## Guardrails
+- No autonomous dispatch
+- No SOC 2 / ISO / Android Auto / CarPlay approval claims without evidence
+- Driver safety, RBAC, RLS, audit logging, and human approval workflows are non-negotiable
+- AI is assistive; high-risk actions always require human approval
