@@ -3,6 +3,7 @@ import { ShieldCheck } from "lucide-react";
 import { V15Page } from "@/components/v15/V15Page";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { STRIPE_TRUST_BOUNDARY } from "@/v15/data/mockPhase16";
 
 export const Route = createFileRoute("/v15/stripe")({
   head: () => ({ meta: [{ title: "V1.5 Stripe Edge Plan · Anderoute" }] }),
