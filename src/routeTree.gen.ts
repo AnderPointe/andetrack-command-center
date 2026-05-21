@@ -29,6 +29,31 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V65ScopeRouteImport } from './routes/v65.scope'
+import { Route as V65RiskMatrixRouteImport } from './routes/v65.risk-matrix'
+import { Route as V65RevenueRecRouteImport } from './routes/v65.revenue-rec'
+import { Route as V65ReportsRouteImport } from './routes/v65.reports'
+import { Route as V65RegionalComplianceRouteImport } from './routes/v65.regional-compliance'
+import { Route as V65ProductLinesRouteImport } from './routes/v65.product-lines'
+import { Route as V65PlatformOsRouteImport } from './routes/v65.platform-os'
+import { Route as V65PartnerRevshareRouteImport } from './routes/v65.partner-revshare'
+import { Route as V65PartnerProductsRouteImport } from './routes/v65.partner-products'
+import { Route as V65PartnerMarketplaceRouteImport } from './routes/v65.partner-marketplace'
+import { Route as V65OverviewRouteImport } from './routes/v65.overview'
+import { Route as V65OperatingModelRouteImport } from './routes/v65.operating-model'
+import { Route as V65MktFinancialRouteImport } from './routes/v65.mkt-financial'
+import { Route as V65MktControlsRouteImport } from './routes/v65.mkt-controls'
+import { Route as V65I18nRouteImport } from './routes/v65.i18n'
+import { Route as V65GovernanceRouteImport } from './routes/v65.governance'
+import { Route as V65GlobalRouteImport } from './routes/v65.global'
+import { Route as V65FinancialControlsRouteImport } from './routes/v65.financial-controls'
+import { Route as V65EconomicsRouteImport } from './routes/v65.economics'
+import { Route as V65DemoRouteImport } from './routes/v65.demo'
+import { Route as V65DecisionsRouteImport } from './routes/v65.decisions'
+import { Route as V65ComplianceOpsRouteImport } from './routes/v65.compliance-ops'
+import { Route as V65BillingRouteImport } from './routes/v65.billing'
+import { Route as V65AuditEvidenceRouteImport } from './routes/v65.audit-evidence'
+import { Route as V65ApiBillingRouteImport } from './routes/v65.api-billing'
 import { Route as V6SecurityModelRouteImport } from './routes/v6.security-model'
 import { Route as V6ScopeRouteImport } from './routes/v6.scope'
 import { Route as V6RoadmapRouteImport } from './routes/v6.roadmap'
@@ -523,6 +548,131 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65ScopeRoute = V65ScopeRouteImport.update({
+  id: '/v65/scope',
+  path: '/v65/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65RiskMatrixRoute = V65RiskMatrixRouteImport.update({
+  id: '/v65/risk-matrix',
+  path: '/v65/risk-matrix',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65RevenueRecRoute = V65RevenueRecRouteImport.update({
+  id: '/v65/revenue-rec',
+  path: '/v65/revenue-rec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65ReportsRoute = V65ReportsRouteImport.update({
+  id: '/v65/reports',
+  path: '/v65/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65RegionalComplianceRoute = V65RegionalComplianceRouteImport.update({
+  id: '/v65/regional-compliance',
+  path: '/v65/regional-compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65ProductLinesRoute = V65ProductLinesRouteImport.update({
+  id: '/v65/product-lines',
+  path: '/v65/product-lines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65PlatformOsRoute = V65PlatformOsRouteImport.update({
+  id: '/v65/platform-os',
+  path: '/v65/platform-os',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65PartnerRevshareRoute = V65PartnerRevshareRouteImport.update({
+  id: '/v65/partner-revshare',
+  path: '/v65/partner-revshare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65PartnerProductsRoute = V65PartnerProductsRouteImport.update({
+  id: '/v65/partner-products',
+  path: '/v65/partner-products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65PartnerMarketplaceRoute = V65PartnerMarketplaceRouteImport.update({
+  id: '/v65/partner-marketplace',
+  path: '/v65/partner-marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65OverviewRoute = V65OverviewRouteImport.update({
+  id: '/v65/overview',
+  path: '/v65/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65OperatingModelRoute = V65OperatingModelRouteImport.update({
+  id: '/v65/operating-model',
+  path: '/v65/operating-model',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65MktFinancialRoute = V65MktFinancialRouteImport.update({
+  id: '/v65/mkt-financial',
+  path: '/v65/mkt-financial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65MktControlsRoute = V65MktControlsRouteImport.update({
+  id: '/v65/mkt-controls',
+  path: '/v65/mkt-controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65I18nRoute = V65I18nRouteImport.update({
+  id: '/v65/i18n',
+  path: '/v65/i18n',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65GovernanceRoute = V65GovernanceRouteImport.update({
+  id: '/v65/governance',
+  path: '/v65/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65GlobalRoute = V65GlobalRouteImport.update({
+  id: '/v65/global',
+  path: '/v65/global',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65FinancialControlsRoute = V65FinancialControlsRouteImport.update({
+  id: '/v65/financial-controls',
+  path: '/v65/financial-controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65EconomicsRoute = V65EconomicsRouteImport.update({
+  id: '/v65/economics',
+  path: '/v65/economics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65DemoRoute = V65DemoRouteImport.update({
+  id: '/v65/demo',
+  path: '/v65/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65DecisionsRoute = V65DecisionsRouteImport.update({
+  id: '/v65/decisions',
+  path: '/v65/decisions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65ComplianceOpsRoute = V65ComplianceOpsRouteImport.update({
+  id: '/v65/compliance-ops',
+  path: '/v65/compliance-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65BillingRoute = V65BillingRouteImport.update({
+  id: '/v65/billing',
+  path: '/v65/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65AuditEvidenceRoute = V65AuditEvidenceRouteImport.update({
+  id: '/v65/audit-evidence',
+  path: '/v65/audit-evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V65ApiBillingRoute = V65ApiBillingRouteImport.update({
+  id: '/v65/api-billing',
+  path: '/v65/api-billing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V6SecurityModelRoute = V6SecurityModelRouteImport.update({
@@ -2922,6 +3072,31 @@ export interface FileRoutesByFullPath {
   '/v6/roadmap': typeof V6RoadmapRoute
   '/v6/scope': typeof V6ScopeRoute
   '/v6/security-model': typeof V6SecurityModelRoute
+  '/v65/api-billing': typeof V65ApiBillingRoute
+  '/v65/audit-evidence': typeof V65AuditEvidenceRoute
+  '/v65/billing': typeof V65BillingRoute
+  '/v65/compliance-ops': typeof V65ComplianceOpsRoute
+  '/v65/decisions': typeof V65DecisionsRoute
+  '/v65/demo': typeof V65DemoRoute
+  '/v65/economics': typeof V65EconomicsRoute
+  '/v65/financial-controls': typeof V65FinancialControlsRoute
+  '/v65/global': typeof V65GlobalRoute
+  '/v65/governance': typeof V65GovernanceRoute
+  '/v65/i18n': typeof V65I18nRoute
+  '/v65/mkt-controls': typeof V65MktControlsRoute
+  '/v65/mkt-financial': typeof V65MktFinancialRoute
+  '/v65/operating-model': typeof V65OperatingModelRoute
+  '/v65/overview': typeof V65OverviewRoute
+  '/v65/partner-marketplace': typeof V65PartnerMarketplaceRoute
+  '/v65/partner-products': typeof V65PartnerProductsRoute
+  '/v65/partner-revshare': typeof V65PartnerRevshareRoute
+  '/v65/platform-os': typeof V65PlatformOsRoute
+  '/v65/product-lines': typeof V65ProductLinesRoute
+  '/v65/regional-compliance': typeof V65RegionalComplianceRoute
+  '/v65/reports': typeof V65ReportsRoute
+  '/v65/revenue-rec': typeof V65RevenueRecRoute
+  '/v65/risk-matrix': typeof V65RiskMatrixRoute
+  '/v65/scope': typeof V65ScopeRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -3339,6 +3514,31 @@ export interface FileRoutesByTo {
   '/v6/roadmap': typeof V6RoadmapRoute
   '/v6/scope': typeof V6ScopeRoute
   '/v6/security-model': typeof V6SecurityModelRoute
+  '/v65/api-billing': typeof V65ApiBillingRoute
+  '/v65/audit-evidence': typeof V65AuditEvidenceRoute
+  '/v65/billing': typeof V65BillingRoute
+  '/v65/compliance-ops': typeof V65ComplianceOpsRoute
+  '/v65/decisions': typeof V65DecisionsRoute
+  '/v65/demo': typeof V65DemoRoute
+  '/v65/economics': typeof V65EconomicsRoute
+  '/v65/financial-controls': typeof V65FinancialControlsRoute
+  '/v65/global': typeof V65GlobalRoute
+  '/v65/governance': typeof V65GovernanceRoute
+  '/v65/i18n': typeof V65I18nRoute
+  '/v65/mkt-controls': typeof V65MktControlsRoute
+  '/v65/mkt-financial': typeof V65MktFinancialRoute
+  '/v65/operating-model': typeof V65OperatingModelRoute
+  '/v65/overview': typeof V65OverviewRoute
+  '/v65/partner-marketplace': typeof V65PartnerMarketplaceRoute
+  '/v65/partner-products': typeof V65PartnerProductsRoute
+  '/v65/partner-revshare': typeof V65PartnerRevshareRoute
+  '/v65/platform-os': typeof V65PlatformOsRoute
+  '/v65/product-lines': typeof V65ProductLinesRoute
+  '/v65/regional-compliance': typeof V65RegionalComplianceRoute
+  '/v65/reports': typeof V65ReportsRoute
+  '/v65/revenue-rec': typeof V65RevenueRecRoute
+  '/v65/risk-matrix': typeof V65RiskMatrixRoute
+  '/v65/scope': typeof V65ScopeRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -3757,6 +3957,31 @@ export interface FileRoutesById {
   '/v6/roadmap': typeof V6RoadmapRoute
   '/v6/scope': typeof V6ScopeRoute
   '/v6/security-model': typeof V6SecurityModelRoute
+  '/v65/api-billing': typeof V65ApiBillingRoute
+  '/v65/audit-evidence': typeof V65AuditEvidenceRoute
+  '/v65/billing': typeof V65BillingRoute
+  '/v65/compliance-ops': typeof V65ComplianceOpsRoute
+  '/v65/decisions': typeof V65DecisionsRoute
+  '/v65/demo': typeof V65DemoRoute
+  '/v65/economics': typeof V65EconomicsRoute
+  '/v65/financial-controls': typeof V65FinancialControlsRoute
+  '/v65/global': typeof V65GlobalRoute
+  '/v65/governance': typeof V65GovernanceRoute
+  '/v65/i18n': typeof V65I18nRoute
+  '/v65/mkt-controls': typeof V65MktControlsRoute
+  '/v65/mkt-financial': typeof V65MktFinancialRoute
+  '/v65/operating-model': typeof V65OperatingModelRoute
+  '/v65/overview': typeof V65OverviewRoute
+  '/v65/partner-marketplace': typeof V65PartnerMarketplaceRoute
+  '/v65/partner-products': typeof V65PartnerProductsRoute
+  '/v65/partner-revshare': typeof V65PartnerRevshareRoute
+  '/v65/platform-os': typeof V65PlatformOsRoute
+  '/v65/product-lines': typeof V65ProductLinesRoute
+  '/v65/regional-compliance': typeof V65RegionalComplianceRoute
+  '/v65/reports': typeof V65ReportsRoute
+  '/v65/revenue-rec': typeof V65RevenueRecRoute
+  '/v65/risk-matrix': typeof V65RiskMatrixRoute
+  '/v65/scope': typeof V65ScopeRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -4176,6 +4401,31 @@ export interface FileRouteTypes {
     | '/v6/roadmap'
     | '/v6/scope'
     | '/v6/security-model'
+    | '/v65/api-billing'
+    | '/v65/audit-evidence'
+    | '/v65/billing'
+    | '/v65/compliance-ops'
+    | '/v65/decisions'
+    | '/v65/demo'
+    | '/v65/economics'
+    | '/v65/financial-controls'
+    | '/v65/global'
+    | '/v65/governance'
+    | '/v65/i18n'
+    | '/v65/mkt-controls'
+    | '/v65/mkt-financial'
+    | '/v65/operating-model'
+    | '/v65/overview'
+    | '/v65/partner-marketplace'
+    | '/v65/partner-products'
+    | '/v65/partner-revshare'
+    | '/v65/platform-os'
+    | '/v65/product-lines'
+    | '/v65/regional-compliance'
+    | '/v65/reports'
+    | '/v65/revenue-rec'
+    | '/v65/risk-matrix'
+    | '/v65/scope'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -4593,6 +4843,31 @@ export interface FileRouteTypes {
     | '/v6/roadmap'
     | '/v6/scope'
     | '/v6/security-model'
+    | '/v65/api-billing'
+    | '/v65/audit-evidence'
+    | '/v65/billing'
+    | '/v65/compliance-ops'
+    | '/v65/decisions'
+    | '/v65/demo'
+    | '/v65/economics'
+    | '/v65/financial-controls'
+    | '/v65/global'
+    | '/v65/governance'
+    | '/v65/i18n'
+    | '/v65/mkt-controls'
+    | '/v65/mkt-financial'
+    | '/v65/operating-model'
+    | '/v65/overview'
+    | '/v65/partner-marketplace'
+    | '/v65/partner-products'
+    | '/v65/partner-revshare'
+    | '/v65/platform-os'
+    | '/v65/product-lines'
+    | '/v65/regional-compliance'
+    | '/v65/reports'
+    | '/v65/revenue-rec'
+    | '/v65/risk-matrix'
+    | '/v65/scope'
     | '/driver'
   id:
     | '__root__'
@@ -5010,6 +5285,31 @@ export interface FileRouteTypes {
     | '/v6/roadmap'
     | '/v6/scope'
     | '/v6/security-model'
+    | '/v65/api-billing'
+    | '/v65/audit-evidence'
+    | '/v65/billing'
+    | '/v65/compliance-ops'
+    | '/v65/decisions'
+    | '/v65/demo'
+    | '/v65/economics'
+    | '/v65/financial-controls'
+    | '/v65/global'
+    | '/v65/governance'
+    | '/v65/i18n'
+    | '/v65/mkt-controls'
+    | '/v65/mkt-financial'
+    | '/v65/operating-model'
+    | '/v65/overview'
+    | '/v65/partner-marketplace'
+    | '/v65/partner-products'
+    | '/v65/partner-revshare'
+    | '/v65/platform-os'
+    | '/v65/product-lines'
+    | '/v65/regional-compliance'
+    | '/v65/reports'
+    | '/v65/revenue-rec'
+    | '/v65/risk-matrix'
+    | '/v65/scope'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -5420,6 +5720,31 @@ export interface RootRouteChildren {
   V6RoadmapRoute: typeof V6RoadmapRoute
   V6ScopeRoute: typeof V6ScopeRoute
   V6SecurityModelRoute: typeof V6SecurityModelRoute
+  V65ApiBillingRoute: typeof V65ApiBillingRoute
+  V65AuditEvidenceRoute: typeof V65AuditEvidenceRoute
+  V65BillingRoute: typeof V65BillingRoute
+  V65ComplianceOpsRoute: typeof V65ComplianceOpsRoute
+  V65DecisionsRoute: typeof V65DecisionsRoute
+  V65DemoRoute: typeof V65DemoRoute
+  V65EconomicsRoute: typeof V65EconomicsRoute
+  V65FinancialControlsRoute: typeof V65FinancialControlsRoute
+  V65GlobalRoute: typeof V65GlobalRoute
+  V65GovernanceRoute: typeof V65GovernanceRoute
+  V65I18nRoute: typeof V65I18nRoute
+  V65MktControlsRoute: typeof V65MktControlsRoute
+  V65MktFinancialRoute: typeof V65MktFinancialRoute
+  V65OperatingModelRoute: typeof V65OperatingModelRoute
+  V65OverviewRoute: typeof V65OverviewRoute
+  V65PartnerMarketplaceRoute: typeof V65PartnerMarketplaceRoute
+  V65PartnerProductsRoute: typeof V65PartnerProductsRoute
+  V65PartnerRevshareRoute: typeof V65PartnerRevshareRoute
+  V65PlatformOsRoute: typeof V65PlatformOsRoute
+  V65ProductLinesRoute: typeof V65ProductLinesRoute
+  V65RegionalComplianceRoute: typeof V65RegionalComplianceRoute
+  V65ReportsRoute: typeof V65ReportsRoute
+  V65RevenueRecRoute: typeof V65RevenueRecRoute
+  V65RiskMatrixRoute: typeof V65RiskMatrixRoute
+  V65ScopeRoute: typeof V65ScopeRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -5563,6 +5888,181 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/scope': {
+      id: '/v65/scope'
+      path: '/v65/scope'
+      fullPath: '/v65/scope'
+      preLoaderRoute: typeof V65ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/risk-matrix': {
+      id: '/v65/risk-matrix'
+      path: '/v65/risk-matrix'
+      fullPath: '/v65/risk-matrix'
+      preLoaderRoute: typeof V65RiskMatrixRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/revenue-rec': {
+      id: '/v65/revenue-rec'
+      path: '/v65/revenue-rec'
+      fullPath: '/v65/revenue-rec'
+      preLoaderRoute: typeof V65RevenueRecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/reports': {
+      id: '/v65/reports'
+      path: '/v65/reports'
+      fullPath: '/v65/reports'
+      preLoaderRoute: typeof V65ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/regional-compliance': {
+      id: '/v65/regional-compliance'
+      path: '/v65/regional-compliance'
+      fullPath: '/v65/regional-compliance'
+      preLoaderRoute: typeof V65RegionalComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/product-lines': {
+      id: '/v65/product-lines'
+      path: '/v65/product-lines'
+      fullPath: '/v65/product-lines'
+      preLoaderRoute: typeof V65ProductLinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/platform-os': {
+      id: '/v65/platform-os'
+      path: '/v65/platform-os'
+      fullPath: '/v65/platform-os'
+      preLoaderRoute: typeof V65PlatformOsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/partner-revshare': {
+      id: '/v65/partner-revshare'
+      path: '/v65/partner-revshare'
+      fullPath: '/v65/partner-revshare'
+      preLoaderRoute: typeof V65PartnerRevshareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/partner-products': {
+      id: '/v65/partner-products'
+      path: '/v65/partner-products'
+      fullPath: '/v65/partner-products'
+      preLoaderRoute: typeof V65PartnerProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/partner-marketplace': {
+      id: '/v65/partner-marketplace'
+      path: '/v65/partner-marketplace'
+      fullPath: '/v65/partner-marketplace'
+      preLoaderRoute: typeof V65PartnerMarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/overview': {
+      id: '/v65/overview'
+      path: '/v65/overview'
+      fullPath: '/v65/overview'
+      preLoaderRoute: typeof V65OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/operating-model': {
+      id: '/v65/operating-model'
+      path: '/v65/operating-model'
+      fullPath: '/v65/operating-model'
+      preLoaderRoute: typeof V65OperatingModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/mkt-financial': {
+      id: '/v65/mkt-financial'
+      path: '/v65/mkt-financial'
+      fullPath: '/v65/mkt-financial'
+      preLoaderRoute: typeof V65MktFinancialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/mkt-controls': {
+      id: '/v65/mkt-controls'
+      path: '/v65/mkt-controls'
+      fullPath: '/v65/mkt-controls'
+      preLoaderRoute: typeof V65MktControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/i18n': {
+      id: '/v65/i18n'
+      path: '/v65/i18n'
+      fullPath: '/v65/i18n'
+      preLoaderRoute: typeof V65I18nRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/governance': {
+      id: '/v65/governance'
+      path: '/v65/governance'
+      fullPath: '/v65/governance'
+      preLoaderRoute: typeof V65GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/global': {
+      id: '/v65/global'
+      path: '/v65/global'
+      fullPath: '/v65/global'
+      preLoaderRoute: typeof V65GlobalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/financial-controls': {
+      id: '/v65/financial-controls'
+      path: '/v65/financial-controls'
+      fullPath: '/v65/financial-controls'
+      preLoaderRoute: typeof V65FinancialControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/economics': {
+      id: '/v65/economics'
+      path: '/v65/economics'
+      fullPath: '/v65/economics'
+      preLoaderRoute: typeof V65EconomicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/demo': {
+      id: '/v65/demo'
+      path: '/v65/demo'
+      fullPath: '/v65/demo'
+      preLoaderRoute: typeof V65DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/decisions': {
+      id: '/v65/decisions'
+      path: '/v65/decisions'
+      fullPath: '/v65/decisions'
+      preLoaderRoute: typeof V65DecisionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/compliance-ops': {
+      id: '/v65/compliance-ops'
+      path: '/v65/compliance-ops'
+      fullPath: '/v65/compliance-ops'
+      preLoaderRoute: typeof V65ComplianceOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/billing': {
+      id: '/v65/billing'
+      path: '/v65/billing'
+      fullPath: '/v65/billing'
+      preLoaderRoute: typeof V65BillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/audit-evidence': {
+      id: '/v65/audit-evidence'
+      path: '/v65/audit-evidence'
+      fullPath: '/v65/audit-evidence'
+      preLoaderRoute: typeof V65AuditEvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v65/api-billing': {
+      id: '/v65/api-billing'
+      path: '/v65/api-billing'
+      fullPath: '/v65/api-billing'
+      preLoaderRoute: typeof V65ApiBillingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v6/security-model': {
@@ -8793,6 +9293,31 @@ const rootRouteChildren: RootRouteChildren = {
   V6RoadmapRoute: V6RoadmapRoute,
   V6ScopeRoute: V6ScopeRoute,
   V6SecurityModelRoute: V6SecurityModelRoute,
+  V65ApiBillingRoute: V65ApiBillingRoute,
+  V65AuditEvidenceRoute: V65AuditEvidenceRoute,
+  V65BillingRoute: V65BillingRoute,
+  V65ComplianceOpsRoute: V65ComplianceOpsRoute,
+  V65DecisionsRoute: V65DecisionsRoute,
+  V65DemoRoute: V65DemoRoute,
+  V65EconomicsRoute: V65EconomicsRoute,
+  V65FinancialControlsRoute: V65FinancialControlsRoute,
+  V65GlobalRoute: V65GlobalRoute,
+  V65GovernanceRoute: V65GovernanceRoute,
+  V65I18nRoute: V65I18nRoute,
+  V65MktControlsRoute: V65MktControlsRoute,
+  V65MktFinancialRoute: V65MktFinancialRoute,
+  V65OperatingModelRoute: V65OperatingModelRoute,
+  V65OverviewRoute: V65OverviewRoute,
+  V65PartnerMarketplaceRoute: V65PartnerMarketplaceRoute,
+  V65PartnerProductsRoute: V65PartnerProductsRoute,
+  V65PartnerRevshareRoute: V65PartnerRevshareRoute,
+  V65PlatformOsRoute: V65PlatformOsRoute,
+  V65ProductLinesRoute: V65ProductLinesRoute,
+  V65RegionalComplianceRoute: V65RegionalComplianceRoute,
+  V65ReportsRoute: V65ReportsRoute,
+  V65RevenueRecRoute: V65RevenueRecRoute,
+  V65RiskMatrixRoute: V65RiskMatrixRoute,
+  V65ScopeRoute: V65ScopeRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
