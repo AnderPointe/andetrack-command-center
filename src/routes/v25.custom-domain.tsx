@@ -39,6 +39,14 @@ export const Route = createFileRoute("/v25/custom-domain")({
           </tbody>
         </table>
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h2 className="text-sm font-semibold">Domain activation flow</h2>
+        <ol className="mt-2 space-y-1 text-sm">
+          {DOMAIN_SETUP_STEPS.map((s, i) => (
+            <li key={s.id} className="flex gap-2"><span className="w-5 text-right font-mono text-xs text-muted-foreground">{i + 1}.</span><span>{s.step}</span></li>
+          ))}
+        </ol>
+      </Card>
     </V25Page>
   ),
 });
