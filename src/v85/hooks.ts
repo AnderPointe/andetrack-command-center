@@ -26,3 +26,6 @@ export const usePlatformReliabilityStewardship    = () => ({ summary: M.V85_RELI
 export const useReportsV85                        = () => ({ reports: M.V85_REPORTS });
 export const useV85ExecHeadline                   = () => M.V85_EXEC_HEADLINE;
 export const useV85ExecutionOverlays              = () => M.V85_EXECUTION_OVERLAYS;
+export const useV85RlsExamples                    = () => M.V85_RLS_EXAMPLES;
+export const useV85BackendBoundary                = () => M.V85_BACKEND_BOUNDARY;
+export const useV85RoleGuidance                   = () => M.V85_ROLE_GUIDANCE;
