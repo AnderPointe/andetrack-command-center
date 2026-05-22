@@ -420,6 +420,30 @@ import { Route as V15DispatcherRoutesRouteImport } from './routes/v15.dispatcher
 import { Route as V15DemoRouteImport } from './routes/v15.demo'
 import { Route as V15CopilotRouteImport } from './routes/v15.copilot'
 import { Route as V15BillingRouteImport } from './routes/v15.billing'
+import { Route as V12StrategicAcctRouteImport } from './routes/v12.strategic-acct'
+import { Route as V12ScopeRouteImport } from './routes/v12.scope'
+import { Route as V12RiskRouteImport } from './routes/v12.risk'
+import { Route as V12RevenueQualityRouteImport } from './routes/v12.revenue-quality'
+import { Route as V12RetentionRouteImport } from './routes/v12.retention'
+import { Route as V12ReportsRouteImport } from './routes/v12.reports'
+import { Route as V12ProofRouteImport } from './routes/v12.proof'
+import { Route as V12ProcurementRouteImport } from './routes/v12.procurement'
+import { Route as V12PartnerRevenueRouteImport } from './routes/v12.partner-revenue'
+import { Route as V12PartnerChannelRouteImport } from './routes/v12.partner-channel'
+import { Route as V12OverviewRouteImport } from './routes/v12.overview'
+import { Route as V12OperatingModelRouteImport } from './routes/v12.operating-model'
+import { Route as V12MarketplaceRouteImport } from './routes/v12.marketplace'
+import { Route as V12GrowthRouteImport } from './routes/v12.growth'
+import { Route as V12GlobalExpansionRouteImport } from './routes/v12.global-expansion'
+import { Route as V12ForecastRouteImport } from './routes/v12.forecast'
+import { Route as V12DemoRouteImport } from './routes/v12.demo'
+import { Route as V12DealExecutionRouteImport } from './routes/v12.deal-execution'
+import { Route as V12DataRoomRouteImport } from './routes/v12.data-room'
+import { Route as V12CommandRouteImport } from './routes/v12.command'
+import { Route as V12CapitalRouteImport } from './routes/v12.capital'
+import { Route as V12CadenceRouteImport } from './routes/v12.cadence'
+import { Route as V12BoardRouteImport } from './routes/v12.board'
+import { Route as V12ApiEdiRouteImport } from './routes/v12.api-edi'
 import { Route as V115ScopeRouteImport } from './routes/v115.scope'
 import { Route as V115SalesEngRouteImport } from './routes/v115.sales-eng'
 import { Route as V115RoadmapRouteImport } from './routes/v115.roadmap'
@@ -2699,6 +2723,126 @@ const V15BillingRoute = V15BillingRouteImport.update({
   path: '/v15/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V12StrategicAcctRoute = V12StrategicAcctRouteImport.update({
+  id: '/v12/strategic-acct',
+  path: '/v12/strategic-acct',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12ScopeRoute = V12ScopeRouteImport.update({
+  id: '/v12/scope',
+  path: '/v12/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12RiskRoute = V12RiskRouteImport.update({
+  id: '/v12/risk',
+  path: '/v12/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12RevenueQualityRoute = V12RevenueQualityRouteImport.update({
+  id: '/v12/revenue-quality',
+  path: '/v12/revenue-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12RetentionRoute = V12RetentionRouteImport.update({
+  id: '/v12/retention',
+  path: '/v12/retention',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12ReportsRoute = V12ReportsRouteImport.update({
+  id: '/v12/reports',
+  path: '/v12/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12ProofRoute = V12ProofRouteImport.update({
+  id: '/v12/proof',
+  path: '/v12/proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12ProcurementRoute = V12ProcurementRouteImport.update({
+  id: '/v12/procurement',
+  path: '/v12/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12PartnerRevenueRoute = V12PartnerRevenueRouteImport.update({
+  id: '/v12/partner-revenue',
+  path: '/v12/partner-revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12PartnerChannelRoute = V12PartnerChannelRouteImport.update({
+  id: '/v12/partner-channel',
+  path: '/v12/partner-channel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12OverviewRoute = V12OverviewRouteImport.update({
+  id: '/v12/overview',
+  path: '/v12/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12OperatingModelRoute = V12OperatingModelRouteImport.update({
+  id: '/v12/operating-model',
+  path: '/v12/operating-model',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12MarketplaceRoute = V12MarketplaceRouteImport.update({
+  id: '/v12/marketplace',
+  path: '/v12/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12GrowthRoute = V12GrowthRouteImport.update({
+  id: '/v12/growth',
+  path: '/v12/growth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12GlobalExpansionRoute = V12GlobalExpansionRouteImport.update({
+  id: '/v12/global-expansion',
+  path: '/v12/global-expansion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12ForecastRoute = V12ForecastRouteImport.update({
+  id: '/v12/forecast',
+  path: '/v12/forecast',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12DemoRoute = V12DemoRouteImport.update({
+  id: '/v12/demo',
+  path: '/v12/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12DealExecutionRoute = V12DealExecutionRouteImport.update({
+  id: '/v12/deal-execution',
+  path: '/v12/deal-execution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12DataRoomRoute = V12DataRoomRouteImport.update({
+  id: '/v12/data-room',
+  path: '/v12/data-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12CommandRoute = V12CommandRouteImport.update({
+  id: '/v12/command',
+  path: '/v12/command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12CapitalRoute = V12CapitalRouteImport.update({
+  id: '/v12/capital',
+  path: '/v12/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12CadenceRoute = V12CadenceRouteImport.update({
+  id: '/v12/cadence',
+  path: '/v12/cadence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12BoardRoute = V12BoardRouteImport.update({
+  id: '/v12/board',
+  path: '/v12/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V12ApiEdiRoute = V12ApiEdiRouteImport.update({
+  id: '/v12/api-edi',
+  path: '/v12/api-edi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V115ScopeRoute = V115ScopeRouteImport.update({
   id: '/v115/scope',
   path: '/v115/scope',
@@ -4038,6 +4182,30 @@ export interface FileRoutesByFullPath {
   '/v115/roadmap': typeof V115RoadmapRoute
   '/v115/sales-eng': typeof V115SalesEngRoute
   '/v115/scope': typeof V115ScopeRoute
+  '/v12/api-edi': typeof V12ApiEdiRoute
+  '/v12/board': typeof V12BoardRoute
+  '/v12/cadence': typeof V12CadenceRoute
+  '/v12/capital': typeof V12CapitalRoute
+  '/v12/command': typeof V12CommandRoute
+  '/v12/data-room': typeof V12DataRoomRoute
+  '/v12/deal-execution': typeof V12DealExecutionRoute
+  '/v12/demo': typeof V12DemoRoute
+  '/v12/forecast': typeof V12ForecastRoute
+  '/v12/global-expansion': typeof V12GlobalExpansionRoute
+  '/v12/growth': typeof V12GrowthRoute
+  '/v12/marketplace': typeof V12MarketplaceRoute
+  '/v12/operating-model': typeof V12OperatingModelRoute
+  '/v12/overview': typeof V12OverviewRoute
+  '/v12/partner-channel': typeof V12PartnerChannelRoute
+  '/v12/partner-revenue': typeof V12PartnerRevenueRoute
+  '/v12/procurement': typeof V12ProcurementRoute
+  '/v12/proof': typeof V12ProofRoute
+  '/v12/reports': typeof V12ReportsRoute
+  '/v12/retention': typeof V12RetentionRoute
+  '/v12/revenue-quality': typeof V12RevenueQualityRoute
+  '/v12/risk': typeof V12RiskRoute
+  '/v12/scope': typeof V12ScopeRoute
+  '/v12/strategic-acct': typeof V12StrategicAcctRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -4670,6 +4838,30 @@ export interface FileRoutesByTo {
   '/v115/roadmap': typeof V115RoadmapRoute
   '/v115/sales-eng': typeof V115SalesEngRoute
   '/v115/scope': typeof V115ScopeRoute
+  '/v12/api-edi': typeof V12ApiEdiRoute
+  '/v12/board': typeof V12BoardRoute
+  '/v12/cadence': typeof V12CadenceRoute
+  '/v12/capital': typeof V12CapitalRoute
+  '/v12/command': typeof V12CommandRoute
+  '/v12/data-room': typeof V12DataRoomRoute
+  '/v12/deal-execution': typeof V12DealExecutionRoute
+  '/v12/demo': typeof V12DemoRoute
+  '/v12/forecast': typeof V12ForecastRoute
+  '/v12/global-expansion': typeof V12GlobalExpansionRoute
+  '/v12/growth': typeof V12GrowthRoute
+  '/v12/marketplace': typeof V12MarketplaceRoute
+  '/v12/operating-model': typeof V12OperatingModelRoute
+  '/v12/overview': typeof V12OverviewRoute
+  '/v12/partner-channel': typeof V12PartnerChannelRoute
+  '/v12/partner-revenue': typeof V12PartnerRevenueRoute
+  '/v12/procurement': typeof V12ProcurementRoute
+  '/v12/proof': typeof V12ProofRoute
+  '/v12/reports': typeof V12ReportsRoute
+  '/v12/retention': typeof V12RetentionRoute
+  '/v12/revenue-quality': typeof V12RevenueQualityRoute
+  '/v12/risk': typeof V12RiskRoute
+  '/v12/scope': typeof V12ScopeRoute
+  '/v12/strategic-acct': typeof V12StrategicAcctRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -5303,6 +5495,30 @@ export interface FileRoutesById {
   '/v115/roadmap': typeof V115RoadmapRoute
   '/v115/sales-eng': typeof V115SalesEngRoute
   '/v115/scope': typeof V115ScopeRoute
+  '/v12/api-edi': typeof V12ApiEdiRoute
+  '/v12/board': typeof V12BoardRoute
+  '/v12/cadence': typeof V12CadenceRoute
+  '/v12/capital': typeof V12CapitalRoute
+  '/v12/command': typeof V12CommandRoute
+  '/v12/data-room': typeof V12DataRoomRoute
+  '/v12/deal-execution': typeof V12DealExecutionRoute
+  '/v12/demo': typeof V12DemoRoute
+  '/v12/forecast': typeof V12ForecastRoute
+  '/v12/global-expansion': typeof V12GlobalExpansionRoute
+  '/v12/growth': typeof V12GrowthRoute
+  '/v12/marketplace': typeof V12MarketplaceRoute
+  '/v12/operating-model': typeof V12OperatingModelRoute
+  '/v12/overview': typeof V12OverviewRoute
+  '/v12/partner-channel': typeof V12PartnerChannelRoute
+  '/v12/partner-revenue': typeof V12PartnerRevenueRoute
+  '/v12/procurement': typeof V12ProcurementRoute
+  '/v12/proof': typeof V12ProofRoute
+  '/v12/reports': typeof V12ReportsRoute
+  '/v12/retention': typeof V12RetentionRoute
+  '/v12/revenue-quality': typeof V12RevenueQualityRoute
+  '/v12/risk': typeof V12RiskRoute
+  '/v12/scope': typeof V12ScopeRoute
+  '/v12/strategic-acct': typeof V12StrategicAcctRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -5937,6 +6153,30 @@ export interface FileRouteTypes {
     | '/v115/roadmap'
     | '/v115/sales-eng'
     | '/v115/scope'
+    | '/v12/api-edi'
+    | '/v12/board'
+    | '/v12/cadence'
+    | '/v12/capital'
+    | '/v12/command'
+    | '/v12/data-room'
+    | '/v12/deal-execution'
+    | '/v12/demo'
+    | '/v12/forecast'
+    | '/v12/global-expansion'
+    | '/v12/growth'
+    | '/v12/marketplace'
+    | '/v12/operating-model'
+    | '/v12/overview'
+    | '/v12/partner-channel'
+    | '/v12/partner-revenue'
+    | '/v12/procurement'
+    | '/v12/proof'
+    | '/v12/reports'
+    | '/v12/retention'
+    | '/v12/revenue-quality'
+    | '/v12/risk'
+    | '/v12/scope'
+    | '/v12/strategic-acct'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -6569,6 +6809,30 @@ export interface FileRouteTypes {
     | '/v115/roadmap'
     | '/v115/sales-eng'
     | '/v115/scope'
+    | '/v12/api-edi'
+    | '/v12/board'
+    | '/v12/cadence'
+    | '/v12/capital'
+    | '/v12/command'
+    | '/v12/data-room'
+    | '/v12/deal-execution'
+    | '/v12/demo'
+    | '/v12/forecast'
+    | '/v12/global-expansion'
+    | '/v12/growth'
+    | '/v12/marketplace'
+    | '/v12/operating-model'
+    | '/v12/overview'
+    | '/v12/partner-channel'
+    | '/v12/partner-revenue'
+    | '/v12/procurement'
+    | '/v12/proof'
+    | '/v12/reports'
+    | '/v12/retention'
+    | '/v12/revenue-quality'
+    | '/v12/risk'
+    | '/v12/scope'
+    | '/v12/strategic-acct'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -7201,6 +7465,30 @@ export interface FileRouteTypes {
     | '/v115/roadmap'
     | '/v115/sales-eng'
     | '/v115/scope'
+    | '/v12/api-edi'
+    | '/v12/board'
+    | '/v12/cadence'
+    | '/v12/capital'
+    | '/v12/command'
+    | '/v12/data-room'
+    | '/v12/deal-execution'
+    | '/v12/demo'
+    | '/v12/forecast'
+    | '/v12/global-expansion'
+    | '/v12/growth'
+    | '/v12/marketplace'
+    | '/v12/operating-model'
+    | '/v12/overview'
+    | '/v12/partner-channel'
+    | '/v12/partner-revenue'
+    | '/v12/procurement'
+    | '/v12/proof'
+    | '/v12/reports'
+    | '/v12/retention'
+    | '/v12/revenue-quality'
+    | '/v12/risk'
+    | '/v12/scope'
+    | '/v12/strategic-acct'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -7826,6 +8114,30 @@ export interface RootRouteChildren {
   V115RoadmapRoute: typeof V115RoadmapRoute
   V115SalesEngRoute: typeof V115SalesEngRoute
   V115ScopeRoute: typeof V115ScopeRoute
+  V12ApiEdiRoute: typeof V12ApiEdiRoute
+  V12BoardRoute: typeof V12BoardRoute
+  V12CadenceRoute: typeof V12CadenceRoute
+  V12CapitalRoute: typeof V12CapitalRoute
+  V12CommandRoute: typeof V12CommandRoute
+  V12DataRoomRoute: typeof V12DataRoomRoute
+  V12DealExecutionRoute: typeof V12DealExecutionRoute
+  V12DemoRoute: typeof V12DemoRoute
+  V12ForecastRoute: typeof V12ForecastRoute
+  V12GlobalExpansionRoute: typeof V12GlobalExpansionRoute
+  V12GrowthRoute: typeof V12GrowthRoute
+  V12MarketplaceRoute: typeof V12MarketplaceRoute
+  V12OperatingModelRoute: typeof V12OperatingModelRoute
+  V12OverviewRoute: typeof V12OverviewRoute
+  V12PartnerChannelRoute: typeof V12PartnerChannelRoute
+  V12PartnerRevenueRoute: typeof V12PartnerRevenueRoute
+  V12ProcurementRoute: typeof V12ProcurementRoute
+  V12ProofRoute: typeof V12ProofRoute
+  V12ReportsRoute: typeof V12ReportsRoute
+  V12RetentionRoute: typeof V12RetentionRoute
+  V12RevenueQualityRoute: typeof V12RevenueQualityRoute
+  V12RiskRoute: typeof V12RiskRoute
+  V12ScopeRoute: typeof V12ScopeRoute
+  V12StrategicAcctRoute: typeof V12StrategicAcctRoute
   V15BillingRoute: typeof V15BillingRoute
   V15CopilotRoute: typeof V15CopilotRoute
   V15DemoRoute: typeof V15DemoRoute
@@ -11099,6 +11411,174 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v12/strategic-acct': {
+      id: '/v12/strategic-acct'
+      path: '/v12/strategic-acct'
+      fullPath: '/v12/strategic-acct'
+      preLoaderRoute: typeof V12StrategicAcctRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/scope': {
+      id: '/v12/scope'
+      path: '/v12/scope'
+      fullPath: '/v12/scope'
+      preLoaderRoute: typeof V12ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/risk': {
+      id: '/v12/risk'
+      path: '/v12/risk'
+      fullPath: '/v12/risk'
+      preLoaderRoute: typeof V12RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/revenue-quality': {
+      id: '/v12/revenue-quality'
+      path: '/v12/revenue-quality'
+      fullPath: '/v12/revenue-quality'
+      preLoaderRoute: typeof V12RevenueQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/retention': {
+      id: '/v12/retention'
+      path: '/v12/retention'
+      fullPath: '/v12/retention'
+      preLoaderRoute: typeof V12RetentionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/reports': {
+      id: '/v12/reports'
+      path: '/v12/reports'
+      fullPath: '/v12/reports'
+      preLoaderRoute: typeof V12ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/proof': {
+      id: '/v12/proof'
+      path: '/v12/proof'
+      fullPath: '/v12/proof'
+      preLoaderRoute: typeof V12ProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/procurement': {
+      id: '/v12/procurement'
+      path: '/v12/procurement'
+      fullPath: '/v12/procurement'
+      preLoaderRoute: typeof V12ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/partner-revenue': {
+      id: '/v12/partner-revenue'
+      path: '/v12/partner-revenue'
+      fullPath: '/v12/partner-revenue'
+      preLoaderRoute: typeof V12PartnerRevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/partner-channel': {
+      id: '/v12/partner-channel'
+      path: '/v12/partner-channel'
+      fullPath: '/v12/partner-channel'
+      preLoaderRoute: typeof V12PartnerChannelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/overview': {
+      id: '/v12/overview'
+      path: '/v12/overview'
+      fullPath: '/v12/overview'
+      preLoaderRoute: typeof V12OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/operating-model': {
+      id: '/v12/operating-model'
+      path: '/v12/operating-model'
+      fullPath: '/v12/operating-model'
+      preLoaderRoute: typeof V12OperatingModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/marketplace': {
+      id: '/v12/marketplace'
+      path: '/v12/marketplace'
+      fullPath: '/v12/marketplace'
+      preLoaderRoute: typeof V12MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/growth': {
+      id: '/v12/growth'
+      path: '/v12/growth'
+      fullPath: '/v12/growth'
+      preLoaderRoute: typeof V12GrowthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/global-expansion': {
+      id: '/v12/global-expansion'
+      path: '/v12/global-expansion'
+      fullPath: '/v12/global-expansion'
+      preLoaderRoute: typeof V12GlobalExpansionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/forecast': {
+      id: '/v12/forecast'
+      path: '/v12/forecast'
+      fullPath: '/v12/forecast'
+      preLoaderRoute: typeof V12ForecastRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/demo': {
+      id: '/v12/demo'
+      path: '/v12/demo'
+      fullPath: '/v12/demo'
+      preLoaderRoute: typeof V12DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/deal-execution': {
+      id: '/v12/deal-execution'
+      path: '/v12/deal-execution'
+      fullPath: '/v12/deal-execution'
+      preLoaderRoute: typeof V12DealExecutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/data-room': {
+      id: '/v12/data-room'
+      path: '/v12/data-room'
+      fullPath: '/v12/data-room'
+      preLoaderRoute: typeof V12DataRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/command': {
+      id: '/v12/command'
+      path: '/v12/command'
+      fullPath: '/v12/command'
+      preLoaderRoute: typeof V12CommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/capital': {
+      id: '/v12/capital'
+      path: '/v12/capital'
+      fullPath: '/v12/capital'
+      preLoaderRoute: typeof V12CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/cadence': {
+      id: '/v12/cadence'
+      path: '/v12/cadence'
+      fullPath: '/v12/cadence'
+      preLoaderRoute: typeof V12CadenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/board': {
+      id: '/v12/board'
+      path: '/v12/board'
+      fullPath: '/v12/board'
+      preLoaderRoute: typeof V12BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v12/api-edi': {
+      id: '/v12/api-edi'
+      path: '/v12/api-edi'
+      fullPath: '/v12/api-edi'
+      preLoaderRoute: typeof V12ApiEdiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v115/scope': {
       id: '/v115/scope'
       path: '/v115/scope'
@@ -12919,6 +13399,30 @@ const rootRouteChildren: RootRouteChildren = {
   V115RoadmapRoute: V115RoadmapRoute,
   V115SalesEngRoute: V115SalesEngRoute,
   V115ScopeRoute: V115ScopeRoute,
+  V12ApiEdiRoute: V12ApiEdiRoute,
+  V12BoardRoute: V12BoardRoute,
+  V12CadenceRoute: V12CadenceRoute,
+  V12CapitalRoute: V12CapitalRoute,
+  V12CommandRoute: V12CommandRoute,
+  V12DataRoomRoute: V12DataRoomRoute,
+  V12DealExecutionRoute: V12DealExecutionRoute,
+  V12DemoRoute: V12DemoRoute,
+  V12ForecastRoute: V12ForecastRoute,
+  V12GlobalExpansionRoute: V12GlobalExpansionRoute,
+  V12GrowthRoute: V12GrowthRoute,
+  V12MarketplaceRoute: V12MarketplaceRoute,
+  V12OperatingModelRoute: V12OperatingModelRoute,
+  V12OverviewRoute: V12OverviewRoute,
+  V12PartnerChannelRoute: V12PartnerChannelRoute,
+  V12PartnerRevenueRoute: V12PartnerRevenueRoute,
+  V12ProcurementRoute: V12ProcurementRoute,
+  V12ProofRoute: V12ProofRoute,
+  V12ReportsRoute: V12ReportsRoute,
+  V12RetentionRoute: V12RetentionRoute,
+  V12RevenueQualityRoute: V12RevenueQualityRoute,
+  V12RiskRoute: V12RiskRoute,
+  V12ScopeRoute: V12ScopeRoute,
+  V12StrategicAcctRoute: V12StrategicAcctRoute,
   V15BillingRoute: V15BillingRoute,
   V15CopilotRoute: V15CopilotRoute,
   V15DemoRoute: V15DemoRoute,
