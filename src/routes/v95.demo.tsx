@@ -7,14 +7,19 @@ import * as H from "@/v95/hooks";
 
 const STEPS = [
   { who: "CEO",     step: "Open Global Enterprise Stewardship Dashboard",     outcome: "Trust 88 · Financial gov 81 · Cert evidence 79 · MP quality 84 · Customer trust 86" },
-  { who: "CFO",     step: "Open Financial Governance Maturity Center",        outcome: "Billing strong · 1 MP fee exception · evidence 82%" },
+  { who: "CSO",     step: "Open Enterprise Trust Command Center",             outcome: "15 trust domains · 2 needs_test · 3 remediation items live" },
   { who: "CSO",     step: "Open Certification Evidence Maturity Center",      outcome: "Freshness 90 · 3 controls need refresh · audit package 76 (placeholder)" },
-  { who: "MP",      step: "Open Marketplace Intelligence Optimization Center",outcome: "TX/Midwest strong · SE concentration → preferred carrier recruitment" },
-  { who: "CCO",     step: "Open Global Customer Trust Dashboard",             outcome: "2 packets stale · 1 AI disclosure pending · trust packet generated" },
-  { who: "Board",   step: "Open Board & Investor Operating Discipline",       outcome: "Packet ready: trust + financial + MP + evidence + risks + durability + value" },
-  { who: "Strategy",step: "Open Strategic Category Leadership Execution",     outcome: "Publish enterprise trust narrative + MP proof points refresh" },
-  { who: "CEO",     step: "Approve V9.5 stewardship action plan",             outcome: "5 actions signed (CSO/CFO/CCO/MP/AI)" },
+  { who: "CFO",     step: "Open Financial Governance Maturity Center",        outcome: "Billing strong · 1 MP fee exception · evidence 82% · trend +7 pts" },
+  { who: "MP",      step: "Open Marketplace Intelligence Optimization",       outcome: "TX/Midwest strong · SE concentration → preferred carrier recruitment" },
+  { who: "MP",      step: "Open Marketplace Quality Governance",              outcome: "Preferred program in_progress · 1 fee in_review · 12 governance areas" },
+  { who: "CCO",     step: "Open Global Customer Trust Dashboard",             outcome: "2 packets stale · 1 AI disclosure pending · packet builder triggered" },
+  { who: "Strategy",step: "Open Strategic Category Leadership Execution",     outcome: "Narrative 82 · proof 74 · publish enterprise trust narrative" },
+  { who: "Board",   step: "Open Board & Investor Operating Discipline",       outcome: "Packet 88 ready · 3 decisions pending · KPI snapshot attached" },
+  { who: "CEO",     step: "Open Platform Value Creation Dashboard",           outcome: "Value 82 · expansion 76 · API monetization 72 — 3 value actions" },
+  { who: "Risk",    step: "Open Strategic Risk Execution",                    outcome: "10 risks · residual trend down · 5 board-visible items mapped" },
+  { who: "CEO",     step: "Approve V9.5 stewardship action plan",             outcome: "6 commitments signed — see closeout below" },
 ];
+
 
 const TONE: Record<string, string> = {
   violet: "border-violet-400/30 text-violet-200",
@@ -31,7 +36,7 @@ function Page() {
   const rls = H.useV95RlsExamples();
   const boundary = H.useV95BackendBoundary();
   return (
-    <V95Page icon={<ListChecks className="size-6 text-cyan-300" />} title="V9.5 Demo Flow" blurb="8-step executive walkthrough with role guidance, RLS examples, and backend boundary.">
+    <V95Page icon={<ListChecks className="size-6 text-cyan-300" />} title="V9.5 Demo Flow" blurb="12-step executive walkthrough with role guidance, RLS examples, backend boundary, and a signed closeout.">
       <ExecBanner h={h} />
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Role guidance</h3>
@@ -56,6 +61,21 @@ function Page() {
           ))}
         </ol>
       </Card>
+      <Card className="border-emerald-400/30 bg-emerald-500/5 p-4">
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-emerald-200">Demo closeout — signed commitments</h3>
+          <span className="text-[10px] uppercase tracking-wide text-muted-foreground">post-Phase-32</span>
+        </div>
+        <div className="mt-2 grid gap-2 md:grid-cols-2">
+          {H.useV95DemoCloseout().map((c, i) => (
+            <div key={i} className="rounded border border-white/10 bg-black/20 px-3 py-2 text-xs">
+              <div className="flex items-center justify-between"><span className="text-cyan-200">{c.owner}</span><span className="text-muted-foreground">due {c.due}</span></div>
+              <div className="mt-0.5 text-sm">{c.commitment}</div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
       <OverlayStrip items={overlays as any} title="Executive overlays — all V9.5 modules" />
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">RLS policy references</h3>

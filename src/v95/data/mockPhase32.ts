@@ -568,3 +568,69 @@ export const V95_BACKEND_BOUNDARY = [
   { kind: "server route",   name: "/api/public/webhooks/procurement",  caller: "Customer procurement",       auth: "HMAC signature" },
   { kind: "edge function",  name: "(none new in V9.5)",                caller: "—",                          auth: "—" },
 ] as const;
+
+// ---------------- Polish: trend series, targets, spotlights ----------------
+export const V95_TRUST_TREND = [
+  { period: "2026-Q1", score: 81, target: 85 },
+  { period: "2026-Q2", score: 84, target: 86 },
+  { period: "2026-Q3", score: 88, target: 88 },
+  { period: "2026-Q4", score: 88, target: 90 },
+] as const;
+
+export const V95_STEWARDSHIP_SPOTLIGHT = [
+  { label: "Top moving up",   value: "Reliability trust",      detail: "+4 pts QoQ · SLA 96%" },
+  { label: "Top moving down", value: "Partner trust",          detail: "−2 pts · SOC packet gap" },
+  { label: "Highest risk",    value: "Certification evidence", detail: "stale > 90d on 3 controls" },
+  { label: "Best leverage",   value: "Category leadership",    detail: "+narrative pull-through on renewals" },
+] as const;
+
+export const V95_STEWARDSHIP_OUTCOMES = [
+  { kpi: "Enterprise trust",  current: 88, target: 90 },
+  { kpi: "Cert evidence",     current: 79, target: 85 },
+  { kpi: "Financial gov",     current: 81, target: 85 },
+  { kpi: "MP quality",        current: 84, target: 88 },
+  { kpi: "Customer trust",    current: 86, target: 90 },
+  { kpi: "Value creation",    current: 82, target: 86 },
+] as const;
+
+// Customer trust packet builder spec — used by Trust + Customer Trust pages
+export const V95_TRUST_PACKET_SPEC = [
+  { section: "Security questionnaire", source: "Trust command · security",        cadence: "per request" },
+  { section: "Control pack",           source: "Cert evidence · fresh controls",  cadence: "per request" },
+  { section: "AI usage disclosure",    source: "AI governance maturity",          cadence: "per release" },
+  { section: "Incident response packet", source: "Reliability · last 12mo",       cadence: "quarterly" },
+  { section: "Data retention evidence",source: "Data governance · retention",     cadence: "per release" },
+  { section: "SLA summary",            source: "Support reliability",             cadence: "quarterly" },
+  { section: "Mobile permission packet", source: "Driver privacy · mobile",       cadence: "per release" },
+  { section: "DPA + sub-processor list", source: "Procurement · legal",           cadence: "annual" },
+] as const;
+
+// Board packet outcome KPIs
+export const V95_BOARD_KPI_SNAPSHOT = [
+  { kpi: "ARR quality",            value: "83 / 100" },
+  { kpi: "Gross retention",        value: "96.8%" },
+  { kpi: "Net retention",          value: "112%" },
+  { kpi: "MP take rate",           value: "9.4%" },
+  { kpi: "API revenue mix",        value: "6.1%" },
+  { kpi: "Critical incidents 90d", value: "1" },
+  { kpi: "Board risks open",       value: "5 of 10" },
+] as const;
+
+// Demo closeout — concrete commitments after the 12-step flow
+export const V95_DEMO_CLOSEOUT = [
+  { owner: "CEO",  commitment: "Sign V9.5 stewardship action plan",              due: "this week" },
+  { owner: "CFO",  commitment: "Close MP fee exception + raise fin gov to 85",   due: "30d" },
+  { owner: "CSO",  commitment: "Refresh access review + 2 stale controls",       due: "21d" },
+  { owner: "CCO",  commitment: "Generate 2 procurement packets + 2 QBRs",        due: "14d" },
+  { owner: "MP",   commitment: "Launch preferred-carrier expansion in SE",       due: "30d" },
+  { owner: "AI",   commitment: "Lift explainability coverage to 90%",            due: "45d" },
+];
+
+// Customer trust signal heatmap (compact)
+export const V95_CUST_SIGNAL_MIX = [
+  { signal: "Trust score",      good: 3, warn: 2, bad: 0 },
+  { signal: "Packet freshness", good: 3, warn: 2, bad: 0 },
+  { signal: "SLA health",       good: 4, warn: 1, bad: 0 },
+  { signal: "Renewal risk",     good: 3, warn: 2, bad: 0 },
+  { signal: "Reference ready",  good: 4, warn: 1, bad: 0 },
+] as const;

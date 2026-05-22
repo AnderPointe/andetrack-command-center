@@ -28,3 +28,10 @@ export const useV95ExecutionOverlays              = () => M.V95_EXECUTION_OVERLA
 export const useV95RoleGuidance                   = () => M.V95_ROLE_GUIDANCE;
 export const useV95RlsExamples                    = () => M.V95_RLS_EXAMPLES;
 export const useV95BackendBoundary                = () => M.V95_BACKEND_BOUNDARY;
+export const useV95TrustTrend                     = () => M.V95_TRUST_TREND;
+export const useV95StewardshipSpotlight           = () => M.V95_STEWARDSHIP_SPOTLIGHT;
+export const useV95StewardshipOutcomes            = () => M.V95_STEWARDSHIP_OUTCOMES;
+export const useV95TrustPacketSpec                = () => M.V95_TRUST_PACKET_SPEC;
+export const useV95BoardKpiSnapshot               = () => M.V95_BOARD_KPI_SNAPSHOT;
+export const useV95DemoCloseout                   = () => M.V95_DEMO_CLOSEOUT;
+export const useV95CustSignalMix                  = () => M.V95_CUST_SIGNAL_MIX;

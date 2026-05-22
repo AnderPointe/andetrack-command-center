@@ -43,8 +43,19 @@ function Page() {
         </Card>
       </div>
       <Card className="border-cyan-400/30 bg-cyan-500/5 p-4 text-sm">
-        <div className="font-semibold text-cyan-200">Customer trust packet builder (placeholder)</div>
-        <div className="mt-1 text-xs text-muted-foreground">Bundle: security questionnaire, control pack, AI usage disclosure, incident response packet, data retention evidence, SLA summary, mobile permission packet. Generated per customer.</div>
+        <div className="flex items-center justify-between">
+          <div className="font-semibold text-cyan-200">Customer trust packet builder</div>
+          <div className="text-xs text-muted-foreground">8 sections · permissioned per customer</div>
+        </div>
+        <div className="mt-3 grid gap-2 md:grid-cols-2">
+          {H.useV95TrustPacketSpec().map((p) => (
+            <div key={p.section} className="rounded border border-white/10 bg-black/20 px-3 py-2 text-xs">
+              <div className="text-sm font-medium text-foreground">{p.section}</div>
+              <div className="text-muted-foreground">source: {p.source}</div>
+              <div className="text-muted-foreground">cadence: {p.cadence}</div>
+            </div>
+          ))}
+        </div>
       </Card>
     </V95Page>
   );
