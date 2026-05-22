@@ -1,0 +1,31 @@
+// V12.5 hooks — Phase 38 mock-only.
+import * as M from "./data/mockPhase38";
+
+export const useV125Scope                       = () => ({ matrix: M.V125_FEATURE_MATRIX, deferred: M.V125_DEFERRED });
+export const useCapitalGrowthOperations         = () => ({ score: M.V125_GROWTH_OPS, trend: M.V125_GROWTH_OPS_TREND, actions: M.V125_GROWTH_NEXT_ACTIONS, risks: M.V125_GROWTH_RISK_SUMMARY });
+export const useCommercialAuditability          = () => M.V125_AUDITABILITY;
+export const useGlobalRevenueIntelligence       = () => M.V125_REV_INTEL;
+export const useRevenueQualityControls          = () => M.V125_REVQ_CONTROLS;
+export const useEnterpriseRevenueEvidence       = () => M.V125_REV_EVIDENCE;
+export const useGrowthOperatingEvidence         = () => M.V125_EVIDENCE_VAULT;
+export const usePipelineAuditTrail              = () => M.V125_PIPELINE_AUDIT;
+export const useDealExecutionAuditability       = () => M.V125_DEAL_AUDIT;
+export const useExpansionEvidenceManagement     = () => M.V125_EXPANSION_EVIDENCE;
+export const useStrategicAccountGrowthGovernance= () => M.V125_STRATEGIC_ACCT;
+export const usePartnerChannelOptimization      = () => M.V125_PARTNER_OPT;
+export const usePartnerChannelPerformanceGovernance = () => M.V125_PARTNER_GOV;
+export const useMarketplaceRevenueIntelligence  = () => M.V125_MP_INTEL;
+export const useAPIEDIRevenueIntelligence       = () => M.V125_APIEDI_INTEL;
+export const useExecutiveGrowthStewardship      = () => ({ priorities: M.V125_EXEC_STEWARD, blockers: M.V125_EXEC_BLOCKERS, decisions: M.V125_EXEC_DECISIONS, cadence: M.V125_EXEC_CADENCE });
+export const useGrowthRiskControls              = () => M.V125_GROWTH_RISK;
+export const useCommercialProofControls         = () => M.V125_PROOF_CONTROL;
+export const useCapitalBoardGrowthReporting    = () => ({ sections: M.V125_BOARD_GROWTH, decisions: M.V125_BOARD_DECISIONS });
+export const useCommercialDataRoomEvidence      = () => M.V125_DATA_ROOM;
+export const useLongTermGrowthGovernance        = () => M.V125_GROWTH_GOV;
+export const useReportsV125                     = () => M.V125_REPORTS;
+export const useV125BackendBoundary             = () => M.V125_BACKEND_BOUNDARY;
+export const useV125RlsExamples                 = () => M.V125_RLS_EXAMPLES;
+export const useV125Demo                        = () => M.V125_DEMO;
+export const useV125DemoCloseout                = () => M.V125_DEMO_CLOSEOUT;
+export const useV125RoleGuidance                = () => M.V125_ROLE_GUIDANCE;
+export const useV125Phase39Teaser               = () => M.V125_PHASE39_TEASER;
