@@ -441,6 +441,30 @@ import { Route as V11DemoRouteImport } from './routes/v11.demo'
 import { Route as V11DataQualityRouteImport } from './routes/v11.data-quality'
 import { Route as V11CopilotRouteImport } from './routes/v11.copilot'
 import { Route as V11BillingRouteImport } from './routes/v11.billing'
+import { Route as V105TrustRouteImport } from './routes/v105.trust'
+import { Route as V105ScopeRouteImport } from './routes/v105.scope'
+import { Route as V105SalesOsRouteImport } from './routes/v105.sales-os'
+import { Route as V105SalesEngRouteImport } from './routes/v105.sales-eng'
+import { Route as V105RiskRouteImport } from './routes/v105.risk'
+import { Route as V105ReportsRouteImport } from './routes/v105.reports'
+import { Route as V105ProductLinesRouteImport } from './routes/v105.product-lines'
+import { Route as V105ProcurementRouteImport } from './routes/v105.procurement'
+import { Route as V105PricingRouteImport } from './routes/v105.pricing'
+import { Route as V105PortfolioRouteImport } from './routes/v105.portfolio'
+import { Route as V105PartnerRouteImport } from './routes/v105.partner'
+import { Route as V105OverviewRouteImport } from './routes/v105.overview'
+import { Route as V105MpProofRouteImport } from './routes/v105.mp-proof'
+import { Route as V105ExpansionRevRouteImport } from './routes/v105.expansion-rev'
+import { Route as V105ExpansionRouteImport } from './routes/v105.expansion'
+import { Route as V105DemoRouteImport } from './routes/v105.demo'
+import { Route as V105DealDeskRouteImport } from './routes/v105.deal-desk'
+import { Route as V105DataRoomRouteImport } from './routes/v105.data-room'
+import { Route as V105CustomerProofRouteImport } from './routes/v105.customer-proof'
+import { Route as V105CommercialRouteImport } from './routes/v105.commercial'
+import { Route as V105CategoryRouteImport } from './routes/v105.category'
+import { Route as V105CapitalRouteImport } from './routes/v105.capital'
+import { Route as V105CadenceRouteImport } from './routes/v105.cadence'
+import { Route as V105BoardRouteImport } from './routes/v105.board'
 import { Route as V10ValueRouteImport } from './routes/v10.value'
 import { Route as V10TrustCommerceRouteImport } from './routes/v10.trust-commerce'
 import { Route as V10ScopeRouteImport } from './routes/v10.scope'
@@ -2759,6 +2783,126 @@ const V11BillingRoute = V11BillingRouteImport.update({
   path: '/v11/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V105TrustRoute = V105TrustRouteImport.update({
+  id: '/v105/trust',
+  path: '/v105/trust',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105ScopeRoute = V105ScopeRouteImport.update({
+  id: '/v105/scope',
+  path: '/v105/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105SalesOsRoute = V105SalesOsRouteImport.update({
+  id: '/v105/sales-os',
+  path: '/v105/sales-os',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105SalesEngRoute = V105SalesEngRouteImport.update({
+  id: '/v105/sales-eng',
+  path: '/v105/sales-eng',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105RiskRoute = V105RiskRouteImport.update({
+  id: '/v105/risk',
+  path: '/v105/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105ReportsRoute = V105ReportsRouteImport.update({
+  id: '/v105/reports',
+  path: '/v105/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105ProductLinesRoute = V105ProductLinesRouteImport.update({
+  id: '/v105/product-lines',
+  path: '/v105/product-lines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105ProcurementRoute = V105ProcurementRouteImport.update({
+  id: '/v105/procurement',
+  path: '/v105/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105PricingRoute = V105PricingRouteImport.update({
+  id: '/v105/pricing',
+  path: '/v105/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105PortfolioRoute = V105PortfolioRouteImport.update({
+  id: '/v105/portfolio',
+  path: '/v105/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105PartnerRoute = V105PartnerRouteImport.update({
+  id: '/v105/partner',
+  path: '/v105/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105OverviewRoute = V105OverviewRouteImport.update({
+  id: '/v105/overview',
+  path: '/v105/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105MpProofRoute = V105MpProofRouteImport.update({
+  id: '/v105/mp-proof',
+  path: '/v105/mp-proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105ExpansionRevRoute = V105ExpansionRevRouteImport.update({
+  id: '/v105/expansion-rev',
+  path: '/v105/expansion-rev',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105ExpansionRoute = V105ExpansionRouteImport.update({
+  id: '/v105/expansion',
+  path: '/v105/expansion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105DemoRoute = V105DemoRouteImport.update({
+  id: '/v105/demo',
+  path: '/v105/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105DealDeskRoute = V105DealDeskRouteImport.update({
+  id: '/v105/deal-desk',
+  path: '/v105/deal-desk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105DataRoomRoute = V105DataRoomRouteImport.update({
+  id: '/v105/data-room',
+  path: '/v105/data-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105CustomerProofRoute = V105CustomerProofRouteImport.update({
+  id: '/v105/customer-proof',
+  path: '/v105/customer-proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105CommercialRoute = V105CommercialRouteImport.update({
+  id: '/v105/commercial',
+  path: '/v105/commercial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105CategoryRoute = V105CategoryRouteImport.update({
+  id: '/v105/category',
+  path: '/v105/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105CapitalRoute = V105CapitalRouteImport.update({
+  id: '/v105/capital',
+  path: '/v105/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105CadenceRoute = V105CadenceRouteImport.update({
+  id: '/v105/cadence',
+  path: '/v105/cadence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V105BoardRoute = V105BoardRouteImport.update({
+  id: '/v105/board',
+  path: '/v105/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V10ValueRoute = V10ValueRouteImport.update({
   id: '/v10/value',
   path: '/v10/value',
@@ -3702,6 +3846,30 @@ export interface FileRoutesByFullPath {
   '/v10/scope': typeof V10ScopeRoute
   '/v10/trust-commerce': typeof V10TrustCommerceRoute
   '/v10/value': typeof V10ValueRoute
+  '/v105/board': typeof V105BoardRoute
+  '/v105/cadence': typeof V105CadenceRoute
+  '/v105/capital': typeof V105CapitalRoute
+  '/v105/category': typeof V105CategoryRoute
+  '/v105/commercial': typeof V105CommercialRoute
+  '/v105/customer-proof': typeof V105CustomerProofRoute
+  '/v105/data-room': typeof V105DataRoomRoute
+  '/v105/deal-desk': typeof V105DealDeskRoute
+  '/v105/demo': typeof V105DemoRoute
+  '/v105/expansion': typeof V105ExpansionRoute
+  '/v105/expansion-rev': typeof V105ExpansionRevRoute
+  '/v105/mp-proof': typeof V105MpProofRoute
+  '/v105/overview': typeof V105OverviewRoute
+  '/v105/partner': typeof V105PartnerRoute
+  '/v105/portfolio': typeof V105PortfolioRoute
+  '/v105/pricing': typeof V105PricingRoute
+  '/v105/procurement': typeof V105ProcurementRoute
+  '/v105/product-lines': typeof V105ProductLinesRoute
+  '/v105/reports': typeof V105ReportsRoute
+  '/v105/risk': typeof V105RiskRoute
+  '/v105/sales-eng': typeof V105SalesEngRoute
+  '/v105/sales-os': typeof V105SalesOsRoute
+  '/v105/scope': typeof V105ScopeRoute
+  '/v105/trust': typeof V105TrustRoute
   '/v11/billing': typeof V11BillingRoute
   '/v11/copilot': typeof V11CopilotRoute
   '/v11/data-quality': typeof V11DataQualityRoute
@@ -4289,6 +4457,30 @@ export interface FileRoutesByTo {
   '/v10/scope': typeof V10ScopeRoute
   '/v10/trust-commerce': typeof V10TrustCommerceRoute
   '/v10/value': typeof V10ValueRoute
+  '/v105/board': typeof V105BoardRoute
+  '/v105/cadence': typeof V105CadenceRoute
+  '/v105/capital': typeof V105CapitalRoute
+  '/v105/category': typeof V105CategoryRoute
+  '/v105/commercial': typeof V105CommercialRoute
+  '/v105/customer-proof': typeof V105CustomerProofRoute
+  '/v105/data-room': typeof V105DataRoomRoute
+  '/v105/deal-desk': typeof V105DealDeskRoute
+  '/v105/demo': typeof V105DemoRoute
+  '/v105/expansion': typeof V105ExpansionRoute
+  '/v105/expansion-rev': typeof V105ExpansionRevRoute
+  '/v105/mp-proof': typeof V105MpProofRoute
+  '/v105/overview': typeof V105OverviewRoute
+  '/v105/partner': typeof V105PartnerRoute
+  '/v105/portfolio': typeof V105PortfolioRoute
+  '/v105/pricing': typeof V105PricingRoute
+  '/v105/procurement': typeof V105ProcurementRoute
+  '/v105/product-lines': typeof V105ProductLinesRoute
+  '/v105/reports': typeof V105ReportsRoute
+  '/v105/risk': typeof V105RiskRoute
+  '/v105/sales-eng': typeof V105SalesEngRoute
+  '/v105/sales-os': typeof V105SalesOsRoute
+  '/v105/scope': typeof V105ScopeRoute
+  '/v105/trust': typeof V105TrustRoute
   '/v11/billing': typeof V11BillingRoute
   '/v11/copilot': typeof V11CopilotRoute
   '/v11/data-quality': typeof V11DataQualityRoute
@@ -4877,6 +5069,30 @@ export interface FileRoutesById {
   '/v10/scope': typeof V10ScopeRoute
   '/v10/trust-commerce': typeof V10TrustCommerceRoute
   '/v10/value': typeof V10ValueRoute
+  '/v105/board': typeof V105BoardRoute
+  '/v105/cadence': typeof V105CadenceRoute
+  '/v105/capital': typeof V105CapitalRoute
+  '/v105/category': typeof V105CategoryRoute
+  '/v105/commercial': typeof V105CommercialRoute
+  '/v105/customer-proof': typeof V105CustomerProofRoute
+  '/v105/data-room': typeof V105DataRoomRoute
+  '/v105/deal-desk': typeof V105DealDeskRoute
+  '/v105/demo': typeof V105DemoRoute
+  '/v105/expansion': typeof V105ExpansionRoute
+  '/v105/expansion-rev': typeof V105ExpansionRevRoute
+  '/v105/mp-proof': typeof V105MpProofRoute
+  '/v105/overview': typeof V105OverviewRoute
+  '/v105/partner': typeof V105PartnerRoute
+  '/v105/portfolio': typeof V105PortfolioRoute
+  '/v105/pricing': typeof V105PricingRoute
+  '/v105/procurement': typeof V105ProcurementRoute
+  '/v105/product-lines': typeof V105ProductLinesRoute
+  '/v105/reports': typeof V105ReportsRoute
+  '/v105/risk': typeof V105RiskRoute
+  '/v105/sales-eng': typeof V105SalesEngRoute
+  '/v105/sales-os': typeof V105SalesOsRoute
+  '/v105/scope': typeof V105ScopeRoute
+  '/v105/trust': typeof V105TrustRoute
   '/v11/billing': typeof V11BillingRoute
   '/v11/copilot': typeof V11CopilotRoute
   '/v11/data-quality': typeof V11DataQualityRoute
@@ -5466,6 +5682,30 @@ export interface FileRouteTypes {
     | '/v10/scope'
     | '/v10/trust-commerce'
     | '/v10/value'
+    | '/v105/board'
+    | '/v105/cadence'
+    | '/v105/capital'
+    | '/v105/category'
+    | '/v105/commercial'
+    | '/v105/customer-proof'
+    | '/v105/data-room'
+    | '/v105/deal-desk'
+    | '/v105/demo'
+    | '/v105/expansion'
+    | '/v105/expansion-rev'
+    | '/v105/mp-proof'
+    | '/v105/overview'
+    | '/v105/partner'
+    | '/v105/portfolio'
+    | '/v105/pricing'
+    | '/v105/procurement'
+    | '/v105/product-lines'
+    | '/v105/reports'
+    | '/v105/risk'
+    | '/v105/sales-eng'
+    | '/v105/sales-os'
+    | '/v105/scope'
+    | '/v105/trust'
     | '/v11/billing'
     | '/v11/copilot'
     | '/v11/data-quality'
@@ -6053,6 +6293,30 @@ export interface FileRouteTypes {
     | '/v10/scope'
     | '/v10/trust-commerce'
     | '/v10/value'
+    | '/v105/board'
+    | '/v105/cadence'
+    | '/v105/capital'
+    | '/v105/category'
+    | '/v105/commercial'
+    | '/v105/customer-proof'
+    | '/v105/data-room'
+    | '/v105/deal-desk'
+    | '/v105/demo'
+    | '/v105/expansion'
+    | '/v105/expansion-rev'
+    | '/v105/mp-proof'
+    | '/v105/overview'
+    | '/v105/partner'
+    | '/v105/portfolio'
+    | '/v105/pricing'
+    | '/v105/procurement'
+    | '/v105/product-lines'
+    | '/v105/reports'
+    | '/v105/risk'
+    | '/v105/sales-eng'
+    | '/v105/sales-os'
+    | '/v105/scope'
+    | '/v105/trust'
     | '/v11/billing'
     | '/v11/copilot'
     | '/v11/data-quality'
@@ -6640,6 +6904,30 @@ export interface FileRouteTypes {
     | '/v10/scope'
     | '/v10/trust-commerce'
     | '/v10/value'
+    | '/v105/board'
+    | '/v105/cadence'
+    | '/v105/capital'
+    | '/v105/category'
+    | '/v105/commercial'
+    | '/v105/customer-proof'
+    | '/v105/data-room'
+    | '/v105/deal-desk'
+    | '/v105/demo'
+    | '/v105/expansion'
+    | '/v105/expansion-rev'
+    | '/v105/mp-proof'
+    | '/v105/overview'
+    | '/v105/partner'
+    | '/v105/portfolio'
+    | '/v105/pricing'
+    | '/v105/procurement'
+    | '/v105/product-lines'
+    | '/v105/reports'
+    | '/v105/risk'
+    | '/v105/sales-eng'
+    | '/v105/sales-os'
+    | '/v105/scope'
+    | '/v105/trust'
     | '/v11/billing'
     | '/v11/copilot'
     | '/v11/data-quality'
@@ -7220,6 +7508,30 @@ export interface RootRouteChildren {
   V10ScopeRoute: typeof V10ScopeRoute
   V10TrustCommerceRoute: typeof V10TrustCommerceRoute
   V10ValueRoute: typeof V10ValueRoute
+  V105BoardRoute: typeof V105BoardRoute
+  V105CadenceRoute: typeof V105CadenceRoute
+  V105CapitalRoute: typeof V105CapitalRoute
+  V105CategoryRoute: typeof V105CategoryRoute
+  V105CommercialRoute: typeof V105CommercialRoute
+  V105CustomerProofRoute: typeof V105CustomerProofRoute
+  V105DataRoomRoute: typeof V105DataRoomRoute
+  V105DealDeskRoute: typeof V105DealDeskRoute
+  V105DemoRoute: typeof V105DemoRoute
+  V105ExpansionRoute: typeof V105ExpansionRoute
+  V105ExpansionRevRoute: typeof V105ExpansionRevRoute
+  V105MpProofRoute: typeof V105MpProofRoute
+  V105OverviewRoute: typeof V105OverviewRoute
+  V105PartnerRoute: typeof V105PartnerRoute
+  V105PortfolioRoute: typeof V105PortfolioRoute
+  V105PricingRoute: typeof V105PricingRoute
+  V105ProcurementRoute: typeof V105ProcurementRoute
+  V105ProductLinesRoute: typeof V105ProductLinesRoute
+  V105ReportsRoute: typeof V105ReportsRoute
+  V105RiskRoute: typeof V105RiskRoute
+  V105SalesEngRoute: typeof V105SalesEngRoute
+  V105SalesOsRoute: typeof V105SalesOsRoute
+  V105ScopeRoute: typeof V105ScopeRoute
+  V105TrustRoute: typeof V105TrustRoute
   V11BillingRoute: typeof V11BillingRoute
   V11CopilotRoute: typeof V11CopilotRoute
   V11DataQualityRoute: typeof V11DataQualityRoute
@@ -10661,6 +10973,174 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V11BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v105/trust': {
+      id: '/v105/trust'
+      path: '/v105/trust'
+      fullPath: '/v105/trust'
+      preLoaderRoute: typeof V105TrustRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/scope': {
+      id: '/v105/scope'
+      path: '/v105/scope'
+      fullPath: '/v105/scope'
+      preLoaderRoute: typeof V105ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/sales-os': {
+      id: '/v105/sales-os'
+      path: '/v105/sales-os'
+      fullPath: '/v105/sales-os'
+      preLoaderRoute: typeof V105SalesOsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/sales-eng': {
+      id: '/v105/sales-eng'
+      path: '/v105/sales-eng'
+      fullPath: '/v105/sales-eng'
+      preLoaderRoute: typeof V105SalesEngRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/risk': {
+      id: '/v105/risk'
+      path: '/v105/risk'
+      fullPath: '/v105/risk'
+      preLoaderRoute: typeof V105RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/reports': {
+      id: '/v105/reports'
+      path: '/v105/reports'
+      fullPath: '/v105/reports'
+      preLoaderRoute: typeof V105ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/product-lines': {
+      id: '/v105/product-lines'
+      path: '/v105/product-lines'
+      fullPath: '/v105/product-lines'
+      preLoaderRoute: typeof V105ProductLinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/procurement': {
+      id: '/v105/procurement'
+      path: '/v105/procurement'
+      fullPath: '/v105/procurement'
+      preLoaderRoute: typeof V105ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/pricing': {
+      id: '/v105/pricing'
+      path: '/v105/pricing'
+      fullPath: '/v105/pricing'
+      preLoaderRoute: typeof V105PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/portfolio': {
+      id: '/v105/portfolio'
+      path: '/v105/portfolio'
+      fullPath: '/v105/portfolio'
+      preLoaderRoute: typeof V105PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/partner': {
+      id: '/v105/partner'
+      path: '/v105/partner'
+      fullPath: '/v105/partner'
+      preLoaderRoute: typeof V105PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/overview': {
+      id: '/v105/overview'
+      path: '/v105/overview'
+      fullPath: '/v105/overview'
+      preLoaderRoute: typeof V105OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/mp-proof': {
+      id: '/v105/mp-proof'
+      path: '/v105/mp-proof'
+      fullPath: '/v105/mp-proof'
+      preLoaderRoute: typeof V105MpProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/expansion-rev': {
+      id: '/v105/expansion-rev'
+      path: '/v105/expansion-rev'
+      fullPath: '/v105/expansion-rev'
+      preLoaderRoute: typeof V105ExpansionRevRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/expansion': {
+      id: '/v105/expansion'
+      path: '/v105/expansion'
+      fullPath: '/v105/expansion'
+      preLoaderRoute: typeof V105ExpansionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/demo': {
+      id: '/v105/demo'
+      path: '/v105/demo'
+      fullPath: '/v105/demo'
+      preLoaderRoute: typeof V105DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/deal-desk': {
+      id: '/v105/deal-desk'
+      path: '/v105/deal-desk'
+      fullPath: '/v105/deal-desk'
+      preLoaderRoute: typeof V105DealDeskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/data-room': {
+      id: '/v105/data-room'
+      path: '/v105/data-room'
+      fullPath: '/v105/data-room'
+      preLoaderRoute: typeof V105DataRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/customer-proof': {
+      id: '/v105/customer-proof'
+      path: '/v105/customer-proof'
+      fullPath: '/v105/customer-proof'
+      preLoaderRoute: typeof V105CustomerProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/commercial': {
+      id: '/v105/commercial'
+      path: '/v105/commercial'
+      fullPath: '/v105/commercial'
+      preLoaderRoute: typeof V105CommercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/category': {
+      id: '/v105/category'
+      path: '/v105/category'
+      fullPath: '/v105/category'
+      preLoaderRoute: typeof V105CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/capital': {
+      id: '/v105/capital'
+      path: '/v105/capital'
+      fullPath: '/v105/capital'
+      preLoaderRoute: typeof V105CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/cadence': {
+      id: '/v105/cadence'
+      path: '/v105/cadence'
+      fullPath: '/v105/cadence'
+      preLoaderRoute: typeof V105CadenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v105/board': {
+      id: '/v105/board'
+      path: '/v105/board'
+      fullPath: '/v105/board'
+      preLoaderRoute: typeof V105BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v10/value': {
       id: '/v10/value'
       path: '/v10/value'
@@ -11953,6 +12433,30 @@ const rootRouteChildren: RootRouteChildren = {
   V10ScopeRoute: V10ScopeRoute,
   V10TrustCommerceRoute: V10TrustCommerceRoute,
   V10ValueRoute: V10ValueRoute,
+  V105BoardRoute: V105BoardRoute,
+  V105CadenceRoute: V105CadenceRoute,
+  V105CapitalRoute: V105CapitalRoute,
+  V105CategoryRoute: V105CategoryRoute,
+  V105CommercialRoute: V105CommercialRoute,
+  V105CustomerProofRoute: V105CustomerProofRoute,
+  V105DataRoomRoute: V105DataRoomRoute,
+  V105DealDeskRoute: V105DealDeskRoute,
+  V105DemoRoute: V105DemoRoute,
+  V105ExpansionRoute: V105ExpansionRoute,
+  V105ExpansionRevRoute: V105ExpansionRevRoute,
+  V105MpProofRoute: V105MpProofRoute,
+  V105OverviewRoute: V105OverviewRoute,
+  V105PartnerRoute: V105PartnerRoute,
+  V105PortfolioRoute: V105PortfolioRoute,
+  V105PricingRoute: V105PricingRoute,
+  V105ProcurementRoute: V105ProcurementRoute,
+  V105ProductLinesRoute: V105ProductLinesRoute,
+  V105ReportsRoute: V105ReportsRoute,
+  V105RiskRoute: V105RiskRoute,
+  V105SalesEngRoute: V105SalesEngRoute,
+  V105SalesOsRoute: V105SalesOsRoute,
+  V105ScopeRoute: V105ScopeRoute,
+  V105TrustRoute: V105TrustRoute,
   V11BillingRoute: V11BillingRoute,
   V11CopilotRoute: V11CopilotRoute,
   V11DataQualityRoute: V11DataQualityRoute,
