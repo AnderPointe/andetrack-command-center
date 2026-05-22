@@ -28,6 +28,16 @@ function Page() {
           { key: "deal", label: "Deal" }, { key: "asset", label: "Asset" }, { key: "impact", label: "Impact" },
         ]} />
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Trust monetization — lever breakdown</h3>
+        <p className="mt-1 text-xs text-muted-foreground">Which trust assets unblocked deals and shaved cycle time in the last 30 days.</p>
+        <SimpleTable rows={H.useV105TrustMonetizationBreakdown() as any} columns={[
+          { key: "lever", label: "Lever" },
+          { key: "deals_unblocked", label: "Deals unblocked" },
+          { key: "cycle_days_saved", label: "Cycle days saved" },
+          { key: "owner", label: "Owner" },
+        ]} />
+      </Card>
     </V105Page>
   );
 }
