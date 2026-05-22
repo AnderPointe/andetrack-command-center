@@ -39,6 +39,49 @@ function Page() {
         { label: "At-risk renewals",     value: String(ret.churn_risk) },
       ]} />
       <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Commercial command trend (last 4Q)</h3>
+        <SimpleTable rows={cmd.trends as any} columns={[
+          { key: "quarter", label: "Quarter" },
+          { key: "command", label: "Command",  render: (r: any) => `${r.command}%` },
+          { key: "quality", label: "Quality",  render: (r: any) => `${r.quality}%` },
+          { key: "velocity_days", label: "Velocity", render: (r: any) => `${r.velocity_days}d` },
+          { key: "slippage_pct", label: "Slippage", render: (r: any) => `${r.slippage_pct}%` },
+        ]} />
+      </Card>
+      <div className="grid gap-3 lg:grid-cols-2">
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Forecast governance (placeholder)</h3>
+          <SimpleTable rows={forecast.rows as any} columns={[
+            { key: "stream", label: "Stream" }, { key: "owner", label: "Owner" },
+            { key: "confidence", label: "Confidence", render: (r: any) => `${r.confidence}%` },
+            { key: "cadence", label: "Cadence" },
+          ]} />
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Capital-grade reporting readiness</h3>
+          <SimpleTable rows={capital.sections as any} columns={[
+            { key: "section", label: "Section" }, { key: "owner", label: "Owner" },
+            { key: "readiness", label: "Readiness", render: (r: any) => `${r.readiness}%` },
+          ]} />
+        </Card>
+      </div>
+      <div className="grid gap-3 lg:grid-cols-2">
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Long-term operating model</h3>
+          <SimpleTable rows={opmodel as any} columns={[
+            { key: "fn", label: "Function" }, { key: "owner", label: "Owner" },
+            { key: "maturity", label: "Maturity", render: (r: any) => `${r.maturity}%` },
+            { key: "kpi", label: "KPI" },
+          ]} />
+        </Card>
+        <Card className="border-white/10 bg-white/[0.02] p-4">
+          <h3 className="text-sm font-semibold">Global commercial cadence</h3>
+          <SimpleTable rows={cadence as any} columns={[
+            { key: "cadence", label: "Cadence" }, { key: "owner", label: "Owner" }, { key: "attendees", label: "Attendees" },
+          ]} />
+        </Card>
+      </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Board-ready revenue — section status</h3>
         <SimpleTable rows={board.sections as any} columns={[
           { key: "section", label: "Section" },
