@@ -420,6 +420,27 @@ import { Route as V15DispatcherRoutesRouteImport } from './routes/v15.dispatcher
 import { Route as V15DemoRouteImport } from './routes/v15.demo'
 import { Route as V15CopilotRouteImport } from './routes/v15.copilot'
 import { Route as V15BillingRouteImport } from './routes/v15.billing'
+import { Route as V115ScopeRouteImport } from './routes/v115.scope'
+import { Route as V115SalesEngRouteImport } from './routes/v115.sales-eng'
+import { Route as V115RoadmapRouteImport } from './routes/v115.roadmap'
+import { Route as V115RetentionRouteImport } from './routes/v115.retention'
+import { Route as V115ReportsRouteImport } from './routes/v115.reports'
+import { Route as V115RenewalRouteImport } from './routes/v115.renewal'
+import { Route as V115ProofRouteImport } from './routes/v115.proof'
+import { Route as V115ProcurementRouteImport } from './routes/v115.procurement'
+import { Route as V115PricingRouteImport } from './routes/v115.pricing'
+import { Route as V115PartnerRouteImport } from './routes/v115.partner'
+import { Route as V115PackagingRouteImport } from './routes/v115.packaging'
+import { Route as V115OverviewRouteImport } from './routes/v115.overview'
+import { Route as V115OptimizationRouteImport } from './routes/v115.optimization'
+import { Route as V115OperatingRouteImport } from './routes/v115.operating'
+import { Route as V115MarketplaceRouteImport } from './routes/v115.marketplace'
+import { Route as V115ExpansionRouteImport } from './routes/v115.expansion'
+import { Route as V115DemoRouteImport } from './routes/v115.demo'
+import { Route as V115DealDeskRouteImport } from './routes/v115.deal-desk'
+import { Route as V115CapitalRouteImport } from './routes/v115.capital'
+import { Route as V115BoardRouteImport } from './routes/v115.board'
+import { Route as V115ApiEdiRouteImport } from './routes/v115.api-edi'
 import { Route as V11SupportRouteImport } from './routes/v11.support'
 import { Route as V11StripeRouteImport } from './routes/v11.stripe'
 import { Route as V11SecurityRouteImport } from './routes/v11.security'
@@ -2678,6 +2699,111 @@ const V15BillingRoute = V15BillingRouteImport.update({
   path: '/v15/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V115ScopeRoute = V115ScopeRouteImport.update({
+  id: '/v115/scope',
+  path: '/v115/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115SalesEngRoute = V115SalesEngRouteImport.update({
+  id: '/v115/sales-eng',
+  path: '/v115/sales-eng',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115RoadmapRoute = V115RoadmapRouteImport.update({
+  id: '/v115/roadmap',
+  path: '/v115/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115RetentionRoute = V115RetentionRouteImport.update({
+  id: '/v115/retention',
+  path: '/v115/retention',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115ReportsRoute = V115ReportsRouteImport.update({
+  id: '/v115/reports',
+  path: '/v115/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115RenewalRoute = V115RenewalRouteImport.update({
+  id: '/v115/renewal',
+  path: '/v115/renewal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115ProofRoute = V115ProofRouteImport.update({
+  id: '/v115/proof',
+  path: '/v115/proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115ProcurementRoute = V115ProcurementRouteImport.update({
+  id: '/v115/procurement',
+  path: '/v115/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115PricingRoute = V115PricingRouteImport.update({
+  id: '/v115/pricing',
+  path: '/v115/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115PartnerRoute = V115PartnerRouteImport.update({
+  id: '/v115/partner',
+  path: '/v115/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115PackagingRoute = V115PackagingRouteImport.update({
+  id: '/v115/packaging',
+  path: '/v115/packaging',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115OverviewRoute = V115OverviewRouteImport.update({
+  id: '/v115/overview',
+  path: '/v115/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115OptimizationRoute = V115OptimizationRouteImport.update({
+  id: '/v115/optimization',
+  path: '/v115/optimization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115OperatingRoute = V115OperatingRouteImport.update({
+  id: '/v115/operating',
+  path: '/v115/operating',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115MarketplaceRoute = V115MarketplaceRouteImport.update({
+  id: '/v115/marketplace',
+  path: '/v115/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115ExpansionRoute = V115ExpansionRouteImport.update({
+  id: '/v115/expansion',
+  path: '/v115/expansion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115DemoRoute = V115DemoRouteImport.update({
+  id: '/v115/demo',
+  path: '/v115/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115DealDeskRoute = V115DealDeskRouteImport.update({
+  id: '/v115/deal-desk',
+  path: '/v115/deal-desk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115CapitalRoute = V115CapitalRouteImport.update({
+  id: '/v115/capital',
+  path: '/v115/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115BoardRoute = V115BoardRouteImport.update({
+  id: '/v115/board',
+  path: '/v115/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V115ApiEdiRoute = V115ApiEdiRouteImport.update({
+  id: '/v115/api-edi',
+  path: '/v115/api-edi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V11SupportRoute = V11SupportRouteImport.update({
   id: '/v11/support',
   path: '/v11/support',
@@ -3891,6 +4017,27 @@ export interface FileRoutesByFullPath {
   '/v11/security': typeof V11SecurityRoute
   '/v11/stripe': typeof V11StripeRoute
   '/v11/support': typeof V11SupportRoute
+  '/v115/api-edi': typeof V115ApiEdiRoute
+  '/v115/board': typeof V115BoardRoute
+  '/v115/capital': typeof V115CapitalRoute
+  '/v115/deal-desk': typeof V115DealDeskRoute
+  '/v115/demo': typeof V115DemoRoute
+  '/v115/expansion': typeof V115ExpansionRoute
+  '/v115/marketplace': typeof V115MarketplaceRoute
+  '/v115/operating': typeof V115OperatingRoute
+  '/v115/optimization': typeof V115OptimizationRoute
+  '/v115/overview': typeof V115OverviewRoute
+  '/v115/packaging': typeof V115PackagingRoute
+  '/v115/partner': typeof V115PartnerRoute
+  '/v115/pricing': typeof V115PricingRoute
+  '/v115/procurement': typeof V115ProcurementRoute
+  '/v115/proof': typeof V115ProofRoute
+  '/v115/renewal': typeof V115RenewalRoute
+  '/v115/reports': typeof V115ReportsRoute
+  '/v115/retention': typeof V115RetentionRoute
+  '/v115/roadmap': typeof V115RoadmapRoute
+  '/v115/sales-eng': typeof V115SalesEngRoute
+  '/v115/scope': typeof V115ScopeRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -4502,6 +4649,27 @@ export interface FileRoutesByTo {
   '/v11/security': typeof V11SecurityRoute
   '/v11/stripe': typeof V11StripeRoute
   '/v11/support': typeof V11SupportRoute
+  '/v115/api-edi': typeof V115ApiEdiRoute
+  '/v115/board': typeof V115BoardRoute
+  '/v115/capital': typeof V115CapitalRoute
+  '/v115/deal-desk': typeof V115DealDeskRoute
+  '/v115/demo': typeof V115DemoRoute
+  '/v115/expansion': typeof V115ExpansionRoute
+  '/v115/marketplace': typeof V115MarketplaceRoute
+  '/v115/operating': typeof V115OperatingRoute
+  '/v115/optimization': typeof V115OptimizationRoute
+  '/v115/overview': typeof V115OverviewRoute
+  '/v115/packaging': typeof V115PackagingRoute
+  '/v115/partner': typeof V115PartnerRoute
+  '/v115/pricing': typeof V115PricingRoute
+  '/v115/procurement': typeof V115ProcurementRoute
+  '/v115/proof': typeof V115ProofRoute
+  '/v115/renewal': typeof V115RenewalRoute
+  '/v115/reports': typeof V115ReportsRoute
+  '/v115/retention': typeof V115RetentionRoute
+  '/v115/roadmap': typeof V115RoadmapRoute
+  '/v115/sales-eng': typeof V115SalesEngRoute
+  '/v115/scope': typeof V115ScopeRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -5114,6 +5282,27 @@ export interface FileRoutesById {
   '/v11/security': typeof V11SecurityRoute
   '/v11/stripe': typeof V11StripeRoute
   '/v11/support': typeof V11SupportRoute
+  '/v115/api-edi': typeof V115ApiEdiRoute
+  '/v115/board': typeof V115BoardRoute
+  '/v115/capital': typeof V115CapitalRoute
+  '/v115/deal-desk': typeof V115DealDeskRoute
+  '/v115/demo': typeof V115DemoRoute
+  '/v115/expansion': typeof V115ExpansionRoute
+  '/v115/marketplace': typeof V115MarketplaceRoute
+  '/v115/operating': typeof V115OperatingRoute
+  '/v115/optimization': typeof V115OptimizationRoute
+  '/v115/overview': typeof V115OverviewRoute
+  '/v115/packaging': typeof V115PackagingRoute
+  '/v115/partner': typeof V115PartnerRoute
+  '/v115/pricing': typeof V115PricingRoute
+  '/v115/procurement': typeof V115ProcurementRoute
+  '/v115/proof': typeof V115ProofRoute
+  '/v115/renewal': typeof V115RenewalRoute
+  '/v115/reports': typeof V115ReportsRoute
+  '/v115/retention': typeof V115RetentionRoute
+  '/v115/roadmap': typeof V115RoadmapRoute
+  '/v115/sales-eng': typeof V115SalesEngRoute
+  '/v115/scope': typeof V115ScopeRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -5727,6 +5916,27 @@ export interface FileRouteTypes {
     | '/v11/security'
     | '/v11/stripe'
     | '/v11/support'
+    | '/v115/api-edi'
+    | '/v115/board'
+    | '/v115/capital'
+    | '/v115/deal-desk'
+    | '/v115/demo'
+    | '/v115/expansion'
+    | '/v115/marketplace'
+    | '/v115/operating'
+    | '/v115/optimization'
+    | '/v115/overview'
+    | '/v115/packaging'
+    | '/v115/partner'
+    | '/v115/pricing'
+    | '/v115/procurement'
+    | '/v115/proof'
+    | '/v115/renewal'
+    | '/v115/reports'
+    | '/v115/retention'
+    | '/v115/roadmap'
+    | '/v115/sales-eng'
+    | '/v115/scope'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -6338,6 +6548,27 @@ export interface FileRouteTypes {
     | '/v11/security'
     | '/v11/stripe'
     | '/v11/support'
+    | '/v115/api-edi'
+    | '/v115/board'
+    | '/v115/capital'
+    | '/v115/deal-desk'
+    | '/v115/demo'
+    | '/v115/expansion'
+    | '/v115/marketplace'
+    | '/v115/operating'
+    | '/v115/optimization'
+    | '/v115/overview'
+    | '/v115/packaging'
+    | '/v115/partner'
+    | '/v115/pricing'
+    | '/v115/procurement'
+    | '/v115/proof'
+    | '/v115/renewal'
+    | '/v115/reports'
+    | '/v115/retention'
+    | '/v115/roadmap'
+    | '/v115/sales-eng'
+    | '/v115/scope'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -6949,6 +7180,27 @@ export interface FileRouteTypes {
     | '/v11/security'
     | '/v11/stripe'
     | '/v11/support'
+    | '/v115/api-edi'
+    | '/v115/board'
+    | '/v115/capital'
+    | '/v115/deal-desk'
+    | '/v115/demo'
+    | '/v115/expansion'
+    | '/v115/marketplace'
+    | '/v115/operating'
+    | '/v115/optimization'
+    | '/v115/overview'
+    | '/v115/packaging'
+    | '/v115/partner'
+    | '/v115/pricing'
+    | '/v115/procurement'
+    | '/v115/proof'
+    | '/v115/renewal'
+    | '/v115/reports'
+    | '/v115/retention'
+    | '/v115/roadmap'
+    | '/v115/sales-eng'
+    | '/v115/scope'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -7553,6 +7805,27 @@ export interface RootRouteChildren {
   V11SecurityRoute: typeof V11SecurityRoute
   V11StripeRoute: typeof V11StripeRoute
   V11SupportRoute: typeof V11SupportRoute
+  V115ApiEdiRoute: typeof V115ApiEdiRoute
+  V115BoardRoute: typeof V115BoardRoute
+  V115CapitalRoute: typeof V115CapitalRoute
+  V115DealDeskRoute: typeof V115DealDeskRoute
+  V115DemoRoute: typeof V115DemoRoute
+  V115ExpansionRoute: typeof V115ExpansionRoute
+  V115MarketplaceRoute: typeof V115MarketplaceRoute
+  V115OperatingRoute: typeof V115OperatingRoute
+  V115OptimizationRoute: typeof V115OptimizationRoute
+  V115OverviewRoute: typeof V115OverviewRoute
+  V115PackagingRoute: typeof V115PackagingRoute
+  V115PartnerRoute: typeof V115PartnerRoute
+  V115PricingRoute: typeof V115PricingRoute
+  V115ProcurementRoute: typeof V115ProcurementRoute
+  V115ProofRoute: typeof V115ProofRoute
+  V115RenewalRoute: typeof V115RenewalRoute
+  V115ReportsRoute: typeof V115ReportsRoute
+  V115RetentionRoute: typeof V115RetentionRoute
+  V115RoadmapRoute: typeof V115RoadmapRoute
+  V115SalesEngRoute: typeof V115SalesEngRoute
+  V115ScopeRoute: typeof V115ScopeRoute
   V15BillingRoute: typeof V15BillingRoute
   V15CopilotRoute: typeof V15CopilotRoute
   V15DemoRoute: typeof V15DemoRoute
@@ -10826,6 +11099,153 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v115/scope': {
+      id: '/v115/scope'
+      path: '/v115/scope'
+      fullPath: '/v115/scope'
+      preLoaderRoute: typeof V115ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/sales-eng': {
+      id: '/v115/sales-eng'
+      path: '/v115/sales-eng'
+      fullPath: '/v115/sales-eng'
+      preLoaderRoute: typeof V115SalesEngRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/roadmap': {
+      id: '/v115/roadmap'
+      path: '/v115/roadmap'
+      fullPath: '/v115/roadmap'
+      preLoaderRoute: typeof V115RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/retention': {
+      id: '/v115/retention'
+      path: '/v115/retention'
+      fullPath: '/v115/retention'
+      preLoaderRoute: typeof V115RetentionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/reports': {
+      id: '/v115/reports'
+      path: '/v115/reports'
+      fullPath: '/v115/reports'
+      preLoaderRoute: typeof V115ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/renewal': {
+      id: '/v115/renewal'
+      path: '/v115/renewal'
+      fullPath: '/v115/renewal'
+      preLoaderRoute: typeof V115RenewalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/proof': {
+      id: '/v115/proof'
+      path: '/v115/proof'
+      fullPath: '/v115/proof'
+      preLoaderRoute: typeof V115ProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/procurement': {
+      id: '/v115/procurement'
+      path: '/v115/procurement'
+      fullPath: '/v115/procurement'
+      preLoaderRoute: typeof V115ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/pricing': {
+      id: '/v115/pricing'
+      path: '/v115/pricing'
+      fullPath: '/v115/pricing'
+      preLoaderRoute: typeof V115PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/partner': {
+      id: '/v115/partner'
+      path: '/v115/partner'
+      fullPath: '/v115/partner'
+      preLoaderRoute: typeof V115PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/packaging': {
+      id: '/v115/packaging'
+      path: '/v115/packaging'
+      fullPath: '/v115/packaging'
+      preLoaderRoute: typeof V115PackagingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/overview': {
+      id: '/v115/overview'
+      path: '/v115/overview'
+      fullPath: '/v115/overview'
+      preLoaderRoute: typeof V115OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/optimization': {
+      id: '/v115/optimization'
+      path: '/v115/optimization'
+      fullPath: '/v115/optimization'
+      preLoaderRoute: typeof V115OptimizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/operating': {
+      id: '/v115/operating'
+      path: '/v115/operating'
+      fullPath: '/v115/operating'
+      preLoaderRoute: typeof V115OperatingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/marketplace': {
+      id: '/v115/marketplace'
+      path: '/v115/marketplace'
+      fullPath: '/v115/marketplace'
+      preLoaderRoute: typeof V115MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/expansion': {
+      id: '/v115/expansion'
+      path: '/v115/expansion'
+      fullPath: '/v115/expansion'
+      preLoaderRoute: typeof V115ExpansionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/demo': {
+      id: '/v115/demo'
+      path: '/v115/demo'
+      fullPath: '/v115/demo'
+      preLoaderRoute: typeof V115DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/deal-desk': {
+      id: '/v115/deal-desk'
+      path: '/v115/deal-desk'
+      fullPath: '/v115/deal-desk'
+      preLoaderRoute: typeof V115DealDeskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/capital': {
+      id: '/v115/capital'
+      path: '/v115/capital'
+      fullPath: '/v115/capital'
+      preLoaderRoute: typeof V115CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/board': {
+      id: '/v115/board'
+      path: '/v115/board'
+      fullPath: '/v115/board'
+      preLoaderRoute: typeof V115BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v115/api-edi': {
+      id: '/v115/api-edi'
+      path: '/v115/api-edi'
+      fullPath: '/v115/api-edi'
+      preLoaderRoute: typeof V115ApiEdiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v11/support': {
       id: '/v11/support'
       path: '/v11/support'
@@ -12478,6 +12898,27 @@ const rootRouteChildren: RootRouteChildren = {
   V11SecurityRoute: V11SecurityRoute,
   V11StripeRoute: V11StripeRoute,
   V11SupportRoute: V11SupportRoute,
+  V115ApiEdiRoute: V115ApiEdiRoute,
+  V115BoardRoute: V115BoardRoute,
+  V115CapitalRoute: V115CapitalRoute,
+  V115DealDeskRoute: V115DealDeskRoute,
+  V115DemoRoute: V115DemoRoute,
+  V115ExpansionRoute: V115ExpansionRoute,
+  V115MarketplaceRoute: V115MarketplaceRoute,
+  V115OperatingRoute: V115OperatingRoute,
+  V115OptimizationRoute: V115OptimizationRoute,
+  V115OverviewRoute: V115OverviewRoute,
+  V115PackagingRoute: V115PackagingRoute,
+  V115PartnerRoute: V115PartnerRoute,
+  V115PricingRoute: V115PricingRoute,
+  V115ProcurementRoute: V115ProcurementRoute,
+  V115ProofRoute: V115ProofRoute,
+  V115RenewalRoute: V115RenewalRoute,
+  V115ReportsRoute: V115ReportsRoute,
+  V115RetentionRoute: V115RetentionRoute,
+  V115RoadmapRoute: V115RoadmapRoute,
+  V115SalesEngRoute: V115SalesEngRoute,
+  V115ScopeRoute: V115ScopeRoute,
   V15BillingRoute: V15BillingRoute,
   V15CopilotRoute: V15CopilotRoute,
   V15DemoRoute: V15DemoRoute,
