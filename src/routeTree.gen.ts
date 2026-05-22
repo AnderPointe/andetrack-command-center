@@ -441,6 +441,30 @@ import { Route as V11DemoRouteImport } from './routes/v11.demo'
 import { Route as V11DataQualityRouteImport } from './routes/v11.data-quality'
 import { Route as V11CopilotRouteImport } from './routes/v11.copilot'
 import { Route as V11BillingRouteImport } from './routes/v11.billing'
+import { Route as V10ValueRouteImport } from './routes/v10.value'
+import { Route as V10TrustCommerceRouteImport } from './routes/v10.trust-commerce'
+import { Route as V10ScopeRouteImport } from './routes/v10.scope'
+import { Route as V10SalesRouteImport } from './routes/v10.sales'
+import { Route as V10RoadmapRouteImport } from './routes/v10.roadmap'
+import { Route as V10RetentionRouteImport } from './routes/v10.retention'
+import { Route as V10ReportsRouteImport } from './routes/v10.reports'
+import { Route as V10ReferencesRouteImport } from './routes/v10.references'
+import { Route as V10ProofRouteImport } from './routes/v10.proof'
+import { Route as V10ProductRouteImport } from './routes/v10.product'
+import { Route as V10ProcurementRouteImport } from './routes/v10.procurement'
+import { Route as V10PartnerRouteImport } from './routes/v10.partner'
+import { Route as V10OverviewRouteImport } from './routes/v10.overview'
+import { Route as V10OutcomesRouteImport } from './routes/v10.outcomes'
+import { Route as V10NarrativeRouteImport } from './routes/v10.narrative'
+import { Route as V10MpProofRouteImport } from './routes/v10.mp-proof'
+import { Route as V10GrowthRouteImport } from './routes/v10.growth'
+import { Route as V10ExpansionRouteImport } from './routes/v10.expansion'
+import { Route as V10ExecModelRouteImport } from './routes/v10.exec-model'
+import { Route as V10EconomicsRouteImport } from './routes/v10.economics'
+import { Route as V10DemoRouteImport } from './routes/v10.demo'
+import { Route as V10DefensibilityRouteImport } from './routes/v10.defensibility'
+import { Route as V10CompetitiveRouteImport } from './routes/v10.competitive'
+import { Route as V10CategoryRouteImport } from './routes/v10.category'
 import { Route as V1TrainingRouteImport } from './routes/v1.training'
 import { Route as V1SupportRouteImport } from './routes/v1.support'
 import { Route as V1SecurityRouteImport } from './routes/v1.security'
@@ -2735,6 +2759,126 @@ const V11BillingRoute = V11BillingRouteImport.update({
   path: '/v11/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V10ValueRoute = V10ValueRouteImport.update({
+  id: '/v10/value',
+  path: '/v10/value',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10TrustCommerceRoute = V10TrustCommerceRouteImport.update({
+  id: '/v10/trust-commerce',
+  path: '/v10/trust-commerce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ScopeRoute = V10ScopeRouteImport.update({
+  id: '/v10/scope',
+  path: '/v10/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10SalesRoute = V10SalesRouteImport.update({
+  id: '/v10/sales',
+  path: '/v10/sales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10RoadmapRoute = V10RoadmapRouteImport.update({
+  id: '/v10/roadmap',
+  path: '/v10/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10RetentionRoute = V10RetentionRouteImport.update({
+  id: '/v10/retention',
+  path: '/v10/retention',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ReportsRoute = V10ReportsRouteImport.update({
+  id: '/v10/reports',
+  path: '/v10/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ReferencesRoute = V10ReferencesRouteImport.update({
+  id: '/v10/references',
+  path: '/v10/references',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ProofRoute = V10ProofRouteImport.update({
+  id: '/v10/proof',
+  path: '/v10/proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ProductRoute = V10ProductRouteImport.update({
+  id: '/v10/product',
+  path: '/v10/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ProcurementRoute = V10ProcurementRouteImport.update({
+  id: '/v10/procurement',
+  path: '/v10/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10PartnerRoute = V10PartnerRouteImport.update({
+  id: '/v10/partner',
+  path: '/v10/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10OverviewRoute = V10OverviewRouteImport.update({
+  id: '/v10/overview',
+  path: '/v10/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10OutcomesRoute = V10OutcomesRouteImport.update({
+  id: '/v10/outcomes',
+  path: '/v10/outcomes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10NarrativeRoute = V10NarrativeRouteImport.update({
+  id: '/v10/narrative',
+  path: '/v10/narrative',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10MpProofRoute = V10MpProofRouteImport.update({
+  id: '/v10/mp-proof',
+  path: '/v10/mp-proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10GrowthRoute = V10GrowthRouteImport.update({
+  id: '/v10/growth',
+  path: '/v10/growth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ExpansionRoute = V10ExpansionRouteImport.update({
+  id: '/v10/expansion',
+  path: '/v10/expansion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10ExecModelRoute = V10ExecModelRouteImport.update({
+  id: '/v10/exec-model',
+  path: '/v10/exec-model',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10EconomicsRoute = V10EconomicsRouteImport.update({
+  id: '/v10/economics',
+  path: '/v10/economics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10DemoRoute = V10DemoRouteImport.update({
+  id: '/v10/demo',
+  path: '/v10/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10DefensibilityRoute = V10DefensibilityRouteImport.update({
+  id: '/v10/defensibility',
+  path: '/v10/defensibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10CompetitiveRoute = V10CompetitiveRouteImport.update({
+  id: '/v10/competitive',
+  path: '/v10/competitive',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V10CategoryRoute = V10CategoryRouteImport.update({
+  id: '/v10/category',
+  path: '/v10/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V1TrainingRoute = V1TrainingRouteImport.update({
   id: '/v1/training',
   path: '/v1/training',
@@ -3534,6 +3678,30 @@ export interface FileRoutesByFullPath {
   '/v1/security': typeof V1SecurityRoute
   '/v1/support': typeof V1SupportRoute
   '/v1/training': typeof V1TrainingRoute
+  '/v10/category': typeof V10CategoryRoute
+  '/v10/competitive': typeof V10CompetitiveRoute
+  '/v10/defensibility': typeof V10DefensibilityRoute
+  '/v10/demo': typeof V10DemoRoute
+  '/v10/economics': typeof V10EconomicsRoute
+  '/v10/exec-model': typeof V10ExecModelRoute
+  '/v10/expansion': typeof V10ExpansionRoute
+  '/v10/growth': typeof V10GrowthRoute
+  '/v10/mp-proof': typeof V10MpProofRoute
+  '/v10/narrative': typeof V10NarrativeRoute
+  '/v10/outcomes': typeof V10OutcomesRoute
+  '/v10/overview': typeof V10OverviewRoute
+  '/v10/partner': typeof V10PartnerRoute
+  '/v10/procurement': typeof V10ProcurementRoute
+  '/v10/product': typeof V10ProductRoute
+  '/v10/proof': typeof V10ProofRoute
+  '/v10/references': typeof V10ReferencesRoute
+  '/v10/reports': typeof V10ReportsRoute
+  '/v10/retention': typeof V10RetentionRoute
+  '/v10/roadmap': typeof V10RoadmapRoute
+  '/v10/sales': typeof V10SalesRoute
+  '/v10/scope': typeof V10ScopeRoute
+  '/v10/trust-commerce': typeof V10TrustCommerceRoute
+  '/v10/value': typeof V10ValueRoute
   '/v11/billing': typeof V11BillingRoute
   '/v11/copilot': typeof V11CopilotRoute
   '/v11/data-quality': typeof V11DataQualityRoute
@@ -4097,6 +4265,30 @@ export interface FileRoutesByTo {
   '/v1/security': typeof V1SecurityRoute
   '/v1/support': typeof V1SupportRoute
   '/v1/training': typeof V1TrainingRoute
+  '/v10/category': typeof V10CategoryRoute
+  '/v10/competitive': typeof V10CompetitiveRoute
+  '/v10/defensibility': typeof V10DefensibilityRoute
+  '/v10/demo': typeof V10DemoRoute
+  '/v10/economics': typeof V10EconomicsRoute
+  '/v10/exec-model': typeof V10ExecModelRoute
+  '/v10/expansion': typeof V10ExpansionRoute
+  '/v10/growth': typeof V10GrowthRoute
+  '/v10/mp-proof': typeof V10MpProofRoute
+  '/v10/narrative': typeof V10NarrativeRoute
+  '/v10/outcomes': typeof V10OutcomesRoute
+  '/v10/overview': typeof V10OverviewRoute
+  '/v10/partner': typeof V10PartnerRoute
+  '/v10/procurement': typeof V10ProcurementRoute
+  '/v10/product': typeof V10ProductRoute
+  '/v10/proof': typeof V10ProofRoute
+  '/v10/references': typeof V10ReferencesRoute
+  '/v10/reports': typeof V10ReportsRoute
+  '/v10/retention': typeof V10RetentionRoute
+  '/v10/roadmap': typeof V10RoadmapRoute
+  '/v10/sales': typeof V10SalesRoute
+  '/v10/scope': typeof V10ScopeRoute
+  '/v10/trust-commerce': typeof V10TrustCommerceRoute
+  '/v10/value': typeof V10ValueRoute
   '/v11/billing': typeof V11BillingRoute
   '/v11/copilot': typeof V11CopilotRoute
   '/v11/data-quality': typeof V11DataQualityRoute
@@ -4661,6 +4853,30 @@ export interface FileRoutesById {
   '/v1/security': typeof V1SecurityRoute
   '/v1/support': typeof V1SupportRoute
   '/v1/training': typeof V1TrainingRoute
+  '/v10/category': typeof V10CategoryRoute
+  '/v10/competitive': typeof V10CompetitiveRoute
+  '/v10/defensibility': typeof V10DefensibilityRoute
+  '/v10/demo': typeof V10DemoRoute
+  '/v10/economics': typeof V10EconomicsRoute
+  '/v10/exec-model': typeof V10ExecModelRoute
+  '/v10/expansion': typeof V10ExpansionRoute
+  '/v10/growth': typeof V10GrowthRoute
+  '/v10/mp-proof': typeof V10MpProofRoute
+  '/v10/narrative': typeof V10NarrativeRoute
+  '/v10/outcomes': typeof V10OutcomesRoute
+  '/v10/overview': typeof V10OverviewRoute
+  '/v10/partner': typeof V10PartnerRoute
+  '/v10/procurement': typeof V10ProcurementRoute
+  '/v10/product': typeof V10ProductRoute
+  '/v10/proof': typeof V10ProofRoute
+  '/v10/references': typeof V10ReferencesRoute
+  '/v10/reports': typeof V10ReportsRoute
+  '/v10/retention': typeof V10RetentionRoute
+  '/v10/roadmap': typeof V10RoadmapRoute
+  '/v10/sales': typeof V10SalesRoute
+  '/v10/scope': typeof V10ScopeRoute
+  '/v10/trust-commerce': typeof V10TrustCommerceRoute
+  '/v10/value': typeof V10ValueRoute
   '/v11/billing': typeof V11BillingRoute
   '/v11/copilot': typeof V11CopilotRoute
   '/v11/data-quality': typeof V11DataQualityRoute
@@ -5226,6 +5442,30 @@ export interface FileRouteTypes {
     | '/v1/security'
     | '/v1/support'
     | '/v1/training'
+    | '/v10/category'
+    | '/v10/competitive'
+    | '/v10/defensibility'
+    | '/v10/demo'
+    | '/v10/economics'
+    | '/v10/exec-model'
+    | '/v10/expansion'
+    | '/v10/growth'
+    | '/v10/mp-proof'
+    | '/v10/narrative'
+    | '/v10/outcomes'
+    | '/v10/overview'
+    | '/v10/partner'
+    | '/v10/procurement'
+    | '/v10/product'
+    | '/v10/proof'
+    | '/v10/references'
+    | '/v10/reports'
+    | '/v10/retention'
+    | '/v10/roadmap'
+    | '/v10/sales'
+    | '/v10/scope'
+    | '/v10/trust-commerce'
+    | '/v10/value'
     | '/v11/billing'
     | '/v11/copilot'
     | '/v11/data-quality'
@@ -5789,6 +6029,30 @@ export interface FileRouteTypes {
     | '/v1/security'
     | '/v1/support'
     | '/v1/training'
+    | '/v10/category'
+    | '/v10/competitive'
+    | '/v10/defensibility'
+    | '/v10/demo'
+    | '/v10/economics'
+    | '/v10/exec-model'
+    | '/v10/expansion'
+    | '/v10/growth'
+    | '/v10/mp-proof'
+    | '/v10/narrative'
+    | '/v10/outcomes'
+    | '/v10/overview'
+    | '/v10/partner'
+    | '/v10/procurement'
+    | '/v10/product'
+    | '/v10/proof'
+    | '/v10/references'
+    | '/v10/reports'
+    | '/v10/retention'
+    | '/v10/roadmap'
+    | '/v10/sales'
+    | '/v10/scope'
+    | '/v10/trust-commerce'
+    | '/v10/value'
     | '/v11/billing'
     | '/v11/copilot'
     | '/v11/data-quality'
@@ -6352,6 +6616,30 @@ export interface FileRouteTypes {
     | '/v1/security'
     | '/v1/support'
     | '/v1/training'
+    | '/v10/category'
+    | '/v10/competitive'
+    | '/v10/defensibility'
+    | '/v10/demo'
+    | '/v10/economics'
+    | '/v10/exec-model'
+    | '/v10/expansion'
+    | '/v10/growth'
+    | '/v10/mp-proof'
+    | '/v10/narrative'
+    | '/v10/outcomes'
+    | '/v10/overview'
+    | '/v10/partner'
+    | '/v10/procurement'
+    | '/v10/product'
+    | '/v10/proof'
+    | '/v10/references'
+    | '/v10/reports'
+    | '/v10/retention'
+    | '/v10/roadmap'
+    | '/v10/sales'
+    | '/v10/scope'
+    | '/v10/trust-commerce'
+    | '/v10/value'
     | '/v11/billing'
     | '/v11/copilot'
     | '/v11/data-quality'
@@ -6908,6 +7196,30 @@ export interface RootRouteChildren {
   V1SecurityRoute: typeof V1SecurityRoute
   V1SupportRoute: typeof V1SupportRoute
   V1TrainingRoute: typeof V1TrainingRoute
+  V10CategoryRoute: typeof V10CategoryRoute
+  V10CompetitiveRoute: typeof V10CompetitiveRoute
+  V10DefensibilityRoute: typeof V10DefensibilityRoute
+  V10DemoRoute: typeof V10DemoRoute
+  V10EconomicsRoute: typeof V10EconomicsRoute
+  V10ExecModelRoute: typeof V10ExecModelRoute
+  V10ExpansionRoute: typeof V10ExpansionRoute
+  V10GrowthRoute: typeof V10GrowthRoute
+  V10MpProofRoute: typeof V10MpProofRoute
+  V10NarrativeRoute: typeof V10NarrativeRoute
+  V10OutcomesRoute: typeof V10OutcomesRoute
+  V10OverviewRoute: typeof V10OverviewRoute
+  V10PartnerRoute: typeof V10PartnerRoute
+  V10ProcurementRoute: typeof V10ProcurementRoute
+  V10ProductRoute: typeof V10ProductRoute
+  V10ProofRoute: typeof V10ProofRoute
+  V10ReferencesRoute: typeof V10ReferencesRoute
+  V10ReportsRoute: typeof V10ReportsRoute
+  V10RetentionRoute: typeof V10RetentionRoute
+  V10RoadmapRoute: typeof V10RoadmapRoute
+  V10SalesRoute: typeof V10SalesRoute
+  V10ScopeRoute: typeof V10ScopeRoute
+  V10TrustCommerceRoute: typeof V10TrustCommerceRoute
+  V10ValueRoute: typeof V10ValueRoute
   V11BillingRoute: typeof V11BillingRoute
   V11CopilotRoute: typeof V11CopilotRoute
   V11DataQualityRoute: typeof V11DataQualityRoute
@@ -10349,6 +10661,174 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V11BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v10/value': {
+      id: '/v10/value'
+      path: '/v10/value'
+      fullPath: '/v10/value'
+      preLoaderRoute: typeof V10ValueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/trust-commerce': {
+      id: '/v10/trust-commerce'
+      path: '/v10/trust-commerce'
+      fullPath: '/v10/trust-commerce'
+      preLoaderRoute: typeof V10TrustCommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/scope': {
+      id: '/v10/scope'
+      path: '/v10/scope'
+      fullPath: '/v10/scope'
+      preLoaderRoute: typeof V10ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/sales': {
+      id: '/v10/sales'
+      path: '/v10/sales'
+      fullPath: '/v10/sales'
+      preLoaderRoute: typeof V10SalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/roadmap': {
+      id: '/v10/roadmap'
+      path: '/v10/roadmap'
+      fullPath: '/v10/roadmap'
+      preLoaderRoute: typeof V10RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/retention': {
+      id: '/v10/retention'
+      path: '/v10/retention'
+      fullPath: '/v10/retention'
+      preLoaderRoute: typeof V10RetentionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/reports': {
+      id: '/v10/reports'
+      path: '/v10/reports'
+      fullPath: '/v10/reports'
+      preLoaderRoute: typeof V10ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/references': {
+      id: '/v10/references'
+      path: '/v10/references'
+      fullPath: '/v10/references'
+      preLoaderRoute: typeof V10ReferencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/proof': {
+      id: '/v10/proof'
+      path: '/v10/proof'
+      fullPath: '/v10/proof'
+      preLoaderRoute: typeof V10ProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/product': {
+      id: '/v10/product'
+      path: '/v10/product'
+      fullPath: '/v10/product'
+      preLoaderRoute: typeof V10ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/procurement': {
+      id: '/v10/procurement'
+      path: '/v10/procurement'
+      fullPath: '/v10/procurement'
+      preLoaderRoute: typeof V10ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/partner': {
+      id: '/v10/partner'
+      path: '/v10/partner'
+      fullPath: '/v10/partner'
+      preLoaderRoute: typeof V10PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/overview': {
+      id: '/v10/overview'
+      path: '/v10/overview'
+      fullPath: '/v10/overview'
+      preLoaderRoute: typeof V10OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/outcomes': {
+      id: '/v10/outcomes'
+      path: '/v10/outcomes'
+      fullPath: '/v10/outcomes'
+      preLoaderRoute: typeof V10OutcomesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/narrative': {
+      id: '/v10/narrative'
+      path: '/v10/narrative'
+      fullPath: '/v10/narrative'
+      preLoaderRoute: typeof V10NarrativeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/mp-proof': {
+      id: '/v10/mp-proof'
+      path: '/v10/mp-proof'
+      fullPath: '/v10/mp-proof'
+      preLoaderRoute: typeof V10MpProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/growth': {
+      id: '/v10/growth'
+      path: '/v10/growth'
+      fullPath: '/v10/growth'
+      preLoaderRoute: typeof V10GrowthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/expansion': {
+      id: '/v10/expansion'
+      path: '/v10/expansion'
+      fullPath: '/v10/expansion'
+      preLoaderRoute: typeof V10ExpansionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/exec-model': {
+      id: '/v10/exec-model'
+      path: '/v10/exec-model'
+      fullPath: '/v10/exec-model'
+      preLoaderRoute: typeof V10ExecModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/economics': {
+      id: '/v10/economics'
+      path: '/v10/economics'
+      fullPath: '/v10/economics'
+      preLoaderRoute: typeof V10EconomicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/demo': {
+      id: '/v10/demo'
+      path: '/v10/demo'
+      fullPath: '/v10/demo'
+      preLoaderRoute: typeof V10DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/defensibility': {
+      id: '/v10/defensibility'
+      path: '/v10/defensibility'
+      fullPath: '/v10/defensibility'
+      preLoaderRoute: typeof V10DefensibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/competitive': {
+      id: '/v10/competitive'
+      path: '/v10/competitive'
+      fullPath: '/v10/competitive'
+      preLoaderRoute: typeof V10CompetitiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v10/category': {
+      id: '/v10/category'
+      path: '/v10/category'
+      fullPath: '/v10/category'
+      preLoaderRoute: typeof V10CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v1/training': {
       id: '/v1/training'
       path: '/v1/training'
@@ -11449,6 +11929,30 @@ const rootRouteChildren: RootRouteChildren = {
   V1SecurityRoute: V1SecurityRoute,
   V1SupportRoute: V1SupportRoute,
   V1TrainingRoute: V1TrainingRoute,
+  V10CategoryRoute: V10CategoryRoute,
+  V10CompetitiveRoute: V10CompetitiveRoute,
+  V10DefensibilityRoute: V10DefensibilityRoute,
+  V10DemoRoute: V10DemoRoute,
+  V10EconomicsRoute: V10EconomicsRoute,
+  V10ExecModelRoute: V10ExecModelRoute,
+  V10ExpansionRoute: V10ExpansionRoute,
+  V10GrowthRoute: V10GrowthRoute,
+  V10MpProofRoute: V10MpProofRoute,
+  V10NarrativeRoute: V10NarrativeRoute,
+  V10OutcomesRoute: V10OutcomesRoute,
+  V10OverviewRoute: V10OverviewRoute,
+  V10PartnerRoute: V10PartnerRoute,
+  V10ProcurementRoute: V10ProcurementRoute,
+  V10ProductRoute: V10ProductRoute,
+  V10ProofRoute: V10ProofRoute,
+  V10ReferencesRoute: V10ReferencesRoute,
+  V10ReportsRoute: V10ReportsRoute,
+  V10RetentionRoute: V10RetentionRoute,
+  V10RoadmapRoute: V10RoadmapRoute,
+  V10SalesRoute: V10SalesRoute,
+  V10ScopeRoute: V10ScopeRoute,
+  V10TrustCommerceRoute: V10TrustCommerceRoute,
+  V10ValueRoute: V10ValueRoute,
   V11BillingRoute: V11BillingRoute,
   V11CopilotRoute: V11CopilotRoute,
   V11DataQualityRoute: V11DataQualityRoute,
