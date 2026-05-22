@@ -111,6 +111,12 @@ function Page() {
           { key: "table", label: "Table" }, { key: "policy", label: "Policy" }, { key: "expression", label: "Expression" },
         ]} />
       </Card>
+      <Card className="border-cyan-400/20 bg-cyan-400/5 p-4">
+        <h3 className="text-sm font-semibold text-cyan-100">Phase 38 (V12.5) teaser — not started</h3>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-foreground/90">
+          {teaser.map((t) => <li key={t}>{t}</li>)}
+        </ul>
+      </Card>
     </V12Page>
   );
 }
