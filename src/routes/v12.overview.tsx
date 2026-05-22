@@ -13,6 +13,11 @@ function Page() {
   const mp = H.useMarketplaceRevenueGovernance();
   const partner = H.usePartnerChannelMaturity();
   const board = H.useBoardReadyRevenueReporting();
+  const forecast = H.useCommercialForecastGovernance();
+  const capital = H.useCapitalGradeCommercialReporting();
+  const opmodel = H.useCommercialOperatingModel();
+  const cadence = H.useGlobalCommercialCadence();
+  const teaser = H.useV12Phase38Teaser();
   const boundary = H.useV12BackendBoundary();
   const rls = H.useV12RlsExamples();
   return (
