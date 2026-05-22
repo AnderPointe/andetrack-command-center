@@ -35,6 +35,9 @@ export const V115_REVENUE_OPTIMIZATION = {
   levers_optimized: 14,
   levers_total: 18,
   net_revenue_uplift_pct: 8.4,
+  revenue_quality_score: 79,
+  expansion_readiness_pct: 84,
+  partner_monetization_index: 76,
 };
 
 export const V115_OPT_LEVERS = [
@@ -57,6 +60,13 @@ export const V115_COMMERCIAL_OPERATING = [
   { axis: "Quote-to-cash SLA",     score: 81, status: "ready" },
   { axis: "Partner motion",        score: 74, status: "at_risk" },
 ];
+
+export const V115_COMMERCIAL_OPERATING_SUMMARY = {
+  score: 79,
+  forecast_confidence_pct: 82,
+  hygiene_compliance_pct: 91,
+  manager_cadence_pct: 88,
+};
 
 // Strategic customer expansion
 export const V115_STRATEGIC_EXPANSION = {
@@ -84,6 +94,13 @@ export const V115_ACCOUNT_GROWTH_PLAN = {
   ],
 };
 
+export const V115_EXPANSION_PROGRAM = {
+  whitespace_arr_usd: 6_300_000,
+  sponsor_coverage_pct: 83,
+  multithreaded_accounts: 17,
+  plan_quality_score: 81,
+};
+
 // Renewal & expansion discipline
 export const V115_RENEWAL_DISCIPLINE = [
   { quarter: "2026-Q3", renewals_due: 38, on_track: 31, at_risk: 5, churned: 2, grr_pct: 95, nrr_pct: 121 },
@@ -97,6 +114,14 @@ export const V115_RETENTION_RISK = [
   { account: "Granite Hauling",   risk: "medium", reason: "Support ticket spike",    owner: "CSM-01", save_play: "TAM engagement" },
   { account: "Iron Range Bulk",   risk: "low",    reason: "Pricing inquiry",         owner: "CSM-07", save_play: "Value review" },
 ];
+
+export const V115_RETENTION_RISK_SUMMARY = {
+  high: 1,
+  medium: 2,
+  low: 1,
+  save_coverage_pct: 93,
+  grr_outlook: "94%",
+};
 
 // Partner ecosystem monetization
 export const V115_PARTNER_MONETIZATION = {
@@ -112,6 +137,13 @@ export const V115_PARTNER_REVENUE_OPS = [
   { partner: "EDIConnect Co.",  sourced_arr: 140_000, influenced_arr: 230_000, payout_due: 14_000, status: "on_track" },
 ];
 
+export const V115_PARTNER_REVENUE_SUMMARY = {
+  influenced_pipeline_usd: 4_200_000,
+  payout_accuracy_pct: 98,
+  co_sell_win_rate_pct: 39,
+  recruited_this_qtr: 6,
+};
+
 // Capital-ready revenue governance
 export const V115_CAPITAL_READY_REVENUE = [
   { axis: "Audit-grade revenue recognition", score: 86, status: "ready" },
@@ -122,6 +154,13 @@ export const V115_CAPITAL_READY_REVENUE = [
   { axis: "Forecast confidence intervals",   score: 71, status: "at_risk" },
 ];
 
+export const V115_REVENUE_QUALITY = [
+  { metric: "Recurring revenue share", score: 91, status: "ready", note: "Subscription + marketplace recurring mix holding above plan" },
+  { metric: "Gross margin quality", score: 76, status: "at_risk", note: "Services mix still elevated in enterprise expansions" },
+  { metric: "Deferred revenue coverage", score: 88, status: "ready", note: "Strong forward visibility with onboarding converted faster" },
+  { metric: "Forecast confidence", score: 71, status: "at_risk", note: "Commit hygiene improving but upside still volatile" },
+];
+
 // Pricing & packaging optimization
 export const V115_PRICING_OPTIMIZATION = [
   { policy: "Max discount tier 3",     limit_pct: 12, breach_30d: 2, owner: "Deal Desk" },
@@ -129,6 +168,13 @@ export const V115_PRICING_OPTIMIZATION = [
   { policy: "Marketplace take floor",  limit_pct: 8,  breach_30d: 1, owner: "MP Ops" },
   { policy: "API tier discount cap",   limit_pct: 10, breach_30d: 0, owner: "Product" },
 ];
+
+export const V115_PRICING_SUMMARY = {
+  governed_deals_pct: 96,
+  exception_rate_pct: 7,
+  breach_recovery_pct: 75,
+  avg_approved_discount_pct: 8.9,
+};
 export const V115_PACKAGING_OPTIMIZATION = [
   { sku: "Core platform",       attach_pct: 100, arr_share_pct: 54, trend: "+1.2" },
   { sku: "Premium support",     attach_pct: 41,  arr_share_pct: 8,  trend: "+0.6" },
@@ -137,6 +183,13 @@ export const V115_PACKAGING_OPTIMIZATION = [
   { sku: "Marketplace take",    attach_pct: 62,  arr_share_pct: 14, trend: "+1.1" },
   { sku: "Onboarding services", attach_pct: 78,  arr_share_pct: 6,  trend: "+0.2" },
 ];
+
+export const V115_PACKAGING_SUMMARY = {
+  premium_mix_pct: 37,
+  attach_growth_qoq: "+1.0",
+  sku_rationalization_score: 74,
+  monetization_depth_pct: 69,
+};
 
 // Deal desk + enterprise execution
 export const V115_DEAL_DESK_DISCIPLINE = {
@@ -152,12 +205,20 @@ export const V115_ENTERPRISE_DEAL_EXECUTION = [
   { stage: "Close",       count:  7, win_rate_pct: 83 },
 ];
 
+export const V115_DEAL_EXECUTION_SUMMARY = {
+  median_cycle_days: 43,
+  trust_stage_win_rate_pct: 71,
+  procurement_escape_pct: 82,
+  multi_threaded_deals_pct: 68,
+};
+
 // Trust-led procurement
 export const V115_PROCUREMENT_ACCEL = {
   avg_cycle_days_baseline: 64,
   avg_cycle_days_now: 41,
   packets_refreshed_30d: 17,
   open: 9,
+  trust_acceptance_pct: 78,
 };
 
 // Sales engineering scale
@@ -167,6 +228,13 @@ export const V115_SE_SCALE = [
   { area: "POC win rate",     score: 71, status: "at_risk" },
   { area: "Trust deliverables", score: 86, status: "ready" },
 ];
+
+export const V115_SE_SUMMARY = {
+  coverage_pct: 78,
+  reuse_pct: 64,
+  trust_pack_hit_rate_pct: 81,
+  active_pocs: 9,
+};
 
 // Customer proof revenue influence
 export const V115_PROOF_INFLUENCE = [
@@ -181,11 +249,13 @@ export const V115_MP_MONETIZATION_OPT = {
   take_rate_pct: 6.8, target_pct: 7.5,
   gmv_qtd_usd: 18_200_000,
   active_buyers: 312, active_sellers: 144,
+  monetized_routes_pct: 48,
 };
 export const V115_API_EDI_MONETIZATION_OPT = {
   api_arr_usd: 780_000, api_arr_target: 950_000,
   edi_arr_usd: 540_000, edi_arr_target: 600_000,
   metered_overage_share_pct: 17,
+  expansion_attach_pct: 29,
 };
 
 // Board reporting + roadmap
@@ -197,6 +267,13 @@ export const V115_BOARD_COMMERCIAL = [
   { section: "Capital readiness",     owner: "CFO",  status: "ready" },
   { section: "Risk & concentration",  owner: "CRO",  status: "review" },
 ];
+
+export const V115_BOARD_SUMMARY = {
+  packet_readiness_pct: 89,
+  open_decisions: 4,
+  revenue_quality_status: "ready",
+  concentration_watch: "medium",
+};
 export const V115_ROADMAP = [
   { quarter: "2026-Q3", theme: "Discount discipline + packaging mix" },
   { quarter: "2026-Q4", theme: "Renewal uplift + partner P&L" },
@@ -204,6 +281,12 @@ export const V115_ROADMAP = [
   { quarter: "2027-Q2", theme: "Capital-ready reporting hardening" },
   { quarter: "2027-Q3", theme: "Marketplace take-rate steering" },
   { quarter: "2027-Q4", theme: "Long-horizon optimization automation (human-approved)" },
+];
+
+export const V115_ROADMAP_PRIORITIES = [
+  { horizon: "Now", priority: "Stabilize discount discipline and renewal saves", owner: "CRO", status: "ready" },
+  { horizon: "Next", priority: "Lift partner-sourced share and API/EDI attach", owner: "Partner + Product", status: "in_review" },
+  { horizon: "Later", priority: "Harden capital-ready reporting and board governance", owner: "CFO", status: "ready" },
 ];
 
 // Trend + KPIs + risk + cadence + role guidance + close-out
@@ -289,6 +372,8 @@ export const V115_RLS_EXAMPLES = [
   { table: "retention_risk_accounts",     policy: "select", expression: "is_company_member(auth.uid(), company_id)" },
   { table: "partner_payouts",             policy: "select", expression: "has_role(auth.uid(), current_company(), 'admin') OR partner_user_id = auth.uid()" },
   { table: "pricing_policy_breaches",     policy: "insert", expression: "has_role(auth.uid(), current_company(), 'admin')" },
+  { table: "board_commercial_packets",    policy: "select", expression: "is_platform_owner(auth.uid()) OR has_role(auth.uid(), current_company(), 'admin')" },
+  { table: "expansion_account_plans",     policy: "update", expression: "is_company_member(auth.uid(), company_id) AND has_role(auth.uid(), current_company(), 'admin')" },
 ];
 
 export const V115_DEMO_FLOW = [
@@ -317,4 +402,12 @@ export const V115_REPORTS = [
   { id: "rpt-mp-take",      name: "Marketplace take-rate steering" },
   { id: "rpt-api-edi",      name: "API/EDI monetization tiers" },
   { id: "rpt-board",        name: "Board commercial performance" },
+];
+
+export const V115_REPORT_DISTRIBUTION = [
+  { report: "Optimization lever performance", audience: "CRO, RevOps", cadence: "Weekly", status: "ready" },
+  { report: "Capital-ready revenue scorecard", audience: "CEO, CFO, Board", cadence: "Monthly", status: "ready" },
+  { report: "Retention risk + saves", audience: "CCO, CSM leaders", cadence: "Weekly", status: "ready" },
+  { report: "Partner P&L + payouts", audience: "Partner, Finance", cadence: "Monthly", status: "in_review" },
+  { report: "Board commercial performance", audience: "Board", cadence: "Quarterly", status: "ready" },
 ];
