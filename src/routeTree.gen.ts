@@ -420,6 +420,30 @@ import { Route as V15DispatcherRoutesRouteImport } from './routes/v15.dispatcher
 import { Route as V15DemoRouteImport } from './routes/v15.demo'
 import { Route as V15CopilotRouteImport } from './routes/v15.copilot'
 import { Route as V15BillingRouteImport } from './routes/v15.billing'
+import { Route as V125StrategicAcctRouteImport } from './routes/v125.strategic-acct'
+import { Route as V125StewardRouteImport } from './routes/v125.steward'
+import { Route as V125ScopeRouteImport } from './routes/v125.scope'
+import { Route as V125RiskRouteImport } from './routes/v125.risk'
+import { Route as V125RevenueQualityRouteImport } from './routes/v125.revenue-quality'
+import { Route as V125RevenueIntelRouteImport } from './routes/v125.revenue-intel'
+import { Route as V125ReportsRouteImport } from './routes/v125.reports'
+import { Route as V125ProofRouteImport } from './routes/v125.proof'
+import { Route as V125PipelineAuditRouteImport } from './routes/v125.pipeline-audit'
+import { Route as V125PartnerOptRouteImport } from './routes/v125.partner-opt'
+import { Route as V125PartnerGovRouteImport } from './routes/v125.partner-gov'
+import { Route as V125OverviewRouteImport } from './routes/v125.overview'
+import { Route as V125MarketplaceRouteImport } from './routes/v125.marketplace'
+import { Route as V125GrowthOpsRouteImport } from './routes/v125.growth-ops'
+import { Route as V125GovernanceRouteImport } from './routes/v125.governance'
+import { Route as V125ExpansionRouteImport } from './routes/v125.expansion'
+import { Route as V125EvidenceVaultRouteImport } from './routes/v125.evidence-vault'
+import { Route as V125EvidenceRouteImport } from './routes/v125.evidence'
+import { Route as V125DemoRouteImport } from './routes/v125.demo'
+import { Route as V125DealAuditRouteImport } from './routes/v125.deal-audit'
+import { Route as V125DataRoomRouteImport } from './routes/v125.data-room'
+import { Route as V125BoardRouteImport } from './routes/v125.board'
+import { Route as V125AuditabilityRouteImport } from './routes/v125.auditability'
+import { Route as V125ApiEdiRouteImport } from './routes/v125.api-edi'
 import { Route as V12StrategicAcctRouteImport } from './routes/v12.strategic-acct'
 import { Route as V12ScopeRouteImport } from './routes/v12.scope'
 import { Route as V12RiskRouteImport } from './routes/v12.risk'
@@ -2723,6 +2747,126 @@ const V15BillingRoute = V15BillingRouteImport.update({
   path: '/v15/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V125StrategicAcctRoute = V125StrategicAcctRouteImport.update({
+  id: '/v125/strategic-acct',
+  path: '/v125/strategic-acct',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125StewardRoute = V125StewardRouteImport.update({
+  id: '/v125/steward',
+  path: '/v125/steward',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125ScopeRoute = V125ScopeRouteImport.update({
+  id: '/v125/scope',
+  path: '/v125/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125RiskRoute = V125RiskRouteImport.update({
+  id: '/v125/risk',
+  path: '/v125/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125RevenueQualityRoute = V125RevenueQualityRouteImport.update({
+  id: '/v125/revenue-quality',
+  path: '/v125/revenue-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125RevenueIntelRoute = V125RevenueIntelRouteImport.update({
+  id: '/v125/revenue-intel',
+  path: '/v125/revenue-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125ReportsRoute = V125ReportsRouteImport.update({
+  id: '/v125/reports',
+  path: '/v125/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125ProofRoute = V125ProofRouteImport.update({
+  id: '/v125/proof',
+  path: '/v125/proof',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125PipelineAuditRoute = V125PipelineAuditRouteImport.update({
+  id: '/v125/pipeline-audit',
+  path: '/v125/pipeline-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125PartnerOptRoute = V125PartnerOptRouteImport.update({
+  id: '/v125/partner-opt',
+  path: '/v125/partner-opt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125PartnerGovRoute = V125PartnerGovRouteImport.update({
+  id: '/v125/partner-gov',
+  path: '/v125/partner-gov',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125OverviewRoute = V125OverviewRouteImport.update({
+  id: '/v125/overview',
+  path: '/v125/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125MarketplaceRoute = V125MarketplaceRouteImport.update({
+  id: '/v125/marketplace',
+  path: '/v125/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125GrowthOpsRoute = V125GrowthOpsRouteImport.update({
+  id: '/v125/growth-ops',
+  path: '/v125/growth-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125GovernanceRoute = V125GovernanceRouteImport.update({
+  id: '/v125/governance',
+  path: '/v125/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125ExpansionRoute = V125ExpansionRouteImport.update({
+  id: '/v125/expansion',
+  path: '/v125/expansion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125EvidenceVaultRoute = V125EvidenceVaultRouteImport.update({
+  id: '/v125/evidence-vault',
+  path: '/v125/evidence-vault',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125EvidenceRoute = V125EvidenceRouteImport.update({
+  id: '/v125/evidence',
+  path: '/v125/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125DemoRoute = V125DemoRouteImport.update({
+  id: '/v125/demo',
+  path: '/v125/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125DealAuditRoute = V125DealAuditRouteImport.update({
+  id: '/v125/deal-audit',
+  path: '/v125/deal-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125DataRoomRoute = V125DataRoomRouteImport.update({
+  id: '/v125/data-room',
+  path: '/v125/data-room',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125BoardRoute = V125BoardRouteImport.update({
+  id: '/v125/board',
+  path: '/v125/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125AuditabilityRoute = V125AuditabilityRouteImport.update({
+  id: '/v125/auditability',
+  path: '/v125/auditability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V125ApiEdiRoute = V125ApiEdiRouteImport.update({
+  id: '/v125/api-edi',
+  path: '/v125/api-edi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V12StrategicAcctRoute = V12StrategicAcctRouteImport.update({
   id: '/v12/strategic-acct',
   path: '/v12/strategic-acct',
@@ -4206,6 +4350,30 @@ export interface FileRoutesByFullPath {
   '/v12/risk': typeof V12RiskRoute
   '/v12/scope': typeof V12ScopeRoute
   '/v12/strategic-acct': typeof V12StrategicAcctRoute
+  '/v125/api-edi': typeof V125ApiEdiRoute
+  '/v125/auditability': typeof V125AuditabilityRoute
+  '/v125/board': typeof V125BoardRoute
+  '/v125/data-room': typeof V125DataRoomRoute
+  '/v125/deal-audit': typeof V125DealAuditRoute
+  '/v125/demo': typeof V125DemoRoute
+  '/v125/evidence': typeof V125EvidenceRoute
+  '/v125/evidence-vault': typeof V125EvidenceVaultRoute
+  '/v125/expansion': typeof V125ExpansionRoute
+  '/v125/governance': typeof V125GovernanceRoute
+  '/v125/growth-ops': typeof V125GrowthOpsRoute
+  '/v125/marketplace': typeof V125MarketplaceRoute
+  '/v125/overview': typeof V125OverviewRoute
+  '/v125/partner-gov': typeof V125PartnerGovRoute
+  '/v125/partner-opt': typeof V125PartnerOptRoute
+  '/v125/pipeline-audit': typeof V125PipelineAuditRoute
+  '/v125/proof': typeof V125ProofRoute
+  '/v125/reports': typeof V125ReportsRoute
+  '/v125/revenue-intel': typeof V125RevenueIntelRoute
+  '/v125/revenue-quality': typeof V125RevenueQualityRoute
+  '/v125/risk': typeof V125RiskRoute
+  '/v125/scope': typeof V125ScopeRoute
+  '/v125/steward': typeof V125StewardRoute
+  '/v125/strategic-acct': typeof V125StrategicAcctRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -4862,6 +5030,30 @@ export interface FileRoutesByTo {
   '/v12/risk': typeof V12RiskRoute
   '/v12/scope': typeof V12ScopeRoute
   '/v12/strategic-acct': typeof V12StrategicAcctRoute
+  '/v125/api-edi': typeof V125ApiEdiRoute
+  '/v125/auditability': typeof V125AuditabilityRoute
+  '/v125/board': typeof V125BoardRoute
+  '/v125/data-room': typeof V125DataRoomRoute
+  '/v125/deal-audit': typeof V125DealAuditRoute
+  '/v125/demo': typeof V125DemoRoute
+  '/v125/evidence': typeof V125EvidenceRoute
+  '/v125/evidence-vault': typeof V125EvidenceVaultRoute
+  '/v125/expansion': typeof V125ExpansionRoute
+  '/v125/governance': typeof V125GovernanceRoute
+  '/v125/growth-ops': typeof V125GrowthOpsRoute
+  '/v125/marketplace': typeof V125MarketplaceRoute
+  '/v125/overview': typeof V125OverviewRoute
+  '/v125/partner-gov': typeof V125PartnerGovRoute
+  '/v125/partner-opt': typeof V125PartnerOptRoute
+  '/v125/pipeline-audit': typeof V125PipelineAuditRoute
+  '/v125/proof': typeof V125ProofRoute
+  '/v125/reports': typeof V125ReportsRoute
+  '/v125/revenue-intel': typeof V125RevenueIntelRoute
+  '/v125/revenue-quality': typeof V125RevenueQualityRoute
+  '/v125/risk': typeof V125RiskRoute
+  '/v125/scope': typeof V125ScopeRoute
+  '/v125/steward': typeof V125StewardRoute
+  '/v125/strategic-acct': typeof V125StrategicAcctRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -5519,6 +5711,30 @@ export interface FileRoutesById {
   '/v12/risk': typeof V12RiskRoute
   '/v12/scope': typeof V12ScopeRoute
   '/v12/strategic-acct': typeof V12StrategicAcctRoute
+  '/v125/api-edi': typeof V125ApiEdiRoute
+  '/v125/auditability': typeof V125AuditabilityRoute
+  '/v125/board': typeof V125BoardRoute
+  '/v125/data-room': typeof V125DataRoomRoute
+  '/v125/deal-audit': typeof V125DealAuditRoute
+  '/v125/demo': typeof V125DemoRoute
+  '/v125/evidence': typeof V125EvidenceRoute
+  '/v125/evidence-vault': typeof V125EvidenceVaultRoute
+  '/v125/expansion': typeof V125ExpansionRoute
+  '/v125/governance': typeof V125GovernanceRoute
+  '/v125/growth-ops': typeof V125GrowthOpsRoute
+  '/v125/marketplace': typeof V125MarketplaceRoute
+  '/v125/overview': typeof V125OverviewRoute
+  '/v125/partner-gov': typeof V125PartnerGovRoute
+  '/v125/partner-opt': typeof V125PartnerOptRoute
+  '/v125/pipeline-audit': typeof V125PipelineAuditRoute
+  '/v125/proof': typeof V125ProofRoute
+  '/v125/reports': typeof V125ReportsRoute
+  '/v125/revenue-intel': typeof V125RevenueIntelRoute
+  '/v125/revenue-quality': typeof V125RevenueQualityRoute
+  '/v125/risk': typeof V125RiskRoute
+  '/v125/scope': typeof V125ScopeRoute
+  '/v125/steward': typeof V125StewardRoute
+  '/v125/strategic-acct': typeof V125StrategicAcctRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -6177,6 +6393,30 @@ export interface FileRouteTypes {
     | '/v12/risk'
     | '/v12/scope'
     | '/v12/strategic-acct'
+    | '/v125/api-edi'
+    | '/v125/auditability'
+    | '/v125/board'
+    | '/v125/data-room'
+    | '/v125/deal-audit'
+    | '/v125/demo'
+    | '/v125/evidence'
+    | '/v125/evidence-vault'
+    | '/v125/expansion'
+    | '/v125/governance'
+    | '/v125/growth-ops'
+    | '/v125/marketplace'
+    | '/v125/overview'
+    | '/v125/partner-gov'
+    | '/v125/partner-opt'
+    | '/v125/pipeline-audit'
+    | '/v125/proof'
+    | '/v125/reports'
+    | '/v125/revenue-intel'
+    | '/v125/revenue-quality'
+    | '/v125/risk'
+    | '/v125/scope'
+    | '/v125/steward'
+    | '/v125/strategic-acct'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -6833,6 +7073,30 @@ export interface FileRouteTypes {
     | '/v12/risk'
     | '/v12/scope'
     | '/v12/strategic-acct'
+    | '/v125/api-edi'
+    | '/v125/auditability'
+    | '/v125/board'
+    | '/v125/data-room'
+    | '/v125/deal-audit'
+    | '/v125/demo'
+    | '/v125/evidence'
+    | '/v125/evidence-vault'
+    | '/v125/expansion'
+    | '/v125/governance'
+    | '/v125/growth-ops'
+    | '/v125/marketplace'
+    | '/v125/overview'
+    | '/v125/partner-gov'
+    | '/v125/partner-opt'
+    | '/v125/pipeline-audit'
+    | '/v125/proof'
+    | '/v125/reports'
+    | '/v125/revenue-intel'
+    | '/v125/revenue-quality'
+    | '/v125/risk'
+    | '/v125/scope'
+    | '/v125/steward'
+    | '/v125/strategic-acct'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -7489,6 +7753,30 @@ export interface FileRouteTypes {
     | '/v12/risk'
     | '/v12/scope'
     | '/v12/strategic-acct'
+    | '/v125/api-edi'
+    | '/v125/auditability'
+    | '/v125/board'
+    | '/v125/data-room'
+    | '/v125/deal-audit'
+    | '/v125/demo'
+    | '/v125/evidence'
+    | '/v125/evidence-vault'
+    | '/v125/expansion'
+    | '/v125/governance'
+    | '/v125/growth-ops'
+    | '/v125/marketplace'
+    | '/v125/overview'
+    | '/v125/partner-gov'
+    | '/v125/partner-opt'
+    | '/v125/pipeline-audit'
+    | '/v125/proof'
+    | '/v125/reports'
+    | '/v125/revenue-intel'
+    | '/v125/revenue-quality'
+    | '/v125/risk'
+    | '/v125/scope'
+    | '/v125/steward'
+    | '/v125/strategic-acct'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -8138,6 +8426,30 @@ export interface RootRouteChildren {
   V12RiskRoute: typeof V12RiskRoute
   V12ScopeRoute: typeof V12ScopeRoute
   V12StrategicAcctRoute: typeof V12StrategicAcctRoute
+  V125ApiEdiRoute: typeof V125ApiEdiRoute
+  V125AuditabilityRoute: typeof V125AuditabilityRoute
+  V125BoardRoute: typeof V125BoardRoute
+  V125DataRoomRoute: typeof V125DataRoomRoute
+  V125DealAuditRoute: typeof V125DealAuditRoute
+  V125DemoRoute: typeof V125DemoRoute
+  V125EvidenceRoute: typeof V125EvidenceRoute
+  V125EvidenceVaultRoute: typeof V125EvidenceVaultRoute
+  V125ExpansionRoute: typeof V125ExpansionRoute
+  V125GovernanceRoute: typeof V125GovernanceRoute
+  V125GrowthOpsRoute: typeof V125GrowthOpsRoute
+  V125MarketplaceRoute: typeof V125MarketplaceRoute
+  V125OverviewRoute: typeof V125OverviewRoute
+  V125PartnerGovRoute: typeof V125PartnerGovRoute
+  V125PartnerOptRoute: typeof V125PartnerOptRoute
+  V125PipelineAuditRoute: typeof V125PipelineAuditRoute
+  V125ProofRoute: typeof V125ProofRoute
+  V125ReportsRoute: typeof V125ReportsRoute
+  V125RevenueIntelRoute: typeof V125RevenueIntelRoute
+  V125RevenueQualityRoute: typeof V125RevenueQualityRoute
+  V125RiskRoute: typeof V125RiskRoute
+  V125ScopeRoute: typeof V125ScopeRoute
+  V125StewardRoute: typeof V125StewardRoute
+  V125StrategicAcctRoute: typeof V125StrategicAcctRoute
   V15BillingRoute: typeof V15BillingRoute
   V15CopilotRoute: typeof V15CopilotRoute
   V15DemoRoute: typeof V15DemoRoute
@@ -11411,6 +11723,174 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v125/strategic-acct': {
+      id: '/v125/strategic-acct'
+      path: '/v125/strategic-acct'
+      fullPath: '/v125/strategic-acct'
+      preLoaderRoute: typeof V125StrategicAcctRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/steward': {
+      id: '/v125/steward'
+      path: '/v125/steward'
+      fullPath: '/v125/steward'
+      preLoaderRoute: typeof V125StewardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/scope': {
+      id: '/v125/scope'
+      path: '/v125/scope'
+      fullPath: '/v125/scope'
+      preLoaderRoute: typeof V125ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/risk': {
+      id: '/v125/risk'
+      path: '/v125/risk'
+      fullPath: '/v125/risk'
+      preLoaderRoute: typeof V125RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/revenue-quality': {
+      id: '/v125/revenue-quality'
+      path: '/v125/revenue-quality'
+      fullPath: '/v125/revenue-quality'
+      preLoaderRoute: typeof V125RevenueQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/revenue-intel': {
+      id: '/v125/revenue-intel'
+      path: '/v125/revenue-intel'
+      fullPath: '/v125/revenue-intel'
+      preLoaderRoute: typeof V125RevenueIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/reports': {
+      id: '/v125/reports'
+      path: '/v125/reports'
+      fullPath: '/v125/reports'
+      preLoaderRoute: typeof V125ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/proof': {
+      id: '/v125/proof'
+      path: '/v125/proof'
+      fullPath: '/v125/proof'
+      preLoaderRoute: typeof V125ProofRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/pipeline-audit': {
+      id: '/v125/pipeline-audit'
+      path: '/v125/pipeline-audit'
+      fullPath: '/v125/pipeline-audit'
+      preLoaderRoute: typeof V125PipelineAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/partner-opt': {
+      id: '/v125/partner-opt'
+      path: '/v125/partner-opt'
+      fullPath: '/v125/partner-opt'
+      preLoaderRoute: typeof V125PartnerOptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/partner-gov': {
+      id: '/v125/partner-gov'
+      path: '/v125/partner-gov'
+      fullPath: '/v125/partner-gov'
+      preLoaderRoute: typeof V125PartnerGovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/overview': {
+      id: '/v125/overview'
+      path: '/v125/overview'
+      fullPath: '/v125/overview'
+      preLoaderRoute: typeof V125OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/marketplace': {
+      id: '/v125/marketplace'
+      path: '/v125/marketplace'
+      fullPath: '/v125/marketplace'
+      preLoaderRoute: typeof V125MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/growth-ops': {
+      id: '/v125/growth-ops'
+      path: '/v125/growth-ops'
+      fullPath: '/v125/growth-ops'
+      preLoaderRoute: typeof V125GrowthOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/governance': {
+      id: '/v125/governance'
+      path: '/v125/governance'
+      fullPath: '/v125/governance'
+      preLoaderRoute: typeof V125GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/expansion': {
+      id: '/v125/expansion'
+      path: '/v125/expansion'
+      fullPath: '/v125/expansion'
+      preLoaderRoute: typeof V125ExpansionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/evidence-vault': {
+      id: '/v125/evidence-vault'
+      path: '/v125/evidence-vault'
+      fullPath: '/v125/evidence-vault'
+      preLoaderRoute: typeof V125EvidenceVaultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/evidence': {
+      id: '/v125/evidence'
+      path: '/v125/evidence'
+      fullPath: '/v125/evidence'
+      preLoaderRoute: typeof V125EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/demo': {
+      id: '/v125/demo'
+      path: '/v125/demo'
+      fullPath: '/v125/demo'
+      preLoaderRoute: typeof V125DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/deal-audit': {
+      id: '/v125/deal-audit'
+      path: '/v125/deal-audit'
+      fullPath: '/v125/deal-audit'
+      preLoaderRoute: typeof V125DealAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/data-room': {
+      id: '/v125/data-room'
+      path: '/v125/data-room'
+      fullPath: '/v125/data-room'
+      preLoaderRoute: typeof V125DataRoomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/board': {
+      id: '/v125/board'
+      path: '/v125/board'
+      fullPath: '/v125/board'
+      preLoaderRoute: typeof V125BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/auditability': {
+      id: '/v125/auditability'
+      path: '/v125/auditability'
+      fullPath: '/v125/auditability'
+      preLoaderRoute: typeof V125AuditabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v125/api-edi': {
+      id: '/v125/api-edi'
+      path: '/v125/api-edi'
+      fullPath: '/v125/api-edi'
+      preLoaderRoute: typeof V125ApiEdiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v12/strategic-acct': {
       id: '/v12/strategic-acct'
       path: '/v12/strategic-acct'
@@ -13423,6 +13903,30 @@ const rootRouteChildren: RootRouteChildren = {
   V12RiskRoute: V12RiskRoute,
   V12ScopeRoute: V12ScopeRoute,
   V12StrategicAcctRoute: V12StrategicAcctRoute,
+  V125ApiEdiRoute: V125ApiEdiRoute,
+  V125AuditabilityRoute: V125AuditabilityRoute,
+  V125BoardRoute: V125BoardRoute,
+  V125DataRoomRoute: V125DataRoomRoute,
+  V125DealAuditRoute: V125DealAuditRoute,
+  V125DemoRoute: V125DemoRoute,
+  V125EvidenceRoute: V125EvidenceRoute,
+  V125EvidenceVaultRoute: V125EvidenceVaultRoute,
+  V125ExpansionRoute: V125ExpansionRoute,
+  V125GovernanceRoute: V125GovernanceRoute,
+  V125GrowthOpsRoute: V125GrowthOpsRoute,
+  V125MarketplaceRoute: V125MarketplaceRoute,
+  V125OverviewRoute: V125OverviewRoute,
+  V125PartnerGovRoute: V125PartnerGovRoute,
+  V125PartnerOptRoute: V125PartnerOptRoute,
+  V125PipelineAuditRoute: V125PipelineAuditRoute,
+  V125ProofRoute: V125ProofRoute,
+  V125ReportsRoute: V125ReportsRoute,
+  V125RevenueIntelRoute: V125RevenueIntelRoute,
+  V125RevenueQualityRoute: V125RevenueQualityRoute,
+  V125RiskRoute: V125RiskRoute,
+  V125ScopeRoute: V125ScopeRoute,
+  V125StewardRoute: V125StewardRoute,
+  V125StrategicAcctRoute: V125StrategicAcctRoute,
   V15BillingRoute: V15BillingRoute,
   V15CopilotRoute: V15CopilotRoute,
   V15DemoRoute: V15DemoRoute,
