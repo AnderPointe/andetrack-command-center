@@ -29,6 +29,30 @@ import { Route as AdminChangePasswordRouteImport } from './routes/admin-change-p
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as V95ValueRouteImport } from './routes/v95.value'
+import { Route as V95TrustRouteImport } from './routes/v95.trust'
+import { Route as V95SupportRouteImport } from './routes/v95.support'
+import { Route as V95StewardshipRouteImport } from './routes/v95.stewardship'
+import { Route as V95ScopeRouteImport } from './routes/v95.scope'
+import { Route as V95RiskRouteImport } from './routes/v95.risk'
+import { Route as V95RetentionRouteImport } from './routes/v95.retention'
+import { Route as V95ReportsRouteImport } from './routes/v95.reports'
+import { Route as V95ProcurementRouteImport } from './routes/v95.procurement'
+import { Route as V95PartnerValueRouteImport } from './routes/v95.partner-value'
+import { Route as V95OverviewRouteImport } from './routes/v95.overview'
+import { Route as V95MpQualityRouteImport } from './routes/v95.mp-quality'
+import { Route as V95MpIntelRouteImport } from './routes/v95.mp-intel'
+import { Route as V95FinancialRouteImport } from './routes/v95.financial'
+import { Route as V95EvidenceRouteImport } from './routes/v95.evidence'
+import { Route as V95DurabilityRouteImport } from './routes/v95.durability'
+import { Route as V95DemoRouteImport } from './routes/v95.demo'
+import { Route as V95DataGovRouteImport } from './routes/v95.data-gov'
+import { Route as V95CustomerTrustRouteImport } from './routes/v95.customer-trust'
+import { Route as V95ControlMaturityRouteImport } from './routes/v95.control-maturity'
+import { Route as V95ContinuityRouteImport } from './routes/v95.continuity'
+import { Route as V95CategoryRouteImport } from './routes/v95.category'
+import { Route as V95BoardRouteImport } from './routes/v95.board'
+import { Route as V95AiGovRouteImport } from './routes/v95.ai-gov'
 import { Route as V85SupportRouteImport } from './routes/v85.support'
 import { Route as V85StewardshipExecRouteImport } from './routes/v85.stewardship-exec'
 import { Route as V85StewardshipRouteImport } from './routes/v85.stewardship'
@@ -645,6 +669,126 @@ const IndexRoute = IndexRouteImport.update({
 const DriverIndexRoute = DriverIndexRouteImport.update({
   id: '/driver/',
   path: '/driver/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95ValueRoute = V95ValueRouteImport.update({
+  id: '/v95/value',
+  path: '/v95/value',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95TrustRoute = V95TrustRouteImport.update({
+  id: '/v95/trust',
+  path: '/v95/trust',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95SupportRoute = V95SupportRouteImport.update({
+  id: '/v95/support',
+  path: '/v95/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95StewardshipRoute = V95StewardshipRouteImport.update({
+  id: '/v95/stewardship',
+  path: '/v95/stewardship',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95ScopeRoute = V95ScopeRouteImport.update({
+  id: '/v95/scope',
+  path: '/v95/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95RiskRoute = V95RiskRouteImport.update({
+  id: '/v95/risk',
+  path: '/v95/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95RetentionRoute = V95RetentionRouteImport.update({
+  id: '/v95/retention',
+  path: '/v95/retention',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95ReportsRoute = V95ReportsRouteImport.update({
+  id: '/v95/reports',
+  path: '/v95/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95ProcurementRoute = V95ProcurementRouteImport.update({
+  id: '/v95/procurement',
+  path: '/v95/procurement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95PartnerValueRoute = V95PartnerValueRouteImport.update({
+  id: '/v95/partner-value',
+  path: '/v95/partner-value',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95OverviewRoute = V95OverviewRouteImport.update({
+  id: '/v95/overview',
+  path: '/v95/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95MpQualityRoute = V95MpQualityRouteImport.update({
+  id: '/v95/mp-quality',
+  path: '/v95/mp-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95MpIntelRoute = V95MpIntelRouteImport.update({
+  id: '/v95/mp-intel',
+  path: '/v95/mp-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95FinancialRoute = V95FinancialRouteImport.update({
+  id: '/v95/financial',
+  path: '/v95/financial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95EvidenceRoute = V95EvidenceRouteImport.update({
+  id: '/v95/evidence',
+  path: '/v95/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95DurabilityRoute = V95DurabilityRouteImport.update({
+  id: '/v95/durability',
+  path: '/v95/durability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95DemoRoute = V95DemoRouteImport.update({
+  id: '/v95/demo',
+  path: '/v95/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95DataGovRoute = V95DataGovRouteImport.update({
+  id: '/v95/data-gov',
+  path: '/v95/data-gov',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95CustomerTrustRoute = V95CustomerTrustRouteImport.update({
+  id: '/v95/customer-trust',
+  path: '/v95/customer-trust',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95ControlMaturityRoute = V95ControlMaturityRouteImport.update({
+  id: '/v95/control-maturity',
+  path: '/v95/control-maturity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95ContinuityRoute = V95ContinuityRouteImport.update({
+  id: '/v95/continuity',
+  path: '/v95/continuity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95CategoryRoute = V95CategoryRouteImport.update({
+  id: '/v95/category',
+  path: '/v95/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95BoardRoute = V95BoardRouteImport.update({
+  id: '/v95/board',
+  path: '/v95/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V95AiGovRoute = V95AiGovRouteImport.update({
+  id: '/v95/ai-gov',
+  path: '/v95/ai-gov',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V85SupportRoute = V85SupportRouteImport.update({
@@ -3778,6 +3922,30 @@ export interface FileRoutesByFullPath {
   '/v85/stewardship': typeof V85StewardshipRoute
   '/v85/stewardship-exec': typeof V85StewardshipExecRoute
   '/v85/support': typeof V85SupportRoute
+  '/v95/ai-gov': typeof V95AiGovRoute
+  '/v95/board': typeof V95BoardRoute
+  '/v95/category': typeof V95CategoryRoute
+  '/v95/continuity': typeof V95ContinuityRoute
+  '/v95/control-maturity': typeof V95ControlMaturityRoute
+  '/v95/customer-trust': typeof V95CustomerTrustRoute
+  '/v95/data-gov': typeof V95DataGovRoute
+  '/v95/demo': typeof V95DemoRoute
+  '/v95/durability': typeof V95DurabilityRoute
+  '/v95/evidence': typeof V95EvidenceRoute
+  '/v95/financial': typeof V95FinancialRoute
+  '/v95/mp-intel': typeof V95MpIntelRoute
+  '/v95/mp-quality': typeof V95MpQualityRoute
+  '/v95/overview': typeof V95OverviewRoute
+  '/v95/partner-value': typeof V95PartnerValueRoute
+  '/v95/procurement': typeof V95ProcurementRoute
+  '/v95/reports': typeof V95ReportsRoute
+  '/v95/retention': typeof V95RetentionRoute
+  '/v95/risk': typeof V95RiskRoute
+  '/v95/scope': typeof V95ScopeRoute
+  '/v95/stewardship': typeof V95StewardshipRoute
+  '/v95/support': typeof V95SupportRoute
+  '/v95/trust': typeof V95TrustRoute
+  '/v95/value': typeof V95ValueRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -4317,6 +4485,30 @@ export interface FileRoutesByTo {
   '/v85/stewardship': typeof V85StewardshipRoute
   '/v85/stewardship-exec': typeof V85StewardshipExecRoute
   '/v85/support': typeof V85SupportRoute
+  '/v95/ai-gov': typeof V95AiGovRoute
+  '/v95/board': typeof V95BoardRoute
+  '/v95/category': typeof V95CategoryRoute
+  '/v95/continuity': typeof V95ContinuityRoute
+  '/v95/control-maturity': typeof V95ControlMaturityRoute
+  '/v95/customer-trust': typeof V95CustomerTrustRoute
+  '/v95/data-gov': typeof V95DataGovRoute
+  '/v95/demo': typeof V95DemoRoute
+  '/v95/durability': typeof V95DurabilityRoute
+  '/v95/evidence': typeof V95EvidenceRoute
+  '/v95/financial': typeof V95FinancialRoute
+  '/v95/mp-intel': typeof V95MpIntelRoute
+  '/v95/mp-quality': typeof V95MpQualityRoute
+  '/v95/overview': typeof V95OverviewRoute
+  '/v95/partner-value': typeof V95PartnerValueRoute
+  '/v95/procurement': typeof V95ProcurementRoute
+  '/v95/reports': typeof V95ReportsRoute
+  '/v95/retention': typeof V95RetentionRoute
+  '/v95/risk': typeof V95RiskRoute
+  '/v95/scope': typeof V95ScopeRoute
+  '/v95/stewardship': typeof V95StewardshipRoute
+  '/v95/support': typeof V95SupportRoute
+  '/v95/trust': typeof V95TrustRoute
+  '/v95/value': typeof V95ValueRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -4857,6 +5049,30 @@ export interface FileRoutesById {
   '/v85/stewardship': typeof V85StewardshipRoute
   '/v85/stewardship-exec': typeof V85StewardshipExecRoute
   '/v85/support': typeof V85SupportRoute
+  '/v95/ai-gov': typeof V95AiGovRoute
+  '/v95/board': typeof V95BoardRoute
+  '/v95/category': typeof V95CategoryRoute
+  '/v95/continuity': typeof V95ContinuityRoute
+  '/v95/control-maturity': typeof V95ControlMaturityRoute
+  '/v95/customer-trust': typeof V95CustomerTrustRoute
+  '/v95/data-gov': typeof V95DataGovRoute
+  '/v95/demo': typeof V95DemoRoute
+  '/v95/durability': typeof V95DurabilityRoute
+  '/v95/evidence': typeof V95EvidenceRoute
+  '/v95/financial': typeof V95FinancialRoute
+  '/v95/mp-intel': typeof V95MpIntelRoute
+  '/v95/mp-quality': typeof V95MpQualityRoute
+  '/v95/overview': typeof V95OverviewRoute
+  '/v95/partner-value': typeof V95PartnerValueRoute
+  '/v95/procurement': typeof V95ProcurementRoute
+  '/v95/reports': typeof V95ReportsRoute
+  '/v95/retention': typeof V95RetentionRoute
+  '/v95/risk': typeof V95RiskRoute
+  '/v95/scope': typeof V95ScopeRoute
+  '/v95/stewardship': typeof V95StewardshipRoute
+  '/v95/support': typeof V95SupportRoute
+  '/v95/trust': typeof V95TrustRoute
+  '/v95/value': typeof V95ValueRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -5398,6 +5614,30 @@ export interface FileRouteTypes {
     | '/v85/stewardship'
     | '/v85/stewardship-exec'
     | '/v85/support'
+    | '/v95/ai-gov'
+    | '/v95/board'
+    | '/v95/category'
+    | '/v95/continuity'
+    | '/v95/control-maturity'
+    | '/v95/customer-trust'
+    | '/v95/data-gov'
+    | '/v95/demo'
+    | '/v95/durability'
+    | '/v95/evidence'
+    | '/v95/financial'
+    | '/v95/mp-intel'
+    | '/v95/mp-quality'
+    | '/v95/overview'
+    | '/v95/partner-value'
+    | '/v95/procurement'
+    | '/v95/reports'
+    | '/v95/retention'
+    | '/v95/risk'
+    | '/v95/scope'
+    | '/v95/stewardship'
+    | '/v95/support'
+    | '/v95/trust'
+    | '/v95/value'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -5937,6 +6177,30 @@ export interface FileRouteTypes {
     | '/v85/stewardship'
     | '/v85/stewardship-exec'
     | '/v85/support'
+    | '/v95/ai-gov'
+    | '/v95/board'
+    | '/v95/category'
+    | '/v95/continuity'
+    | '/v95/control-maturity'
+    | '/v95/customer-trust'
+    | '/v95/data-gov'
+    | '/v95/demo'
+    | '/v95/durability'
+    | '/v95/evidence'
+    | '/v95/financial'
+    | '/v95/mp-intel'
+    | '/v95/mp-quality'
+    | '/v95/overview'
+    | '/v95/partner-value'
+    | '/v95/procurement'
+    | '/v95/reports'
+    | '/v95/retention'
+    | '/v95/risk'
+    | '/v95/scope'
+    | '/v95/stewardship'
+    | '/v95/support'
+    | '/v95/trust'
+    | '/v95/value'
     | '/driver'
   id:
     | '__root__'
@@ -6476,6 +6740,30 @@ export interface FileRouteTypes {
     | '/v85/stewardship'
     | '/v85/stewardship-exec'
     | '/v85/support'
+    | '/v95/ai-gov'
+    | '/v95/board'
+    | '/v95/category'
+    | '/v95/continuity'
+    | '/v95/control-maturity'
+    | '/v95/customer-trust'
+    | '/v95/data-gov'
+    | '/v95/demo'
+    | '/v95/durability'
+    | '/v95/evidence'
+    | '/v95/financial'
+    | '/v95/mp-intel'
+    | '/v95/mp-quality'
+    | '/v95/overview'
+    | '/v95/partner-value'
+    | '/v95/procurement'
+    | '/v95/reports'
+    | '/v95/retention'
+    | '/v95/risk'
+    | '/v95/scope'
+    | '/v95/stewardship'
+    | '/v95/support'
+    | '/v95/trust'
+    | '/v95/value'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -7008,6 +7296,30 @@ export interface RootRouteChildren {
   V85StewardshipRoute: typeof V85StewardshipRoute
   V85StewardshipExecRoute: typeof V85StewardshipExecRoute
   V85SupportRoute: typeof V85SupportRoute
+  V95AiGovRoute: typeof V95AiGovRoute
+  V95BoardRoute: typeof V95BoardRoute
+  V95CategoryRoute: typeof V95CategoryRoute
+  V95ContinuityRoute: typeof V95ContinuityRoute
+  V95ControlMaturityRoute: typeof V95ControlMaturityRoute
+  V95CustomerTrustRoute: typeof V95CustomerTrustRoute
+  V95DataGovRoute: typeof V95DataGovRoute
+  V95DemoRoute: typeof V95DemoRoute
+  V95DurabilityRoute: typeof V95DurabilityRoute
+  V95EvidenceRoute: typeof V95EvidenceRoute
+  V95FinancialRoute: typeof V95FinancialRoute
+  V95MpIntelRoute: typeof V95MpIntelRoute
+  V95MpQualityRoute: typeof V95MpQualityRoute
+  V95OverviewRoute: typeof V95OverviewRoute
+  V95PartnerValueRoute: typeof V95PartnerValueRoute
+  V95ProcurementRoute: typeof V95ProcurementRoute
+  V95ReportsRoute: typeof V95ReportsRoute
+  V95RetentionRoute: typeof V95RetentionRoute
+  V95RiskRoute: typeof V95RiskRoute
+  V95ScopeRoute: typeof V95ScopeRoute
+  V95StewardshipRoute: typeof V95StewardshipRoute
+  V95SupportRoute: typeof V95SupportRoute
+  V95TrustRoute: typeof V95TrustRoute
+  V95ValueRoute: typeof V95ValueRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
 
@@ -7151,6 +7463,174 @@ declare module '@tanstack/react-router' {
       path: '/driver'
       fullPath: '/driver/'
       preLoaderRoute: typeof DriverIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/value': {
+      id: '/v95/value'
+      path: '/v95/value'
+      fullPath: '/v95/value'
+      preLoaderRoute: typeof V95ValueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/trust': {
+      id: '/v95/trust'
+      path: '/v95/trust'
+      fullPath: '/v95/trust'
+      preLoaderRoute: typeof V95TrustRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/support': {
+      id: '/v95/support'
+      path: '/v95/support'
+      fullPath: '/v95/support'
+      preLoaderRoute: typeof V95SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/stewardship': {
+      id: '/v95/stewardship'
+      path: '/v95/stewardship'
+      fullPath: '/v95/stewardship'
+      preLoaderRoute: typeof V95StewardshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/scope': {
+      id: '/v95/scope'
+      path: '/v95/scope'
+      fullPath: '/v95/scope'
+      preLoaderRoute: typeof V95ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/risk': {
+      id: '/v95/risk'
+      path: '/v95/risk'
+      fullPath: '/v95/risk'
+      preLoaderRoute: typeof V95RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/retention': {
+      id: '/v95/retention'
+      path: '/v95/retention'
+      fullPath: '/v95/retention'
+      preLoaderRoute: typeof V95RetentionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/reports': {
+      id: '/v95/reports'
+      path: '/v95/reports'
+      fullPath: '/v95/reports'
+      preLoaderRoute: typeof V95ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/procurement': {
+      id: '/v95/procurement'
+      path: '/v95/procurement'
+      fullPath: '/v95/procurement'
+      preLoaderRoute: typeof V95ProcurementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/partner-value': {
+      id: '/v95/partner-value'
+      path: '/v95/partner-value'
+      fullPath: '/v95/partner-value'
+      preLoaderRoute: typeof V95PartnerValueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/overview': {
+      id: '/v95/overview'
+      path: '/v95/overview'
+      fullPath: '/v95/overview'
+      preLoaderRoute: typeof V95OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/mp-quality': {
+      id: '/v95/mp-quality'
+      path: '/v95/mp-quality'
+      fullPath: '/v95/mp-quality'
+      preLoaderRoute: typeof V95MpQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/mp-intel': {
+      id: '/v95/mp-intel'
+      path: '/v95/mp-intel'
+      fullPath: '/v95/mp-intel'
+      preLoaderRoute: typeof V95MpIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/financial': {
+      id: '/v95/financial'
+      path: '/v95/financial'
+      fullPath: '/v95/financial'
+      preLoaderRoute: typeof V95FinancialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/evidence': {
+      id: '/v95/evidence'
+      path: '/v95/evidence'
+      fullPath: '/v95/evidence'
+      preLoaderRoute: typeof V95EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/durability': {
+      id: '/v95/durability'
+      path: '/v95/durability'
+      fullPath: '/v95/durability'
+      preLoaderRoute: typeof V95DurabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/demo': {
+      id: '/v95/demo'
+      path: '/v95/demo'
+      fullPath: '/v95/demo'
+      preLoaderRoute: typeof V95DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/data-gov': {
+      id: '/v95/data-gov'
+      path: '/v95/data-gov'
+      fullPath: '/v95/data-gov'
+      preLoaderRoute: typeof V95DataGovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/customer-trust': {
+      id: '/v95/customer-trust'
+      path: '/v95/customer-trust'
+      fullPath: '/v95/customer-trust'
+      preLoaderRoute: typeof V95CustomerTrustRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/control-maturity': {
+      id: '/v95/control-maturity'
+      path: '/v95/control-maturity'
+      fullPath: '/v95/control-maturity'
+      preLoaderRoute: typeof V95ControlMaturityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/continuity': {
+      id: '/v95/continuity'
+      path: '/v95/continuity'
+      fullPath: '/v95/continuity'
+      preLoaderRoute: typeof V95ContinuityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/category': {
+      id: '/v95/category'
+      path: '/v95/category'
+      fullPath: '/v95/category'
+      preLoaderRoute: typeof V95CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/board': {
+      id: '/v95/board'
+      path: '/v95/board'
+      fullPath: '/v95/board'
+      preLoaderRoute: typeof V95BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v95/ai-gov': {
+      id: '/v95/ai-gov'
+      path: '/v95/ai-gov'
+      fullPath: '/v95/ai-gov'
+      preLoaderRoute: typeof V95AiGovRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v85/support': {
@@ -11357,18 +11837,32 @@ const rootRouteChildren: RootRouteChildren = {
   V85StewardshipRoute: V85StewardshipRoute,
   V85StewardshipExecRoute: V85StewardshipExecRoute,
   V85SupportRoute: V85SupportRoute,
+  V95AiGovRoute: V95AiGovRoute,
+  V95BoardRoute: V95BoardRoute,
+  V95CategoryRoute: V95CategoryRoute,
+  V95ContinuityRoute: V95ContinuityRoute,
+  V95ControlMaturityRoute: V95ControlMaturityRoute,
+  V95CustomerTrustRoute: V95CustomerTrustRoute,
+  V95DataGovRoute: V95DataGovRoute,
+  V95DemoRoute: V95DemoRoute,
+  V95DurabilityRoute: V95DurabilityRoute,
+  V95EvidenceRoute: V95EvidenceRoute,
+  V95FinancialRoute: V95FinancialRoute,
+  V95MpIntelRoute: V95MpIntelRoute,
+  V95MpQualityRoute: V95MpQualityRoute,
+  V95OverviewRoute: V95OverviewRoute,
+  V95PartnerValueRoute: V95PartnerValueRoute,
+  V95ProcurementRoute: V95ProcurementRoute,
+  V95ReportsRoute: V95ReportsRoute,
+  V95RetentionRoute: V95RetentionRoute,
+  V95RiskRoute: V95RiskRoute,
+  V95ScopeRoute: V95ScopeRoute,
+  V95StewardshipRoute: V95StewardshipRoute,
+  V95SupportRoute: V95SupportRoute,
+  V95TrustRoute: V95TrustRoute,
+  V95ValueRoute: V95ValueRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

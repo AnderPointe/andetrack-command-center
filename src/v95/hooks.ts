@@ -1,0 +1,30 @@
+// V9.5 hooks — Phase 32 mock-only.
+import * as M from "./data/mockPhase32";
+
+export const useV95Scope                          = () => ({ matrix: M.V95_FEATURE_MATRIX, deferred: M.V95_DEFERRED, trust: M.V95_ENTERPRISE_TRUST });
+export const useGlobalEnterpriseStewardship       = () => ({ trust: M.V95_ENTERPRISE_TRUST, domains: M.V95_STEWARDSHIP_DOMAINS, gaps: M.V95_STEWARDSHIP_GAPS, actions: M.V95_STEWARDSHIP_ACTIONS });
+export const useEnterpriseTrust                   = () => ({ domains: M.V95_TRUST_DOMAINS, risks: M.V95_TRUST_RISKS, remediation: M.V95_TRUST_REMEDIATION });
+export const useCertificationEvidenceMaturity     = () => ({ summary: M.V95_CERT_EVIDENCE_SCORE, controls: M.V95_CERT_EVIDENCE, exceptions: M.V95_CERT_EXCEPTIONS, auditPackage: M.V95_AUDIT_PACKAGE_READINESS });
+export const useFinancialGovernanceMaturity       = () => ({ summary: M.V95_FIN_GOV_SCORE, domains: M.V95_FIN_GOV_DOMAINS, exceptions: M.V95_FIN_EXCEPTIONS, trend: M.V95_FIN_GOV_TREND });
+export const useMarketplaceIntelligenceOptimization = () => ({ summary: M.V95_MP_OPT_SCORE, metrics: M.V95_MP_OPT_METRICS, regional: M.V95_MP_REGIONAL, plan: M.V95_MP_OPT_PLAN });
+export const useMarketplaceQualityGovernance      = () => ({ areas: M.V95_MP_QUALITY, tiers: M.V95_MP_CARRIER_TIERS });
+export const useGlobalCustomerTrust               = () => ({ summary: M.V95_CUST_TRUST_SCORE, customers: M.V95_CUST_TRUST, requests: M.V95_CUST_TRUST_REQUESTS });
+export const useCategoryLeadershipExecution       = () => ({ summary: M.V95_CATEGORY_SCORE, items: M.V95_CATEGORY_ITEMS, recommendations: M.V95_CATEGORY_RECOMMENDATIONS });
+export const useBoardInvestorDiscipline           = () => ({ discipline: M.V95_BOARD_DISCIPLINE, packet: M.V95_BOARD_PACKET, decisions: M.V95_BOARD_DECISIONS, actions: M.V95_BOARD_ACTIONS, investor: M.V95_INVESTOR_UPDATE });
+export const usePlatformValueCreation             = () => ({ summary: M.V95_VALUE_SCORE, drivers: M.V95_VALUE_DRIVERS, actions: M.V95_VALUE_ACTIONS });
+export const useEnterpriseControlMaturity         = () => ({ summary: M.V95_CONTROL_MATURITY, domains: M.V95_CONTROL_DOMAINS, calendar: M.V95_CONTROL_TESTING_CAL });
+export const useStrategicRiskExecution            = () => ({ risks: M.V95_STRATEGIC_RISKS, trend: M.V95_RISK_TREND });
+export const useAIGovernanceMaturity              = () => ({ summary: M.V95_AI_GOV, policies: M.V95_AI_GOV_POLICIES });
+export const useSupportReliabilityTrust           = () => ({ reliability: M.V95_RELIABILITY, support: M.V95_SUPPORT_TRUST, incidents: M.V95_RELIABILITY_INCIDENTS, burden: M.V95_SUPPORT_BURDEN });
+export const useDataGovernanceMaturity            = () => ({ summary: M.V95_DATA_GOV, datasets: M.V95_DATA_OWNERSHIP, exceptions: M.V95_DATA_EXCEPTIONS });
+export const useProductDurability                 = () => ({ summary: M.V95_PRODUCT_DURABILITY, lines: M.V95_PRODUCT_LINES });
+export const useStrategicPartnerValue             = () => ({ summary: M.V95_PARTNER_VALUE, partners: M.V95_PARTNERS });
+export const useRetentionExpansionGovernance      = () => ({ summary: M.V95_RETENTION, accounts: M.V95_RETENTION_ACCOUNTS });
+export const useProcurementTrust                  = () => ({ summary: M.V95_PROCUREMENT, packets: M.V95_PROCUREMENT_PACKETS, requests: M.V95_PROCUREMENT_REQUESTS });
+export const usePlatformContinuity                = () => ({ summary: M.V95_CONTINUITY, items: M.V95_CONTINUITY_ITEMS });
+export const useReportsV95                        = () => ({ reports: M.V95_REPORTS });
+export const useV95ExecHeadline                   = () => M.V95_EXEC_HEADLINE;
+export const useV95ExecutionOverlays              = () => M.V95_EXECUTION_OVERLAYS;
+export const useV95RoleGuidance                   = () => M.V95_ROLE_GUIDANCE;
+export const useV95RlsExamples                    = () => M.V95_RLS_EXAMPLES;
+export const useV95BackendBoundary                = () => M.V95_BACKEND_BOUNDARY;
