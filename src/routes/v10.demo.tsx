@@ -9,14 +9,19 @@ const TITLE = "V10 Demo Flow";
 const BLURB = "Executive walkthrough — CEO → CRO → MP → CFO → CS → Strategy → Board.";
 const STEPS = [
   { who: "CEO",     step: "Open Global Category Leadership Command Center",   outcome: "Score 92 · trust 88 · MP proof 84 · economics 81 · defensibility 86" },
-  { who: "CRO",     step: "Open Enterprise Trust Commercialization Center",   outcome: "Readiness 86 · AcmeCo blocked on AI disclosure refresh" },
+  { who: "CEO",     step: "Review category leadership quarterly trend",        outcome: "84 → 87 → 90 → 92 · ahead of target 3 of 4 quarters" },
+  { who: "CRO",     step: "Open Enterprise Trust Commercialization Center",   outcome: "Readiness 86 · packet builder mapped to 8 source systems" },
+  { who: "CSO",     step: "Refresh AI disclosure + procurement packets",      outcome: "Unblocks AcmeCo + GlobalParts EU DPA" },
   { who: "MP",      step: "Open Marketplace Value Proof Center",              outcome: "Coverage 92 · bids 3.4 · time-to-award 48m → target 35" },
-  { who: "CFO",     step: "Open Platform Economics Maturity Center",          outcome: "SaaS strong · MP growing · API emerging · concentration moderate" },
-  { who: "CS",      step: "Open Customer Retention Expansion Command Center", outcome: "3 expansion-ready · BlueRidge churn risk · playbook generated" },
+  { who: "CFO",     step: "Open Platform Economics Maturity Center",          outcome: "Revenue quality 86 · concentration 22 · reduction plan" },
+  { who: "CSO/CPO", step: "Open Ecosystem Defensibility — moat matrix",       outcome: "Moat 86 · lane intelligence investment approved" },
+  { who: "CS",      step: "Open Customer Retention Expansion Command Center", outcome: "Gross 96.8% · 3 expansion-ready · BlueRidge recovery" },
+  { who: "CS",      step: "Open Customer Outcomes Dashboard",                 outcome: "Outcome score 87 · 2 stories ready to publish" },
   { who: "Strategy",step: "Open Competitive Category Positioning",            outcome: "Leader vs legacy + pure-plays · battlecards refreshed" },
   { who: "Board",   step: "Open Board and Investor Narrative Center",         outcome: "15 sections · 13 ready · 2 in progress · proof attached" },
   { who: "CEO",     step: "Approve V10 category leadership action plan",      outcome: "5 actions signed (CMO/PMM/Partner/AI/MP)" },
 ];
+
 
 function Page() {
   const h = H.useV10ExecHeadline();
