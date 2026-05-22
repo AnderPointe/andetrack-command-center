@@ -1,6 +1,5 @@
 // Phase 34 — V10.5 mock data. Mock-only. No autonomous dispatch, no certification claims.
-import type { ExecHeadline } from "@/v8/hooks";
-import type { OverlayItem } from "@/components/v8/ui-bits";
+import type { ExecHeadline, OverlayItem } from "@/components/v8/ui-bits";
 
 export const V105_COMMERCIAL_SCALE = { score: 84, trend_pts: 7, label: "Scaling" };
 
