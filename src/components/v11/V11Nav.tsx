@@ -39,7 +39,7 @@ export function V11Nav() {
       {ITEMS.map(({ to, label, icon: Icon }) => {
         const active = pathname === to;
         return (
-          <Link key={to} to={to}
+          <a key={to} href={to}
             className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 transition-colors ${
               active
                 ? "border-cyan-400/50 bg-cyan-500/10 text-cyan-200"
@@ -47,7 +47,7 @@ export function V11Nav() {
             }`}>
             <Icon className="size-3.5" />
             {label}
-          </Link>
+          </a>
         );
       })}
     </nav>
