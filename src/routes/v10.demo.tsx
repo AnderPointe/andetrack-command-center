@@ -57,7 +57,20 @@ function Page() {
           ))}
         </ol>
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Demo closeout — signed commitments</h3>
+        <div className="mt-2 grid gap-2 md:grid-cols-2">
+          {closeout.map((c, i) => (
+            <div key={i} className="grid grid-cols-[5rem_1fr_7rem] items-start gap-2 rounded-lg border border-emerald-400/20 bg-black/30 p-2 text-sm">
+              <span className="font-medium text-amber-200">{c.who}</span>
+              <span>{c.commitment}</span>
+              <span className="text-right text-xs text-muted-foreground">{c.due}</span>
+            </div>
+          ))}
+        </div>
+      </Card>
       <OverlayStrip items={overlays as any} title="Executive overlays — all V10 modules" />
+
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">RLS policy references</h3>
         <p className="mt-1 text-xs text-muted-foreground">Mock-only — see <code>docs/phase33-rls.sql</code>.</p>
