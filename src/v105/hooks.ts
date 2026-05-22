@@ -28,3 +28,9 @@ export const useV105ExecutionOverlays           = () => M.V105_EXECUTION_OVERLAY
 export const useV105BackendBoundary             = () => M.V105_BACKEND_BOUNDARY;
 export const useV105RlsExamples                 = () => M.V105_RLS_EXAMPLES;
 export const useV105DemoFlow                    = () => M.V105_DEMO_FLOW;
+export const useV105CommercialTrend             = () => M.V105_COMMERCIAL_TREND;
+export const useV105TrustMonetizationBreakdown  = () => M.V105_TRUST_MONETIZATION_BREAKDOWN;
+export const useV105OutcomeKpis                 = () => M.V105_OUTCOME_KPIS;
+export const useV105CommercialRiskHeatmap       = () => M.V105_COMMERCIAL_RISK_HEATMAP;
+export const useV105ExecCadenceSpec             = () => M.V105_EXEC_CADENCE_SPEC;
+export const useV105DemoCloseout                = () => M.V105_DEMO_CLOSEOUT;

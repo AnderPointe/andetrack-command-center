@@ -32,6 +32,51 @@ function Page() {
         { label: "Open procurement",   value: H.useProcurementAcceleration().summary.open },
       ]} />
       <OverlayStrip items={overlays} title="V10.5 executive overlays" />
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Commercial scale trend</h3>
+        <p className="mt-1 text-xs text-muted-foreground">Quarterly actual vs target. Mock-only.</p>
+        <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-4">
+          {H.useV105CommercialTrend().map((q) => (
+            <div key={q.quarter} className="rounded border border-white/5 bg-black/20 px-3 py-2">
+              <div className="text-[11px] uppercase tracking-wider text-muted-foreground">{q.quarter}</div>
+              <div className="mt-1 text-lg font-semibold">{q.actual}<span className="text-xs text-muted-foreground"> / {q.target}</span></div>
+              <div className={`text-[11px] ${q.actual >= q.target ? "text-emerald-300" : "text-amber-300"}`}>{q.actual >= q.target ? "on track" : "below target"}</div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Outcome KPIs vs target</h3>
+        <SimpleTable rows={H.useV105OutcomeKpis() as any} columns={[
+          { key: "metric", label: "Metric" },
+          { key: "target", label: "Target" },
+          { key: "actual", label: "Actual" },
+          { key: "tone",   label: "Status", render: (r: any) => <StatusPill status={r.tone === "good" ? "ready" : r.tone === "warn" ? "at_risk" : "blocked"} /> },
+        ]} />
+      </Card>
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Commercial risk heatmap</h3>
+        <SimpleTable rows={H.useV105CommercialRiskHeatmap() as any} columns={[
+          { key: "risk", label: "Risk" },
+          { key: "likelihood", label: "Likelihood" },
+          { key: "impact", label: "Impact" },
+          { key: "owner", label: "Owner" },
+          { key: "mitigation", label: "Mitigation" },
+        ]} />
+      </Card>
+
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Executive revenue cadence</h3>
+        <SimpleTable rows={H.useV105ExecCadenceSpec() as any} columns={[
+          { key: "cadence", label: "Cadence" },
+          { key: "attendees", label: "Attendees" },
+          { key: "inputs", label: "Inputs" },
+        ]} />
+      </Card>
+
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Backend boundary — server fn vs server route</h3>
         <p className="mt-1 text-xs text-muted-foreground">V10.5 internal logic uses TanStack <code>createServerFn</code>. External proof-approval callbacks live under <code>/api/public/*</code>.</p>
