@@ -53,7 +53,7 @@ function Page() {
           { key: "metric", label: "Metric" },
           { key: "target", label: "Target" },
           { key: "actual", label: "Actual" },
-          { key: "tone",   label: "Status", render: (v: any) => <StatusPill tone={v === "good" ? "emerald" : v === "warn" ? "amber" : "rose"}>{v}</StatusPill> },
+          { key: "tone",   label: "Status", render: (r: any) => <StatusPill status={r.tone === "good" ? "ready" : r.tone === "warn" ? "at_risk" : "blocked"} /> },
         ]} />
       </Card>
 
