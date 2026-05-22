@@ -319,25 +319,25 @@ export const V105_REPORTS = [
 
 // Exec headline + overlays
 export const V105_EXEC_HEADLINE: ExecHeadline = {
-  status: "scaling",
+  status: "amber",
   headline: "V10.5 commercial scale at 84 with 5 trust-unblocked deals",
   detail: "Procurement and SE liquidity proof are the two remaining drags on Q2 close. Capital readiness at 68.",
   signals: [
-    "Trust packets unblocked 5 deals in 30d",
-    "Atlas DPA aging 12 days — escalate to Legal",
-    "Southeast liquidity proof still not ready",
-    "Capital data room at 74% — 4 sections in review",
+    { label: "Trust packets unblocked (30d)", value: 5, tone: "good" },
+    { label: "Atlas DPA age (days)",          value: 12, tone: "warn" },
+    { label: "Southeast MP liquidity proof",  value: "not ready", tone: "bad" },
+    { label: "Capital data room",             value: "74%", tone: "warn" },
   ],
-  next_decision: "CRO approves Q2 enterprise close plan; CFO approves data room target of 90% by quarter end.",
+  next_decision: { who: "CRO + CFO", what: "Approve Q2 enterprise close plan and data room 90% target", due: "Q2 close" },
 };
 
 export const V105_EXECUTION_OVERLAYS: OverlayItem[] = [
-  { kind: "ok",   label: "Trust monetization", body: "5 deals unblocked, packet uses 42 / 30d" },
-  { kind: "ok",   label: "Commercial scale",   body: "Score 84, +7 pts vs last quarter" },
-  { kind: "warn", label: "Atlas DPA",          body: "Aging 12 days in Legal — escalate" },
-  { kind: "warn", label: "SE MP proof",        body: "Southeast liquidity not ready" },
-  { kind: "ok",   label: "Pilot — Heartland",  body: "Scorecard review on track" },
-  { kind: "info", label: "Capital readiness",  body: "Data room 74%, narrative 72%" },
+  { area: "Trust monetization", role: "Security", focus: "5 deals unblocked, packet uses 42 / 30d",   decision: "Refresh AI gov packet" },
+  { area: "Commercial scale",   role: "CRO",      focus: "Score 84, +7 pts vs last quarter",          decision: "Approve Q2 close plan" },
+  { area: "Atlas DPA",          role: "Legal",    focus: "Aging 12 days in Legal — escalate",         decision: "Redline by 06-09" },
+  { area: "SE MP proof",        role: "MP Lead",  focus: "Southeast liquidity not ready",             decision: "Carrier recruiting sprint" },
+  { area: "Pilot — Heartland",  role: "CS",       focus: "Scorecard review on track",                 decision: "Convert to expansion" },
+  { area: "Capital readiness",  role: "CFO",      focus: "Data room 74%, narrative 72%",              decision: "Target 90% by Q2 end" },
 ];
 
 export const V105_BACKEND_BOUNDARY = [
