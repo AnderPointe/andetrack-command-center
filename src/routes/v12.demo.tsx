@@ -11,6 +11,8 @@ function Page() {
   const closeout = H.useV12DemoCloseout();
   const boundary = H.useV12BackendBoundary();
   const rls = H.useV12RlsExamples();
+  const teaser = H.useV12Phase38Teaser();
+  const scope = H.useV12Scope();
   const toneMap: Record<string, string> = {
     violet: "border-violet-400/40 text-violet-200",
     sky: "border-sky-400/40 text-sky-200",
