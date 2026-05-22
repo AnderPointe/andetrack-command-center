@@ -482,9 +482,18 @@ export const V95_REPORTS = [
 
 // ---------------- Exec headline + overlays ----------------
 export const V95_EXEC_HEADLINE = {
-  phase: "Phase 32 · V9.5",
-  title: "Global enterprise stewardship + category leadership execution",
-  subtitle: "Trust 88 · Financial gov 81 · Cert evidence 79 · MP quality 84 · Customer trust 86 · Value 82",
+  status: "green" as const,
+  headline: "Phase 32 · V9.5 — Global enterprise stewardship + category leadership execution",
+  detail: "Trust, financial governance, certification evidence, MP quality, customer trust, and value creation all trending up.",
+  signals: [
+    { label: "Enterprise trust",  value: 88, tone: "good" as const },
+    { label: "Financial gov",     value: 81, tone: "good" as const },
+    { label: "Cert evidence",     value: 79, tone: "warn" as const },
+    { label: "MP quality",        value: 84, tone: "good" as const },
+    { label: "Customer trust",    value: 86, tone: "good" as const },
+    { label: "Value creation",    value: 82, tone: "good" as const },
+  ],
+  next_decision: { who: "CEO", what: "Sign V9.5 stewardship action plan", due: "this week" },
 };
 
 export const V95_EXECUTION_OVERLAYS = [
