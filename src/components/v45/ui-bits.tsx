@@ -25,7 +25,7 @@ export function KpiGrid({ items, cols = 4 }: { items: { label: string; value: Re
   );
 }
 
-export function ScoreCard({ label, value, tone = "violet" }: { label: string; value: number; tone?: "violet" | "emerald" | "amber" | "rose" | "sky" }) {
+export function ScoreCard({ label, value, tone = "violet" }: { label: string; value: number | string; tone?: "violet" | "emerald" | "amber" | "rose" | "sky" }) {
   const toneMap: Record<string, string> = {
     violet: "border-violet-400/40 text-violet-200",
     emerald: "border-emerald-400/40 text-emerald-200",
@@ -33,11 +33,12 @@ export function ScoreCard({ label, value, tone = "violet" }: { label: string; va
     rose: "border-rose-400/40 text-rose-200",
     sky: "border-sky-400/40 text-sky-200",
   };
+  const isNumber = typeof value === "number";
   return (
     <Card className={`border ${toneMap[tone]} bg-white/[0.02] p-4`}>
       <div className="text-xs uppercase tracking-wide text-muted-foreground">{label}</div>
-      <div className="mt-1 text-3xl font-semibold">{value}%</div>
-      <Progress value={value} className="mt-2 h-1.5" />
+      <div className="mt-1 text-3xl font-semibold">{isNumber ? `${value}%` : value}</div>
+      {isNumber && <Progress value={value as number} className="mt-2 h-1.5" />}
     </Card>
   );
 }
