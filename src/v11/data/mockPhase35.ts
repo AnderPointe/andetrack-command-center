@@ -454,3 +454,60 @@ export const V11_DEMO_FLOW = [
   { role: "Board",    step: "Open Board-Level Revenue Reporting — pipeline, expansion, renewal risk, MP, API/EDI, trust, risk, next-Q" },
   { role: "CEO",      step: "Open Long-Term Monetization Roadmap — current Q through 36 months by track" },
 ];
+
+// ---- Polish (Phase 35) ----
+export const V11_REVENUE_TREND = [
+  { quarter: "2025-Q3", engine: 72, monetization: 68, trust: 71, partner: 60 },
+  { quarter: "2025-Q4", engine: 78, monetization: 72, trust: 75, partner: 65 },
+  { quarter: "2026-Q1", engine: 80, monetization: 74, trust: 78, partner: 68 },
+  { quarter: "2026-Q2", engine: 84, monetization: 77, trust: 80, partner: 71 },
+  { quarter: "2026-Q3", engine: 86, monetization: 79, trust: 82, partner: 74 },
+];
+
+export const V11_OUTCOME_KPIS = [
+  { kpi: "Net new ARR (Q)",      actual: "$1.9M", target: "$2.2M", tone: "warn" },
+  { kpi: "Expansion ARR (Q)",    actual: "$0.8M", target: "$0.9M", tone: "warn" },
+  { kpi: "Gross retention",      actual: "94%",   target: "95%",   tone: "warn" },
+  { kpi: "Net revenue retention",actual: "121%",  target: "120%",  tone: "good" },
+  { kpi: "Enterprise win rate",  actual: "33%",   target: "35%",   tone: "warn" },
+  { kpi: "Trust packet cycle",   actual: "9d",    target: "7d",    tone: "warn" },
+  { kpi: "Deal desk SLA",        actual: "89%",   target: "90%",   tone: "warn" },
+  { kpi: "Partner-sourced %",    actual: "22%",   target: "25%",   tone: "warn" },
+];
+
+export const V11_MONETIZATION_BREAKDOWN = [
+  { lever: "Subscription tiers",  arr_share_pct: 58, attach_pct: 100, delta_q: "+1" },
+  { lever: "Marketplace take",    arr_share_pct: 19, attach_pct: 64,  delta_q: "+3" },
+  { lever: "API metered",         arr_share_pct: 11, attach_pct: 41,  delta_q: "+2" },
+  { lever: "EDI metered",         arr_share_pct: 6,  attach_pct: 22,  delta_q: "+1" },
+  { lever: "Premium support",     arr_share_pct: 4,  attach_pct: 28,  delta_q: "+0" },
+  { lever: "Onboarding services", arr_share_pct: 2,  attach_pct: 18,  delta_q: "+1" },
+];
+
+export const V11_REVENUE_RISK_HEATMAP = [
+  { risk: "Top-3 customer concentration",  likelihood: "med",  impact: "high", mitigation: "Diversify pipeline + exec sponsor renewals", owner: "CRO" },
+  { risk: "Procurement cycle slip",        likelihood: "high", impact: "med",  mitigation: "Pre-stage DPA + insurance kits",            owner: "Security" },
+  { risk: "AI governance packet stale",    likelihood: "med",  impact: "med",  mitigation: "Refresh quarterly + on change",             owner: "AI Lead" },
+  { risk: "MP carrier concentration (ON)", likelihood: "med",  impact: "med",  mitigation: "Recruiting sprint + incentive review",      owner: "MP Lead" },
+  { risk: "Partner channel underperform",  likelihood: "med",  impact: "med",  mitigation: "Enablement + co-sell cadence",              owner: "Partner" },
+  { risk: "Deal desk exception backlog",   likelihood: "low",  impact: "med",  mitigation: "Auto-approve guardrails for tier 1-2",      owner: "RevOps" },
+];
+
+export const V11_ROLE_GUIDANCE = [
+  { role: "CRO",      focus: "Engine score, blocked deals, NBA queue", tone: "violet" },
+  { role: "CS Lead",  focus: "Expansion, renewals, churn risk",        tone: "sky" },
+  { role: "Security", focus: "Trust packets, procurement queue",       tone: "emerald" },
+  { role: "RevOps",   focus: "Deal desk SLA, pricing governance",      tone: "amber" },
+  { role: "Partner",  focus: "Sourced pipeline, revenue events",       tone: "sky" },
+  { role: "CFO",      focus: "Monetization mix, NRR/GRR, board KPIs",  tone: "rose" },
+];
+
+export const V11_DEMO_CLOSEOUT = [
+  { role: "CRO",      commitment: "Lock Q2 enterprise close plan",            due: "Q2 close" },
+  { role: "CS Lead",  commitment: "Engage exec sponsor on PacificMove",       due: "+7d" },
+  { role: "Security", commitment: "Refresh AI governance trust packet",       due: "+5d" },
+  { role: "RevOps",   commitment: "Clear deal desk exception backlog",        due: "+10d" },
+  { role: "Partner",  commitment: "Approve TMS-X revenue share placeholder",  due: "+3d" },
+  { role: "MP Lead",  commitment: "Launch ON carrier recruiting sprint",      due: "+14d" },
+  { role: "CFO",      commitment: "Sign board revenue pack",                  due: "Board meeting" },
+];
