@@ -12,8 +12,8 @@ function Page() {
   return (
     <V115Page icon={<BookOpen className="size-6 text-emerald-300" />} title="Customer Proof Revenue Influence" blurb="Which proofs are used in deals and how much ARR they influence. Mock-only.">
       <div className="grid gap-3 md:grid-cols-3">
-        <ScoreCard label="Proof assets" value={p.rows.length} tone="emerald" />
-        <ScoreCard label="Deals influenced" value={totalDeals} tone="sky" />
+        <ScoreCard label="Proof assets" value={String(p.rows.length)} tone="emerald" />
+        <ScoreCard label="Deals influenced" value={String(totalDeals)} tone="sky" />
         <ScoreCard label="Influenced ARR" value={`$${(totalArr / 1_000_000).toFixed(1)}M`} tone="violet" />
       </div>
       <Card className="border-white/10 bg-white/[0.02] p-4">

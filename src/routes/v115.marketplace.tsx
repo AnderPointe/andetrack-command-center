@@ -11,8 +11,8 @@ function Page() {
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Take rate"      value={`${m.take_rate_pct}% / ${m.target_pct}%`} tone="emerald" />
         <ScoreCard label="GMV QTD"        value={`$${(m.gmv_qtd_usd/1_000_000).toFixed(1)}M`} tone="sky" />
-        <ScoreCard label="Active buyers"  value={m.active_buyers} tone="violet" />
-        <ScoreCard label="Active sellers" value={m.active_sellers} tone="amber" />
+        <ScoreCard label="Active buyers"  value={String(m.active_buyers)} tone="violet" />
+        <ScoreCard label="Active sellers" value={String(m.active_sellers)} tone="amber" />
       </div>
       <div className="grid gap-3 md:grid-cols-3">
         <ScoreCard label="Monetized routes" value={m.monetized_routes_pct} tone="emerald" />

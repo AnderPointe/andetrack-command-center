@@ -12,14 +12,14 @@ function Page() {
     <V115Page icon={<Users className="size-6 text-emerald-300" />} title="Strategic Customer Expansion" blurb="Expansion plays driven by usage, sponsor, and trust signals. Mock-only.">
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Expansion score" value={e.summary.score} tone="emerald" />
-        <ScoreCard label="Active plans"    value={e.summary.active_plans} tone="sky" />
+        <ScoreCard label="Active plans"    value={String(e.summary.active_plans)} tone="sky" />
         <ScoreCard label="Pipeline"        value={`$${(e.summary.pipeline_usd/1_000_000).toFixed(1)}M`} tone="violet" />
         <ScoreCard label="QBR coverage"    value={e.summary.qbr_coverage_pct} tone="amber" />
       </div>
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Whitespace ARR" value={`$${(e.program.whitespace_arr_usd / 1_000_000).toFixed(1)}M`} tone="emerald" />
         <ScoreCard label="Sponsor coverage" value={e.program.sponsor_coverage_pct} tone="sky" />
-        <ScoreCard label="Multithreaded accts" value={e.program.multithreaded_accounts} tone="violet" />
+        <ScoreCard label="Multithreaded accts" value={String(e.program.multithreaded_accounts)} tone="violet" />
         <ScoreCard label="Plan quality" value={e.program.plan_quality_score} tone="amber" />
       </div>
       <Card className="border-white/10 bg-white/[0.02] p-4">

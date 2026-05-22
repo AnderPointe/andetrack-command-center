@@ -10,9 +10,9 @@ function Page() {
   return (
     <V115Page icon={<AlertTriangle className="size-6 text-emerald-300" />} title="Retention Risk Command Center" blurb="Accounts at retention risk with save plays assigned to CSM owners. Mock-only.">
       <div className="grid gap-3 md:grid-cols-5">
-        <ScoreCard label="High risk" value={r.summary.high} tone="rose" />
-        <ScoreCard label="Medium risk" value={r.summary.medium} tone="amber" />
-        <ScoreCard label="Low risk" value={r.summary.low} tone="sky" />
+        <ScoreCard label="High risk" value={String(r.summary.high)} tone="rose" />
+        <ScoreCard label="Medium risk" value={String(r.summary.medium)} tone="amber" />
+        <ScoreCard label="Low risk" value={String(r.summary.low)} tone="sky" />
         <ScoreCard label="Save coverage" value={r.summary.save_coverage_pct} tone="emerald" />
         <ScoreCard label="GRR outlook" value={r.summary.grr_outlook} tone="violet" />
       </div>

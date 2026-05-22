@@ -12,8 +12,8 @@ function Page() {
     <V115Page icon={<ClipboardList className="size-6 text-emerald-300" />} title="Deal Desk Operating Discipline" blurb="SLA, approvals, blocked deals, policy compliance, and stage win rates.">
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="SLA (h)"           value={`${d.sla_actual_hrs}/${d.sla_target_hrs}`} tone="emerald" />
-        <ScoreCard label="Open requests"     value={d.open} tone="sky" />
-        <ScoreCard label="Approved 30d"      value={d.approved_30d} tone="violet" />
+        <ScoreCard label="Open requests"     value={String(d.open)} tone="sky" />
+        <ScoreCard label="Approved 30d"      value={String(d.approved_30d)} tone="violet" />
         <ScoreCard label="Policy compliance" value={d.policy_compliance_pct} tone="amber" />
       </div>
       <div className="grid gap-3 md:grid-cols-4">

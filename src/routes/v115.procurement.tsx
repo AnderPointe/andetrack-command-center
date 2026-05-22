@@ -12,8 +12,8 @@ function Page() {
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Baseline cycle"     value={`${p.avg_cycle_days_baseline}d`} tone="amber" />
         <ScoreCard label="Now cycle"          value={`${p.avg_cycle_days_now}d`} tone="emerald" />
-        <ScoreCard label="Packets refreshed"  value={p.packets_refreshed_30d} tone="sky" />
-        <ScoreCard label="Open"               value={p.open} tone="violet" />
+        <ScoreCard label="Packets refreshed"  value={String(p.packets_refreshed_30d)} tone="sky" />
+        <ScoreCard label="Open"               value={String(p.open)} tone="violet" />
       </div>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Procurement acceleration outcome</h3>

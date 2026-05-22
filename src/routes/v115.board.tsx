@@ -11,7 +11,7 @@ function Page() {
     <V115Page icon={<FileBarChart className="size-6 text-emerald-300" />} title="Board-Level Commercial Performance" blurb="Quarterly board pack sections with owners and status. Mock-only.">
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Packet readiness" value={b.summary.packet_readiness_pct} tone="emerald" />
-        <ScoreCard label="Open decisions" value={b.summary.open_decisions} tone="sky" />
+        <ScoreCard label="Open decisions" value={String(b.summary.open_decisions)} tone="sky" />
         <ScoreCard label="Rev quality" value={b.summary.revenue_quality_status} tone="violet" />
         <ScoreCard label="Concentration watch" value={b.summary.concentration_watch} tone="amber" />
       </div>

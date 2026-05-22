@@ -13,7 +13,7 @@ function Page() {
         <ScoreCard label="Coverage" value={s.summary.coverage_pct} tone="emerald" />
         <ScoreCard label="Reuse" value={s.summary.reuse_pct} tone="sky" />
         <ScoreCard label="Trust pack hit rate" value={s.summary.trust_pack_hit_rate_pct} tone="violet" />
-        <ScoreCard label="Active POCs" value={s.summary.active_pocs} tone="amber" />
+        <ScoreCard label="Active POCs" value={String(s.summary.active_pocs)} tone="amber" />
       </div>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <SimpleTable rows={s.areas as any} columns={[

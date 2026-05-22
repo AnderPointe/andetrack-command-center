@@ -12,14 +12,14 @@ function Page() {
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Partner ARR share"  value={p.summary.partner_arr_share_pct} tone="emerald" />
         <ScoreCard label="Partner sourced"    value={p.summary.partner_sourced_pct} tone="sky" />
-        <ScoreCard label="Active partners"    value={p.summary.active_partners} tone="violet" />
-        <ScoreCard label="Paying MP partners" value={p.summary.paying_marketplace_partners} tone="amber" />
+        <ScoreCard label="Active partners"    value={String(p.summary.active_partners)} tone="violet" />
+        <ScoreCard label="Paying MP partners" value={String(p.summary.paying_marketplace_partners)} tone="amber" />
       </div>
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Influenced pipeline" value={`$${(p.ops.influenced_pipeline_usd / 1_000_000).toFixed(1)}M`} tone="emerald" />
         <ScoreCard label="Payout accuracy" value={p.ops.payout_accuracy_pct} tone="sky" />
         <ScoreCard label="Co-sell win rate" value={p.ops.co_sell_win_rate_pct} tone="violet" />
-        <ScoreCard label="Recruited QTR" value={p.ops.recruited_this_qtr} tone="amber" />
+        <ScoreCard label="Recruited QTR" value={String(p.ops.recruited_this_qtr)} tone="amber" />
       </div>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Partner revenue operations</h3>
