@@ -368,7 +368,64 @@ export const V105_DEMO_FLOW = [
   { role: "Security", step: "Open Trust Monetization Center; 2 deals unblocked, AI gov packet needs refresh" },
   { role: "Sales",    step: "Open Enterprise Sales OS for Northwind in Security Review" },
   { role: "Sales",    step: "Review buying committee + close plan blockers (procurement + API security)" },
+  { role: "RevOps",   step: "Open Deal Desk — review pricing exceptions, MSA redlines, approval SLAs" },
+  { role: "RevOps",   step: "Open Pricing & Packaging Governance — packages active vs pending review" },
   { role: "CFO",      step: "Open Capital Readiness — 68 score, data room 74, concentration moderate" },
+  { role: "CFO",      step: "Open Capital Data Room — sections by readiness + owner" },
   { role: "MP",       step: "Open MP Proof Commercialization — time-to-award + quality approved; SE liquidity not ready" },
+  { role: "CS",       step: "Open Revenue Expansion Maturity — NRR + expansion-ready accounts" },
+  { role: "Partner",  step: "Open Partner Channel Scale — launch-ready vs blocked co-sell" },
   { role: "Board",    step: "Open Board Growth Governance — pipeline, trust, MP proof, expansion, capital, risk" },
+  { role: "CEO",      step: "Sign V10.5 quarterly close-out + next-quarter commitments" },
+];
+
+// ---- Phase 34 polish additions (mock-only) ----
+export const V105_COMMERCIAL_TREND = [
+  { quarter: "2025-Q4", actual: 76, target: 80 },
+  { quarter: "2026-Q1", actual: 80, target: 82 },
+  { quarter: "2026-Q2", actual: 82, target: 84 },
+  { quarter: "2026-Q3", actual: 84, target: 86 },
+];
+
+export const V105_TRUST_MONETIZATION_BREAKDOWN = [
+  { lever: "SOC 2 packet",             deals_unblocked: 3, cycle_days_saved: 18, owner: "Security" },
+  { lever: "AI governance packet",     deals_unblocked: 1, cycle_days_saved: 9,  owner: "Security + Legal" },
+  { lever: "DPA template (EU)",        deals_unblocked: 2, cycle_days_saved: 12, owner: "Legal" },
+  { lever: "Pen test summary",         deals_unblocked: 1, cycle_days_saved: 7,  owner: "Security" },
+  { lever: "Customer reference set",   deals_unblocked: 2, cycle_days_saved: 14, owner: "CS" },
+];
+
+export const V105_OUTCOME_KPIS = [
+  { metric: "Net new ARR (quarter)",    target: "$4.2M", actual: "$3.8M", tone: "warn" },
+  { metric: "NRR (TTM)",                target: "120%",  actual: "122%",  tone: "good" },
+  { metric: "Avg sales cycle (days)",   target: "62",    actual: "58",    tone: "good" },
+  { metric: "Win rate (enterprise)",    target: "34%",   actual: "31%",   tone: "warn" },
+  { metric: "Capital readiness",        target: "75",    actual: "68",    tone: "warn" },
+  { metric: "Procurement SLA hit-rate", target: "85%",   actual: "82%",   tone: "good" },
+];
+
+export const V105_COMMERCIAL_RISK_HEATMAP = [
+  { risk: "Single-account concentration > 18%",  likelihood: "med",  impact: "high", owner: "CFO",    mitigation: "Accelerate 3 expansion proposals" },
+  { risk: "AI governance packet stale",           likelihood: "med",  impact: "med",  owner: "Sec",    mitigation: "Refresh + re-sign in 30d" },
+  { risk: "Partner co-sell motion blocked",       likelihood: "high", impact: "med",  owner: "Part",   mitigation: "Joint exec sponsor + GTM plan" },
+  { risk: "Procurement SLA slip on EU deals",     likelihood: "med",  impact: "high", owner: "RevOps", mitigation: "Pre-cleared DPA + redlines" },
+  { risk: "Capital data room cohort gaps",        likelihood: "low",  impact: "high", owner: "CFO",    mitigation: "Finalize cohort exports + audit" },
+];
+
+export const V105_EXEC_CADENCE_SPEC = [
+  { cadence: "Weekly pipeline + trust review",   attendees: "CRO, Sec, RevOps", inputs: "Pipeline, deal desk queue, trust packet status" },
+  { cadence: "Monthly commercial close",         attendees: "CRO, CFO, CS",      inputs: "ARR, NRR, expansion, churn, procurement SLA" },
+  { cadence: "Quarterly board growth review",    attendees: "Board, CEO, CFO",   inputs: "Outcomes vs targets, capital readiness, risk heatmap" },
+  { cadence: "Quarterly capital readiness sync", attendees: "CFO, Board chair",  inputs: "Data room, narrative, cohort proof, governance" },
+];
+
+export const V105_DEMO_CLOSEOUT = [
+  { role: "CEO",   commitment: "Approve V10.5 close-out + next-quarter commercial plan",   due: "Q+0 wk 1" },
+  { role: "CRO",   commitment: "Lock close plans for top-5 enterprise opps",                due: "Q+0 wk 2" },
+  { role: "CFO",   commitment: "Close 2 remaining capital data room gaps",                  due: "Q+0 wk 4" },
+  { role: "Sec",   commitment: "Refresh AI governance + SOC 2 packets",                     due: "Q+0 wk 3" },
+  { role: "CS",    commitment: "Convert 3 expansion-ready accounts to signed proposals",    due: "Q+0 wk 6" },
+  { role: "Part",  commitment: "Unblock co-sell motion with 1 strategic partner",           due: "Q+0 wk 4" },
+  { role: "MP",    commitment: "Close SE liquidity proof + publish updated MP proof set",   due: "Q+0 wk 5" },
+  { role: "Board", commitment: "Approve updated growth governance + risk heatmap",          due: "Q+0 wk 2" },
 ];
