@@ -61,6 +61,21 @@ function Page() {
           ))}
         </ol>
       </Card>
+      <Card className="border-emerald-400/30 bg-emerald-500/5 p-4">
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-emerald-200">Demo closeout — signed commitments</h3>
+          <span className="text-[10px] uppercase tracking-wide text-muted-foreground">post-Phase-32</span>
+        </div>
+        <div className="mt-2 grid gap-2 md:grid-cols-2">
+          {H.useV95DemoCloseout().map((c, i) => (
+            <div key={i} className="rounded border border-white/10 bg-black/20 px-3 py-2 text-xs">
+              <div className="flex items-center justify-between"><span className="text-cyan-200">{c.owner}</span><span className="text-muted-foreground">due {c.due}</span></div>
+              <div className="mt-0.5 text-sm">{c.commitment}</div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
       <OverlayStrip items={overlays as any} title="Executive overlays — all V9.5 modules" />
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">RLS policy references</h3>
