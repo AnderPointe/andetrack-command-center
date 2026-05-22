@@ -574,3 +574,49 @@ export const V10_BACKEND_BOUNDARY = [
   { kind: "server route",   name: "/api/public/webhooks/reference-approval",   caller: "Customer legal",  auth: "HMAC signature" },
   { kind: "edge function",  name: "(none new in V10)",                   caller: "—",                    auth: "—" },
 ] as const;
+
+// ---------------- Phase 33 polish — trends, spotlight, packet spec, demo closeout ----------------
+export const V10_CATEGORY_TREND = [
+  { period: "2026-Q1", score: 84, target: 86 },
+  { period: "2026-Q2", score: 87, target: 88 },
+  { period: "2026-Q3", score: 90, target: 90 },
+  { period: "2026-Q4", score: 92, target: 91 },
+] as const;
+
+export const V10_LEADERSHIP_SPOTLIGHT = [
+  { area: "Trust commercialization", win: "AcmeCo signed expansion (API tier)", owner: "CRO" },
+  { area: "MP value proof",          win: "Bids/load 2.9 → 3.4 in 1 quarter",   owner: "MP lead" },
+  { area: "Defensibility",           win: "2nd telematics LOI signed",          owner: "Partner" },
+  { area: "Retention",               win: "Gross retention 96.8% (target 95)",  owner: "CS" },
+] as const;
+
+export const V10_TRUST_PACKET_SPEC = [
+  { section: "Security overview",           source: "Control pack + cert evidence",   cadence: "quarterly" },
+  { section: "AI usage disclosure",         source: "AI governance maturity",         cadence: "per release" },
+  { section: "Data residency + DPA",        source: "Data governance disclosure",     cadence: "per region" },
+  { section: "Financial controls summary",  source: "Financial governance",           cadence: "quarterly" },
+  { section: "Procurement Q&A pack",        source: "Procurement requests history",   cadence: "rolling" },
+  { section: "Reference list",              source: "Enterprise reference readiness", cadence: "monthly" },
+  { section: "Outcomes proof",              source: "Customer outcomes dashboard",    cadence: "per renewal" },
+  { section: "Roadmap commits",             source: "Category leadership roadmap",    cadence: "twice yearly" },
+] as const;
+
+export const V10_DEMO_CLOSEOUT = [
+  { who: "CEO",   commitment: "Sign V10 category leadership action plan",         due: "this week" },
+  { who: "CRO",   commitment: "Close AI disclosure refresh + unblock AcmeCo",     due: "7 days" },
+  { who: "CFO",   commitment: "Approve top-account concentration reduction plan", due: "2 weeks" },
+  { who: "CSO",   commitment: "Refresh trust + procurement packets",              due: "2 weeks" },
+  { who: "MP",    commitment: "Drive SE density to lift coverage to 95%",         due: "next quarter" },
+  { who: "CS",    commitment: "Launch BlueRidge driver-adoption recovery",        due: "10 days" },
+  { who: "Partner", commitment: "Sign 2nd telematics partner LOI",                due: "30 days" },
+  { who: "Board", commitment: "Approve 12-month roadmap commits",                 due: "next board meeting" },
+] as const;
+
+export const V10_OUTCOME_KPIS = [
+  { label: "Category leadership", value: 92, target: 90, tone: "good" as const },
+  { label: "Trust commercial",    value: 86, target: 85, tone: "good" as const },
+  { label: "MP value proof",      value: 84, target: 88, tone: "warn" as const },
+  { label: "Platform economics",  value: 81, target: 85, tone: "warn" as const },
+  { label: "Defensibility",       value: 86, target: 85, tone: "good" as const },
+  { label: "Gross retention",     value: 97, target: 95, tone: "good" as const },
+] as const;

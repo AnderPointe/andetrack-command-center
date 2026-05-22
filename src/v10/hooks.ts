@@ -28,3 +28,9 @@ export const useV10ExecutionOverlays              = () => M.V10_EXECUTION_OVERLA
 export const useV10RoleGuidance                   = () => M.V10_ROLE_GUIDANCE;
 export const useV10RlsExamples                    = () => M.V10_RLS_EXAMPLES;
 export const useV10BackendBoundary                = () => M.V10_BACKEND_BOUNDARY;
+export const useV10CategoryTrend                  = () => M.V10_CATEGORY_TREND;
+export const useV10LeadershipSpotlight            = () => M.V10_LEADERSHIP_SPOTLIGHT;
+export const useV10TrustPacketSpec                = () => M.V10_TRUST_PACKET_SPEC;
+export const useV10DemoCloseout                   = () => M.V10_DEMO_CLOSEOUT;
+export const useV10OutcomeKpis                    = () => M.V10_OUTCOME_KPIS;
+
