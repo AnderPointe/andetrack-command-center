@@ -19,6 +19,15 @@ function Page() {
   const demoBase = H.useV215Demo();
   const roadmap = H.useV215PolishRoadmap();
   const teaser = H.useV215Phase57Teaser();
+  const p2Head = H.useV215Polish2Headlines();
+  const uplift = H.useV215Polish2DomainUplift();
+  const lcKpis = H.useV215Polish2LifecycleKpis();
+  const boundaryExtra = H.useV215Polish2BoundaryExtra();
+  const rlsExtra = H.useV215Polish2RlsExtra();
+  const edgeExtra = H.useV215Polish2EdgeExtra();
+  const demoExtra = H.useV215Polish2DemoExtra();
+  const roadmapDetail = H.useV215Polish2RoadmapDetail();
+  const hitlLatency = H.useV215Polish2HitlLatency();
 
   return (
     <V215Page icon={<ShieldCheck className="size-6 text-emerald-300" />}
@@ -33,7 +42,28 @@ function Page() {
         <ScoreCard label="Board maturity"     value={96} tone="emerald" />
       </div>
 
+      <ExecHeadline tag="V21.5 polish++ headline" headline={p2Head.headline} bullets={p2Head.highlights} />
+
+      <Section title="Domain uplift (polish → polish++)">
+        <SimpleTable rows={uplift as any} columns={[
+          { key: "domain", label: "Domain" }, { key: "from", label: "From" }, { key: "to", label: "To" }, { key: "delta", label: "Δ" },
+        ]} />
+      </Section>
+
+      <Section title="Lifecycle KPIs per domain (in / through / out)">
+        <SimpleTable rows={lcKpis as any} columns={[
+          { key: "domain", label: "Domain" }, { key: "in", label: "In" }, { key: "through", label: "Through" }, { key: "out", label: "Out" },
+        ]} />
+      </Section>
+
+      <Section title="HITL latency (% of SLA)">
+        <SimpleTable rows={hitlLatency as any} columns={[
+          { key: "queue", label: "Queue" }, { key: "median_pct_of_sla", label: "Median %SLA" }, { key: "p90_pct_of_sla", label: "P90 %SLA" },
+        ]} />
+      </Section>
+
       <Section title="21 trust domains — polish heatmap">
+
         <SimpleTable rows={domains as any} columns={[
           { key: "domain", label: "Domain" }, { key: "score", label: "Score" }, { key: "owner", label: "Owner" },
         ]} />
@@ -52,6 +82,13 @@ function Page() {
         ]} />
       </Section>
 
+      <Section title="Boundary controls (extra surfaces)">
+        <SimpleTable rows={boundaryExtra as any} columns={[
+          { key: "surface", label: "Surface" }, { key: "exposes", label: "Exposes" }, { key: "hides", label: "Hides" },
+        ]} />
+      </Section>
+
+
       <Section title="Owner heatmap">
         <SimpleTable rows={owners as any} columns={[
           { key: "owner", label: "Owner" }, { key: "green", label: "Green" }, { key: "amber", label: "Amber" }, { key: "red", label: "Red" },
@@ -68,8 +105,23 @@ function Page() {
         ]} />
       </Section>
 
+      <Section title="Server boundary — extras (ServerFn + /api/public/*)">
+        <SimpleTable rows={edgeExtra.serverfn_extra as any} columns={[
+          { key: "name", label: "ServerFn" }, { key: "kind", label: "Kind" }, { key: "auth", label: "Auth" },
+        ]} />
+        <SimpleTable rows={edgeExtra.edge_routes_extra as any} columns={[
+          { key: "path", label: "Public route" }, { key: "purpose", label: "Purpose" },
+        ]} />
+      </Section>
+
       <Section title="RLS policy examples (expanded)">
         <SimpleTable rows={rls as any} columns={[
+          { key: "policy", label: "Policy" }, { key: "rule", label: "Rule" }, { key: "surface", label: "Surface" },
+        ]} />
+      </Section>
+
+      <Section title="RLS policy examples (extras)">
+        <SimpleTable rows={rlsExtra as any} columns={[
           { key: "policy", label: "Policy" }, { key: "rule", label: "Rule" }, { key: "surface", label: "Surface" },
         ]} />
       </Section>
@@ -84,6 +136,12 @@ function Page() {
         ]} />
       </Section>
 
+      <Section title="V21.5 demo — extra steps (13–16)">
+        <SimpleTable rows={demoExtra as any} columns={[
+          { key: "id", label: "#" }, { key: "who", label: "Persona" }, { key: "step", label: "Step" }, { key: "outcome", label: "Outcome" },
+        ]} />
+      </Section>
+
       <Section title="Base demo (reference)">
         <SimpleTable rows={demoBase as any} columns={[
           { key: "id", label: "#" }, { key: "actor", label: "Persona" }, { key: "step", label: "Step" },
@@ -93,6 +151,12 @@ function Page() {
       <Section title="Long-term trust network scale roadmap">
         <SimpleTable rows={roadmap as any} columns={[
           { key: "horizon", label: "Horizon" }, { key: "focus", label: "Focus" },
+        ]} />
+      </Section>
+
+      <Section title="Roadmap detail — 8 horizons with owners + HITL gates">
+        <SimpleTable rows={roadmapDetail as any} columns={[
+          { key: "horizon", label: "Horizon" }, { key: "focus", label: "Focus" }, { key: "owner", label: "Owner" }, { key: "gate", label: "Gate" },
         ]} />
       </Section>
 

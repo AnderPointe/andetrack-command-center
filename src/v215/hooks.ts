@@ -41,3 +41,14 @@ export const useV215PolishInvariants   = () => P.V215_POLISH_INVARIANTS;
 export const useV215PolishDemo         = () => P.V215_POLISH_DEMO;
 export const useV215PolishRoadmap      = () => P.V215_POLISH_ROADMAP;
 export const useV215PolishOwnerHeatmap = () => P.V215_POLISH_OWNER_HEATMAP;
+
+import * as P2 from "./data/mockPhase56Polish2";
+export const useV215Polish2Headlines      = () => P2.V215_POLISH2_HEADLINES;
+export const useV215Polish2DomainUplift   = () => P2.V215_POLISH2_DOMAIN_UPLIFT;
+export const useV215Polish2LifecycleKpis  = () => P2.V215_POLISH2_LIFECYCLE_KPIS;
+export const useV215Polish2BoundaryExtra  = () => P2.V215_POLISH2_BOUNDARY_EXTRA;
+export const useV215Polish2RlsExtra       = () => P2.V215_POLISH2_RLS_EXTRA;
+export const useV215Polish2EdgeExtra      = () => P2.V215_POLISH2_EDGE_EXTRA;
+export const useV215Polish2DemoExtra      = () => P2.V215_POLISH2_DEMO_EXTRA;
+export const useV215Polish2RoadmapDetail  = () => P2.V215_POLISH2_ROADMAP_DETAIL;
+export const useV215Polish2HitlLatency    = () => P2.V215_POLISH2_HITL_LATENCY;
