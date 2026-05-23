@@ -31,3 +31,18 @@ export const useV20EdgeBoundary                = () => D.V20_EDGE_BOUNDARY;
 export const useV20Guardrails                  = () => D.V20_GUARDRAILS;
 export const useV20Phase54Teaser               = () => D.V20_PHASE54_TEASER;
 export const useV20Demo                        = () => D.V20_DEMO;
+
+import * as P from "./data/mockPhase53Polish";
+
+export const useV20PolishHeadlines        = () => P.V20_POLISH_HEADLINES;
+export const useV20PolishDomains          = () => P.V20_POLISH_DOMAINS;
+export const useV20PolishHitlQueue        = () => P.V20_POLISH_HITL_QUEUE;
+export const useV20PolishEvidenceFreshness= () => P.V20_POLISH_EVIDENCE_FRESHNESS;
+export const useV20PolishPersonaSlas      = () => P.V20_POLISH_PERSONA_SLAS;
+export const useV20PolishRlsExamples      = () => P.V20_POLISH_RLS_EXAMPLES;
+export const useV20PolishEdgeBoundary     = () => P.V20_POLISH_EDGE_BOUNDARY;
+export const useV20PolishInvariants       = () => P.V20_POLISH_INVARIANTS;
+export const useV20PolishGuardrails       = () => P.V20_POLISH_GUARDRAILS;
+export const useV20PolishOwnerHeatmap     = () => P.V20_POLISH_OWNER_HEATMAP;
+export const useV20PolishDemo             = () => P.V20_POLISH_DEMO;
+export const useV20PolishHorizons         = () => P.V20_POLISH_HORIZONS;
