@@ -398,18 +398,30 @@ import { Route as V2ApiMarketplaceRouteImport } from './routes/v2.api-marketplac
 import { Route as V2ApiKeysRouteImport } from './routes/v2.api-keys'
 import { Route as V2AiOpsRouteImport } from './routes/v2.ai-ops'
 import { Route as V155ScopeRouteImport } from './routes/v155.scope'
+import { Route as V155RoadmapRouteImport } from './routes/v155.roadmap'
+import { Route as V155RiskIntelRouteImport } from './routes/v155.risk-intel'
 import { Route as V155RevenueOptRouteImport } from './routes/v155.revenue-opt'
 import { Route as V155RevRecEngineRouteImport } from './routes/v155.rev-rec-engine'
+import { Route as V155ProductIntelRouteImport } from './routes/v155.product-intel'
+import { Route as V155PartnersIntelRouteImport } from './routes/v155.partners-intel'
 import { Route as V155OverviewRouteImport } from './routes/v155.overview'
 import { Route as V155OutcomesRouteImport } from './routes/v155.outcomes'
 import { Route as V155MpRecEngineRouteImport } from './routes/v155.mp-rec-engine'
 import { Route as V155MpIntelRouteImport } from './routes/v155.mp-intel'
 import { Route as V155IntelRouteImport } from './routes/v155.intel'
 import { Route as V155ExplainabilityRouteImport } from './routes/v155.explainability'
+import { Route as V155ExecIntelRouteImport } from './routes/v155.exec-intel'
+import { Route as V155DiligenceIntelRouteImport } from './routes/v155.diligence-intel'
+import { Route as V155DemoRouteImport } from './routes/v155.demo'
+import { Route as V155ControlsRouteImport } from './routes/v155.controls'
 import { Route as V155CommandRouteImport } from './routes/v155.command'
+import { Route as V155CategoryIntelRouteImport } from './routes/v155.category-intel'
 import { Route as V155CapitalIntelRouteImport } from './routes/v155.capital-intel'
+import { Route as V155CapEvidenceIntelRouteImport } from './routes/v155.cap-evidence-intel'
+import { Route as V155BoardIntelRouteImport } from './routes/v155.board-intel'
 import { Route as V155AutonomyGovRouteImport } from './routes/v155.autonomy-gov'
 import { Route as V155ApprovalsRouteImport } from './routes/v155.approvals'
+import { Route as V155AccountsIntelRouteImport } from './routes/v155.accounts-intel'
 import { Route as V15WebhooksRouteImport } from './routes/v15.webhooks'
 import { Route as V15StripeRouteImport } from './routes/v15.stripe'
 import { Route as V15SessionsRouteImport } from './routes/v15.sessions'
@@ -2760,6 +2772,16 @@ const V155ScopeRoute = V155ScopeRouteImport.update({
   path: '/v155/scope',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V155RoadmapRoute = V155RoadmapRouteImport.update({
+  id: '/v155/roadmap',
+  path: '/v155/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155RiskIntelRoute = V155RiskIntelRouteImport.update({
+  id: '/v155/risk-intel',
+  path: '/v155/risk-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V155RevenueOptRoute = V155RevenueOptRouteImport.update({
   id: '/v155/revenue-opt',
   path: '/v155/revenue-opt',
@@ -2768,6 +2790,16 @@ const V155RevenueOptRoute = V155RevenueOptRouteImport.update({
 const V155RevRecEngineRoute = V155RevRecEngineRouteImport.update({
   id: '/v155/rev-rec-engine',
   path: '/v155/rev-rec-engine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155ProductIntelRoute = V155ProductIntelRouteImport.update({
+  id: '/v155/product-intel',
+  path: '/v155/product-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155PartnersIntelRoute = V155PartnersIntelRouteImport.update({
+  id: '/v155/partners-intel',
+  path: '/v155/partners-intel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V155OverviewRoute = V155OverviewRouteImport.update({
@@ -2800,14 +2832,49 @@ const V155ExplainabilityRoute = V155ExplainabilityRouteImport.update({
   path: '/v155/explainability',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V155ExecIntelRoute = V155ExecIntelRouteImport.update({
+  id: '/v155/exec-intel',
+  path: '/v155/exec-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155DiligenceIntelRoute = V155DiligenceIntelRouteImport.update({
+  id: '/v155/diligence-intel',
+  path: '/v155/diligence-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155DemoRoute = V155DemoRouteImport.update({
+  id: '/v155/demo',
+  path: '/v155/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155ControlsRoute = V155ControlsRouteImport.update({
+  id: '/v155/controls',
+  path: '/v155/controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V155CommandRoute = V155CommandRouteImport.update({
   id: '/v155/command',
   path: '/v155/command',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V155CategoryIntelRoute = V155CategoryIntelRouteImport.update({
+  id: '/v155/category-intel',
+  path: '/v155/category-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V155CapitalIntelRoute = V155CapitalIntelRouteImport.update({
   id: '/v155/capital-intel',
   path: '/v155/capital-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155CapEvidenceIntelRoute = V155CapEvidenceIntelRouteImport.update({
+  id: '/v155/cap-evidence-intel',
+  path: '/v155/cap-evidence-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155BoardIntelRoute = V155BoardIntelRouteImport.update({
+  id: '/v155/board-intel',
+  path: '/v155/board-intel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V155AutonomyGovRoute = V155AutonomyGovRouteImport.update({
@@ -2818,6 +2885,11 @@ const V155AutonomyGovRoute = V155AutonomyGovRouteImport.update({
 const V155ApprovalsRoute = V155ApprovalsRouteImport.update({
   id: '/v155/approvals',
   path: '/v155/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155AccountsIntelRoute = V155AccountsIntelRouteImport.update({
+  id: '/v155/accounts-intel',
+  path: '/v155/accounts-intel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V15WebhooksRoute = V15WebhooksRouteImport.update({
@@ -5245,18 +5317,30 @@ export interface FileRoutesByFullPath {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v155/accounts-intel': typeof V155AccountsIntelRoute
   '/v155/approvals': typeof V155ApprovalsRoute
   '/v155/autonomy-gov': typeof V155AutonomyGovRoute
+  '/v155/board-intel': typeof V155BoardIntelRoute
+  '/v155/cap-evidence-intel': typeof V155CapEvidenceIntelRoute
   '/v155/capital-intel': typeof V155CapitalIntelRoute
+  '/v155/category-intel': typeof V155CategoryIntelRoute
   '/v155/command': typeof V155CommandRoute
+  '/v155/controls': typeof V155ControlsRoute
+  '/v155/demo': typeof V155DemoRoute
+  '/v155/diligence-intel': typeof V155DiligenceIntelRoute
+  '/v155/exec-intel': typeof V155ExecIntelRoute
   '/v155/explainability': typeof V155ExplainabilityRoute
   '/v155/intel': typeof V155IntelRoute
   '/v155/mp-intel': typeof V155MpIntelRoute
   '/v155/mp-rec-engine': typeof V155MpRecEngineRoute
   '/v155/outcomes': typeof V155OutcomesRoute
   '/v155/overview': typeof V155OverviewRoute
+  '/v155/partners-intel': typeof V155PartnersIntelRoute
+  '/v155/product-intel': typeof V155ProductIntelRoute
   '/v155/rev-rec-engine': typeof V155RevRecEngineRoute
   '/v155/revenue-opt': typeof V155RevenueOptRoute
+  '/v155/risk-intel': typeof V155RiskIntelRoute
+  '/v155/roadmap': typeof V155RoadmapRoute
   '/v155/scope': typeof V155ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
@@ -6048,18 +6132,30 @@ export interface FileRoutesByTo {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v155/accounts-intel': typeof V155AccountsIntelRoute
   '/v155/approvals': typeof V155ApprovalsRoute
   '/v155/autonomy-gov': typeof V155AutonomyGovRoute
+  '/v155/board-intel': typeof V155BoardIntelRoute
+  '/v155/cap-evidence-intel': typeof V155CapEvidenceIntelRoute
   '/v155/capital-intel': typeof V155CapitalIntelRoute
+  '/v155/category-intel': typeof V155CategoryIntelRoute
   '/v155/command': typeof V155CommandRoute
+  '/v155/controls': typeof V155ControlsRoute
+  '/v155/demo': typeof V155DemoRoute
+  '/v155/diligence-intel': typeof V155DiligenceIntelRoute
+  '/v155/exec-intel': typeof V155ExecIntelRoute
   '/v155/explainability': typeof V155ExplainabilityRoute
   '/v155/intel': typeof V155IntelRoute
   '/v155/mp-intel': typeof V155MpIntelRoute
   '/v155/mp-rec-engine': typeof V155MpRecEngineRoute
   '/v155/outcomes': typeof V155OutcomesRoute
   '/v155/overview': typeof V155OverviewRoute
+  '/v155/partners-intel': typeof V155PartnersIntelRoute
+  '/v155/product-intel': typeof V155ProductIntelRoute
   '/v155/rev-rec-engine': typeof V155RevRecEngineRoute
   '/v155/revenue-opt': typeof V155RevenueOptRoute
+  '/v155/risk-intel': typeof V155RiskIntelRoute
+  '/v155/roadmap': typeof V155RoadmapRoute
   '/v155/scope': typeof V155ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
@@ -6852,18 +6948,30 @@ export interface FileRoutesById {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v155/accounts-intel': typeof V155AccountsIntelRoute
   '/v155/approvals': typeof V155ApprovalsRoute
   '/v155/autonomy-gov': typeof V155AutonomyGovRoute
+  '/v155/board-intel': typeof V155BoardIntelRoute
+  '/v155/cap-evidence-intel': typeof V155CapEvidenceIntelRoute
   '/v155/capital-intel': typeof V155CapitalIntelRoute
+  '/v155/category-intel': typeof V155CategoryIntelRoute
   '/v155/command': typeof V155CommandRoute
+  '/v155/controls': typeof V155ControlsRoute
+  '/v155/demo': typeof V155DemoRoute
+  '/v155/diligence-intel': typeof V155DiligenceIntelRoute
+  '/v155/exec-intel': typeof V155ExecIntelRoute
   '/v155/explainability': typeof V155ExplainabilityRoute
   '/v155/intel': typeof V155IntelRoute
   '/v155/mp-intel': typeof V155MpIntelRoute
   '/v155/mp-rec-engine': typeof V155MpRecEngineRoute
   '/v155/outcomes': typeof V155OutcomesRoute
   '/v155/overview': typeof V155OverviewRoute
+  '/v155/partners-intel': typeof V155PartnersIntelRoute
+  '/v155/product-intel': typeof V155ProductIntelRoute
   '/v155/rev-rec-engine': typeof V155RevRecEngineRoute
   '/v155/revenue-opt': typeof V155RevenueOptRoute
+  '/v155/risk-intel': typeof V155RiskIntelRoute
+  '/v155/roadmap': typeof V155RoadmapRoute
   '/v155/scope': typeof V155ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
@@ -7657,18 +7765,30 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v155/accounts-intel'
     | '/v155/approvals'
     | '/v155/autonomy-gov'
+    | '/v155/board-intel'
+    | '/v155/cap-evidence-intel'
     | '/v155/capital-intel'
+    | '/v155/category-intel'
     | '/v155/command'
+    | '/v155/controls'
+    | '/v155/demo'
+    | '/v155/diligence-intel'
+    | '/v155/exec-intel'
     | '/v155/explainability'
     | '/v155/intel'
     | '/v155/mp-intel'
     | '/v155/mp-rec-engine'
     | '/v155/outcomes'
     | '/v155/overview'
+    | '/v155/partners-intel'
+    | '/v155/product-intel'
     | '/v155/rev-rec-engine'
     | '/v155/revenue-opt'
+    | '/v155/risk-intel'
+    | '/v155/roadmap'
     | '/v155/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
@@ -8460,18 +8580,30 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v155/accounts-intel'
     | '/v155/approvals'
     | '/v155/autonomy-gov'
+    | '/v155/board-intel'
+    | '/v155/cap-evidence-intel'
     | '/v155/capital-intel'
+    | '/v155/category-intel'
     | '/v155/command'
+    | '/v155/controls'
+    | '/v155/demo'
+    | '/v155/diligence-intel'
+    | '/v155/exec-intel'
     | '/v155/explainability'
     | '/v155/intel'
     | '/v155/mp-intel'
     | '/v155/mp-rec-engine'
     | '/v155/outcomes'
     | '/v155/overview'
+    | '/v155/partners-intel'
+    | '/v155/product-intel'
     | '/v155/rev-rec-engine'
     | '/v155/revenue-opt'
+    | '/v155/risk-intel'
+    | '/v155/roadmap'
     | '/v155/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
@@ -9263,18 +9395,30 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v155/accounts-intel'
     | '/v155/approvals'
     | '/v155/autonomy-gov'
+    | '/v155/board-intel'
+    | '/v155/cap-evidence-intel'
     | '/v155/capital-intel'
+    | '/v155/category-intel'
     | '/v155/command'
+    | '/v155/controls'
+    | '/v155/demo'
+    | '/v155/diligence-intel'
+    | '/v155/exec-intel'
     | '/v155/explainability'
     | '/v155/intel'
     | '/v155/mp-intel'
     | '/v155/mp-rec-engine'
     | '/v155/outcomes'
     | '/v155/overview'
+    | '/v155/partners-intel'
+    | '/v155/product-intel'
     | '/v155/rev-rec-engine'
     | '/v155/revenue-opt'
+    | '/v155/risk-intel'
+    | '/v155/roadmap'
     | '/v155/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
@@ -10059,18 +10203,30 @@ export interface RootRouteChildren {
   V15SessionsRoute: typeof V15SessionsRoute
   V15StripeRoute: typeof V15StripeRoute
   V15WebhooksRoute: typeof V15WebhooksRoute
+  V155AccountsIntelRoute: typeof V155AccountsIntelRoute
   V155ApprovalsRoute: typeof V155ApprovalsRoute
   V155AutonomyGovRoute: typeof V155AutonomyGovRoute
+  V155BoardIntelRoute: typeof V155BoardIntelRoute
+  V155CapEvidenceIntelRoute: typeof V155CapEvidenceIntelRoute
   V155CapitalIntelRoute: typeof V155CapitalIntelRoute
+  V155CategoryIntelRoute: typeof V155CategoryIntelRoute
   V155CommandRoute: typeof V155CommandRoute
+  V155ControlsRoute: typeof V155ControlsRoute
+  V155DemoRoute: typeof V155DemoRoute
+  V155DiligenceIntelRoute: typeof V155DiligenceIntelRoute
+  V155ExecIntelRoute: typeof V155ExecIntelRoute
   V155ExplainabilityRoute: typeof V155ExplainabilityRoute
   V155IntelRoute: typeof V155IntelRoute
   V155MpIntelRoute: typeof V155MpIntelRoute
   V155MpRecEngineRoute: typeof V155MpRecEngineRoute
   V155OutcomesRoute: typeof V155OutcomesRoute
   V155OverviewRoute: typeof V155OverviewRoute
+  V155PartnersIntelRoute: typeof V155PartnersIntelRoute
+  V155ProductIntelRoute: typeof V155ProductIntelRoute
   V155RevRecEngineRoute: typeof V155RevRecEngineRoute
   V155RevenueOptRoute: typeof V155RevenueOptRoute
+  V155RiskIntelRoute: typeof V155RiskIntelRoute
+  V155RoadmapRoute: typeof V155RoadmapRoute
   V155ScopeRoute: typeof V155ScopeRoute
   V2AiOpsRoute: typeof V2AiOpsRoute
   V2ApiKeysRoute: typeof V2ApiKeysRoute
@@ -13168,6 +13324,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V155ScopeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v155/roadmap': {
+      id: '/v155/roadmap'
+      path: '/v155/roadmap'
+      fullPath: '/v155/roadmap'
+      preLoaderRoute: typeof V155RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/risk-intel': {
+      id: '/v155/risk-intel'
+      path: '/v155/risk-intel'
+      fullPath: '/v155/risk-intel'
+      preLoaderRoute: typeof V155RiskIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v155/revenue-opt': {
       id: '/v155/revenue-opt'
       path: '/v155/revenue-opt'
@@ -13180,6 +13350,20 @@ declare module '@tanstack/react-router' {
       path: '/v155/rev-rec-engine'
       fullPath: '/v155/rev-rec-engine'
       preLoaderRoute: typeof V155RevRecEngineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/product-intel': {
+      id: '/v155/product-intel'
+      path: '/v155/product-intel'
+      fullPath: '/v155/product-intel'
+      preLoaderRoute: typeof V155ProductIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/partners-intel': {
+      id: '/v155/partners-intel'
+      path: '/v155/partners-intel'
+      fullPath: '/v155/partners-intel'
+      preLoaderRoute: typeof V155PartnersIntelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v155/overview': {
@@ -13224,6 +13408,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V155ExplainabilityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v155/exec-intel': {
+      id: '/v155/exec-intel'
+      path: '/v155/exec-intel'
+      fullPath: '/v155/exec-intel'
+      preLoaderRoute: typeof V155ExecIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/diligence-intel': {
+      id: '/v155/diligence-intel'
+      path: '/v155/diligence-intel'
+      fullPath: '/v155/diligence-intel'
+      preLoaderRoute: typeof V155DiligenceIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/demo': {
+      id: '/v155/demo'
+      path: '/v155/demo'
+      fullPath: '/v155/demo'
+      preLoaderRoute: typeof V155DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/controls': {
+      id: '/v155/controls'
+      path: '/v155/controls'
+      fullPath: '/v155/controls'
+      preLoaderRoute: typeof V155ControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v155/command': {
       id: '/v155/command'
       path: '/v155/command'
@@ -13231,11 +13443,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V155CommandRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v155/category-intel': {
+      id: '/v155/category-intel'
+      path: '/v155/category-intel'
+      fullPath: '/v155/category-intel'
+      preLoaderRoute: typeof V155CategoryIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v155/capital-intel': {
       id: '/v155/capital-intel'
       path: '/v155/capital-intel'
       fullPath: '/v155/capital-intel'
       preLoaderRoute: typeof V155CapitalIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/cap-evidence-intel': {
+      id: '/v155/cap-evidence-intel'
+      path: '/v155/cap-evidence-intel'
+      fullPath: '/v155/cap-evidence-intel'
+      preLoaderRoute: typeof V155CapEvidenceIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/board-intel': {
+      id: '/v155/board-intel'
+      path: '/v155/board-intel'
+      fullPath: '/v155/board-intel'
+      preLoaderRoute: typeof V155BoardIntelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v155/autonomy-gov': {
@@ -13250,6 +13483,13 @@ declare module '@tanstack/react-router' {
       path: '/v155/approvals'
       fullPath: '/v155/approvals'
       preLoaderRoute: typeof V155ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/accounts-intel': {
+      id: '/v155/accounts-intel'
+      path: '/v155/accounts-intel'
+      fullPath: '/v155/accounts-intel'
+      preLoaderRoute: typeof V155AccountsIntelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v15/webhooks': {
@@ -16520,18 +16760,30 @@ const rootRouteChildren: RootRouteChildren = {
   V15SessionsRoute: V15SessionsRoute,
   V15StripeRoute: V15StripeRoute,
   V15WebhooksRoute: V15WebhooksRoute,
+  V155AccountsIntelRoute: V155AccountsIntelRoute,
   V155ApprovalsRoute: V155ApprovalsRoute,
   V155AutonomyGovRoute: V155AutonomyGovRoute,
+  V155BoardIntelRoute: V155BoardIntelRoute,
+  V155CapEvidenceIntelRoute: V155CapEvidenceIntelRoute,
   V155CapitalIntelRoute: V155CapitalIntelRoute,
+  V155CategoryIntelRoute: V155CategoryIntelRoute,
   V155CommandRoute: V155CommandRoute,
+  V155ControlsRoute: V155ControlsRoute,
+  V155DemoRoute: V155DemoRoute,
+  V155DiligenceIntelRoute: V155DiligenceIntelRoute,
+  V155ExecIntelRoute: V155ExecIntelRoute,
   V155ExplainabilityRoute: V155ExplainabilityRoute,
   V155IntelRoute: V155IntelRoute,
   V155MpIntelRoute: V155MpIntelRoute,
   V155MpRecEngineRoute: V155MpRecEngineRoute,
   V155OutcomesRoute: V155OutcomesRoute,
   V155OverviewRoute: V155OverviewRoute,
+  V155PartnersIntelRoute: V155PartnersIntelRoute,
+  V155ProductIntelRoute: V155ProductIntelRoute,
   V155RevRecEngineRoute: V155RevRecEngineRoute,
   V155RevenueOptRoute: V155RevenueOptRoute,
+  V155RiskIntelRoute: V155RiskIntelRoute,
+  V155RoadmapRoute: V155RoadmapRoute,
   V155ScopeRoute: V155ScopeRoute,
   V2AiOpsRoute: V2AiOpsRoute,
   V2ApiKeysRoute: V2ApiKeysRoute,
