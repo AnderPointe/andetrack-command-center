@@ -7,10 +7,13 @@ import * as H from "@/v18/hooks";
 function Page() {
   const h = H.useV18Headline();
   const g = H.useAutonomousAssistScaleGovernance();
-  const edge = H.useV18EdgeBoundary();
-  const rls = H.useV18Rls();
-  const guards = H.useV18Guardrails();
-  const teaser = H.useV18Phase50Teaser();
+  const edge = H.useV18EdgeBoundaryPolish();
+  const rls = H.useV18RlsPolish();
+  const guards = H.useV18GuardrailsPolish();
+  const teaser = H.useV18Phase50TeaserPolish();
+  const headlines = H.useV18PolishHeadlines();
+  const fresh = H.useV18EvidenceFreshness();
+  const horizons = H.useV18RoadmapHorizons();
   return (
     <V18Page icon={<ShieldCheck className="size-6 text-violet-300" />}
       title="Anderoute V18 — Enterprise Autonomous-Assist Scale Governance"
@@ -20,8 +23,18 @@ function Page() {
         <ScoreCard label="Assist scale governance" value={g.score} tone="violet" />
         <ScoreCard label="Human approval coverage" value="96%" tone="emerald" />
         <ScoreCard label="Recommendation quality" value="89%" tone="amber" />
-        <ScoreCard label="Audit completeness" value="94%" tone="sky" />
+        <ScoreCard label="Audit completeness" value="95%" tone="sky" />
       </div>
+      <Section title="Polish headlines (20 areas)">
+        <SimpleTable rows={headlines as any} columns={[
+          { key: "area", label: "Area" }, { key: "headline", label: "Headline" }, { key: "trend", label: "Trend" },
+        ]} />
+      </Section>
+      <Section title="Evidence freshness by category">
+        <SimpleTable rows={fresh as any} columns={[
+          { key: "category", label: "Category" }, { key: "freshness", label: "Fresh" }, { key: "stale", label: "Stale" }, { key: "owner", label: "Owner" },
+        ]} />
+      </Section>
       <Section title="ServerFn · Edge Function · /api/public boundary">
         <SimpleTable rows={edge as any} columns={[
           { key: "layer", label: "Layer" }, { key: "concern", label: "Concern" },
@@ -31,6 +44,11 @@ function Page() {
       <Section title="RLS policy examples (V18)">
         <SimpleTable rows={rls as any} columns={[
           { key: "name", label: "Policy" }, { key: "target", label: "Target" }, { key: "sql", label: "SQL sketch" },
+        ]} />
+      </Section>
+      <Section title="Long-term roadmap horizons">
+        <SimpleTable rows={horizons as any} columns={[
+          { key: "horizon", label: "Horizon" }, { key: "focus", label: "Focus" },
         ]} />
       </Section>
       <Section title="Guardrails">
