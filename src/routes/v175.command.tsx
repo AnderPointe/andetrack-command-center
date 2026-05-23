@@ -32,6 +32,18 @@ function Page() {
           { key: "item", label: "Action" }, { key: "owner", label: "Owner" }, { key: "due", label: "Due" },
         ]} />
       </Section>
+      <Section title="Polish headlines (per area)">
+        <SimpleTable rows={headlines as any} columns={[
+          { key: "area", label: "Area" }, { key: "headline", label: "Headline" }, { key: "trend", label: "Trend" },
+        ]} />
+      </Section>
+      <Section title="Owner approval heatmap">
+        <SimpleTable rows={heatmap as any} columns={[
+          { key: "owner", label: "Owner" }, { key: "pending", label: "Pending" },
+          { key: "overdue", label: "Overdue" }, { key: "high_risk", label: "High-risk" },
+          { key: "completion", label: "Completion" },
+        ]} />
+      </Section>
     </V175Page>
   );
 }
