@@ -1,5 +1,24 @@
 // V13.5 hooks — Phase 40 mock-only.
 import * as M from "./data/mockPhase40";
+import * as P from "./data/mockPhase40Polish";
+
+// --- Phase 40 polish (additive) ---
+export const useV135ValueMaturity            = () => P.V135_VALUE_MATURITY;
+export const useV135ValueTrends              = () => P.V135_VALUE_TRENDS;
+export const useV135CapitalStrategy          = () => P.V135_CAPITAL_STRATEGY;
+export const useV135ValueDrivers             = () => P.V135_VALUE_DRIVERS;
+export const useV135StrategicInvestments     = () => P.V135_STRATEGIC_INVESTMENTS;
+export const useV135ConcentrationReduction   = () => P.V135_CONCENTRATION_REDUCTION;
+export const useV135ProductLineValue         = () => P.V135_PRODUCT_LINE_VALUE;
+export const useV135MpUnitEconomics          = () => P.V135_MP_UNIT_ECONOMICS;
+export const useV135BoardDecisions           = () => P.V135_BOARD_DECISIONS;
+export const useV135ExecCadence              = () => P.V135_EXEC_CADENCE;
+export const useV135ValueRealization         = () => P.V135_VALUE_REALIZATION;
+export const useV135StrategicRiskExecution   = () => P.V135_STRATEGIC_RISK_EXECUTION;
+export const useV135LongTermRoadmap          = () => P.V135_LONG_TERM_ROADMAP;
+export const useV135CapitalEvidence          = () => P.V135_CAPITAL_EVIDENCE;
+export const useV135RlsSqlSnippetsExt        = () => P.V135_RLS_SQL_SNIPPETS_EXT;
+export const useV135EdgeVsServerFnExt        = () => P.V135_EDGE_VS_SERVERFN_EXT;
 
 export const useV135Scope                    = () => ({ matrix: M.V135_FEATURE_MATRIX, deferred: M.V135_DEFERRED });
 export const useV135Durability               = () => M.V135_DURABILITY;
