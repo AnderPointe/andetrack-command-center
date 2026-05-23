@@ -1,4 +1,13 @@
 import * as D from "./data/mockPhase42";
+import * as P from "./data/mockPhase42Polish";
+
+export const useV145PolishHeadlines = () => P.V145P_EXEC_HEADLINES;
+export const useV145OwnerHeatmap = () => P.V145P_OWNER_HEATMAP;
+export const useV145ControlCoverage = () => P.V145P_CONTROL_COVERAGE;
+export const useV145RlsExtended = () => P.V145P_RLS_EXTENDED;
+export const useV145EdgeExtended = () => P.V145P_EDGE_EXTENDED;
+export const useV145DemoFlow = () => P.V145P_DEMO_FLOW;
+export const useV145DemoOutcomes = () => P.V145P_DEMO_OUTCOMES;
 
 export const useV145Scope = () => D.V145_SCOPE;
 export const useV145FeatureMatrix = () => D.V145_FEATURES;
