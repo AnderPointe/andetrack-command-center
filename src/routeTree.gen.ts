@@ -402,24 +402,43 @@ import { Route as V15StripeRouteImport } from './routes/v15.stripe'
 import { Route as V15SessionsRouteImport } from './routes/v15.sessions'
 import { Route as V15SecurityRouteImport } from './routes/v15.security'
 import { Route as V15ScopeRouteImport } from './routes/v15.scope'
+import { Route as V15RoadmapRouteImport } from './routes/v15.roadmap'
+import { Route as V15RiskRouteImport } from './routes/v15.risk'
+import { Route as V15RevenueRouteImport } from './routes/v15.revenue'
 import { Route as V15RerouteRouteImport } from './routes/v15.reroute'
 import { Route as V15ReportsRouteImport } from './routes/v15.reports'
 import { Route as V15RenderingRouteImport } from './routes/v15.rendering'
+import { Route as V15RecommendationsRouteImport } from './routes/v15.recommendations'
 import { Route as V15ProviderHealthRouteImport } from './routes/v15.provider-health'
+import { Route as V15ProductLinesRouteImport } from './routes/v15.product-lines'
 import { Route as V15PortalRouteImport } from './routes/v15.portal'
 import { Route as V15PlanLimitsRouteImport } from './routes/v15.plan-limits'
+import { Route as V15PartnersRouteImport } from './routes/v15.partners'
 import { Route as V15PaidCustomersRouteImport } from './routes/v15.paid-customers'
 import { Route as V15OverviewRouteImport } from './routes/v15.overview'
 import { Route as V15NavigationRouteImport } from './routes/v15.navigation'
+import { Route as V15MpIntelRouteImport } from './routes/v15.mp-intel'
+import { Route as V15MpGovRouteImport } from './routes/v15.mp-gov'
 import { Route as V15MapboxRouteImport } from './routes/v15.mapbox'
+import { Route as V15IntelRouteImport } from './routes/v15.intel'
 import { Route as V15IntegrationsRouteImport } from './routes/v15.integrations'
 import { Route as V15GoogleRouteImport } from './routes/v15.google'
+import { Route as V15ExecRouteImport } from './routes/v15.exec'
 import { Route as V15EtaSyncRouteImport } from './routes/v15.eta-sync'
 import { Route as V15DriverNavRouteImport } from './routes/v15.driver-nav'
 import { Route as V15DispatcherRoutesRouteImport } from './routes/v15.dispatcher-routes'
+import { Route as V15DiligenceRouteImport } from './routes/v15.diligence'
 import { Route as V15DemoRouteImport } from './routes/v15.demo'
 import { Route as V15CopilotRouteImport } from './routes/v15.copilot'
+import { Route as V15ControlsRouteImport } from './routes/v15.controls'
+import { Route as V15CommandRouteImport } from './routes/v15.command'
+import { Route as V15CategoryRouteImport } from './routes/v15.category'
+import { Route as V15CapitalRouteImport } from './routes/v15.capital'
+import { Route as V15CapEvidenceRouteImport } from './routes/v15.cap-evidence'
+import { Route as V15BoardReportsRouteImport } from './routes/v15.board-reports'
+import { Route as V15BoardIntelRouteImport } from './routes/v15.board-intel'
 import { Route as V15BillingRouteImport } from './routes/v15.billing'
+import { Route as V15AccountsRouteImport } from './routes/v15.accounts'
 import { Route as V145ScopeRouteImport } from './routes/v145.scope'
 import { Route as V145RiskRouteImport } from './routes/v145.risk'
 import { Route as V145RevSystemsRouteImport } from './routes/v145.rev-systems'
@@ -2748,6 +2767,21 @@ const V15ScopeRoute = V15ScopeRouteImport.update({
   path: '/v15/scope',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V15RoadmapRoute = V15RoadmapRouteImport.update({
+  id: '/v15/roadmap',
+  path: '/v15/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15RiskRoute = V15RiskRouteImport.update({
+  id: '/v15/risk',
+  path: '/v15/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15RevenueRoute = V15RevenueRouteImport.update({
+  id: '/v15/revenue',
+  path: '/v15/revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V15RerouteRoute = V15RerouteRouteImport.update({
   id: '/v15/reroute',
   path: '/v15/reroute',
@@ -2763,9 +2797,19 @@ const V15RenderingRoute = V15RenderingRouteImport.update({
   path: '/v15/rendering',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V15RecommendationsRoute = V15RecommendationsRouteImport.update({
+  id: '/v15/recommendations',
+  path: '/v15/recommendations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V15ProviderHealthRoute = V15ProviderHealthRouteImport.update({
   id: '/v15/provider-health',
   path: '/v15/provider-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15ProductLinesRoute = V15ProductLinesRouteImport.update({
+  id: '/v15/product-lines',
+  path: '/v15/product-lines',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V15PortalRoute = V15PortalRouteImport.update({
@@ -2776,6 +2820,11 @@ const V15PortalRoute = V15PortalRouteImport.update({
 const V15PlanLimitsRoute = V15PlanLimitsRouteImport.update({
   id: '/v15/plan-limits',
   path: '/v15/plan-limits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15PartnersRoute = V15PartnersRouteImport.update({
+  id: '/v15/partners',
+  path: '/v15/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V15PaidCustomersRoute = V15PaidCustomersRouteImport.update({
@@ -2793,9 +2842,24 @@ const V15NavigationRoute = V15NavigationRouteImport.update({
   path: '/v15/navigation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V15MpIntelRoute = V15MpIntelRouteImport.update({
+  id: '/v15/mp-intel',
+  path: '/v15/mp-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15MpGovRoute = V15MpGovRouteImport.update({
+  id: '/v15/mp-gov',
+  path: '/v15/mp-gov',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V15MapboxRoute = V15MapboxRouteImport.update({
   id: '/v15/mapbox',
   path: '/v15/mapbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15IntelRoute = V15IntelRouteImport.update({
+  id: '/v15/intel',
+  path: '/v15/intel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V15IntegrationsRoute = V15IntegrationsRouteImport.update({
@@ -2806,6 +2870,11 @@ const V15IntegrationsRoute = V15IntegrationsRouteImport.update({
 const V15GoogleRoute = V15GoogleRouteImport.update({
   id: '/v15/google',
   path: '/v15/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15ExecRoute = V15ExecRouteImport.update({
+  id: '/v15/exec',
+  path: '/v15/exec',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V15EtaSyncRoute = V15EtaSyncRouteImport.update({
@@ -2823,6 +2892,11 @@ const V15DispatcherRoutesRoute = V15DispatcherRoutesRouteImport.update({
   path: '/v15/dispatcher-routes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V15DiligenceRoute = V15DiligenceRouteImport.update({
+  id: '/v15/diligence',
+  path: '/v15/diligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V15DemoRoute = V15DemoRouteImport.update({
   id: '/v15/demo',
   path: '/v15/demo',
@@ -2833,9 +2907,49 @@ const V15CopilotRoute = V15CopilotRouteImport.update({
   path: '/v15/copilot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V15ControlsRoute = V15ControlsRouteImport.update({
+  id: '/v15/controls',
+  path: '/v15/controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15CommandRoute = V15CommandRouteImport.update({
+  id: '/v15/command',
+  path: '/v15/command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15CategoryRoute = V15CategoryRouteImport.update({
+  id: '/v15/category',
+  path: '/v15/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15CapitalRoute = V15CapitalRouteImport.update({
+  id: '/v15/capital',
+  path: '/v15/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15CapEvidenceRoute = V15CapEvidenceRouteImport.update({
+  id: '/v15/cap-evidence',
+  path: '/v15/cap-evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15BoardReportsRoute = V15BoardReportsRouteImport.update({
+  id: '/v15/board-reports',
+  path: '/v15/board-reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15BoardIntelRoute = V15BoardIntelRouteImport.update({
+  id: '/v15/board-intel',
+  path: '/v15/board-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V15BillingRoute = V15BillingRouteImport.update({
   id: '/v15/billing',
   path: '/v15/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V15AccountsRoute = V15AccountsRouteImport.update({
+  id: '/v15/accounts',
+  path: '/v15/accounts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V145ScopeRoute = V145ScopeRouteImport.update({
@@ -5011,24 +5125,43 @@ export interface FileRoutesByFullPath {
   '/v145/rev-systems': typeof V145RevSystemsRoute
   '/v145/risk': typeof V145RiskRoute
   '/v145/scope': typeof V145ScopeRoute
+  '/v15/accounts': typeof V15AccountsRoute
   '/v15/billing': typeof V15BillingRoute
+  '/v15/board-intel': typeof V15BoardIntelRoute
+  '/v15/board-reports': typeof V15BoardReportsRoute
+  '/v15/cap-evidence': typeof V15CapEvidenceRoute
+  '/v15/capital': typeof V15CapitalRoute
+  '/v15/category': typeof V15CategoryRoute
+  '/v15/command': typeof V15CommandRoute
+  '/v15/controls': typeof V15ControlsRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
+  '/v15/diligence': typeof V15DiligenceRoute
   '/v15/dispatcher-routes': typeof V15DispatcherRoutesRoute
   '/v15/driver-nav': typeof V15DriverNavRoute
   '/v15/eta-sync': typeof V15EtaSyncRoute
+  '/v15/exec': typeof V15ExecRoute
   '/v15/google': typeof V15GoogleRoute
   '/v15/integrations': typeof V15IntegrationsRoute
+  '/v15/intel': typeof V15IntelRoute
   '/v15/mapbox': typeof V15MapboxRoute
+  '/v15/mp-gov': typeof V15MpGovRoute
+  '/v15/mp-intel': typeof V15MpIntelRoute
   '/v15/navigation': typeof V15NavigationRoute
   '/v15/overview': typeof V15OverviewRoute
   '/v15/paid-customers': typeof V15PaidCustomersRoute
+  '/v15/partners': typeof V15PartnersRoute
   '/v15/plan-limits': typeof V15PlanLimitsRoute
   '/v15/portal': typeof V15PortalRoute
+  '/v15/product-lines': typeof V15ProductLinesRoute
   '/v15/provider-health': typeof V15ProviderHealthRoute
+  '/v15/recommendations': typeof V15RecommendationsRoute
   '/v15/rendering': typeof V15RenderingRoute
   '/v15/reports': typeof V15ReportsRoute
   '/v15/reroute': typeof V15RerouteRoute
+  '/v15/revenue': typeof V15RevenueRoute
+  '/v15/risk': typeof V15RiskRoute
+  '/v15/roadmap': typeof V15RoadmapRoute
   '/v15/scope': typeof V15ScopeRoute
   '/v15/security': typeof V15SecurityRoute
   '/v15/sessions': typeof V15SessionsRoute
@@ -5782,24 +5915,43 @@ export interface FileRoutesByTo {
   '/v145/rev-systems': typeof V145RevSystemsRoute
   '/v145/risk': typeof V145RiskRoute
   '/v145/scope': typeof V145ScopeRoute
+  '/v15/accounts': typeof V15AccountsRoute
   '/v15/billing': typeof V15BillingRoute
+  '/v15/board-intel': typeof V15BoardIntelRoute
+  '/v15/board-reports': typeof V15BoardReportsRoute
+  '/v15/cap-evidence': typeof V15CapEvidenceRoute
+  '/v15/capital': typeof V15CapitalRoute
+  '/v15/category': typeof V15CategoryRoute
+  '/v15/command': typeof V15CommandRoute
+  '/v15/controls': typeof V15ControlsRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
+  '/v15/diligence': typeof V15DiligenceRoute
   '/v15/dispatcher-routes': typeof V15DispatcherRoutesRoute
   '/v15/driver-nav': typeof V15DriverNavRoute
   '/v15/eta-sync': typeof V15EtaSyncRoute
+  '/v15/exec': typeof V15ExecRoute
   '/v15/google': typeof V15GoogleRoute
   '/v15/integrations': typeof V15IntegrationsRoute
+  '/v15/intel': typeof V15IntelRoute
   '/v15/mapbox': typeof V15MapboxRoute
+  '/v15/mp-gov': typeof V15MpGovRoute
+  '/v15/mp-intel': typeof V15MpIntelRoute
   '/v15/navigation': typeof V15NavigationRoute
   '/v15/overview': typeof V15OverviewRoute
   '/v15/paid-customers': typeof V15PaidCustomersRoute
+  '/v15/partners': typeof V15PartnersRoute
   '/v15/plan-limits': typeof V15PlanLimitsRoute
   '/v15/portal': typeof V15PortalRoute
+  '/v15/product-lines': typeof V15ProductLinesRoute
   '/v15/provider-health': typeof V15ProviderHealthRoute
+  '/v15/recommendations': typeof V15RecommendationsRoute
   '/v15/rendering': typeof V15RenderingRoute
   '/v15/reports': typeof V15ReportsRoute
   '/v15/reroute': typeof V15RerouteRoute
+  '/v15/revenue': typeof V15RevenueRoute
+  '/v15/risk': typeof V15RiskRoute
+  '/v15/roadmap': typeof V15RoadmapRoute
   '/v15/scope': typeof V15ScopeRoute
   '/v15/security': typeof V15SecurityRoute
   '/v15/sessions': typeof V15SessionsRoute
@@ -6554,24 +6706,43 @@ export interface FileRoutesById {
   '/v145/rev-systems': typeof V145RevSystemsRoute
   '/v145/risk': typeof V145RiskRoute
   '/v145/scope': typeof V145ScopeRoute
+  '/v15/accounts': typeof V15AccountsRoute
   '/v15/billing': typeof V15BillingRoute
+  '/v15/board-intel': typeof V15BoardIntelRoute
+  '/v15/board-reports': typeof V15BoardReportsRoute
+  '/v15/cap-evidence': typeof V15CapEvidenceRoute
+  '/v15/capital': typeof V15CapitalRoute
+  '/v15/category': typeof V15CategoryRoute
+  '/v15/command': typeof V15CommandRoute
+  '/v15/controls': typeof V15ControlsRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
+  '/v15/diligence': typeof V15DiligenceRoute
   '/v15/dispatcher-routes': typeof V15DispatcherRoutesRoute
   '/v15/driver-nav': typeof V15DriverNavRoute
   '/v15/eta-sync': typeof V15EtaSyncRoute
+  '/v15/exec': typeof V15ExecRoute
   '/v15/google': typeof V15GoogleRoute
   '/v15/integrations': typeof V15IntegrationsRoute
+  '/v15/intel': typeof V15IntelRoute
   '/v15/mapbox': typeof V15MapboxRoute
+  '/v15/mp-gov': typeof V15MpGovRoute
+  '/v15/mp-intel': typeof V15MpIntelRoute
   '/v15/navigation': typeof V15NavigationRoute
   '/v15/overview': typeof V15OverviewRoute
   '/v15/paid-customers': typeof V15PaidCustomersRoute
+  '/v15/partners': typeof V15PartnersRoute
   '/v15/plan-limits': typeof V15PlanLimitsRoute
   '/v15/portal': typeof V15PortalRoute
+  '/v15/product-lines': typeof V15ProductLinesRoute
   '/v15/provider-health': typeof V15ProviderHealthRoute
+  '/v15/recommendations': typeof V15RecommendationsRoute
   '/v15/rendering': typeof V15RenderingRoute
   '/v15/reports': typeof V15ReportsRoute
   '/v15/reroute': typeof V15RerouteRoute
+  '/v15/revenue': typeof V15RevenueRoute
+  '/v15/risk': typeof V15RiskRoute
+  '/v15/roadmap': typeof V15RoadmapRoute
   '/v15/scope': typeof V15ScopeRoute
   '/v15/security': typeof V15SecurityRoute
   '/v15/sessions': typeof V15SessionsRoute
@@ -7327,24 +7498,43 @@ export interface FileRouteTypes {
     | '/v145/rev-systems'
     | '/v145/risk'
     | '/v145/scope'
+    | '/v15/accounts'
     | '/v15/billing'
+    | '/v15/board-intel'
+    | '/v15/board-reports'
+    | '/v15/cap-evidence'
+    | '/v15/capital'
+    | '/v15/category'
+    | '/v15/command'
+    | '/v15/controls'
     | '/v15/copilot'
     | '/v15/demo'
+    | '/v15/diligence'
     | '/v15/dispatcher-routes'
     | '/v15/driver-nav'
     | '/v15/eta-sync'
+    | '/v15/exec'
     | '/v15/google'
     | '/v15/integrations'
+    | '/v15/intel'
     | '/v15/mapbox'
+    | '/v15/mp-gov'
+    | '/v15/mp-intel'
     | '/v15/navigation'
     | '/v15/overview'
     | '/v15/paid-customers'
+    | '/v15/partners'
     | '/v15/plan-limits'
     | '/v15/portal'
+    | '/v15/product-lines'
     | '/v15/provider-health'
+    | '/v15/recommendations'
     | '/v15/rendering'
     | '/v15/reports'
     | '/v15/reroute'
+    | '/v15/revenue'
+    | '/v15/risk'
+    | '/v15/roadmap'
     | '/v15/scope'
     | '/v15/security'
     | '/v15/sessions'
@@ -8098,24 +8288,43 @@ export interface FileRouteTypes {
     | '/v145/rev-systems'
     | '/v145/risk'
     | '/v145/scope'
+    | '/v15/accounts'
     | '/v15/billing'
+    | '/v15/board-intel'
+    | '/v15/board-reports'
+    | '/v15/cap-evidence'
+    | '/v15/capital'
+    | '/v15/category'
+    | '/v15/command'
+    | '/v15/controls'
     | '/v15/copilot'
     | '/v15/demo'
+    | '/v15/diligence'
     | '/v15/dispatcher-routes'
     | '/v15/driver-nav'
     | '/v15/eta-sync'
+    | '/v15/exec'
     | '/v15/google'
     | '/v15/integrations'
+    | '/v15/intel'
     | '/v15/mapbox'
+    | '/v15/mp-gov'
+    | '/v15/mp-intel'
     | '/v15/navigation'
     | '/v15/overview'
     | '/v15/paid-customers'
+    | '/v15/partners'
     | '/v15/plan-limits'
     | '/v15/portal'
+    | '/v15/product-lines'
     | '/v15/provider-health'
+    | '/v15/recommendations'
     | '/v15/rendering'
     | '/v15/reports'
     | '/v15/reroute'
+    | '/v15/revenue'
+    | '/v15/risk'
+    | '/v15/roadmap'
     | '/v15/scope'
     | '/v15/security'
     | '/v15/sessions'
@@ -8869,24 +9078,43 @@ export interface FileRouteTypes {
     | '/v145/rev-systems'
     | '/v145/risk'
     | '/v145/scope'
+    | '/v15/accounts'
     | '/v15/billing'
+    | '/v15/board-intel'
+    | '/v15/board-reports'
+    | '/v15/cap-evidence'
+    | '/v15/capital'
+    | '/v15/category'
+    | '/v15/command'
+    | '/v15/controls'
     | '/v15/copilot'
     | '/v15/demo'
+    | '/v15/diligence'
     | '/v15/dispatcher-routes'
     | '/v15/driver-nav'
     | '/v15/eta-sync'
+    | '/v15/exec'
     | '/v15/google'
     | '/v15/integrations'
+    | '/v15/intel'
     | '/v15/mapbox'
+    | '/v15/mp-gov'
+    | '/v15/mp-intel'
     | '/v15/navigation'
     | '/v15/overview'
     | '/v15/paid-customers'
+    | '/v15/partners'
     | '/v15/plan-limits'
     | '/v15/portal'
+    | '/v15/product-lines'
     | '/v15/provider-health'
+    | '/v15/recommendations'
     | '/v15/rendering'
     | '/v15/reports'
     | '/v15/reroute'
+    | '/v15/revenue'
+    | '/v15/risk'
+    | '/v15/roadmap'
     | '/v15/scope'
     | '/v15/security'
     | '/v15/sessions'
@@ -9633,24 +9861,43 @@ export interface RootRouteChildren {
   V145RevSystemsRoute: typeof V145RevSystemsRoute
   V145RiskRoute: typeof V145RiskRoute
   V145ScopeRoute: typeof V145ScopeRoute
+  V15AccountsRoute: typeof V15AccountsRoute
   V15BillingRoute: typeof V15BillingRoute
+  V15BoardIntelRoute: typeof V15BoardIntelRoute
+  V15BoardReportsRoute: typeof V15BoardReportsRoute
+  V15CapEvidenceRoute: typeof V15CapEvidenceRoute
+  V15CapitalRoute: typeof V15CapitalRoute
+  V15CategoryRoute: typeof V15CategoryRoute
+  V15CommandRoute: typeof V15CommandRoute
+  V15ControlsRoute: typeof V15ControlsRoute
   V15CopilotRoute: typeof V15CopilotRoute
   V15DemoRoute: typeof V15DemoRoute
+  V15DiligenceRoute: typeof V15DiligenceRoute
   V15DispatcherRoutesRoute: typeof V15DispatcherRoutesRoute
   V15DriverNavRoute: typeof V15DriverNavRoute
   V15EtaSyncRoute: typeof V15EtaSyncRoute
+  V15ExecRoute: typeof V15ExecRoute
   V15GoogleRoute: typeof V15GoogleRoute
   V15IntegrationsRoute: typeof V15IntegrationsRoute
+  V15IntelRoute: typeof V15IntelRoute
   V15MapboxRoute: typeof V15MapboxRoute
+  V15MpGovRoute: typeof V15MpGovRoute
+  V15MpIntelRoute: typeof V15MpIntelRoute
   V15NavigationRoute: typeof V15NavigationRoute
   V15OverviewRoute: typeof V15OverviewRoute
   V15PaidCustomersRoute: typeof V15PaidCustomersRoute
+  V15PartnersRoute: typeof V15PartnersRoute
   V15PlanLimitsRoute: typeof V15PlanLimitsRoute
   V15PortalRoute: typeof V15PortalRoute
+  V15ProductLinesRoute: typeof V15ProductLinesRoute
   V15ProviderHealthRoute: typeof V15ProviderHealthRoute
+  V15RecommendationsRoute: typeof V15RecommendationsRoute
   V15RenderingRoute: typeof V15RenderingRoute
   V15ReportsRoute: typeof V15ReportsRoute
   V15RerouteRoute: typeof V15RerouteRoute
+  V15RevenueRoute: typeof V15RevenueRoute
+  V15RiskRoute: typeof V15RiskRoute
+  V15RoadmapRoute: typeof V15RoadmapRoute
   V15ScopeRoute: typeof V15ScopeRoute
   V15SecurityRoute: typeof V15SecurityRoute
   V15SessionsRoute: typeof V15SessionsRoute
@@ -12780,6 +13027,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15ScopeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v15/roadmap': {
+      id: '/v15/roadmap'
+      path: '/v15/roadmap'
+      fullPath: '/v15/roadmap'
+      preLoaderRoute: typeof V15RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/risk': {
+      id: '/v15/risk'
+      path: '/v15/risk'
+      fullPath: '/v15/risk'
+      preLoaderRoute: typeof V15RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/revenue': {
+      id: '/v15/revenue'
+      path: '/v15/revenue'
+      fullPath: '/v15/revenue'
+      preLoaderRoute: typeof V15RevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v15/reroute': {
       id: '/v15/reroute'
       path: '/v15/reroute'
@@ -12801,11 +13069,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15RenderingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v15/recommendations': {
+      id: '/v15/recommendations'
+      path: '/v15/recommendations'
+      fullPath: '/v15/recommendations'
+      preLoaderRoute: typeof V15RecommendationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v15/provider-health': {
       id: '/v15/provider-health'
       path: '/v15/provider-health'
       fullPath: '/v15/provider-health'
       preLoaderRoute: typeof V15ProviderHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/product-lines': {
+      id: '/v15/product-lines'
+      path: '/v15/product-lines'
+      fullPath: '/v15/product-lines'
+      preLoaderRoute: typeof V15ProductLinesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v15/portal': {
@@ -12820,6 +13102,13 @@ declare module '@tanstack/react-router' {
       path: '/v15/plan-limits'
       fullPath: '/v15/plan-limits'
       preLoaderRoute: typeof V15PlanLimitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/partners': {
+      id: '/v15/partners'
+      path: '/v15/partners'
+      fullPath: '/v15/partners'
+      preLoaderRoute: typeof V15PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v15/paid-customers': {
@@ -12843,11 +13132,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15NavigationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v15/mp-intel': {
+      id: '/v15/mp-intel'
+      path: '/v15/mp-intel'
+      fullPath: '/v15/mp-intel'
+      preLoaderRoute: typeof V15MpIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/mp-gov': {
+      id: '/v15/mp-gov'
+      path: '/v15/mp-gov'
+      fullPath: '/v15/mp-gov'
+      preLoaderRoute: typeof V15MpGovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v15/mapbox': {
       id: '/v15/mapbox'
       path: '/v15/mapbox'
       fullPath: '/v15/mapbox'
       preLoaderRoute: typeof V15MapboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/intel': {
+      id: '/v15/intel'
+      path: '/v15/intel'
+      fullPath: '/v15/intel'
+      preLoaderRoute: typeof V15IntelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v15/integrations': {
@@ -12862,6 +13172,13 @@ declare module '@tanstack/react-router' {
       path: '/v15/google'
       fullPath: '/v15/google'
       preLoaderRoute: typeof V15GoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/exec': {
+      id: '/v15/exec'
+      path: '/v15/exec'
+      fullPath: '/v15/exec'
+      preLoaderRoute: typeof V15ExecRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v15/eta-sync': {
@@ -12885,6 +13202,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15DispatcherRoutesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v15/diligence': {
+      id: '/v15/diligence'
+      path: '/v15/diligence'
+      fullPath: '/v15/diligence'
+      preLoaderRoute: typeof V15DiligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v15/demo': {
       id: '/v15/demo'
       path: '/v15/demo'
@@ -12899,11 +13223,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15CopilotRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v15/controls': {
+      id: '/v15/controls'
+      path: '/v15/controls'
+      fullPath: '/v15/controls'
+      preLoaderRoute: typeof V15ControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/command': {
+      id: '/v15/command'
+      path: '/v15/command'
+      fullPath: '/v15/command'
+      preLoaderRoute: typeof V15CommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/category': {
+      id: '/v15/category'
+      path: '/v15/category'
+      fullPath: '/v15/category'
+      preLoaderRoute: typeof V15CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/capital': {
+      id: '/v15/capital'
+      path: '/v15/capital'
+      fullPath: '/v15/capital'
+      preLoaderRoute: typeof V15CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/cap-evidence': {
+      id: '/v15/cap-evidence'
+      path: '/v15/cap-evidence'
+      fullPath: '/v15/cap-evidence'
+      preLoaderRoute: typeof V15CapEvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/board-reports': {
+      id: '/v15/board-reports'
+      path: '/v15/board-reports'
+      fullPath: '/v15/board-reports'
+      preLoaderRoute: typeof V15BoardReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/board-intel': {
+      id: '/v15/board-intel'
+      path: '/v15/board-intel'
+      fullPath: '/v15/board-intel'
+      preLoaderRoute: typeof V15BoardIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v15/billing': {
       id: '/v15/billing'
       path: '/v15/billing'
       fullPath: '/v15/billing'
       preLoaderRoute: typeof V15BillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v15/accounts': {
+      id: '/v15/accounts'
+      path: '/v15/accounts'
+      fullPath: '/v15/accounts'
+      preLoaderRoute: typeof V15AccountsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v145/scope': {
@@ -15838,24 +16218,43 @@ const rootRouteChildren: RootRouteChildren = {
   V145RevSystemsRoute: V145RevSystemsRoute,
   V145RiskRoute: V145RiskRoute,
   V145ScopeRoute: V145ScopeRoute,
+  V15AccountsRoute: V15AccountsRoute,
   V15BillingRoute: V15BillingRoute,
+  V15BoardIntelRoute: V15BoardIntelRoute,
+  V15BoardReportsRoute: V15BoardReportsRoute,
+  V15CapEvidenceRoute: V15CapEvidenceRoute,
+  V15CapitalRoute: V15CapitalRoute,
+  V15CategoryRoute: V15CategoryRoute,
+  V15CommandRoute: V15CommandRoute,
+  V15ControlsRoute: V15ControlsRoute,
   V15CopilotRoute: V15CopilotRoute,
   V15DemoRoute: V15DemoRoute,
+  V15DiligenceRoute: V15DiligenceRoute,
   V15DispatcherRoutesRoute: V15DispatcherRoutesRoute,
   V15DriverNavRoute: V15DriverNavRoute,
   V15EtaSyncRoute: V15EtaSyncRoute,
+  V15ExecRoute: V15ExecRoute,
   V15GoogleRoute: V15GoogleRoute,
   V15IntegrationsRoute: V15IntegrationsRoute,
+  V15IntelRoute: V15IntelRoute,
   V15MapboxRoute: V15MapboxRoute,
+  V15MpGovRoute: V15MpGovRoute,
+  V15MpIntelRoute: V15MpIntelRoute,
   V15NavigationRoute: V15NavigationRoute,
   V15OverviewRoute: V15OverviewRoute,
   V15PaidCustomersRoute: V15PaidCustomersRoute,
+  V15PartnersRoute: V15PartnersRoute,
   V15PlanLimitsRoute: V15PlanLimitsRoute,
   V15PortalRoute: V15PortalRoute,
+  V15ProductLinesRoute: V15ProductLinesRoute,
   V15ProviderHealthRoute: V15ProviderHealthRoute,
+  V15RecommendationsRoute: V15RecommendationsRoute,
   V15RenderingRoute: V15RenderingRoute,
   V15ReportsRoute: V15ReportsRoute,
   V15RerouteRoute: V15RerouteRoute,
+  V15RevenueRoute: V15RevenueRoute,
+  V15RiskRoute: V15RiskRoute,
+  V15RoadmapRoute: V15RoadmapRoute,
   V15ScopeRoute: V15ScopeRoute,
   V15SecurityRoute: V15SecurityRoute,
   V15SessionsRoute: V15SessionsRoute,
