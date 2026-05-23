@@ -420,6 +420,29 @@ import { Route as V15DispatcherRoutesRouteImport } from './routes/v15.dispatcher
 import { Route as V15DemoRouteImport } from './routes/v15.demo'
 import { Route as V15CopilotRouteImport } from './routes/v15.copilot'
 import { Route as V15BillingRouteImport } from './routes/v15.billing'
+import { Route as V145ScopeRouteImport } from './routes/v145.scope'
+import { Route as V145RiskRouteImport } from './routes/v145.risk'
+import { Route as V145RevSystemsRouteImport } from './routes/v145.rev-systems'
+import { Route as V145RevExecRouteImport } from './routes/v145.rev-exec'
+import { Route as V145ReportsRouteImport } from './routes/v145.reports'
+import { Route as V145ProofsRouteImport } from './routes/v145.proofs'
+import { Route as V145ProductLinesRouteImport } from './routes/v145.product-lines'
+import { Route as V145PartnersRouteImport } from './routes/v145.partners'
+import { Route as V145OverviewRouteImport } from './routes/v145.overview'
+import { Route as V145OpexRouteImport } from './routes/v145.opex'
+import { Route as V145OpControlsRouteImport } from './routes/v145.op-controls'
+import { Route as V145MpScaleRouteImport } from './routes/v145.mp-scale'
+import { Route as V145MpControlsRouteImport } from './routes/v145.mp-controls'
+import { Route as V145LtPerfRouteImport } from './routes/v145.lt-perf'
+import { Route as V145ExecPerfRouteImport } from './routes/v145.exec-perf'
+import { Route as V145DiligenceRouteImport } from './routes/v145.diligence'
+import { Route as V145DemoRouteImport } from './routes/v145.demo'
+import { Route as V145CategoryRouteImport } from './routes/v145.category'
+import { Route as V145CapitalRouteImport } from './routes/v145.capital'
+import { Route as V145CapEvidenceRouteImport } from './routes/v145.cap-evidence'
+import { Route as V145CadenceRouteImport } from './routes/v145.cadence'
+import { Route as V145BoardRouteImport } from './routes/v145.board'
+import { Route as V145AccountsRouteImport } from './routes/v145.accounts'
 import { Route as V14ValueTowerRouteImport } from './routes/v14.value-tower'
 import { Route as V14StrategicRiskRouteImport } from './routes/v14.strategic-risk'
 import { Route as V14StrategicInvestRouteImport } from './routes/v14.strategic-invest'
@@ -2815,6 +2838,121 @@ const V15BillingRoute = V15BillingRouteImport.update({
   path: '/v15/billing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V145ScopeRoute = V145ScopeRouteImport.update({
+  id: '/v145/scope',
+  path: '/v145/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145RiskRoute = V145RiskRouteImport.update({
+  id: '/v145/risk',
+  path: '/v145/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145RevSystemsRoute = V145RevSystemsRouteImport.update({
+  id: '/v145/rev-systems',
+  path: '/v145/rev-systems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145RevExecRoute = V145RevExecRouteImport.update({
+  id: '/v145/rev-exec',
+  path: '/v145/rev-exec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145ReportsRoute = V145ReportsRouteImport.update({
+  id: '/v145/reports',
+  path: '/v145/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145ProofsRoute = V145ProofsRouteImport.update({
+  id: '/v145/proofs',
+  path: '/v145/proofs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145ProductLinesRoute = V145ProductLinesRouteImport.update({
+  id: '/v145/product-lines',
+  path: '/v145/product-lines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145PartnersRoute = V145PartnersRouteImport.update({
+  id: '/v145/partners',
+  path: '/v145/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145OverviewRoute = V145OverviewRouteImport.update({
+  id: '/v145/overview',
+  path: '/v145/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145OpexRoute = V145OpexRouteImport.update({
+  id: '/v145/opex',
+  path: '/v145/opex',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145OpControlsRoute = V145OpControlsRouteImport.update({
+  id: '/v145/op-controls',
+  path: '/v145/op-controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145MpScaleRoute = V145MpScaleRouteImport.update({
+  id: '/v145/mp-scale',
+  path: '/v145/mp-scale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145MpControlsRoute = V145MpControlsRouteImport.update({
+  id: '/v145/mp-controls',
+  path: '/v145/mp-controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145LtPerfRoute = V145LtPerfRouteImport.update({
+  id: '/v145/lt-perf',
+  path: '/v145/lt-perf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145ExecPerfRoute = V145ExecPerfRouteImport.update({
+  id: '/v145/exec-perf',
+  path: '/v145/exec-perf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145DiligenceRoute = V145DiligenceRouteImport.update({
+  id: '/v145/diligence',
+  path: '/v145/diligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145DemoRoute = V145DemoRouteImport.update({
+  id: '/v145/demo',
+  path: '/v145/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145CategoryRoute = V145CategoryRouteImport.update({
+  id: '/v145/category',
+  path: '/v145/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145CapitalRoute = V145CapitalRouteImport.update({
+  id: '/v145/capital',
+  path: '/v145/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145CapEvidenceRoute = V145CapEvidenceRouteImport.update({
+  id: '/v145/cap-evidence',
+  path: '/v145/cap-evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145CadenceRoute = V145CadenceRouteImport.update({
+  id: '/v145/cadence',
+  path: '/v145/cadence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145BoardRoute = V145BoardRouteImport.update({
+  id: '/v145/board',
+  path: '/v145/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V145AccountsRoute = V145AccountsRouteImport.update({
+  id: '/v145/accounts',
+  path: '/v145/accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V14ValueTowerRoute = V14ValueTowerRouteImport.update({
   id: '/v14/value-tower',
   path: '/v14/value-tower',
@@ -4850,6 +4988,29 @@ export interface FileRoutesByFullPath {
   '/v14/strategic-invest': typeof V14StrategicInvestRoute
   '/v14/strategic-risk': typeof V14StrategicRiskRoute
   '/v14/value-tower': typeof V14ValueTowerRoute
+  '/v145/accounts': typeof V145AccountsRoute
+  '/v145/board': typeof V145BoardRoute
+  '/v145/cadence': typeof V145CadenceRoute
+  '/v145/cap-evidence': typeof V145CapEvidenceRoute
+  '/v145/capital': typeof V145CapitalRoute
+  '/v145/category': typeof V145CategoryRoute
+  '/v145/demo': typeof V145DemoRoute
+  '/v145/diligence': typeof V145DiligenceRoute
+  '/v145/exec-perf': typeof V145ExecPerfRoute
+  '/v145/lt-perf': typeof V145LtPerfRoute
+  '/v145/mp-controls': typeof V145MpControlsRoute
+  '/v145/mp-scale': typeof V145MpScaleRoute
+  '/v145/op-controls': typeof V145OpControlsRoute
+  '/v145/opex': typeof V145OpexRoute
+  '/v145/overview': typeof V145OverviewRoute
+  '/v145/partners': typeof V145PartnersRoute
+  '/v145/product-lines': typeof V145ProductLinesRoute
+  '/v145/proofs': typeof V145ProofsRoute
+  '/v145/reports': typeof V145ReportsRoute
+  '/v145/rev-exec': typeof V145RevExecRoute
+  '/v145/rev-systems': typeof V145RevSystemsRoute
+  '/v145/risk': typeof V145RiskRoute
+  '/v145/scope': typeof V145ScopeRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -5598,6 +5759,29 @@ export interface FileRoutesByTo {
   '/v14/strategic-invest': typeof V14StrategicInvestRoute
   '/v14/strategic-risk': typeof V14StrategicRiskRoute
   '/v14/value-tower': typeof V14ValueTowerRoute
+  '/v145/accounts': typeof V145AccountsRoute
+  '/v145/board': typeof V145BoardRoute
+  '/v145/cadence': typeof V145CadenceRoute
+  '/v145/cap-evidence': typeof V145CapEvidenceRoute
+  '/v145/capital': typeof V145CapitalRoute
+  '/v145/category': typeof V145CategoryRoute
+  '/v145/demo': typeof V145DemoRoute
+  '/v145/diligence': typeof V145DiligenceRoute
+  '/v145/exec-perf': typeof V145ExecPerfRoute
+  '/v145/lt-perf': typeof V145LtPerfRoute
+  '/v145/mp-controls': typeof V145MpControlsRoute
+  '/v145/mp-scale': typeof V145MpScaleRoute
+  '/v145/op-controls': typeof V145OpControlsRoute
+  '/v145/opex': typeof V145OpexRoute
+  '/v145/overview': typeof V145OverviewRoute
+  '/v145/partners': typeof V145PartnersRoute
+  '/v145/product-lines': typeof V145ProductLinesRoute
+  '/v145/proofs': typeof V145ProofsRoute
+  '/v145/reports': typeof V145ReportsRoute
+  '/v145/rev-exec': typeof V145RevExecRoute
+  '/v145/rev-systems': typeof V145RevSystemsRoute
+  '/v145/risk': typeof V145RiskRoute
+  '/v145/scope': typeof V145ScopeRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -6347,6 +6531,29 @@ export interface FileRoutesById {
   '/v14/strategic-invest': typeof V14StrategicInvestRoute
   '/v14/strategic-risk': typeof V14StrategicRiskRoute
   '/v14/value-tower': typeof V14ValueTowerRoute
+  '/v145/accounts': typeof V145AccountsRoute
+  '/v145/board': typeof V145BoardRoute
+  '/v145/cadence': typeof V145CadenceRoute
+  '/v145/cap-evidence': typeof V145CapEvidenceRoute
+  '/v145/capital': typeof V145CapitalRoute
+  '/v145/category': typeof V145CategoryRoute
+  '/v145/demo': typeof V145DemoRoute
+  '/v145/diligence': typeof V145DiligenceRoute
+  '/v145/exec-perf': typeof V145ExecPerfRoute
+  '/v145/lt-perf': typeof V145LtPerfRoute
+  '/v145/mp-controls': typeof V145MpControlsRoute
+  '/v145/mp-scale': typeof V145MpScaleRoute
+  '/v145/op-controls': typeof V145OpControlsRoute
+  '/v145/opex': typeof V145OpexRoute
+  '/v145/overview': typeof V145OverviewRoute
+  '/v145/partners': typeof V145PartnersRoute
+  '/v145/product-lines': typeof V145ProductLinesRoute
+  '/v145/proofs': typeof V145ProofsRoute
+  '/v145/reports': typeof V145ReportsRoute
+  '/v145/rev-exec': typeof V145RevExecRoute
+  '/v145/rev-systems': typeof V145RevSystemsRoute
+  '/v145/risk': typeof V145RiskRoute
+  '/v145/scope': typeof V145ScopeRoute
   '/v15/billing': typeof V15BillingRoute
   '/v15/copilot': typeof V15CopilotRoute
   '/v15/demo': typeof V15DemoRoute
@@ -7097,6 +7304,29 @@ export interface FileRouteTypes {
     | '/v14/strategic-invest'
     | '/v14/strategic-risk'
     | '/v14/value-tower'
+    | '/v145/accounts'
+    | '/v145/board'
+    | '/v145/cadence'
+    | '/v145/cap-evidence'
+    | '/v145/capital'
+    | '/v145/category'
+    | '/v145/demo'
+    | '/v145/diligence'
+    | '/v145/exec-perf'
+    | '/v145/lt-perf'
+    | '/v145/mp-controls'
+    | '/v145/mp-scale'
+    | '/v145/op-controls'
+    | '/v145/opex'
+    | '/v145/overview'
+    | '/v145/partners'
+    | '/v145/product-lines'
+    | '/v145/proofs'
+    | '/v145/reports'
+    | '/v145/rev-exec'
+    | '/v145/rev-systems'
+    | '/v145/risk'
+    | '/v145/scope'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -7845,6 +8075,29 @@ export interface FileRouteTypes {
     | '/v14/strategic-invest'
     | '/v14/strategic-risk'
     | '/v14/value-tower'
+    | '/v145/accounts'
+    | '/v145/board'
+    | '/v145/cadence'
+    | '/v145/cap-evidence'
+    | '/v145/capital'
+    | '/v145/category'
+    | '/v145/demo'
+    | '/v145/diligence'
+    | '/v145/exec-perf'
+    | '/v145/lt-perf'
+    | '/v145/mp-controls'
+    | '/v145/mp-scale'
+    | '/v145/op-controls'
+    | '/v145/opex'
+    | '/v145/overview'
+    | '/v145/partners'
+    | '/v145/product-lines'
+    | '/v145/proofs'
+    | '/v145/reports'
+    | '/v145/rev-exec'
+    | '/v145/rev-systems'
+    | '/v145/risk'
+    | '/v145/scope'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -8593,6 +8846,29 @@ export interface FileRouteTypes {
     | '/v14/strategic-invest'
     | '/v14/strategic-risk'
     | '/v14/value-tower'
+    | '/v145/accounts'
+    | '/v145/board'
+    | '/v145/cadence'
+    | '/v145/cap-evidence'
+    | '/v145/capital'
+    | '/v145/category'
+    | '/v145/demo'
+    | '/v145/diligence'
+    | '/v145/exec-perf'
+    | '/v145/lt-perf'
+    | '/v145/mp-controls'
+    | '/v145/mp-scale'
+    | '/v145/op-controls'
+    | '/v145/opex'
+    | '/v145/overview'
+    | '/v145/partners'
+    | '/v145/product-lines'
+    | '/v145/proofs'
+    | '/v145/reports'
+    | '/v145/rev-exec'
+    | '/v145/rev-systems'
+    | '/v145/risk'
+    | '/v145/scope'
     | '/v15/billing'
     | '/v15/copilot'
     | '/v15/demo'
@@ -9334,6 +9610,29 @@ export interface RootRouteChildren {
   V14StrategicInvestRoute: typeof V14StrategicInvestRoute
   V14StrategicRiskRoute: typeof V14StrategicRiskRoute
   V14ValueTowerRoute: typeof V14ValueTowerRoute
+  V145AccountsRoute: typeof V145AccountsRoute
+  V145BoardRoute: typeof V145BoardRoute
+  V145CadenceRoute: typeof V145CadenceRoute
+  V145CapEvidenceRoute: typeof V145CapEvidenceRoute
+  V145CapitalRoute: typeof V145CapitalRoute
+  V145CategoryRoute: typeof V145CategoryRoute
+  V145DemoRoute: typeof V145DemoRoute
+  V145DiligenceRoute: typeof V145DiligenceRoute
+  V145ExecPerfRoute: typeof V145ExecPerfRoute
+  V145LtPerfRoute: typeof V145LtPerfRoute
+  V145MpControlsRoute: typeof V145MpControlsRoute
+  V145MpScaleRoute: typeof V145MpScaleRoute
+  V145OpControlsRoute: typeof V145OpControlsRoute
+  V145OpexRoute: typeof V145OpexRoute
+  V145OverviewRoute: typeof V145OverviewRoute
+  V145PartnersRoute: typeof V145PartnersRoute
+  V145ProductLinesRoute: typeof V145ProductLinesRoute
+  V145ProofsRoute: typeof V145ProofsRoute
+  V145ReportsRoute: typeof V145ReportsRoute
+  V145RevExecRoute: typeof V145RevExecRoute
+  V145RevSystemsRoute: typeof V145RevSystemsRoute
+  V145RiskRoute: typeof V145RiskRoute
+  V145ScopeRoute: typeof V145ScopeRoute
   V15BillingRoute: typeof V15BillingRoute
   V15CopilotRoute: typeof V15CopilotRoute
   V15DemoRoute: typeof V15DemoRoute
@@ -12607,6 +12906,167 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V15BillingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v145/scope': {
+      id: '/v145/scope'
+      path: '/v145/scope'
+      fullPath: '/v145/scope'
+      preLoaderRoute: typeof V145ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/risk': {
+      id: '/v145/risk'
+      path: '/v145/risk'
+      fullPath: '/v145/risk'
+      preLoaderRoute: typeof V145RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/rev-systems': {
+      id: '/v145/rev-systems'
+      path: '/v145/rev-systems'
+      fullPath: '/v145/rev-systems'
+      preLoaderRoute: typeof V145RevSystemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/rev-exec': {
+      id: '/v145/rev-exec'
+      path: '/v145/rev-exec'
+      fullPath: '/v145/rev-exec'
+      preLoaderRoute: typeof V145RevExecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/reports': {
+      id: '/v145/reports'
+      path: '/v145/reports'
+      fullPath: '/v145/reports'
+      preLoaderRoute: typeof V145ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/proofs': {
+      id: '/v145/proofs'
+      path: '/v145/proofs'
+      fullPath: '/v145/proofs'
+      preLoaderRoute: typeof V145ProofsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/product-lines': {
+      id: '/v145/product-lines'
+      path: '/v145/product-lines'
+      fullPath: '/v145/product-lines'
+      preLoaderRoute: typeof V145ProductLinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/partners': {
+      id: '/v145/partners'
+      path: '/v145/partners'
+      fullPath: '/v145/partners'
+      preLoaderRoute: typeof V145PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/overview': {
+      id: '/v145/overview'
+      path: '/v145/overview'
+      fullPath: '/v145/overview'
+      preLoaderRoute: typeof V145OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/opex': {
+      id: '/v145/opex'
+      path: '/v145/opex'
+      fullPath: '/v145/opex'
+      preLoaderRoute: typeof V145OpexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/op-controls': {
+      id: '/v145/op-controls'
+      path: '/v145/op-controls'
+      fullPath: '/v145/op-controls'
+      preLoaderRoute: typeof V145OpControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/mp-scale': {
+      id: '/v145/mp-scale'
+      path: '/v145/mp-scale'
+      fullPath: '/v145/mp-scale'
+      preLoaderRoute: typeof V145MpScaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/mp-controls': {
+      id: '/v145/mp-controls'
+      path: '/v145/mp-controls'
+      fullPath: '/v145/mp-controls'
+      preLoaderRoute: typeof V145MpControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/lt-perf': {
+      id: '/v145/lt-perf'
+      path: '/v145/lt-perf'
+      fullPath: '/v145/lt-perf'
+      preLoaderRoute: typeof V145LtPerfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/exec-perf': {
+      id: '/v145/exec-perf'
+      path: '/v145/exec-perf'
+      fullPath: '/v145/exec-perf'
+      preLoaderRoute: typeof V145ExecPerfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/diligence': {
+      id: '/v145/diligence'
+      path: '/v145/diligence'
+      fullPath: '/v145/diligence'
+      preLoaderRoute: typeof V145DiligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/demo': {
+      id: '/v145/demo'
+      path: '/v145/demo'
+      fullPath: '/v145/demo'
+      preLoaderRoute: typeof V145DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/category': {
+      id: '/v145/category'
+      path: '/v145/category'
+      fullPath: '/v145/category'
+      preLoaderRoute: typeof V145CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/capital': {
+      id: '/v145/capital'
+      path: '/v145/capital'
+      fullPath: '/v145/capital'
+      preLoaderRoute: typeof V145CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/cap-evidence': {
+      id: '/v145/cap-evidence'
+      path: '/v145/cap-evidence'
+      fullPath: '/v145/cap-evidence'
+      preLoaderRoute: typeof V145CapEvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/cadence': {
+      id: '/v145/cadence'
+      path: '/v145/cadence'
+      fullPath: '/v145/cadence'
+      preLoaderRoute: typeof V145CadenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/board': {
+      id: '/v145/board'
+      path: '/v145/board'
+      fullPath: '/v145/board'
+      preLoaderRoute: typeof V145BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v145/accounts': {
+      id: '/v145/accounts'
+      path: '/v145/accounts'
+      fullPath: '/v145/accounts'
+      preLoaderRoute: typeof V145AccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v14/value-tower': {
       id: '/v14/value-tower'
       path: '/v14/value-tower'
@@ -15355,6 +15815,29 @@ const rootRouteChildren: RootRouteChildren = {
   V14StrategicInvestRoute: V14StrategicInvestRoute,
   V14StrategicRiskRoute: V14StrategicRiskRoute,
   V14ValueTowerRoute: V14ValueTowerRoute,
+  V145AccountsRoute: V145AccountsRoute,
+  V145BoardRoute: V145BoardRoute,
+  V145CadenceRoute: V145CadenceRoute,
+  V145CapEvidenceRoute: V145CapEvidenceRoute,
+  V145CapitalRoute: V145CapitalRoute,
+  V145CategoryRoute: V145CategoryRoute,
+  V145DemoRoute: V145DemoRoute,
+  V145DiligenceRoute: V145DiligenceRoute,
+  V145ExecPerfRoute: V145ExecPerfRoute,
+  V145LtPerfRoute: V145LtPerfRoute,
+  V145MpControlsRoute: V145MpControlsRoute,
+  V145MpScaleRoute: V145MpScaleRoute,
+  V145OpControlsRoute: V145OpControlsRoute,
+  V145OpexRoute: V145OpexRoute,
+  V145OverviewRoute: V145OverviewRoute,
+  V145PartnersRoute: V145PartnersRoute,
+  V145ProductLinesRoute: V145ProductLinesRoute,
+  V145ProofsRoute: V145ProofsRoute,
+  V145ReportsRoute: V145ReportsRoute,
+  V145RevExecRoute: V145RevExecRoute,
+  V145RevSystemsRoute: V145RevSystemsRoute,
+  V145RiskRoute: V145RiskRoute,
+  V145ScopeRoute: V145ScopeRoute,
   V15BillingRoute: V15BillingRoute,
   V15CopilotRoute: V15CopilotRoute,
   V15DemoRoute: V15DemoRoute,
