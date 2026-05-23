@@ -20,6 +20,11 @@ function Page() {
         <div className="text-sm">Board action completion: <span className="font-semibold">{b.actions_completion}%</span></div>
         <ol className="list-decimal space-y-1 pl-5 text-xs">{b.next_quarter_priorities.map((p) => <li key={p}>{p}</li>)}</ol>
       </Section>
+      <Section title="RLS policy (board enterprise intelligence)">
+        {H.useV15RlsExtended().filter(r => r.table === "board_enterprise_intelligence_records").map(r => (
+          <pre key={r.table} className="overflow-x-auto rounded border border-white/10 bg-black/30 p-2 text-[11px] leading-relaxed">{r.policy}</pre>
+        ))}
+      </Section>
     </V15Page>
   );
 }
