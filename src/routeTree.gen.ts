@@ -373,6 +373,7 @@ import { Route as V25AuditRouteImport } from './routes/v25.audit'
 import { Route as V25ApiProductsRouteImport } from './routes/v25.api-products'
 import { Route as V25ApiMonetizationRouteImport } from './routes/v25.api-monetization'
 import { Route as V25ApiGatewayRouteImport } from './routes/v25.api-gateway'
+import { Route as V22OverviewRouteImport } from './routes/v22.overview'
 import { Route as V215ScopeRouteImport } from './routes/v215.scope'
 import { Route as V215ScaleRouteImport } from './routes/v215.scale'
 import { Route as V215RoadmapRouteImport } from './routes/v215.roadmap'
@@ -2892,6 +2893,11 @@ const V25ApiMonetizationRoute = V25ApiMonetizationRouteImport.update({
 const V25ApiGatewayRoute = V25ApiGatewayRouteImport.update({
   id: '/v25/api-gateway',
   path: '/v25/api-gateway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22OverviewRoute = V22OverviewRouteImport.update({
+  id: '/v22/overview',
+  path: '/v22/overview',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V215ScopeRoute = V215ScopeRouteImport.update({
@@ -7095,6 +7101,7 @@ export interface FileRoutesByFullPath {
   '/v215/roadmap': typeof V215RoadmapRoute
   '/v215/scale': typeof V215ScaleRoute
   '/v215/scope': typeof V215ScopeRoute
+  '/v22/overview': typeof V22OverviewRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -8157,6 +8164,7 @@ export interface FileRoutesByTo {
   '/v215/roadmap': typeof V215RoadmapRoute
   '/v215/scale': typeof V215ScaleRoute
   '/v215/scope': typeof V215ScopeRoute
+  '/v22/overview': typeof V22OverviewRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -9220,6 +9228,7 @@ export interface FileRoutesById {
   '/v215/roadmap': typeof V215RoadmapRoute
   '/v215/scale': typeof V215ScaleRoute
   '/v215/scope': typeof V215ScopeRoute
+  '/v22/overview': typeof V22OverviewRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -10284,6 +10293,7 @@ export interface FileRouteTypes {
     | '/v215/roadmap'
     | '/v215/scale'
     | '/v215/scope'
+    | '/v22/overview'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -11346,6 +11356,7 @@ export interface FileRouteTypes {
     | '/v215/roadmap'
     | '/v215/scale'
     | '/v215/scope'
+    | '/v22/overview'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -12408,6 +12419,7 @@ export interface FileRouteTypes {
     | '/v215/roadmap'
     | '/v215/scale'
     | '/v215/scope'
+    | '/v22/overview'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -13463,6 +13475,7 @@ export interface RootRouteChildren {
   V215RoadmapRoute: typeof V215RoadmapRoute
   V215ScaleRoute: typeof V215ScaleRoute
   V215ScopeRoute: typeof V215ScopeRoute
+  V22OverviewRoute: typeof V22OverviewRoute
   V25ApiGatewayRoute: typeof V25ApiGatewayRoute
   V25ApiMonetizationRoute: typeof V25ApiMonetizationRoute
   V25ApiProductsRoute: typeof V25ApiProductsRoute
@@ -16358,6 +16371,13 @@ declare module '@tanstack/react-router' {
       path: '/v25/api-gateway'
       fullPath: '/v25/api-gateway'
       preLoaderRoute: typeof V25ApiGatewayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/overview': {
+      id: '/v22/overview'
+      path: '/v22/overview'
+      fullPath: '/v22/overview'
+      preLoaderRoute: typeof V22OverviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v215/scope': {
@@ -21996,6 +22016,7 @@ const rootRouteChildren: RootRouteChildren = {
   V215RoadmapRoute: V215RoadmapRoute,
   V215ScaleRoute: V215ScaleRoute,
   V215ScopeRoute: V215ScopeRoute,
+  V22OverviewRoute: V22OverviewRoute,
   V25ApiGatewayRoute: V25ApiGatewayRoute,
   V25ApiMonetizationRoute: V25ApiMonetizationRoute,
   V25ApiProductsRoute: V25ApiProductsRoute,
