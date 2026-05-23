@@ -112,9 +112,16 @@ function Page() {
         <SimpleTable rows={edgeExtra.edge_routes_extra as any} columns={[
           { key: "path", label: "Public route" }, { key: "purpose", label: "Purpose" },
         ]} />
+      </Section>
 
       <Section title="RLS policy examples (expanded)">
         <SimpleTable rows={rls as any} columns={[
+          { key: "policy", label: "Policy" }, { key: "rule", label: "Rule" }, { key: "surface", label: "Surface" },
+        ]} />
+      </Section>
+
+      <Section title="RLS policy examples (extras)">
+        <SimpleTable rows={rlsExtra as any} columns={[
           { key: "policy", label: "Policy" }, { key: "rule", label: "Rule" }, { key: "surface", label: "Surface" },
         ]} />
       </Section>
