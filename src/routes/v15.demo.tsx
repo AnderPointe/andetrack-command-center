@@ -1,47 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ListChecks } from "lucide-react";
 import { V15Page } from "@/components/v15/V15Page";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { DEMO_STEPS } from "@/v15/data/mockPhase16";
-
-export const Route = createFileRoute("/v15/demo")({
-  head: () => ({ meta: [{ title: "V1.5 Demo Flow · Anderoute" }] }),
-  component: Page,
-});
-
-const actorTone: Record<string, string> = {
-  Admin:      "border-fuchsia-500/30 text-fuchsia-300",
-  Dispatcher: "border-cyan-500/30 text-cyan-300",
-  Driver:     "border-sky-500/30 text-sky-300",
-  Customer:   "border-emerald-500/30 text-emerald-300",
-  System:     "border-white/15 text-muted-foreground",
-  CoPilot:    "border-amber-500/30 text-amber-300",
-};
+import { Section, SimpleTable, ScoreCard, ExecHeadline } from "@/components/v15/ui-bits";
+import * as H from "@/v15/hooks";
 
 function Page() {
+  const flow = H.useV15Demo();
+  const out = H.useV15DemoOutcomes();
+  const teaser = H.useV15Phase44Teaser();
   return (
-    <V15Page
-      icon={<ListChecks className="size-6 text-cyan-300" />}
-      title="V1.5 Demo Flow"
-      blurb="End-to-end mock flow: real Mapbox route → driver navigation → ETA sync → off-route → reroute → billing usage → webhook delivery → CoPilot summary."
-    >
-      <Card className="border-white/10 bg-white/[0.02] p-4">
-        <ol className="space-y-2 text-sm">
-          {DEMO_STEPS.map((s) => (
-            <li key={s.step} className="rounded-lg border border-white/10 bg-black/20 p-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs text-muted-foreground">Step {s.step}</span>
-                  <Badge variant="outline" className={actorTone[s.actor]}>{s.actor}</Badge>
-                </div>
-              </div>
-              <div className="mt-1 text-sm">{s.action}</div>
-              <div className="mt-0.5 text-xs text-muted-foreground">→ {s.result}</div>
-            </li>
-          ))}
-        </ol>
-      </Card>
+    <V15Page icon={<ListChecks className="size-6 text-cyan-300" />} title="V15 Demo Flow" blurb="10-step persona walkthrough: CEO, CFO, MP Lead, Strategy, Board CoS, Product, CoS, Board.">
+      <div className="grid gap-3 md:grid-cols-4">
+        <ScoreCard label="Demo steps" value={flow.length} tone="violet" />
+        <ScoreCard label="Personas" value={new Set(flow.map(x => x.actor)).size} tone="emerald" />
+        <ScoreCard label="Outcomes" value={out.length} tone="amber" />
+        <ScoreCard label="Phase" value="43" tone="rose" />
+      </div>
+      <Section title="Persona demo flow">
+        <SimpleTable rows={flow as any} columns={[
+          { key: "step", label: "#" }, { key: "actor", label: "Actor" },
+          { key: "surface", label: "Surface" }, { key: "action", label: "Action" },
+          { key: "expect", label: "Expected" }, { key: "outcome", label: "Outcome" },
+        ]} />
+      </Section>
+      <Section title="Demo outcomes">
+        <ul className="list-disc space-y-1 pl-5 text-sm">{out.map(o => <li key={o}>{o}</li>)}</ul>
+      </Section>
+      <ExecHeadline tag="Phase 44 (V15.5) teaser — not started" headline="Enterprise intelligence maturity + autonomous-assist (human approval)" bullets={teaser} />
     </V15Page>
   );
 }
+
+export const Route = createFileRoute("/v15/demo")({
+  head: () => ({ meta: [{ title: "V15 Demo · Phase 43" }] }),
+  component: Page,
+});

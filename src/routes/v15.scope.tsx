@@ -1,53 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Layers } from "lucide-react";
 import { V15Page } from "@/components/v15/V15Page";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { V15_SCOPE } from "@/v15/data/mockPhase16";
-
-export const Route = createFileRoute("/v15/scope")({
-  head: () => ({ meta: [{ title: "V1.5 Scope · Anderoute" }] }),
-  component: Page,
-});
+import { Section, SimpleTable, StatusPill, ScoreCard } from "@/components/v15/ui-bits";
+import * as H from "@/v15/hooks";
 
 function Page() {
-  const inScope = V15_SCOPE.filter((s) => s.status === "in_v15");
-  const deferred = V15_SCOPE.filter((s) => s.status === "deferred");
+  const s = H.useV15Scope();
+  const f = H.useV15FeatureMatrix();
+  const c = H.useEnterprisePerformanceCommand();
   return (
-    <V15Page
-      icon={<Layers className="size-6 text-cyan-300" />}
-      title="V1.5 Scope Board"
-      blurb="Real navigation, production billing, basic integrations, and smarter CoPilot ship in V1.5. Full turn-by-turn voice, Android Auto, CarPlay, EDI, and SOC 2 automation are explicitly deferred."
-    >
-      <Card className="border-white/10 bg-white/[0.02] p-4">
-        <h2 className="text-sm font-semibold">In V1.5 ({inScope.length})</h2>
-        <div className="mt-3 grid gap-2 md:grid-cols-2">
-          {inScope.map((s) => (
-            <div key={s.id} className="flex items-center justify-between rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm">
-              <div>
-                <div>{s.title}</div>
-                <div className="text-xs text-muted-foreground">{s.area} · value {s.value}/5 · effort {s.effort}/5</div>
-              </div>
-              <Badge variant="outline" className="border-emerald-500/30 text-emerald-300">In V1.5</Badge>
-            </div>
-          ))}
-        </div>
-      </Card>
-
-      <Card className="border-white/10 bg-white/[0.02] p-4">
-        <h2 className="text-sm font-semibold">Deferred ({deferred.length})</h2>
-        <div className="mt-3 grid gap-2 md:grid-cols-2">
-          {deferred.map((s) => (
-            <div key={s.id} className="flex items-center justify-between rounded-lg border border-white/10 bg-black/20 px-3 py-2 text-sm">
-              <div>
-                <div>{s.title}</div>
-                <div className="text-xs text-muted-foreground">{s.area} · {s.note}</div>
-              </div>
-              <Badge variant="outline" className="border-amber-500/30 text-amber-300">Deferred</Badge>
-            </div>
-          ))}
-        </div>
-      </Card>
+    <V15Page icon={<Layers className="size-6 text-cyan-300" />} title="V15 Scope & Feature Matrix" blurb="Phase 43 scope board, V14.5→V15 feature matrix, deferred scope panel.">
+      <div className="grid gap-3 md:grid-cols-3">
+        <ScoreCard label="Enterprise performance" value={c.score} tone="violet" />
+        <ScoreCard label="V15 areas included" value={s.included.length} tone="emerald" />
+        <ScoreCard label="V15 deferred" value={s.deferred.length} tone="rose" />
+      </div>
+      <Section title="Included">
+        <ul className="grid list-disc gap-1 pl-5 text-xs md:grid-cols-2">{s.included.map((x) => <li key={x}>{x}</li>)}</ul>
+      </Section>
+      <Section title="Deferred (do NOT build)">
+        <ul className="grid list-disc gap-1 pl-5 text-xs md:grid-cols-2">{s.deferred.map((x) => <li key={x}>{x}</li>)}</ul>
+      </Section>
+      <Section title="V14.5 → V15 feature matrix">
+        <SimpleTable rows={f as any} columns={[
+          { key: "area", label: "Area" }, { key: "v145", label: "V14.5" }, { key: "v15", label: "V15" },
+          { key: "status", label: "Status", render: (r: any) => <StatusPill status={r.status} /> },
+        ]} />
+      </Section>
     </V15Page>
   );
 }
+
+export const Route = createFileRoute("/v15/scope")({
+  head: () => ({ meta: [{ title: "V15 Scope · Phase 43" }] }),
+  component: Page,
+});
