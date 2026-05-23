@@ -591,3 +591,109 @@ export const V13_PHASE40_TEASER = [
   "Marketplace economics optimization",
   "Board-level strategic operating system",
 ];
+
+// ---- Phase 39 polish: trends, exec headline, RLS SQL, edge/serverFn separation ----
+
+export const V13_CAPITAL_TRENDS = [
+  { quarter: "Q-3", score: 74, gaps_open: 9, ready_kpis: 9 },
+  { quarter: "Q-2", score: 77, gaps_open: 7, ready_kpis: 10 },
+  { quarter: "Q-1", score: 80, gaps_open: 6, ready_kpis: 12 },
+  { quarter: "Q-0", score: 83, gaps_open: 4, ready_kpis: 13 },
+];
+
+export const V13_REV_INTEL_TRENDS = [
+  { quarter: "Q-3", score: 78, sub_quality: 86, mp_quality: 68, api_quality: 58 },
+  { quarter: "Q-2", score: 81, sub_quality: 88, mp_quality: 70, api_quality: 62 },
+  { quarter: "Q-1", score: 84, sub_quality: 89, mp_quality: 72, api_quality: 65 },
+  { quarter: "Q-0", score: 86, sub_quality: 90, mp_quality: 74, api_quality: 68 },
+];
+
+export const V13_DILIGENCE_TRENDS = [
+  { quarter: "Q-3", avg_completeness: 68, ready: 6, at_risk: 6 },
+  { quarter: "Q-2", avg_completeness: 73, ready: 8, at_risk: 5 },
+  { quarter: "Q-1", avg_completeness: 77, ready: 9, at_risk: 4 },
+  { quarter: "Q-0", avg_completeness: 80, ready: 10, at_risk: 4 },
+];
+
+export const V13_DATA_ROOM_TRENDS = [
+  { quarter: "Q-3", readiness_pct: 58, ready: 10, placeholders: 5 },
+  { quarter: "Q-2", readiness_pct: 64, ready: 12, placeholders: 4 },
+  { quarter: "Q-1", readiness_pct: 70, ready: 13, placeholders: 3 },
+  { quarter: "Q-0", readiness_pct: 74, ready: 14, placeholders: 2 },
+];
+
+export const V13_EXEC_VALUE_TRENDS = [
+  { quarter: "Q-3", score: 78, decisions_closed: 3 },
+  { quarter: "Q-2", score: 81, decisions_closed: 4 },
+  { quarter: "Q-1", score: 84, decisions_closed: 5 },
+  { quarter: "Q-0", score: 87, decisions_closed: 6 },
+];
+
+export const V13_EXEC_HEADLINE = {
+  headline: "V13 capital readiness 83% (+9 QoQ) — revenue intel and exec value creation lead; legal/cert placeholders + Top-10 concentration remain the two gating gaps.",
+  highlights: [
+    "Revenue intelligence maturity 86% with subscription quality at 90.",
+    "Commercial diligence 80% avg completeness; 10 of 15 areas ready.",
+    "Capital data room 74% — placeholders down from 5 to 2 in 4Q.",
+    "Executive value creation 87% with 3 decisions queued for board.",
+  ],
+};
+
+export const V13_RLS_SQL_SNIPPETS = [
+  {
+    table: "v13_capital_readiness_scores",
+    sql: `-- exec/admin read own company; platform_owner read all
+create policy "v13_capital exec read" on public.v13_capital_readiness_scores
+for select to authenticated using (
+  public.is_platform_owner(auth.uid())
+  or (company_id = public.current_company()
+      and (public.has_role(auth.uid(), company_id, 'admin')
+        or public.has_role(auth.uid(), company_id, 'exec')))
+);`,
+  },
+  {
+    table: "commercial_diligence_records",
+    sql: `-- exec/admin only; never customer/carrier/partner
+create policy "diligence exec only" on public.commercial_diligence_records
+for all to authenticated using (
+  company_id = public.current_company()
+  and (public.has_role(auth.uid(), company_id, 'admin')
+    or public.has_role(auth.uid(), company_id, 'exec'))
+);`,
+  },
+  {
+    table: "partner_value_governance_records",
+    sql: `-- partner_mgr manage; exec read; partner sees only approved rows
+create policy "partner_value read approved" on public.partner_value_governance_records
+for select to authenticated using (
+  (company_id = public.current_company()
+   and (public.has_role(auth.uid(), company_id, 'admin')
+        or public.has_role(auth.uid(), company_id, 'partner_mgr')
+        or public.has_role(auth.uid(), company_id, 'exec')))
+  or (status = 'approved'
+      and exists (select 1 from public.partner_users pu
+                  where pu.user_id = auth.uid() and pu.partner_id = partner_id))
+);`,
+  },
+  {
+    table: "board_capital_governance_records",
+    sql: `-- board/exec/admin only; board sees only approved
+create policy "board_capital approved-only board" on public.board_capital_governance_records
+for select to authenticated using (
+  company_id = public.current_company() and (
+    public.has_role(auth.uid(), company_id, 'admin')
+    or public.has_role(auth.uid(), company_id, 'exec')
+    or (status = 'approved' and public.has_role(auth.uid(), company_id, 'board'))
+  )
+);`,
+  },
+];
+
+export const V13_EDGE_VS_SERVERFN = [
+  { kind: "ServerFn", surface: "App-internal capital scoring, diligence, data room, value creation, board", example: "calculate-v13-capital-readiness-score", why: "Typed RPC, requireSupabaseAuth + role checks, RLS enforced as user." },
+  { kind: "ServerFn", surface: "Concentration / strategic risk calculations", example: "calculate-customer-concentration-risk", why: "Sensitive — exec/cro only; never exposed on public routes." },
+  { kind: "Public route /api/public/*", surface: "External investor data room webhook", example: "investor-data-room-webhook", why: "HMAC signature only; no PII echoed back; supabaseAdmin write-only." },
+  { kind: "Public route /api/public/*", surface: "External partner attribution webhook", example: "partner-attribution-webhook", why: "HMAC verified; attribution rows insert-only; no customer data returned." },
+  { kind: "Browser client", surface: "Component reads on overview/demo cards", example: "supabase.from('v13_capital_readiness_scores').select()", why: "RLS scopes to current user; safe for exec dashboards." },
+  { kind: "Admin client (server-only)", surface: "Cross-tenant backfills + webhook ingestion", example: "supabaseAdmin inside verified webhook handler", why: "Service role bypasses RLS — only inside verified server routes." },
+];

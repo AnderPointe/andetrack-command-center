@@ -7,6 +7,7 @@ import * as H from "@/v13/hooks";
 
 function Page() {
   const dil = H.useCommercialDiligence();
+  const trends = H.useV13DiligenceTrends();
   const ready = dil.filter((d) => d.status === "ready").length;
   const atRisk = dil.filter((d) => d.status === "at_risk").length;
   const avg = Math.round(dil.reduce((a, b) => a + b.completeness, 0) / dil.length);
@@ -23,6 +24,13 @@ function Page() {
         <SimpleTable rows={dil as any} columns={[
           { key: "area", label: "Area" }, { key: "completeness", label: "%" }, { key: "owner", label: "Owner" },
           { key: "status", label: "Status", render: (r: any) => <StatusPill status={r.status} /> },
+        ]} />
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Diligence trend (last 4Q)</h3>
+        <SimpleTable rows={trends as any} columns={[
+          { key: "quarter", label: "Quarter" }, { key: "avg_completeness", label: "Avg %" },
+          { key: "ready", label: "Ready" }, { key: "at_risk", label: "At risk" },
         ]} />
       </Card>
     </V13Page>

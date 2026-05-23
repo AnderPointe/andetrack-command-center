@@ -7,8 +7,14 @@ import * as H from "@/v13/hooks";
 
 function Page() {
   const c = H.useEnterpriseCapitalReadiness();
+  const trends = H.useV13CapitalTrends();
+  const headline = H.useV13ExecHeadline();
   return (
     <V13Page icon={<Command className="size-6 text-indigo-300" />} title="Enterprise Capital Readiness Command Center" blurb="Capital readiness score, KPIs, gaps, and next actions. Mock-only — no IPO/acquisition readiness claims.">
+      <Card className="border-indigo-400/20 bg-indigo-400/5 p-4">
+        <div className="text-xs uppercase tracking-wide text-indigo-200/80">Exec headline</div>
+        <p className="mt-1 text-sm">{headline.headline}</p>
+      </Card>
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Capital readiness" value={c.score} tone="emerald" />
         <ScoreCard label="QoQ trend" value={c.trend_qoq} tone="sky" />
@@ -29,6 +35,13 @@ function Page() {
           <SimpleTable rows={c.actions as any} columns={[{ key: "action", label: "Action" }, { key: "owner", label: "Owner" }, { key: "due", label: "Due" }]} />
         </Card>
       </div>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Capital readiness trend (last 4Q)</h3>
+        <SimpleTable rows={trends as any} columns={[
+          { key: "quarter", label: "Quarter" }, { key: "score", label: "Score" },
+          { key: "ready_kpis", label: "Ready KPIs" }, { key: "gaps_open", label: "Open gaps" },
+        ]} />
+      </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Executive capital summary</h3>
         <ul className="list-disc space-y-1 pl-5 text-sm">

@@ -7,6 +7,7 @@ import * as H from "@/v13/hooks";
 
 function Page() {
   const dr = H.useCapitalDataRoom();
+  const trends = H.useV13DataRoomTrends();
   const ready = dr.filter((r) => r.status === "ready").length;
   const ph = dr.filter((r) => r.status === "placeholder").length;
   return (
@@ -22,6 +23,13 @@ function Page() {
         <SimpleTable rows={dr as any} columns={[
           { key: "section", label: "Section" }, { key: "owner", label: "Owner" },
           { key: "status", label: "Status", render: (r: any) => <StatusPill status={r.status} /> },
+        ]} />
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Data room readiness trend (last 4Q)</h3>
+        <SimpleTable rows={trends as any} columns={[
+          { key: "quarter", label: "Quarter" }, { key: "readiness_pct", label: "Readiness %" },
+          { key: "ready", label: "Ready" }, { key: "placeholders", label: "Placeholders" },
         ]} />
       </Card>
     </V13Page>
