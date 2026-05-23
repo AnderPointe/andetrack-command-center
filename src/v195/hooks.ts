@@ -1,4 +1,17 @@
 import * as D from "./data/mockPhase52";
+import * as P from "./data/mockPhase52Polish";
+
+export const useV195PolishHeadlines      = () => P.V195P_HEADLINES;
+export const useV195AreaDepth            = () => P.V195P_AREA_DEPTH;
+export const useV195OwnerHeatmap         = () => P.V195P_OWNER_HEATMAP;
+export const useV195NextBestHitl         = () => P.V195P_NEXT_BEST_HITL;
+export const useV195EvidenceFreshness    = () => P.V195P_EVIDENCE_FRESHNESS;
+export const useV195Invariants           = () => P.V195P_INVARIANTS;
+export const useV195RlsExamplesPolish    = () => P.V195P_RLS_EXAMPLES;
+export const useV195EdgeBoundaryPolish   = () => P.V195P_EDGE_BOUNDARY;
+export const useV195PersonaSlas          = () => P.V195P_PERSONA_SLAS;
+export const useV195GuardrailsPolish     = () => P.V195P_GUARDRAILS;
+export const useV195DemoPolish           = () => P.V195P_DEMO;
 
 export const useV195Scope                            = () => D.V195_SCOPE;
 export const useV195Headline                         = () => D.V195_HEADLINE;
