@@ -29,6 +29,12 @@ function Page() {
         <h3 className="text-sm font-semibold">Exception command queue</h3>
         <SimpleTable rows={q.exceptions as any} columns={[{ key: "item", label: "Item" }, { key: "owner", label: "Owner" }, { key: "age_days", label: "Age (d)" }]} />
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Revenue quality trend (last 4Q)</h3>
+        <SimpleTable rows={trends as any} columns={[
+          { key: "quarter", label: "Quarter" }, { key: "score", label: "Score" }, { key: "pass", label: "Pass" }, { key: "review", label: "Review" }, { key: "exception", label: "Exception" },
+        ]} />
+      </Card>
     </V125Page>
   );
 }
