@@ -1,5 +1,14 @@
 import * as D from "./data/mockPhase49";
 import * as P from "./data/mockPhase49Polish";
+import * as P2 from "./data/mockPhase49Polish2";
+
+export const useV18AreaDepth         = () => P2.V18_AREA_DEPTH;
+export const useV18RlsPolish2        = () => P2.V18_RLS_EXAMPLES_2;
+export const useV18EdgeBoundary2     = () => P2.V18_EDGE_BOUNDARY_2;
+export const useV18PersonaSlas       = () => P2.V18_PERSONA_SLAS;
+export const useV18DemoPolish2       = () => P2.V18_DEMO_FLOW_2;
+export const useV18Invariants        = () => P2.V18_INVARIANTS;
+export const useV18NextBestActions   = () => P2.V18_NEXT_BEST_ACTIONS;
 
 export const useV18PolishHeadlines       = () => P.V18_POLISH_HEADLINES;
 export const useV18OwnerHeatmap          = () => P.V18_OWNER_HEATMAP;
