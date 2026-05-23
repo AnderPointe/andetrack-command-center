@@ -373,6 +373,31 @@ import { Route as V25AuditRouteImport } from './routes/v25.audit'
 import { Route as V25ApiProductsRouteImport } from './routes/v25.api-products'
 import { Route as V25ApiMonetizationRouteImport } from './routes/v25.api-monetization'
 import { Route as V25ApiGatewayRouteImport } from './routes/v25.api-gateway'
+import { Route as V215ScopeRouteImport } from './routes/v215.scope'
+import { Route as V215ScaleRouteImport } from './routes/v215.scale'
+import { Route as V215RoadmapRouteImport } from './routes/v215.roadmap'
+import { Route as V215RiskRouteImport } from './routes/v215.risk'
+import { Route as V215RevenueRouteImport } from './routes/v215.revenue'
+import { Route as V215ReportsRouteImport } from './routes/v215.reports'
+import { Route as V215RecRouteImport } from './routes/v215.rec'
+import { Route as V215ProductsRouteImport } from './routes/v215.products'
+import { Route as V215PartnerRouteImport } from './routes/v215.partner'
+import { Route as V215PartBoundaryRouteImport } from './routes/v215.part-boundary'
+import { Route as V215OverviewRouteImport } from './routes/v215.overview'
+import { Route as V215OutcomeRouteImport } from './routes/v215.outcome'
+import { Route as V215MpRouteImport } from './routes/v215.mp'
+import { Route as V215ExecRouteImport } from './routes/v215.exec'
+import { Route as V215ExceptionRouteImport } from './routes/v215.exception'
+import { Route as V215EvidenceRouteImport } from './routes/v215.evidence'
+import { Route as V215DemoRouteImport } from './routes/v215.demo'
+import { Route as V215CustomerRouteImport } from './routes/v215.customer'
+import { Route as V215CustBoundaryRouteImport } from './routes/v215.cust-boundary'
+import { Route as V215CategoryRouteImport } from './routes/v215.category'
+import { Route as V215CapitalRouteImport } from './routes/v215.capital'
+import { Route as V215BoardReportRouteImport } from './routes/v215.board-report'
+import { Route as V215BoardRouteImport } from './routes/v215.board'
+import { Route as V215AuditRouteImport } from './routes/v215.audit'
+import { Route as V215ApprovalRouteImport } from './routes/v215.approval'
 import { Route as V21ScopeRouteImport } from './routes/v21.scope'
 import { Route as V21RoadmapRouteImport } from './routes/v21.roadmap'
 import { Route as V21RiskRouteImport } from './routes/v21.risk'
@@ -2867,6 +2892,131 @@ const V25ApiMonetizationRoute = V25ApiMonetizationRouteImport.update({
 const V25ApiGatewayRoute = V25ApiGatewayRouteImport.update({
   id: '/v25/api-gateway',
   path: '/v25/api-gateway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215ScopeRoute = V215ScopeRouteImport.update({
+  id: '/v215/scope',
+  path: '/v215/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215ScaleRoute = V215ScaleRouteImport.update({
+  id: '/v215/scale',
+  path: '/v215/scale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215RoadmapRoute = V215RoadmapRouteImport.update({
+  id: '/v215/roadmap',
+  path: '/v215/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215RiskRoute = V215RiskRouteImport.update({
+  id: '/v215/risk',
+  path: '/v215/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215RevenueRoute = V215RevenueRouteImport.update({
+  id: '/v215/revenue',
+  path: '/v215/revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215ReportsRoute = V215ReportsRouteImport.update({
+  id: '/v215/reports',
+  path: '/v215/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215RecRoute = V215RecRouteImport.update({
+  id: '/v215/rec',
+  path: '/v215/rec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215ProductsRoute = V215ProductsRouteImport.update({
+  id: '/v215/products',
+  path: '/v215/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215PartnerRoute = V215PartnerRouteImport.update({
+  id: '/v215/partner',
+  path: '/v215/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215PartBoundaryRoute = V215PartBoundaryRouteImport.update({
+  id: '/v215/part-boundary',
+  path: '/v215/part-boundary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215OverviewRoute = V215OverviewRouteImport.update({
+  id: '/v215/overview',
+  path: '/v215/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215OutcomeRoute = V215OutcomeRouteImport.update({
+  id: '/v215/outcome',
+  path: '/v215/outcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215MpRoute = V215MpRouteImport.update({
+  id: '/v215/mp',
+  path: '/v215/mp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215ExecRoute = V215ExecRouteImport.update({
+  id: '/v215/exec',
+  path: '/v215/exec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215ExceptionRoute = V215ExceptionRouteImport.update({
+  id: '/v215/exception',
+  path: '/v215/exception',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215EvidenceRoute = V215EvidenceRouteImport.update({
+  id: '/v215/evidence',
+  path: '/v215/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215DemoRoute = V215DemoRouteImport.update({
+  id: '/v215/demo',
+  path: '/v215/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215CustomerRoute = V215CustomerRouteImport.update({
+  id: '/v215/customer',
+  path: '/v215/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215CustBoundaryRoute = V215CustBoundaryRouteImport.update({
+  id: '/v215/cust-boundary',
+  path: '/v215/cust-boundary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215CategoryRoute = V215CategoryRouteImport.update({
+  id: '/v215/category',
+  path: '/v215/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215CapitalRoute = V215CapitalRouteImport.update({
+  id: '/v215/capital',
+  path: '/v215/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215BoardReportRoute = V215BoardReportRouteImport.update({
+  id: '/v215/board-report',
+  path: '/v215/board-report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215BoardRoute = V215BoardRouteImport.update({
+  id: '/v215/board',
+  path: '/v215/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215AuditRoute = V215AuditRouteImport.update({
+  id: '/v215/audit',
+  path: '/v215/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V215ApprovalRoute = V215ApprovalRouteImport.update({
+  id: '/v215/approval',
+  path: '/v215/approval',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V21ScopeRoute = V21ScopeRouteImport.update({
@@ -6920,6 +7070,31 @@ export interface FileRoutesByFullPath {
   '/v21/risk': typeof V21RiskRoute
   '/v21/roadmap': typeof V21RoadmapRoute
   '/v21/scope': typeof V21ScopeRoute
+  '/v215/approval': typeof V215ApprovalRoute
+  '/v215/audit': typeof V215AuditRoute
+  '/v215/board': typeof V215BoardRoute
+  '/v215/board-report': typeof V215BoardReportRoute
+  '/v215/capital': typeof V215CapitalRoute
+  '/v215/category': typeof V215CategoryRoute
+  '/v215/cust-boundary': typeof V215CustBoundaryRoute
+  '/v215/customer': typeof V215CustomerRoute
+  '/v215/demo': typeof V215DemoRoute
+  '/v215/evidence': typeof V215EvidenceRoute
+  '/v215/exception': typeof V215ExceptionRoute
+  '/v215/exec': typeof V215ExecRoute
+  '/v215/mp': typeof V215MpRoute
+  '/v215/outcome': typeof V215OutcomeRoute
+  '/v215/overview': typeof V215OverviewRoute
+  '/v215/part-boundary': typeof V215PartBoundaryRoute
+  '/v215/partner': typeof V215PartnerRoute
+  '/v215/products': typeof V215ProductsRoute
+  '/v215/rec': typeof V215RecRoute
+  '/v215/reports': typeof V215ReportsRoute
+  '/v215/revenue': typeof V215RevenueRoute
+  '/v215/risk': typeof V215RiskRoute
+  '/v215/roadmap': typeof V215RoadmapRoute
+  '/v215/scale': typeof V215ScaleRoute
+  '/v215/scope': typeof V215ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -7957,6 +8132,31 @@ export interface FileRoutesByTo {
   '/v21/risk': typeof V21RiskRoute
   '/v21/roadmap': typeof V21RoadmapRoute
   '/v21/scope': typeof V21ScopeRoute
+  '/v215/approval': typeof V215ApprovalRoute
+  '/v215/audit': typeof V215AuditRoute
+  '/v215/board': typeof V215BoardRoute
+  '/v215/board-report': typeof V215BoardReportRoute
+  '/v215/capital': typeof V215CapitalRoute
+  '/v215/category': typeof V215CategoryRoute
+  '/v215/cust-boundary': typeof V215CustBoundaryRoute
+  '/v215/customer': typeof V215CustomerRoute
+  '/v215/demo': typeof V215DemoRoute
+  '/v215/evidence': typeof V215EvidenceRoute
+  '/v215/exception': typeof V215ExceptionRoute
+  '/v215/exec': typeof V215ExecRoute
+  '/v215/mp': typeof V215MpRoute
+  '/v215/outcome': typeof V215OutcomeRoute
+  '/v215/overview': typeof V215OverviewRoute
+  '/v215/part-boundary': typeof V215PartBoundaryRoute
+  '/v215/partner': typeof V215PartnerRoute
+  '/v215/products': typeof V215ProductsRoute
+  '/v215/rec': typeof V215RecRoute
+  '/v215/reports': typeof V215ReportsRoute
+  '/v215/revenue': typeof V215RevenueRoute
+  '/v215/risk': typeof V215RiskRoute
+  '/v215/roadmap': typeof V215RoadmapRoute
+  '/v215/scale': typeof V215ScaleRoute
+  '/v215/scope': typeof V215ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -8995,6 +9195,31 @@ export interface FileRoutesById {
   '/v21/risk': typeof V21RiskRoute
   '/v21/roadmap': typeof V21RoadmapRoute
   '/v21/scope': typeof V21ScopeRoute
+  '/v215/approval': typeof V215ApprovalRoute
+  '/v215/audit': typeof V215AuditRoute
+  '/v215/board': typeof V215BoardRoute
+  '/v215/board-report': typeof V215BoardReportRoute
+  '/v215/capital': typeof V215CapitalRoute
+  '/v215/category': typeof V215CategoryRoute
+  '/v215/cust-boundary': typeof V215CustBoundaryRoute
+  '/v215/customer': typeof V215CustomerRoute
+  '/v215/demo': typeof V215DemoRoute
+  '/v215/evidence': typeof V215EvidenceRoute
+  '/v215/exception': typeof V215ExceptionRoute
+  '/v215/exec': typeof V215ExecRoute
+  '/v215/mp': typeof V215MpRoute
+  '/v215/outcome': typeof V215OutcomeRoute
+  '/v215/overview': typeof V215OverviewRoute
+  '/v215/part-boundary': typeof V215PartBoundaryRoute
+  '/v215/partner': typeof V215PartnerRoute
+  '/v215/products': typeof V215ProductsRoute
+  '/v215/rec': typeof V215RecRoute
+  '/v215/reports': typeof V215ReportsRoute
+  '/v215/revenue': typeof V215RevenueRoute
+  '/v215/risk': typeof V215RiskRoute
+  '/v215/roadmap': typeof V215RoadmapRoute
+  '/v215/scale': typeof V215ScaleRoute
+  '/v215/scope': typeof V215ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -10034,6 +10259,31 @@ export interface FileRouteTypes {
     | '/v21/risk'
     | '/v21/roadmap'
     | '/v21/scope'
+    | '/v215/approval'
+    | '/v215/audit'
+    | '/v215/board'
+    | '/v215/board-report'
+    | '/v215/capital'
+    | '/v215/category'
+    | '/v215/cust-boundary'
+    | '/v215/customer'
+    | '/v215/demo'
+    | '/v215/evidence'
+    | '/v215/exception'
+    | '/v215/exec'
+    | '/v215/mp'
+    | '/v215/outcome'
+    | '/v215/overview'
+    | '/v215/part-boundary'
+    | '/v215/partner'
+    | '/v215/products'
+    | '/v215/rec'
+    | '/v215/reports'
+    | '/v215/revenue'
+    | '/v215/risk'
+    | '/v215/roadmap'
+    | '/v215/scale'
+    | '/v215/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -11071,6 +11321,31 @@ export interface FileRouteTypes {
     | '/v21/risk'
     | '/v21/roadmap'
     | '/v21/scope'
+    | '/v215/approval'
+    | '/v215/audit'
+    | '/v215/board'
+    | '/v215/board-report'
+    | '/v215/capital'
+    | '/v215/category'
+    | '/v215/cust-boundary'
+    | '/v215/customer'
+    | '/v215/demo'
+    | '/v215/evidence'
+    | '/v215/exception'
+    | '/v215/exec'
+    | '/v215/mp'
+    | '/v215/outcome'
+    | '/v215/overview'
+    | '/v215/part-boundary'
+    | '/v215/partner'
+    | '/v215/products'
+    | '/v215/rec'
+    | '/v215/reports'
+    | '/v215/revenue'
+    | '/v215/risk'
+    | '/v215/roadmap'
+    | '/v215/scale'
+    | '/v215/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -12108,6 +12383,31 @@ export interface FileRouteTypes {
     | '/v21/risk'
     | '/v21/roadmap'
     | '/v21/scope'
+    | '/v215/approval'
+    | '/v215/audit'
+    | '/v215/board'
+    | '/v215/board-report'
+    | '/v215/capital'
+    | '/v215/category'
+    | '/v215/cust-boundary'
+    | '/v215/customer'
+    | '/v215/demo'
+    | '/v215/evidence'
+    | '/v215/exception'
+    | '/v215/exec'
+    | '/v215/mp'
+    | '/v215/outcome'
+    | '/v215/overview'
+    | '/v215/part-boundary'
+    | '/v215/partner'
+    | '/v215/products'
+    | '/v215/rec'
+    | '/v215/reports'
+    | '/v215/revenue'
+    | '/v215/risk'
+    | '/v215/roadmap'
+    | '/v215/scale'
+    | '/v215/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -13138,6 +13438,31 @@ export interface RootRouteChildren {
   V21RiskRoute: typeof V21RiskRoute
   V21RoadmapRoute: typeof V21RoadmapRoute
   V21ScopeRoute: typeof V21ScopeRoute
+  V215ApprovalRoute: typeof V215ApprovalRoute
+  V215AuditRoute: typeof V215AuditRoute
+  V215BoardRoute: typeof V215BoardRoute
+  V215BoardReportRoute: typeof V215BoardReportRoute
+  V215CapitalRoute: typeof V215CapitalRoute
+  V215CategoryRoute: typeof V215CategoryRoute
+  V215CustBoundaryRoute: typeof V215CustBoundaryRoute
+  V215CustomerRoute: typeof V215CustomerRoute
+  V215DemoRoute: typeof V215DemoRoute
+  V215EvidenceRoute: typeof V215EvidenceRoute
+  V215ExceptionRoute: typeof V215ExceptionRoute
+  V215ExecRoute: typeof V215ExecRoute
+  V215MpRoute: typeof V215MpRoute
+  V215OutcomeRoute: typeof V215OutcomeRoute
+  V215OverviewRoute: typeof V215OverviewRoute
+  V215PartBoundaryRoute: typeof V215PartBoundaryRoute
+  V215PartnerRoute: typeof V215PartnerRoute
+  V215ProductsRoute: typeof V215ProductsRoute
+  V215RecRoute: typeof V215RecRoute
+  V215ReportsRoute: typeof V215ReportsRoute
+  V215RevenueRoute: typeof V215RevenueRoute
+  V215RiskRoute: typeof V215RiskRoute
+  V215RoadmapRoute: typeof V215RoadmapRoute
+  V215ScaleRoute: typeof V215ScaleRoute
+  V215ScopeRoute: typeof V215ScopeRoute
   V25ApiGatewayRoute: typeof V25ApiGatewayRoute
   V25ApiMonetizationRoute: typeof V25ApiMonetizationRoute
   V25ApiProductsRoute: typeof V25ApiProductsRoute
@@ -16033,6 +16358,181 @@ declare module '@tanstack/react-router' {
       path: '/v25/api-gateway'
       fullPath: '/v25/api-gateway'
       preLoaderRoute: typeof V25ApiGatewayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/scope': {
+      id: '/v215/scope'
+      path: '/v215/scope'
+      fullPath: '/v215/scope'
+      preLoaderRoute: typeof V215ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/scale': {
+      id: '/v215/scale'
+      path: '/v215/scale'
+      fullPath: '/v215/scale'
+      preLoaderRoute: typeof V215ScaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/roadmap': {
+      id: '/v215/roadmap'
+      path: '/v215/roadmap'
+      fullPath: '/v215/roadmap'
+      preLoaderRoute: typeof V215RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/risk': {
+      id: '/v215/risk'
+      path: '/v215/risk'
+      fullPath: '/v215/risk'
+      preLoaderRoute: typeof V215RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/revenue': {
+      id: '/v215/revenue'
+      path: '/v215/revenue'
+      fullPath: '/v215/revenue'
+      preLoaderRoute: typeof V215RevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/reports': {
+      id: '/v215/reports'
+      path: '/v215/reports'
+      fullPath: '/v215/reports'
+      preLoaderRoute: typeof V215ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/rec': {
+      id: '/v215/rec'
+      path: '/v215/rec'
+      fullPath: '/v215/rec'
+      preLoaderRoute: typeof V215RecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/products': {
+      id: '/v215/products'
+      path: '/v215/products'
+      fullPath: '/v215/products'
+      preLoaderRoute: typeof V215ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/partner': {
+      id: '/v215/partner'
+      path: '/v215/partner'
+      fullPath: '/v215/partner'
+      preLoaderRoute: typeof V215PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/part-boundary': {
+      id: '/v215/part-boundary'
+      path: '/v215/part-boundary'
+      fullPath: '/v215/part-boundary'
+      preLoaderRoute: typeof V215PartBoundaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/overview': {
+      id: '/v215/overview'
+      path: '/v215/overview'
+      fullPath: '/v215/overview'
+      preLoaderRoute: typeof V215OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/outcome': {
+      id: '/v215/outcome'
+      path: '/v215/outcome'
+      fullPath: '/v215/outcome'
+      preLoaderRoute: typeof V215OutcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/mp': {
+      id: '/v215/mp'
+      path: '/v215/mp'
+      fullPath: '/v215/mp'
+      preLoaderRoute: typeof V215MpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/exec': {
+      id: '/v215/exec'
+      path: '/v215/exec'
+      fullPath: '/v215/exec'
+      preLoaderRoute: typeof V215ExecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/exception': {
+      id: '/v215/exception'
+      path: '/v215/exception'
+      fullPath: '/v215/exception'
+      preLoaderRoute: typeof V215ExceptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/evidence': {
+      id: '/v215/evidence'
+      path: '/v215/evidence'
+      fullPath: '/v215/evidence'
+      preLoaderRoute: typeof V215EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/demo': {
+      id: '/v215/demo'
+      path: '/v215/demo'
+      fullPath: '/v215/demo'
+      preLoaderRoute: typeof V215DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/customer': {
+      id: '/v215/customer'
+      path: '/v215/customer'
+      fullPath: '/v215/customer'
+      preLoaderRoute: typeof V215CustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/cust-boundary': {
+      id: '/v215/cust-boundary'
+      path: '/v215/cust-boundary'
+      fullPath: '/v215/cust-boundary'
+      preLoaderRoute: typeof V215CustBoundaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/category': {
+      id: '/v215/category'
+      path: '/v215/category'
+      fullPath: '/v215/category'
+      preLoaderRoute: typeof V215CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/capital': {
+      id: '/v215/capital'
+      path: '/v215/capital'
+      fullPath: '/v215/capital'
+      preLoaderRoute: typeof V215CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/board-report': {
+      id: '/v215/board-report'
+      path: '/v215/board-report'
+      fullPath: '/v215/board-report'
+      preLoaderRoute: typeof V215BoardReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/board': {
+      id: '/v215/board'
+      path: '/v215/board'
+      fullPath: '/v215/board'
+      preLoaderRoute: typeof V215BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/audit': {
+      id: '/v215/audit'
+      path: '/v215/audit'
+      fullPath: '/v215/audit'
+      preLoaderRoute: typeof V215AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v215/approval': {
+      id: '/v215/approval'
+      path: '/v215/approval'
+      fullPath: '/v215/approval'
+      preLoaderRoute: typeof V215ApprovalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v21/scope': {
@@ -21471,6 +21971,31 @@ const rootRouteChildren: RootRouteChildren = {
   V21RiskRoute: V21RiskRoute,
   V21RoadmapRoute: V21RoadmapRoute,
   V21ScopeRoute: V21ScopeRoute,
+  V215ApprovalRoute: V215ApprovalRoute,
+  V215AuditRoute: V215AuditRoute,
+  V215BoardRoute: V215BoardRoute,
+  V215BoardReportRoute: V215BoardReportRoute,
+  V215CapitalRoute: V215CapitalRoute,
+  V215CategoryRoute: V215CategoryRoute,
+  V215CustBoundaryRoute: V215CustBoundaryRoute,
+  V215CustomerRoute: V215CustomerRoute,
+  V215DemoRoute: V215DemoRoute,
+  V215EvidenceRoute: V215EvidenceRoute,
+  V215ExceptionRoute: V215ExceptionRoute,
+  V215ExecRoute: V215ExecRoute,
+  V215MpRoute: V215MpRoute,
+  V215OutcomeRoute: V215OutcomeRoute,
+  V215OverviewRoute: V215OverviewRoute,
+  V215PartBoundaryRoute: V215PartBoundaryRoute,
+  V215PartnerRoute: V215PartnerRoute,
+  V215ProductsRoute: V215ProductsRoute,
+  V215RecRoute: V215RecRoute,
+  V215ReportsRoute: V215ReportsRoute,
+  V215RevenueRoute: V215RevenueRoute,
+  V215RiskRoute: V215RiskRoute,
+  V215RoadmapRoute: V215RoadmapRoute,
+  V215ScaleRoute: V215ScaleRoute,
+  V215ScopeRoute: V215ScopeRoute,
   V25ApiGatewayRoute: V25ApiGatewayRoute,
   V25ApiMonetizationRoute: V25ApiMonetizationRoute,
   V25ApiProductsRoute: V25ApiProductsRoute,
