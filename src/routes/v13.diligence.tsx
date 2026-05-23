@@ -26,6 +26,13 @@ function Page() {
           { key: "status", label: "Status", render: (r: any) => <StatusPill status={r.status} /> },
         ]} />
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Diligence trend (last 4Q)</h3>
+        <SimpleTable rows={trends as any} columns={[
+          { key: "quarter", label: "Quarter" }, { key: "avg_completeness", label: "Avg %" },
+          { key: "ready", label: "Ready" }, { key: "at_risk", label: "At risk" },
+        ]} />
+      </Card>
     </V13Page>
   );
 }
