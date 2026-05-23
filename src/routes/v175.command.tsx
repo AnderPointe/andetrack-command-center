@@ -6,6 +6,8 @@ import * as H from "@/v175/hooks";
 
 function Page() {
   const gs = H.useGovernedAutomationScale();
+  const headlines = H.useV175PolishHeadlines();
+  const heatmap = H.useV175OwnerHeatmap();
   return (
     <V175Page icon={<Gauge className="size-6 text-emerald-300" />} title="Governed Enterprise Automation Scale Center"
       blurb="Governed automation scale score, policy compliance, approval health, evidence coverage, and per-domain coverage matrix. Audit completeness tracked across all surfaces.">
@@ -28,6 +30,18 @@ function Page() {
       <Section title="Executive automation scale action plan">
         <SimpleTable rows={gs.action_plan as any} columns={[
           { key: "item", label: "Action" }, { key: "owner", label: "Owner" }, { key: "due", label: "Due" },
+        ]} />
+      </Section>
+      <Section title="Polish headlines (per area)">
+        <SimpleTable rows={headlines as any} columns={[
+          { key: "area", label: "Area" }, { key: "headline", label: "Headline" }, { key: "trend", label: "Trend" },
+        ]} />
+      </Section>
+      <Section title="Owner approval heatmap">
+        <SimpleTable rows={heatmap as any} columns={[
+          { key: "owner", label: "Owner" }, { key: "pending", label: "Pending" },
+          { key: "overdue", label: "Overdue" }, { key: "high_risk", label: "High-risk" },
+          { key: "completion", label: "Completion" },
         ]} />
       </Section>
     </V175Page>
