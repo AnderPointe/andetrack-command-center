@@ -136,6 +136,12 @@ function Page() {
         ]} />
       </Section>
 
+      <Section title="V21.5 demo — extra steps (13–16)">
+        <SimpleTable rows={demoExtra as any} columns={[
+          { key: "id", label: "#" }, { key: "who", label: "Persona" }, { key: "step", label: "Step" }, { key: "outcome", label: "Outcome" },
+        ]} />
+      </Section>
+
       <Section title="Base demo (reference)">
         <SimpleTable rows={demoBase as any} columns={[
           { key: "id", label: "#" }, { key: "actor", label: "Persona" }, { key: "step", label: "Step" },
