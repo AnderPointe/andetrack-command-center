@@ -30,3 +30,15 @@ export const useV22Edge                             = () => D.V22_EDGE;
 export const useV22Guardrails                       = () => D.V22_GUARDRAILS;
 export const useV22Demo                             = () => D.V22_DEMO;
 export const useV22Phase58Teaser                    = () => D.V22_PHASE58_TEASER;
+
+import * as P from "./data/mockPhase57Polish";
+export const useV22PolishHeadline      = () => P.V22_POLISH_HEADLINE;
+export const useV22PolishDomains       = () => P.V22_POLISH_DOMAINS;
+export const useV22PolishHitlQueue     = () => P.V22_POLISH_HITL_QUEUE;
+export const useV22PolishBoundary      = () => P.V22_POLISH_BOUNDARY;
+export const useV22PolishRls           = () => P.V22_POLISH_RLS;
+export const useV22PolishEdge          = () => P.V22_POLISH_EDGE;
+export const useV22PolishInvariants    = () => P.V22_POLISH_INVARIANTS;
+export const useV22PolishDemo          = () => P.V22_POLISH_DEMO;
+export const useV22PolishRoadmap       = () => P.V22_POLISH_ROADMAP;
+export const useV22PolishOwnerHeatmap  = () => P.V22_POLISH_OWNER_HEATMAP;
