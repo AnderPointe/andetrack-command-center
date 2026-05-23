@@ -19,6 +19,15 @@ function Page() {
   const demoBase = H.useV215Demo();
   const roadmap = H.useV215PolishRoadmap();
   const teaser = H.useV215Phase57Teaser();
+  const p2Head = H.useV215Polish2Headlines();
+  const uplift = H.useV215Polish2DomainUplift();
+  const lcKpis = H.useV215Polish2LifecycleKpis();
+  const boundaryExtra = H.useV215Polish2BoundaryExtra();
+  const rlsExtra = H.useV215Polish2RlsExtra();
+  const edgeExtra = H.useV215Polish2EdgeExtra();
+  const demoExtra = H.useV215Polish2DemoExtra();
+  const roadmapDetail = H.useV215Polish2RoadmapDetail();
+  const hitlLatency = H.useV215Polish2HitlLatency();
 
   return (
     <V215Page icon={<ShieldCheck className="size-6 text-emerald-300" />}
