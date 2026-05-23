@@ -397,6 +397,31 @@ import { Route as V2ApprovalsRouteImport } from './routes/v2.approvals'
 import { Route as V2ApiMarketplaceRouteImport } from './routes/v2.api-marketplace'
 import { Route as V2ApiKeysRouteImport } from './routes/v2.api-keys'
 import { Route as V2AiOpsRouteImport } from './routes/v2.ai-ops'
+import { Route as V165ScopeRouteImport } from './routes/v165.scope'
+import { Route as V165RoadmapRouteImport } from './routes/v165.roadmap'
+import { Route as V165RiskRoutingRouteImport } from './routes/v165.risk-routing'
+import { Route as V165RevenueGovRouteImport } from './routes/v165.revenue-gov'
+import { Route as V165RevenueAutoRouteImport } from './routes/v165.revenue-auto'
+import { Route as V165ReportsRouteImport } from './routes/v165.reports'
+import { Route as V165RecEvidenceRouteImport } from './routes/v165.rec-evidence'
+import { Route as V165ProductAutoRouteImport } from './routes/v165.product-auto'
+import { Route as V165PolicyTuningRouteImport } from './routes/v165.policy-tuning'
+import { Route as V165PartnerAutoRouteImport } from './routes/v165.partner-auto'
+import { Route as V165OverviewRouteImport } from './routes/v165.overview'
+import { Route as V165MpMaturityRouteImport } from './routes/v165.mp-maturity'
+import { Route as V165MpGovRouteImport } from './routes/v165.mp-gov'
+import { Route as V165ExecRoutingRouteImport } from './routes/v165.exec-routing'
+import { Route as V165EvidenceAutoRouteImport } from './routes/v165.evidence-auto'
+import { Route as V165DemoRouteImport } from './routes/v165.demo'
+import { Route as V165ControlMonitorRouteImport } from './routes/v165.control-monitor'
+import { Route as V165CommandRouteImport } from './routes/v165.command'
+import { Route as V165CapitalAutoRouteImport } from './routes/v165.capital-auto'
+import { Route as V165BoardReportRouteImport } from './routes/v165.board-report'
+import { Route as V165BoardPacketRouteImport } from './routes/v165.board-packet'
+import { Route as V165BoardOsRouteImport } from './routes/v165.board-os'
+import { Route as V165AutomationQueueRouteImport } from './routes/v165.automation-queue'
+import { Route as V165ApprovalsRouteImport } from './routes/v165.approvals'
+import { Route as V165AccountAutoRouteImport } from './routes/v165.account-auto'
 import { Route as V16ScopeRouteImport } from './routes/v16.scope'
 import { Route as V16RoadmapRouteImport } from './routes/v16.roadmap'
 import { Route as V16RiskRouteImport } from './routes/v16.risk'
@@ -2790,6 +2815,131 @@ const V2ApiKeysRoute = V2ApiKeysRouteImport.update({
 const V2AiOpsRoute = V2AiOpsRouteImport.update({
   id: '/v2/ai-ops',
   path: '/v2/ai-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165ScopeRoute = V165ScopeRouteImport.update({
+  id: '/v165/scope',
+  path: '/v165/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165RoadmapRoute = V165RoadmapRouteImport.update({
+  id: '/v165/roadmap',
+  path: '/v165/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165RiskRoutingRoute = V165RiskRoutingRouteImport.update({
+  id: '/v165/risk-routing',
+  path: '/v165/risk-routing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165RevenueGovRoute = V165RevenueGovRouteImport.update({
+  id: '/v165/revenue-gov',
+  path: '/v165/revenue-gov',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165RevenueAutoRoute = V165RevenueAutoRouteImport.update({
+  id: '/v165/revenue-auto',
+  path: '/v165/revenue-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165ReportsRoute = V165ReportsRouteImport.update({
+  id: '/v165/reports',
+  path: '/v165/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165RecEvidenceRoute = V165RecEvidenceRouteImport.update({
+  id: '/v165/rec-evidence',
+  path: '/v165/rec-evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165ProductAutoRoute = V165ProductAutoRouteImport.update({
+  id: '/v165/product-auto',
+  path: '/v165/product-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165PolicyTuningRoute = V165PolicyTuningRouteImport.update({
+  id: '/v165/policy-tuning',
+  path: '/v165/policy-tuning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165PartnerAutoRoute = V165PartnerAutoRouteImport.update({
+  id: '/v165/partner-auto',
+  path: '/v165/partner-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165OverviewRoute = V165OverviewRouteImport.update({
+  id: '/v165/overview',
+  path: '/v165/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165MpMaturityRoute = V165MpMaturityRouteImport.update({
+  id: '/v165/mp-maturity',
+  path: '/v165/mp-maturity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165MpGovRoute = V165MpGovRouteImport.update({
+  id: '/v165/mp-gov',
+  path: '/v165/mp-gov',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165ExecRoutingRoute = V165ExecRoutingRouteImport.update({
+  id: '/v165/exec-routing',
+  path: '/v165/exec-routing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165EvidenceAutoRoute = V165EvidenceAutoRouteImport.update({
+  id: '/v165/evidence-auto',
+  path: '/v165/evidence-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165DemoRoute = V165DemoRouteImport.update({
+  id: '/v165/demo',
+  path: '/v165/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165ControlMonitorRoute = V165ControlMonitorRouteImport.update({
+  id: '/v165/control-monitor',
+  path: '/v165/control-monitor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165CommandRoute = V165CommandRouteImport.update({
+  id: '/v165/command',
+  path: '/v165/command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165CapitalAutoRoute = V165CapitalAutoRouteImport.update({
+  id: '/v165/capital-auto',
+  path: '/v165/capital-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165BoardReportRoute = V165BoardReportRouteImport.update({
+  id: '/v165/board-report',
+  path: '/v165/board-report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165BoardPacketRoute = V165BoardPacketRouteImport.update({
+  id: '/v165/board-packet',
+  path: '/v165/board-packet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165BoardOsRoute = V165BoardOsRouteImport.update({
+  id: '/v165/board-os',
+  path: '/v165/board-os',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165AutomationQueueRoute = V165AutomationQueueRouteImport.update({
+  id: '/v165/automation-queue',
+  path: '/v165/automation-queue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165ApprovalsRoute = V165ApprovalsRouteImport.update({
+  id: '/v165/approvals',
+  path: '/v165/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V165AccountAutoRoute = V165AccountAutoRouteImport.update({
+  id: '/v165/account-auto',
+  path: '/v165/account-auto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V16ScopeRoute = V16ScopeRouteImport.update({
@@ -5517,6 +5667,31 @@ export interface FileRoutesByFullPath {
   '/v16/risk': typeof V16RiskRoute
   '/v16/roadmap': typeof V16RoadmapRoute
   '/v16/scope': typeof V16ScopeRoute
+  '/v165/account-auto': typeof V165AccountAutoRoute
+  '/v165/approvals': typeof V165ApprovalsRoute
+  '/v165/automation-queue': typeof V165AutomationQueueRoute
+  '/v165/board-os': typeof V165BoardOsRoute
+  '/v165/board-packet': typeof V165BoardPacketRoute
+  '/v165/board-report': typeof V165BoardReportRoute
+  '/v165/capital-auto': typeof V165CapitalAutoRoute
+  '/v165/command': typeof V165CommandRoute
+  '/v165/control-monitor': typeof V165ControlMonitorRoute
+  '/v165/demo': typeof V165DemoRoute
+  '/v165/evidence-auto': typeof V165EvidenceAutoRoute
+  '/v165/exec-routing': typeof V165ExecRoutingRoute
+  '/v165/mp-gov': typeof V165MpGovRoute
+  '/v165/mp-maturity': typeof V165MpMaturityRoute
+  '/v165/overview': typeof V165OverviewRoute
+  '/v165/partner-auto': typeof V165PartnerAutoRoute
+  '/v165/policy-tuning': typeof V165PolicyTuningRoute
+  '/v165/product-auto': typeof V165ProductAutoRoute
+  '/v165/rec-evidence': typeof V165RecEvidenceRoute
+  '/v165/reports': typeof V165ReportsRoute
+  '/v165/revenue-auto': typeof V165RevenueAutoRoute
+  '/v165/revenue-gov': typeof V165RevenueGovRoute
+  '/v165/risk-routing': typeof V165RiskRoutingRoute
+  '/v165/roadmap': typeof V165RoadmapRoute
+  '/v165/scope': typeof V165ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -6357,6 +6532,31 @@ export interface FileRoutesByTo {
   '/v16/risk': typeof V16RiskRoute
   '/v16/roadmap': typeof V16RoadmapRoute
   '/v16/scope': typeof V16ScopeRoute
+  '/v165/account-auto': typeof V165AccountAutoRoute
+  '/v165/approvals': typeof V165ApprovalsRoute
+  '/v165/automation-queue': typeof V165AutomationQueueRoute
+  '/v165/board-os': typeof V165BoardOsRoute
+  '/v165/board-packet': typeof V165BoardPacketRoute
+  '/v165/board-report': typeof V165BoardReportRoute
+  '/v165/capital-auto': typeof V165CapitalAutoRoute
+  '/v165/command': typeof V165CommandRoute
+  '/v165/control-monitor': typeof V165ControlMonitorRoute
+  '/v165/demo': typeof V165DemoRoute
+  '/v165/evidence-auto': typeof V165EvidenceAutoRoute
+  '/v165/exec-routing': typeof V165ExecRoutingRoute
+  '/v165/mp-gov': typeof V165MpGovRoute
+  '/v165/mp-maturity': typeof V165MpMaturityRoute
+  '/v165/overview': typeof V165OverviewRoute
+  '/v165/partner-auto': typeof V165PartnerAutoRoute
+  '/v165/policy-tuning': typeof V165PolicyTuningRoute
+  '/v165/product-auto': typeof V165ProductAutoRoute
+  '/v165/rec-evidence': typeof V165RecEvidenceRoute
+  '/v165/reports': typeof V165ReportsRoute
+  '/v165/revenue-auto': typeof V165RevenueAutoRoute
+  '/v165/revenue-gov': typeof V165RevenueGovRoute
+  '/v165/risk-routing': typeof V165RiskRoutingRoute
+  '/v165/roadmap': typeof V165RoadmapRoute
+  '/v165/scope': typeof V165ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -7198,6 +7398,31 @@ export interface FileRoutesById {
   '/v16/risk': typeof V16RiskRoute
   '/v16/roadmap': typeof V16RoadmapRoute
   '/v16/scope': typeof V16ScopeRoute
+  '/v165/account-auto': typeof V165AccountAutoRoute
+  '/v165/approvals': typeof V165ApprovalsRoute
+  '/v165/automation-queue': typeof V165AutomationQueueRoute
+  '/v165/board-os': typeof V165BoardOsRoute
+  '/v165/board-packet': typeof V165BoardPacketRoute
+  '/v165/board-report': typeof V165BoardReportRoute
+  '/v165/capital-auto': typeof V165CapitalAutoRoute
+  '/v165/command': typeof V165CommandRoute
+  '/v165/control-monitor': typeof V165ControlMonitorRoute
+  '/v165/demo': typeof V165DemoRoute
+  '/v165/evidence-auto': typeof V165EvidenceAutoRoute
+  '/v165/exec-routing': typeof V165ExecRoutingRoute
+  '/v165/mp-gov': typeof V165MpGovRoute
+  '/v165/mp-maturity': typeof V165MpMaturityRoute
+  '/v165/overview': typeof V165OverviewRoute
+  '/v165/partner-auto': typeof V165PartnerAutoRoute
+  '/v165/policy-tuning': typeof V165PolicyTuningRoute
+  '/v165/product-auto': typeof V165ProductAutoRoute
+  '/v165/rec-evidence': typeof V165RecEvidenceRoute
+  '/v165/reports': typeof V165ReportsRoute
+  '/v165/revenue-auto': typeof V165RevenueAutoRoute
+  '/v165/revenue-gov': typeof V165RevenueGovRoute
+  '/v165/risk-routing': typeof V165RiskRoutingRoute
+  '/v165/roadmap': typeof V165RoadmapRoute
+  '/v165/scope': typeof V165ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -8040,6 +8265,31 @@ export interface FileRouteTypes {
     | '/v16/risk'
     | '/v16/roadmap'
     | '/v16/scope'
+    | '/v165/account-auto'
+    | '/v165/approvals'
+    | '/v165/automation-queue'
+    | '/v165/board-os'
+    | '/v165/board-packet'
+    | '/v165/board-report'
+    | '/v165/capital-auto'
+    | '/v165/command'
+    | '/v165/control-monitor'
+    | '/v165/demo'
+    | '/v165/evidence-auto'
+    | '/v165/exec-routing'
+    | '/v165/mp-gov'
+    | '/v165/mp-maturity'
+    | '/v165/overview'
+    | '/v165/partner-auto'
+    | '/v165/policy-tuning'
+    | '/v165/product-auto'
+    | '/v165/rec-evidence'
+    | '/v165/reports'
+    | '/v165/revenue-auto'
+    | '/v165/revenue-gov'
+    | '/v165/risk-routing'
+    | '/v165/roadmap'
+    | '/v165/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -8880,6 +9130,31 @@ export interface FileRouteTypes {
     | '/v16/risk'
     | '/v16/roadmap'
     | '/v16/scope'
+    | '/v165/account-auto'
+    | '/v165/approvals'
+    | '/v165/automation-queue'
+    | '/v165/board-os'
+    | '/v165/board-packet'
+    | '/v165/board-report'
+    | '/v165/capital-auto'
+    | '/v165/command'
+    | '/v165/control-monitor'
+    | '/v165/demo'
+    | '/v165/evidence-auto'
+    | '/v165/exec-routing'
+    | '/v165/mp-gov'
+    | '/v165/mp-maturity'
+    | '/v165/overview'
+    | '/v165/partner-auto'
+    | '/v165/policy-tuning'
+    | '/v165/product-auto'
+    | '/v165/rec-evidence'
+    | '/v165/reports'
+    | '/v165/revenue-auto'
+    | '/v165/revenue-gov'
+    | '/v165/risk-routing'
+    | '/v165/roadmap'
+    | '/v165/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -9720,6 +9995,31 @@ export interface FileRouteTypes {
     | '/v16/risk'
     | '/v16/roadmap'
     | '/v16/scope'
+    | '/v165/account-auto'
+    | '/v165/approvals'
+    | '/v165/automation-queue'
+    | '/v165/board-os'
+    | '/v165/board-packet'
+    | '/v165/board-report'
+    | '/v165/capital-auto'
+    | '/v165/command'
+    | '/v165/control-monitor'
+    | '/v165/demo'
+    | '/v165/evidence-auto'
+    | '/v165/exec-routing'
+    | '/v165/mp-gov'
+    | '/v165/mp-maturity'
+    | '/v165/overview'
+    | '/v165/partner-auto'
+    | '/v165/policy-tuning'
+    | '/v165/product-auto'
+    | '/v165/rec-evidence'
+    | '/v165/reports'
+    | '/v165/revenue-auto'
+    | '/v165/revenue-gov'
+    | '/v165/risk-routing'
+    | '/v165/roadmap'
+    | '/v165/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -10553,6 +10853,31 @@ export interface RootRouteChildren {
   V16RiskRoute: typeof V16RiskRoute
   V16RoadmapRoute: typeof V16RoadmapRoute
   V16ScopeRoute: typeof V16ScopeRoute
+  V165AccountAutoRoute: typeof V165AccountAutoRoute
+  V165ApprovalsRoute: typeof V165ApprovalsRoute
+  V165AutomationQueueRoute: typeof V165AutomationQueueRoute
+  V165BoardOsRoute: typeof V165BoardOsRoute
+  V165BoardPacketRoute: typeof V165BoardPacketRoute
+  V165BoardReportRoute: typeof V165BoardReportRoute
+  V165CapitalAutoRoute: typeof V165CapitalAutoRoute
+  V165CommandRoute: typeof V165CommandRoute
+  V165ControlMonitorRoute: typeof V165ControlMonitorRoute
+  V165DemoRoute: typeof V165DemoRoute
+  V165EvidenceAutoRoute: typeof V165EvidenceAutoRoute
+  V165ExecRoutingRoute: typeof V165ExecRoutingRoute
+  V165MpGovRoute: typeof V165MpGovRoute
+  V165MpMaturityRoute: typeof V165MpMaturityRoute
+  V165OverviewRoute: typeof V165OverviewRoute
+  V165PartnerAutoRoute: typeof V165PartnerAutoRoute
+  V165PolicyTuningRoute: typeof V165PolicyTuningRoute
+  V165ProductAutoRoute: typeof V165ProductAutoRoute
+  V165RecEvidenceRoute: typeof V165RecEvidenceRoute
+  V165ReportsRoute: typeof V165ReportsRoute
+  V165RevenueAutoRoute: typeof V165RevenueAutoRoute
+  V165RevenueGovRoute: typeof V165RevenueGovRoute
+  V165RiskRoutingRoute: typeof V165RiskRoutingRoute
+  V165RoadmapRoute: typeof V165RoadmapRoute
+  V165ScopeRoute: typeof V165ScopeRoute
   V2AiOpsRoute: typeof V2AiOpsRoute
   V2ApiKeysRoute: typeof V2ApiKeysRoute
   V2ApiMarketplaceRoute: typeof V2ApiMarketplaceRoute
@@ -13640,6 +13965,181 @@ declare module '@tanstack/react-router' {
       path: '/v2/ai-ops'
       fullPath: '/v2/ai-ops'
       preLoaderRoute: typeof V2AiOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/scope': {
+      id: '/v165/scope'
+      path: '/v165/scope'
+      fullPath: '/v165/scope'
+      preLoaderRoute: typeof V165ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/roadmap': {
+      id: '/v165/roadmap'
+      path: '/v165/roadmap'
+      fullPath: '/v165/roadmap'
+      preLoaderRoute: typeof V165RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/risk-routing': {
+      id: '/v165/risk-routing'
+      path: '/v165/risk-routing'
+      fullPath: '/v165/risk-routing'
+      preLoaderRoute: typeof V165RiskRoutingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/revenue-gov': {
+      id: '/v165/revenue-gov'
+      path: '/v165/revenue-gov'
+      fullPath: '/v165/revenue-gov'
+      preLoaderRoute: typeof V165RevenueGovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/revenue-auto': {
+      id: '/v165/revenue-auto'
+      path: '/v165/revenue-auto'
+      fullPath: '/v165/revenue-auto'
+      preLoaderRoute: typeof V165RevenueAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/reports': {
+      id: '/v165/reports'
+      path: '/v165/reports'
+      fullPath: '/v165/reports'
+      preLoaderRoute: typeof V165ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/rec-evidence': {
+      id: '/v165/rec-evidence'
+      path: '/v165/rec-evidence'
+      fullPath: '/v165/rec-evidence'
+      preLoaderRoute: typeof V165RecEvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/product-auto': {
+      id: '/v165/product-auto'
+      path: '/v165/product-auto'
+      fullPath: '/v165/product-auto'
+      preLoaderRoute: typeof V165ProductAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/policy-tuning': {
+      id: '/v165/policy-tuning'
+      path: '/v165/policy-tuning'
+      fullPath: '/v165/policy-tuning'
+      preLoaderRoute: typeof V165PolicyTuningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/partner-auto': {
+      id: '/v165/partner-auto'
+      path: '/v165/partner-auto'
+      fullPath: '/v165/partner-auto'
+      preLoaderRoute: typeof V165PartnerAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/overview': {
+      id: '/v165/overview'
+      path: '/v165/overview'
+      fullPath: '/v165/overview'
+      preLoaderRoute: typeof V165OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/mp-maturity': {
+      id: '/v165/mp-maturity'
+      path: '/v165/mp-maturity'
+      fullPath: '/v165/mp-maturity'
+      preLoaderRoute: typeof V165MpMaturityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/mp-gov': {
+      id: '/v165/mp-gov'
+      path: '/v165/mp-gov'
+      fullPath: '/v165/mp-gov'
+      preLoaderRoute: typeof V165MpGovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/exec-routing': {
+      id: '/v165/exec-routing'
+      path: '/v165/exec-routing'
+      fullPath: '/v165/exec-routing'
+      preLoaderRoute: typeof V165ExecRoutingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/evidence-auto': {
+      id: '/v165/evidence-auto'
+      path: '/v165/evidence-auto'
+      fullPath: '/v165/evidence-auto'
+      preLoaderRoute: typeof V165EvidenceAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/demo': {
+      id: '/v165/demo'
+      path: '/v165/demo'
+      fullPath: '/v165/demo'
+      preLoaderRoute: typeof V165DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/control-monitor': {
+      id: '/v165/control-monitor'
+      path: '/v165/control-monitor'
+      fullPath: '/v165/control-monitor'
+      preLoaderRoute: typeof V165ControlMonitorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/command': {
+      id: '/v165/command'
+      path: '/v165/command'
+      fullPath: '/v165/command'
+      preLoaderRoute: typeof V165CommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/capital-auto': {
+      id: '/v165/capital-auto'
+      path: '/v165/capital-auto'
+      fullPath: '/v165/capital-auto'
+      preLoaderRoute: typeof V165CapitalAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/board-report': {
+      id: '/v165/board-report'
+      path: '/v165/board-report'
+      fullPath: '/v165/board-report'
+      preLoaderRoute: typeof V165BoardReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/board-packet': {
+      id: '/v165/board-packet'
+      path: '/v165/board-packet'
+      fullPath: '/v165/board-packet'
+      preLoaderRoute: typeof V165BoardPacketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/board-os': {
+      id: '/v165/board-os'
+      path: '/v165/board-os'
+      fullPath: '/v165/board-os'
+      preLoaderRoute: typeof V165BoardOsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/automation-queue': {
+      id: '/v165/automation-queue'
+      path: '/v165/automation-queue'
+      fullPath: '/v165/automation-queue'
+      preLoaderRoute: typeof V165AutomationQueueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/approvals': {
+      id: '/v165/approvals'
+      path: '/v165/approvals'
+      fullPath: '/v165/approvals'
+      preLoaderRoute: typeof V165ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v165/account-auto': {
+      id: '/v165/account-auto'
+      path: '/v165/account-auto'
+      fullPath: '/v165/account-auto'
+      preLoaderRoute: typeof V165AccountAutoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v16/scope': {
@@ -17310,6 +17810,31 @@ const rootRouteChildren: RootRouteChildren = {
   V16RiskRoute: V16RiskRoute,
   V16RoadmapRoute: V16RoadmapRoute,
   V16ScopeRoute: V16ScopeRoute,
+  V165AccountAutoRoute: V165AccountAutoRoute,
+  V165ApprovalsRoute: V165ApprovalsRoute,
+  V165AutomationQueueRoute: V165AutomationQueueRoute,
+  V165BoardOsRoute: V165BoardOsRoute,
+  V165BoardPacketRoute: V165BoardPacketRoute,
+  V165BoardReportRoute: V165BoardReportRoute,
+  V165CapitalAutoRoute: V165CapitalAutoRoute,
+  V165CommandRoute: V165CommandRoute,
+  V165ControlMonitorRoute: V165ControlMonitorRoute,
+  V165DemoRoute: V165DemoRoute,
+  V165EvidenceAutoRoute: V165EvidenceAutoRoute,
+  V165ExecRoutingRoute: V165ExecRoutingRoute,
+  V165MpGovRoute: V165MpGovRoute,
+  V165MpMaturityRoute: V165MpMaturityRoute,
+  V165OverviewRoute: V165OverviewRoute,
+  V165PartnerAutoRoute: V165PartnerAutoRoute,
+  V165PolicyTuningRoute: V165PolicyTuningRoute,
+  V165ProductAutoRoute: V165ProductAutoRoute,
+  V165RecEvidenceRoute: V165RecEvidenceRoute,
+  V165ReportsRoute: V165ReportsRoute,
+  V165RevenueAutoRoute: V165RevenueAutoRoute,
+  V165RevenueGovRoute: V165RevenueGovRoute,
+  V165RiskRoutingRoute: V165RiskRoutingRoute,
+  V165RoadmapRoute: V165RoadmapRoute,
+  V165ScopeRoute: V165ScopeRoute,
   V2AiOpsRoute: V2AiOpsRoute,
   V2ApiKeysRoute: V2ApiKeysRoute,
   V2ApiMarketplaceRoute: V2ApiMarketplaceRoute,
