@@ -398,20 +398,30 @@ import { Route as V2ApiMarketplaceRouteImport } from './routes/v2.api-marketplac
 import { Route as V2ApiKeysRouteImport } from './routes/v2.api-keys'
 import { Route as V2AiOpsRouteImport } from './routes/v2.ai-ops'
 import { Route as V18ScopeRouteImport } from './routes/v18.scope'
+import { Route as V18RoadmapRouteImport } from './routes/v18.roadmap'
 import { Route as V18RiskGovRouteImport } from './routes/v18.risk-gov'
 import { Route as V18RevenueAutoRouteImport } from './routes/v18.revenue-auto'
+import { Route as V18ReportsRouteImport } from './routes/v18.reports'
 import { Route as V18RecQaRouteImport } from './routes/v18.rec-qa'
+import { Route as V18ProductsRouteImport } from './routes/v18.products'
 import { Route as V18PredOpsRouteImport } from './routes/v18.pred-ops'
 import { Route as V18PolicyRouteImport } from './routes/v18.policy'
+import { Route as V18PartnersRouteImport } from './routes/v18.partners'
 import { Route as V18OverviewRouteImport } from './routes/v18.overview'
 import { Route as V18OutcomesRouteImport } from './routes/v18.outcomes'
 import { Route as V18MpScaleRouteImport } from './routes/v18.mp-scale'
 import { Route as V18HitlScaleRouteImport } from './routes/v18.hitl-scale'
 import { Route as V18ExecAssuranceRouteImport } from './routes/v18.exec-assurance'
 import { Route as V18EvidenceRouteImport } from './routes/v18.evidence'
+import { Route as V18DemoRouteImport } from './routes/v18.demo'
 import { Route as V18CommandRouteImport } from './routes/v18.command'
+import { Route as V18CategoryRouteImport } from './routes/v18.category'
+import { Route as V18CapitalRouteImport } from './routes/v18.capital'
+import { Route as V18BoardReportRouteImport } from './routes/v18.board-report'
 import { Route as V18BoardMaturityRouteImport } from './routes/v18.board-maturity'
+import { Route as V18AuditRouteImport } from './routes/v18.audit'
 import { Route as V18ApprovalRelRouteImport } from './routes/v18.approval-rel'
+import { Route as V18AccountsRouteImport } from './routes/v18.accounts'
 import { Route as V175StratIntelRouteImport } from './routes/v175.strat-intel'
 import { Route as V175ScopeRouteImport } from './routes/v175.scope'
 import { Route as V175RoadmapRouteImport } from './routes/v175.roadmap'
@@ -2862,6 +2872,11 @@ const V18ScopeRoute = V18ScopeRouteImport.update({
   path: '/v18/scope',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V18RoadmapRoute = V18RoadmapRouteImport.update({
+  id: '/v18/roadmap',
+  path: '/v18/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V18RiskGovRoute = V18RiskGovRouteImport.update({
   id: '/v18/risk-gov',
   path: '/v18/risk-gov',
@@ -2872,9 +2887,19 @@ const V18RevenueAutoRoute = V18RevenueAutoRouteImport.update({
   path: '/v18/revenue-auto',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V18ReportsRoute = V18ReportsRouteImport.update({
+  id: '/v18/reports',
+  path: '/v18/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V18RecQaRoute = V18RecQaRouteImport.update({
   id: '/v18/rec-qa',
   path: '/v18/rec-qa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V18ProductsRoute = V18ProductsRouteImport.update({
+  id: '/v18/products',
+  path: '/v18/products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V18PredOpsRoute = V18PredOpsRouteImport.update({
@@ -2885,6 +2910,11 @@ const V18PredOpsRoute = V18PredOpsRouteImport.update({
 const V18PolicyRoute = V18PolicyRouteImport.update({
   id: '/v18/policy',
   path: '/v18/policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V18PartnersRoute = V18PartnersRouteImport.update({
+  id: '/v18/partners',
+  path: '/v18/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V18OverviewRoute = V18OverviewRouteImport.update({
@@ -2917,9 +2947,29 @@ const V18EvidenceRoute = V18EvidenceRouteImport.update({
   path: '/v18/evidence',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V18DemoRoute = V18DemoRouteImport.update({
+  id: '/v18/demo',
+  path: '/v18/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V18CommandRoute = V18CommandRouteImport.update({
   id: '/v18/command',
   path: '/v18/command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V18CategoryRoute = V18CategoryRouteImport.update({
+  id: '/v18/category',
+  path: '/v18/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V18CapitalRoute = V18CapitalRouteImport.update({
+  id: '/v18/capital',
+  path: '/v18/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V18BoardReportRoute = V18BoardReportRouteImport.update({
+  id: '/v18/board-report',
+  path: '/v18/board-report',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V18BoardMaturityRoute = V18BoardMaturityRouteImport.update({
@@ -2927,9 +2977,19 @@ const V18BoardMaturityRoute = V18BoardMaturityRouteImport.update({
   path: '/v18/board-maturity',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V18AuditRoute = V18AuditRouteImport.update({
+  id: '/v18/audit',
+  path: '/v18/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const V18ApprovalRelRoute = V18ApprovalRelRouteImport.update({
   id: '/v18/approval-rel',
   path: '/v18/approval-rel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V18AccountsRoute = V18AccountsRouteImport.update({
+  id: '/v18/accounts',
+  path: '/v18/accounts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V175StratIntelRoute = V175StratIntelRouteImport.update({
@@ -5957,20 +6017,30 @@ export interface FileRoutesByFullPath {
   '/v175/roadmap': typeof V175RoadmapRoute
   '/v175/scope': typeof V175ScopeRoute
   '/v175/strat-intel': typeof V175StratIntelRoute
+  '/v18/accounts': typeof V18AccountsRoute
   '/v18/approval-rel': typeof V18ApprovalRelRoute
+  '/v18/audit': typeof V18AuditRoute
   '/v18/board-maturity': typeof V18BoardMaturityRoute
+  '/v18/board-report': typeof V18BoardReportRoute
+  '/v18/capital': typeof V18CapitalRoute
+  '/v18/category': typeof V18CategoryRoute
   '/v18/command': typeof V18CommandRoute
+  '/v18/demo': typeof V18DemoRoute
   '/v18/evidence': typeof V18EvidenceRoute
   '/v18/exec-assurance': typeof V18ExecAssuranceRoute
   '/v18/hitl-scale': typeof V18HitlScaleRoute
   '/v18/mp-scale': typeof V18MpScaleRoute
   '/v18/outcomes': typeof V18OutcomesRoute
   '/v18/overview': typeof V18OverviewRoute
+  '/v18/partners': typeof V18PartnersRoute
   '/v18/policy': typeof V18PolicyRoute
   '/v18/pred-ops': typeof V18PredOpsRoute
+  '/v18/products': typeof V18ProductsRoute
   '/v18/rec-qa': typeof V18RecQaRoute
+  '/v18/reports': typeof V18ReportsRoute
   '/v18/revenue-auto': typeof V18RevenueAutoRoute
   '/v18/risk-gov': typeof V18RiskGovRoute
+  '/v18/roadmap': typeof V18RoadmapRoute
   '/v18/scope': typeof V18ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
@@ -6862,20 +6932,30 @@ export interface FileRoutesByTo {
   '/v175/roadmap': typeof V175RoadmapRoute
   '/v175/scope': typeof V175ScopeRoute
   '/v175/strat-intel': typeof V175StratIntelRoute
+  '/v18/accounts': typeof V18AccountsRoute
   '/v18/approval-rel': typeof V18ApprovalRelRoute
+  '/v18/audit': typeof V18AuditRoute
   '/v18/board-maturity': typeof V18BoardMaturityRoute
+  '/v18/board-report': typeof V18BoardReportRoute
+  '/v18/capital': typeof V18CapitalRoute
+  '/v18/category': typeof V18CategoryRoute
   '/v18/command': typeof V18CommandRoute
+  '/v18/demo': typeof V18DemoRoute
   '/v18/evidence': typeof V18EvidenceRoute
   '/v18/exec-assurance': typeof V18ExecAssuranceRoute
   '/v18/hitl-scale': typeof V18HitlScaleRoute
   '/v18/mp-scale': typeof V18MpScaleRoute
   '/v18/outcomes': typeof V18OutcomesRoute
   '/v18/overview': typeof V18OverviewRoute
+  '/v18/partners': typeof V18PartnersRoute
   '/v18/policy': typeof V18PolicyRoute
   '/v18/pred-ops': typeof V18PredOpsRoute
+  '/v18/products': typeof V18ProductsRoute
   '/v18/rec-qa': typeof V18RecQaRoute
+  '/v18/reports': typeof V18ReportsRoute
   '/v18/revenue-auto': typeof V18RevenueAutoRoute
   '/v18/risk-gov': typeof V18RiskGovRoute
+  '/v18/roadmap': typeof V18RoadmapRoute
   '/v18/scope': typeof V18ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
@@ -7768,20 +7848,30 @@ export interface FileRoutesById {
   '/v175/roadmap': typeof V175RoadmapRoute
   '/v175/scope': typeof V175ScopeRoute
   '/v175/strat-intel': typeof V175StratIntelRoute
+  '/v18/accounts': typeof V18AccountsRoute
   '/v18/approval-rel': typeof V18ApprovalRelRoute
+  '/v18/audit': typeof V18AuditRoute
   '/v18/board-maturity': typeof V18BoardMaturityRoute
+  '/v18/board-report': typeof V18BoardReportRoute
+  '/v18/capital': typeof V18CapitalRoute
+  '/v18/category': typeof V18CategoryRoute
   '/v18/command': typeof V18CommandRoute
+  '/v18/demo': typeof V18DemoRoute
   '/v18/evidence': typeof V18EvidenceRoute
   '/v18/exec-assurance': typeof V18ExecAssuranceRoute
   '/v18/hitl-scale': typeof V18HitlScaleRoute
   '/v18/mp-scale': typeof V18MpScaleRoute
   '/v18/outcomes': typeof V18OutcomesRoute
   '/v18/overview': typeof V18OverviewRoute
+  '/v18/partners': typeof V18PartnersRoute
   '/v18/policy': typeof V18PolicyRoute
   '/v18/pred-ops': typeof V18PredOpsRoute
+  '/v18/products': typeof V18ProductsRoute
   '/v18/rec-qa': typeof V18RecQaRoute
+  '/v18/reports': typeof V18ReportsRoute
   '/v18/revenue-auto': typeof V18RevenueAutoRoute
   '/v18/risk-gov': typeof V18RiskGovRoute
+  '/v18/roadmap': typeof V18RoadmapRoute
   '/v18/scope': typeof V18ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
@@ -8675,20 +8765,30 @@ export interface FileRouteTypes {
     | '/v175/roadmap'
     | '/v175/scope'
     | '/v175/strat-intel'
+    | '/v18/accounts'
     | '/v18/approval-rel'
+    | '/v18/audit'
     | '/v18/board-maturity'
+    | '/v18/board-report'
+    | '/v18/capital'
+    | '/v18/category'
     | '/v18/command'
+    | '/v18/demo'
     | '/v18/evidence'
     | '/v18/exec-assurance'
     | '/v18/hitl-scale'
     | '/v18/mp-scale'
     | '/v18/outcomes'
     | '/v18/overview'
+    | '/v18/partners'
     | '/v18/policy'
     | '/v18/pred-ops'
+    | '/v18/products'
     | '/v18/rec-qa'
+    | '/v18/reports'
     | '/v18/revenue-auto'
     | '/v18/risk-gov'
+    | '/v18/roadmap'
     | '/v18/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
@@ -9580,20 +9680,30 @@ export interface FileRouteTypes {
     | '/v175/roadmap'
     | '/v175/scope'
     | '/v175/strat-intel'
+    | '/v18/accounts'
     | '/v18/approval-rel'
+    | '/v18/audit'
     | '/v18/board-maturity'
+    | '/v18/board-report'
+    | '/v18/capital'
+    | '/v18/category'
     | '/v18/command'
+    | '/v18/demo'
     | '/v18/evidence'
     | '/v18/exec-assurance'
     | '/v18/hitl-scale'
     | '/v18/mp-scale'
     | '/v18/outcomes'
     | '/v18/overview'
+    | '/v18/partners'
     | '/v18/policy'
     | '/v18/pred-ops'
+    | '/v18/products'
     | '/v18/rec-qa'
+    | '/v18/reports'
     | '/v18/revenue-auto'
     | '/v18/risk-gov'
+    | '/v18/roadmap'
     | '/v18/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
@@ -10485,20 +10595,30 @@ export interface FileRouteTypes {
     | '/v175/roadmap'
     | '/v175/scope'
     | '/v175/strat-intel'
+    | '/v18/accounts'
     | '/v18/approval-rel'
+    | '/v18/audit'
     | '/v18/board-maturity'
+    | '/v18/board-report'
+    | '/v18/capital'
+    | '/v18/category'
     | '/v18/command'
+    | '/v18/demo'
     | '/v18/evidence'
     | '/v18/exec-assurance'
     | '/v18/hitl-scale'
     | '/v18/mp-scale'
     | '/v18/outcomes'
     | '/v18/overview'
+    | '/v18/partners'
     | '/v18/policy'
     | '/v18/pred-ops'
+    | '/v18/products'
     | '/v18/rec-qa'
+    | '/v18/reports'
     | '/v18/revenue-auto'
     | '/v18/risk-gov'
+    | '/v18/roadmap'
     | '/v18/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
@@ -11383,20 +11503,30 @@ export interface RootRouteChildren {
   V175RoadmapRoute: typeof V175RoadmapRoute
   V175ScopeRoute: typeof V175ScopeRoute
   V175StratIntelRoute: typeof V175StratIntelRoute
+  V18AccountsRoute: typeof V18AccountsRoute
   V18ApprovalRelRoute: typeof V18ApprovalRelRoute
+  V18AuditRoute: typeof V18AuditRoute
   V18BoardMaturityRoute: typeof V18BoardMaturityRoute
+  V18BoardReportRoute: typeof V18BoardReportRoute
+  V18CapitalRoute: typeof V18CapitalRoute
+  V18CategoryRoute: typeof V18CategoryRoute
   V18CommandRoute: typeof V18CommandRoute
+  V18DemoRoute: typeof V18DemoRoute
   V18EvidenceRoute: typeof V18EvidenceRoute
   V18ExecAssuranceRoute: typeof V18ExecAssuranceRoute
   V18HitlScaleRoute: typeof V18HitlScaleRoute
   V18MpScaleRoute: typeof V18MpScaleRoute
   V18OutcomesRoute: typeof V18OutcomesRoute
   V18OverviewRoute: typeof V18OverviewRoute
+  V18PartnersRoute: typeof V18PartnersRoute
   V18PolicyRoute: typeof V18PolicyRoute
   V18PredOpsRoute: typeof V18PredOpsRoute
+  V18ProductsRoute: typeof V18ProductsRoute
   V18RecQaRoute: typeof V18RecQaRoute
+  V18ReportsRoute: typeof V18ReportsRoute
   V18RevenueAutoRoute: typeof V18RevenueAutoRoute
   V18RiskGovRoute: typeof V18RiskGovRoute
+  V18RoadmapRoute: typeof V18RoadmapRoute
   V18ScopeRoute: typeof V18ScopeRoute
   V2AiOpsRoute: typeof V2AiOpsRoute
   V2ApiKeysRoute: typeof V2ApiKeysRoute
@@ -14494,6 +14624,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V18ScopeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v18/roadmap': {
+      id: '/v18/roadmap'
+      path: '/v18/roadmap'
+      fullPath: '/v18/roadmap'
+      preLoaderRoute: typeof V18RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v18/risk-gov': {
       id: '/v18/risk-gov'
       path: '/v18/risk-gov'
@@ -14508,11 +14645,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V18RevenueAutoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v18/reports': {
+      id: '/v18/reports'
+      path: '/v18/reports'
+      fullPath: '/v18/reports'
+      preLoaderRoute: typeof V18ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v18/rec-qa': {
       id: '/v18/rec-qa'
       path: '/v18/rec-qa'
       fullPath: '/v18/rec-qa'
       preLoaderRoute: typeof V18RecQaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v18/products': {
+      id: '/v18/products'
+      path: '/v18/products'
+      fullPath: '/v18/products'
+      preLoaderRoute: typeof V18ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v18/pred-ops': {
@@ -14527,6 +14678,13 @@ declare module '@tanstack/react-router' {
       path: '/v18/policy'
       fullPath: '/v18/policy'
       preLoaderRoute: typeof V18PolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v18/partners': {
+      id: '/v18/partners'
+      path: '/v18/partners'
+      fullPath: '/v18/partners'
+      preLoaderRoute: typeof V18PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v18/overview': {
@@ -14571,11 +14729,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V18EvidenceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v18/demo': {
+      id: '/v18/demo'
+      path: '/v18/demo'
+      fullPath: '/v18/demo'
+      preLoaderRoute: typeof V18DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v18/command': {
       id: '/v18/command'
       path: '/v18/command'
       fullPath: '/v18/command'
       preLoaderRoute: typeof V18CommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v18/category': {
+      id: '/v18/category'
+      path: '/v18/category'
+      fullPath: '/v18/category'
+      preLoaderRoute: typeof V18CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v18/capital': {
+      id: '/v18/capital'
+      path: '/v18/capital'
+      fullPath: '/v18/capital'
+      preLoaderRoute: typeof V18CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v18/board-report': {
+      id: '/v18/board-report'
+      path: '/v18/board-report'
+      fullPath: '/v18/board-report'
+      preLoaderRoute: typeof V18BoardReportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v18/board-maturity': {
@@ -14585,11 +14771,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof V18BoardMaturityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v18/audit': {
+      id: '/v18/audit'
+      path: '/v18/audit'
+      fullPath: '/v18/audit'
+      preLoaderRoute: typeof V18AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/v18/approval-rel': {
       id: '/v18/approval-rel'
       path: '/v18/approval-rel'
       fullPath: '/v18/approval-rel'
       preLoaderRoute: typeof V18ApprovalRelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v18/accounts': {
+      id: '/v18/accounts'
+      path: '/v18/accounts'
+      fullPath: '/v18/accounts'
+      preLoaderRoute: typeof V18AccountsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v175/strat-intel': {
@@ -18660,20 +18860,30 @@ const rootRouteChildren: RootRouteChildren = {
   V175RoadmapRoute: V175RoadmapRoute,
   V175ScopeRoute: V175ScopeRoute,
   V175StratIntelRoute: V175StratIntelRoute,
+  V18AccountsRoute: V18AccountsRoute,
   V18ApprovalRelRoute: V18ApprovalRelRoute,
+  V18AuditRoute: V18AuditRoute,
   V18BoardMaturityRoute: V18BoardMaturityRoute,
+  V18BoardReportRoute: V18BoardReportRoute,
+  V18CapitalRoute: V18CapitalRoute,
+  V18CategoryRoute: V18CategoryRoute,
   V18CommandRoute: V18CommandRoute,
+  V18DemoRoute: V18DemoRoute,
   V18EvidenceRoute: V18EvidenceRoute,
   V18ExecAssuranceRoute: V18ExecAssuranceRoute,
   V18HitlScaleRoute: V18HitlScaleRoute,
   V18MpScaleRoute: V18MpScaleRoute,
   V18OutcomesRoute: V18OutcomesRoute,
   V18OverviewRoute: V18OverviewRoute,
+  V18PartnersRoute: V18PartnersRoute,
   V18PolicyRoute: V18PolicyRoute,
   V18PredOpsRoute: V18PredOpsRoute,
+  V18ProductsRoute: V18ProductsRoute,
   V18RecQaRoute: V18RecQaRoute,
+  V18ReportsRoute: V18ReportsRoute,
   V18RevenueAutoRoute: V18RevenueAutoRoute,
   V18RiskGovRoute: V18RiskGovRoute,
+  V18RoadmapRoute: V18RoadmapRoute,
   V18ScopeRoute: V18ScopeRoute,
   V2AiOpsRoute: V2AiOpsRoute,
   V2ApiKeysRoute: V2ApiKeysRoute,
