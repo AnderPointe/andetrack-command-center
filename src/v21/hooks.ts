@@ -1,4 +1,16 @@
 import * as D from "./data/mockPhase55";
+import * as P from "./data/mockPhase55Polish";
+
+export const useV21PolishHeadlines     = () => P.V21_POLISH_HEADLINES;
+export const useV21PolishDomains       = () => P.V21_POLISH_DOMAINS;
+export const useV21PolishHitlQueue     = () => P.V21_POLISH_HITL_QUEUE;
+export const useV21PolishBoundary      = () => P.V21_POLISH_BOUNDARY;
+export const useV21PolishRls           = () => P.V21_POLISH_RLS;
+export const useV21PolishEdge          = () => P.V21_POLISH_EDGE;
+export const useV21PolishInvariants    = () => P.V21_POLISH_INVARIANTS;
+export const useV21PolishDemo          = () => P.V21_POLISH_DEMO;
+export const useV21PolishRoadmap       = () => P.V21_POLISH_ROADMAP;
+export const useV21PolishOwnerHeatmap  = () => P.V21_POLISH_OWNER_HEATMAP;
 
 export const useV21Scope                            = () => D.V21_SCOPE;
 export const useV21Headline                         = () => D.V21_HEADLINE;
