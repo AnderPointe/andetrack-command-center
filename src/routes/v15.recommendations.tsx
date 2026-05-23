@@ -7,8 +7,9 @@ import * as H from "@/v15/hooks";
 
 function Page() {
   const recs = H.useOperatingIntelligenceRecommendations();
+  const rls = H.useV15RlsExtended().filter(r => r.table === "operating_intelligence_recommendations");
   return (
-    <V15Page icon={<Lightbulb className="size-6 text-cyan-300" />} title="Operating Intelligence Recommendation Engine" blurb="Each recommendation includes source signals, confidence, impact placeholder, risk, approver, approval status, audit ID, next action. Human approval is required.">
+    <V15Page icon={<Lightbulb className="size-6 text-cyan-300" />} title="Operating Intelligence Recommendation Engine" blurb="Each recommendation includes source signals, confidence, impact placeholder, risk, approver chain, approval status, audit ID, and next action. Human approval is required — no autonomous dispatch.">
       <div className="grid gap-3 md:grid-cols-2">
         {recs.map((r) => (
           <Card key={r.id} className="border-white/10 bg-white/[0.02] p-3 space-y-2">
@@ -35,11 +36,16 @@ function Page() {
             { key: "status", label: "Status", render: (x: any) => <StatusPill status={x.status} /> },
           ]} />
       </Section>
+      <Section title="RLS policy (recommendations table)">
+        {rls.map(r => (
+          <pre key={r.table} className="overflow-x-auto rounded border border-white/10 bg-black/30 p-2 text-[11px] leading-relaxed">{r.policy}</pre>
+        ))}
+      </Section>
     </V15Page>
   );
 }
 
 export const Route = createFileRoute("/v15/recommendations")({
-  head: () => ({ meta: [{ title: "Recommendations · V15" }] }),
+  head: () => ({ meta: [{ title: "Recommendations · V15 polish" }] }),
   component: Page,
 });
