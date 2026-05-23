@@ -7,6 +7,7 @@ import * as H from "@/v13/hooks";
 
 function Page() {
   const dil = H.useCommercialDiligence();
+  const trends = H.useV13DiligenceTrends();
   const ready = dil.filter((d) => d.status === "ready").length;
   const atRisk = dil.filter((d) => d.status === "at_risk").length;
   const avg = Math.round(dil.reduce((a, b) => a + b.completeness, 0) / dil.length);
