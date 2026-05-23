@@ -397,6 +397,31 @@ import { Route as V2ApprovalsRouteImport } from './routes/v2.approvals'
 import { Route as V2ApiMarketplaceRouteImport } from './routes/v2.api-marketplace'
 import { Route as V2ApiKeysRouteImport } from './routes/v2.api-keys'
 import { Route as V2AiOpsRouteImport } from './routes/v2.ai-ops'
+import { Route as V175StratIntelRouteImport } from './routes/v175.strat-intel'
+import { Route as V175ScopeRouteImport } from './routes/v175.scope'
+import { Route as V175RoadmapRouteImport } from './routes/v175.roadmap'
+import { Route as V175RiskOpsRouteImport } from './routes/v175.risk-ops'
+import { Route as V175RevenueOptRouteImport } from './routes/v175.revenue-opt'
+import { Route as V175ReportsRouteImport } from './routes/v175.reports'
+import { Route as V175RecQualityRouteImport } from './routes/v175.rec-quality'
+import { Route as V175ProductAutoRouteImport } from './routes/v175.product-auto'
+import { Route as V175PartnerAutoRouteImport } from './routes/v175.partner-auto'
+import { Route as V175OverviewRouteImport } from './routes/v175.overview'
+import { Route as V175OutcomeLearningRouteImport } from './routes/v175.outcome-learning'
+import { Route as V175MpGovRouteImport } from './routes/v175.mp-gov'
+import { Route as V175ExecOversightRouteImport } from './routes/v175.exec-oversight'
+import { Route as V175EvidenceScaleRouteImport } from './routes/v175.evidence-scale'
+import { Route as V175DemoRouteImport } from './routes/v175.demo'
+import { Route as V175ControlMaturityRouteImport } from './routes/v175.control-maturity'
+import { Route as V175CommandRouteImport } from './routes/v175.command'
+import { Route as V175CategoryAutoRouteImport } from './routes/v175.category-auto'
+import { Route as V175CapitalAutoRouteImport } from './routes/v175.capital-auto'
+import { Route as V175BoardReportRouteImport } from './routes/v175.board-report'
+import { Route as V175BoardExecRouteImport } from './routes/v175.board-exec'
+import { Route as V175BoardEvidenceRouteImport } from './routes/v175.board-evidence'
+import { Route as V175AuditRouteImport } from './routes/v175.audit'
+import { Route as V175ApprovalScaleRouteImport } from './routes/v175.approval-scale'
+import { Route as V175AccountAutoRouteImport } from './routes/v175.account-auto'
 import { Route as V165ScopeRouteImport } from './routes/v165.scope'
 import { Route as V165RoadmapRouteImport } from './routes/v165.roadmap'
 import { Route as V165RiskRoutingRouteImport } from './routes/v165.risk-routing'
@@ -2815,6 +2840,131 @@ const V2ApiKeysRoute = V2ApiKeysRouteImport.update({
 const V2AiOpsRoute = V2AiOpsRouteImport.update({
   id: '/v2/ai-ops',
   path: '/v2/ai-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175StratIntelRoute = V175StratIntelRouteImport.update({
+  id: '/v175/strat-intel',
+  path: '/v175/strat-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175ScopeRoute = V175ScopeRouteImport.update({
+  id: '/v175/scope',
+  path: '/v175/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175RoadmapRoute = V175RoadmapRouteImport.update({
+  id: '/v175/roadmap',
+  path: '/v175/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175RiskOpsRoute = V175RiskOpsRouteImport.update({
+  id: '/v175/risk-ops',
+  path: '/v175/risk-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175RevenueOptRoute = V175RevenueOptRouteImport.update({
+  id: '/v175/revenue-opt',
+  path: '/v175/revenue-opt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175ReportsRoute = V175ReportsRouteImport.update({
+  id: '/v175/reports',
+  path: '/v175/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175RecQualityRoute = V175RecQualityRouteImport.update({
+  id: '/v175/rec-quality',
+  path: '/v175/rec-quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175ProductAutoRoute = V175ProductAutoRouteImport.update({
+  id: '/v175/product-auto',
+  path: '/v175/product-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175PartnerAutoRoute = V175PartnerAutoRouteImport.update({
+  id: '/v175/partner-auto',
+  path: '/v175/partner-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175OverviewRoute = V175OverviewRouteImport.update({
+  id: '/v175/overview',
+  path: '/v175/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175OutcomeLearningRoute = V175OutcomeLearningRouteImport.update({
+  id: '/v175/outcome-learning',
+  path: '/v175/outcome-learning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175MpGovRoute = V175MpGovRouteImport.update({
+  id: '/v175/mp-gov',
+  path: '/v175/mp-gov',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175ExecOversightRoute = V175ExecOversightRouteImport.update({
+  id: '/v175/exec-oversight',
+  path: '/v175/exec-oversight',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175EvidenceScaleRoute = V175EvidenceScaleRouteImport.update({
+  id: '/v175/evidence-scale',
+  path: '/v175/evidence-scale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175DemoRoute = V175DemoRouteImport.update({
+  id: '/v175/demo',
+  path: '/v175/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175ControlMaturityRoute = V175ControlMaturityRouteImport.update({
+  id: '/v175/control-maturity',
+  path: '/v175/control-maturity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175CommandRoute = V175CommandRouteImport.update({
+  id: '/v175/command',
+  path: '/v175/command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175CategoryAutoRoute = V175CategoryAutoRouteImport.update({
+  id: '/v175/category-auto',
+  path: '/v175/category-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175CapitalAutoRoute = V175CapitalAutoRouteImport.update({
+  id: '/v175/capital-auto',
+  path: '/v175/capital-auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175BoardReportRoute = V175BoardReportRouteImport.update({
+  id: '/v175/board-report',
+  path: '/v175/board-report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175BoardExecRoute = V175BoardExecRouteImport.update({
+  id: '/v175/board-exec',
+  path: '/v175/board-exec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175BoardEvidenceRoute = V175BoardEvidenceRouteImport.update({
+  id: '/v175/board-evidence',
+  path: '/v175/board-evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175AuditRoute = V175AuditRouteImport.update({
+  id: '/v175/audit',
+  path: '/v175/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175ApprovalScaleRoute = V175ApprovalScaleRouteImport.update({
+  id: '/v175/approval-scale',
+  path: '/v175/approval-scale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V175AccountAutoRoute = V175AccountAutoRouteImport.update({
+  id: '/v175/account-auto',
+  path: '/v175/account-auto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V165ScopeRoute = V165ScopeRouteImport.update({
@@ -5692,6 +5842,31 @@ export interface FileRoutesByFullPath {
   '/v165/risk-routing': typeof V165RiskRoutingRoute
   '/v165/roadmap': typeof V165RoadmapRoute
   '/v165/scope': typeof V165ScopeRoute
+  '/v175/account-auto': typeof V175AccountAutoRoute
+  '/v175/approval-scale': typeof V175ApprovalScaleRoute
+  '/v175/audit': typeof V175AuditRoute
+  '/v175/board-evidence': typeof V175BoardEvidenceRoute
+  '/v175/board-exec': typeof V175BoardExecRoute
+  '/v175/board-report': typeof V175BoardReportRoute
+  '/v175/capital-auto': typeof V175CapitalAutoRoute
+  '/v175/category-auto': typeof V175CategoryAutoRoute
+  '/v175/command': typeof V175CommandRoute
+  '/v175/control-maturity': typeof V175ControlMaturityRoute
+  '/v175/demo': typeof V175DemoRoute
+  '/v175/evidence-scale': typeof V175EvidenceScaleRoute
+  '/v175/exec-oversight': typeof V175ExecOversightRoute
+  '/v175/mp-gov': typeof V175MpGovRoute
+  '/v175/outcome-learning': typeof V175OutcomeLearningRoute
+  '/v175/overview': typeof V175OverviewRoute
+  '/v175/partner-auto': typeof V175PartnerAutoRoute
+  '/v175/product-auto': typeof V175ProductAutoRoute
+  '/v175/rec-quality': typeof V175RecQualityRoute
+  '/v175/reports': typeof V175ReportsRoute
+  '/v175/revenue-opt': typeof V175RevenueOptRoute
+  '/v175/risk-ops': typeof V175RiskOpsRoute
+  '/v175/roadmap': typeof V175RoadmapRoute
+  '/v175/scope': typeof V175ScopeRoute
+  '/v175/strat-intel': typeof V175StratIntelRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -6557,6 +6732,31 @@ export interface FileRoutesByTo {
   '/v165/risk-routing': typeof V165RiskRoutingRoute
   '/v165/roadmap': typeof V165RoadmapRoute
   '/v165/scope': typeof V165ScopeRoute
+  '/v175/account-auto': typeof V175AccountAutoRoute
+  '/v175/approval-scale': typeof V175ApprovalScaleRoute
+  '/v175/audit': typeof V175AuditRoute
+  '/v175/board-evidence': typeof V175BoardEvidenceRoute
+  '/v175/board-exec': typeof V175BoardExecRoute
+  '/v175/board-report': typeof V175BoardReportRoute
+  '/v175/capital-auto': typeof V175CapitalAutoRoute
+  '/v175/category-auto': typeof V175CategoryAutoRoute
+  '/v175/command': typeof V175CommandRoute
+  '/v175/control-maturity': typeof V175ControlMaturityRoute
+  '/v175/demo': typeof V175DemoRoute
+  '/v175/evidence-scale': typeof V175EvidenceScaleRoute
+  '/v175/exec-oversight': typeof V175ExecOversightRoute
+  '/v175/mp-gov': typeof V175MpGovRoute
+  '/v175/outcome-learning': typeof V175OutcomeLearningRoute
+  '/v175/overview': typeof V175OverviewRoute
+  '/v175/partner-auto': typeof V175PartnerAutoRoute
+  '/v175/product-auto': typeof V175ProductAutoRoute
+  '/v175/rec-quality': typeof V175RecQualityRoute
+  '/v175/reports': typeof V175ReportsRoute
+  '/v175/revenue-opt': typeof V175RevenueOptRoute
+  '/v175/risk-ops': typeof V175RiskOpsRoute
+  '/v175/roadmap': typeof V175RoadmapRoute
+  '/v175/scope': typeof V175ScopeRoute
+  '/v175/strat-intel': typeof V175StratIntelRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -7423,6 +7623,31 @@ export interface FileRoutesById {
   '/v165/risk-routing': typeof V165RiskRoutingRoute
   '/v165/roadmap': typeof V165RoadmapRoute
   '/v165/scope': typeof V165ScopeRoute
+  '/v175/account-auto': typeof V175AccountAutoRoute
+  '/v175/approval-scale': typeof V175ApprovalScaleRoute
+  '/v175/audit': typeof V175AuditRoute
+  '/v175/board-evidence': typeof V175BoardEvidenceRoute
+  '/v175/board-exec': typeof V175BoardExecRoute
+  '/v175/board-report': typeof V175BoardReportRoute
+  '/v175/capital-auto': typeof V175CapitalAutoRoute
+  '/v175/category-auto': typeof V175CategoryAutoRoute
+  '/v175/command': typeof V175CommandRoute
+  '/v175/control-maturity': typeof V175ControlMaturityRoute
+  '/v175/demo': typeof V175DemoRoute
+  '/v175/evidence-scale': typeof V175EvidenceScaleRoute
+  '/v175/exec-oversight': typeof V175ExecOversightRoute
+  '/v175/mp-gov': typeof V175MpGovRoute
+  '/v175/outcome-learning': typeof V175OutcomeLearningRoute
+  '/v175/overview': typeof V175OverviewRoute
+  '/v175/partner-auto': typeof V175PartnerAutoRoute
+  '/v175/product-auto': typeof V175ProductAutoRoute
+  '/v175/rec-quality': typeof V175RecQualityRoute
+  '/v175/reports': typeof V175ReportsRoute
+  '/v175/revenue-opt': typeof V175RevenueOptRoute
+  '/v175/risk-ops': typeof V175RiskOpsRoute
+  '/v175/roadmap': typeof V175RoadmapRoute
+  '/v175/scope': typeof V175ScopeRoute
+  '/v175/strat-intel': typeof V175StratIntelRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -8290,6 +8515,31 @@ export interface FileRouteTypes {
     | '/v165/risk-routing'
     | '/v165/roadmap'
     | '/v165/scope'
+    | '/v175/account-auto'
+    | '/v175/approval-scale'
+    | '/v175/audit'
+    | '/v175/board-evidence'
+    | '/v175/board-exec'
+    | '/v175/board-report'
+    | '/v175/capital-auto'
+    | '/v175/category-auto'
+    | '/v175/command'
+    | '/v175/control-maturity'
+    | '/v175/demo'
+    | '/v175/evidence-scale'
+    | '/v175/exec-oversight'
+    | '/v175/mp-gov'
+    | '/v175/outcome-learning'
+    | '/v175/overview'
+    | '/v175/partner-auto'
+    | '/v175/product-auto'
+    | '/v175/rec-quality'
+    | '/v175/reports'
+    | '/v175/revenue-opt'
+    | '/v175/risk-ops'
+    | '/v175/roadmap'
+    | '/v175/scope'
+    | '/v175/strat-intel'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -9155,6 +9405,31 @@ export interface FileRouteTypes {
     | '/v165/risk-routing'
     | '/v165/roadmap'
     | '/v165/scope'
+    | '/v175/account-auto'
+    | '/v175/approval-scale'
+    | '/v175/audit'
+    | '/v175/board-evidence'
+    | '/v175/board-exec'
+    | '/v175/board-report'
+    | '/v175/capital-auto'
+    | '/v175/category-auto'
+    | '/v175/command'
+    | '/v175/control-maturity'
+    | '/v175/demo'
+    | '/v175/evidence-scale'
+    | '/v175/exec-oversight'
+    | '/v175/mp-gov'
+    | '/v175/outcome-learning'
+    | '/v175/overview'
+    | '/v175/partner-auto'
+    | '/v175/product-auto'
+    | '/v175/rec-quality'
+    | '/v175/reports'
+    | '/v175/revenue-opt'
+    | '/v175/risk-ops'
+    | '/v175/roadmap'
+    | '/v175/scope'
+    | '/v175/strat-intel'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -10020,6 +10295,31 @@ export interface FileRouteTypes {
     | '/v165/risk-routing'
     | '/v165/roadmap'
     | '/v165/scope'
+    | '/v175/account-auto'
+    | '/v175/approval-scale'
+    | '/v175/audit'
+    | '/v175/board-evidence'
+    | '/v175/board-exec'
+    | '/v175/board-report'
+    | '/v175/capital-auto'
+    | '/v175/category-auto'
+    | '/v175/command'
+    | '/v175/control-maturity'
+    | '/v175/demo'
+    | '/v175/evidence-scale'
+    | '/v175/exec-oversight'
+    | '/v175/mp-gov'
+    | '/v175/outcome-learning'
+    | '/v175/overview'
+    | '/v175/partner-auto'
+    | '/v175/product-auto'
+    | '/v175/rec-quality'
+    | '/v175/reports'
+    | '/v175/revenue-opt'
+    | '/v175/risk-ops'
+    | '/v175/roadmap'
+    | '/v175/scope'
+    | '/v175/strat-intel'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -10878,6 +11178,31 @@ export interface RootRouteChildren {
   V165RiskRoutingRoute: typeof V165RiskRoutingRoute
   V165RoadmapRoute: typeof V165RoadmapRoute
   V165ScopeRoute: typeof V165ScopeRoute
+  V175AccountAutoRoute: typeof V175AccountAutoRoute
+  V175ApprovalScaleRoute: typeof V175ApprovalScaleRoute
+  V175AuditRoute: typeof V175AuditRoute
+  V175BoardEvidenceRoute: typeof V175BoardEvidenceRoute
+  V175BoardExecRoute: typeof V175BoardExecRoute
+  V175BoardReportRoute: typeof V175BoardReportRoute
+  V175CapitalAutoRoute: typeof V175CapitalAutoRoute
+  V175CategoryAutoRoute: typeof V175CategoryAutoRoute
+  V175CommandRoute: typeof V175CommandRoute
+  V175ControlMaturityRoute: typeof V175ControlMaturityRoute
+  V175DemoRoute: typeof V175DemoRoute
+  V175EvidenceScaleRoute: typeof V175EvidenceScaleRoute
+  V175ExecOversightRoute: typeof V175ExecOversightRoute
+  V175MpGovRoute: typeof V175MpGovRoute
+  V175OutcomeLearningRoute: typeof V175OutcomeLearningRoute
+  V175OverviewRoute: typeof V175OverviewRoute
+  V175PartnerAutoRoute: typeof V175PartnerAutoRoute
+  V175ProductAutoRoute: typeof V175ProductAutoRoute
+  V175RecQualityRoute: typeof V175RecQualityRoute
+  V175ReportsRoute: typeof V175ReportsRoute
+  V175RevenueOptRoute: typeof V175RevenueOptRoute
+  V175RiskOpsRoute: typeof V175RiskOpsRoute
+  V175RoadmapRoute: typeof V175RoadmapRoute
+  V175ScopeRoute: typeof V175ScopeRoute
+  V175StratIntelRoute: typeof V175StratIntelRoute
   V2AiOpsRoute: typeof V2AiOpsRoute
   V2ApiKeysRoute: typeof V2ApiKeysRoute
   V2ApiMarketplaceRoute: typeof V2ApiMarketplaceRoute
@@ -13965,6 +14290,181 @@ declare module '@tanstack/react-router' {
       path: '/v2/ai-ops'
       fullPath: '/v2/ai-ops'
       preLoaderRoute: typeof V2AiOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/strat-intel': {
+      id: '/v175/strat-intel'
+      path: '/v175/strat-intel'
+      fullPath: '/v175/strat-intel'
+      preLoaderRoute: typeof V175StratIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/scope': {
+      id: '/v175/scope'
+      path: '/v175/scope'
+      fullPath: '/v175/scope'
+      preLoaderRoute: typeof V175ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/roadmap': {
+      id: '/v175/roadmap'
+      path: '/v175/roadmap'
+      fullPath: '/v175/roadmap'
+      preLoaderRoute: typeof V175RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/risk-ops': {
+      id: '/v175/risk-ops'
+      path: '/v175/risk-ops'
+      fullPath: '/v175/risk-ops'
+      preLoaderRoute: typeof V175RiskOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/revenue-opt': {
+      id: '/v175/revenue-opt'
+      path: '/v175/revenue-opt'
+      fullPath: '/v175/revenue-opt'
+      preLoaderRoute: typeof V175RevenueOptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/reports': {
+      id: '/v175/reports'
+      path: '/v175/reports'
+      fullPath: '/v175/reports'
+      preLoaderRoute: typeof V175ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/rec-quality': {
+      id: '/v175/rec-quality'
+      path: '/v175/rec-quality'
+      fullPath: '/v175/rec-quality'
+      preLoaderRoute: typeof V175RecQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/product-auto': {
+      id: '/v175/product-auto'
+      path: '/v175/product-auto'
+      fullPath: '/v175/product-auto'
+      preLoaderRoute: typeof V175ProductAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/partner-auto': {
+      id: '/v175/partner-auto'
+      path: '/v175/partner-auto'
+      fullPath: '/v175/partner-auto'
+      preLoaderRoute: typeof V175PartnerAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/overview': {
+      id: '/v175/overview'
+      path: '/v175/overview'
+      fullPath: '/v175/overview'
+      preLoaderRoute: typeof V175OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/outcome-learning': {
+      id: '/v175/outcome-learning'
+      path: '/v175/outcome-learning'
+      fullPath: '/v175/outcome-learning'
+      preLoaderRoute: typeof V175OutcomeLearningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/mp-gov': {
+      id: '/v175/mp-gov'
+      path: '/v175/mp-gov'
+      fullPath: '/v175/mp-gov'
+      preLoaderRoute: typeof V175MpGovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/exec-oversight': {
+      id: '/v175/exec-oversight'
+      path: '/v175/exec-oversight'
+      fullPath: '/v175/exec-oversight'
+      preLoaderRoute: typeof V175ExecOversightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/evidence-scale': {
+      id: '/v175/evidence-scale'
+      path: '/v175/evidence-scale'
+      fullPath: '/v175/evidence-scale'
+      preLoaderRoute: typeof V175EvidenceScaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/demo': {
+      id: '/v175/demo'
+      path: '/v175/demo'
+      fullPath: '/v175/demo'
+      preLoaderRoute: typeof V175DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/control-maturity': {
+      id: '/v175/control-maturity'
+      path: '/v175/control-maturity'
+      fullPath: '/v175/control-maturity'
+      preLoaderRoute: typeof V175ControlMaturityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/command': {
+      id: '/v175/command'
+      path: '/v175/command'
+      fullPath: '/v175/command'
+      preLoaderRoute: typeof V175CommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/category-auto': {
+      id: '/v175/category-auto'
+      path: '/v175/category-auto'
+      fullPath: '/v175/category-auto'
+      preLoaderRoute: typeof V175CategoryAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/capital-auto': {
+      id: '/v175/capital-auto'
+      path: '/v175/capital-auto'
+      fullPath: '/v175/capital-auto'
+      preLoaderRoute: typeof V175CapitalAutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/board-report': {
+      id: '/v175/board-report'
+      path: '/v175/board-report'
+      fullPath: '/v175/board-report'
+      preLoaderRoute: typeof V175BoardReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/board-exec': {
+      id: '/v175/board-exec'
+      path: '/v175/board-exec'
+      fullPath: '/v175/board-exec'
+      preLoaderRoute: typeof V175BoardExecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/board-evidence': {
+      id: '/v175/board-evidence'
+      path: '/v175/board-evidence'
+      fullPath: '/v175/board-evidence'
+      preLoaderRoute: typeof V175BoardEvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/audit': {
+      id: '/v175/audit'
+      path: '/v175/audit'
+      fullPath: '/v175/audit'
+      preLoaderRoute: typeof V175AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/approval-scale': {
+      id: '/v175/approval-scale'
+      path: '/v175/approval-scale'
+      fullPath: '/v175/approval-scale'
+      preLoaderRoute: typeof V175ApprovalScaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v175/account-auto': {
+      id: '/v175/account-auto'
+      path: '/v175/account-auto'
+      fullPath: '/v175/account-auto'
+      preLoaderRoute: typeof V175AccountAutoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v165/scope': {
@@ -17835,6 +18335,31 @@ const rootRouteChildren: RootRouteChildren = {
   V165RiskRoutingRoute: V165RiskRoutingRoute,
   V165RoadmapRoute: V165RoadmapRoute,
   V165ScopeRoute: V165ScopeRoute,
+  V175AccountAutoRoute: V175AccountAutoRoute,
+  V175ApprovalScaleRoute: V175ApprovalScaleRoute,
+  V175AuditRoute: V175AuditRoute,
+  V175BoardEvidenceRoute: V175BoardEvidenceRoute,
+  V175BoardExecRoute: V175BoardExecRoute,
+  V175BoardReportRoute: V175BoardReportRoute,
+  V175CapitalAutoRoute: V175CapitalAutoRoute,
+  V175CategoryAutoRoute: V175CategoryAutoRoute,
+  V175CommandRoute: V175CommandRoute,
+  V175ControlMaturityRoute: V175ControlMaturityRoute,
+  V175DemoRoute: V175DemoRoute,
+  V175EvidenceScaleRoute: V175EvidenceScaleRoute,
+  V175ExecOversightRoute: V175ExecOversightRoute,
+  V175MpGovRoute: V175MpGovRoute,
+  V175OutcomeLearningRoute: V175OutcomeLearningRoute,
+  V175OverviewRoute: V175OverviewRoute,
+  V175PartnerAutoRoute: V175PartnerAutoRoute,
+  V175ProductAutoRoute: V175ProductAutoRoute,
+  V175RecQualityRoute: V175RecQualityRoute,
+  V175ReportsRoute: V175ReportsRoute,
+  V175RevenueOptRoute: V175RevenueOptRoute,
+  V175RiskOpsRoute: V175RiskOpsRoute,
+  V175RoadmapRoute: V175RoadmapRoute,
+  V175ScopeRoute: V175ScopeRoute,
+  V175StratIntelRoute: V175StratIntelRoute,
   V2AiOpsRoute: V2AiOpsRoute,
   V2ApiKeysRoute: V2ApiKeysRoute,
   V2ApiMarketplaceRoute: V2ApiMarketplaceRoute,
