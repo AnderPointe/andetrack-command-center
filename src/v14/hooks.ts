@@ -1,0 +1,33 @@
+// V14 hooks — Phase 41 mock-only.
+import * as M from "./data/mockPhase41";
+
+export const useV14Scope                          = () => ({ scope: M.V14_SCOPE, matrix: M.V14_FEATURE_MATRIX, deferred: M.V14_DEFERRED });
+export const useEnterpriseStrategicOperatingSystem = () => M.V14_SOS;
+export const useV14SosTrends                      = () => M.V14_SOS_TRENDS;
+export const useV14ExecHeadline                   = () => M.V14_EXEC_HEADLINE;
+export const useCapitalExecutionMaturity          = () => M.V14_CAPITAL_EXEC;
+export const useLongTermRevenueDurability         = () => M.V14_REVENUE_DURABILITY;
+export const useRevenueDurabilityControls         = () => M.V14_REVENUE_CONTROLS;
+export const useMarketplaceEconomicsGovernance    = () => M.V14_MP_ECON;
+export const useMarketplaceEconomicsControls      = () => M.V14_MP_CONTROLS;
+export const useCategoryLeadershipStewardship     = () => M.V14_CATEGORY;
+export const useCategoryLeadershipEvidence        = () => M.V14_CATEGORY_EVIDENCE;
+export const useExecutiveValueCreationControl     = () => M.V14_VALUE_TOWER;
+export const useBoardStrategicExecution           = () => M.V14_BOARD_EXEC;
+export const useStrategicOperatingCadence         = () => M.V14_CADENCE;
+export const useStrategicRiskControl              = () => M.V14_STRATEGIC_RISK;
+export const useStrategicAccountValueGovernance   = () => M.V14_STRATEGIC_ACCT;
+export const usePartnerEcosystemValueGovernance   = () => M.V14_PARTNER_VALUE;
+export const useProductLineStrategicStewardship   = () => M.V14_PRODUCT_LINE;
+export const useStrategicInvestmentExecution      = () => M.V14_STRATEGIC_INVEST;
+export const useCapitalEvidenceControl            = () => M.V14_CAPITAL_EVIDENCE;
+export const useCommercialDiligenceControl        = () => M.V14_DILIGENCE;
+export const useEnterpriseValueCreationReporting  = () => M.V14_REPORTING;
+export const useLongTermStrategicOperatingRoadmap = () => M.V14_ROADMAP;
+export const useReportsV14                        = () => M.V14_REPORTING;
+export const useV14BackendBoundary                = () => M.V14_BACKEND_BOUNDARY;
+export const useV14EdgeVsServerFn                 = () => M.V14_EDGE_VS_SERVERFN;
+export const useV14RlsExamples                    = () => M.V14_RLS_EXAMPLES;
+export const useV14RlsSqlSnippets                 = () => M.V14_RLS_SQL_SNIPPETS;
+export const useV14Demo                           = () => M.V14_DEMO;
+export const useV14Phase42Teaser                  = () => M.V14_PHASE42_TEASER;
