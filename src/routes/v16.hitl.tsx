@@ -26,9 +26,25 @@ function Page() {
           { key: "reason", label: "Reason" },
         ]} />
       </Section>
-      <Section title="HITL executive summary">
-        <p className="text-sm text-muted-foreground">Approval discipline strong (91% SLA). 3 escalated for SLA breach, all routed to CEO. RLS sketch <code>rec_no_self_approve</code> enforced: approver_id ≠ recommender_id.</p>
+      <Section title="Owner approval heatmap (7d)">
+        <SimpleTable rows={H.useV16OwnerHeatmap() as any} columns={[
+          { key: "owner", label: "Owner" },
+          { key: "pending", label: "Pending" },
+          { key: "approved_7d", label: "Approved 7d" },
+          { key: "sla_breach", label: "SLA breach" },
+        ]} />
       </Section>
+      <Section title="RLS enforced on approvals">
+        <SimpleTable rows={H.useV16RlsExamples() as any} columns={[
+          { key: "name", label: "Policy" },
+          { key: "target", label: "Target" },
+          { key: "sql", label: "SQL sketch" },
+        ]} />
+      </Section>
+      <Section title="HITL executive summary">
+        <p className="text-sm text-muted-foreground">Approval discipline strong (91% SLA). 3 escalated for SLA breach, all routed to CEO. <code>rec_no_self_approve</code> + <code>evidence_attached_required</code> enforced — approver_id ≠ recommender_id and evidence must be attached before approval.</p>
+      </Section>
+
     </V16Page>
   );
 }
