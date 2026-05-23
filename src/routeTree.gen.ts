@@ -373,6 +373,31 @@ import { Route as V25AuditRouteImport } from './routes/v25.audit'
 import { Route as V25ApiProductsRouteImport } from './routes/v25.api-products'
 import { Route as V25ApiMonetizationRouteImport } from './routes/v25.api-monetization'
 import { Route as V25ApiGatewayRouteImport } from './routes/v25.api-gateway'
+import { Route as V22ScopeRouteImport } from './routes/v22.scope'
+import { Route as V22RoadmapRouteImport } from './routes/v22.roadmap'
+import { Route as V22RiskRouteImport } from './routes/v22.risk'
+import { Route as V22RevenueRouteImport } from './routes/v22.revenue'
+import { Route as V22ReportsRouteImport } from './routes/v22.reports'
+import { Route as V22RecRouteImport } from './routes/v22.rec'
+import { Route as V22ProductsRouteImport } from './routes/v22.products'
+import { Route as V22PartnerRouteImport } from './routes/v22.partner'
+import { Route as V22PartBoundaryRouteImport } from './routes/v22.part-boundary'
+import { Route as V22OverviewRouteImport } from './routes/v22.overview'
+import { Route as V22OutcomeRouteImport } from './routes/v22.outcome'
+import { Route as V22OperatingRouteImport } from './routes/v22.operating'
+import { Route as V22MpRouteImport } from './routes/v22.mp'
+import { Route as V22ExecRouteImport } from './routes/v22.exec'
+import { Route as V22ExceptionRouteImport } from './routes/v22.exception'
+import { Route as V22EvidenceRouteImport } from './routes/v22.evidence'
+import { Route as V22DemoRouteImport } from './routes/v22.demo'
+import { Route as V22CustomerRouteImport } from './routes/v22.customer'
+import { Route as V22CustBoundaryRouteImport } from './routes/v22.cust-boundary'
+import { Route as V22CategoryRouteImport } from './routes/v22.category'
+import { Route as V22CapitalRouteImport } from './routes/v22.capital'
+import { Route as V22BoardReportRouteImport } from './routes/v22.board-report'
+import { Route as V22BoardRouteImport } from './routes/v22.board'
+import { Route as V22AuditRouteImport } from './routes/v22.audit'
+import { Route as V22ApprovalRouteImport } from './routes/v22.approval'
 import { Route as V215ScopeRouteImport } from './routes/v215.scope'
 import { Route as V215ScaleRouteImport } from './routes/v215.scale'
 import { Route as V215RoadmapRouteImport } from './routes/v215.roadmap'
@@ -2892,6 +2917,131 @@ const V25ApiMonetizationRoute = V25ApiMonetizationRouteImport.update({
 const V25ApiGatewayRoute = V25ApiGatewayRouteImport.update({
   id: '/v25/api-gateway',
   path: '/v25/api-gateway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22ScopeRoute = V22ScopeRouteImport.update({
+  id: '/v22/scope',
+  path: '/v22/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22RoadmapRoute = V22RoadmapRouteImport.update({
+  id: '/v22/roadmap',
+  path: '/v22/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22RiskRoute = V22RiskRouteImport.update({
+  id: '/v22/risk',
+  path: '/v22/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22RevenueRoute = V22RevenueRouteImport.update({
+  id: '/v22/revenue',
+  path: '/v22/revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22ReportsRoute = V22ReportsRouteImport.update({
+  id: '/v22/reports',
+  path: '/v22/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22RecRoute = V22RecRouteImport.update({
+  id: '/v22/rec',
+  path: '/v22/rec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22ProductsRoute = V22ProductsRouteImport.update({
+  id: '/v22/products',
+  path: '/v22/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22PartnerRoute = V22PartnerRouteImport.update({
+  id: '/v22/partner',
+  path: '/v22/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22PartBoundaryRoute = V22PartBoundaryRouteImport.update({
+  id: '/v22/part-boundary',
+  path: '/v22/part-boundary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22OverviewRoute = V22OverviewRouteImport.update({
+  id: '/v22/overview',
+  path: '/v22/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22OutcomeRoute = V22OutcomeRouteImport.update({
+  id: '/v22/outcome',
+  path: '/v22/outcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22OperatingRoute = V22OperatingRouteImport.update({
+  id: '/v22/operating',
+  path: '/v22/operating',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22MpRoute = V22MpRouteImport.update({
+  id: '/v22/mp',
+  path: '/v22/mp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22ExecRoute = V22ExecRouteImport.update({
+  id: '/v22/exec',
+  path: '/v22/exec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22ExceptionRoute = V22ExceptionRouteImport.update({
+  id: '/v22/exception',
+  path: '/v22/exception',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22EvidenceRoute = V22EvidenceRouteImport.update({
+  id: '/v22/evidence',
+  path: '/v22/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22DemoRoute = V22DemoRouteImport.update({
+  id: '/v22/demo',
+  path: '/v22/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22CustomerRoute = V22CustomerRouteImport.update({
+  id: '/v22/customer',
+  path: '/v22/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22CustBoundaryRoute = V22CustBoundaryRouteImport.update({
+  id: '/v22/cust-boundary',
+  path: '/v22/cust-boundary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22CategoryRoute = V22CategoryRouteImport.update({
+  id: '/v22/category',
+  path: '/v22/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22CapitalRoute = V22CapitalRouteImport.update({
+  id: '/v22/capital',
+  path: '/v22/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22BoardReportRoute = V22BoardReportRouteImport.update({
+  id: '/v22/board-report',
+  path: '/v22/board-report',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22BoardRoute = V22BoardRouteImport.update({
+  id: '/v22/board',
+  path: '/v22/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22AuditRoute = V22AuditRouteImport.update({
+  id: '/v22/audit',
+  path: '/v22/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V22ApprovalRoute = V22ApprovalRouteImport.update({
+  id: '/v22/approval',
+  path: '/v22/approval',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V215ScopeRoute = V215ScopeRouteImport.update({
@@ -7095,6 +7245,31 @@ export interface FileRoutesByFullPath {
   '/v215/roadmap': typeof V215RoadmapRoute
   '/v215/scale': typeof V215ScaleRoute
   '/v215/scope': typeof V215ScopeRoute
+  '/v22/approval': typeof V22ApprovalRoute
+  '/v22/audit': typeof V22AuditRoute
+  '/v22/board': typeof V22BoardRoute
+  '/v22/board-report': typeof V22BoardReportRoute
+  '/v22/capital': typeof V22CapitalRoute
+  '/v22/category': typeof V22CategoryRoute
+  '/v22/cust-boundary': typeof V22CustBoundaryRoute
+  '/v22/customer': typeof V22CustomerRoute
+  '/v22/demo': typeof V22DemoRoute
+  '/v22/evidence': typeof V22EvidenceRoute
+  '/v22/exception': typeof V22ExceptionRoute
+  '/v22/exec': typeof V22ExecRoute
+  '/v22/mp': typeof V22MpRoute
+  '/v22/operating': typeof V22OperatingRoute
+  '/v22/outcome': typeof V22OutcomeRoute
+  '/v22/overview': typeof V22OverviewRoute
+  '/v22/part-boundary': typeof V22PartBoundaryRoute
+  '/v22/partner': typeof V22PartnerRoute
+  '/v22/products': typeof V22ProductsRoute
+  '/v22/rec': typeof V22RecRoute
+  '/v22/reports': typeof V22ReportsRoute
+  '/v22/revenue': typeof V22RevenueRoute
+  '/v22/risk': typeof V22RiskRoute
+  '/v22/roadmap': typeof V22RoadmapRoute
+  '/v22/scope': typeof V22ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -8157,6 +8332,31 @@ export interface FileRoutesByTo {
   '/v215/roadmap': typeof V215RoadmapRoute
   '/v215/scale': typeof V215ScaleRoute
   '/v215/scope': typeof V215ScopeRoute
+  '/v22/approval': typeof V22ApprovalRoute
+  '/v22/audit': typeof V22AuditRoute
+  '/v22/board': typeof V22BoardRoute
+  '/v22/board-report': typeof V22BoardReportRoute
+  '/v22/capital': typeof V22CapitalRoute
+  '/v22/category': typeof V22CategoryRoute
+  '/v22/cust-boundary': typeof V22CustBoundaryRoute
+  '/v22/customer': typeof V22CustomerRoute
+  '/v22/demo': typeof V22DemoRoute
+  '/v22/evidence': typeof V22EvidenceRoute
+  '/v22/exception': typeof V22ExceptionRoute
+  '/v22/exec': typeof V22ExecRoute
+  '/v22/mp': typeof V22MpRoute
+  '/v22/operating': typeof V22OperatingRoute
+  '/v22/outcome': typeof V22OutcomeRoute
+  '/v22/overview': typeof V22OverviewRoute
+  '/v22/part-boundary': typeof V22PartBoundaryRoute
+  '/v22/partner': typeof V22PartnerRoute
+  '/v22/products': typeof V22ProductsRoute
+  '/v22/rec': typeof V22RecRoute
+  '/v22/reports': typeof V22ReportsRoute
+  '/v22/revenue': typeof V22RevenueRoute
+  '/v22/risk': typeof V22RiskRoute
+  '/v22/roadmap': typeof V22RoadmapRoute
+  '/v22/scope': typeof V22ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -9220,6 +9420,31 @@ export interface FileRoutesById {
   '/v215/roadmap': typeof V215RoadmapRoute
   '/v215/scale': typeof V215ScaleRoute
   '/v215/scope': typeof V215ScopeRoute
+  '/v22/approval': typeof V22ApprovalRoute
+  '/v22/audit': typeof V22AuditRoute
+  '/v22/board': typeof V22BoardRoute
+  '/v22/board-report': typeof V22BoardReportRoute
+  '/v22/capital': typeof V22CapitalRoute
+  '/v22/category': typeof V22CategoryRoute
+  '/v22/cust-boundary': typeof V22CustBoundaryRoute
+  '/v22/customer': typeof V22CustomerRoute
+  '/v22/demo': typeof V22DemoRoute
+  '/v22/evidence': typeof V22EvidenceRoute
+  '/v22/exception': typeof V22ExceptionRoute
+  '/v22/exec': typeof V22ExecRoute
+  '/v22/mp': typeof V22MpRoute
+  '/v22/operating': typeof V22OperatingRoute
+  '/v22/outcome': typeof V22OutcomeRoute
+  '/v22/overview': typeof V22OverviewRoute
+  '/v22/part-boundary': typeof V22PartBoundaryRoute
+  '/v22/partner': typeof V22PartnerRoute
+  '/v22/products': typeof V22ProductsRoute
+  '/v22/rec': typeof V22RecRoute
+  '/v22/reports': typeof V22ReportsRoute
+  '/v22/revenue': typeof V22RevenueRoute
+  '/v22/risk': typeof V22RiskRoute
+  '/v22/roadmap': typeof V22RoadmapRoute
+  '/v22/scope': typeof V22ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -10284,6 +10509,31 @@ export interface FileRouteTypes {
     | '/v215/roadmap'
     | '/v215/scale'
     | '/v215/scope'
+    | '/v22/approval'
+    | '/v22/audit'
+    | '/v22/board'
+    | '/v22/board-report'
+    | '/v22/capital'
+    | '/v22/category'
+    | '/v22/cust-boundary'
+    | '/v22/customer'
+    | '/v22/demo'
+    | '/v22/evidence'
+    | '/v22/exception'
+    | '/v22/exec'
+    | '/v22/mp'
+    | '/v22/operating'
+    | '/v22/outcome'
+    | '/v22/overview'
+    | '/v22/part-boundary'
+    | '/v22/partner'
+    | '/v22/products'
+    | '/v22/rec'
+    | '/v22/reports'
+    | '/v22/revenue'
+    | '/v22/risk'
+    | '/v22/roadmap'
+    | '/v22/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -11346,6 +11596,31 @@ export interface FileRouteTypes {
     | '/v215/roadmap'
     | '/v215/scale'
     | '/v215/scope'
+    | '/v22/approval'
+    | '/v22/audit'
+    | '/v22/board'
+    | '/v22/board-report'
+    | '/v22/capital'
+    | '/v22/category'
+    | '/v22/cust-boundary'
+    | '/v22/customer'
+    | '/v22/demo'
+    | '/v22/evidence'
+    | '/v22/exception'
+    | '/v22/exec'
+    | '/v22/mp'
+    | '/v22/operating'
+    | '/v22/outcome'
+    | '/v22/overview'
+    | '/v22/part-boundary'
+    | '/v22/partner'
+    | '/v22/products'
+    | '/v22/rec'
+    | '/v22/reports'
+    | '/v22/revenue'
+    | '/v22/risk'
+    | '/v22/roadmap'
+    | '/v22/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -12408,6 +12683,31 @@ export interface FileRouteTypes {
     | '/v215/roadmap'
     | '/v215/scale'
     | '/v215/scope'
+    | '/v22/approval'
+    | '/v22/audit'
+    | '/v22/board'
+    | '/v22/board-report'
+    | '/v22/capital'
+    | '/v22/category'
+    | '/v22/cust-boundary'
+    | '/v22/customer'
+    | '/v22/demo'
+    | '/v22/evidence'
+    | '/v22/exception'
+    | '/v22/exec'
+    | '/v22/mp'
+    | '/v22/operating'
+    | '/v22/outcome'
+    | '/v22/overview'
+    | '/v22/part-boundary'
+    | '/v22/partner'
+    | '/v22/products'
+    | '/v22/rec'
+    | '/v22/reports'
+    | '/v22/revenue'
+    | '/v22/risk'
+    | '/v22/roadmap'
+    | '/v22/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -13463,6 +13763,31 @@ export interface RootRouteChildren {
   V215RoadmapRoute: typeof V215RoadmapRoute
   V215ScaleRoute: typeof V215ScaleRoute
   V215ScopeRoute: typeof V215ScopeRoute
+  V22ApprovalRoute: typeof V22ApprovalRoute
+  V22AuditRoute: typeof V22AuditRoute
+  V22BoardRoute: typeof V22BoardRoute
+  V22BoardReportRoute: typeof V22BoardReportRoute
+  V22CapitalRoute: typeof V22CapitalRoute
+  V22CategoryRoute: typeof V22CategoryRoute
+  V22CustBoundaryRoute: typeof V22CustBoundaryRoute
+  V22CustomerRoute: typeof V22CustomerRoute
+  V22DemoRoute: typeof V22DemoRoute
+  V22EvidenceRoute: typeof V22EvidenceRoute
+  V22ExceptionRoute: typeof V22ExceptionRoute
+  V22ExecRoute: typeof V22ExecRoute
+  V22MpRoute: typeof V22MpRoute
+  V22OperatingRoute: typeof V22OperatingRoute
+  V22OutcomeRoute: typeof V22OutcomeRoute
+  V22OverviewRoute: typeof V22OverviewRoute
+  V22PartBoundaryRoute: typeof V22PartBoundaryRoute
+  V22PartnerRoute: typeof V22PartnerRoute
+  V22ProductsRoute: typeof V22ProductsRoute
+  V22RecRoute: typeof V22RecRoute
+  V22ReportsRoute: typeof V22ReportsRoute
+  V22RevenueRoute: typeof V22RevenueRoute
+  V22RiskRoute: typeof V22RiskRoute
+  V22RoadmapRoute: typeof V22RoadmapRoute
+  V22ScopeRoute: typeof V22ScopeRoute
   V25ApiGatewayRoute: typeof V25ApiGatewayRoute
   V25ApiMonetizationRoute: typeof V25ApiMonetizationRoute
   V25ApiProductsRoute: typeof V25ApiProductsRoute
@@ -16358,6 +16683,181 @@ declare module '@tanstack/react-router' {
       path: '/v25/api-gateway'
       fullPath: '/v25/api-gateway'
       preLoaderRoute: typeof V25ApiGatewayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/scope': {
+      id: '/v22/scope'
+      path: '/v22/scope'
+      fullPath: '/v22/scope'
+      preLoaderRoute: typeof V22ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/roadmap': {
+      id: '/v22/roadmap'
+      path: '/v22/roadmap'
+      fullPath: '/v22/roadmap'
+      preLoaderRoute: typeof V22RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/risk': {
+      id: '/v22/risk'
+      path: '/v22/risk'
+      fullPath: '/v22/risk'
+      preLoaderRoute: typeof V22RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/revenue': {
+      id: '/v22/revenue'
+      path: '/v22/revenue'
+      fullPath: '/v22/revenue'
+      preLoaderRoute: typeof V22RevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/reports': {
+      id: '/v22/reports'
+      path: '/v22/reports'
+      fullPath: '/v22/reports'
+      preLoaderRoute: typeof V22ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/rec': {
+      id: '/v22/rec'
+      path: '/v22/rec'
+      fullPath: '/v22/rec'
+      preLoaderRoute: typeof V22RecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/products': {
+      id: '/v22/products'
+      path: '/v22/products'
+      fullPath: '/v22/products'
+      preLoaderRoute: typeof V22ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/partner': {
+      id: '/v22/partner'
+      path: '/v22/partner'
+      fullPath: '/v22/partner'
+      preLoaderRoute: typeof V22PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/part-boundary': {
+      id: '/v22/part-boundary'
+      path: '/v22/part-boundary'
+      fullPath: '/v22/part-boundary'
+      preLoaderRoute: typeof V22PartBoundaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/overview': {
+      id: '/v22/overview'
+      path: '/v22/overview'
+      fullPath: '/v22/overview'
+      preLoaderRoute: typeof V22OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/outcome': {
+      id: '/v22/outcome'
+      path: '/v22/outcome'
+      fullPath: '/v22/outcome'
+      preLoaderRoute: typeof V22OutcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/operating': {
+      id: '/v22/operating'
+      path: '/v22/operating'
+      fullPath: '/v22/operating'
+      preLoaderRoute: typeof V22OperatingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/mp': {
+      id: '/v22/mp'
+      path: '/v22/mp'
+      fullPath: '/v22/mp'
+      preLoaderRoute: typeof V22MpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/exec': {
+      id: '/v22/exec'
+      path: '/v22/exec'
+      fullPath: '/v22/exec'
+      preLoaderRoute: typeof V22ExecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/exception': {
+      id: '/v22/exception'
+      path: '/v22/exception'
+      fullPath: '/v22/exception'
+      preLoaderRoute: typeof V22ExceptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/evidence': {
+      id: '/v22/evidence'
+      path: '/v22/evidence'
+      fullPath: '/v22/evidence'
+      preLoaderRoute: typeof V22EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/demo': {
+      id: '/v22/demo'
+      path: '/v22/demo'
+      fullPath: '/v22/demo'
+      preLoaderRoute: typeof V22DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/customer': {
+      id: '/v22/customer'
+      path: '/v22/customer'
+      fullPath: '/v22/customer'
+      preLoaderRoute: typeof V22CustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/cust-boundary': {
+      id: '/v22/cust-boundary'
+      path: '/v22/cust-boundary'
+      fullPath: '/v22/cust-boundary'
+      preLoaderRoute: typeof V22CustBoundaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/category': {
+      id: '/v22/category'
+      path: '/v22/category'
+      fullPath: '/v22/category'
+      preLoaderRoute: typeof V22CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/capital': {
+      id: '/v22/capital'
+      path: '/v22/capital'
+      fullPath: '/v22/capital'
+      preLoaderRoute: typeof V22CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/board-report': {
+      id: '/v22/board-report'
+      path: '/v22/board-report'
+      fullPath: '/v22/board-report'
+      preLoaderRoute: typeof V22BoardReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/board': {
+      id: '/v22/board'
+      path: '/v22/board'
+      fullPath: '/v22/board'
+      preLoaderRoute: typeof V22BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/audit': {
+      id: '/v22/audit'
+      path: '/v22/audit'
+      fullPath: '/v22/audit'
+      preLoaderRoute: typeof V22AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v22/approval': {
+      id: '/v22/approval'
+      path: '/v22/approval'
+      fullPath: '/v22/approval'
+      preLoaderRoute: typeof V22ApprovalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v215/scope': {
@@ -21996,6 +22496,31 @@ const rootRouteChildren: RootRouteChildren = {
   V215RoadmapRoute: V215RoadmapRoute,
   V215ScaleRoute: V215ScaleRoute,
   V215ScopeRoute: V215ScopeRoute,
+  V22ApprovalRoute: V22ApprovalRoute,
+  V22AuditRoute: V22AuditRoute,
+  V22BoardRoute: V22BoardRoute,
+  V22BoardReportRoute: V22BoardReportRoute,
+  V22CapitalRoute: V22CapitalRoute,
+  V22CategoryRoute: V22CategoryRoute,
+  V22CustBoundaryRoute: V22CustBoundaryRoute,
+  V22CustomerRoute: V22CustomerRoute,
+  V22DemoRoute: V22DemoRoute,
+  V22EvidenceRoute: V22EvidenceRoute,
+  V22ExceptionRoute: V22ExceptionRoute,
+  V22ExecRoute: V22ExecRoute,
+  V22MpRoute: V22MpRoute,
+  V22OperatingRoute: V22OperatingRoute,
+  V22OutcomeRoute: V22OutcomeRoute,
+  V22OverviewRoute: V22OverviewRoute,
+  V22PartBoundaryRoute: V22PartBoundaryRoute,
+  V22PartnerRoute: V22PartnerRoute,
+  V22ProductsRoute: V22ProductsRoute,
+  V22RecRoute: V22RecRoute,
+  V22ReportsRoute: V22ReportsRoute,
+  V22RevenueRoute: V22RevenueRoute,
+  V22RiskRoute: V22RiskRoute,
+  V22RoadmapRoute: V22RoadmapRoute,
+  V22ScopeRoute: V22ScopeRoute,
   V25ApiGatewayRoute: V25ApiGatewayRoute,
   V25ApiMonetizationRoute: V25ApiMonetizationRoute,
   V25ApiProductsRoute: V25ApiProductsRoute,
