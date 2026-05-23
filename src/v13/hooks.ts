@@ -29,3 +29,13 @@ export const useV13Demo                            = () => M.V13_DEMO;
 export const useV13DemoCloseout                    = () => M.V13_DEMO_CLOSEOUT;
 export const useV13RoleGuidance                    = () => M.V13_ROLE_GUIDANCE;
 export const useV13Phase40Teaser                   = () => M.V13_PHASE40_TEASER;
+
+// Phase 39 polish
+export const useV13CapitalTrends                   = () => M.V13_CAPITAL_TRENDS;
+export const useV13RevIntelTrends                  = () => M.V13_REV_INTEL_TRENDS;
+export const useV13DiligenceTrends                 = () => M.V13_DILIGENCE_TRENDS;
+export const useV13DataRoomTrends                  = () => M.V13_DATA_ROOM_TRENDS;
+export const useV13ExecValueTrends                 = () => M.V13_EXEC_VALUE_TRENDS;
+export const useV13ExecHeadline                    = () => M.V13_EXEC_HEADLINE;
+export const useV13RlsSqlSnippets                  = () => M.V13_RLS_SQL_SNIPPETS;
+export const useV13EdgeVsServerFn                  = () => M.V13_EDGE_VS_SERVERFN;
