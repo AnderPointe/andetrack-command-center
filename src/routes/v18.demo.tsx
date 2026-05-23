@@ -6,11 +6,15 @@ import * as H from "@/v18/hooks";
 
 function Page() {
   const d = H.useV18DemoPolish();
+  const d2 = H.useV18DemoPolish2();
   return (
     <V18Page icon={<ListChecks className="size-6 text-violet-300" />} title="V18 Demo Flow"
-      blurb="15-step persona walkthrough of V18 autonomous-assist scale governance. Every high-impact action HITL-gated.">
-      <Section title="Walkthrough">
+      blurb="Persona walkthrough of V18 autonomous-assist scale governance. Every high-impact action HITL-gated.">
+      <Section title="Original 15-step walkthrough">
         <SimpleTable rows={d as any} columns={[{ key: "who", label: "Persona" }, { key: "step", label: "Step" }, { key: "outcome", label: "Outcome" }]} />
+      </Section>
+      <Section title="Polished 16-step persona walkthrough">
+        <SimpleTable rows={d2 as any} columns={[{ key: "who", label: "Persona" }, { key: "step", label: "Step" }, { key: "outcome", label: "Outcome" }]} />
       </Section>
     </V18Page>
   );
