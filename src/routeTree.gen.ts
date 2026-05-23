@@ -373,6 +373,24 @@ import { Route as V25AuditRouteImport } from './routes/v25.audit'
 import { Route as V25ApiProductsRouteImport } from './routes/v25.api-products'
 import { Route as V25ApiMonetizationRouteImport } from './routes/v25.api-monetization'
 import { Route as V25ApiGatewayRouteImport } from './routes/v25.api-gateway'
+import { Route as V205ScaleRouteImport } from './routes/v205.scale'
+import { Route as V205RiskRouteImport } from './routes/v205.risk'
+import { Route as V205RevenueRouteImport } from './routes/v205.revenue'
+import { Route as V205RecRouteImport } from './routes/v205.rec'
+import { Route as V205ProductsRouteImport } from './routes/v205.products'
+import { Route as V205PartnerRouteImport } from './routes/v205.partner'
+import { Route as V205OutcomeRouteImport } from './routes/v205.outcome'
+import { Route as V205MpRouteImport } from './routes/v205.mp'
+import { Route as V205ExecRouteImport } from './routes/v205.exec'
+import { Route as V205ExceptionRouteImport } from './routes/v205.exception'
+import { Route as V205EvidenceRouteImport } from './routes/v205.evidence'
+import { Route as V205CustomerRouteImport } from './routes/v205.customer'
+import { Route as V205ControlRouteImport } from './routes/v205.control'
+import { Route as V205CategoryRouteImport } from './routes/v205.category'
+import { Route as V205CapitalRouteImport } from './routes/v205.capital'
+import { Route as V205BoardRouteImport } from './routes/v205.board'
+import { Route as V205AuditRouteImport } from './routes/v205.audit'
+import { Route as V205ApprovalRouteImport } from './routes/v205.approval'
 import { Route as V2WebhooksRouteImport } from './routes/v2.webhooks'
 import { Route as V2SuggestedDriversRouteImport } from './routes/v2.suggested-drivers'
 import { Route as V2SecurityRouteImport } from './routes/v2.security'
@@ -2819,6 +2837,96 @@ const V25ApiMonetizationRoute = V25ApiMonetizationRouteImport.update({
 const V25ApiGatewayRoute = V25ApiGatewayRouteImport.update({
   id: '/v25/api-gateway',
   path: '/v25/api-gateway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205ScaleRoute = V205ScaleRouteImport.update({
+  id: '/v205/scale',
+  path: '/v205/scale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205RiskRoute = V205RiskRouteImport.update({
+  id: '/v205/risk',
+  path: '/v205/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205RevenueRoute = V205RevenueRouteImport.update({
+  id: '/v205/revenue',
+  path: '/v205/revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205RecRoute = V205RecRouteImport.update({
+  id: '/v205/rec',
+  path: '/v205/rec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205ProductsRoute = V205ProductsRouteImport.update({
+  id: '/v205/products',
+  path: '/v205/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205PartnerRoute = V205PartnerRouteImport.update({
+  id: '/v205/partner',
+  path: '/v205/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205OutcomeRoute = V205OutcomeRouteImport.update({
+  id: '/v205/outcome',
+  path: '/v205/outcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205MpRoute = V205MpRouteImport.update({
+  id: '/v205/mp',
+  path: '/v205/mp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205ExecRoute = V205ExecRouteImport.update({
+  id: '/v205/exec',
+  path: '/v205/exec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205ExceptionRoute = V205ExceptionRouteImport.update({
+  id: '/v205/exception',
+  path: '/v205/exception',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205EvidenceRoute = V205EvidenceRouteImport.update({
+  id: '/v205/evidence',
+  path: '/v205/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205CustomerRoute = V205CustomerRouteImport.update({
+  id: '/v205/customer',
+  path: '/v205/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205ControlRoute = V205ControlRouteImport.update({
+  id: '/v205/control',
+  path: '/v205/control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205CategoryRoute = V205CategoryRouteImport.update({
+  id: '/v205/category',
+  path: '/v205/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205CapitalRoute = V205CapitalRouteImport.update({
+  id: '/v205/capital',
+  path: '/v205/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205BoardRoute = V205BoardRouteImport.update({
+  id: '/v205/board',
+  path: '/v205/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205AuditRoute = V205AuditRouteImport.update({
+  id: '/v205/audit',
+  path: '/v205/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V205ApprovalRoute = V205ApprovalRouteImport.update({
+  id: '/v205/approval',
+  path: '/v205/approval',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V2WebhooksRoute = V2WebhooksRouteImport.update({
@@ -6584,6 +6692,24 @@ export interface FileRoutesByFullPath {
   '/v2/security': typeof V2SecurityRoute
   '/v2/suggested-drivers': typeof V2SuggestedDriversRoute
   '/v2/webhooks': typeof V2WebhooksRoute
+  '/v205/approval': typeof V205ApprovalRoute
+  '/v205/audit': typeof V205AuditRoute
+  '/v205/board': typeof V205BoardRoute
+  '/v205/capital': typeof V205CapitalRoute
+  '/v205/category': typeof V205CategoryRoute
+  '/v205/control': typeof V205ControlRoute
+  '/v205/customer': typeof V205CustomerRoute
+  '/v205/evidence': typeof V205EvidenceRoute
+  '/v205/exception': typeof V205ExceptionRoute
+  '/v205/exec': typeof V205ExecRoute
+  '/v205/mp': typeof V205MpRoute
+  '/v205/outcome': typeof V205OutcomeRoute
+  '/v205/partner': typeof V205PartnerRoute
+  '/v205/products': typeof V205ProductsRoute
+  '/v205/rec': typeof V205RecRoute
+  '/v205/revenue': typeof V205RevenueRoute
+  '/v205/risk': typeof V205RiskRoute
+  '/v205/scale': typeof V205ScaleRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -7573,6 +7699,24 @@ export interface FileRoutesByTo {
   '/v2/security': typeof V2SecurityRoute
   '/v2/suggested-drivers': typeof V2SuggestedDriversRoute
   '/v2/webhooks': typeof V2WebhooksRoute
+  '/v205/approval': typeof V205ApprovalRoute
+  '/v205/audit': typeof V205AuditRoute
+  '/v205/board': typeof V205BoardRoute
+  '/v205/capital': typeof V205CapitalRoute
+  '/v205/category': typeof V205CategoryRoute
+  '/v205/control': typeof V205ControlRoute
+  '/v205/customer': typeof V205CustomerRoute
+  '/v205/evidence': typeof V205EvidenceRoute
+  '/v205/exception': typeof V205ExceptionRoute
+  '/v205/exec': typeof V205ExecRoute
+  '/v205/mp': typeof V205MpRoute
+  '/v205/outcome': typeof V205OutcomeRoute
+  '/v205/partner': typeof V205PartnerRoute
+  '/v205/products': typeof V205ProductsRoute
+  '/v205/rec': typeof V205RecRoute
+  '/v205/revenue': typeof V205RevenueRoute
+  '/v205/risk': typeof V205RiskRoute
+  '/v205/scale': typeof V205ScaleRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -8563,6 +8707,24 @@ export interface FileRoutesById {
   '/v2/security': typeof V2SecurityRoute
   '/v2/suggested-drivers': typeof V2SuggestedDriversRoute
   '/v2/webhooks': typeof V2WebhooksRoute
+  '/v205/approval': typeof V205ApprovalRoute
+  '/v205/audit': typeof V205AuditRoute
+  '/v205/board': typeof V205BoardRoute
+  '/v205/capital': typeof V205CapitalRoute
+  '/v205/category': typeof V205CategoryRoute
+  '/v205/control': typeof V205ControlRoute
+  '/v205/customer': typeof V205CustomerRoute
+  '/v205/evidence': typeof V205EvidenceRoute
+  '/v205/exception': typeof V205ExceptionRoute
+  '/v205/exec': typeof V205ExecRoute
+  '/v205/mp': typeof V205MpRoute
+  '/v205/outcome': typeof V205OutcomeRoute
+  '/v205/partner': typeof V205PartnerRoute
+  '/v205/products': typeof V205ProductsRoute
+  '/v205/rec': typeof V205RecRoute
+  '/v205/revenue': typeof V205RevenueRoute
+  '/v205/risk': typeof V205RiskRoute
+  '/v205/scale': typeof V205ScaleRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -9554,6 +9716,24 @@ export interface FileRouteTypes {
     | '/v2/security'
     | '/v2/suggested-drivers'
     | '/v2/webhooks'
+    | '/v205/approval'
+    | '/v205/audit'
+    | '/v205/board'
+    | '/v205/capital'
+    | '/v205/category'
+    | '/v205/control'
+    | '/v205/customer'
+    | '/v205/evidence'
+    | '/v205/exception'
+    | '/v205/exec'
+    | '/v205/mp'
+    | '/v205/outcome'
+    | '/v205/partner'
+    | '/v205/products'
+    | '/v205/rec'
+    | '/v205/revenue'
+    | '/v205/risk'
+    | '/v205/scale'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -10543,6 +10723,24 @@ export interface FileRouteTypes {
     | '/v2/security'
     | '/v2/suggested-drivers'
     | '/v2/webhooks'
+    | '/v205/approval'
+    | '/v205/audit'
+    | '/v205/board'
+    | '/v205/capital'
+    | '/v205/category'
+    | '/v205/control'
+    | '/v205/customer'
+    | '/v205/evidence'
+    | '/v205/exception'
+    | '/v205/exec'
+    | '/v205/mp'
+    | '/v205/outcome'
+    | '/v205/partner'
+    | '/v205/products'
+    | '/v205/rec'
+    | '/v205/revenue'
+    | '/v205/risk'
+    | '/v205/scale'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -11532,6 +11730,24 @@ export interface FileRouteTypes {
     | '/v2/security'
     | '/v2/suggested-drivers'
     | '/v2/webhooks'
+    | '/v205/approval'
+    | '/v205/audit'
+    | '/v205/board'
+    | '/v205/capital'
+    | '/v205/category'
+    | '/v205/control'
+    | '/v205/customer'
+    | '/v205/evidence'
+    | '/v205/exception'
+    | '/v205/exec'
+    | '/v205/mp'
+    | '/v205/outcome'
+    | '/v205/partner'
+    | '/v205/products'
+    | '/v205/rec'
+    | '/v205/revenue'
+    | '/v205/risk'
+    | '/v205/scale'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -12514,6 +12730,24 @@ export interface RootRouteChildren {
   V2SecurityRoute: typeof V2SecurityRoute
   V2SuggestedDriversRoute: typeof V2SuggestedDriversRoute
   V2WebhooksRoute: typeof V2WebhooksRoute
+  V205ApprovalRoute: typeof V205ApprovalRoute
+  V205AuditRoute: typeof V205AuditRoute
+  V205BoardRoute: typeof V205BoardRoute
+  V205CapitalRoute: typeof V205CapitalRoute
+  V205CategoryRoute: typeof V205CategoryRoute
+  V205ControlRoute: typeof V205ControlRoute
+  V205CustomerRoute: typeof V205CustomerRoute
+  V205EvidenceRoute: typeof V205EvidenceRoute
+  V205ExceptionRoute: typeof V205ExceptionRoute
+  V205ExecRoute: typeof V205ExecRoute
+  V205MpRoute: typeof V205MpRoute
+  V205OutcomeRoute: typeof V205OutcomeRoute
+  V205PartnerRoute: typeof V205PartnerRoute
+  V205ProductsRoute: typeof V205ProductsRoute
+  V205RecRoute: typeof V205RecRoute
+  V205RevenueRoute: typeof V205RevenueRoute
+  V205RiskRoute: typeof V205RiskRoute
+  V205ScaleRoute: typeof V205ScaleRoute
   V25ApiGatewayRoute: typeof V25ApiGatewayRoute
   V25ApiMonetizationRoute: typeof V25ApiMonetizationRoute
   V25ApiProductsRoute: typeof V25ApiProductsRoute
@@ -15409,6 +15643,132 @@ declare module '@tanstack/react-router' {
       path: '/v25/api-gateway'
       fullPath: '/v25/api-gateway'
       preLoaderRoute: typeof V25ApiGatewayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/scale': {
+      id: '/v205/scale'
+      path: '/v205/scale'
+      fullPath: '/v205/scale'
+      preLoaderRoute: typeof V205ScaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/risk': {
+      id: '/v205/risk'
+      path: '/v205/risk'
+      fullPath: '/v205/risk'
+      preLoaderRoute: typeof V205RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/revenue': {
+      id: '/v205/revenue'
+      path: '/v205/revenue'
+      fullPath: '/v205/revenue'
+      preLoaderRoute: typeof V205RevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/rec': {
+      id: '/v205/rec'
+      path: '/v205/rec'
+      fullPath: '/v205/rec'
+      preLoaderRoute: typeof V205RecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/products': {
+      id: '/v205/products'
+      path: '/v205/products'
+      fullPath: '/v205/products'
+      preLoaderRoute: typeof V205ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/partner': {
+      id: '/v205/partner'
+      path: '/v205/partner'
+      fullPath: '/v205/partner'
+      preLoaderRoute: typeof V205PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/outcome': {
+      id: '/v205/outcome'
+      path: '/v205/outcome'
+      fullPath: '/v205/outcome'
+      preLoaderRoute: typeof V205OutcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/mp': {
+      id: '/v205/mp'
+      path: '/v205/mp'
+      fullPath: '/v205/mp'
+      preLoaderRoute: typeof V205MpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/exec': {
+      id: '/v205/exec'
+      path: '/v205/exec'
+      fullPath: '/v205/exec'
+      preLoaderRoute: typeof V205ExecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/exception': {
+      id: '/v205/exception'
+      path: '/v205/exception'
+      fullPath: '/v205/exception'
+      preLoaderRoute: typeof V205ExceptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/evidence': {
+      id: '/v205/evidence'
+      path: '/v205/evidence'
+      fullPath: '/v205/evidence'
+      preLoaderRoute: typeof V205EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/customer': {
+      id: '/v205/customer'
+      path: '/v205/customer'
+      fullPath: '/v205/customer'
+      preLoaderRoute: typeof V205CustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/control': {
+      id: '/v205/control'
+      path: '/v205/control'
+      fullPath: '/v205/control'
+      preLoaderRoute: typeof V205ControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/category': {
+      id: '/v205/category'
+      path: '/v205/category'
+      fullPath: '/v205/category'
+      preLoaderRoute: typeof V205CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/capital': {
+      id: '/v205/capital'
+      path: '/v205/capital'
+      fullPath: '/v205/capital'
+      preLoaderRoute: typeof V205CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/board': {
+      id: '/v205/board'
+      path: '/v205/board'
+      fullPath: '/v205/board'
+      preLoaderRoute: typeof V205BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/audit': {
+      id: '/v205/audit'
+      path: '/v205/audit'
+      fullPath: '/v205/audit'
+      preLoaderRoute: typeof V205AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v205/approval': {
+      id: '/v205/approval'
+      path: '/v205/approval'
+      fullPath: '/v205/approval'
+      preLoaderRoute: typeof V205ApprovalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v2/webhooks': {
@@ -20463,6 +20823,24 @@ const rootRouteChildren: RootRouteChildren = {
   V2SecurityRoute: V2SecurityRoute,
   V2SuggestedDriversRoute: V2SuggestedDriversRoute,
   V2WebhooksRoute: V2WebhooksRoute,
+  V205ApprovalRoute: V205ApprovalRoute,
+  V205AuditRoute: V205AuditRoute,
+  V205BoardRoute: V205BoardRoute,
+  V205CapitalRoute: V205CapitalRoute,
+  V205CategoryRoute: V205CategoryRoute,
+  V205ControlRoute: V205ControlRoute,
+  V205CustomerRoute: V205CustomerRoute,
+  V205EvidenceRoute: V205EvidenceRoute,
+  V205ExceptionRoute: V205ExceptionRoute,
+  V205ExecRoute: V205ExecRoute,
+  V205MpRoute: V205MpRoute,
+  V205OutcomeRoute: V205OutcomeRoute,
+  V205PartnerRoute: V205PartnerRoute,
+  V205ProductsRoute: V205ProductsRoute,
+  V205RecRoute: V205RecRoute,
+  V205RevenueRoute: V205RevenueRoute,
+  V205RiskRoute: V205RiskRoute,
+  V205ScaleRoute: V205ScaleRoute,
   V25ApiGatewayRoute: V25ApiGatewayRoute,
   V25ApiMonetizationRoute: V25ApiMonetizationRoute,
   V25ApiProductsRoute: V25ApiProductsRoute,
