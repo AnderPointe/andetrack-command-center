@@ -1,4 +1,16 @@
 import * as D from "./data/mockPhase49";
+import * as P from "./data/mockPhase49Polish";
+
+export const useV18PolishHeadlines       = () => P.V18_POLISH_HEADLINES;
+export const useV18OwnerHeatmap          = () => P.V18_OWNER_HEATMAP;
+export const useV18EvidenceFreshness     = () => P.V18_EVIDENCE_FRESHNESS;
+export const useV18PolicyCalibration     = () => P.V18_POLICY_CALIBRATION;
+export const useV18RlsPolish             = () => P.V18_RLS_EXAMPLES;
+export const useV18EdgeBoundaryPolish    = () => P.V18_EDGE_BOUNDARY;
+export const useV18DemoPolish            = () => P.V18_DEMO_FLOW;
+export const useV18RoadmapHorizons       = () => P.V18_ROADMAP_HORIZONS;
+export const useV18Phase50TeaserPolish   = () => P.V18_PHASE50_TEASER;
+export const useV18GuardrailsPolish      = () => P.V18_GUARDRAILS_NOTES;
 
 export const useV18Scope                              = () => D.V18_SCOPE;
 export const useV18Headline                           = () => D.V18_HEADLINE;
