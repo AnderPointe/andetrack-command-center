@@ -30,3 +30,15 @@ export const useV175EdgeBoundary                       = () => D.V175_EDGE_BOUND
 export const useV175EdgeFunctions                      = () => D.V175_EDGE_FUNCTIONS;
 export const useV175Demo                               = () => D.V175_DEMO;
 export const useV175Phase49Teaser                      = () => D.V175_PHASE49_TEASER;
+
+import * as P from "./data/mockPhase48Polish";
+export const useV175PolishHeadlines        = () => P.V175_POLISH_HEADLINES;
+export const useV175OwnerHeatmap           = () => P.V175_OWNER_HEATMAP;
+export const useV175EvidenceFreshness      = () => P.V175_EVIDENCE_FRESHNESS;
+export const useV175PolicyCalibration      = () => P.V175_POLICY_CALIBRATION;
+export const useV175RlsPolish              = () => P.V175_RLS_EXAMPLES;
+export const useV175EdgeBoundaryPolish     = () => P.V175_EDGE_BOUNDARY;
+export const useV175DemoPolish             = () => P.V175_DEMO_FLOW;
+export const useV175RoadmapPolish          = () => P.V175_ROADMAP_HORIZONS;
+export const useV175Phase49TeaserPolish    = () => P.V175_PHASE49_TEASER;
+export const useV175LongTermNotes          = () => P.V175_LONG_TERM_NOTES;
