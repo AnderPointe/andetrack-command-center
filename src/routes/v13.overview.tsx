@@ -15,9 +15,18 @@ function Page() {
   const teaser = H.useV13Phase40Teaser();
   const boundary = H.useV13BackendBoundary();
   const rls = H.useV13RlsExamples();
+  const headline = H.useV13ExecHeadline();
+  const edge = H.useV13EdgeVsServerFn();
   const dilReady = dil.filter((d) => d.status === "ready").length;
   return (
     <V13Page icon={<Gauge className="size-6 text-indigo-300" />} title="Anderoute V13 — Enterprise Capital Readiness" blurb="Mock-only. Capital-grade enterprise OS — revenue intelligence, commercial diligence, capital data room, marketplace economics, partner value, executive value creation, board capital governance. No autonomous dispatch, no IPO/acquisition/audit completeness claims.">
+      <Card className="border-indigo-400/20 bg-indigo-400/5 p-4">
+        <div className="text-xs uppercase tracking-wide text-indigo-200/80">V13 exec headline</div>
+        <p className="mt-1 text-sm">{headline.headline}</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-foreground/80">
+          {headline.highlights.map((h) => <li key={h}>{h}</li>)}
+        </ul>
+      </Card>
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Capital readiness"   value={cap.score}  tone="emerald" />
         <ScoreCard label="Revenue intel"       value={ri.score}   tone="sky" />
