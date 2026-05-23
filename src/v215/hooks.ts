@@ -29,3 +29,15 @@ export const useV215Edge                       = () => D.V215_EDGE;
 export const useV215Guardrails                 = () => D.V215_GUARDRAILS;
 export const useV215Demo                       = () => D.V215_DEMO;
 export const useV215Phase57Teaser              = () => D.V215_PHASE57_TEASER;
+
+import * as P from "./data/mockPhase56Polish";
+export const useV215PolishHeadlines    = () => P.V215_POLISH_HEADLINES;
+export const useV215PolishDomains      = () => P.V215_POLISH_DOMAINS;
+export const useV215PolishHitlQueue    = () => P.V215_POLISH_HITL_QUEUE;
+export const useV215PolishBoundary     = () => P.V215_POLISH_BOUNDARY;
+export const useV215PolishRls          = () => P.V215_POLISH_RLS;
+export const useV215PolishEdge         = () => P.V215_POLISH_EDGE;
+export const useV215PolishInvariants   = () => P.V215_POLISH_INVARIANTS;
+export const useV215PolishDemo         = () => P.V215_POLISH_DEMO;
+export const useV215PolishRoadmap      = () => P.V215_POLISH_ROADMAP;
+export const useV215PolishOwnerHeatmap = () => P.V215_POLISH_OWNER_HEATMAP;
