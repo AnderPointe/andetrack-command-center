@@ -30,3 +30,15 @@ export const useV16EdgeBoundary                   = () => D.V16_EDGE_BOUNDARY;
 export const useV16EdgeFunctions                  = () => D.V16_EDGE_FUNCTIONS;
 export const useV16Demo                           = () => D.V16_DEMO;
 export const useV16Phase46Teaser                  = () => D.V16_PHASE46_TEASER;
+
+// Polish layer
+import * as P from "./data/mockPhase45Polish";
+export const useV16PolishHeadlines                = () => P.V16_POLISH_HEADLINES;
+export const useV16OwnerHeatmap                   = () => P.V16_OWNER_HEATMAP;
+export const useV16ControlCoverage                = () => P.V16_CONTROL_COVERAGE;
+export const useV16RlsExamples                    = () => P.V16_RLS_EXAMPLES;
+export const useV16EdgeBoundaryPolish             = () => P.V16_EDGE_BOUNDARY_POLISH;
+export const useV16DemoFlowPolish                 = () => P.V16_DEMO_FLOW_POLISH;
+export const useV16RoadmapPolish                  = () => P.V16_ROADMAP_POLISH;
+export const useV16PolishNote                     = () => P.V16_POLISH_NOTE;
+
