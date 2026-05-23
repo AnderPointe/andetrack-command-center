@@ -25,6 +25,12 @@ function Page() {
         ]} />
       </Card>
       <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Auditability trend (last 4Q)</h3>
+        <SimpleTable rows={a.trends as any} columns={[
+          { key: "quarter", label: "Quarter" }, { key: "score", label: "Score" }, { key: "ready", label: "Ready" }, { key: "at_risk", label: "At risk" }, { key: "exceptions", label: "Exc." },
+        ]} />
+      </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
         <h3 className="text-sm font-semibold">Exception queue</h3>
         <SimpleTable rows={a.exceptions as any} columns={[{ key: "item", label: "Item" }, { key: "owner", label: "Owner" }, { key: "age_days", label: "Age (d)" }]} />
       </Card>
