@@ -9,10 +9,26 @@ function Page() {
   const nb = H.useV19NextBestHitl();
   const heat = H.useV19OwnerHeatmap();
   const polish = H.useV19PolishHeadlines();
+  return (
     <V19Page icon={<Gauge className="size-6 text-violet-300" />}
       title="Enterprise Assurance Operating System"
-      blurb="One pane for enterprise assurance: scores, KPIs, health map, gaps, remediation, executive summary.">
+      blurb="One pane for enterprise assurance: scores, KPIs, health map, gaps, remediation, executive summary. Polished with next-best HITL queue + owner heatmap.">
       <ScoreCard label="Enterprise assurance" value={a.score} tone="violet" />
+      <Section title="V19 polish headline">
+        <ul className="text-sm text-muted-foreground">{polish.highlights.map(x => <li key={x}>· {x}</li>)}</ul>
+      </Section>
+      <Section title="Next-best HITL actions (queue)">
+        <SimpleTable rows={nb as any} columns={[
+          { key: "id", label: "ID" }, { key: "action", label: "Action" },
+          { key: "owner", label: "Owner" }, { key: "impact", label: "Impact" },
+        ]} />
+      </Section>
+      <Section title="Owner heatmap">
+        <SimpleTable rows={heat as any} columns={[
+          { key: "owner", label: "Owner" }, { key: "load", label: "Load" },
+          { key: "open", label: "Open" }, { key: "sla", label: "SLA" },
+        ]} />
+      </Section>
       <KpiGrid cols={4} items={a.kpis} />
       <Section title="Assurance health map">
         <SimpleTable rows={a.health_map as any} columns={[{ key: "domain", label: "Domain" }, { key: "health", label: "Health" }]} />
