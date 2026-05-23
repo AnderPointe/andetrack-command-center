@@ -34,6 +34,12 @@ function Page() {
         <h3 className="text-sm font-semibold">Decisions needed</h3>
         <SimpleTable rows={e.decisions_needed as any} columns={[{ key: "decision", label: "Decision" }, { key: "owner", label: "Owner" }, { key: "due", label: "Due" }]} />
       </Card>
+      <Card className="border-white/10 bg-white/[0.02] p-4">
+        <h3 className="text-sm font-semibold">Exec value creation trend (last 4Q)</h3>
+        <SimpleTable rows={trends as any} columns={[
+          { key: "quarter", label: "Quarter" }, { key: "score", label: "Score" }, { key: "decisions_closed", label: "Decisions closed" },
+        ]} />
+      </Card>
     </V13Page>
   );
 }
