@@ -1,4 +1,5 @@
 import * as D from "./data/mockPhase43";
+import * as P from "./data/mockPhase43Polish";
 
 export const useV15Scope = () => D.V15_SCOPE;
 export const useV15FeatureMatrix = () => D.V15_FEATURES;
@@ -30,3 +31,13 @@ export const useV15Demo = () => D.V15_DEMO;
 export const useV15DemoOutcomes = () => D.V15_DEMO_OUTCOMES;
 export const useV15Phase44Teaser = () => D.V15_PHASE44_TEASER;
 export const useV15ExecHeadline = () => D.V15_EXEC_HEADLINE;
+
+// Phase 43 polish hooks
+export const useV15AreaHeadlines = () => P.V15P_AREA_HEADLINES;
+export const useV15OwnerHeatmap = () => P.V15P_OWNER_HEATMAP;
+export const useV15ControlCoverage = () => P.V15P_CONTROL_COVERAGE;
+export const useV15RlsExtended = () => P.V15P_RLS_EXTENDED;
+export const useV15EdgeExtended = () => P.V15P_EDGE_EXTENDED;
+export const useV15DemoFlowPolish = () => P.V15P_DEMO_FLOW;
+export const useV15DemoOutcomesPolish = () => P.V15P_DEMO_OUTCOMES;
+export const useV15Phase44Hold = () => P.V15P_PHASE44_HOLD;
