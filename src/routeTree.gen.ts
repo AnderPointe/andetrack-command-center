@@ -397,6 +397,19 @@ import { Route as V2ApprovalsRouteImport } from './routes/v2.approvals'
 import { Route as V2ApiMarketplaceRouteImport } from './routes/v2.api-marketplace'
 import { Route as V2ApiKeysRouteImport } from './routes/v2.api-keys'
 import { Route as V2AiOpsRouteImport } from './routes/v2.ai-ops'
+import { Route as V155ScopeRouteImport } from './routes/v155.scope'
+import { Route as V155RevenueOptRouteImport } from './routes/v155.revenue-opt'
+import { Route as V155RevRecEngineRouteImport } from './routes/v155.rev-rec-engine'
+import { Route as V155OverviewRouteImport } from './routes/v155.overview'
+import { Route as V155OutcomesRouteImport } from './routes/v155.outcomes'
+import { Route as V155MpRecEngineRouteImport } from './routes/v155.mp-rec-engine'
+import { Route as V155MpIntelRouteImport } from './routes/v155.mp-intel'
+import { Route as V155IntelRouteImport } from './routes/v155.intel'
+import { Route as V155ExplainabilityRouteImport } from './routes/v155.explainability'
+import { Route as V155CommandRouteImport } from './routes/v155.command'
+import { Route as V155CapitalIntelRouteImport } from './routes/v155.capital-intel'
+import { Route as V155AutonomyGovRouteImport } from './routes/v155.autonomy-gov'
+import { Route as V155ApprovalsRouteImport } from './routes/v155.approvals'
 import { Route as V15WebhooksRouteImport } from './routes/v15.webhooks'
 import { Route as V15StripeRouteImport } from './routes/v15.stripe'
 import { Route as V15SessionsRouteImport } from './routes/v15.sessions'
@@ -2740,6 +2753,71 @@ const V2ApiKeysRoute = V2ApiKeysRouteImport.update({
 const V2AiOpsRoute = V2AiOpsRouteImport.update({
   id: '/v2/ai-ops',
   path: '/v2/ai-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155ScopeRoute = V155ScopeRouteImport.update({
+  id: '/v155/scope',
+  path: '/v155/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155RevenueOptRoute = V155RevenueOptRouteImport.update({
+  id: '/v155/revenue-opt',
+  path: '/v155/revenue-opt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155RevRecEngineRoute = V155RevRecEngineRouteImport.update({
+  id: '/v155/rev-rec-engine',
+  path: '/v155/rev-rec-engine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155OverviewRoute = V155OverviewRouteImport.update({
+  id: '/v155/overview',
+  path: '/v155/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155OutcomesRoute = V155OutcomesRouteImport.update({
+  id: '/v155/outcomes',
+  path: '/v155/outcomes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155MpRecEngineRoute = V155MpRecEngineRouteImport.update({
+  id: '/v155/mp-rec-engine',
+  path: '/v155/mp-rec-engine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155MpIntelRoute = V155MpIntelRouteImport.update({
+  id: '/v155/mp-intel',
+  path: '/v155/mp-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155IntelRoute = V155IntelRouteImport.update({
+  id: '/v155/intel',
+  path: '/v155/intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155ExplainabilityRoute = V155ExplainabilityRouteImport.update({
+  id: '/v155/explainability',
+  path: '/v155/explainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155CommandRoute = V155CommandRouteImport.update({
+  id: '/v155/command',
+  path: '/v155/command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155CapitalIntelRoute = V155CapitalIntelRouteImport.update({
+  id: '/v155/capital-intel',
+  path: '/v155/capital-intel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155AutonomyGovRoute = V155AutonomyGovRouteImport.update({
+  id: '/v155/autonomy-gov',
+  path: '/v155/autonomy-gov',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V155ApprovalsRoute = V155ApprovalsRouteImport.update({
+  id: '/v155/approvals',
+  path: '/v155/approvals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V15WebhooksRoute = V15WebhooksRouteImport.update({
@@ -5167,6 +5245,19 @@ export interface FileRoutesByFullPath {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v155/approvals': typeof V155ApprovalsRoute
+  '/v155/autonomy-gov': typeof V155AutonomyGovRoute
+  '/v155/capital-intel': typeof V155CapitalIntelRoute
+  '/v155/command': typeof V155CommandRoute
+  '/v155/explainability': typeof V155ExplainabilityRoute
+  '/v155/intel': typeof V155IntelRoute
+  '/v155/mp-intel': typeof V155MpIntelRoute
+  '/v155/mp-rec-engine': typeof V155MpRecEngineRoute
+  '/v155/outcomes': typeof V155OutcomesRoute
+  '/v155/overview': typeof V155OverviewRoute
+  '/v155/rev-rec-engine': typeof V155RevRecEngineRoute
+  '/v155/revenue-opt': typeof V155RevenueOptRoute
+  '/v155/scope': typeof V155ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -5957,6 +6048,19 @@ export interface FileRoutesByTo {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v155/approvals': typeof V155ApprovalsRoute
+  '/v155/autonomy-gov': typeof V155AutonomyGovRoute
+  '/v155/capital-intel': typeof V155CapitalIntelRoute
+  '/v155/command': typeof V155CommandRoute
+  '/v155/explainability': typeof V155ExplainabilityRoute
+  '/v155/intel': typeof V155IntelRoute
+  '/v155/mp-intel': typeof V155MpIntelRoute
+  '/v155/mp-rec-engine': typeof V155MpRecEngineRoute
+  '/v155/outcomes': typeof V155OutcomesRoute
+  '/v155/overview': typeof V155OverviewRoute
+  '/v155/rev-rec-engine': typeof V155RevRecEngineRoute
+  '/v155/revenue-opt': typeof V155RevenueOptRoute
+  '/v155/scope': typeof V155ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -6748,6 +6852,19 @@ export interface FileRoutesById {
   '/v15/sessions': typeof V15SessionsRoute
   '/v15/stripe': typeof V15StripeRoute
   '/v15/webhooks': typeof V15WebhooksRoute
+  '/v155/approvals': typeof V155ApprovalsRoute
+  '/v155/autonomy-gov': typeof V155AutonomyGovRoute
+  '/v155/capital-intel': typeof V155CapitalIntelRoute
+  '/v155/command': typeof V155CommandRoute
+  '/v155/explainability': typeof V155ExplainabilityRoute
+  '/v155/intel': typeof V155IntelRoute
+  '/v155/mp-intel': typeof V155MpIntelRoute
+  '/v155/mp-rec-engine': typeof V155MpRecEngineRoute
+  '/v155/outcomes': typeof V155OutcomesRoute
+  '/v155/overview': typeof V155OverviewRoute
+  '/v155/rev-rec-engine': typeof V155RevRecEngineRoute
+  '/v155/revenue-opt': typeof V155RevenueOptRoute
+  '/v155/scope': typeof V155ScopeRoute
   '/v2/ai-ops': typeof V2AiOpsRoute
   '/v2/api-keys': typeof V2ApiKeysRoute
   '/v2/api-marketplace': typeof V2ApiMarketplaceRoute
@@ -7540,6 +7657,19 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v155/approvals'
+    | '/v155/autonomy-gov'
+    | '/v155/capital-intel'
+    | '/v155/command'
+    | '/v155/explainability'
+    | '/v155/intel'
+    | '/v155/mp-intel'
+    | '/v155/mp-rec-engine'
+    | '/v155/outcomes'
+    | '/v155/overview'
+    | '/v155/rev-rec-engine'
+    | '/v155/revenue-opt'
+    | '/v155/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -8330,6 +8460,19 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v155/approvals'
+    | '/v155/autonomy-gov'
+    | '/v155/capital-intel'
+    | '/v155/command'
+    | '/v155/explainability'
+    | '/v155/intel'
+    | '/v155/mp-intel'
+    | '/v155/mp-rec-engine'
+    | '/v155/outcomes'
+    | '/v155/overview'
+    | '/v155/rev-rec-engine'
+    | '/v155/revenue-opt'
+    | '/v155/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -9120,6 +9263,19 @@ export interface FileRouteTypes {
     | '/v15/sessions'
     | '/v15/stripe'
     | '/v15/webhooks'
+    | '/v155/approvals'
+    | '/v155/autonomy-gov'
+    | '/v155/capital-intel'
+    | '/v155/command'
+    | '/v155/explainability'
+    | '/v155/intel'
+    | '/v155/mp-intel'
+    | '/v155/mp-rec-engine'
+    | '/v155/outcomes'
+    | '/v155/overview'
+    | '/v155/rev-rec-engine'
+    | '/v155/revenue-opt'
+    | '/v155/scope'
     | '/v2/ai-ops'
     | '/v2/api-keys'
     | '/v2/api-marketplace'
@@ -9903,6 +10059,19 @@ export interface RootRouteChildren {
   V15SessionsRoute: typeof V15SessionsRoute
   V15StripeRoute: typeof V15StripeRoute
   V15WebhooksRoute: typeof V15WebhooksRoute
+  V155ApprovalsRoute: typeof V155ApprovalsRoute
+  V155AutonomyGovRoute: typeof V155AutonomyGovRoute
+  V155CapitalIntelRoute: typeof V155CapitalIntelRoute
+  V155CommandRoute: typeof V155CommandRoute
+  V155ExplainabilityRoute: typeof V155ExplainabilityRoute
+  V155IntelRoute: typeof V155IntelRoute
+  V155MpIntelRoute: typeof V155MpIntelRoute
+  V155MpRecEngineRoute: typeof V155MpRecEngineRoute
+  V155OutcomesRoute: typeof V155OutcomesRoute
+  V155OverviewRoute: typeof V155OverviewRoute
+  V155RevRecEngineRoute: typeof V155RevRecEngineRoute
+  V155RevenueOptRoute: typeof V155RevenueOptRoute
+  V155ScopeRoute: typeof V155ScopeRoute
   V2AiOpsRoute: typeof V2AiOpsRoute
   V2ApiKeysRoute: typeof V2ApiKeysRoute
   V2ApiMarketplaceRoute: typeof V2ApiMarketplaceRoute
@@ -12990,6 +13159,97 @@ declare module '@tanstack/react-router' {
       path: '/v2/ai-ops'
       fullPath: '/v2/ai-ops'
       preLoaderRoute: typeof V2AiOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/scope': {
+      id: '/v155/scope'
+      path: '/v155/scope'
+      fullPath: '/v155/scope'
+      preLoaderRoute: typeof V155ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/revenue-opt': {
+      id: '/v155/revenue-opt'
+      path: '/v155/revenue-opt'
+      fullPath: '/v155/revenue-opt'
+      preLoaderRoute: typeof V155RevenueOptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/rev-rec-engine': {
+      id: '/v155/rev-rec-engine'
+      path: '/v155/rev-rec-engine'
+      fullPath: '/v155/rev-rec-engine'
+      preLoaderRoute: typeof V155RevRecEngineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/overview': {
+      id: '/v155/overview'
+      path: '/v155/overview'
+      fullPath: '/v155/overview'
+      preLoaderRoute: typeof V155OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/outcomes': {
+      id: '/v155/outcomes'
+      path: '/v155/outcomes'
+      fullPath: '/v155/outcomes'
+      preLoaderRoute: typeof V155OutcomesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/mp-rec-engine': {
+      id: '/v155/mp-rec-engine'
+      path: '/v155/mp-rec-engine'
+      fullPath: '/v155/mp-rec-engine'
+      preLoaderRoute: typeof V155MpRecEngineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/mp-intel': {
+      id: '/v155/mp-intel'
+      path: '/v155/mp-intel'
+      fullPath: '/v155/mp-intel'
+      preLoaderRoute: typeof V155MpIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/intel': {
+      id: '/v155/intel'
+      path: '/v155/intel'
+      fullPath: '/v155/intel'
+      preLoaderRoute: typeof V155IntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/explainability': {
+      id: '/v155/explainability'
+      path: '/v155/explainability'
+      fullPath: '/v155/explainability'
+      preLoaderRoute: typeof V155ExplainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/command': {
+      id: '/v155/command'
+      path: '/v155/command'
+      fullPath: '/v155/command'
+      preLoaderRoute: typeof V155CommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/capital-intel': {
+      id: '/v155/capital-intel'
+      path: '/v155/capital-intel'
+      fullPath: '/v155/capital-intel'
+      preLoaderRoute: typeof V155CapitalIntelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/autonomy-gov': {
+      id: '/v155/autonomy-gov'
+      path: '/v155/autonomy-gov'
+      fullPath: '/v155/autonomy-gov'
+      preLoaderRoute: typeof V155AutonomyGovRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v155/approvals': {
+      id: '/v155/approvals'
+      path: '/v155/approvals'
+      fullPath: '/v155/approvals'
+      preLoaderRoute: typeof V155ApprovalsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v15/webhooks': {
@@ -16260,6 +16520,19 @@ const rootRouteChildren: RootRouteChildren = {
   V15SessionsRoute: V15SessionsRoute,
   V15StripeRoute: V15StripeRoute,
   V15WebhooksRoute: V15WebhooksRoute,
+  V155ApprovalsRoute: V155ApprovalsRoute,
+  V155AutonomyGovRoute: V155AutonomyGovRoute,
+  V155CapitalIntelRoute: V155CapitalIntelRoute,
+  V155CommandRoute: V155CommandRoute,
+  V155ExplainabilityRoute: V155ExplainabilityRoute,
+  V155IntelRoute: V155IntelRoute,
+  V155MpIntelRoute: V155MpIntelRoute,
+  V155MpRecEngineRoute: V155MpRecEngineRoute,
+  V155OutcomesRoute: V155OutcomesRoute,
+  V155OverviewRoute: V155OverviewRoute,
+  V155RevRecEngineRoute: V155RevRecEngineRoute,
+  V155RevenueOptRoute: V155RevenueOptRoute,
+  V155ScopeRoute: V155ScopeRoute,
   V2AiOpsRoute: V2AiOpsRoute,
   V2ApiKeysRoute: V2ApiKeysRoute,
   V2ApiMarketplaceRoute: V2ApiMarketplaceRoute,
@@ -16633,13 +16906,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
