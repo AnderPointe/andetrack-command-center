@@ -154,6 +154,12 @@ function Page() {
         ]} />
       </Section>
 
+      <Section title="Roadmap detail — 8 horizons with owners + HITL gates">
+        <SimpleTable rows={roadmapDetail as any} columns={[
+          { key: "horizon", label: "Horizon" }, { key: "focus", label: "Focus" }, { key: "owner", label: "Owner" }, { key: "gate", label: "Gate" },
+        ]} />
+      </Section>
+
       <Section title="Phase 57 (deferred)">
         <p className="text-sm text-muted-foreground"><b>{teaser.version}</b> — {teaser.themes.join(" · ")}</p>
         <p className="text-xs text-muted-foreground mt-1">Base headline: {headBase.headline}</p>
