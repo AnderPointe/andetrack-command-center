@@ -3,25 +3,15 @@ import { AppShell } from "@/components/layout/AppShell";
 import { V15Nav } from "./V15Nav";
 import { Badge } from "@/components/ui/badge";
 
-export function V15Page({
-  title,
-  blurb,
-  icon,
-  children,
-}: {
-  title: string;
-  blurb: string;
-  icon?: ReactNode;
-  children: ReactNode;
-}) {
+export function V15Page({ title, blurb, icon, children }: { title: string; blurb: string; icon?: ReactNode; children: ReactNode }) {
   return (
     <AppShell>
       <div className="space-y-5">
         <V15Nav />
         <header className="space-y-2">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="outline" className="border-cyan-500/40 text-cyan-300">Phase 16</Badge>
-            <Badge variant="outline" className="border-white/15 text-muted-foreground">V1.5 navigation + billing</Badge>
+            <Badge variant="outline" className="border-cyan-400/40 text-cyan-200">Phase 43</Badge>
+            <Badge variant="outline" className="border-white/15 text-muted-foreground">V15 enterprise performance command</Badge>
           </div>
           <div className="flex items-center gap-3">
             {icon}

@@ -1,55 +1,49 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import {
-  Rocket, Layers, Map, MapPin, Compass, Route, Navigation, Activity,
-  CreditCard, ShieldCheck, Lock, Plug, Webhook, Sparkles, Truck,
-  ClipboardList, Globe, Users, FileBarChart, ListChecks, RefreshCcw, Gauge,
+  Gauge, Layers, Command, Wallet, TrendingUp, Megaphone, Radar,
+  Brain, Lightbulb, Star, Briefcase, FileBarChart, Users, Network,
+  Boxes, Lock, Stamp, AlertTriangle, ShieldCheck, Map, ListChecks,
 } from "lucide-react";
 
 const ITEMS = [
-  { to: "/v15/overview",          label: "V1.5 Overview",       icon: Rocket },
-  { to: "/v15/scope",             label: "Scope",               icon: Layers },
-  { to: "/v15/navigation",        label: "Nav Providers",       icon: Map },
-  { to: "/v15/mapbox",            label: "Mapbox",              icon: MapPin },
-  { to: "/v15/google",            label: "Google",              icon: Compass },
-  { to: "/v15/sessions",          label: "Sessions",            icon: Activity },
-  { to: "/v15/rendering",         label: "Route Render",        icon: Route },
-  { to: "/v15/eta-sync",          label: "ETA Sync",            icon: RefreshCcw },
-  { to: "/v15/reroute",           label: "Reroute",             icon: Navigation },
-  { to: "/v15/provider-health",   label: "Provider Health",     icon: Gauge },
-  { to: "/v15/billing",           label: "Billing",             icon: CreditCard },
-  { to: "/v15/stripe",            label: "Stripe Plan",         icon: ShieldCheck },
-  { to: "/v15/plan-limits",       label: "Plan Limits",         icon: Lock },
-  { to: "/v15/integrations",      label: "Integrations",        icon: Plug },
-  { to: "/v15/webhooks",          label: "Webhooks",            icon: Webhook },
-  { to: "/v15/copilot",           label: "CoPilot V1.5",        icon: Sparkles },
-  { to: "/v15/driver-nav",        label: "Driver Nav",          icon: Truck },
-  { to: "/v15/dispatcher-routes", label: "Dispatcher Routes",   icon: ClipboardList },
-  { to: "/v15/portal",            label: "Portal V1.5",         icon: Globe },
-  { to: "/v15/paid-customers",    label: "Paid Customers",      icon: Users },
-  { to: "/v15/reports",           label: "Reports",             icon: FileBarChart },
-  { to: "/v15/security",          label: "Security",            icon: ShieldCheck },
-  { to: "/v15/demo",              label: "Demo Flow",           icon: ListChecks },
-] as const;
+  { to: "/v15/overview",        label: "V15 Overview",         icon: Gauge },
+  { to: "/v15/scope",           label: "Scope",                icon: Layers },
+  { to: "/v15/command",         label: "Performance Command",  icon: Command },
+  { to: "/v15/capital",         label: "Capital Execution",    icon: Wallet },
+  { to: "/v15/revenue",         label: "Durable Revenue",      icon: TrendingUp },
+  { to: "/v15/mp-gov",          label: "MP Scale Gov",         icon: Megaphone },
+  { to: "/v15/mp-intel",        label: "MP Scale Intel",       icon: Radar },
+  { to: "/v15/intel",           label: "Operating Intel",      icon: Brain },
+  { to: "/v15/recommendations", label: "Recommendations",      icon: Lightbulb },
+  { to: "/v15/category",        label: "Category OS",          icon: Star },
+  { to: "/v15/exec",            label: "Exec Control",         icon: Briefcase },
+  { to: "/v15/board-intel",     label: "Board Intel",          icon: FileBarChart },
+  { to: "/v15/accounts",        label: "Strategic Accounts",   icon: Users },
+  { to: "/v15/partners",        label: "Partner Performance",  icon: Network },
+  { to: "/v15/product-lines",   label: "Product Performance",  icon: Boxes },
+  { to: "/v15/cap-evidence",    label: "Capital Evidence",     icon: Lock },
+  { to: "/v15/diligence",       label: "Commercial Diligence", icon: Stamp },
+  { to: "/v15/risk",            label: "Strategic Risk",       icon: AlertTriangle },
+  { to: "/v15/controls",        label: "Performance Controls", icon: ShieldCheck },
+  { to: "/v15/roadmap",         label: "LT Roadmap",           icon: Map },
+  { to: "/v15/board-reports",   label: "Board Reports",        icon: FileBarChart },
+  { to: "/v15/reports",         label: "Reports",              icon: ShieldCheck },
+  { to: "/v15/demo",            label: "Demo Flow",            icon: ListChecks },
+];
 
 export function V15Nav() {
   const { pathname } = useLocation();
   return (
-    <nav
-      aria-label="Phase 16 V1.5 sections"
-      className="-mx-1 flex gap-1 overflow-x-auto pb-1 text-xs scrollbar-thin"
-    >
+    <nav aria-label="Phase 43 V15 sections" className="-mx-1 flex gap-1 overflow-x-auto pb-1 text-xs scrollbar-thin">
       {ITEMS.map(({ to, label, icon: Icon }) => {
         const active = pathname === to;
         return (
-          <Link
-            key={to}
-            to={to}
+          <Link key={to} to={to}
             className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 transition-colors ${
               active
                 ? "border-cyan-400/50 bg-cyan-500/10 text-cyan-200"
                 : "border-white/10 bg-white/[0.02] text-muted-foreground hover:border-white/20 hover:text-foreground"
-            }`}
-          >
+            }`}>
             <Icon className="size-3.5" />
             {label}
           </Link>
