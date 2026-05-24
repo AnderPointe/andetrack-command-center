@@ -4382,6 +4382,10 @@ export type Database = {
         Args: { _customer_id: string; _user_id: string }
         Returns: boolean
       }
+      is_driver_self: {
+        Args: { _driver_id: string; _user_id: string }
+        Returns: boolean
+      }
       is_platform_owner: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
