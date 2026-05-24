@@ -102,6 +102,32 @@ export default function AnderouteDispatchBoard() {
     console.info("[dispatch] call requested", d.driver_id);
   };
 
+  const filteredLoads = useMemo(() => {
+    const q = (search + " " + filterSearch).trim().toLowerCase();
+    return loads.filter((l) => {
+      if (loadStatusFilter !== "all" && l.status !== loadStatusFilter) return false;
+      if (!q) return true;
+      return [l.customer, l.commodity, l.pickup_location, l.dropoff_location, l.id]
+        .filter(Boolean)
+        .some((v) => String(v).toLowerCase().includes(q));
+    });
+  }, [loads, search, filterSearch, loadStatusFilter]);
+
+  const onFocusLoad = (load: DispatchLoad) => {
+    setSelectedLoadId(load.id);
+    const pts = load.stops
+      .filter((s) => s.latitude != null && s.longitude != null)
+      .map((s) => [s.latitude as number, s.longitude as number] as [number, number]);
+    if (pts.length === 0 || !mapRef.current) return;
+    if (pts.length === 1) {
+      mapRef.current.flyTo(pts[0], 11, { duration: 0.8 });
+    } else {
+      const L = (window as any).L;
+      const bounds = L?.latLngBounds ? L.latLngBounds(pts) : null;
+      if (bounds) mapRef.current.fitBounds(bounds, { padding: [60, 60] });
+    }
+  };
+
   // Keep map sized on view changes
   useEffect(() => {
     const t = setTimeout(() => mapRef.current?.invalidateSize(), 50);
