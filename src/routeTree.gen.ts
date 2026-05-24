@@ -373,6 +373,7 @@ import { Route as V25AuditRouteImport } from './routes/v25.audit'
 import { Route as V25ApiProductsRouteImport } from './routes/v25.api-products'
 import { Route as V25ApiMonetizationRouteImport } from './routes/v25.api-monetization'
 import { Route as V25ApiGatewayRouteImport } from './routes/v25.api-gateway'
+import { Route as V23ScopeRouteImport } from './routes/v23.scope'
 import { Route as V23RiskRouteImport } from './routes/v23.risk'
 import { Route as V23RevenueRouteImport } from './routes/v23.revenue'
 import { Route as V23RecRouteImport } from './routes/v23.rec'
@@ -2962,6 +2963,11 @@ const V25ApiMonetizationRoute = V25ApiMonetizationRouteImport.update({
 const V25ApiGatewayRoute = V25ApiGatewayRouteImport.update({
   id: '/v25/api-gateway',
   path: '/v25/api-gateway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23ScopeRoute = V23ScopeRouteImport.update({
+  id: '/v23/scope',
+  path: '/v23/scope',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V23RiskRoute = V23RiskRouteImport.update({
@@ -7585,6 +7591,7 @@ export interface FileRoutesByFullPath {
   '/v23/rec': typeof V23RecRoute
   '/v23/revenue': typeof V23RevenueRoute
   '/v23/risk': typeof V23RiskRoute
+  '/v23/scope': typeof V23ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -8717,6 +8724,7 @@ export interface FileRoutesByTo {
   '/v23/rec': typeof V23RecRoute
   '/v23/revenue': typeof V23RevenueRoute
   '/v23/risk': typeof V23RiskRoute
+  '/v23/scope': typeof V23ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -9850,6 +9858,7 @@ export interface FileRoutesById {
   '/v23/rec': typeof V23RecRoute
   '/v23/revenue': typeof V23RevenueRoute
   '/v23/risk': typeof V23RiskRoute
+  '/v23/scope': typeof V23ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -10984,6 +10993,7 @@ export interface FileRouteTypes {
     | '/v23/rec'
     | '/v23/revenue'
     | '/v23/risk'
+    | '/v23/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -12116,6 +12126,7 @@ export interface FileRouteTypes {
     | '/v23/rec'
     | '/v23/revenue'
     | '/v23/risk'
+    | '/v23/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -13248,6 +13259,7 @@ export interface FileRouteTypes {
     | '/v23/rec'
     | '/v23/revenue'
     | '/v23/risk'
+    | '/v23/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -14373,6 +14385,7 @@ export interface RootRouteChildren {
   V23RecRoute: typeof V23RecRoute
   V23RevenueRoute: typeof V23RevenueRoute
   V23RiskRoute: typeof V23RiskRoute
+  V23ScopeRoute: typeof V23ScopeRoute
   V25ApiGatewayRoute: typeof V25ApiGatewayRoute
   V25ApiMonetizationRoute: typeof V25ApiMonetizationRoute
   V25ApiProductsRoute: typeof V25ApiProductsRoute
@@ -17268,6 +17281,13 @@ declare module '@tanstack/react-router' {
       path: '/v25/api-gateway'
       fullPath: '/v25/api-gateway'
       preLoaderRoute: typeof V25ApiGatewayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/scope': {
+      id: '/v23/scope'
+      path: '/v23/scope'
+      fullPath: '/v23/scope'
+      preLoaderRoute: typeof V23ScopeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v23/risk': {
@@ -23466,6 +23486,7 @@ const rootRouteChildren: RootRouteChildren = {
   V23RecRoute: V23RecRoute,
   V23RevenueRoute: V23RevenueRoute,
   V23RiskRoute: V23RiskRoute,
+  V23ScopeRoute: V23ScopeRoute,
   V25ApiGatewayRoute: V25ApiGatewayRoute,
   V25ApiMonetizationRoute: V25ApiMonetizationRoute,
   V25ApiProductsRoute: V25ApiProductsRoute,
@@ -23815,13 +23836,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
