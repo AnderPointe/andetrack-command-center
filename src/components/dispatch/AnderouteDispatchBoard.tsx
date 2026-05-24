@@ -28,15 +28,19 @@ import { DispatchViewControls } from "./DispatchViewControls";
 import { DispatchFilterBar } from "./DispatchFilterBar";
 import { FleetDriverList } from "./FleetDriverList";
 import { AnderouteDispatchMap } from "./AnderouteDispatchMap";
+import { LoadsDispatchPanel } from "./LoadsDispatchPanel";
 import { useLiveDriverCurrent } from "@/hooks/useLiveDriverLocations";
 import { useLogisticsMapPois } from "@/hooks/useLogisticsMapPois";
+import { useLoadsWithStops } from "@/hooks/useLoadsWithStops";
 import { MOCK_DISPATCH_DRIVERS } from "@/data/mockDispatchDrivers";
 import type { DispatchDriver, ViewMode } from "@/types/dispatch";
+import type { DispatchLoad } from "@/types/loads";
 import { STALE_AFTER_SECONDS } from "./dispatchTokens";
 
 export default function AnderouteDispatchBoard() {
   const { drivers: liveDrivers, connected } = useLiveDriverCurrent();
   const pois = useLogisticsMapPois();
+  const { loads, usingMock: loadsUsingMock } = useLoadsWithStops();
   const mapRef = useRef<L.Map | null>(null);
 
   const [search, setSearch] = useState("");
@@ -48,6 +52,7 @@ export default function AnderouteDispatchBoard() {
   const [view, setView] = useState<ViewMode>("map");
   const [date, setDate] = useState(() => new Date());
   const [selectedDriverId, setSelectedDriverId] = useState<string | null>(null);
+  const [selectedLoadId, setSelectedLoadId] = useState<string | null>(null);
 
   // Mock fallback ONLY when Supabase has no rows
   const sourceDrivers: DispatchDriver[] = useMemo(() => {
@@ -97,6 +102,32 @@ export default function AnderouteDispatchBoard() {
     console.info("[dispatch] call requested", d.driver_id);
   };
 
+  const filteredLoads = useMemo(() => {
+    const q = (search + " " + filterSearch).trim().toLowerCase();
+    return loads.filter((l) => {
+      if (loadStatusFilter !== "all" && l.status !== loadStatusFilter) return false;
+      if (!q) return true;
+      return [l.customer, l.commodity, l.pickup_location, l.dropoff_location, l.id]
+        .filter(Boolean)
+        .some((v) => String(v).toLowerCase().includes(q));
+    });
+  }, [loads, search, filterSearch, loadStatusFilter]);
+
+  const onFocusLoad = (load: DispatchLoad) => {
+    setSelectedLoadId(load.id);
+    const pts = load.stops
+      .filter((s) => s.latitude != null && s.longitude != null)
+      .map((s) => [s.latitude as number, s.longitude as number] as [number, number]);
+    if (pts.length === 0 || !mapRef.current) return;
+    if (pts.length === 1) {
+      mapRef.current.flyTo(pts[0], 11, { duration: 0.8 });
+    } else {
+      const L = (window as any).L;
+      const bounds = L?.latLngBounds ? L.latLngBounds(pts) : null;
+      if (bounds) mapRef.current.fitBounds(bounds, { padding: [60, 60] });
+    }
+  };
+
   // Keep map sized on view changes
   useEffect(() => {
     const t = setTimeout(() => mapRef.current?.invalidateSize(), 50);
@@ -135,7 +166,7 @@ export default function AnderouteDispatchBoard() {
             onVehicleType={setVehicleTypeFilter}
           />
 
-          <div className="grid min-h-0 grid-cols-[320px_1fr]">
+          <div className="grid min-h-0 grid-cols-[320px_1fr_340px]">
             <FleetDriverList
               drivers={filteredDrivers}
               totalCount={sourceDrivers.length}
@@ -148,9 +179,19 @@ export default function AnderouteDispatchBoard() {
             <AnderouteDispatchMap
               drivers={filteredDrivers}
               pois={pois}
+              loads={filteredLoads}
               selectedDriverId={selectedDriverId}
               onSelectDriver={setSelectedDriverId}
+              selectedLoadId={selectedLoadId}
+              onSelectLoad={setSelectedLoadId}
               mapRef={mapRef}
+            />
+            <LoadsDispatchPanel
+              loads={filteredLoads}
+              selectedLoadId={selectedLoadId}
+              onSelect={(l) => setSelectedLoadId(l.id)}
+              onFocus={onFocusLoad}
+              usingMock={loadsUsingMock}
             />
           </div>
         </div>

@@ -2405,6 +2405,109 @@ export type Database = {
         }
         Relationships: []
       }
+      load_stops: {
+        Row: {
+          actual_arrival: string | null
+          actual_departure: string | null
+          address: string | null
+          city: string | null
+          company_id: string
+          contact_name: string | null
+          contact_phone: string | null
+          country: string | null
+          created_at: string
+          customer_location_id: string | null
+          id: string
+          instructions: string | null
+          kind: Database["public"]["Enums"]["load_stop_kind"]
+          latitude: number | null
+          load_id: string
+          longitude: number | null
+          name: string | null
+          postal_code: string | null
+          region: string | null
+          scheduled_arrival: string | null
+          scheduled_departure: string | null
+          sequence: number
+          status: Database["public"]["Enums"]["load_stop_status"]
+          updated_at: string
+        }
+        Insert: {
+          actual_arrival?: string | null
+          actual_departure?: string | null
+          address?: string | null
+          city?: string | null
+          company_id: string
+          contact_name?: string | null
+          contact_phone?: string | null
+          country?: string | null
+          created_at?: string
+          customer_location_id?: string | null
+          id?: string
+          instructions?: string | null
+          kind: Database["public"]["Enums"]["load_stop_kind"]
+          latitude?: number | null
+          load_id: string
+          longitude?: number | null
+          name?: string | null
+          postal_code?: string | null
+          region?: string | null
+          scheduled_arrival?: string | null
+          scheduled_departure?: string | null
+          sequence?: number
+          status?: Database["public"]["Enums"]["load_stop_status"]
+          updated_at?: string
+        }
+        Update: {
+          actual_arrival?: string | null
+          actual_departure?: string | null
+          address?: string | null
+          city?: string | null
+          company_id?: string
+          contact_name?: string | null
+          contact_phone?: string | null
+          country?: string | null
+          created_at?: string
+          customer_location_id?: string | null
+          id?: string
+          instructions?: string | null
+          kind?: Database["public"]["Enums"]["load_stop_kind"]
+          latitude?: number | null
+          load_id?: string
+          longitude?: number | null
+          name?: string | null
+          postal_code?: string | null
+          region?: string | null
+          scheduled_arrival?: string | null
+          scheduled_departure?: string | null
+          sequence?: number
+          status?: Database["public"]["Enums"]["load_stop_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "load_stops_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "load_stops_customer_location_id_fkey"
+            columns: ["customer_location_id"]
+            isOneToOne: false
+            referencedRelation: "customer_locations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "load_stops_load_id_fkey"
+            columns: ["load_id"]
+            isOneToOne: false
+            referencedRelation: "loads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       loads: {
         Row: {
           assigned_driver_id: string | null
@@ -4463,6 +4566,13 @@ export type Database = {
         | "delivered"
         | "completed"
         | "cancelled"
+      load_stop_kind: "pickup" | "dropoff"
+      load_stop_status:
+        | "pending"
+        | "en_route"
+        | "arrived"
+        | "completed"
+        | "skipped"
       location_permission_status:
         | "granted"
         | "denied"
@@ -4696,6 +4806,14 @@ export const Constants = {
         "delivered",
         "completed",
         "cancelled",
+      ],
+      load_stop_kind: ["pickup", "dropoff"],
+      load_stop_status: [
+        "pending",
+        "en_route",
+        "arrived",
+        "completed",
+        "skipped",
       ],
       location_permission_status: [
         "granted",

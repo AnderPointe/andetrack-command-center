@@ -14,6 +14,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { DispatchDriver } from "@/types/dispatch";
 import type { LogisticsPoi, PoiCategory } from "@/types/map";
+import type { DispatchLoad } from "@/types/loads";
 import { DRIVER_STATUS_COLOR } from "./dispatchTokens";
 import { MapStatusLegend } from "./MapStatusLegend";
 import { MapLayerControls } from "./MapLayerControls";
@@ -120,16 +121,22 @@ function PinPlacer({
 interface Props {
   drivers: DispatchDriver[];
   pois: LogisticsPoi[];
+  loads?: DispatchLoad[];
   selectedDriverId: string | null;
   onSelectDriver: (id: string | null) => void;
+  selectedLoadId?: string | null;
+  onSelectLoad?: (id: string | null) => void;
   mapRef: React.MutableRefObject<L.Map | null>;
 }
 
 export function AnderouteDispatchMap({
   drivers,
   pois,
+  loads = [],
   selectedDriverId,
   onSelectDriver,
+  selectedLoadId = null,
+  onSelectLoad,
   mapRef,
 }: Props) {
   const [pinMode, setPinMode] = useState(false);
@@ -217,31 +224,79 @@ export function AnderouteDispatchMap({
           ))}
         </LayerGroup>
 
-        {/* Route placeholder: selected driver → first pickup → first dropoff */}
+        {/* Real load pickup / drop-off markers from load_stops */}
+        <LayerGroup>
+          {loads.flatMap((load) =>
+            load.stops
+              .filter((s) => s.latitude != null && s.longitude != null)
+              .map((s) => (
+                <Marker
+                  key={s.id}
+                  position={[s.latitude as number, s.longitude as number]}
+                  icon={poiIcon(s.kind === "pickup" ? "load_pickup" : "load_dropoff")}
+                  eventHandlers={{ click: () => onSelectLoad?.(load.id) }}
+                >
+                  <Popup>
+                    <div className="text-xs">
+                      <div className="font-semibold">
+                        {s.kind === "pickup" ? "Pickup" : "Drop-off"} ·{" "}
+                        {s.name ?? load.customer ?? "Stop"}
+                      </div>
+                      <div className="text-slate-500">
+                        {[s.address, s.city, s.region].filter(Boolean).join(", ")}
+                      </div>
+                      <div className="mt-1 text-slate-500">
+                        Load #{load.id.slice(0, 8)} · {load.commodity ?? "—"}
+                      </div>
+                    </div>
+                  </Popup>
+                </Marker>
+              )),
+          )}
+        </LayerGroup>
+
+        {/* Route polylines for each load's pickup → drop-off chain */}
+        <LayerGroup>
+          {loads.map((load) => {
+            const pts = load.stops
+              .filter((s) => s.latitude != null && s.longitude != null)
+              .sort((a, b) => a.sequence - b.sequence)
+              .map((s) => [s.latitude as number, s.longitude as number] as [number, number]);
+            if (pts.length < 2) return null;
+            const isSelected = load.id === selectedLoadId;
+            return (
+              <Polyline
+                key={`route-${load.id}`}
+                positions={pts}
+                pathOptions={{
+                  color: isSelected ? "#0f172a" : "#14b8a6",
+                  weight: isSelected ? 4 : 3,
+                  opacity: isSelected ? 1 : 0.7,
+                  dashArray: isSelected ? undefined : "6 6",
+                }}
+              />
+            );
+          })}
+        </LayerGroup>
+
+        {/* Driver → first pickup connector for the selected driver */}
         {selected &&
           (() => {
-            const pickup = pois.find((p) => p.category === "load_pickup");
-            const dropoff = pois.find((p) => p.category === "load_dropoff");
+            const driverLoad = loads.find(
+              (l) => l.assigned_driver_id === selected.driver_id,
+            );
+            const pickup = driverLoad?.stops.find(
+              (s) => s.kind === "pickup" && s.latitude != null && s.longitude != null,
+            );
             if (!pickup) return null;
             return (
-              <>
-                <Polyline
-                  positions={[
-                    [selected.latitude, selected.longitude],
-                    [pickup.latitude, pickup.longitude],
-                  ]}
-                  pathOptions={{ color: "#f97316", weight: 3, dashArray: "6 6" }}
-                />
-                {dropoff && (
-                  <Polyline
-                    positions={[
-                      [pickup.latitude, pickup.longitude],
-                      [dropoff.latitude, dropoff.longitude],
-                    ]}
-                    pathOptions={{ color: "#14b8a6", weight: 3 }}
-                  />
-                )}
-              </>
+              <Polyline
+                positions={[
+                  [selected.latitude, selected.longitude],
+                  [pickup.latitude as number, pickup.longitude as number],
+                ]}
+                pathOptions={{ color: "#f97316", weight: 3, dashArray: "4 6" }}
+              />
             );
           })()}
       </MapContainer>
