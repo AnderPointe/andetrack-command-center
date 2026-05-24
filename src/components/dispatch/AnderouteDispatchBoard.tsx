@@ -40,6 +40,7 @@ import { STALE_AFTER_SECONDS } from "./dispatchTokens";
 export default function AnderouteDispatchBoard() {
   const { drivers: liveDrivers, connected } = useLiveDriverCurrent();
   const pois = useLogisticsMapPois();
+  const { loads, usingMock: loadsUsingMock } = useLoadsWithStops();
   const mapRef = useRef<L.Map | null>(null);
 
   const [search, setSearch] = useState("");
@@ -51,6 +52,7 @@ export default function AnderouteDispatchBoard() {
   const [view, setView] = useState<ViewMode>("map");
   const [date, setDate] = useState(() => new Date());
   const [selectedDriverId, setSelectedDriverId] = useState<string | null>(null);
+  const [selectedLoadId, setSelectedLoadId] = useState<string | null>(null);
 
   // Mock fallback ONLY when Supabase has no rows
   const sourceDrivers: DispatchDriver[] = useMemo(() => {
