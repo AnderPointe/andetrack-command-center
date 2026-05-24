@@ -37,6 +37,8 @@ import {
 import { mapLocationRowToLiveDriver } from "@/lib/mapLiveDriver";
 import { DEMO_COMPANY_ID } from "@/config/demo";
 
+const companyId = import.meta.env.VITE_DEMO_COMPANY_ID || DEMO_COMPANY_ID;
+
 export const Route = createFileRoute("/live-map")({
   head: () => ({
     meta: [
@@ -364,7 +366,7 @@ function convertRowToLiveDriver(row: DriverLocationRow): LiveDriver {
 }
 
 function AnderouteLiveMap() {
-  const liveRows = useLiveDriverLocations(DEMO_COMPANY_ID);
+  const liveRows = useLiveDriverLocations({ companyId });
   const [mockDrivers, setMockDrivers] = useState<LiveDriver[]>(initialDrivers);
   const [customMarkers, setCustomMarkers] = useState<MapMarker[]>([]);
   const [selectedStatuses, setSelectedStatuses] = useState<DriverStatus[]>([

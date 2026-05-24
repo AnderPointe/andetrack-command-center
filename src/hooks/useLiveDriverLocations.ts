@@ -29,7 +29,7 @@ export interface DriverLocationRow {
  * Subscribes to `driver_locations` for a company and returns the latest row
  * per driver. Realtime payloads patch the in-memory map without re-fetching.
  */
-export function useLiveDriverLocations(companyId: string | null) {
+export function useLiveDriverLocations({ companyId }: { companyId: string | null }) {
   const [byDriverId, setByDriverId] = useState<Record<string, DriverLocationRow>>({});
 
   useEffect(() => {
