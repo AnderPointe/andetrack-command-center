@@ -121,16 +121,22 @@ function PinPlacer({
 interface Props {
   drivers: DispatchDriver[];
   pois: LogisticsPoi[];
+  loads?: DispatchLoad[];
   selectedDriverId: string | null;
   onSelectDriver: (id: string | null) => void;
+  selectedLoadId?: string | null;
+  onSelectLoad?: (id: string | null) => void;
   mapRef: React.MutableRefObject<L.Map | null>;
 }
 
 export function AnderouteDispatchMap({
   drivers,
   pois,
+  loads = [],
   selectedDriverId,
   onSelectDriver,
+  selectedLoadId = null,
+  onSelectLoad,
   mapRef,
 }: Props) {
   const [pinMode, setPinMode] = useState(false);
