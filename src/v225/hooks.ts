@@ -1,4 +1,15 @@
 import * as D from "./data/mockPhase58";
+import * as P from "./data/mockPhase58Polish";
+
+export const useV225PolishDomains      = () => P.V225P_DOMAINS;
+export const useV225PolishHitlQueue    = () => P.V225P_HITL_QUEUE;
+export const useV225PolishBoundary     = () => P.V225P_BOUNDARY;
+export const useV225PolishRls          = () => P.V225P_RLS;
+export const useV225PolishEdge         = () => P.V225P_EDGE;
+export const useV225PolishInvariants   = () => P.V225P_INVARIANTS;
+export const useV225PolishDemo         = () => P.V225P_DEMO;
+export const useV225PolishOwnerHeatmap = () => P.V225P_OWNER_HEATMAP;
+export const useV225PolishRoadmapLanes = () => P.V225P_ROADMAP_LANES;
 
 export const useV225Scope                                  = () => D.V225_SCOPE;
 export const useV225FeatureMatrix                          = () => D.V225_FEATURE_MATRIX;
