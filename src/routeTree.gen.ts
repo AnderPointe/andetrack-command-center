@@ -18,6 +18,7 @@ import { Route as PortalRouteImport } from './routes/portal'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LoadsRouteImport } from './routes/loads'
+import { Route as LiveMapRouteImport } from './routes/live-map'
 import { Route as FuelRouteImport } from './routes/fuel'
 import { Route as DriversRouteImport } from './routes/drivers'
 import { Route as DocumentsRouteImport } from './routes/documents'
@@ -1185,6 +1186,11 @@ const LoginRoute = LoginRouteImport.update({
 const LoadsRoute = LoadsRouteImport.update({
   id: '/loads',
   path: '/loads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveMapRoute = LiveMapRouteImport.update({
+  id: '/live-map',
+  path: '/live-map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FuelRoute = FuelRouteImport.update({
@@ -6822,6 +6828,7 @@ export interface FileRoutesByFullPath {
   '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
+  '/live-map': typeof LiveMapRoute
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
@@ -7956,6 +7963,7 @@ export interface FileRoutesByTo {
   '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
+  '/live-map': typeof LiveMapRoute
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
@@ -9091,6 +9099,7 @@ export interface FileRoutesById {
   '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
+  '/live-map': typeof LiveMapRoute
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
@@ -10227,6 +10236,7 @@ export interface FileRouteTypes {
     | '/documents'
     | '/drivers'
     | '/fuel'
+    | '/live-map'
     | '/loads'
     | '/login'
     | '/map'
@@ -11361,6 +11371,7 @@ export interface FileRouteTypes {
     | '/documents'
     | '/drivers'
     | '/fuel'
+    | '/live-map'
     | '/loads'
     | '/login'
     | '/map'
@@ -12495,6 +12506,7 @@ export interface FileRouteTypes {
     | '/documents'
     | '/drivers'
     | '/fuel'
+    | '/live-map'
     | '/loads'
     | '/login'
     | '/map'
@@ -13630,6 +13642,7 @@ export interface RootRouteChildren {
   DocumentsRoute: typeof DocumentsRoute
   DriversRoute: typeof DriversRoute
   FuelRoute: typeof FuelRoute
+  LiveMapRoute: typeof LiveMapRoute
   LoadsRoute: typeof LoadsRoute
   LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
@@ -14809,6 +14822,13 @@ declare module '@tanstack/react-router' {
       path: '/loads'
       fullPath: '/loads'
       preLoaderRoute: typeof LoadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-map': {
+      id: '/live-map'
+      path: '/live-map'
+      fullPath: '/live-map'
+      preLoaderRoute: typeof LiveMapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fuel': {
@@ -22739,6 +22759,7 @@ const rootRouteChildren: RootRouteChildren = {
   DocumentsRoute: DocumentsRoute,
   DriversRoute: DriversRoute,
   FuelRoute: FuelRoute,
+  LiveMapRoute: LiveMapRoute,
   LoadsRoute: LoadsRoute,
   LoginRoute: LoginRoute,
   MapRoute: MapRoute,

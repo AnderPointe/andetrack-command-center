@@ -561,7 +561,7 @@ function AnderouteLiveMap() {
               <FlyToDriver selectedDriver={selectedDriver} />
 
               {filteredDrivers.map((driver) => (
-                <div key={driver.id}>
+                <Fragment key={driver.id}>
                   {driver.route.length > 1 && (
                     <Polyline
                       positions={driver.route}
@@ -588,7 +588,7 @@ function AnderouteLiveMap() {
                       </div>
                     </Popup>
                   </Marker>
-                </div>
+                </Fragment>
               ))}
 
               {allStaticMarkers.map((marker) => (
