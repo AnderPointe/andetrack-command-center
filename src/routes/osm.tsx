@@ -31,7 +31,7 @@ export const Route = createFileRoute("/osm")({
       },
     ],
   }),
-  component: OsmPage,
+  component: AnderouteLeafletLiveMap,
 });
 
 const STYLES = `
@@ -73,7 +73,7 @@ const STYLES = `
 .stat-label { color: #64748b; font-size: 10px; margin-bottom: 4px; }
 .stat-value { font-size: 13px; font-weight: 900; }
 .map-area { position: relative; height: 100vh; }
-#osm-map { height: 100vh; width: 100%; z-index: 1; background: #020617; }
+#map { height: 100vh; width: 100%; z-index: 1; background: #020617; }
 .map-topbar { position: absolute; top: 18px; left: 18px; right: 18px; z-index: 800; display: flex; justify-content: space-between; gap: 12px; pointer-events: none; }
 .map-chip-row, .selected-card { pointer-events: auto; border: 1px solid rgba(255,255,255,0.1); background: rgba(2,6,23,0.82); backdrop-filter: blur(14px); border-radius: 22px; padding: 12px 14px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
 .map-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -92,7 +92,7 @@ const STYLES = `
   .osm-root { overflow: auto; }
   .app-shell { grid-template-columns: 1fr; height: auto; }
   .sidebar { height: auto; max-height: none; }
-  .map-area, #osm-map { height: 70vh; }
+  .map-area, #map { height: 70vh; }
   .map-topbar { flex-direction: column; }
 }
 `;
@@ -113,7 +113,7 @@ function loadLeaflet(): Promise<any> {
   });
 }
 
-function OsmPage() {
+function AnderouteLeafletLiveMap() {
   useEffect(() => {
     if (window.__osmInit) return;
     window.__osmInit = true;
@@ -156,7 +156,7 @@ function OsmPage() {
         { id: "load-1002", type: "load", title: "Drop: Load 1002", description: "Final mile delivery • Customer waiting", position: [32.7986, -96.7718] },
       ];
 
-      map = L.map("osm-map", { zoomControl: true, scrollWheelZoom: true }).setView(DEFAULT_CENTER, 13);
+      map = L.map("map", { zoomControl: true, scrollWheelZoom: true }).setView(DEFAULT_CENTER, 13);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -416,7 +416,7 @@ function OsmPage() {
               <div className="selected-value" id="selectedUnit">None</div>
             </div>
           </div>
-          <div id="osm-map" />
+          <div id="map" />
         </div>
       </div>
     </div>
