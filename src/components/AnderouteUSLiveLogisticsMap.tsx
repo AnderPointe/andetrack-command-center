@@ -24,7 +24,7 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { useLiveDriverLocations } from "@/hooks/useLiveDriverLocations";
+import { useLiveDriverCurrent } from "@/hooks/useLiveDriverLocations";
 import { useLogisticsMapPois } from "@/hooks/useLogisticsMapPois";
 import { searchMapLocation, type SearchResult } from "@/services/mapSearchService";
 import type {
