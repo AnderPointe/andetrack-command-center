@@ -15,6 +15,7 @@ import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RoutesRouteImport } from './routes/routes'
 import { Route as PortalRouteImport } from './routes/portal'
+import { Route as OsmRouteImport } from './routes/osm'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as LoadsRouteImport } from './routes/loads'
@@ -1171,6 +1172,11 @@ const RoutesRoute = RoutesRouteImport.update({
 const PortalRoute = PortalRouteImport.update({
   id: '/portal',
   path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OsmRoute = OsmRouteImport.update({
+  id: '/osm',
+  path: '/osm',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapRoute = MapRouteImport.update({
@@ -6832,6 +6838,7 @@ export interface FileRoutesByFullPath {
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/osm': typeof OsmRoute
   '/portal': typeof PortalRouteWithChildren
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
@@ -7967,6 +7974,7 @@ export interface FileRoutesByTo {
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/osm': typeof OsmRoute
   '/portal': typeof PortalRouteWithChildren
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
@@ -9103,6 +9111,7 @@ export interface FileRoutesById {
   '/loads': typeof LoadsRoute
   '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/osm': typeof OsmRoute
   '/portal': typeof PortalRouteWithChildren
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
@@ -10240,6 +10249,7 @@ export interface FileRouteTypes {
     | '/loads'
     | '/login'
     | '/map'
+    | '/osm'
     | '/portal'
     | '/routes'
     | '/settings'
@@ -11375,6 +11385,7 @@ export interface FileRouteTypes {
     | '/loads'
     | '/login'
     | '/map'
+    | '/osm'
     | '/portal'
     | '/routes'
     | '/settings'
@@ -12510,6 +12521,7 @@ export interface FileRouteTypes {
     | '/loads'
     | '/login'
     | '/map'
+    | '/osm'
     | '/portal'
     | '/routes'
     | '/settings'
@@ -13646,6 +13658,7 @@ export interface RootRouteChildren {
   LoadsRoute: typeof LoadsRoute
   LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
+  OsmRoute: typeof OsmRoute
   PortalRoute: typeof PortalRouteWithChildren
   RoutesRoute: typeof RoutesRoute
   SettingsRoute: typeof SettingsRouteWithChildren
@@ -14801,6 +14814,13 @@ declare module '@tanstack/react-router' {
       path: '/portal'
       fullPath: '/portal'
       preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/osm': {
+      id: '/osm'
+      path: '/osm'
+      fullPath: '/osm'
+      preLoaderRoute: typeof OsmRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/map': {
@@ -22763,6 +22783,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoadsRoute: LoadsRoute,
   LoginRoute: LoginRoute,
   MapRoute: MapRoute,
+  OsmRoute: OsmRoute,
   PortalRoute: PortalRouteWithChildren,
   RoutesRoute: RoutesRoute,
   SettingsRoute: SettingsRouteWithChildren,
@@ -23878,13 +23899,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
