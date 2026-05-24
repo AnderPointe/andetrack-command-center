@@ -17,6 +17,7 @@ L.Icon.Default.mergeOptions({
 });
 
 export const Route = createFileRoute("/osm")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Map — OpenStreetMap" },
