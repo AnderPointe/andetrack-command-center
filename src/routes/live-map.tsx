@@ -30,6 +30,12 @@ import {
   Wifi,
   WifiOff,
 } from "lucide-react";
+import {
+  useLiveDriverLocations,
+  type DriverLocationRow,
+} from "@/hooks/useLiveDriverLocations";
+import { mapLocationRowToLiveDriver } from "@/lib/mapLiveDriver";
+import { DEMO_COMPANY_ID } from "@/config/demo";
 
 export const Route = createFileRoute("/live-map")({
   head: () => ({
@@ -61,7 +67,7 @@ type LiveDriver = {
   name: string;
   unit: string;
   status: DriverStatus;
-  vehicleType: VehicleType;
+  vehicleType: string;
   speedMph: number;
   heading: number;
   etaMinutes: number;
@@ -318,8 +324,48 @@ function simulateDriverMovement(drivers: LiveDriver[]) {
   });
 }
 
+function dbStatusToUiStatus(
+  status: DriverLocationRow["status"]
+): DriverStatus {
+  switch (status) {
+    case "idle":
+      return "available";
+    case "loading":
+    case "unloading":
+      return "assigned";
+    case "driving":
+      return "loaded";
+    case "break":
+      return "break";
+    case "offline":
+      return "offline";
+    default:
+      return "offline";
+  }
+}
+
+function convertRowToLiveDriver(row: DriverLocationRow): LiveDriver {
+  const mapped = mapLocationRowToLiveDriver(row);
+  return {
+    id: mapped.id,
+    name: mapped.name,
+    unit: mapped.unit,
+    status: dbStatusToUiStatus(mapped.status),
+    vehicleType: mapped.vehicleType,
+    speedMph: mapped.speedMph,
+    heading: mapped.heading,
+    etaMinutes: mapped.etaMinutes,
+    currentLoad: mapped.currentLoad,
+    position: mapped.position,
+    route: [],
+    lastPingSeconds: mapped.lastPingSeconds,
+    fuelMpg: mapped.fuelMpg,
+  };
+}
+
 function AnderouteLiveMap() {
-  const [drivers, setDrivers] = useState<LiveDriver[]>(initialDrivers);
+  const liveRows = useLiveDriverLocations(DEMO_COMPANY_ID);
+  const [mockDrivers, setMockDrivers] = useState<LiveDriver[]>(initialDrivers);
   const [customMarkers, setCustomMarkers] = useState<MapMarker[]>([]);
   const [selectedStatuses, setSelectedStatuses] = useState<DriverStatus[]>([
     "available", "assigned", "loaded", "break", "alert",
@@ -334,10 +380,17 @@ function AnderouteLiveMap() {
     "Live map ready. Click the map to add a custom pin."
   );
 
+  const drivers = useMemo(() => {
+    if (liveRows.length > 0) {
+      return liveRows.map((row) => convertRowToLiveDriver(row));
+    }
+    return mockDrivers;
+  }, [liveRows, mockDrivers]);
+
   useEffect(() => {
     if (!isLive) return;
     const interval = window.setInterval(() => {
-      setDrivers((current) => simulateDriverMovement(current));
+      setMockDrivers((current) => simulateDriverMovement(current));
     }, 2200);
     return () => window.clearInterval(interval);
   }, [isLive]);
