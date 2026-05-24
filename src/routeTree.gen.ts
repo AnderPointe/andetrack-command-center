@@ -23,6 +23,7 @@ import { Route as LiveMapRouteImport } from './routes/live-map'
 import { Route as FuelRouteImport } from './routes/fuel'
 import { Route as DriversRouteImport } from './routes/drivers'
 import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as DispatchBoardRouteImport } from './routes/dispatch-board'
 import { Route as DispatchRouteImport } from './routes/dispatch'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AlertsRouteImport } from './routes/alerts'
@@ -1212,6 +1213,11 @@ const DriversRoute = DriversRouteImport.update({
 const DocumentsRoute = DocumentsRouteImport.update({
   id: '/documents',
   path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DispatchBoardRoute = DispatchBoardRouteImport.update({
+  id: '/dispatch-board',
+  path: '/dispatch-board',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DispatchRoute = DispatchRouteImport.update({
@@ -6831,6 +6837,7 @@ export interface FileRoutesByFullPath {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/dispatch': typeof DispatchRouteWithChildren
+  '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
@@ -7967,6 +7974,7 @@ export interface FileRoutesByTo {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/dispatch': typeof DispatchRouteWithChildren
+  '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
@@ -9104,6 +9112,7 @@ export interface FileRoutesById {
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
   '/dispatch': typeof DispatchRouteWithChildren
+  '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
   '/drivers': typeof DriversRoute
   '/fuel': typeof FuelRoute
@@ -10242,6 +10251,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dispatch'
+    | '/dispatch-board'
     | '/documents'
     | '/drivers'
     | '/fuel'
@@ -11378,6 +11388,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dispatch'
+    | '/dispatch-board'
     | '/documents'
     | '/drivers'
     | '/fuel'
@@ -12514,6 +12525,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/analytics'
     | '/dispatch'
+    | '/dispatch-board'
     | '/documents'
     | '/drivers'
     | '/fuel'
@@ -13651,6 +13663,7 @@ export interface RootRouteChildren {
   AlertsRoute: typeof AlertsRoute
   AnalyticsRoute: typeof AnalyticsRoute
   DispatchRoute: typeof DispatchRouteWithChildren
+  DispatchBoardRoute: typeof DispatchBoardRoute
   DocumentsRoute: typeof DocumentsRoute
   DriversRoute: typeof DriversRoute
   FuelRoute: typeof FuelRoute
@@ -14870,6 +14883,13 @@ declare module '@tanstack/react-router' {
       path: '/documents'
       fullPath: '/documents'
       preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dispatch-board': {
+      id: '/dispatch-board'
+      path: '/dispatch-board'
+      fullPath: '/dispatch-board'
+      preLoaderRoute: typeof DispatchBoardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dispatch': {
@@ -22776,6 +22796,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlertsRoute: AlertsRoute,
   AnalyticsRoute: AnalyticsRoute,
   DispatchRoute: DispatchRouteWithChildren,
+  DispatchBoardRoute: DispatchBoardRoute,
   DocumentsRoute: DocumentsRoute,
   DriversRoute: DriversRoute,
   FuelRoute: FuelRoute,
