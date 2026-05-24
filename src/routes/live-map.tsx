@@ -366,7 +366,19 @@ function convertRowToLiveDriver(row: DriverLocationRow): LiveDriver {
 }
 
 function AnderouteLiveMap() {
-  const liveRows = useLiveDriverLocations({ companyId });
+  const {
+    drivers: liveRows,
+    loading,
+    error,
+    isConnected,
+    staleDrivers,
+    refresh,
+  } = useLiveDriverLocations({ companyId });
+  void loading;
+  void error;
+  void isConnected;
+  void staleDrivers;
+  void refresh;
   const [mockDrivers, setMockDrivers] = useState<LiveDriver[]>(initialDrivers);
   const [customMarkers, setCustomMarkers] = useState<MapMarker[]>([]);
   const [selectedStatuses, setSelectedStatuses] = useState<DriverStatus[]>([
@@ -382,7 +394,7 @@ function AnderouteLiveMap() {
     "Live map ready. Click the map to add a custom pin."
   );
 
-  const drivers = useMemo(() => {
+  const drivers = useMemo<LiveDriver[]>(() => {
     if (liveRows.length > 0) {
       return liveRows.map((row) => convertRowToLiveDriver(row));
     }
