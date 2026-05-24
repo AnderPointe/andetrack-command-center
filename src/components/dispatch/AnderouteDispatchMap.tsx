@@ -471,26 +471,40 @@ export function AnderouteDispatchMap({
     if (!map || !styleReady) return;
     const bag = customPinMarkersRef.current;
     const seen = new Set<string>();
-    customPins.forEach((p) => {
-      seen.add(p.id);
-      if (bag.has(p.id)) return;
-      const m = new maplibregl.Marker({ element: poiEl("custom"), anchor: "bottom" })
-        .setLngLat([p.lng, p.lat])
-        .setPopup(
-          new maplibregl.Popup({ offset: 24 }).setHTML(
-            `<div style="font-size:12px">Custom pin<br/>${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</div>`,
-          ),
-        )
-        .addTo(map);
-      bag.set(p.id, m);
-    });
+    if (isLayerOn("custom_pins")) {
+      customPins.forEach((p) => {
+        seen.add(p.id);
+        if (bag.has(p.id)) return;
+        const m = new maplibregl.Marker({ element: poiEl("custom"), anchor: "bottom" })
+          .setLngLat([p.lng, p.lat])
+          .setPopup(
+            new maplibregl.Popup({ offset: 24 }).setHTML(
+              `<div style="font-size:12px">Custom pin<br/>${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</div>`,
+            ),
+          )
+          .addTo(map);
+        bag.set(p.id, m);
+      });
+    }
     [...bag.keys()].forEach((id) => {
       if (!seen.has(id)) {
         bag.get(id)?.remove();
         bag.delete(id);
       }
     });
-  }, [customPins, styleReady, mapRef]);
+  }, [customPins, styleReady, mapRef, visibleLayers]);
+
+  // --- 3D buildings layer toggle
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !styleReady) return;
+    if (!map.getLayer("anderoute-3d-buildings")) return;
+    map.setLayoutProperty(
+      "anderoute-3d-buildings",
+      "visibility",
+      isLayerOn("buildings_3d") ? "visible" : "none",
+    );
+  }, [visibleLayers, styleReady, mapRef]);
 
   const onLocate = () => {
     if (!navigator.geolocation || !mapRef.current) return;
