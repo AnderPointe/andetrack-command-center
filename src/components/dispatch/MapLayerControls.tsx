@@ -54,7 +54,7 @@ function Btn({
       }`}
     >
       <Icon className="size-4" />
-      <span className="pointer-events-none absolute right-full z-50 mr-2 whitespace-nowrap rounded-md bg-slate-800 px-2 py-1 text-[11px] font-medium text-slate-100 opacity-0 shadow-lg group-hover:opacity-100">
+      <span className="pointer-events-none absolute left-full z-50 ml-2 whitespace-nowrap rounded-md bg-slate-800 px-2 py-1 text-[11px] font-medium text-slate-100 opacity-0 shadow-lg group-hover:opacity-100">
         {label}
       </span>
     </button>
