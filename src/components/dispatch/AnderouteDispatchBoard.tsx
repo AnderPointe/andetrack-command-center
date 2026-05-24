@@ -21,7 +21,7 @@
  *  - Public OSM tiles are dev-grade; swap for self-hosted in production.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
-import type L from "leaflet";
+import maplibregl, { type Map as MLMap } from "maplibre-gl";
 import { DispatchSidebarNav } from "./DispatchSidebarNav";
 import { DispatchTopBar } from "./DispatchTopBar";
 import { DispatchViewControls } from "./DispatchViewControls";
@@ -41,7 +41,7 @@ export default function AnderouteDispatchBoard() {
   const { drivers: liveDrivers, connected } = useLiveDriverCurrent();
   const pois = useLogisticsMapPois();
   const { loads, usingMock: loadsUsingMock } = useLoadsWithStops();
-  const mapRef = useRef<L.Map | null>(null);
+  const mapRef = useRef<MLMap | null>(null);
 
   const [search, setSearch] = useState("");
   const [filterSearch, setFilterSearch] = useState("");
@@ -93,7 +93,12 @@ export default function AnderouteDispatchBoard() {
   }, [sourceDrivers, search, filterSearch, driverStatusFilter, vehicleTypeFilter]);
 
   const onCenter = (d: DispatchDriver) => {
-    mapRef.current?.flyTo([d.latitude, d.longitude], 12, { duration: 0.8 });
+    mapRef.current?.flyTo({
+      center: [d.longitude, d.latitude],
+      zoom: 12,
+      pitch: 55,
+      duration: 1000,
+    });
     setSelectedDriverId(d.driver_id);
   };
 
@@ -117,20 +122,20 @@ export default function AnderouteDispatchBoard() {
     setSelectedLoadId(load.id);
     const pts = load.stops
       .filter((s) => s.latitude != null && s.longitude != null)
-      .map((s) => [s.latitude as number, s.longitude as number] as [number, number]);
+      .map((s) => [s.longitude as number, s.latitude as number] as [number, number]);
     if (pts.length === 0 || !mapRef.current) return;
     if (pts.length === 1) {
-      mapRef.current.flyTo(pts[0], 11, { duration: 0.8 });
+      mapRef.current.flyTo({ center: pts[0], zoom: 11, duration: 1000 });
     } else {
-      const L = (window as any).L;
-      const bounds = L?.latLngBounds ? L.latLngBounds(pts) : null;
-      if (bounds) mapRef.current.fitBounds(bounds, { padding: [60, 60] });
+      const bounds = new maplibregl.LngLatBounds(pts[0], pts[0]);
+      pts.forEach((p) => bounds.extend(p));
+      mapRef.current.fitBounds(bounds, { padding: 80, duration: 1000 });
     }
   };
 
   // Keep map sized on view changes
   useEffect(() => {
-    const t = setTimeout(() => mapRef.current?.invalidateSize(), 50);
+    const t = setTimeout(() => mapRef.current?.resize(), 50);
     return () => clearTimeout(t);
   }, [view]);
 
