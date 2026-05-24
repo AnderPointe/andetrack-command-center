@@ -2607,6 +2607,80 @@ export type Database = {
           },
         ]
       }
+      logistics_map_pois: {
+        Row: {
+          address: string | null
+          category: string
+          city: string | null
+          company_id: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          is_active: boolean
+          is_public: boolean
+          latitude: number
+          longitude: number
+          metadata: Json
+          name: string
+          phone: string | null
+          state: string | null
+          updated_at: string
+          website: string | null
+          zip: string | null
+        }
+        Insert: {
+          address?: string | null
+          category?: string
+          city?: string | null
+          company_id: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          is_public?: boolean
+          latitude: number
+          longitude: number
+          metadata?: Json
+          name: string
+          phone?: string | null
+          state?: string | null
+          updated_at?: string
+          website?: string | null
+          zip?: string | null
+        }
+        Update: {
+          address?: string | null
+          category?: string
+          city?: string | null
+          company_id?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          is_public?: boolean
+          latitude?: number
+          longitude?: number
+          metadata?: Json
+          name?: string
+          phone?: string | null
+          state?: string | null
+          updated_at?: string
+          website?: string | null
+          zip?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "logistics_map_pois_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       mobile_device_sessions: {
         Row: {
           app_version: string | null
