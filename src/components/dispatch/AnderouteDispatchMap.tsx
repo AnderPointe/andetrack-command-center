@@ -10,10 +10,19 @@ import { MapLayerControls } from "./MapLayerControls";
 import { SelectedDriverMapCard } from "./SelectedDriverMapCard";
 
 const US_CENTER: [number, number] = [-98.5795, 39.8283]; // MapLibre = [lng, lat]
-const US_ZOOM = 4.2;
+const US_ZOOM = 3.5;
 
-// OpenFreeMap "Liberty" — free, no API key, vector tiles + good road styling.
-const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
+// Resolve the vector style at runtime so production deploys can point at a
+// proper OpenStreetMap-based vector style (self-hosted OpenMapTiles, OpenFreeMap,
+// or a commercial provider) without rebuilding.
+//
+// PRODUCTION: replace VITE_MAP_STYLE_URL with an OpenStreetMap-based vector
+// tile style from a proper provider or self-hosted OpenMapTiles/OpenFreeMap.
+// Do NOT rely on public demo tiles or public OSM raster tiles for production
+// traffic — both are rate-limited and have no SLA.
+const MAP_STYLE: string =
+  (import.meta.env.VITE_MAP_STYLE_URL as string | undefined) ||
+  "https://tiles.openfreemap.org/styles/liberty"; // dev fallback
 
 const POI_STYLE: Record<PoiCategory, { color: string; glyph: string; label: string }> = {
   load_pickup: { color: "#f97316", glyph: "P", label: "Pickup" },
