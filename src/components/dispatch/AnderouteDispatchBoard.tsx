@@ -181,7 +181,7 @@ export default function AnderouteDispatchBoard() {
               onCall={onCall}
               connected={connected}
             />
-            <AnderouteDispatchMap
+            <Anderoute3DDispatchMap
               drivers={filteredDrivers}
               pois={pois}
               loads={filteredLoads}
