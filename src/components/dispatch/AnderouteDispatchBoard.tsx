@@ -21,7 +21,7 @@
  *  - Public OSM tiles are dev-grade; swap for self-hosted in production.
  */
 import { useEffect, useMemo, useRef, useState } from "react";
-import type L from "leaflet";
+import maplibregl, { type Map as MLMap } from "maplibre-gl";
 import { DispatchSidebarNav } from "./DispatchSidebarNav";
 import { DispatchTopBar } from "./DispatchTopBar";
 import { DispatchViewControls } from "./DispatchViewControls";
