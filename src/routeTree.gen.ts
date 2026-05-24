@@ -373,6 +373,27 @@ import { Route as V25AuditRouteImport } from './routes/v25.audit'
 import { Route as V25ApiProductsRouteImport } from './routes/v25.api-products'
 import { Route as V25ApiMonetizationRouteImport } from './routes/v25.api-monetization'
 import { Route as V25ApiGatewayRouteImport } from './routes/v25.api-gateway'
+import { Route as V23ScopeRouteImport } from './routes/v23.scope'
+import { Route as V23RiskRouteImport } from './routes/v23.risk'
+import { Route as V23RevenueRouteImport } from './routes/v23.revenue'
+import { Route as V23RecRouteImport } from './routes/v23.rec'
+import { Route as V23ProductsRouteImport } from './routes/v23.products'
+import { Route as V23PartnerRouteImport } from './routes/v23.partner'
+import { Route as V23PartBoundaryRouteImport } from './routes/v23.part-boundary'
+import { Route as V23OverviewRouteImport } from './routes/v23.overview'
+import { Route as V23OutcomeRouteImport } from './routes/v23.outcome'
+import { Route as V23OperatingRouteImport } from './routes/v23.operating'
+import { Route as V23MpRouteImport } from './routes/v23.mp'
+import { Route as V23ExecRouteImport } from './routes/v23.exec'
+import { Route as V23ExceptionRouteImport } from './routes/v23.exception'
+import { Route as V23EvidenceRouteImport } from './routes/v23.evidence'
+import { Route as V23CustomerRouteImport } from './routes/v23.customer'
+import { Route as V23CustBoundaryRouteImport } from './routes/v23.cust-boundary'
+import { Route as V23CategoryRouteImport } from './routes/v23.category'
+import { Route as V23CapitalRouteImport } from './routes/v23.capital'
+import { Route as V23BoardRouteImport } from './routes/v23.board'
+import { Route as V23AuditRouteImport } from './routes/v23.audit'
+import { Route as V23ApprovalRouteImport } from './routes/v23.approval'
 import { Route as V225ScopeRouteImport } from './routes/v225.scope'
 import { Route as V225RoadmapRouteImport } from './routes/v225.roadmap'
 import { Route as V225RiskRouteImport } from './routes/v225.risk'
@@ -2942,6 +2963,111 @@ const V25ApiMonetizationRoute = V25ApiMonetizationRouteImport.update({
 const V25ApiGatewayRoute = V25ApiGatewayRouteImport.update({
   id: '/v25/api-gateway',
   path: '/v25/api-gateway',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23ScopeRoute = V23ScopeRouteImport.update({
+  id: '/v23/scope',
+  path: '/v23/scope',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23RiskRoute = V23RiskRouteImport.update({
+  id: '/v23/risk',
+  path: '/v23/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23RevenueRoute = V23RevenueRouteImport.update({
+  id: '/v23/revenue',
+  path: '/v23/revenue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23RecRoute = V23RecRouteImport.update({
+  id: '/v23/rec',
+  path: '/v23/rec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23ProductsRoute = V23ProductsRouteImport.update({
+  id: '/v23/products',
+  path: '/v23/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23PartnerRoute = V23PartnerRouteImport.update({
+  id: '/v23/partner',
+  path: '/v23/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23PartBoundaryRoute = V23PartBoundaryRouteImport.update({
+  id: '/v23/part-boundary',
+  path: '/v23/part-boundary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23OverviewRoute = V23OverviewRouteImport.update({
+  id: '/v23/overview',
+  path: '/v23/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23OutcomeRoute = V23OutcomeRouteImport.update({
+  id: '/v23/outcome',
+  path: '/v23/outcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23OperatingRoute = V23OperatingRouteImport.update({
+  id: '/v23/operating',
+  path: '/v23/operating',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23MpRoute = V23MpRouteImport.update({
+  id: '/v23/mp',
+  path: '/v23/mp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23ExecRoute = V23ExecRouteImport.update({
+  id: '/v23/exec',
+  path: '/v23/exec',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23ExceptionRoute = V23ExceptionRouteImport.update({
+  id: '/v23/exception',
+  path: '/v23/exception',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23EvidenceRoute = V23EvidenceRouteImport.update({
+  id: '/v23/evidence',
+  path: '/v23/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23CustomerRoute = V23CustomerRouteImport.update({
+  id: '/v23/customer',
+  path: '/v23/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23CustBoundaryRoute = V23CustBoundaryRouteImport.update({
+  id: '/v23/cust-boundary',
+  path: '/v23/cust-boundary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23CategoryRoute = V23CategoryRouteImport.update({
+  id: '/v23/category',
+  path: '/v23/category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23CapitalRoute = V23CapitalRouteImport.update({
+  id: '/v23/capital',
+  path: '/v23/capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23BoardRoute = V23BoardRouteImport.update({
+  id: '/v23/board',
+  path: '/v23/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23AuditRoute = V23AuditRouteImport.update({
+  id: '/v23/audit',
+  path: '/v23/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const V23ApprovalRoute = V23ApprovalRouteImport.update({
+  id: '/v23/approval',
+  path: '/v23/approval',
   getParentRoute: () => rootRouteImport,
 } as any)
 const V225ScopeRoute = V225ScopeRouteImport.update({
@@ -7445,6 +7571,27 @@ export interface FileRoutesByFullPath {
   '/v225/risk': typeof V225RiskRoute
   '/v225/roadmap': typeof V225RoadmapRoute
   '/v225/scope': typeof V225ScopeRoute
+  '/v23/approval': typeof V23ApprovalRoute
+  '/v23/audit': typeof V23AuditRoute
+  '/v23/board': typeof V23BoardRoute
+  '/v23/capital': typeof V23CapitalRoute
+  '/v23/category': typeof V23CategoryRoute
+  '/v23/cust-boundary': typeof V23CustBoundaryRoute
+  '/v23/customer': typeof V23CustomerRoute
+  '/v23/evidence': typeof V23EvidenceRoute
+  '/v23/exception': typeof V23ExceptionRoute
+  '/v23/exec': typeof V23ExecRoute
+  '/v23/mp': typeof V23MpRoute
+  '/v23/operating': typeof V23OperatingRoute
+  '/v23/outcome': typeof V23OutcomeRoute
+  '/v23/overview': typeof V23OverviewRoute
+  '/v23/part-boundary': typeof V23PartBoundaryRoute
+  '/v23/partner': typeof V23PartnerRoute
+  '/v23/products': typeof V23ProductsRoute
+  '/v23/rec': typeof V23RecRoute
+  '/v23/revenue': typeof V23RevenueRoute
+  '/v23/risk': typeof V23RiskRoute
+  '/v23/scope': typeof V23ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -8557,6 +8704,27 @@ export interface FileRoutesByTo {
   '/v225/risk': typeof V225RiskRoute
   '/v225/roadmap': typeof V225RoadmapRoute
   '/v225/scope': typeof V225ScopeRoute
+  '/v23/approval': typeof V23ApprovalRoute
+  '/v23/audit': typeof V23AuditRoute
+  '/v23/board': typeof V23BoardRoute
+  '/v23/capital': typeof V23CapitalRoute
+  '/v23/category': typeof V23CategoryRoute
+  '/v23/cust-boundary': typeof V23CustBoundaryRoute
+  '/v23/customer': typeof V23CustomerRoute
+  '/v23/evidence': typeof V23EvidenceRoute
+  '/v23/exception': typeof V23ExceptionRoute
+  '/v23/exec': typeof V23ExecRoute
+  '/v23/mp': typeof V23MpRoute
+  '/v23/operating': typeof V23OperatingRoute
+  '/v23/outcome': typeof V23OutcomeRoute
+  '/v23/overview': typeof V23OverviewRoute
+  '/v23/part-boundary': typeof V23PartBoundaryRoute
+  '/v23/partner': typeof V23PartnerRoute
+  '/v23/products': typeof V23ProductsRoute
+  '/v23/rec': typeof V23RecRoute
+  '/v23/revenue': typeof V23RevenueRoute
+  '/v23/risk': typeof V23RiskRoute
+  '/v23/scope': typeof V23ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -9670,6 +9838,27 @@ export interface FileRoutesById {
   '/v225/risk': typeof V225RiskRoute
   '/v225/roadmap': typeof V225RoadmapRoute
   '/v225/scope': typeof V225ScopeRoute
+  '/v23/approval': typeof V23ApprovalRoute
+  '/v23/audit': typeof V23AuditRoute
+  '/v23/board': typeof V23BoardRoute
+  '/v23/capital': typeof V23CapitalRoute
+  '/v23/category': typeof V23CategoryRoute
+  '/v23/cust-boundary': typeof V23CustBoundaryRoute
+  '/v23/customer': typeof V23CustomerRoute
+  '/v23/evidence': typeof V23EvidenceRoute
+  '/v23/exception': typeof V23ExceptionRoute
+  '/v23/exec': typeof V23ExecRoute
+  '/v23/mp': typeof V23MpRoute
+  '/v23/operating': typeof V23OperatingRoute
+  '/v23/outcome': typeof V23OutcomeRoute
+  '/v23/overview': typeof V23OverviewRoute
+  '/v23/part-boundary': typeof V23PartBoundaryRoute
+  '/v23/partner': typeof V23PartnerRoute
+  '/v23/products': typeof V23ProductsRoute
+  '/v23/rec': typeof V23RecRoute
+  '/v23/revenue': typeof V23RevenueRoute
+  '/v23/risk': typeof V23RiskRoute
+  '/v23/scope': typeof V23ScopeRoute
   '/v25/api-gateway': typeof V25ApiGatewayRoute
   '/v25/api-monetization': typeof V25ApiMonetizationRoute
   '/v25/api-products': typeof V25ApiProductsRoute
@@ -10784,6 +10973,27 @@ export interface FileRouteTypes {
     | '/v225/risk'
     | '/v225/roadmap'
     | '/v225/scope'
+    | '/v23/approval'
+    | '/v23/audit'
+    | '/v23/board'
+    | '/v23/capital'
+    | '/v23/category'
+    | '/v23/cust-boundary'
+    | '/v23/customer'
+    | '/v23/evidence'
+    | '/v23/exception'
+    | '/v23/exec'
+    | '/v23/mp'
+    | '/v23/operating'
+    | '/v23/outcome'
+    | '/v23/overview'
+    | '/v23/part-boundary'
+    | '/v23/partner'
+    | '/v23/products'
+    | '/v23/rec'
+    | '/v23/revenue'
+    | '/v23/risk'
+    | '/v23/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -11896,6 +12106,27 @@ export interface FileRouteTypes {
     | '/v225/risk'
     | '/v225/roadmap'
     | '/v225/scope'
+    | '/v23/approval'
+    | '/v23/audit'
+    | '/v23/board'
+    | '/v23/capital'
+    | '/v23/category'
+    | '/v23/cust-boundary'
+    | '/v23/customer'
+    | '/v23/evidence'
+    | '/v23/exception'
+    | '/v23/exec'
+    | '/v23/mp'
+    | '/v23/operating'
+    | '/v23/outcome'
+    | '/v23/overview'
+    | '/v23/part-boundary'
+    | '/v23/partner'
+    | '/v23/products'
+    | '/v23/rec'
+    | '/v23/revenue'
+    | '/v23/risk'
+    | '/v23/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -13008,6 +13239,27 @@ export interface FileRouteTypes {
     | '/v225/risk'
     | '/v225/roadmap'
     | '/v225/scope'
+    | '/v23/approval'
+    | '/v23/audit'
+    | '/v23/board'
+    | '/v23/capital'
+    | '/v23/category'
+    | '/v23/cust-boundary'
+    | '/v23/customer'
+    | '/v23/evidence'
+    | '/v23/exception'
+    | '/v23/exec'
+    | '/v23/mp'
+    | '/v23/operating'
+    | '/v23/outcome'
+    | '/v23/overview'
+    | '/v23/part-boundary'
+    | '/v23/partner'
+    | '/v23/products'
+    | '/v23/rec'
+    | '/v23/revenue'
+    | '/v23/risk'
+    | '/v23/scope'
     | '/v25/api-gateway'
     | '/v25/api-monetization'
     | '/v25/api-products'
@@ -14113,6 +14365,27 @@ export interface RootRouteChildren {
   V225RiskRoute: typeof V225RiskRoute
   V225RoadmapRoute: typeof V225RoadmapRoute
   V225ScopeRoute: typeof V225ScopeRoute
+  V23ApprovalRoute: typeof V23ApprovalRoute
+  V23AuditRoute: typeof V23AuditRoute
+  V23BoardRoute: typeof V23BoardRoute
+  V23CapitalRoute: typeof V23CapitalRoute
+  V23CategoryRoute: typeof V23CategoryRoute
+  V23CustBoundaryRoute: typeof V23CustBoundaryRoute
+  V23CustomerRoute: typeof V23CustomerRoute
+  V23EvidenceRoute: typeof V23EvidenceRoute
+  V23ExceptionRoute: typeof V23ExceptionRoute
+  V23ExecRoute: typeof V23ExecRoute
+  V23MpRoute: typeof V23MpRoute
+  V23OperatingRoute: typeof V23OperatingRoute
+  V23OutcomeRoute: typeof V23OutcomeRoute
+  V23OverviewRoute: typeof V23OverviewRoute
+  V23PartBoundaryRoute: typeof V23PartBoundaryRoute
+  V23PartnerRoute: typeof V23PartnerRoute
+  V23ProductsRoute: typeof V23ProductsRoute
+  V23RecRoute: typeof V23RecRoute
+  V23RevenueRoute: typeof V23RevenueRoute
+  V23RiskRoute: typeof V23RiskRoute
+  V23ScopeRoute: typeof V23ScopeRoute
   V25ApiGatewayRoute: typeof V25ApiGatewayRoute
   V25ApiMonetizationRoute: typeof V25ApiMonetizationRoute
   V25ApiProductsRoute: typeof V25ApiProductsRoute
@@ -17008,6 +17281,153 @@ declare module '@tanstack/react-router' {
       path: '/v25/api-gateway'
       fullPath: '/v25/api-gateway'
       preLoaderRoute: typeof V25ApiGatewayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/scope': {
+      id: '/v23/scope'
+      path: '/v23/scope'
+      fullPath: '/v23/scope'
+      preLoaderRoute: typeof V23ScopeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/risk': {
+      id: '/v23/risk'
+      path: '/v23/risk'
+      fullPath: '/v23/risk'
+      preLoaderRoute: typeof V23RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/revenue': {
+      id: '/v23/revenue'
+      path: '/v23/revenue'
+      fullPath: '/v23/revenue'
+      preLoaderRoute: typeof V23RevenueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/rec': {
+      id: '/v23/rec'
+      path: '/v23/rec'
+      fullPath: '/v23/rec'
+      preLoaderRoute: typeof V23RecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/products': {
+      id: '/v23/products'
+      path: '/v23/products'
+      fullPath: '/v23/products'
+      preLoaderRoute: typeof V23ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/partner': {
+      id: '/v23/partner'
+      path: '/v23/partner'
+      fullPath: '/v23/partner'
+      preLoaderRoute: typeof V23PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/part-boundary': {
+      id: '/v23/part-boundary'
+      path: '/v23/part-boundary'
+      fullPath: '/v23/part-boundary'
+      preLoaderRoute: typeof V23PartBoundaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/overview': {
+      id: '/v23/overview'
+      path: '/v23/overview'
+      fullPath: '/v23/overview'
+      preLoaderRoute: typeof V23OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/outcome': {
+      id: '/v23/outcome'
+      path: '/v23/outcome'
+      fullPath: '/v23/outcome'
+      preLoaderRoute: typeof V23OutcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/operating': {
+      id: '/v23/operating'
+      path: '/v23/operating'
+      fullPath: '/v23/operating'
+      preLoaderRoute: typeof V23OperatingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/mp': {
+      id: '/v23/mp'
+      path: '/v23/mp'
+      fullPath: '/v23/mp'
+      preLoaderRoute: typeof V23MpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/exec': {
+      id: '/v23/exec'
+      path: '/v23/exec'
+      fullPath: '/v23/exec'
+      preLoaderRoute: typeof V23ExecRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/exception': {
+      id: '/v23/exception'
+      path: '/v23/exception'
+      fullPath: '/v23/exception'
+      preLoaderRoute: typeof V23ExceptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/evidence': {
+      id: '/v23/evidence'
+      path: '/v23/evidence'
+      fullPath: '/v23/evidence'
+      preLoaderRoute: typeof V23EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/customer': {
+      id: '/v23/customer'
+      path: '/v23/customer'
+      fullPath: '/v23/customer'
+      preLoaderRoute: typeof V23CustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/cust-boundary': {
+      id: '/v23/cust-boundary'
+      path: '/v23/cust-boundary'
+      fullPath: '/v23/cust-boundary'
+      preLoaderRoute: typeof V23CustBoundaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/category': {
+      id: '/v23/category'
+      path: '/v23/category'
+      fullPath: '/v23/category'
+      preLoaderRoute: typeof V23CategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/capital': {
+      id: '/v23/capital'
+      path: '/v23/capital'
+      fullPath: '/v23/capital'
+      preLoaderRoute: typeof V23CapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/board': {
+      id: '/v23/board'
+      path: '/v23/board'
+      fullPath: '/v23/board'
+      preLoaderRoute: typeof V23BoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/audit': {
+      id: '/v23/audit'
+      path: '/v23/audit'
+      fullPath: '/v23/audit'
+      preLoaderRoute: typeof V23AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/v23/approval': {
+      id: '/v23/approval'
+      path: '/v23/approval'
+      fullPath: '/v23/approval'
+      preLoaderRoute: typeof V23ApprovalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/v225/scope': {
@@ -23046,6 +23466,27 @@ const rootRouteChildren: RootRouteChildren = {
   V225RiskRoute: V225RiskRoute,
   V225RoadmapRoute: V225RoadmapRoute,
   V225ScopeRoute: V225ScopeRoute,
+  V23ApprovalRoute: V23ApprovalRoute,
+  V23AuditRoute: V23AuditRoute,
+  V23BoardRoute: V23BoardRoute,
+  V23CapitalRoute: V23CapitalRoute,
+  V23CategoryRoute: V23CategoryRoute,
+  V23CustBoundaryRoute: V23CustBoundaryRoute,
+  V23CustomerRoute: V23CustomerRoute,
+  V23EvidenceRoute: V23EvidenceRoute,
+  V23ExceptionRoute: V23ExceptionRoute,
+  V23ExecRoute: V23ExecRoute,
+  V23MpRoute: V23MpRoute,
+  V23OperatingRoute: V23OperatingRoute,
+  V23OutcomeRoute: V23OutcomeRoute,
+  V23OverviewRoute: V23OverviewRoute,
+  V23PartBoundaryRoute: V23PartBoundaryRoute,
+  V23PartnerRoute: V23PartnerRoute,
+  V23ProductsRoute: V23ProductsRoute,
+  V23RecRoute: V23RecRoute,
+  V23RevenueRoute: V23RevenueRoute,
+  V23RiskRoute: V23RiskRoute,
+  V23ScopeRoute: V23ScopeRoute,
   V25ApiGatewayRoute: V25ApiGatewayRoute,
   V25ApiMonetizationRoute: V25ApiMonetizationRoute,
   V25ApiProductsRoute: V25ApiProductsRoute,
