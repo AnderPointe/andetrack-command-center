@@ -28,24 +28,22 @@ export const Route = createFileRoute("/osm")({
 });
 
 function OsmPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current || mapRef.current) return;
+    if (mapRef.current) return;
 
-    const map = L.map(containerRef.current).setView([51.505, -0.09], 13);
+    const map = L.map("map").setView([51.505, -0.09], 13);
     mapRef.current = map;
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
       attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    L.marker([51.505, -0.09])
+    L.marker([51.5, -0.09])
       .addTo(map)
-      .bindPopup("A pretty CSS popup.<br>Easily customizable.")
+      .bindPopup("A pretty CSS popup.<br> Easily customizable.")
       .openPopup();
 
     return () => {
@@ -54,5 +52,5 @@ function OsmPage() {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ height: "100vh", width: "100%" }} />;
+  return <div id="map" style={{ height: "100vh", width: "100%" }} />;
 }
