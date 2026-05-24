@@ -173,46 +173,15 @@ export function AnderouteDispatchMap({
     map.addControl(new maplibregl.ScaleControl({ unit: "imperial" }), "bottom-left");
 
     map.on("load", () => {
-      // 3D building extrusion — works with vector styles whose tiles expose a "building" source-layer
+      // 3D building extrusion — works with vector styles whose tiles expose a building source-layer
       // (e.g. OpenFreeMap Liberty, OpenMapTiles). Safely no-ops for styles without it (e.g. demotiles).
       try {
-        const layers = map.getStyle().layers ?? [];
-        const labelLayerId = layers.find(
-          (l: any) => l.type === "symbol" && l.layout && "text-field" in l.layout,
-        )?.id;
-        const buildingLayer = layers.find((l: any) => l["source-layer"] === "building");
-
-        if (buildingLayer && !map.getLayer("anderoute-3d-buildings")) {
-          map.addLayer(
-            {
-              id: "anderoute-3d-buildings",
-              source: (buildingLayer as any).source,
-              "source-layer": "building",
-              type: "fill-extrusion",
-              minzoom: 14,
-              paint: {
-                "fill-extrusion-color": "#cbd5e1",
-                "fill-extrusion-height": [
-                  "coalesce",
-                  ["get", "render_height"],
-                  ["get", "height"],
-                  12,
-                ],
-                "fill-extrusion-base": [
-                  "coalesce",
-                  ["get", "render_min_height"],
-                  ["get", "min_height"],
-                  0,
-                ],
-                "fill-extrusion-opacity": 0.72,
-              },
-            },
-            labelLayerId,
-          );
-        }
+        add3DBuildings(map);
       } catch {
         /* style may not expose a building source-layer — ignore */
       }
+
+
 
 
       // Empty GeoJSON source + layer for load routes
