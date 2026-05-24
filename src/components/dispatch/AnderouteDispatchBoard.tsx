@@ -41,7 +41,7 @@ export default function AnderouteDispatchBoard() {
   const { drivers: liveDrivers, connected } = useLiveDriverCurrent();
   const pois = useLogisticsMapPois();
   const { loads, usingMock: loadsUsingMock } = useLoadsWithStops();
-  const mapRef = useRef<L.Map | null>(null);
+  const mapRef = useRef<MLMap | null>(null);
 
   const [search, setSearch] = useState("");
   const [filterSearch, setFilterSearch] = useState("");
