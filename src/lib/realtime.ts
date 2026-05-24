@@ -26,6 +26,7 @@ interface SubscribeOptions<T extends { [key: string]: any }> {
   filter?: string;
   schema?: string;
   onPayload: (payload: RealtimePostgresChangesPayload<T>) => void;
+  onStatus?: (status: string) => void;
 }
 
 export function subscribeToTable<T extends { [key: string]: any }>(
@@ -45,7 +46,7 @@ export function subscribeToTable<T extends { [key: string]: any }>(
         },
         (payload: RealtimePostgresChangesPayload<T>) => opts.onPayload(payload),
       )
-      .subscribe();
+      .subscribe((status) => opts.onStatus?.(status));
   } catch (err) {
     console.warn("[realtime] subscribe failed", err);
   }
