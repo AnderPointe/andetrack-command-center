@@ -1455,6 +1455,65 @@ export type Database = {
           },
         ]
       }
+      driver_locations: {
+        Row: {
+          company_id: string
+          created_at: string
+          current_load_number: string | null
+          driver_id: string
+          eta_minutes: number | null
+          heading: number | null
+          last_ping_at: string
+          latitude: number
+          longitude: number
+          speed_mph: number | null
+          status: Database["public"]["Enums"]["driver_location_status"]
+          unit_number: string | null
+          updated_at: string
+          vehicle_type: string | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          current_load_number?: string | null
+          driver_id: string
+          eta_minutes?: number | null
+          heading?: number | null
+          last_ping_at?: string
+          latitude: number
+          longitude: number
+          speed_mph?: number | null
+          status?: Database["public"]["Enums"]["driver_location_status"]
+          unit_number?: string | null
+          updated_at?: string
+          vehicle_type?: string | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          current_load_number?: string | null
+          driver_id?: string
+          eta_minutes?: number | null
+          heading?: number | null
+          last_ping_at?: string
+          latitude?: number
+          longitude?: number
+          speed_mph?: number | null
+          status?: Database["public"]["Enums"]["driver_location_status"]
+          unit_number?: string | null
+          updated_at?: string
+          vehicle_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "driver_locations_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       driver_navigation_preferences: {
         Row: {
           avoid_highways: boolean
@@ -4358,6 +4417,13 @@ export type Database = {
         | "pod_submitted"
         | "login"
         | "logout"
+      driver_location_status:
+        | "driving"
+        | "idle"
+        | "loading"
+        | "unloading"
+        | "break"
+        | "offline"
       driver_status:
         | "waiting"
         | "offered"
@@ -4580,6 +4646,14 @@ export const Constants = {
         "pod_submitted",
         "login",
         "logout",
+      ],
+      driver_location_status: [
+        "driving",
+        "idle",
+        "loading",
+        "unloading",
+        "break",
+        "offline",
       ],
       driver_status: [
         "waiting",
