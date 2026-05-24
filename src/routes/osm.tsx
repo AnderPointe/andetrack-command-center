@@ -1,20 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
 
-// Fix default marker icons (Leaflet + bundlers)
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: markerIcon2x,
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
-});
+declare global {
+  interface Window {
+    L: typeof import("leaflet");
+  }
+}
 
 export const Route = createFileRoute("/osm")({
   ssr: false,
@@ -23,32 +14,68 @@ export const Route = createFileRoute("/osm")({
       { title: "Map — OpenStreetMap" },
       { name: "description", content: "Leaflet + OpenStreetMap clone." },
     ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
+        integrity: "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",
+        crossorigin: "",
+      },
+    ],
+    scripts: [
+      {
+        src: "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
+        integrity: "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=",
+        crossorigin: "",
+      },
+    ],
   }),
   component: OsmPage,
 });
 
+function loadLeaflet(): Promise<typeof import("leaflet")> {
+  return new Promise((resolve, reject) => {
+    if (window.L) return resolve(window.L);
+    const check = setInterval(() => {
+      if (window.L) {
+        clearInterval(check);
+        resolve(window.L);
+      }
+    }, 50);
+    setTimeout(() => {
+      clearInterval(check);
+      if (window.L) resolve(window.L);
+      else reject(new Error("Leaflet failed to load"));
+    }, 10000);
+  });
+}
+
 function OsmPage() {
-  const mapRef = useRef<L.Map | null>(null);
+  const initialized = useRef(false);
 
   useEffect(() => {
-    if (mapRef.current) return;
+    if (initialized.current) return;
+    initialized.current = true;
 
-    const map = L.map("map").setView([51.505, -0.09], 13);
-    mapRef.current = map;
+    let map: import("leaflet").Map | null = null;
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+    loadLeaflet().then((L) => {
+      map = L.map("map").setView([51.505, -0.09], 13);
 
-    L.marker([51.5, -0.09])
-      .addTo(map)
-      .bindPopup("A pretty CSS popup.<br> Easily customizable.")
-      .openPopup();
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      L.marker([51.5, -0.09])
+        .addTo(map)
+        .bindPopup("A pretty CSS popup.<br> Easily customizable.")
+        .openPopup();
+    });
 
     return () => {
-      map.remove();
-      mapRef.current = null;
+      map?.remove();
+      initialized.current = false;
     };
   }, []);
 
