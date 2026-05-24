@@ -16,7 +16,7 @@ export function MapLayerControls({
   onFullscreen,
 }: Props) {
   return (
-    <div className="absolute right-4 top-4 z-[400] flex flex-col gap-1.5 rounded-xl border border-slate-200 bg-white/95 p-1.5 shadow-lg backdrop-blur">
+    <div className="absolute left-4 top-4 z-[400] flex flex-col gap-1.5 rounded-xl border border-slate-200 bg-white/95 p-1.5 shadow-lg backdrop-blur">
       <Btn icon={Crosshair} label="Locate Me" onClick={onLocate} />
       <Btn
         icon={MapPin}
@@ -54,7 +54,7 @@ function Btn({
       }`}
     >
       <Icon className="size-4" />
-      <span className="pointer-events-none absolute right-full z-50 mr-2 whitespace-nowrap rounded-md bg-slate-800 px-2 py-1 text-[11px] font-medium text-slate-100 opacity-0 shadow-lg group-hover:opacity-100">
+      <span className="pointer-events-none absolute left-full z-50 ml-2 whitespace-nowrap rounded-md bg-slate-800 px-2 py-1 text-[11px] font-medium text-slate-100 opacity-0 shadow-lg group-hover:opacity-100">
         {label}
       </span>
     </button>

@@ -10,10 +10,19 @@ import { MapLayerControls } from "./MapLayerControls";
 import { SelectedDriverMapCard } from "./SelectedDriverMapCard";
 
 const US_CENTER: [number, number] = [-98.5795, 39.8283]; // MapLibre = [lng, lat]
-const US_ZOOM = 4.2;
+const US_ZOOM = 3.5;
 
-// OpenFreeMap "Liberty" — free, no API key, vector tiles + good road styling.
-const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
+// Resolve the vector style at runtime so production deploys can point at a
+// proper OpenStreetMap-based vector style (self-hosted OpenMapTiles, OpenFreeMap,
+// or a commercial provider) without rebuilding.
+//
+// PRODUCTION: replace VITE_MAP_STYLE_URL with an OpenStreetMap-based vector
+// tile style from a proper provider or self-hosted OpenMapTiles/OpenFreeMap.
+// Do NOT rely on public demo tiles or public OSM raster tiles for production
+// traffic — both are rate-limited and have no SLA.
+const MAP_STYLE: string =
+  (import.meta.env.VITE_MAP_STYLE_URL as string | undefined) ||
+  "https://tiles.openfreemap.org/styles/liberty"; // dev fallback
 
 const POI_STYLE: Record<PoiCategory, { color: string; glyph: string; label: string }> = {
   load_pickup: { color: "#f97316", glyph: "P", label: "Pickup" },
@@ -78,6 +87,21 @@ function poiEl(cat: PoiCategory): HTMLElement {
   return el;
 }
 
+export type DispatchLayerKey =
+  | "drivers"
+  | "loads"
+  | "depots"
+  | "warehouses"
+  | "customers"
+  | "airports"
+  | "stores"
+  | "landmarks"
+  | "waterways"
+  | "custom_pins"
+  | "buildings_3d"
+  | "traffic"
+  | "weather";
+
 interface Props {
   drivers: DispatchDriver[];
   pois: LogisticsPoi[];
@@ -87,7 +111,23 @@ interface Props {
   selectedLoadId?: string | null;
   onSelectLoad?: (id: string | null) => void;
   mapRef: React.MutableRefObject<MLMap | null>;
+  visibleLayers?: Set<DispatchLayerKey>;
 }
+
+const POI_LAYER_FOR_CATEGORY: Partial<Record<PoiCategory, DispatchLayerKey>> = {
+  depot: "depots",
+  warehouse: "warehouses",
+  customer: "customers",
+  airport: "airports",
+  store: "stores",
+  landmark: "landmarks",
+  water: "waterways",
+  truck_stop: "stores",
+  fuel: "stores",
+  maintenance: "stores",
+  rail_yard: "landmarks",
+  port: "landmarks",
+};
 
 export function AnderouteDispatchMap({
   drivers,
@@ -98,7 +138,10 @@ export function AnderouteDispatchMap({
   selectedLoadId = null,
   onSelectLoad,
   mapRef,
+  visibleLayers,
 }: Props) {
+  const isLayerOn = (k: DispatchLayerKey) =>
+    !visibleLayers || visibleLayers.has(k);
   const containerRef = useRef<HTMLDivElement>(null);
   const mapDivRef = useRef<HTMLDivElement>(null);
   const driverMarkersRef = useRef<Map<string, MLMarker>>(new Map());
@@ -254,43 +297,47 @@ export function AnderouteDispatchMap({
     const map = mapRef.current;
     if (!map || !styleReady) return;
     const bag = driverMarkersRef.current;
+    const show = isLayerOn("drivers");
     const seen = new Set<string>();
-    drivers.forEach((d) => {
-      seen.add(d.driver_id);
-      const existing = bag.get(d.driver_id);
-      if (existing) {
-        existing.setLngLat([d.longitude, d.latitude]);
-        const el = existing.getElement();
-        const ring = el.querySelector("div > div") as HTMLElement | null;
-        if (ring) ring.style.borderColor = DRIVER_STATUS_COLOR[d.status];
-        return;
-      }
-      const el = driverEl(d);
-      el.addEventListener("click", (ev) => {
-        ev.stopPropagation();
-        onSelectDriver(d.driver_id);
+    if (show) {
+      drivers.forEach((d) => {
+        seen.add(d.driver_id);
+        const existing = bag.get(d.driver_id);
+        if (existing) {
+          existing.setLngLat([d.longitude, d.latitude]);
+          const el = existing.getElement();
+          const ring = el.querySelector("div > div") as HTMLElement | null;
+          if (ring) ring.style.borderColor = DRIVER_STATUS_COLOR[d.status];
+          return;
+        }
+        const el = driverEl(d);
+        el.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          onSelectDriver(d.driver_id);
+        });
+        const m = new maplibregl.Marker({ element: el, anchor: "bottom" })
+          .setLngLat([d.longitude, d.latitude])
+          .addTo(map);
+        bag.set(d.driver_id, m);
       });
-      const m = new maplibregl.Marker({ element: el, anchor: "bottom" })
-        .setLngLat([d.longitude, d.latitude])
-        .addTo(map);
-      bag.set(d.driver_id, m);
-    });
-    // Remove stale
+    }
     [...bag.keys()].forEach((id) => {
       if (!seen.has(id)) {
         bag.get(id)?.remove();
         bag.delete(id);
       }
     });
-  }, [drivers, styleReady, mapRef, onSelectDriver]);
+  }, [drivers, styleReady, mapRef, onSelectDriver, visibleLayers]);
 
-  // --- POI markers
+  // --- POI markers (filtered by per-category layer toggles)
   useEffect(() => {
     const map = mapRef.current;
     if (!map || !styleReady) return;
     const bag = poiMarkersRef.current;
     const seen = new Set<string>();
     pois.forEach((p) => {
+      const layerKey = POI_LAYER_FOR_CATEGORY[p.category];
+      if (layerKey && !isLayerOn(layerKey)) return;
       seen.add(p.id);
       const existing = bag.get(p.id);
       if (existing) {
@@ -313,7 +360,7 @@ export function AnderouteDispatchMap({
         bag.delete(id);
       }
     });
-  }, [pois, styleReady, mapRef]);
+  }, [pois, styleReady, mapRef, visibleLayers]);
 
   // --- Load pickup/dropoff markers
   useEffect(() => {
@@ -321,41 +368,43 @@ export function AnderouteDispatchMap({
     if (!map || !styleReady) return;
     const bag = stopMarkersRef.current;
     const seen = new Set<string>();
-    loads.forEach((load) => {
-      load.stops.forEach((s) => {
-        if (s.latitude == null || s.longitude == null) return;
-        seen.add(s.id);
-        if (bag.has(s.id)) {
-          bag.get(s.id)!.setLngLat([s.longitude, s.latitude]);
-          return;
-        }
-        const el = poiEl(s.kind === "pickup" ? "load_pickup" : "load_dropoff");
-        el.addEventListener("click", (ev) => {
-          ev.stopPropagation();
-          onSelectLoad?.(load.id);
+    if (isLayerOn("loads")) {
+      loads.forEach((load) => {
+        load.stops.forEach((s) => {
+          if (s.latitude == null || s.longitude == null) return;
+          seen.add(s.id);
+          if (bag.has(s.id)) {
+            bag.get(s.id)!.setLngLat([s.longitude, s.latitude]);
+            return;
+          }
+          const el = poiEl(s.kind === "pickup" ? "load_pickup" : "load_dropoff");
+          el.addEventListener("click", (ev) => {
+            ev.stopPropagation();
+            onSelectLoad?.(load.id);
+          });
+          const m = new maplibregl.Marker({ element: el, anchor: "bottom" })
+            .setLngLat([s.longitude, s.latitude])
+            .setPopup(
+              new maplibregl.Popup({ offset: 24 }).setHTML(
+                `<div style="font-size:12px">
+                  <div style="font-weight:600">${s.kind === "pickup" ? "Pickup" : "Drop-off"} · ${s.name ?? load.customer ?? "Stop"}</div>
+                  <div style="color:#64748b">${[s.address, s.city, s.region].filter(Boolean).join(", ")}</div>
+                  <div style="margin-top:4px;color:#64748b">Load #${load.id.slice(0, 8)} · ${load.commodity ?? "—"}</div>
+                </div>`,
+              ),
+            )
+            .addTo(map);
+          bag.set(s.id, m);
         });
-        const m = new maplibregl.Marker({ element: el, anchor: "bottom" })
-          .setLngLat([s.longitude, s.latitude])
-          .setPopup(
-            new maplibregl.Popup({ offset: 24 }).setHTML(
-              `<div style="font-size:12px">
-                <div style="font-weight:600">${s.kind === "pickup" ? "Pickup" : "Drop-off"} · ${s.name ?? load.customer ?? "Stop"}</div>
-                <div style="color:#64748b">${[s.address, s.city, s.region].filter(Boolean).join(", ")}</div>
-                <div style="margin-top:4px;color:#64748b">Load #${load.id.slice(0, 8)} · ${load.commodity ?? "—"}</div>
-              </div>`,
-            ),
-          )
-          .addTo(map);
-        bag.set(s.id, m);
       });
-    });
+    }
     [...bag.keys()].forEach((id) => {
       if (!seen.has(id)) {
         bag.get(id)?.remove();
         bag.delete(id);
       }
     });
-  }, [loads, styleReady, mapRef, onSelectLoad]);
+  }, [loads, styleReady, mapRef, onSelectLoad, visibleLayers]);
 
   // --- Route lines (GeoJSON)
   useEffect(() => {
@@ -422,26 +471,40 @@ export function AnderouteDispatchMap({
     if (!map || !styleReady) return;
     const bag = customPinMarkersRef.current;
     const seen = new Set<string>();
-    customPins.forEach((p) => {
-      seen.add(p.id);
-      if (bag.has(p.id)) return;
-      const m = new maplibregl.Marker({ element: poiEl("custom"), anchor: "bottom" })
-        .setLngLat([p.lng, p.lat])
-        .setPopup(
-          new maplibregl.Popup({ offset: 24 }).setHTML(
-            `<div style="font-size:12px">Custom pin<br/>${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</div>`,
-          ),
-        )
-        .addTo(map);
-      bag.set(p.id, m);
-    });
+    if (isLayerOn("custom_pins")) {
+      customPins.forEach((p) => {
+        seen.add(p.id);
+        if (bag.has(p.id)) return;
+        const m = new maplibregl.Marker({ element: poiEl("custom"), anchor: "bottom" })
+          .setLngLat([p.lng, p.lat])
+          .setPopup(
+            new maplibregl.Popup({ offset: 24 }).setHTML(
+              `<div style="font-size:12px">Custom pin<br/>${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</div>`,
+            ),
+          )
+          .addTo(map);
+        bag.set(p.id, m);
+      });
+    }
     [...bag.keys()].forEach((id) => {
       if (!seen.has(id)) {
         bag.get(id)?.remove();
         bag.delete(id);
       }
     });
-  }, [customPins, styleReady, mapRef]);
+  }, [customPins, styleReady, mapRef, visibleLayers]);
+
+  // --- 3D buildings layer toggle
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !styleReady) return;
+    if (!map.getLayer("anderoute-3d-buildings")) return;
+    map.setLayoutProperty(
+      "anderoute-3d-buildings",
+      "visibility",
+      isLayerOn("buildings_3d") ? "visible" : "none",
+    );
+  }, [visibleLayers, styleReady, mapRef]);
 
   const onLocate = () => {
     if (!navigator.geolocation || !mapRef.current) return;
