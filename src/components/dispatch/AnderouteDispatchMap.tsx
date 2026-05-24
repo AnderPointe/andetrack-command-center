@@ -24,6 +24,57 @@ const MAP_STYLE: string =
   (import.meta.env.VITE_MAP_STYLE_URL as string | undefined) ||
   "https://tiles.openfreemap.org/styles/liberty"; // dev fallback
 
+// Add a 3D building extrusion layer if the active style exposes one.
+// Permissive match: any layer whose source-layer is "building"/"buildings"
+// or whose id contains "building" (covers OpenMapTiles, OpenFreeMap Liberty,
+// Protomaps, Stadia, MapTiler, and most OSM-derived vector styles).
+function add3DBuildings(map: MLMap) {
+  const layers = (map.getStyle().layers ?? []) as any[];
+  const labelLayerId = layers.find(
+    (l) => l.type === "symbol" && l.layout && l.layout["text-field"],
+  )?.id;
+
+  const buildingLayer = layers.find(
+    (l) =>
+      l["source-layer"] === "building" ||
+      l["source-layer"] === "buildings" ||
+      (typeof l.id === "string" && l.id.toLowerCase().includes("building")),
+  );
+  if (!buildingLayer) {
+    console.warn("No building source layer found in this map style.");
+    return;
+  }
+  if (map.getLayer("anderoute-3d-buildings")) return;
+
+  map.addLayer(
+    {
+      id: "anderoute-3d-buildings",
+      source: buildingLayer.source,
+      "source-layer": buildingLayer["source-layer"],
+      type: "fill-extrusion",
+      minzoom: 14,
+      paint: {
+        "fill-extrusion-color": "#cbd5e1",
+        "fill-extrusion-height": [
+          "coalesce",
+          ["get", "render_height"],
+          ["get", "height"],
+          12,
+        ],
+        "fill-extrusion-base": [
+          "coalesce",
+          ["get", "render_min_height"],
+          ["get", "min_height"],
+          0,
+        ],
+        "fill-extrusion-opacity": 0.72,
+      },
+    } as any,
+    labelLayerId,
+  );
+}
+
+
 const POI_STYLE: Record<PoiCategory, { color: string; glyph: string; label: string }> = {
   load_pickup: { color: "#f97316", glyph: "P", label: "Pickup" },
   load_dropoff: { color: "#14b8a6", glyph: "D", label: "Drop-off" },
