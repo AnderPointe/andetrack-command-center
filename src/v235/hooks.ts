@@ -30,3 +30,14 @@ export const useV235Edge                               = () => D.V235_EDGE;
 export const useV235Guardrails                         = () => D.V235_GUARDRAILS;
 export const useV235Demo                               = () => D.V235_DEMO;
 export const useV235Phase61Teaser                      = () => D.V235_PHASE61_TEASER;
+
+import * as P from "./data/mockPhase60Polish";
+export const useV235PolishDomains       = () => P.V235P_DOMAINS;
+export const useV235PolishHitlQueue     = () => P.V235P_HITL_QUEUE;
+export const useV235PolishBoundary      = () => P.V235P_BOUNDARY;
+export const useV235PolishInvariants    = () => P.V235P_INVARIANTS;
+export const useV235PolishRls           = () => P.V235P_RLS;
+export const useV235PolishEdge          = () => P.V235P_EDGE;
+export const useV235PolishOwnerHeatmap  = () => P.V235P_OWNER_HEATMAP;
+export const useV235PolishRoadmapLanes  = () => P.V235P_ROADMAP_LANES;
+export const useV235PolishDemo          = () => P.V235P_DEMO;

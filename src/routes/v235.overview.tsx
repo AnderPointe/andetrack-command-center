@@ -14,10 +14,20 @@ function Page() {
   const demo = H.useV235Demo();
   const roadmap = H.useTrustAutomationMaturityRoadmap();
   const teaser = H.useV235Phase61Teaser();
+  const pDomains = H.useV235PolishDomains();
+  const pHitl = H.useV235PolishHitlQueue();
+  const pBoundary = H.useV235PolishBoundary();
+  const pInv = H.useV235PolishInvariants();
+  const pRls = H.useV235PolishRls();
+  const pEdge = H.useV235PolishEdge();
+  const pOwners = H.useV235PolishOwnerHeatmap();
+  const pLanes = H.useV235PolishRoadmapLanes();
+  const pDemo = H.useV235PolishDemo();
   return (
     <V235Page icon={<ShieldCheck className="size-6 text-emerald-300" />}
       title="Anderoute V23.5 — Enterprise Trust Automation Maturity"
-      blurb="20 trust automation centers optimized to enterprise maturity. All high-impact actions HITL-gated; approver ≠ recommender, dual sign-off > $25k, append-only hash-chained evidence — enforced in RLS + server fns.">
+      blurb="Phase 60 polish — 20 trust automation centers lifted to 99 maturity. HITL-gated, approver ≠ recommender, dual sign-off > $25k, append-only hash-chained evidence — enforced in RLS + server fns.">
+
       <ExecHeadline tag="V23.5 headline" headline={head.headline} bullets={head.highlights} />
       <div className="grid gap-3 md:grid-cols-4">
         <ScoreCard label="Maturity"           value={m.score} tone="emerald" />
@@ -47,6 +57,59 @@ function Page() {
       </Section>
       <Section title="V23.5 demo flow">
         <SimpleTable rows={demo as any} columns={[{ key: "id", label: "#" }, { key: "actor", label: "Actor" }, { key: "step", label: "Step" }]} />
+      </Section>
+      <Section title="Phase 60 polish — domain uplift">
+        <SimpleTable rows={pDomains as any} columns={[
+          { key: "domain", label: "Domain" }, { key: "before", label: "Before" },
+          { key: "after", label: "After" }, { key: "uplift", label: "Uplift" },
+        ]} />
+      </Section>
+      <Section title="Polish — sample HITL queue (approver ≠ recommender)">
+        <SimpleTable rows={pHitl as any} columns={[
+          { key: "id", label: "ID" }, { key: "surface", label: "Surface" }, { key: "action", label: "Action" },
+          { key: "recommender", label: "Recommender" }, { key: "approver", label: "Approver" },
+          { key: "risk", label: "Risk" }, { key: "sla", label: "SLA" },
+        ]} />
+      </Section>
+      <Section title="Polish — boundary controls">
+        <SimpleTable rows={pBoundary as any} columns={[
+          { key: "scope", label: "Scope" }, { key: "rule", label: "Rule" }, { key: "evidence", label: "Evidence" },
+        ]} />
+      </Section>
+      <Section title="Polish — enforced invariants">
+        <ul className="space-y-1 text-sm text-muted-foreground">{pInv.map((g, i) => <li key={i}>• {g}</li>)}</ul>
+      </Section>
+      <Section title="Polish — expanded RLS policies (V23.5)">
+        <SimpleTable rows={pRls as any} columns={[
+          { key: "policy", label: "Policy" }, { key: "rule", label: "Rule" }, { key: "surface", label: "Surface" },
+        ]} />
+      </Section>
+      <Section title={`Polish — ServerFn vs public route split — ${pEdge.rule}`}>
+        <SimpleTable rows={pEdge.serverfn as any} columns={[
+          { key: "name", label: "ServerFn" }, { key: "kind", label: "Kind" }, { key: "auth", label: "Auth" },
+        ]} />
+        <div className="mt-3">
+          <SimpleTable rows={pEdge.edge_routes as any} columns={[
+            { key: "path", label: "Public route" }, { key: "purpose", label: "Purpose" },
+          ]} />
+        </div>
+      </Section>
+      <Section title="Polish — owner coverage heatmap">
+        <SimpleTable rows={pOwners as any} columns={[
+          { key: "owner", label: "Owner" }, { key: "coverage", label: "Coverage %" },
+          { key: "gaps", label: "Gaps" }, { key: "sla_p95_h", label: "SLA p95 (h)" },
+        ]} />
+      </Section>
+      <Section title="Polish — lanes × quarters roadmap">
+        <SimpleTable rows={pLanes as any} columns={[
+          { key: "lane", label: "Lane" }, { key: "q1", label: "Q1" }, { key: "q2", label: "Q2" },
+          { key: "q3", label: "Q3" }, { key: "q4", label: "Q4" },
+        ]} />
+      </Section>
+      <Section title="Polish — 20-step V23.5 demo flow">
+        <SimpleTable rows={pDemo as any} columns={[
+          { key: "id", label: "#" }, { key: "actor", label: "Actor" }, { key: "step", label: "Step" },
+        ]} />
       </Section>
       <Section title={`Phase 61 teaser — ${teaser.version} (not started)`}>
         <ul className="space-y-1 text-sm text-muted-foreground">{teaser.themes.map((t, i) => <li key={i}>• {t}</li>)}</ul>
