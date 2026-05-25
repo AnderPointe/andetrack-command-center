@@ -5,47 +5,36 @@ export type DriverStatus =
   | "delayed"
   | "offline";
 
-export type TripStatus = "on_time" | "delayed" | "early" | "stopped";
-
-export interface Driver {
+export interface DriverProfile {
   id: string;
   name: string;
   role: string;
-  photo_url: string;
+  photoUrl: string;
   phone: string;
   status: DriverStatus;
+  vehicle: string;
+  pickupAddress: string;
+  dropoffAddress: string;
+  currentAssignment: string;
+  etaMinutes: number;
+  lastUpdated: string;
 }
 
-export interface Shipment {
+export interface ShipmentLoad {
   id: string;
-  cargo_type: string;
-  vehicle_type: string;
-  weight_kg: number;
-  capacity_percent: number;
-  volume_cuft: number;
-  space_utilization_percent: number;
-  pickup_address: string;
-  dropoff_address: string;
-  eta_minutes: number;
-  scheduled_arrival_at: string;
-  route_progress: number;
-  trip_status: TripStatus;
+  vehicleName: string;
+  vehicleType: string;
+  cargoType: string;
+  weightKg: number;
+  capacityUsedPercent: number;
+  volumeUsed: string;
+  spaceUsedLabel: string;
 }
 
 export interface Telemetry {
-  speed_mph: number;
-  fuel_percent: number;
-  battery_percent: number;
-  signal_percent: number;
-}
-
-export interface MapPoint {
-  lat: number;
-  lng: number;
-}
-
-export interface RouteGeo {
-  pickup: MapPoint;
-  dropoff: MapPoint;
-  current: MapPoint;
+  speedMph: number;
+  fuelOrBatteryPercent: number;
+  signalPercent: number;
+  routeProgressPercent: number;
+  tripStatus: string;
 }
