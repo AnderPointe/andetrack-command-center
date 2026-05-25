@@ -6,7 +6,7 @@ import { MOCK_DISPATCH_DRIVERS } from "@/data/mockDispatchDrivers";
 import { buildDriverProfileDemo } from "@/data/driverProfileDemo";
 import type { DispatchDriver } from "@/types/dispatch";
 
-export const Route = createFileRoute("/driver/$driverId")({
+export const Route = createFileRoute("/drivers/$driverId")({
   ssr: false,
   head: ({ params }) => ({
     meta: [
