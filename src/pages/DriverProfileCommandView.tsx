@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "@tanstack/react-router";
-import { FileText, MessageSquare, ClipboardSignature, Receipt, ScrollText } from "lucide-react";
+import { MessageSquare, ClipboardSignature, Receipt, ScrollText } from "lucide-react";
 import { AnderRouteSidebar } from "@/components/anderroute/AnderRouteSidebar";
 import { CommandHeader } from "@/components/anderroute/CommandHeader";
 import { DriverProfileHero } from "@/components/anderroute/DriverProfileHero";
