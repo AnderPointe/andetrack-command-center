@@ -287,9 +287,7 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
           />
 
           <div className="space-y-2">
-            <div className="inline-flex rounded-full bg-teal-500/15 px-3 py-1 text-sm font-semibold text-teal-300">
-              {driver.status}
-            </div>
+            <StatusPill status={driver.status} />
 
             <div className="flex items-center gap-2 text-sm text-slate-300">
               <Phone className="h-4 w-4" />
@@ -300,6 +298,8 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
               <div className="flex items-center gap-2 text-sm text-slate-300">
                 <Truck className="h-4 w-4" />
                 {vehicle.unit_number}
+                {vehicle.make ? ` · ${vehicle.make}` : ""}
+                {vehicle.model ? ` ${vehicle.model}` : ""}
                 {vehicle.plate ? ` · ${vehicle.plate}` : ""}
               </div>
             )}
@@ -311,20 +311,50 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
         </p>
         <div className="mt-3 space-y-4">
           <RouteStop
-            label="Departure"
+            label="Pickup"
             value={shipment?.pickup_address ?? "—"}
             color="bg-teal-400"
           />
           <RouteStop
-            label="Arrival"
+            label="Dropoff"
             value={shipment?.dropoff_address ?? "—"}
             color="bg-orange-400"
           />
+        </div>
+
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          <div className="rounded-2xl bg-white/5 px-4 py-3">
+            <p className="text-xs uppercase tracking-wide text-slate-400">ETA</p>
+            <p className="mt-1 text-lg font-semibold">{eta}</p>
+          </div>
+          <div className="rounded-2xl bg-white/5 px-4 py-3">
+            <p className="text-xs uppercase tracking-wide text-slate-400">Last updated</p>
+            <p className="mt-1 text-lg font-semibold">{formatRelative(driver.last_seen_at)}</p>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+const STATUS_STYLES: Record<string, string> = {
+  available: "bg-emerald-500/15 text-emerald-300",
+  en_route: "bg-sky-500/15 text-sky-300",
+  delivering: "bg-orange-500/15 text-orange-300",
+  delayed: "bg-amber-500/15 text-amber-300",
+  offline: "bg-slate-500/20 text-slate-300",
+};
+
+function StatusPill({ status }: { status: string | null | undefined }) {
+  const key = (status ?? "offline").toLowerCase().replace(/\s+/g, "_");
+  const cls = STATUS_STYLES[key] ?? "bg-teal-500/15 text-teal-300";
+  const label = (status ?? "Offline").replace(/_/g, " ");
+  return (
+    <div className={`inline-flex rounded-full px-3 py-1 text-sm font-semibold capitalize ${cls}`}>
+      {label}
+    </div>
+  );
+}
+
 
 function StatusCard({ children }: { children: React.ReactNode }) {
   return (
