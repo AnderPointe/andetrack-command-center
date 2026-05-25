@@ -267,16 +267,72 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
 
         <div className="relative h-[430px] overflow-hidden rounded-[1.5rem] bg-slate-300">
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,.08)_1px,transparent_1px),linear-gradient(rgba(15,23,42,.08)_1px,transparent_1px)] bg-[size:32px_32px]" />
-          <div className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-slate-950 text-white shadow-2xl">
-            <Navigation2 className="h-7 w-7 text-orange-400" />
+
+          {/* Route line */}
+          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path
+              d="M 15 78 Q 35 55, 50 50 T 85 18"
+              fill="none"
+              stroke="rgb(15,23,42)"
+              strokeWidth="0.6"
+              strokeDasharray="2 1.5"
+              opacity="0.55"
+            />
+          </svg>
+
+          {/* Pickup pin */}
+          <div className="absolute bottom-[18%] left-[12%] flex flex-col items-center">
+            <div className="grid h-9 w-9 place-items-center rounded-full bg-teal-500 text-white shadow-lg ring-4 ring-white/60">
+              <MapPin className="h-4 w-4" />
+            </div>
+            <span className="mt-1 rounded-md bg-white/90 px-2 py-0.5 text-[10px] font-semibold text-slate-700 shadow">
+              Pickup
+            </span>
           </div>
+
+          {/* Destination pin */}
+          <div className="absolute right-[12%] top-[14%] flex flex-col items-center">
+            <div className="grid h-9 w-9 place-items-center rounded-full bg-orange-500 text-white shadow-lg ring-4 ring-white/60">
+              <MapPin className="h-4 w-4" />
+            </div>
+            <span className="mt-1 rounded-md bg-white/90 px-2 py-0.5 text-[10px] font-semibold text-slate-700 shadow">
+              Dropoff
+            </span>
+          </div>
+
+          {/* Live driver marker with ETA bubble */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="relative grid h-14 w-14 place-items-center rounded-full bg-slate-950 text-white shadow-2xl ring-4 ring-white/70">
+              <Navigation2 className="h-7 w-7 text-orange-400" />
+              <span className="absolute -inset-2 animate-ping rounded-full bg-orange-400/30" />
+            </div>
+            <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-full bg-slate-950 px-3 py-1 text-xs font-bold text-white shadow-lg">
+              ETA {eta}
+            </div>
+          </div>
+
+          {/* Speed chip */}
+          <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-2xl bg-white/90 px-3 py-2 text-xs font-semibold text-slate-700 shadow backdrop-blur">
+            <Gauge className="h-4 w-4 text-teal-600" />
+            {speed}
+          </div>
+
+          {/* Last ping */}
+          <div className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-2xl bg-white/90 px-3 py-2 text-xs text-slate-700 shadow backdrop-blur">
+            <CircleDot className="h-3 w-3 text-emerald-500" />
+            Ping {formatRelative(driver.last_seen_at)}
+          </div>
+
+          {/* Coordinates */}
+          <div className="absolute bottom-4 right-4 rounded-2xl bg-white/90 px-3 py-2 text-[11px] font-mono text-slate-600 shadow backdrop-blur">
+            {driver.current_lat?.toFixed(4) ?? "—"},{" "}
+            {driver.current_lng?.toFixed(4) ?? "—"}
+          </div>
+
+          {/* Current ETA card */}
           <div className="absolute bottom-4 left-4 rounded-2xl bg-white/90 px-4 py-3 shadow-lg backdrop-blur">
             <p className="text-xs text-slate-500">Current ETA</p>
             <p className="font-bold">{eta}</p>
-          </div>
-          <div className="absolute right-4 top-4 rounded-2xl bg-white/90 px-3 py-2 text-xs text-slate-700 shadow">
-            {driver.current_lat?.toFixed(4) ?? "—"},{" "}
-            {driver.current_lng?.toFixed(4) ?? "—"}
           </div>
         </div>
       </div>
@@ -290,10 +346,28 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
 
         <div className="space-y-3">
           <InfoRow icon={<Gauge />} label="Speed" value={speed} />
+          <InfoRow icon={<Milestone />} label="Mileage" value={mileage} />
           <InfoRow icon={<Fuel />} label="Fuel" value={fuel} />
+          <InfoRow icon={<Battery />} label="Battery" value={battery} />
           <InfoRow
             icon={<RadioTower />}
-            label="Status"
+            label="Engine"
+            value={vehicle?.engine_status ?? "—"}
+          />
+          <InfoRow
+            icon={<Thermometer />}
+            label="Temperature"
+            value={temperature}
+          />
+          <InfoRow icon={<Signal />} label="Signal" value={signal} />
+          <InfoRow
+            icon={<Smartphone />}
+            label="Driver App"
+            value={vehicle?.driver_app_status ?? "—"}
+          />
+          <InfoRow
+            icon={<Wifi />}
+            label="Telemetry"
             value={vehicle?.telemetry_status ?? "—"}
           />
           <InfoRow
@@ -304,7 +378,7 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
         </div>
       </div>
 
-      {/* ETA card */}
+      {/* ETA / Delivery Countdown card */}
       <div className="rounded-[2rem] bg-slate-100 p-5 shadow-sm xl:col-span-3">
         <div className="mb-5 flex items-center gap-2">
           <Clock3 className="h-5 w-5 text-orange-500" />
@@ -312,22 +386,53 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
         </div>
 
         <p className="text-sm text-slate-500">Arriving in</p>
-        <p className="mt-1 text-xl font-semibold">{eta}</p>
+        <p className="mt-1 text-xl font-semibold">{countdown}</p>
 
-        <div className="mt-10">
-          <p className="text-6xl font-light tracking-tight">
-            {shipment?.eta_minutes != null
-              ? new Date(Date.now() + shipment.eta_minutes * 60_000).toLocaleTimeString(
-                  [],
-                  { hour: "numeric", minute: "2-digit" },
-                )
-              : "—"}
-          </p>
-          <p className="mt-3 rounded-2xl bg-white px-4 py-3 text-sm text-slate-500">
-            Status: {driver.status}
-          </p>
+        <p className="mt-6 text-6xl font-light tracking-tight tabular-nums">
+          {currentEtaClock}
+        </p>
+
+        <div className="mt-5 space-y-2">
+          <div className="flex items-center justify-between rounded-2xl bg-white px-4 py-2.5 text-sm">
+            <span className="inline-flex items-center gap-2 text-slate-500">
+              <CalendarClock className="h-4 w-4" />
+              Scheduled
+            </span>
+            <span className="font-semibold text-slate-900">{scheduledClock}</span>
+          </div>
+          <div className="flex items-center justify-between rounded-2xl bg-white px-4 py-2.5 text-sm">
+            <span className="inline-flex items-center gap-2 text-slate-500">
+              <TimerReset className="h-4 w-4" />
+              Delay
+            </span>
+            <span
+              className={`font-semibold ${
+                delayMinutes != null && delayMinutes > 0
+                  ? "text-amber-600"
+                  : "text-emerald-600"
+              }`}
+            >
+              {delayLabel}
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-5">
+          <div className="mb-1.5 flex items-center justify-between text-xs">
+            <span className="font-medium text-slate-500">Trip progress</span>
+            <span className="font-bold text-slate-900">
+              {Math.round(routeProgress)}%
+            </span>
+          </div>
+          <div className="h-2 overflow-hidden rounded-full bg-white">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-teal-500 to-orange-500 transition-all"
+              style={{ width: `${Math.min(100, Math.max(0, routeProgress))}%` }}
+            />
+          </div>
         </div>
       </div>
+
 
       {/* Driver card */}
       <div className="rounded-[2rem] bg-slate-950 p-6 text-white shadow-sm xl:col-span-6">
