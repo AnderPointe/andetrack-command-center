@@ -156,6 +156,10 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
   const weight = shipment?.weight != null ? `${shipment.weight} kg` : "—";
   const volume =
     shipment?.volume != null ? `${shipment.volume} cu ft` : "—";
+  const quantity =
+    shipment?.quantity != null && shipment?.quantity_unit
+      ? `${shipment.quantity} ${shipment.quantity_unit}`
+      : "—";
 
   return (
     <section className="grid grid-cols-1 gap-5 xl:grid-cols-12">
@@ -169,31 +173,75 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
             <div className="mt-2 inline-flex rounded-full bg-white/60 px-3 py-1 text-xs font-bold uppercase tracking-wide">
               {driver.status}
             </div>
-            <h2 className="mt-4 text-3xl font-bold">{vehicle?.make ?? "—"}</h2>
-            <p className="text-lg opacity-80">{vehicle?.model ?? ""}</p>
+            <h2 className="mt-4 text-3xl font-bold">
+              {shipment?.cargo_type ?? "No Active Load"}
+            </h2>
+            <p className="text-lg opacity-80">
+              {shipment?.package_type ?? vehicle?.make ?? ""}
+              {vehicle?.model ? ` · ${vehicle.model}` : ""}
+            </p>
             <p className="mt-2 max-w-2xl text-sm opacity-80">
-              Hauling:{" "}
-              {shipment?.hauling_description ??
-                shipment?.cargo_type ??
-                "No active shipment"}
+              {shipment?.hauling_description ?? "No active shipment assigned"}
             </p>
           </div>
 
-          {shipment && (
-            <div className="rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold">
-              {shipment.id.slice(0, 8).toUpperCase()}
+          <div className="flex flex-col items-end gap-2">
+            {shipment && (
+              <div className="rounded-2xl bg-white/70 px-4 py-3 text-sm font-semibold">
+                {shipment.id.slice(0, 8).toUpperCase()}
+              </div>
+            )}
+            <div className="flex gap-2">
+              {shipment?.is_hazardous && (
+                <div className="inline-flex items-center gap-1 rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white">
+                  <TriangleAlert className="h-3 w-3" />
+                  Hazmat
+                </div>
+              )}
+              {shipment?.is_temperature_controlled && (
+                <div className="inline-flex items-center gap-1 rounded-full bg-cyan-600 px-3 py-1 text-xs font-bold text-white">
+                  <Snowflake className="h-3 w-3" />
+                  Reefer
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
 
         <p className="mt-6 text-sm font-semibold text-slate-900/60 uppercase tracking-wide">
           Cargo Manifest
         </p>
-        <div className="mt-3 grid grid-cols-2 gap-4 md:grid-cols-4">
-          <CargoMetric label="Capacity" value={capacity} />
-          <CargoMetric label="Weight" value={weight} />
-          <CargoMetric label="Load Volume" value={volume} />
-          <CargoMetric label="Route Progress" value={`${Math.round(routeProgress)}%`} />
+        <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
+          <CargoMetric
+            icon={<Weight className="h-4 w-4" />}
+            label="Weight"
+            value={weight}
+          />
+          <CargoMetric
+            icon={<Box className="h-4 w-4" />}
+            label="Volume"
+            value={volume}
+          />
+          <CargoMetric
+            icon={<Percent className="h-4 w-4" />}
+            label="Capacity Used"
+            value={capacity}
+          />
+          <CargoMetric
+            icon={<Layers className="h-4 w-4" />}
+            label="Quantity"
+            value={quantity}
+          />
+          <CargoMetric
+            icon={<Package className="h-4 w-4" />}
+            label="Load Type"
+            value={shipment?.package_type ?? "—"}
+          />
+          <CargoMetric
+            icon={<Navigation2 className="h-4 w-4" />}
+            label="Route Progress"
+            value={`${Math.round(routeProgress)}%`}
+          />
         </div>
       </div>
 
