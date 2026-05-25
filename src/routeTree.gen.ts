@@ -1140,6 +1140,7 @@ import { Route as DriverElitenavRouteImport } from './routes/driver.elitenav'
 import { Route as DriverEliteNavRouteImport } from './routes/driver.elite-nav'
 import { Route as DriverDeliveriesRouteImport } from './routes/driver.deliveries'
 import { Route as DriverCopilotLabRouteImport } from './routes/driver.copilot-lab'
+import { Route as DriverDriverIdRouteImport } from './routes/driver.$driverId'
 import { Route as DispatchCommandCenterRouteImport } from './routes/dispatch.command-center'
 import { Route as DataImportExportRouteImport } from './routes/data.import-export'
 import { Route as ComplianceSoc2RouteImport } from './routes/compliance.soc2'
@@ -6808,6 +6809,11 @@ const DriverCopilotLabRoute = DriverCopilotLabRouteImport.update({
   path: '/driver/copilot-lab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DriverDriverIdRoute = DriverDriverIdRouteImport.update({
+  id: '/driver/$driverId',
+  path: '/driver/$driverId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DispatchCommandCenterRoute = DispatchCommandCenterRouteImport.update({
   id: '/command-center',
   path: '/command-center',
@@ -6856,6 +6862,7 @@ export interface FileRoutesByFullPath {
   '/compliance/soc2': typeof ComplianceSoc2Route
   '/data/import-export': typeof DataImportExportRoute
   '/dispatch/command-center': typeof DispatchCommandCenterRoute
+  '/driver/$driverId': typeof DriverDriverIdRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
@@ -7993,6 +8000,7 @@ export interface FileRoutesByTo {
   '/compliance/soc2': typeof ComplianceSoc2Route
   '/data/import-export': typeof DataImportExportRoute
   '/dispatch/command-center': typeof DispatchCommandCenterRoute
+  '/driver/$driverId': typeof DriverDriverIdRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
@@ -9131,6 +9139,7 @@ export interface FileRoutesById {
   '/compliance/soc2': typeof ComplianceSoc2Route
   '/data/import-export': typeof DataImportExportRoute
   '/dispatch/command-center': typeof DispatchCommandCenterRoute
+  '/driver/$driverId': typeof DriverDriverIdRoute
   '/driver/copilot-lab': typeof DriverCopilotLabRoute
   '/driver/deliveries': typeof DriverDeliveriesRoute
   '/driver/elite-nav': typeof DriverEliteNavRoute
@@ -10270,6 +10279,7 @@ export interface FileRouteTypes {
     | '/compliance/soc2'
     | '/data/import-export'
     | '/dispatch/command-center'
+    | '/driver/$driverId'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
     | '/driver/elite-nav'
@@ -11407,6 +11417,7 @@ export interface FileRouteTypes {
     | '/compliance/soc2'
     | '/data/import-export'
     | '/dispatch/command-center'
+    | '/driver/$driverId'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
     | '/driver/elite-nav'
@@ -12544,6 +12555,7 @@ export interface FileRouteTypes {
     | '/compliance/soc2'
     | '/data/import-export'
     | '/dispatch/command-center'
+    | '/driver/$driverId'
     | '/driver/copilot-lab'
     | '/driver/deliveries'
     | '/driver/elite-nav'
@@ -13680,6 +13692,7 @@ export interface RootRouteChildren {
   VehiclesRoute: typeof VehiclesRoute
   ComplianceSoc2Route: typeof ComplianceSoc2Route
   DataImportExportRoute: typeof DataImportExportRoute
+  DriverDriverIdRoute: typeof DriverDriverIdRoute
   DriverCopilotLabRoute: typeof DriverCopilotLabRoute
   DriverDeliveriesRoute: typeof DriverDeliveriesRoute
   DriverEliteNavRoute: typeof DriverEliteNavRoute
@@ -22704,6 +22717,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverCopilotLabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/driver/$driverId': {
+      id: '/driver/$driverId'
+      path: '/driver/$driverId'
+      fullPath: '/driver/$driverId'
+      preLoaderRoute: typeof DriverDriverIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dispatch/command-center': {
       id: '/dispatch/command-center'
       path: '/command-center'
@@ -22813,6 +22833,7 @@ const rootRouteChildren: RootRouteChildren = {
   VehiclesRoute: VehiclesRoute,
   ComplianceSoc2Route: ComplianceSoc2Route,
   DataImportExportRoute: DataImportExportRoute,
+  DriverDriverIdRoute: DriverDriverIdRoute,
   DriverCopilotLabRoute: DriverCopilotLabRoute,
   DriverDeliveriesRoute: DriverDeliveriesRoute,
   DriverEliteNavRoute: DriverEliteNavRoute,

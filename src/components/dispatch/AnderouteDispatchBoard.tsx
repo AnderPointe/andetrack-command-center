@@ -23,6 +23,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import maplibregl, { type Map as MLMap } from "maplibre-gl";
 import { DispatchSidebarNav } from "./DispatchSidebarNav";
+import { useNavigate } from "@tanstack/react-router";
 import { DispatchTopBar } from "./DispatchTopBar";
 import { DispatchViewControls } from "./DispatchViewControls";
 import { DispatchFilterBar } from "./DispatchFilterBar";
@@ -38,6 +39,9 @@ import type { DispatchLoad } from "@/types/loads";
 import { STALE_AFTER_SECONDS } from "./dispatchTokens";
 
 export default function AnderouteDispatchBoard() {
+  const navigate = useNavigate();
+  const openDriverProfile = (id: string) =>
+    navigate({ to: "/driver/$driverId", params: { driverId: id } });
   const { drivers: liveDrivers, connected } = useLiveDriverCurrent();
   const pois = useLogisticsMapPois();
   const { loads, usingMock: loadsUsingMock } = useLoadsWithStops();
@@ -176,7 +180,7 @@ export default function AnderouteDispatchBoard() {
               drivers={filteredDrivers}
               totalCount={sourceDrivers.length}
               selectedId={selectedDriverId}
-              onSelect={setSelectedDriverId}
+              onSelect={openDriverProfile}
               onCenter={onCenter}
               onCall={onCall}
               connected={connected}
@@ -186,7 +190,7 @@ export default function AnderouteDispatchBoard() {
               pois={pois}
               loads={filteredLoads}
               selectedDriverId={selectedDriverId}
-              onSelectDriver={setSelectedDriverId}
+              onSelectDriver={(id) => (id ? openDriverProfile(id) : setSelectedDriverId(null))}
               selectedLoadId={selectedLoadId}
               onSelectLoad={setSelectedLoadId}
               mapRef={mapRef}
