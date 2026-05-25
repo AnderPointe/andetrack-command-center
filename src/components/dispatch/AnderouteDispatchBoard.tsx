@@ -23,6 +23,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import maplibregl, { type Map as MLMap } from "maplibre-gl";
 import { DispatchSidebarNav } from "./DispatchSidebarNav";
+import { useNavigate } from "@tanstack/react-router";
 import { DispatchTopBar } from "./DispatchTopBar";
 import { DispatchViewControls } from "./DispatchViewControls";
 import { DispatchFilterBar } from "./DispatchFilterBar";
