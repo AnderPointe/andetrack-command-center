@@ -16,7 +16,7 @@ export default function DriverProfileCommandView() {
   const { driver, vehicle, shipment, manifest } = dossier;
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen bg-[#020617] text-white">
       <AnderRouteSidebar active="Drivers" />
 
       <main className="flex-1">

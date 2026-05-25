@@ -31,13 +31,14 @@ export function RouteTimelineCard({ shipment }: Props) {
   ];
 
   return (
-    <section className="rounded-3xl border border-white/5 bg-slate-900 p-5 shadow-2xl shadow-black/40">
+    <section className="rounded-[2rem] border border-white/10 bg-[#0f172a] p-6 shadow-2xl shadow-black/50">
       <div className="flex items-center justify-between">
-        <p className="text-[11px] uppercase tracking-widest text-teal-300">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#2dd4bf]">
           Route Timeline
         </p>
         <span className="text-[11px] text-slate-500">3 stops</span>
       </div>
+
 
       <ol className="mt-4 space-y-0.5">
         {stops.map((stop, i) => {

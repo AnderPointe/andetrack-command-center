@@ -13,14 +13,16 @@ interface Props {
  */
 export function LiveRouteMapCard({ driver, shipment }: Props) {
   return (
-    <section className="overflow-hidden rounded-3xl border border-white/5 bg-slate-900 shadow-2xl shadow-black/40">
-      <div className="flex items-center justify-between border-b border-white/5 px-5 py-4">
+    <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0f172a] shadow-2xl shadow-black/50">
+      <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
         <div>
-          <p className="text-[11px] uppercase tracking-widest text-teal-300">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#2dd4bf]">
             Live Route
           </p>
-          <h3 className="mt-0.5 text-base font-bold text-white">
-            {shipment.pickup_address} → {shipment.dropoff_address}
+          <h3 className="mt-1 text-base font-bold text-white">
+            {shipment.pickup_address}{" "}
+            <span className="mx-1 text-slate-600">→</span>{" "}
+            {shipment.dropoff_address}
           </h3>
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-emerald-300 ring-1 ring-emerald-400/30">
@@ -28,6 +30,7 @@ export function LiveRouteMapCard({ driver, shipment }: Props) {
           GPS Live
         </span>
       </div>
+
 
       <div className="relative h-[360px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         {/* Grid */}

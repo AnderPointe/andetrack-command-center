@@ -8,57 +8,58 @@ interface Props {
 
 export function ShipmentLoadOverview({ shipment, vehicle }: Props) {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-6 shadow-2xl shadow-black/40">
-      <div className="absolute right-0 top-0 h-40 w-40 -translate-y-1/2 translate-x-1/2 rounded-full bg-teal-500/10 blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-40 w-40 translate-y-1/2 -translate-x-1/2 rounded-full bg-orange-500/10 blur-3xl" />
+    <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#0b1326] to-black p-6 shadow-2xl shadow-black/60 md:p-8">
+      <div className="pointer-events-none absolute right-0 top-0 h-64 w-64 -translate-y-1/3 translate-x-1/3 rounded-full bg-[#14b8a6]/15 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 translate-y-1/3 -translate-x-1/3 rounded-full bg-[#f97316]/12 blur-3xl" />
 
       <div className="relative flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] uppercase tracking-widest text-teal-300">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#2dd4bf]">
             Active Shipment
           </p>
-          <h2 className="mt-1 text-2xl font-bold text-white">{shipment.id}</h2>
-          <p className="mt-1 text-sm text-slate-400">
-            {vehicle.make} {vehicle.model} · {vehicle.type} · Unit {vehicle.unit_number}
+          <h2 className="mt-1.5 text-3xl font-black tracking-tight text-white">
+            {shipment.id}
+          </h2>
+          <p className="mt-1.5 text-sm text-slate-300">
+            {vehicle.make} {vehicle.model}{" "}
+            <span className="text-slate-500">·</span> {vehicle.type}{" "}
+            <span className="text-slate-500">·</span>{" "}
+            <span className="font-mono text-slate-400">{vehicle.unit_number}</span>
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-500/15 px-3 py-1 text-xs font-semibold text-orange-300 ring-1 ring-orange-400/30">
-            <Flame className="h-3 w-3" /> High Priority
-          </span>
-        </div>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f97316]/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#fb923c] ring-1 ring-[#f97316]/40 shadow-[0_0_20px_rgba(249,115,22,0.2)]">
+          <Flame className="h-3 w-3" /> High Priority
+        </span>
       </div>
 
-      <p className="relative mt-3 max-w-2xl text-sm text-slate-300">
+      <p className="relative mt-4 max-w-2xl text-sm leading-relaxed text-slate-300">
         Hauling{" "}
-        <span className="font-semibold text-white">{shipment.cargo_type}</span> —{" "}
+        <span className="font-semibold text-white">{shipment.cargo_type}</span> —
         priority medical supplies, boxed freight, and same-day delivery cargo.
       </p>
 
-      {/* Stats */}
       <div className="relative mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-        <Stat icon={Gauge} label="Space Used" value={`${shipment.space_used_percent}%`} />
-        <Stat icon={Weight} label="Weight" value={`${shipment.weight.toLocaleString()} kg`} />
-        <Stat icon={Box} label="Volume" value={`${shipment.volume} cu ft`} />
-        <Stat icon={Package} label="Capacity" value={`${shipment.capacity_used_percent}%`} />
+        <Stat icon={Gauge} label="Space Used" value={`${shipment.space_used_percent}%`} accent="#2dd4bf" />
+        <Stat icon={Weight} label="Weight" value={`${shipment.weight.toLocaleString()} kg`} accent="#fb923c" />
+        <Stat icon={Box} label="Volume" value={`${shipment.volume}`} sub="cu ft" accent="#2dd4bf" />
+        <Stat icon={Package} label="Capacity" value={`${shipment.capacity_used_percent}%`} accent="#fb923c" />
       </div>
 
-      {/* Cargo distribution visualization */}
       <div className="relative mt-6">
-        <div className="mb-2 flex items-center justify-between">
-          <p className="text-[11px] uppercase tracking-widest text-slate-500">
+        <div className="mb-2.5 flex items-center justify-between">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-500">
             Cargo Distribution
           </p>
-          <p className="text-xs font-semibold text-teal-300">
+          <p className="text-xs font-bold text-[#2dd4bf]">
             {shipment.route_progress_percent}% Route Complete
           </p>
         </div>
 
         <TruckCargoViz fillPercent={shipment.space_used_percent} />
 
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/5">
+        <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/5">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-teal-400 via-teal-300 to-orange-400 transition-all"
+            className="h-full rounded-full bg-gradient-to-r from-[#14b8a6] via-[#2dd4bf] to-[#f97316] shadow-[0_0_12px_rgba(20,184,166,0.6)] transition-all"
             style={{ width: `${shipment.route_progress_percent}%` }}
           />
         </div>
@@ -71,45 +72,52 @@ function Stat({
   icon: Icon,
   label,
   value,
+  sub,
+  accent,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   label: string;
   value: string;
+  sub?: string;
+  accent: string;
 }) {
   return (
-    <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-4">
-      <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-slate-500">
-        <Icon className="h-3 w-3" /> {label}
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:bg-white/[0.05]">
+      <div className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+        <Icon className="h-3 w-3" style={{ color: accent }} /> {label}
       </div>
-      <p className="mt-2 text-xl font-bold text-white">{value}</p>
+      <p className="mt-2 text-2xl font-black text-white">
+        {value}
+        {sub && (
+          <span className="ml-1 text-xs font-medium text-slate-400">{sub}</span>
+        )}
+      </p>
     </div>
   );
 }
 
 function TruckCargoViz({ fillPercent }: { fillPercent: number }) {
-  // 12 pallet zones
   const zones = 12;
   const filled = Math.round((fillPercent / 100) * zones);
   return (
-    <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+    <div className="rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-sm">
       <div className="flex items-stretch gap-2">
-        {/* Cab */}
-        <div className="grid w-14 shrink-0 place-items-center rounded-l-xl rounded-r-md bg-gradient-to-br from-slate-700 to-slate-800 text-[10px] font-bold uppercase text-slate-400">
+        <div className="grid w-14 shrink-0 place-items-center rounded-l-xl rounded-r-md bg-gradient-to-br from-slate-700 to-slate-900 text-[10px] font-bold uppercase tracking-wider text-slate-400 ring-1 ring-white/5">
           Cab
         </div>
-        {/* Trailer */}
-        <div className="flex flex-1 items-center gap-1 rounded-xl border border-white/10 bg-slate-900/70 p-2">
+        <div className="flex flex-1 items-center gap-1 rounded-xl border border-white/10 bg-[#020617] p-2">
           {Array.from({ length: zones }).map((_, i) => {
             const active = i < filled;
+            const priority = active && i >= filled - 2;
             return (
               <div
                 key={i}
-                className={`flex-1 rounded-md transition-all ${
+                className={`flex-1 rounded-md transition-all duration-300 ${
                   active
-                    ? i < filled - 2
-                      ? "h-12 bg-gradient-to-b from-teal-400 to-teal-600 shadow-lg shadow-teal-500/20"
-                      : "h-12 bg-gradient-to-b from-orange-400 to-orange-600 shadow-lg shadow-orange-500/20"
-                    : "h-12 bg-white/[0.03] ring-1 ring-inset ring-white/5"
+                    ? priority
+                      ? "h-12 bg-gradient-to-b from-[#fb923c] to-[#f97316] shadow-[0_0_12px_rgba(249,115,22,0.4)]"
+                      : "h-12 bg-gradient-to-b from-[#2dd4bf] to-[#14b8a6] shadow-[0_0_10px_rgba(20,184,166,0.35)]"
+                    : "h-12 bg-white/[0.02] ring-1 ring-inset ring-white/5"
                 }`}
               />
             );
@@ -117,8 +125,8 @@ function TruckCargoViz({ fillPercent }: { fillPercent: number }) {
         </div>
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-4 text-[11px] text-slate-400">
-        <LegendDot color="bg-teal-400" label="Standard freight" />
-        <LegendDot color="bg-orange-400" label="Priority cargo" />
+        <LegendDot color="bg-[#14b8a6]" label="Standard freight" />
+        <LegendDot color="bg-[#f97316]" label="Priority cargo" />
         <LegendDot color="bg-white/10" label="Empty space" />
       </div>
     </div>
