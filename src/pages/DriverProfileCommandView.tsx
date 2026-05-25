@@ -10,7 +10,7 @@ import { VehicleTelemetryCard } from "@/components/anderroute/VehicleTelemetryCa
 import { EtaArrivalCard } from "@/components/anderroute/EtaArrivalCard";
 import { RouteTimelineCard } from "@/components/anderroute/RouteTimelineCard";
 import { CargoManifestCard } from "@/components/anderroute/CargoManifestCard";
-import { LiveStatusStrip } from "@/components/anderroute/LiveStatusStrip";
+import LiveStatusStrip from "@/components/anderroute/LiveStatusStrip";
 import { OperationsPanel } from "@/components/anderroute/OperationsPanel";
 import { DriverActivityLog } from "@/components/anderroute/DriverActivityLog";
 import {
