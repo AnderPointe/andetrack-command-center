@@ -1,8 +1,9 @@
 import { Moon, Sun } from "lucide-react";
-import { useThemeMode } from "@/context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function LiquidThemeToggle() {
-  const { isDark, toggleTheme } = useThemeMode();
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <button

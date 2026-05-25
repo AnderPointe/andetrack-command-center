@@ -12,7 +12,6 @@ import {
 import { useEffect } from "react";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
-import { ThemeProvider } from "@/context/ThemeContext";
 
 import appCss from "../styles.css?url";
 
@@ -116,15 +115,13 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <AuthGate>
-            <Outlet />
-          </AuthGate>
-        </AuthProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <AuthGate>
+          <Outlet />
+        </AuthGate>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 
