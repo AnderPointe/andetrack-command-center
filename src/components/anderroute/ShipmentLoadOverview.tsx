@@ -1,5 +1,6 @@
-import { Package, Weight, Box, Gauge, Flame } from "lucide-react";
+import { Package, Weight, Box, Gauge, Flame, Tag } from "lucide-react";
 import type { Shipment, Vehicle } from "@/types/anderroute";
+import { CargoHandlingBadges } from "./CargoHandlingBadges";
 
 interface Props {
   shipment: Shipment;
@@ -32,10 +33,15 @@ export function ShipmentLoadOverview({ shipment, vehicle }: Props) {
         </span>
       </div>
 
-      <p className="relative mt-4 max-w-2xl text-sm leading-relaxed text-slate-300">
-        Hauling{" "}
-        <span className="font-semibold text-white">{shipment.cargo_type}</span> —
-        priority medical supplies, boxed freight, and same-day delivery cargo.
+      <div className="relative mt-4 flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.04] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#2dd4bf] ring-1 ring-white/10">
+          <Tag className="h-3 w-3" /> {shipment.cargo_type}
+        </span>
+        <CargoHandlingBadges />
+      </div>
+
+      <p className="relative mt-3 max-w-2xl text-sm leading-relaxed text-slate-300">
+        {shipment.hauling_description}
       </p>
 
       <div className="relative mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -48,23 +54,65 @@ export function ShipmentLoadOverview({ shipment, vehicle }: Props) {
       <div className="relative mt-6">
         <div className="mb-2.5 flex items-center justify-between">
           <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-            Cargo Distribution
+            Weight Distribution
           </p>
           <p className="text-xs font-bold text-[#2dd4bf]">
-            {shipment.route_progress_percent}% Route Complete
+            Balanced · {shipment.weight.toLocaleString()} kg
           </p>
         </div>
 
         <TruckCargoViz fillPercent={shipment.space_used_percent} />
 
-        <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/5">
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-[#14b8a6] via-[#2dd4bf] to-[#f97316] shadow-[0_0_12px_rgba(20,184,166,0.6)] transition-all"
-            style={{ width: `${shipment.route_progress_percent}%` }}
+        <div className="mt-5 space-y-3">
+          <ProgressBar
+            label="Space Utilization"
+            value={shipment.space_used_percent}
+            tone="teal"
+          />
+          <ProgressBar
+            label="Capacity"
+            value={shipment.capacity_used_percent}
+            tone="orange"
+          />
+          <ProgressBar
+            label="Route Progress"
+            value={shipment.route_progress_percent}
+            tone="gradient"
           />
         </div>
       </div>
     </section>
+  );
+}
+
+function ProgressBar({
+  label,
+  value,
+  tone,
+}: {
+  label: string;
+  value: number;
+  tone: "teal" | "orange" | "gradient";
+}) {
+  const fill =
+    tone === "teal"
+      ? "bg-gradient-to-r from-[#14b8a6] to-[#2dd4bf] shadow-[0_0_10px_rgba(20,184,166,0.5)]"
+      : tone === "orange"
+        ? "bg-gradient-to-r from-[#f97316] to-[#fb923c] shadow-[0_0_10px_rgba(249,115,22,0.5)]"
+        : "bg-gradient-to-r from-[#14b8a6] via-[#2dd4bf] to-[#f97316] shadow-[0_0_12px_rgba(20,184,166,0.6)]";
+  return (
+    <div>
+      <div className="mb-1 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.16em]">
+        <span className="text-slate-500">{label}</span>
+        <span className="text-white">{value}%</span>
+      </div>
+      <div className="h-1.5 overflow-hidden rounded-full bg-white/5">
+        <div
+          className={`h-full rounded-full transition-all duration-500 ${fill}`}
+          style={{ width: `${value}%` }}
+        />
+      </div>
+    </div>
   );
 }
 
