@@ -7,6 +7,22 @@ export type DriverStatus =
 
 export type TripStatus = "on_time" | "delayed" | "early" | "stopped";
 
+export interface DriverProfile {
+  id: string;
+  name: string;
+  role: string;
+  photoUrl: string;
+  phone: string;
+  status: DriverStatus;
+  vehicle: string;
+  pickupAddress: string;
+  dropoffAddress: string;
+  currentAssignment: string;
+  etaMinutes: number;
+  lastUpdated: string;
+}
+
+/* Legacy alias used by existing components */
 export interface Driver {
   id: string;
   name: string;
@@ -16,6 +32,18 @@ export interface Driver {
   status: DriverStatus;
 }
 
+export interface ShipmentLoad {
+  id: string;
+  vehicleName: string;
+  vehicleType: string;
+  cargoType: string;
+  weightKg: number;
+  capacityUsedPercent: number;
+  volumeUsed: string;
+  spaceUsedLabel: string;
+}
+
+/* Legacy alias used by existing components */
 export interface Shipment {
   id: string;
   cargo_type: string;
@@ -33,19 +61,21 @@ export interface Shipment {
 }
 
 export interface Telemetry {
+  speedMph: number;
+  fuelOrBatteryPercent: number;
+  signalPercent: number;
+  routeProgressPercent: number;
+  tripStatus: string;
+
+  /* Legacy snake_case fields used by existing components */
   speed_mph: number;
   fuel_percent: number;
   battery_percent: number;
   signal_percent: number;
 }
 
-export interface MapPoint {
-  lat: number;
-  lng: number;
-}
-
 export interface RouteGeo {
-  pickup: MapPoint;
-  dropoff: MapPoint;
-  current: MapPoint;
+  pickup: { lat: number; lng: number };
+  dropoff: { lat: number; lng: number };
+  current: { lat: number; lng: number };
 }
