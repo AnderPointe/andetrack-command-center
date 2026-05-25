@@ -180,7 +180,7 @@ export default function AnderouteDispatchBoard() {
               drivers={filteredDrivers}
               totalCount={sourceDrivers.length}
               selectedId={selectedDriverId}
-              onSelect={setSelectedDriverId}
+              onSelect={openDriverProfile}
               onCenter={onCenter}
               onCall={onCall}
               connected={connected}
@@ -190,7 +190,7 @@ export default function AnderouteDispatchBoard() {
               pois={pois}
               loads={filteredLoads}
               selectedDriverId={selectedDriverId}
-              onSelectDriver={setSelectedDriverId}
+              onSelectDriver={(id) => (id ? openDriverProfile(id) : setSelectedDriverId(null))}
               selectedLoadId={selectedLoadId}
               onSelectLoad={setSelectedLoadId}
               mapRef={mapRef}
