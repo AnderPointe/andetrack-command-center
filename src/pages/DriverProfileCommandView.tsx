@@ -42,7 +42,7 @@ export default function DriverProfileCommandView() {
             <div className="space-y-5">
               <DriverProfileHero driver={driver} vehicle={vehicle} />
 
-              <DriverProfileTabs active={tab} onChange={setTab} />
+              <DriverProfileTabs activeTab={tab} onTabChange={setTab} />
 
               {tab === "overview" && (
                 <div className="space-y-5">
