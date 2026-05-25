@@ -61,10 +61,43 @@ type ObjectSel =
 export function Anderoute3DDispatchMap(props: Props) {
   const { visible, toggle } = useMapLayerPreferences();
   const savedViews = useMapSavedViews();
-  const { geofences } = useMapGeofences();
+  const { geofences, canEdit, create: createGeofence, update: updateGeofence, remove: removeGeofence } = useMapGeofences();
 
   const [railOpen, setRailOpen] = useState(true);
   const [objectSel, setObjectSel] = useState<ObjectSel>(null);
+  const [geofenceDialog, setGeofenceDialog] = useState<
+    { open: false } | { open: true; mode: "create" | "edit"; initial: MapGeofence | null }
+  >({ open: false });
+
+  const openCreateGeofence = useCallback(() => {
+    setGeofenceDialog({ open: true, mode: "create", initial: null });
+  }, []);
+  const openEditGeofence = useCallback((g: MapGeofence) => {
+    setGeofenceDialog({ open: true, mode: "edit", initial: g });
+  }, []);
+  const closeGeofenceDialog = useCallback(() => setGeofenceDialog({ open: false }), []);
+
+  const handleGeofenceSubmit = useCallback(
+    async (input: GeofenceInput) => {
+      if (geofenceDialog.open && geofenceDialog.mode === "edit" && geofenceDialog.initial) {
+        const updated = await updateGeofence(geofenceDialog.initial.id, input);
+        toast.success("Geofence updated");
+        setObjectSel({ type: "geofence", geofence: updated });
+      } else {
+        const created = await createGeofence(input);
+        toast.success("Geofence created");
+        setObjectSel({ type: "geofence", geofence: created });
+      }
+    },
+    [geofenceDialog, createGeofence, updateGeofence],
+  );
+
+  const handleGeofenceDelete = useCallback(async () => {
+    if (!(geofenceDialog.open && geofenceDialog.mode === "edit" && geofenceDialog.initial)) return;
+    await removeGeofence(geofenceDialog.initial.id);
+    toast.success("Geofence deleted");
+    setObjectSel(null);
+  }, [geofenceDialog, removeGeofence]);
 
   const flyTo = useCallback(
     (lng: number, lat: number, opts?: { zoom?: number; pitch?: number; bearing?: number }) => {
