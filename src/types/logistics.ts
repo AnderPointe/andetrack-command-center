@@ -68,10 +68,10 @@ export interface Telemetry {
   tripStatus: string;
 
   /* Legacy snake_case fields used by existing components */
-  speed_mph?: number;
-  fuel_percent?: number;
-  battery_percent?: number;
-  signal_percent?: number;
+  speed_mph: number;
+  fuel_percent: number;
+  battery_percent: number;
+  signal_percent: number;
 }
 
 export interface RouteGeo {

@@ -39,6 +39,11 @@ const shipment: Shipment = {
 };
 
 const telemetry: Telemetry = {
+  speedMph: 64,
+  fuelOrBatteryPercent: 71,
+  signalPercent: 92,
+  routeProgressPercent: 62,
+  tripStatus: "on_time",
   speed_mph: 64,
   fuel_percent: 71,
   battery_percent: 88,
