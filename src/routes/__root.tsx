@@ -12,6 +12,7 @@ import {
 import { useEffect } from "react";
 import { AuthProvider, useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 import appCss from "../styles.css?url";
 
