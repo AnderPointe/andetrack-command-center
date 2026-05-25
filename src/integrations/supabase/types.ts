@@ -4030,6 +4030,7 @@ export type Database = {
           company_id: string
           created_at: string
           customer_name: string | null
+          delay_minutes: number | null
           dropoff_address: string | null
           eta: string | null
           eta_minutes: number | null
@@ -4044,6 +4045,7 @@ export type Database = {
           quantity: number | null
           quantity_unit: string | null
           route_progress: number | null
+          scheduled_arrival_at: string | null
           special_instructions: string | null
           status: Database["public"]["Enums"]["load_status"]
           updated_at: string
@@ -4057,6 +4059,7 @@ export type Database = {
           company_id: string
           created_at?: string
           customer_name?: string | null
+          delay_minutes?: number | null
           dropoff_address?: string | null
           eta?: string | null
           eta_minutes?: number | null
@@ -4071,6 +4074,7 @@ export type Database = {
           quantity?: number | null
           quantity_unit?: string | null
           route_progress?: number | null
+          scheduled_arrival_at?: string | null
           special_instructions?: string | null
           status?: Database["public"]["Enums"]["load_status"]
           updated_at?: string
@@ -4084,6 +4088,7 @@ export type Database = {
           company_id?: string
           created_at?: string
           customer_name?: string | null
+          delay_minutes?: number | null
           dropoff_address?: string | null
           eta?: string | null
           eta_minutes?: number | null
@@ -4098,6 +4103,7 @@ export type Database = {
           quantity?: number | null
           quantity_unit?: string | null
           route_progress?: number | null
+          scheduled_arrival_at?: string | null
           special_instructions?: string | null
           status?: Database["public"]["Enums"]["load_status"]
           updated_at?: string
@@ -4330,17 +4336,23 @@ export type Database = {
       vehicles: {
         Row: {
           average_mpg: number | null
+          battery_level: number | null
           company_id: string
           created_at: string
           current_driver_id: string | null
+          driver_app_status: string | null
+          engine_status: string | null
           fuel_level: number | null
           fuel_type: Database["public"]["Enums"]["fuel_type"]
           id: string
           make: string | null
+          mileage: number | null
           model: string | null
           plate: string | null
+          signal_strength: number | null
           status: Database["public"]["Enums"]["vehicle_op_status"]
           telemetry_status: string | null
+          temperature_f: number | null
           type: Database["public"]["Enums"]["vehicle_type"]
           unit_number: string
           updated_at: string
@@ -4348,17 +4360,23 @@ export type Database = {
         }
         Insert: {
           average_mpg?: number | null
+          battery_level?: number | null
           company_id: string
           created_at?: string
           current_driver_id?: string | null
+          driver_app_status?: string | null
+          engine_status?: string | null
           fuel_level?: number | null
           fuel_type?: Database["public"]["Enums"]["fuel_type"]
           id?: string
           make?: string | null
+          mileage?: number | null
           model?: string | null
           plate?: string | null
+          signal_strength?: number | null
           status?: Database["public"]["Enums"]["vehicle_op_status"]
           telemetry_status?: string | null
+          temperature_f?: number | null
           type: Database["public"]["Enums"]["vehicle_type"]
           unit_number: string
           updated_at?: string
@@ -4366,17 +4384,23 @@ export type Database = {
         }
         Update: {
           average_mpg?: number | null
+          battery_level?: number | null
           company_id?: string
           created_at?: string
           current_driver_id?: string | null
+          driver_app_status?: string | null
+          engine_status?: string | null
           fuel_level?: number | null
           fuel_type?: Database["public"]["Enums"]["fuel_type"]
           id?: string
           make?: string | null
+          mileage?: number | null
           model?: string | null
           plate?: string | null
+          signal_strength?: number | null
           status?: Database["public"]["Enums"]["vehicle_op_status"]
           telemetry_status?: string | null
+          temperature_f?: number | null
           type?: Database["public"]["Enums"]["vehicle_type"]
           unit_number?: string
           updated_at?: string

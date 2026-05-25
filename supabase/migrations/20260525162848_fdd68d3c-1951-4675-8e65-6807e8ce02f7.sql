@@ -1,0 +1,12 @@
+
+ALTER TABLE public.shipments
+  ADD COLUMN IF NOT EXISTS scheduled_arrival_at TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS delay_minutes INTEGER;
+
+ALTER TABLE public.vehicles
+  ADD COLUMN IF NOT EXISTS mileage NUMERIC,
+  ADD COLUMN IF NOT EXISTS battery_level INTEGER,
+  ADD COLUMN IF NOT EXISTS engine_status TEXT,
+  ADD COLUMN IF NOT EXISTS temperature_f NUMERIC,
+  ADD COLUMN IF NOT EXISTS signal_strength INTEGER,
+  ADD COLUMN IF NOT EXISTS driver_app_status TEXT;

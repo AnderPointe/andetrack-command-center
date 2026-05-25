@@ -30,6 +30,8 @@ export type DriverProfilePayload = {
     is_hazardous: boolean;
     is_temperature_controlled: boolean;
     package_type: string | null;
+    scheduled_arrival_at: string | null;
+    delay_minutes: number | null;
   } | null;
   vehicle: {
     unit_number: string;
@@ -38,6 +40,12 @@ export type DriverProfilePayload = {
     plate: string | null;
     fuel_level: number | null;
     telemetry_status: string | null;
+    mileage: number | null;
+    battery_level: number | null;
+    engine_status: string | null;
+    temperature_f: number | null;
+    signal_strength: number | null;
+    driver_app_status: string | null;
   } | null;
 };
 
@@ -60,7 +68,6 @@ export const getDriverProfile = createServerFn({ method: "GET" })
     if (driverErr) throw new Error(driverErr.message);
     if (!driver) throw new Error("Driver not found");
 
-    // Prefer live state for telemetry/location/eta if present.
     const { data: live } = await supabase
       .from("driver_live_state")
       .select(
@@ -76,7 +83,7 @@ export const getDriverProfile = createServerFn({ method: "GET" })
       const { data: s } = await supabase
         .from("shipments")
         .select(
-          "id, cargo_type, commodity, hauling_description, pickup_address, dropoff_address, eta_minutes, route_progress, capacity_percent, weight, volume, quantity, quantity_unit, is_hazardous, is_temperature_controlled, package_type",
+          "id, cargo_type, commodity, hauling_description, pickup_address, dropoff_address, eta_minutes, route_progress, capacity_percent, weight, volume, quantity, quantity_unit, is_hazardous, is_temperature_controlled, package_type, scheduled_arrival_at, delay_minutes",
         )
         .eq("id", shipmentId)
         .maybeSingle();
@@ -98,6 +105,8 @@ export const getDriverProfile = createServerFn({ method: "GET" })
           is_hazardous: s.is_hazardous ?? false,
           is_temperature_controlled: s.is_temperature_controlled ?? false,
           package_type: s.package_type,
+          scheduled_arrival_at: s.scheduled_arrival_at ?? null,
+          delay_minutes: s.delay_minutes ?? null,
         };
       }
     }
@@ -106,7 +115,9 @@ export const getDriverProfile = createServerFn({ method: "GET" })
     if (driver.vehicle_id) {
       const { data: v } = await supabase
         .from("vehicles")
-        .select("unit_number, make, model, plate, fuel_level, telemetry_status")
+        .select(
+          "unit_number, make, model, plate, fuel_level, telemetry_status, mileage, battery_level, engine_status, temperature_f, signal_strength, driver_app_status",
+        )
         .eq("id", driver.vehicle_id)
         .maybeSingle();
       if (v) vehicle = v;
