@@ -4035,11 +4035,14 @@ export type Database = {
           eta_minutes: number | null
           hauling_description: string | null
           id: string
+          is_hazardous: boolean | null
+          is_temperature_controlled: boolean | null
           load_id: string
           package_type: string | null
           pickup_address: string | null
           proof_of_delivery_url: string | null
           quantity: number | null
+          quantity_unit: string | null
           route_progress: number | null
           special_instructions: string | null
           status: Database["public"]["Enums"]["load_status"]
@@ -4059,11 +4062,14 @@ export type Database = {
           eta_minutes?: number | null
           hauling_description?: string | null
           id?: string
+          is_hazardous?: boolean | null
+          is_temperature_controlled?: boolean | null
           load_id: string
           package_type?: string | null
           pickup_address?: string | null
           proof_of_delivery_url?: string | null
           quantity?: number | null
+          quantity_unit?: string | null
           route_progress?: number | null
           special_instructions?: string | null
           status?: Database["public"]["Enums"]["load_status"]
@@ -4083,11 +4089,14 @@ export type Database = {
           eta_minutes?: number | null
           hauling_description?: string | null
           id?: string
+          is_hazardous?: boolean | null
+          is_temperature_controlled?: boolean | null
           load_id?: string
           package_type?: string | null
           pickup_address?: string | null
           proof_of_delivery_url?: string | null
           quantity?: number | null
+          quantity_unit?: string | null
           route_progress?: number | null
           special_instructions?: string | null
           status?: Database["public"]["Enums"]["load_status"]
