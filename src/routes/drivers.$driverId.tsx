@@ -336,6 +336,25 @@ function ProfileContent({ data }: { data: DriverProfilePayload }) {
     </section>
   );
 }
+const STATUS_STYLES: Record<string, string> = {
+  available: "bg-emerald-500/15 text-emerald-300",
+  en_route: "bg-sky-500/15 text-sky-300",
+  delivering: "bg-orange-500/15 text-orange-300",
+  delayed: "bg-amber-500/15 text-amber-300",
+  offline: "bg-slate-500/20 text-slate-300",
+};
+
+function StatusPill({ status }: { status: string | null | undefined }) {
+  const key = (status ?? "offline").toLowerCase().replace(/\s+/g, "_");
+  const cls = STATUS_STYLES[key] ?? "bg-teal-500/15 text-teal-300";
+  const label = (status ?? "Offline").replace(/_/g, " ");
+  return (
+    <div className={`inline-flex rounded-full px-3 py-1 text-sm font-semibold capitalize ${cls}`}>
+      {label}
+    </div>
+  );
+}
+
 
 function StatusCard({ children }: { children: React.ReactNode }) {
   return (
