@@ -185,6 +185,9 @@ export function Anderoute3DDispatchMap(props: Props) {
             {visible.has("geofences") && (
               <MapGeofencePanel
                 geofences={geofences}
+                canEdit={canEdit}
+                onCreate={openCreateGeofence}
+                onEdit={openEditGeofence}
                 onFocus={(g) => {
                   flyTo(g.center[0], g.center[1], { zoom: 12 });
                   setObjectSel({ type: "geofence", geofence: g });
@@ -204,9 +207,35 @@ export function Anderoute3DDispatchMap(props: Props) {
               if (cardSelection.type === "driver") props.onSelectDriver(null);
               setObjectSel(null);
             }}
+            onEditZone={
+              cardSelection.type === "geofence" && canEdit
+                ? () => openEditGeofence(cardSelection.geofence)
+                : undefined
+            }
           />
         </div>
       )}
+
+      <MapGeofenceFormDialog
+        open={geofenceDialog.open}
+        mode={geofenceDialog.open ? geofenceDialog.mode : "create"}
+        initial={geofenceDialog.open ? geofenceDialog.initial : null}
+        defaultCenter={(() => {
+          const c = props.mapRef.current?.getCenter();
+          return c ? [c.lng, c.lat] : undefined;
+        })()}
+        canEdit={canEdit}
+        onClose={closeGeofenceDialog}
+        onSubmit={handleGeofenceSubmit}
+        onDelete={
+          geofenceDialog.open && geofenceDialog.mode === "edit"
+            ? handleGeofenceDelete
+            : undefined
+        }
+      />
+    </div>
+  );
+}
     </div>
   );
 }
