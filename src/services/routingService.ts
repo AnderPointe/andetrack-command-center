@@ -2,7 +2,8 @@
  * Routing service abstraction.
  *
  * Currently returns a straight-line placeholder. Swap in OSRM, Valhalla,
- * or GraphHopper later by implementing the same interface.
+ * or GraphHopper later by implementing the same interface. For truck
+ * routing prefer Valhalla or a commercial truck-aware provider.
  */
 import type { RoutePoint, RouteResult } from "@/types/map";
 
