@@ -13,8 +13,7 @@ import { CargoManifestCard } from "@/components/anderroute/CargoManifestCard";
 import LiveStatusStrip from "@/components/anderroute/LiveStatusStrip";
 import { OperationsPanel } from "@/components/anderroute/OperationsPanel";
 import { DriverActivityLog } from "@/components/anderroute/DriverActivityLog";
-import {
-  DriverProfileTabs,
+import DriverProfileTabs, {
   TabPanelPlaceholder,
   type TabKey,
 } from "@/components/anderroute/DriverProfileTabs";
@@ -43,7 +42,7 @@ export default function DriverProfileCommandView() {
             <div className="space-y-5">
               <DriverProfileHero driver={driver} vehicle={vehicle} />
 
-              <DriverProfileTabs active={tab} onChange={setTab} />
+              <DriverProfileTabs activeTab={tab} onTabChange={setTab} />
 
               {tab === "overview" && (
                 <div className="space-y-5">

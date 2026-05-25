@@ -1,11 +1,10 @@
-import { useState, type ReactNode } from "react";
 import {
-  LayoutDashboard,
-  Package,
-  Route as RouteIcon,
+  ClipboardList,
   FileText,
-  MessageSquare,
   History,
+  Map,
+  MessageSquare,
+  Package,
   type LucideIcon,
 } from "lucide-react";
 
@@ -17,49 +16,48 @@ export type TabKey =
   | "messages"
   | "activity";
 
-const TABS: { key: TabKey; label: string; icon: LucideIcon }[] = [
-  { key: "overview", label: "Overview", icon: LayoutDashboard },
-  { key: "load", label: "Load Details", icon: Package },
-  { key: "route", label: "Route Timeline", icon: RouteIcon },
-  { key: "documents", label: "Documents", icon: FileText },
-  { key: "messages", label: "Messages", icon: MessageSquare },
-  { key: "activity", label: "Activity Log", icon: History },
-];
-
-interface Props {
-  active: TabKey;
-  onChange: (k: TabKey) => void;
-  children?: ReactNode;
+interface DriverProfileTabsProps {
+  activeTab: TabKey;
+  onTabChange: (tab: TabKey) => void;
 }
 
-export function DriverProfileTabs({ active, onChange }: Props) {
+export default function DriverProfileTabs({
+  activeTab,
+  onTabChange,
+}: DriverProfileTabsProps) {
+  const tabs = [
+    { key: "overview" as const, label: "Overview", icon: ClipboardList },
+    { key: "load" as const, label: "Load Details", icon: Package },
+    { key: "route" as const, label: "Route Timeline", icon: Map },
+    { key: "documents" as const, label: "Documents", icon: FileText },
+    { key: "messages" as const, label: "Messages", icon: MessageSquare },
+    { key: "activity" as const, label: "Activity Log", icon: History },
+  ];
+
   return (
-    <nav className="rounded-[1.5rem] border border-white/10 bg-[#0f172a]/80 p-1.5 shadow-xl shadow-black/40 backdrop-blur-xl">
-      <div className="flex flex-wrap gap-1">
-        {TABS.map(({ key, label, icon: Icon }) => {
-          const isActive = active === key;
+    <div className="rounded-[2rem] border border-white/10 bg-slate-950/80 p-2 shadow-xl backdrop-blur-xl">
+      <div className="flex gap-2 overflow-x-auto">
+        {tabs.map((tab) => {
+          const Icon = tab.icon;
+          const active = activeTab === tab.key;
+
           return (
             <button
-              key={key}
-              onClick={() => onChange(key)}
-              className={`group relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold transition-all duration-200 ${
-                isActive
-                  ? "bg-gradient-to-r from-[#14b8a6]/20 via-[#14b8a6]/10 to-[#f97316]/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] ring-1 ring-[#14b8a6]/30"
-                  : "text-slate-400 hover:bg-white/[0.04] hover:text-white"
+              key={tab.key}
+              onClick={() => onTabChange(tab.key)}
+              className={`flex min-w-fit items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold transition ${
+                active
+                  ? "bg-gradient-to-r from-teal-500 to-orange-500 text-white shadow-lg"
+                  : "text-slate-400 hover:bg-white/5 hover:text-white"
               }`}
             >
-              <Icon
-                className={`h-3.5 w-3.5 ${isActive ? "text-[#2dd4bf]" : ""}`}
-              />
-              <span className="uppercase tracking-wider">{label}</span>
-              {isActive && (
-                <span className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-gradient-to-r from-[#14b8a6] via-[#2dd4bf] to-[#f97316] shadow-[0_0_10px_rgba(20,184,166,0.6)]" />
-              )}
+              <Icon className="h-4 w-4" />
+              {tab.label}
             </button>
           );
         })}
       </div>
-    </nav>
+    </div>
   );
 }
 
