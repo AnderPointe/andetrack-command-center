@@ -9,8 +9,12 @@ import { EtaArrivalCard } from "@/components/anderroute/EtaArrivalCard";
 import { RouteTimelineCard } from "@/components/anderroute/RouteTimelineCard";
 import { CargoManifestCard } from "@/components/anderroute/CargoManifestCard";
 import { getDossierById, DEMO_DOSSIER } from "@/data/anderrouteDemo";
+import { useRealtimeDriverProfile } from "@/hooks/use-anderoute";
 
 export default function DriverProfileCommandView() {
+  // Realtime: drivers + shipments + telemetry + locations for this driver.
+  // Replaces the prior 15s polling.
+  useRealtimeDriverProfile();
   const { driverId } = useParams({ from: "/drivers/$driverId" });
   const dossier = getDossierById(driverId) ?? DEMO_DOSSIER;
   const { driver, vehicle, shipment, manifest } = dossier;
