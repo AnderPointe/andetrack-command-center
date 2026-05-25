@@ -430,11 +430,26 @@ function formatRelative(iso: string | null): string {
   return new Date(iso).toLocaleDateString();
 }
 
-function CargoMetric({ label, value }: { label: string; value: string }) {
+function CargoMetric({
+  icon,
+  label,
+  value,
+}: {
+  icon?: React.ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
-    <div className="rounded-2xl bg-white/25 p-4">
-      <p className="text-sm text-slate-900/70">{label}</p>
-      <p className="mt-1 text-lg font-bold">{value}</p>
+    <div className="flex items-center gap-3 rounded-2xl bg-white/25 px-4 py-3">
+      {icon && (
+        <div className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-white/50 text-slate-800">
+          {icon}
+        </div>
+      )}
+      <div>
+        <p className="text-xs text-slate-900/70">{label}</p>
+        <p className="mt-0.5 text-base font-bold">{value}</p>
+      </div>
     </div>
   );
 }
