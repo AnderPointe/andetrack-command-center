@@ -1,3 +1,4 @@
+import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import maplibregl, { type Map as MLMap, type Marker as MLMarker } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -204,6 +205,7 @@ export function AnderouteDispatchMap({
   const isLayerOn = (k: DispatchLayerKey) =>
     !visibleLayers || visibleLayers.has(k);
   const containerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const mapDivRef = useRef<HTMLDivElement>(null);
   const driverMarkersRef = useRef<Map<string, MLMarker>>(new Map());
   const poiMarkersRef = useRef<Map<string, MLMarker>>(new Map());
@@ -350,6 +352,7 @@ export function AnderouteDispatchMap({
         el.addEventListener("click", (ev) => {
           ev.stopPropagation();
           onSelectDriver(d.driver_id);
+          navigate({ to: "/drivers/$driverId", params: { driverId: d.driver_id } });
         });
         const m = new maplibregl.Marker({ element: el, anchor: "bottom" })
           .setLngLat([d.longitude, d.latitude])
@@ -363,7 +366,7 @@ export function AnderouteDispatchMap({
         bag.delete(id);
       }
     });
-  }, [drivers, styleReady, mapRef, onSelectDriver, visibleLayers]);
+  }, [drivers, styleReady, mapRef, onSelectDriver, visibleLayers, navigate]);
 
   // --- POI markers (filtered by per-category layer toggles)
   useEffect(() => {
