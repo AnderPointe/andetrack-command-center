@@ -25,6 +25,11 @@ export type DriverProfilePayload = {
     capacity_percent: number | null;
     weight: number | null;
     volume: number | null;
+    quantity: number | null;
+    quantity_unit: string | null;
+    is_hazardous: boolean;
+    is_temperature_controlled: boolean;
+    package_type: string | null;
   } | null;
   vehicle: {
     unit_number: string;
@@ -71,7 +76,7 @@ export const getDriverProfile = createServerFn({ method: "GET" })
       const { data: s } = await supabase
         .from("shipments")
         .select(
-          "id, cargo_type, commodity, hauling_description, pickup_address, dropoff_address, eta_minutes, route_progress, capacity_percent, weight, volume",
+          "id, cargo_type, commodity, hauling_description, pickup_address, dropoff_address, eta_minutes, route_progress, capacity_percent, weight, volume, quantity, quantity_unit, is_hazardous, is_temperature_controlled, package_type",
         )
         .eq("id", shipmentId)
         .maybeSingle();
@@ -88,6 +93,11 @@ export const getDriverProfile = createServerFn({ method: "GET" })
           capacity_percent: s.capacity_percent,
           weight: s.weight,
           volume: s.volume,
+          quantity: s.quantity,
+          quantity_unit: s.quantity_unit,
+          is_hazardous: s.is_hazardous ?? false,
+          is_temperature_controlled: s.is_temperature_controlled ?? false,
+          package_type: s.package_type,
         };
       }
     }
