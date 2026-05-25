@@ -205,6 +205,7 @@ export function AnderouteDispatchMap({
   const isLayerOn = (k: DispatchLayerKey) =>
     !visibleLayers || visibleLayers.has(k);
   const containerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const mapDivRef = useRef<HTMLDivElement>(null);
   const driverMarkersRef = useRef<Map<string, MLMarker>>(new Map());
   const poiMarkersRef = useRef<Map<string, MLMarker>>(new Map());
