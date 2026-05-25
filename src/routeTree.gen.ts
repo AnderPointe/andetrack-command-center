@@ -22,6 +22,7 @@ import { Route as LoadsRouteImport } from './routes/loads'
 import { Route as LiveMapRouteImport } from './routes/live-map'
 import { Route as FuelRouteImport } from './routes/fuel'
 import { Route as DriversRouteImport } from './routes/drivers'
+import { Route as DriverTrackingRouteImport } from './routes/driver-tracking'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DispatchBoardRouteImport } from './routes/dispatch-board'
 import { Route as DispatchRouteImport } from './routes/dispatch'
@@ -1210,6 +1211,11 @@ const FuelRoute = FuelRouteImport.update({
 const DriversRoute = DriversRouteImport.update({
   id: '/drivers',
   path: '/drivers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriverTrackingRoute = DriverTrackingRouteImport.update({
+  id: '/driver-tracking',
+  path: '/driver-tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocumentsRoute = DocumentsRouteImport.update({
@@ -6852,6 +6858,7 @@ export interface FileRoutesByFullPath {
   '/dispatch': typeof DispatchRouteWithChildren
   '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
+  '/driver-tracking': typeof DriverTrackingRoute
   '/drivers': typeof DriversRouteWithChildren
   '/fuel': typeof FuelRoute
   '/live-map': typeof LiveMapRoute
@@ -7991,6 +7998,7 @@ export interface FileRoutesByTo {
   '/dispatch': typeof DispatchRouteWithChildren
   '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
+  '/driver-tracking': typeof DriverTrackingRoute
   '/drivers': typeof DriversRouteWithChildren
   '/fuel': typeof FuelRoute
   '/live-map': typeof LiveMapRoute
@@ -9131,6 +9139,7 @@ export interface FileRoutesById {
   '/dispatch': typeof DispatchRouteWithChildren
   '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
+  '/driver-tracking': typeof DriverTrackingRoute
   '/drivers': typeof DriversRouteWithChildren
   '/fuel': typeof FuelRoute
   '/live-map': typeof LiveMapRoute
@@ -10272,6 +10281,7 @@ export interface FileRouteTypes {
     | '/dispatch'
     | '/dispatch-board'
     | '/documents'
+    | '/driver-tracking'
     | '/drivers'
     | '/fuel'
     | '/live-map'
@@ -11411,6 +11421,7 @@ export interface FileRouteTypes {
     | '/dispatch'
     | '/dispatch-board'
     | '/documents'
+    | '/driver-tracking'
     | '/drivers'
     | '/fuel'
     | '/live-map'
@@ -12550,6 +12561,7 @@ export interface FileRouteTypes {
     | '/dispatch'
     | '/dispatch-board'
     | '/documents'
+    | '/driver-tracking'
     | '/drivers'
     | '/fuel'
     | '/live-map'
@@ -13690,6 +13702,7 @@ export interface RootRouteChildren {
   DispatchRoute: typeof DispatchRouteWithChildren
   DispatchBoardRoute: typeof DispatchBoardRoute
   DocumentsRoute: typeof DocumentsRoute
+  DriverTrackingRoute: typeof DriverTrackingRoute
   DriversRoute: typeof DriversRouteWithChildren
   FuelRoute: typeof FuelRoute
   LiveMapRoute: typeof LiveMapRoute
@@ -14901,6 +14914,13 @@ declare module '@tanstack/react-router' {
       path: '/drivers'
       fullPath: '/drivers'
       preLoaderRoute: typeof DriversRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/driver-tracking': {
+      id: '/driver-tracking'
+      path: '/driver-tracking'
+      fullPath: '/driver-tracking'
+      preLoaderRoute: typeof DriverTrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/documents': {
@@ -22849,6 +22869,7 @@ const rootRouteChildren: RootRouteChildren = {
   DispatchRoute: DispatchRouteWithChildren,
   DispatchBoardRoute: DispatchBoardRoute,
   DocumentsRoute: DocumentsRoute,
+  DriverTrackingRoute: DriverTrackingRoute,
   DriversRoute: DriversRouteWithChildren,
   FuelRoute: FuelRoute,
   LiveMapRoute: LiveMapRoute,
@@ -23971,13 +23992,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
