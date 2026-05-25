@@ -39,6 +39,9 @@ import type { DispatchLoad } from "@/types/loads";
 import { STALE_AFTER_SECONDS } from "./dispatchTokens";
 
 export default function AnderouteDispatchBoard() {
+  const navigate = useNavigate();
+  const openDriverProfile = (id: string) =>
+    navigate({ to: "/driver/$driverId", params: { driverId: id } });
   const { drivers: liveDrivers, connected } = useLiveDriverCurrent();
   const pois = useLogisticsMapPois();
   const { loads, usingMock: loadsUsingMock } = useLoadsWithStops();
