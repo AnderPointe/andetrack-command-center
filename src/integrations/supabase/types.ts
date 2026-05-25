@@ -4199,6 +4199,70 @@ export type Database = {
         }
         Relationships: []
       }
+      telemetry: {
+        Row: {
+          company_id: string
+          created_at: string
+          driver_id: string
+          fuel_or_battery_percent: number | null
+          id: string
+          route_progress_percent: number | null
+          shipment_id: string | null
+          signal_percent: number | null
+          speed_mph: number | null
+          trip_status: string | null
+          updated_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          driver_id: string
+          fuel_or_battery_percent?: number | null
+          id?: string
+          route_progress_percent?: number | null
+          shipment_id?: string | null
+          signal_percent?: number | null
+          speed_mph?: number | null
+          trip_status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          driver_id?: string
+          fuel_or_battery_percent?: number | null
+          id?: string
+          route_progress_percent?: number | null
+          shipment_id?: string | null
+          signal_percent?: number | null
+          speed_mph?: number | null
+          trip_status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "telemetry_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "telemetry_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "telemetry_shipment_id_fkey"
+            columns: ["shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       truck_route_restrictions: {
         Row: {
           company_id: string
