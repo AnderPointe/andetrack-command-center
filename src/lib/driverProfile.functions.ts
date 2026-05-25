@@ -25,6 +25,11 @@ export type DriverProfilePayload = {
     capacity_percent: number | null;
     weight: number | null;
     volume: number | null;
+    quantity: number | null;
+    quantity_unit: string | null;
+    is_hazardous: boolean;
+    is_temperature_controlled: boolean;
+    package_type: string | null;
   } | null;
   vehicle: {
     unit_number: string;
