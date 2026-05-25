@@ -25,6 +25,7 @@ import { Route as DriversRouteImport } from './routes/drivers'
 import { Route as DocumentsRouteImport } from './routes/documents'
 import { Route as DispatchBoardRouteImport } from './routes/dispatch-board'
 import { Route as DispatchRouteImport } from './routes/dispatch'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as AdminLoginRouteImport } from './routes/admin-login'
@@ -1224,6 +1225,11 @@ const DispatchBoardRoute = DispatchBoardRouteImport.update({
 const DispatchRoute = DispatchRouteImport.update({
   id: '/dispatch',
   path: '/dispatch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalyticsRoute = AnalyticsRouteImport.update({
@@ -6842,6 +6848,7 @@ export interface FileRoutesByFullPath {
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
+  '/dashboard': typeof DashboardRoute
   '/dispatch': typeof DispatchRouteWithChildren
   '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
@@ -7980,6 +7987,7 @@ export interface FileRoutesByTo {
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
+  '/dashboard': typeof DashboardRoute
   '/dispatch': typeof DispatchRouteWithChildren
   '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
@@ -9119,6 +9127,7 @@ export interface FileRoutesById {
   '/admin-login': typeof AdminLoginRoute
   '/alerts': typeof AlertsRoute
   '/analytics': typeof AnalyticsRoute
+  '/dashboard': typeof DashboardRoute
   '/dispatch': typeof DispatchRouteWithChildren
   '/dispatch-board': typeof DispatchBoardRoute
   '/documents': typeof DocumentsRoute
@@ -10259,6 +10268,7 @@ export interface FileRouteTypes {
     | '/admin-login'
     | '/alerts'
     | '/analytics'
+    | '/dashboard'
     | '/dispatch'
     | '/dispatch-board'
     | '/documents'
@@ -11397,6 +11407,7 @@ export interface FileRouteTypes {
     | '/admin-login'
     | '/alerts'
     | '/analytics'
+    | '/dashboard'
     | '/dispatch'
     | '/dispatch-board'
     | '/documents'
@@ -12535,6 +12546,7 @@ export interface FileRouteTypes {
     | '/admin-login'
     | '/alerts'
     | '/analytics'
+    | '/dashboard'
     | '/dispatch'
     | '/dispatch-board'
     | '/documents'
@@ -13674,6 +13686,7 @@ export interface RootRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   AlertsRoute: typeof AlertsRoute
   AnalyticsRoute: typeof AnalyticsRoute
+  DashboardRoute: typeof DashboardRoute
   DispatchRoute: typeof DispatchRouteWithChildren
   DispatchBoardRoute: typeof DispatchBoardRoute
   DocumentsRoute: typeof DocumentsRoute
@@ -14909,6 +14922,13 @@ declare module '@tanstack/react-router' {
       path: '/dispatch'
       fullPath: '/dispatch'
       preLoaderRoute: typeof DispatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analytics': {
@@ -22825,6 +22845,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   AlertsRoute: AlertsRoute,
   AnalyticsRoute: AnalyticsRoute,
+  DashboardRoute: DashboardRoute,
   DispatchRoute: DispatchRouteWithChildren,
   DispatchBoardRoute: DispatchBoardRoute,
   DocumentsRoute: DocumentsRoute,
