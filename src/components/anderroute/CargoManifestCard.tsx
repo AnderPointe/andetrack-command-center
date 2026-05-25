@@ -7,15 +7,16 @@ interface Props {
 
 export function CargoManifestCard({ manifest }: Props) {
   return (
-    <section className="rounded-3xl border border-white/5 bg-slate-900 p-5 shadow-2xl shadow-black/40">
+    <section className="rounded-[2rem] border border-white/10 bg-[#0f172a] p-6 shadow-2xl shadow-black/50">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-[11px] uppercase tracking-widest text-teal-300">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#2dd4bf]">
             Cargo Manifest
           </p>
-          <h3 className="mt-0.5 text-base font-bold text-white">{manifest.category}</h3>
+          <h3 className="mt-1 text-base font-bold text-white">{manifest.category}</h3>
         </div>
         <div className="flex items-center gap-1.5">
+
           {manifest.hazmat && (
             <span className="inline-flex items-center gap-1 rounded-full bg-rose-500/15 px-2 py-0.5 text-[10px] font-semibold text-rose-300 ring-1 ring-rose-400/30">
               <AlertTriangle className="h-3 w-3" /> HAZMAT
