@@ -1,100 +1,100 @@
-import { MapPin, Navigation, Flag, CheckCircle2, PackageCheck, Truck, MapPinned } from "lucide-react";
-import type { Shipment } from "@/types/anderroute";
+import { CheckCircle2, Circle, Navigation2 } from "lucide-react";
 
-interface Props {
-  shipment: Shipment;
-}
+const steps = [
+  {
+    label: "Pickup Assigned",
+    description: "Load assigned to Marcus Anderson",
+    time: "10:18 AM",
+    state: "completed",
+  },
+  {
+    label: "Driver En Route",
+    description: "Driver is heading toward pickup location",
+    time: "10:24 AM",
+    state: "completed",
+  },
+  {
+    label: "Loaded",
+    description: "Cargo confirmed and secured",
+    time: "10:52 AM",
+    state: "completed",
+  },
+  {
+    label: "In Transit",
+    description: "Driver is currently moving toward destination",
+    time: "Now",
+    state: "current",
+  },
+  {
+    label: "Near Destination",
+    description: "Driver enters destination geofence",
+    time: "Pending",
+    state: "upcoming",
+  },
+  {
+    label: "Delivered",
+    description: "Customer signature and proof of delivery",
+    time: "Pending",
+    state: "upcoming",
+  },
+];
 
-type State = "done" | "current" | "upcoming";
-
-export function RouteTimelineCard({ shipment }: Props) {
-  const progress = shipment.route_progress_percent;
-
-  // Map route progress to step states (7 steps)
-  const stateAt = (threshold: number, nextThreshold: number): State => {
-    if (progress >= nextThreshold) return "done";
-    if (progress >= threshold) return "current";
-    return "upcoming";
-  };
-
-  const stops: {
-    icon: typeof MapPin;
-    title: string;
-    address: string;
-    state: State;
-    time: string;
-  }[] = [
-    { icon: MapPin, title: "Pickup Scheduled", address: shipment.pickup_address, state: stateAt(0, 5), time: "10:30 AM" },
-    { icon: Navigation, title: "Driver En Route", address: "Dispatched", state: stateAt(5, 15), time: "10:34 AM" },
-    { icon: MapPinned, title: "Arrived at Pickup", address: shipment.pickup_address, state: stateAt(15, 25), time: "10:46 AM" },
-    { icon: PackageCheck, title: "Loaded", address: "184 items secured", state: stateAt(25, 35), time: "10:58 AM" },
-    { icon: Truck, title: "In Transit", address: "I-30 E · Arlington, TX", state: stateAt(35, 85), time: "11:04 AM" },
-    { icon: MapPin, title: "Near Destination", address: shipment.dropoff_address, state: stateAt(85, 98), time: "12:08 PM" },
-    { icon: Flag, title: "Delivered", address: shipment.dropoff_address, state: stateAt(98, 101), time: shipment.scheduled_arrival },
-  ];
-
+export default function RouteTimelineCard() {
   return (
-    <section className="rounded-[2rem] border border-white/10 bg-[#0f172a] p-6 shadow-2xl shadow-black/50">
-      <div className="flex items-center justify-between">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#2dd4bf]">
-          Route Timeline
+    <section className="rounded-[2rem] border border-white/10 bg-slate-950/90 p-5 text-white shadow-2xl">
+      <div className="mb-6">
+        <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+          Shipment Movement
         </p>
-        <span className="text-[11px] font-bold text-[#fb923c]">{progress}% complete</span>
+        <h2 className="mt-1 text-xl font-bold">Route Timeline</h2>
       </div>
 
-      <ol className="mt-4">
-        {stops.map((stop, i) => {
-          const Icon = stop.icon;
-          const isDone = stop.state === "done";
-          const isCurrent = stop.state === "current";
+      <div className="space-y-5">
+        {steps.map((step, index) => {
+          const isCurrent = step.state === "current";
+          const isCompleted = step.state === "completed";
+
           return (
-            <li key={stop.title} className="relative flex gap-3">
+            <div key={step.label} className="flex gap-4">
               <div className="flex flex-col items-center">
                 <div
-                  className={`relative grid h-9 w-9 shrink-0 place-items-center rounded-full ring-1 ${
-                    isDone
-                      ? "bg-emerald-500/20 text-emerald-300 ring-emerald-400/40"
+                  className={`grid h-9 w-9 place-items-center rounded-full ${
+                    isCompleted
+                      ? "bg-teal-500 text-white"
                       : isCurrent
-                        ? "bg-orange-500/20 text-orange-300 ring-orange-400/40"
-                        : "bg-white/5 text-slate-500 ring-white/10"
+                      ? "bg-orange-500 text-white shadow-[0_0_25px_rgba(249,115,22,0.7)]"
+                      : "bg-slate-800 text-slate-500"
                   }`}
                 >
-                  {isCurrent && (
-                    <span className="absolute inset-0 animate-ping rounded-full bg-orange-400/30" />
-                  )}
-                  {isDone ? (
-                    <CheckCircle2 className="relative h-4 w-4" />
+                  {isCompleted ? (
+                    <CheckCircle2 className="h-5 w-5" />
+                  ) : isCurrent ? (
+                    <Navigation2 className="h-5 w-5" />
                   ) : (
-                    <Icon className="relative h-4 w-4" />
+                    <Circle className="h-4 w-4" />
                   )}
                 </div>
-                {i < stops.length - 1 && (
-                  <div
-                    className={`my-1 w-px flex-1 ${
-                      isDone ? "bg-emerald-400/40" : "bg-white/10"
-                    }`}
-                  />
+
+                {index !== steps.length - 1 && (
+                  <div className="mt-2 h-10 w-px bg-white/10" />
                 )}
               </div>
-              <div className="flex-1 pb-4">
-                <div className="flex items-baseline justify-between gap-2">
-                  <p
-                    className={`text-sm font-semibold ${
-                      isCurrent ? "text-orange-200" : isDone ? "text-white" : "text-slate-400"
-                    }`}
-                  >
-                    {stop.title}
-                  </p>
-                  <span className="text-[10px] uppercase tracking-wider text-slate-500">
-                    {stop.time}
-                  </span>
+
+              <div className="flex-1 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-semibold">{step.label}</p>
+                    <p className="mt-1 text-sm text-slate-400">
+                      {step.description}
+                    </p>
+                  </div>
+                  <p className="text-xs text-slate-500">{step.time}</p>
                 </div>
-                <p className="mt-0.5 text-xs text-slate-400">{stop.address}</p>
               </div>
-            </li>
+            </div>
           );
         })}
-      </ol>
+      </div>
     </section>
   );
 }
