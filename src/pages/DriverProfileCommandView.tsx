@@ -8,12 +8,13 @@ import { VehicleTelemetryCard } from "@/components/anderroute/VehicleTelemetryCa
 import { EtaArrivalCard } from "@/components/anderroute/EtaArrivalCard";
 import { RouteTimelineCard } from "@/components/anderroute/RouteTimelineCard";
 import { CargoManifestCard } from "@/components/anderroute/CargoManifestCard";
-import { getDossierById, DEMO_DOSSIER } from "@/data/anderrouteDemo";
+import { DEMO_DOSSIER } from "@/data/anderrouteDemo";
+import { useDriverDossier } from "@/hooks/useAnderRouteDossiers";
 
 export default function DriverProfileCommandView() {
   const { driverId } = useParams({ from: "/drivers/$driverId" });
-  const dossier = getDossierById(driverId) ?? DEMO_DOSSIER;
-  const { driver, vehicle, shipment, manifest } = dossier;
+  const { dossier } = useDriverDossier(driverId);
+  const { driver, vehicle, shipment, manifest } = dossier ?? DEMO_DOSSIER;
 
   return (
     <div className="flex min-h-screen bg-[#020617] text-white">
