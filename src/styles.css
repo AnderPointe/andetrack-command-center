@@ -346,3 +346,48 @@
             mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   }
 }
+
+/* ============================================================
+ * AnderRoute Liquid Glass theme tokens
+ * Light/dark swap driven by `.dark` class on <html>
+ * ============================================================ */
+:root {
+  --lg-bg: #f8fafc;
+  --lg-glass: rgba(255, 255, 255, 0.70);
+  --lg-glass-strong: rgba(255, 255, 255, 0.85);
+  --lg-text: #0f172a;
+  --lg-muted: #64748b;
+  --lg-teal: #14b8a6;
+  --lg-orange: #f97316;
+  --lg-border: rgba(15, 23, 42, 0.08);
+  --lg-icon: #334155;
+}
+
+.dark {
+  --lg-bg: #020617;
+  --lg-glass: rgba(15, 23, 42, 0.72);
+  --lg-glass-strong: rgba(15, 23, 42, 0.88);
+  --lg-text: #ffffff;
+  --lg-muted: #94a3b8;
+  --lg-teal: #14b8a6;
+  --lg-orange: #fb923c;
+  --lg-border: rgba(255, 255, 255, 0.10);
+  --lg-icon: #cbd5e1;
+}
+
+.liquid-bg {
+  background: var(--lg-bg);
+  background-image:
+    radial-gradient(60rem 60rem at 12% -10%, rgba(20, 184, 166, 0.18), transparent 60%),
+    radial-gradient(50rem 50rem at 110% 10%, rgba(249, 115, 22, 0.14), transparent 60%),
+    radial-gradient(40rem 40rem at 50% 120%, rgba(20, 184, 166, 0.10), transparent 60%);
+  color: var(--lg-text);
+}
+
+.liquid-icon {
+  color: var(--lg-icon);
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+:root .liquid-icon { filter: drop-shadow(0 1px 0 rgba(255,255,255,0.6)); }
+.dark .liquid-icon { filter: drop-shadow(0 0 6px rgba(20, 184, 166, 0.25)); }
+
