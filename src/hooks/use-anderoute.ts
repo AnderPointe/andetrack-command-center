@@ -124,7 +124,6 @@ export const useRealtimeAlerts = () => useRealtimeTable("alerts", ["alerts"]);
 export const useRealtimeOffers = () => useRealtimeTable("load_offers", ["offers"]);
 export const useRealtimeDriverLocations = () => useRealtimeTable("driver_location_events", ["driver_locations"]);
 export const useRealtimeDriverStatus = () => useRealtimeTable("driver_status_events", ["driver_status_events"]);
-export const useRealtimeTelemetry = () => useRealtimeTable("telemetry", ["telemetry"]);
 
 /** Convenience: subscribe to everything the dispatcher dashboard cares about. */
 export function useRealtimeDispatch() {
@@ -133,14 +132,5 @@ export function useRealtimeDispatch() {
   useRealtimeShipments();
   useRealtimeAlerts();
   useRealtimeOffers();
-  useRealtimeDriverLocations();
-  useRealtimeTelemetry();
-}
-
-/** Convenience: subscribe to a single driver's live updates. */
-export function useRealtimeDriverProfile() {
-  useRealtimeDrivers();
-  useRealtimeShipments();
-  useRealtimeTelemetry();
   useRealtimeDriverLocations();
 }

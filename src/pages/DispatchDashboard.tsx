@@ -2,12 +2,8 @@ import { Search, Bell } from "lucide-react";
 import { AnderRouteSidebar } from "@/components/anderroute/AnderRouteSidebar";
 import { DriverCard } from "@/components/anderroute/DriverCard";
 import { DEMO_DRIVERS } from "@/data/anderrouteDemo";
-import { useRealtimeDispatch } from "@/hooks/use-anderoute";
 
 export default function DispatchDashboard() {
-  // Realtime: drivers, shipments, telemetry, loads, alerts, offers, locations.
-  // Replaces the prior 15s polling — cache invalidates on every Postgres change.
-  useRealtimeDispatch();
   return (
     <div className="flex min-h-screen bg-[#020617] text-white">
       <AnderRouteSidebar active="Drivers" />
