@@ -1,7 +1,7 @@
 import { Pin, Truck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MessengerAvatar } from "./primitives";
-import { priorityStyles, roleStyles, type Contact } from "./types";
+import { etaRiskStyles, priorityStyles, roleStyles, type Contact } from "./types";
 
 export function MessengerContactRow({
   c,
