@@ -213,118 +213,79 @@ function CommandTile({ tile, active, onClick }: { tile: Tile; active: boolean; o
 /* ─── Drawer ─────────────────────────────────────────── */
 
 function DetailDrawer({ tile, onClose }: { tile: Tile | null; onClose: () => void }) {
+  const selectedTile = tile;
+  const closeDetailDrawer = onClose;
   return (
     <AnimatePresence>
-      {tile && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-foreground/30 backdrop-blur-[2px] z-50"
-          />
-          <motion.aside
-            key={tile.id}
-            initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 32, stiffness: 280 }}
-            className="cc-drawer"
-          >
-            <DrawerHeader tile={tile} onClose={onClose} />
-            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
-              <DrawerBody tile={tile} />
+      {selectedTile && (
+        <motion.aside
+          key={selectedTile.id}
+          initial={{ x: 40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 40, opacity: 0 }}
+          transition={{ type: "spring", damping: 32, stiffness: 280 }}
+          className="fixed right-6 top-24 z-50 h-[calc(100vh-120px)] w-[420px] overflow-y-auto rounded-3xl border border-white/20 bg-white/80 p-6 shadow-2xl backdrop-blur-2xl dark:bg-slate-950/80"
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-teal-500">Command Details</p>
+              <h2 className="mt-2 text-2xl font-bold text-slate-950 dark:text-white">
+                {selectedTile.detailTitle}
+              </h2>
+              <p className="mt-2 text-sm text-slate-500">{selectedTile.detailDescription}</p>
             </div>
-            <DrawerActions tile={tile} />
-          </motion.aside>
-        </>
+            <button
+              onClick={closeDetailDrawer}
+              className="rounded-full border border-slate-200 px-3 py-1 text-sm dark:border-white/20 dark:text-white"
+            >
+              Close
+            </button>
+          </div>
+
+          <div className="mt-6 rounded-2xl bg-slate-100 p-4 dark:bg-white/10">
+            <p className="text-sm font-semibold text-slate-500">Current Count</p>
+            <p className="mt-1 text-4xl font-bold text-slate-950 dark:text-white tabular-nums">
+              {selectedTile.value.toLocaleString()}
+            </p>
+            <p className="mt-1 text-sm text-slate-500">{selectedTile.status}</p>
+          </div>
+
+          <div className="mt-6 space-y-3">
+            <p className="text-sm font-bold text-slate-950 dark:text-white">Quick Actions</p>
+            {selectedTile.actions.map((action) => (
+              <button
+                key={action}
+                className="w-full rounded-2xl bg-slate-950 px-4 py-3 text-left text-sm font-semibold text-white transition hover:bg-teal-600 dark:bg-white dark:text-slate-950 dark:hover:bg-teal-500 dark:hover:text-white"
+              >
+                {action}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-6">
+            <p className="text-sm font-bold text-slate-950 dark:text-white">Recent Activity</p>
+            <div className="mt-3 space-y-3">
+              <div className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">
+                <p className="text-sm font-semibold dark:text-white">Status updated</p>
+                <p className="text-xs text-slate-500">
+                  4 minutes ago · Dispatcher reviewed this item.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">
+                <p className="text-sm font-semibold dark:text-white">Route synced</p>
+                <p className="text-xs text-slate-500">
+                  11 minutes ago · Map and route data refreshed.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">
+                <p className="text-sm font-semibold dark:text-white">Driver notification available</p>
+                <p className="text-xs text-slate-500">Send a direct update from dispatch.</p>
+              </div>
+            </div>
+          </div>
+        </motion.aside>
       )}
     </AnimatePresence>
-  );
-}
-
-function DrawerHeader({ tile, onClose }: { tile: Tile; onClose: () => void }) {
-  const Icon = tile.icon;
-  const color = accentColor(colorToAccent(tile.color));
-  return (
-    <div className="relative px-5 pt-5 pb-4 border-b border-border">
-      <div className="flex items-start gap-3">
-        <div
-          className="size-11 rounded-xl grid place-items-center shrink-0"
-          style={{
-            background: `color-mix(in oklab, ${color} 20%, transparent)`,
-            color,
-          }}
-        >
-          <Icon className="size-5" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <h2 className="text-base font-semibold leading-tight">{tile.detailTitle}</h2>
-          <p className="text-[11px] text-muted-foreground mt-0.5">{tile.detailDescription}</p>
-          <p className="text-[10px] text-muted-foreground/80 mt-1 tabular-nums">{tile.status}</p>
-        </div>
-        <button onClick={onClose} className="size-8 grid place-items-center rounded-md hover:bg-secondary text-muted-foreground" aria-label="Close">
-          <X className="size-4" />
-        </button>
-      </div>
-      <div className="mt-4 relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
-        <input
-          placeholder={`Search in ${tile.title}…`}
-          className="w-full h-9 pl-9 pr-3 text-xs rounded-md bg-surface-2 border border-border outline-none focus:ring-2 focus:ring-teal/30"
-        />
-      </div>
-    </div>
-  );
-}
-
-function DrawerBody({ tile }: { tile: Tile }) {
-  switch (tile.id) {
-    case "active-loads":
-    case "freight-orders":
-      return <LoadsList />;
-    case "available-drivers":
-    case "driver-profiles":
-      return <DriversList />;
-    case "delayed-loads":
-      return <DelaysList />;
-    case "route-planner":
-      return <RoutesList />;
-    case "vehicle-status":
-      return <VehiclesList />;
-    case "facilities-hubs":
-      return <FacilitiesList />;
-    case "food-courier-orders":
-      return <CourierList />;
-    case "geofences-zones":
-      return <ZonesList />;
-    case "weather-traffic":
-      return <WeatherList />;
-    case "dispatch-alerts":
-      return <AlertList />;
-    default:
-      return null;
-  }
-}
-
-function DrawerActions({ tile }: { tile: Tile }) {
-  return (
-    <div className="px-5 py-3 border-t border-border bg-surface-2/40">
-      <div className="grid grid-cols-2 gap-2">
-        {tile.actions.map((label) => {
-          const Icon = actionIconMap[label] ?? ChevronRight;
-          return (
-            <button
-              key={label}
-              className="inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg text-[12px] font-medium bg-card border border-border hover:border-teal/50 hover:text-teal transition"
-            >
-              <Icon className="size-3.5" />
-              {label}
-            </button>
-          );
-        })}
-      </div>
-      <div className="mt-2 text-[10px] text-muted-foreground text-center">
-        Context: {tile.title}
-      </div>
-    </div>
   );
 }
 
