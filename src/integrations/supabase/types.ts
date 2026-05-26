@@ -2739,24 +2739,34 @@ export type Database = {
       }
       message_read_receipts: {
         Row: {
+          contact_id: string | null
           id: string
           message_id: string
           read_at: string
-          user_id: string
+          user_id: string | null
         }
         Insert: {
+          contact_id?: string | null
           id?: string
           message_id: string
           read_at?: string
-          user_id: string
+          user_id?: string | null
         }
         Update: {
+          contact_id?: string | null
           id?: string
           message_id?: string
           read_at?: string
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "message_read_receipts_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_contacts"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "message_read_receipts_message_id_fkey"
             columns: ["message_id"]
@@ -2771,6 +2781,8 @@ export type Database = {
           created_at: string
           file_name: string
           file_size_bytes: number | null
+          file_type: string | null
+          file_url: string | null
           height: number | null
           id: string
           message_id: string
@@ -2783,6 +2795,8 @@ export type Database = {
           created_at?: string
           file_name: string
           file_size_bytes?: number | null
+          file_type?: string | null
+          file_url?: string | null
           height?: number | null
           id?: string
           message_id: string
@@ -2795,6 +2809,8 @@ export type Database = {
           created_at?: string
           file_name?: string
           file_size_bytes?: number | null
+          file_type?: string | null
+          file_url?: string | null
           height?: number | null
           id?: string
           message_id?: string
@@ -2822,11 +2838,14 @@ export type Database = {
           created_at: string
           display_name: string
           email: string | null
+          full_name: string
           id: string
           is_online: boolean
           last_seen_at: string | null
           metadata: Json
           phone: string | null
+          role: string
+          status: string | null
           updated_at: string
           user_id: string | null
         }
@@ -2838,11 +2857,14 @@ export type Database = {
           created_at?: string
           display_name: string
           email?: string | null
+          full_name: string
           id?: string
           is_online?: boolean
           last_seen_at?: string | null
           metadata?: Json
           phone?: string | null
+          role: string
+          status?: string | null
           updated_at?: string
           user_id?: string | null
         }
@@ -2854,11 +2876,14 @@ export type Database = {
           created_at?: string
           display_name?: string
           email?: string | null
+          full_name?: string
           id?: string
           is_online?: boolean
           last_seen_at?: string | null
           metadata?: Json
           phone?: string | null
+          role?: string
+          status?: string | null
           updated_at?: string
           user_id?: string | null
         }
@@ -2868,6 +2893,48 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      messenger_conversation_members: {
+        Row: {
+          contact_id: string | null
+          conversation_id: string
+          id: string
+          joined_at: string
+          role: string | null
+          user_id: string | null
+        }
+        Insert: {
+          contact_id?: string | null
+          conversation_id: string
+          id?: string
+          joined_at?: string
+          role?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          contact_id?: string | null
+          conversation_id?: string
+          id?: string
+          joined_at?: string
+          role?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messenger_conversation_members_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_contacts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "messenger_conversation_members_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_conversations"
             referencedColumns: ["id"]
           },
         ]
@@ -2918,6 +2985,7 @@ export type Database = {
         Row: {
           category: Database["public"]["Enums"]["messenger_conversation_category"]
           company_id: string
+          conversation_type: string | null
           created_at: string
           created_by: string | null
           id: string
@@ -2925,6 +2993,7 @@ export type Database = {
           last_message_at: string | null
           last_message_preview: string | null
           load_id: string | null
+          order_id: string | null
           order_ref: string | null
           title: string | null
           updated_at: string
@@ -2932,6 +3001,7 @@ export type Database = {
         Insert: {
           category?: Database["public"]["Enums"]["messenger_conversation_category"]
           company_id: string
+          conversation_type?: string | null
           created_at?: string
           created_by?: string | null
           id?: string
@@ -2939,6 +3009,7 @@ export type Database = {
           last_message_at?: string | null
           last_message_preview?: string | null
           load_id?: string | null
+          order_id?: string | null
           order_ref?: string | null
           title?: string | null
           updated_at?: string
@@ -2946,6 +3017,7 @@ export type Database = {
         Update: {
           category?: Database["public"]["Enums"]["messenger_conversation_category"]
           company_id?: string
+          conversation_type?: string | null
           created_at?: string
           created_by?: string | null
           id?: string
@@ -2953,6 +3025,7 @@ export type Database = {
           last_message_at?: string | null
           last_message_preview?: string | null
           load_id?: string | null
+          order_id?: string | null
           order_ref?: string | null
           title?: string | null
           updated_at?: string
@@ -2970,33 +3043,45 @@ export type Database = {
       messenger_messages: {
         Row: {
           body: string | null
+          company_id: string | null
           conversation_id: string
           created_at: string
           edited_at: string | null
           id: string
+          is_outgoing: boolean | null
           is_system: boolean
+          message_body: string | null
+          message_type: string | null
           reply_to_id: string | null
           sender_contact_id: string | null
           sender_user_id: string | null
         }
         Insert: {
           body?: string | null
+          company_id?: string | null
           conversation_id: string
           created_at?: string
           edited_at?: string | null
           id?: string
+          is_outgoing?: boolean | null
           is_system?: boolean
+          message_body?: string | null
+          message_type?: string | null
           reply_to_id?: string | null
           sender_contact_id?: string | null
           sender_user_id?: string | null
         }
         Update: {
           body?: string | null
+          company_id?: string | null
           conversation_id?: string
           created_at?: string
           edited_at?: string | null
           id?: string
+          is_outgoing?: boolean | null
           is_system?: boolean
+          message_body?: string | null
+          message_type?: string | null
           reply_to_id?: string | null
           sender_contact_id?: string | null
           sender_user_id?: string | null
