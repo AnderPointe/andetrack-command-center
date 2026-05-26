@@ -442,6 +442,34 @@ function Messenger() {
             </div>
           </div>
 
+          {/* Type filter chips */}
+          <div className="flex gap-1.5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {typeFilters.map((f) => (
+              <FilterChip
+                key={f.id}
+                active={typeFilter === f.id}
+                onClick={() => setTypeFilter(f.id)}
+              >
+                {f.label}
+              </FilterChip>
+            ))}
+          </div>
+
+          {/* Category filter chips */}
+          <div className="flex gap-1.5 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {categoryFilters.map((f) => (
+              <FilterChip
+                key={f.id}
+                active={categoryFilter === f.id}
+                onClick={() => setCategoryFilter(f.id)}
+                variant="category"
+              >
+                {f.label}
+              </FilterChip>
+            ))}
+          </div>
+
+
           <div className="flex-1 overflow-y-auto px-3 pb-3">
             {pinned.length > 0 && (
               <SectionLabel icon={<Pin className="size-3.5" />}>
