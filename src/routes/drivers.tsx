@@ -320,7 +320,7 @@ function DriverDetailsPanel({ driver }: { driver: Driver }) {
   return (
     <aside className="space-y-4 xl:sticky xl:top-4 self-start">
       {/* Driver Details / current shipment */}
-      <section className="rounded-2xl border border-border bg-card p-4">
+      <section className="glass-tile p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold">Driver Details</h3>
           <button className="size-7 grid place-items-center rounded-md hover:bg-secondary text-muted-foreground">
@@ -391,7 +391,7 @@ function DriverDetailsPanel({ driver }: { driver: Driver }) {
       </section>
 
       {/* Shipment Statistic */}
-      <section className="rounded-2xl border border-border bg-card p-4">
+      <section className="glass-tile p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold">Shipment Statistic</h3>
           <select className="text-[11px] bg-secondary/60 border border-border rounded-md h-7 px-2 outline-none">
@@ -412,7 +412,7 @@ function DriverDetailsPanel({ driver }: { driver: Driver }) {
       </section>
 
       {/* Performance Metrics */}
-      <section className="rounded-2xl border border-border bg-card p-4">
+      <section className="glass-tile p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold">Performance Metrics</h3>
           <button className="size-7 grid place-items-center rounded-md hover:bg-secondary text-muted-foreground">
@@ -438,7 +438,7 @@ function DriverDetailsPanel({ driver }: { driver: Driver }) {
       </section>
 
       {/* Delay Reasons Breakdown */}
-      <section className="rounded-2xl border border-border bg-card p-4">
+      <section className="glass-tile p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold">Delay Reasons Breakdown</h3>
           <button className="size-7 grid place-items-center rounded-md hover:bg-secondary text-muted-foreground">
