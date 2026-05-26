@@ -18,7 +18,7 @@ import {
   Truck,
 } from "lucide-react";
 import { loads, shipments } from "@/data/mock";
-import { Button } from "@/components/ui/button";
+import { LiquidIconButton } from "@/components/ui/liquid-icon-button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function DriverProfileDrawer({
