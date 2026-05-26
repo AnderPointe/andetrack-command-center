@@ -556,10 +556,36 @@ function Messenger() {
           </div>
 
           {/* Composer */}
-          <div className="border-t border-white/[0.06] p-3">
+          <div className="border-t border-white/[0.06] p-3 space-y-2">
+            {attachment && (
+              <div className="flex items-center gap-3 rounded-xl border border-[#6D35E8]/30 bg-[#6D35E8]/10 px-3 py-2">
+                <div className="grid size-9 place-items-center rounded-lg bg-[#6D35E8]/25 text-[#B79CFF]">
+                  <FileText className="size-4" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate text-sm text-white">{attachment.name}</div>
+                  <div className="text-[11px] text-[#8B90A7]">
+                    {attachment.type}
+                    {attachment.size ? ` · ${Math.round(attachment.size / 1024)} KB` : ""}
+                  </div>
+                </div>
+                <button
+                  onClick={() => setAttachment(null)}
+                  className="text-xs text-[#8B90A7] hover:text-white"
+                >
+                  Remove
+                </button>
+              </div>
+            )}
             <div className="flex items-center gap-2 rounded-2xl border border-white/[0.08] bg-[#0D1020] px-3 py-2">
+              <input
+                ref={fileInputRef}
+                type="file"
+                className="hidden"
+                onChange={onPickFile}
+              />
               <button
-                onClick={() => toast.info("Attach file")}
+                onClick={() => fileInputRef.current?.click()}
                 className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
               >
                 <Paperclip className="size-4" />
@@ -576,10 +602,16 @@ function Messenger() {
                 placeholder="Write a message…"
                 className="flex-1 bg-transparent px-2 text-sm outline-none placeholder:text-[#8B90A7]"
               />
-              <button className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white">
+              <button
+                onClick={() => toast.info("Emoji picker coming soon")}
+                className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+              >
                 <Smile className="size-4" />
               </button>
-              <button className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white">
+              <button
+                onClick={() => toast.info("Recording voice note…")}
+                className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+              >
                 <Mic className="size-4" />
               </button>
               <button
@@ -590,6 +622,7 @@ function Messenger() {
               </button>
             </div>
           </div>
+
         </section>
       </div>
     </div>
