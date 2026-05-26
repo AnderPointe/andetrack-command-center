@@ -1,17 +1,12 @@
-import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
   createRootRouteWithContext,
   useRouter,
-  useLocation,
-  useNavigate,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect } from "react";
-import { AuthProvider, useAuth } from "@/hooks/use-auth";
-import { supabase } from "@/integrations/supabase/client";
 
 import appCss from "../styles.css?url";
 
@@ -116,40 +111,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <AuthGate>
-          <Outlet />
-        </AuthGate>
-      </AuthProvider>
+      <Outlet />
     </QueryClientProvider>
   );
-}
-
-const PUBLIC_PATHS = new Set(["/login", "/signup", "/admin-login"]);
-
-function AuthGate({ children }: { children: React.ReactNode }) {
-  const { session, loading } = useAuth();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const qc = useQueryClient();
-  const router = useRouter();
-
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
-      qc.invalidateQueries();
-      router.invalidate();
-    });
-    return () => subscription.unsubscribe();
-  }, [qc, router]);
-
-  useEffect(() => {
-    if (loading) return;
-    const isPublic = PUBLIC_PATHS.has(location.pathname);
-    if (!session && !isPublic) navigate({ to: "/login" });
-  }, [loading, session, location.pathname, navigate]);
-
-  if (loading) {
-    return <div className="flex min-h-screen items-center justify-center bg-background text-sm text-muted-foreground">Loading…</div>;
-  }
-  return <>{children}</>;
 }

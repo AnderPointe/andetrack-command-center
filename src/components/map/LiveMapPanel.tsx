@@ -3,11 +3,7 @@ import { drivers, statusMeta } from "@/data/mock";
 import type { Driver } from "@/types";
 import { Layers, Navigation, Eye, Zap, Users, Truck, Plus, Minus, Compass, Maximize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useMemo, useState } from "react";
-import { useDispatchMapRealtime } from "@/hooks/useDispatchMapRealtime";
-import { DriverLiveMarker } from "@/components/realtime/DriverLiveMarker";
-import type { DriverLiveState } from "@/types/location";
-import type { DriverStatusKey } from "@/types/status";
+import { useState } from "react";
 
 // Project lat/lng across continental US into a 0..1 box
 function project(lat: number, lng: number) {
@@ -34,22 +30,14 @@ export function LiveMapPanel({
   selectedId,
   className,
   compact = false,
-  companyId = null,
-  onSelectLiveDriver,
 }: {
   onSelectDriver?: (d: Driver) => void;
   selectedId?: string | null;
   className?: string;
   compact?: boolean;
-  /** When provided, overlays realtime drivers from driver_live_state. */
-  companyId?: string | null;
-  onSelectLiveDriver?: (state: DriverLiveState) => void;
 }) {
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
   const [active, setActive] = useState<Record<string, boolean>>({ routes: true, traffic: true });
-
-  const { liveStates } = useDispatchMapRealtime(companyId);
-  const liveList = useMemo(() => Object.values(liveStates), [liveStates]);
 
   const filtered = drivers.filter(
     (d) => !statusFilter || d.status === statusFilter,
@@ -128,30 +116,6 @@ export function LiveMapPanel({
               );
             })}
       </svg>
-
-      {/* Phase 2 — Realtime driver overlay (driver_live_state) */}
-      {companyId && liveList.length > 0 && (
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-          {liveList.map((s) => {
-            if (s.current_latitude == null || s.current_longitude == null) return null;
-            const p = project(s.current_latitude, s.current_longitude);
-            return (
-              <g key={s.driver_id} style={{ pointerEvents: "auto" }} transform={`translate(${p.x * 100} ${p.y * 100}) scale(0.15)`}>
-                <DriverLiveMarker
-                  x={0}
-                  y={0}
-                  heading={s.heading ?? 0}
-                  status={(s.driver_status ?? "available") as DriverStatusKey}
-                  signal={s.is_gps_stale ? "stale" : "live"}
-                  onClick={() => onSelectLiveDriver?.(s)}
-                />
-              </g>
-            );
-          })}
-        </svg>
-      )}
-
-
 
       {/* Top toolbar */}
       <div className="relative z-10 flex flex-wrap items-center gap-2 p-3">
