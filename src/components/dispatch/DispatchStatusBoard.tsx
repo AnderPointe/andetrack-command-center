@@ -24,7 +24,7 @@ export function DispatchStatusBoard() {
           const list = drivers.filter((d) => d.status === status);
           const color = `var(--${statusMeta[status].token})`;
           return (
-            <div key={status} className="w-72 shrink-0 rounded-xl border border-border bg-surface-2/50 overflow-hidden">
+            <div key={status} className="glass-column w-72 shrink-0">
               <div
                 className="h-1"
                 style={{ backgroundColor: color }}
@@ -48,7 +48,7 @@ export function DispatchStatusBoard() {
                 {list.map((d) => (
                   <div
                     key={d.id}
-                    className="group rounded-lg border border-border bg-card p-3 hover:shadow-[var(--shadow-sm)] hover:border-teal/40 transition cursor-grab active:cursor-grabbing"
+                    className="glass-card-mini group rounded-lg p-3 cursor-grab active:cursor-grabbing"
                   >
                     <div className="flex items-start gap-2">
                       <GripVertical className="size-3.5 text-muted-foreground mt-0.5 opacity-0 group-hover:opacity-100 transition" />

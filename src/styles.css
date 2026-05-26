@@ -827,3 +827,87 @@
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+
+
+/* ── Dispatch Command Center — Liquid Glass ──────────────────── */
+
+.dispatch-canvas {
+  position: relative;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(900px 500px at 8% -10%, color-mix(in oklab, var(--teal) 22%, transparent), transparent 60%),
+    radial-gradient(700px 420px at 110% 10%, color-mix(in oklab, var(--orange) 18%, transparent), transparent 55%),
+    radial-gradient(800px 600px at 50% 120%, color-mix(in oklab, var(--info) 16%, transparent), transparent 60%),
+    linear-gradient(135deg, color-mix(in oklab, var(--primary) 8%, var(--background)) 0%, var(--background) 60%);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.dispatch-canvas::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image:
+    radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--teal) 30%, transparent) 0, transparent 12%),
+    radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--orange) 28%, transparent) 0, transparent 14%),
+    radial-gradient(circle at 60% 20%, color-mix(in oklab, var(--info) 26%, transparent) 0, transparent 12%);
+  filter: blur(40px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dispatch-canvas > * { position: relative; z-index: 1; }
+
+.glass-panel {
+  position: relative;
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--card) 55%, transparent);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+  box-shadow:
+    0 10px 40px -16px oklch(0 0 0 / 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.dark .glass-panel {
+  background: color-mix(in oklab, var(--card) 50%, transparent);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 10px 40px -16px oklch(0 0 0 / 0.6),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-column {
+  position: relative;
+  border-radius: 0.85rem;
+  background: color-mix(in oklab, var(--surface-2) 45%, transparent);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  box-shadow:
+    0 6px 20px -10px oklch(0 0 0 / 0.25),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.dark .glass-column {
+  background: color-mix(in oklab, var(--surface-2) 35%, transparent);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.glass-column .glass-card-mini {
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-column .glass-card-mini:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, var(--teal) 45%, transparent);
+  box-shadow: 0 8px 24px -12px color-mix(in oklab, var(--teal) 40%, transparent);
+}
