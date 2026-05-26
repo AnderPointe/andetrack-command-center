@@ -4,10 +4,11 @@ import { AppShell } from "@/components/layout/AppShell";
 import { drivers, loads, alerts } from "@/data/mock";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Package, Users, AlertTriangle, Route as RouteIcon, UserCircle2,
-  Truck, Warehouse, ShoppingBag, Container, MapPin, CloudRain, BellRing,
-  TrendingUp, TrendingDown, X, Search, ChevronRight, Send,
-  MessageSquare, Phone, FileDown, Map as MapIcon, UserPlus, Siren,
+  Package, Users, UserCheck, TriangleAlert, Route as RouteIcon,
+  Truck, Warehouse, ShoppingBag, Container, MapPinned, CloudLightning, BellRing,
+  X, Search, ChevronRight, Send, MessageSquare, Phone, FileDown,
+  Map as MapIcon, UserPlus, Siren, Wrench, Bell, GitCompare, Navigation,
+  PhoneCall, AlertOctagon, ClipboardList, Plus, Edit3, Layers,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -22,32 +23,38 @@ export const Route = createFileRoute("/")({
 });
 
 type Accent = "teal" | "orange" | "danger" | "info" | "success" | "warning";
+type TileColor = "teal" | "orange" | "green" | "red";
 
 interface Tile {
   id: string;
   title: string;
-  value: string;
+  value: number;
   status: string;
-  trend: { dir: "up" | "down"; value: string };
-  badge: { label: string; tone: Accent };
+  badge: string;
   icon: LucideIcon;
-  accent: Accent;
+  color: TileColor;
+  detailTitle: string;
+  detailDescription: string;
+  actions: string[];
 }
 
 const tiles: Tile[] = [
-  { id: "active-loads", title: "Active Loads", value: "91", status: "78 on time · 13 at risk", trend: { dir: "up", value: "+6%" }, badge: { label: "Live", tone: "teal" }, icon: Package, accent: "teal" },
-  { id: "available-drivers", title: "Available Drivers", value: "37", status: "12 nearby high-priority zones", trend: { dir: "up", value: "+3" }, badge: { label: "Ready", tone: "success" }, icon: Users, accent: "teal" },
-  { id: "delayed-loads", title: "Delayed Loads", value: "14", status: "5 traffic · 4 facility · 3 weather · 2 driver", trend: { dir: "down", value: "-2" }, badge: { label: "Attention", tone: "warning" }, icon: AlertTriangle, accent: "warning" },
-  { id: "route-planner", title: "Route Planner", value: "26", status: "AI route recommendations available", trend: { dir: "up", value: "+9%" }, badge: { label: "AI", tone: "info" }, icon: RouteIcon, accent: "info" },
-  { id: "driver-profiles", title: "Driver Profiles", value: "248", status: "197 active · 37 available · 14 offline", trend: { dir: "up", value: "+4" }, badge: { label: "Fleet", tone: "teal" }, icon: UserCircle2, accent: "teal" },
-  { id: "vehicle-status", title: "Vehicle Status", value: "312", status: "283 active · 21 maintenance · 8 offline", trend: { dir: "up", value: "+1.2%" }, badge: { label: "Healthy", tone: "success" }, icon: Truck, accent: "success" },
-  { id: "facilities", title: "Facilities & Hubs", value: "1,482", status: "Warehouses · hubs · DCs · stops · airports", trend: { dir: "up", value: "+14" }, badge: { label: "Network", tone: "info" }, icon: Warehouse, accent: "info" },
-  { id: "courier", title: "Food & Courier Orders", value: "426", status: "318 completed today", trend: { dir: "up", value: "+22%" }, badge: { label: "Live", tone: "orange" }, icon: ShoppingBag, accent: "orange" },
-  { id: "freight", title: "Freight Orders", value: "73", status: "61 on schedule · 12 require attention", trend: { dir: "up", value: "+5" }, badge: { label: "Active", tone: "orange" }, icon: Container, accent: "orange" },
-  { id: "geofences", title: "Geofences & Zones", value: "58", status: "9 high-priority zones", trend: { dir: "up", value: "+2" }, badge: { label: "Zones", tone: "teal" }, icon: MapPin, accent: "teal" },
-  { id: "weather", title: "Weather & Traffic", value: "23", status: "Weather · traffic · closures · construction", trend: { dir: "down", value: "-3" }, badge: { label: "Risk", tone: "warning" }, icon: CloudRain, accent: "info" },
-  { id: "alerts", title: "Dispatch Alerts", value: "19", status: "7 critical · 12 medium", trend: { dir: "down", value: "-4" }, badge: { label: "Urgent", tone: "danger" }, icon: BellRing, accent: "danger" },
+  { id: "active-loads", title: "Active Loads", value: 91, status: "78 on time · 13 at risk", badge: "Live", icon: Package, color: "teal", detailTitle: "Active Loads", detailDescription: "Loads currently moving across your network.", actions: ["View on Map", "Reassign Load", "Message Driver", "Export Report"] },
+  { id: "available-drivers", title: "Available Drivers", value: 37, status: "12 near priority zones", badge: "Ready", icon: UserCheck, color: "green", detailTitle: "Available Drivers", detailDescription: "Drivers ready for load assignment.", actions: ["Assign Driver", "View on Map", "Call Driver"] },
+  { id: "delayed-loads", title: "Delayed Loads", value: 14, status: "5 traffic · 4 facility · 3 weather", badge: "Attention", icon: TriangleAlert, color: "orange", detailTitle: "Delayed Loads", detailDescription: "Loads requiring dispatcher review.", actions: ["Notify Customer", "Reroute", "Escalate"] },
+  { id: "route-planner", title: "Route Planner", value: 26, status: "AI suggestions available", badge: "Optimize", icon: RouteIcon, color: "teal", detailTitle: "Route Planner", detailDescription: "Suggested optimized routes and reroutes.", actions: ["Optimize Route", "Compare Routes", "Send to Driver"] },
+  { id: "driver-profiles", title: "Driver Profiles", value: 248, status: "197 active · 37 available · 14 offline", badge: "Fleet", icon: Users, color: "teal", detailTitle: "Driver Profiles", detailDescription: "Driver status, current load, ETA, and route history.", actions: ["View Profile", "Message Driver", "View Route History"] },
+  { id: "vehicle-status", title: "Vehicle Status", value: 312, status: "283 active · 21 maintenance · 8 offline", badge: "Fleet Health", icon: Truck, color: "green", detailTitle: "Vehicle Status", detailDescription: "Fleet health, maintenance, inspections, and assignments.", actions: ["View Vehicle", "Create Maintenance Alert", "Assign Vehicle"] },
+  { id: "facilities-hubs", title: "Facilities & Hubs", value: 1482, status: "Warehouses · hubs · airports · truck stops", badge: "Network", icon: Warehouse, color: "teal", detailTitle: "Facilities & Hubs", detailDescription: "Distribution centers, freight hubs, warehouses, and partner facilities.", actions: ["View Facility", "Add Facility", "View on Map"] },
+  { id: "food-courier-orders", title: "Food & Courier Orders", value: 426, status: "318 completed today", badge: "Courier", icon: ShoppingBag, color: "orange", detailTitle: "Food & Courier Orders", detailDescription: "Live food, retail, and same-day courier orders.", actions: ["Assign Courier", "View Order", "Message Customer"] },
+  { id: "freight-orders", title: "Freight Orders", value: 73, status: "61 on schedule · 12 need review", badge: "Freight", icon: Container, color: "teal", detailTitle: "Freight Orders", detailDescription: "Large freight, palletized cargo, and heavy delivery operations.", actions: ["Assign Truck", "View Load", "Check Capacity"] },
+  { id: "geofences-zones", title: "Geofences & Zones", value: 58, status: "9 high-priority zones", badge: "Zones", icon: MapPinned, color: "teal", detailTitle: "Geofences & Zones", detailDescription: "Operational delivery zones, service areas, and restricted regions.", actions: ["Edit Zone", "View Zone", "Create Zone Alert"] },
+  { id: "weather-traffic", title: "Weather & Traffic", value: 23, status: "Road risk alerts active", badge: "Risk", icon: CloudLightning, color: "orange", detailTitle: "Weather & Traffic", detailDescription: "Traffic delays, road closures, storms, and route risks.", actions: ["Reroute Drivers", "Notify Dispatch", "View Map Layer"] },
+  { id: "dispatch-alerts", title: "Dispatch Alerts", value: 19, status: "7 critical · 12 medium", badge: "Alerts", icon: BellRing, color: "red", detailTitle: "Dispatch Alerts", detailDescription: "Urgent operational issues requiring dispatcher action.", actions: ["Resolve Alert", "Escalate", "Message Team"] },
 ];
+
+const colorToAccent = (c: TileColor): Accent => ({ teal: "teal", orange: "orange", green: "success", red: "danger" } as const)[c];
+const badgeAccent = (c: TileColor): Accent => ({ teal: "teal", orange: "orange", green: "success", red: "danger" } as const)[c];
 
 const accentColor = (a: Accent) => ({
   teal: "var(--teal)",
@@ -57,6 +64,42 @@ const accentColor = (a: Accent) => ({
   success: "var(--success)",
   warning: "var(--warning)",
 }[a]);
+
+const actionIconMap: Record<string, LucideIcon> = {
+  "View on Map": MapIcon,
+  "Reassign Load": Send,
+  "Message Driver": MessageSquare,
+  "Export Report": FileDown,
+  "Assign Driver": UserPlus,
+  "Call Driver": PhoneCall,
+  "Notify Customer": Bell,
+  "Reroute": Navigation,
+  "Escalate": AlertOctagon,
+  "Optimize Route": RouteIcon,
+  "Compare Routes": GitCompare,
+  "Send to Driver": Send,
+  "View Profile": Users,
+  "View Route History": ClipboardList,
+  "View Vehicle": Truck,
+  "Create Maintenance Alert": Wrench,
+  "Assign Vehicle": UserPlus,
+  "View Facility": Warehouse,
+  "Add Facility": Plus,
+  "Assign Courier": UserPlus,
+  "View Order": Package,
+  "Message Customer": MessageSquare,
+  "Assign Truck": Truck,
+  "View Load": Package,
+  "Check Capacity": Container,
+  "Edit Zone": Edit3,
+  "View Zone": MapPinned,
+  "Create Zone Alert": Siren,
+  "Reroute Drivers": Navigation,
+  "Notify Dispatch": Bell,
+  "View Map Layer": Layers,
+  "Resolve Alert": BellRing,
+  "Message Team": MessageSquare,
+};
 
 function CommandCenter() {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -138,8 +181,7 @@ function CommandCenter() {
 
 function CommandTile({ tile, active, onClick }: { tile: Tile; active: boolean; onClick: () => void }) {
   const Icon = tile.icon;
-  const color = accentColor(tile.accent);
-  const TrendIcon = tile.trend.dir === "up" ? TrendingUp : TrendingDown;
+  const color = accentColor(colorToAccent(tile.color));
   return (
     <button onClick={onClick} className={`cc-tile ${active ? "is-active" : ""}`}>
       <div className="flex items-start justify-between gap-2">
@@ -156,25 +198,18 @@ function CommandTile({ tile, active, onClick }: { tile: Tile; active: boolean; o
         <span
           className="text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full"
           style={{
-            background: `color-mix(in oklab, ${accentColor(tile.badge.tone)} 16%, transparent)`,
-            color: accentColor(tile.badge.tone),
+            background: `color-mix(in oklab, ${accentColor(badgeAccent(tile.color))} 16%, transparent)`,
+            color: accentColor(badgeAccent(tile.color)),
           }}
         >
-          {tile.badge.label}
+          {tile.badge}
         </span>
       </div>
 
       <div className="mt-4">
         <div className="text-[12px] text-muted-foreground font-medium">{tile.title}</div>
-        <div className="mt-1 flex items-baseline gap-2">
-          <div className="text-[30px] font-semibold tracking-tight tabular-nums leading-none">{tile.value}</div>
-          <span
-            className="inline-flex items-center gap-0.5 text-[11px] font-medium tabular-nums"
-            style={{ color: tile.trend.dir === "up" ? "var(--success)" : "var(--destructive)" }}
-          >
-            <TrendIcon className="size-3" />
-            {tile.trend.value}
-          </span>
+        <div className="mt-1 text-[30px] font-semibold tracking-tight tabular-nums leading-none">
+          {tile.value.toLocaleString()}
         </div>
         <div className="mt-2 text-[11px] text-muted-foreground line-clamp-2 min-h-[28px]">{tile.status}</div>
       </div>
@@ -219,7 +254,7 @@ function DetailDrawer({ tile, onClose }: { tile: Tile | null; onClose: () => voi
 
 function DrawerHeader({ tile, onClose }: { tile: Tile; onClose: () => void }) {
   const Icon = tile.icon;
-  const color = accentColor(tile.accent);
+  const color = accentColor(colorToAccent(tile.color));
   return (
     <div className="relative px-5 pt-5 pb-4 border-b border-border">
       <div className="flex items-start gap-3">
@@ -233,8 +268,9 @@ function DrawerHeader({ tile, onClose }: { tile: Tile; onClose: () => void }) {
           <Icon className="size-5" />
         </div>
         <div className="flex-1 min-w-0">
-          <h2 className="text-base font-semibold leading-tight">{tile.title}</h2>
-          <p className="text-[11px] text-muted-foreground mt-0.5">{tile.status}</p>
+          <h2 className="text-base font-semibold leading-tight">{tile.detailTitle}</h2>
+          <p className="text-[11px] text-muted-foreground mt-0.5">{tile.detailDescription}</p>
+          <p className="text-[10px] text-muted-foreground/80 mt-1 tabular-nums">{tile.status}</p>
         </div>
         <button onClick={onClose} className="size-8 grid place-items-center rounded-md hover:bg-secondary text-muted-foreground" aria-label="Close">
           <X className="size-4" />
@@ -254,7 +290,7 @@ function DrawerHeader({ tile, onClose }: { tile: Tile; onClose: () => void }) {
 function DrawerBody({ tile }: { tile: Tile }) {
   switch (tile.id) {
     case "active-loads":
-    case "freight":
+    case "freight-orders":
       return <LoadsList />;
     case "available-drivers":
     case "driver-profiles":
@@ -265,15 +301,15 @@ function DrawerBody({ tile }: { tile: Tile }) {
       return <RoutesList />;
     case "vehicle-status":
       return <VehiclesList />;
-    case "facilities":
+    case "facilities-hubs":
       return <FacilitiesList />;
-    case "courier":
+    case "food-courier-orders":
       return <CourierList />;
-    case "geofences":
+    case "geofences-zones":
       return <ZonesList />;
-    case "weather":
+    case "weather-traffic":
       return <WeatherList />;
-    case "alerts":
+    case "dispatch-alerts":
       return <AlertList />;
     default:
       return null;
@@ -281,26 +317,21 @@ function DrawerBody({ tile }: { tile: Tile }) {
 }
 
 function DrawerActions({ tile }: { tile: Tile }) {
-  const actions = [
-    { label: "Assign Driver", icon: UserPlus },
-    { label: "View on Map", icon: MapIcon },
-    { label: "Message Driver", icon: MessageSquare },
-    { label: "Reassign Load", icon: Send },
-    { label: "Create Alert", icon: Siren },
-    { label: "Export Report", icon: FileDown },
-  ];
   return (
     <div className="px-5 py-3 border-t border-border bg-surface-2/40">
       <div className="grid grid-cols-2 gap-2">
-        {actions.map((a) => (
-          <button
-            key={a.label}
-            className="inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg text-[12px] font-medium bg-card border border-border hover:border-teal/50 hover:text-teal transition"
-          >
-            <a.icon className="size-3.5" />
-            {a.label}
-          </button>
-        ))}
+        {tile.actions.map((label) => {
+          const Icon = actionIconMap[label] ?? ChevronRight;
+          return (
+            <button
+              key={label}
+              className="inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg text-[12px] font-medium bg-card border border-border hover:border-teal/50 hover:text-teal transition"
+            >
+              <Icon className="size-3.5" />
+              {label}
+            </button>
+          );
+        })}
       </div>
       <div className="mt-2 text-[10px] text-muted-foreground text-center">
         Context: {tile.title}
