@@ -34,7 +34,20 @@ export const Route = createFileRoute("/messenger")({
   component: MessengerPage,
 });
 
-type Role = "Carrier" | "Driver" | "Broker" | "Dispatcher" | "Customer";
+type Role =
+  | "Carrier"
+  | "Driver"
+  | "Broker"
+  | "Dispatcher"
+  | "Customer"
+  | "Warehouse";
+
+type Category =
+  | "pinned"
+  | "active_loads"
+  | "dispatch"
+  | "invoices"
+  | "completed";
 
 type Contact = {
   id: string;
@@ -47,6 +60,7 @@ type Contact = {
   typing?: boolean;
   company?: string;
   avatar: string;
+  category: Category;
 };
 
 type Message =
