@@ -45,7 +45,7 @@ export function MessengerConversation({
         className="flex-1 overflow-y-auto px-6 py-5 space-y-4"
       >
         <div className="flex justify-center">
-          <span className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] text-[#8B90A7]">
+          <span className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] text-muted-foreground">
             Today
           </span>
         </div>
@@ -55,7 +55,7 @@ export function MessengerConversation({
         ))}
 
         {messages.length === 0 && (
-          <div className="grid place-items-center py-20 text-center text-[#8B90A7]">
+          <div className="grid place-items-center py-20 text-center text-muted-foreground">
             <p className="text-sm">No messages yet.</p>
             <p className="text-xs">Say hello to {active.name}.</p>
           </div>

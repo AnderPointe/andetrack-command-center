@@ -122,27 +122,27 @@ export type InboxFilter =
 export type TypeFilter = InboxFilter;
 
 export const roleStyles: Record<Role, string> = {
-  Carrier: "bg-[#6D35E8]/20 text-[#B79CFF] border border-[#6D35E8]/40",
-  Driver: "bg-[#22C55E]/15 text-[#5EE6A0] border border-[#22C55E]/35",
-  Broker: "bg-amber-500/15 text-amber-300 border border-amber-500/30",
-  Dispatcher: "bg-sky-500/15 text-sky-300 border border-sky-500/30",
-  Customer: "bg-pink-500/15 text-pink-300 border border-pink-500/30",
-  Warehouse: "bg-cyan-500/15 text-cyan-300 border border-cyan-500/30",
-  Courier: "bg-[#F97316]/15 text-orange-300 border border-[#F97316]/35",
+  Carrier: "bg-primary/15 text-primary border border-primary/35",
+  Driver: "bg-success/15 text-success border border-success/35",
+  Broker: "bg-warning/15 text-warning border border-warning/35",
+  Dispatcher: "bg-info/15 text-info border border-info/35",
+  Customer: "bg-accent text-accent-foreground border border-border",
+  Warehouse: "bg-teal/15 text-teal border border-teal/35",
+  Courier: "bg-orange/15 text-orange border border-orange/35",
 };
 
 export const priorityStyles: Record<Priority, string> = {
-  normal: "bg-white/5 text-[#8B90A7] border border-white/10",
-  important: "bg-sky-500/15 text-sky-300 border border-sky-500/30",
-  urgent: "bg-[#F97316]/15 text-orange-300 border border-[#F97316]/35",
-  emergency: "bg-[#EF4444]/15 text-red-300 border border-[#EF4444]/40",
+  normal: "bg-muted text-muted-foreground border border-border",
+  important: "bg-info/15 text-info border border-info/35",
+  urgent: "bg-orange/15 text-orange border border-orange/35",
+  emergency: "bg-destructive/15 text-destructive border border-destructive/40",
 };
 
 export const etaRiskStyles: Record<EtaRisk, { label: string; cls: string }> = {
-  low: { label: "ETA Low", cls: "bg-[#22C55E]/15 text-[#5EE6A0] border border-[#22C55E]/30" },
-  medium: { label: "ETA Med", cls: "bg-amber-500/15 text-amber-300 border border-amber-500/30" },
-  high: { label: "ETA High", cls: "bg-[#F97316]/15 text-orange-300 border border-[#F97316]/35" },
-  delayed: { label: "Delayed", cls: "bg-[#EF4444]/15 text-red-300 border border-[#EF4444]/40" },
+  low: { label: "ETA Low", cls: "bg-success/15 text-success border border-success/30" },
+  medium: { label: "ETA Med", cls: "bg-warning/15 text-warning border border-warning/35" },
+  high: { label: "ETA High", cls: "bg-orange/15 text-orange border border-orange/35" },
+  delayed: { label: "Delayed", cls: "bg-destructive/15 text-destructive border border-destructive/40" },
 };
 
 export const inboxFilters: { id: InboxFilter; label: string }[] = [

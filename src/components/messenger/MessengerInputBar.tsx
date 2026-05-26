@@ -20,7 +20,7 @@ import {
 } from "./messenger-constants";
 
 const PRIORITIES: { id: Priority; label: string; color: string }[] = [
-  { id: "normal", label: "Normal", color: "text-[#8B90A7]" },
+  { id: "normal", label: "Normal", color: "text-muted-foreground" },
   { id: "important", label: "Important", color: "text-sky-300" },
   { id: "urgent", label: "Urgent", color: "text-orange-300" },
   { id: "emergency", label: "Emergency", color: "text-red-300" },
@@ -91,15 +91,15 @@ export function MessengerInputBar({
 
       {/* AI suggested replies */}
       <div className="flex flex-wrap items-center gap-1.5">
-        <Sparkles className="size-3 text-[#B79CFF]" />
-        <span className="text-[10px] uppercase tracking-wider text-[#8B90A7]">
+        <Sparkles className="size-3 text-primary" />
+        <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
           AI suggestions
         </span>
         {SUGGESTED_REPLIES.map((s) => (
           <button
             key={s}
             onClick={() => applySuggestion(s)}
-            className="rounded-full border border-[#6D35E8]/30 bg-[#6D35E8]/10 px-2.5 py-0.5 text-[11px] text-[#D4C4FF] hover:bg-[#6D35E8]/25"
+            className="rounded-full border border-[#6D35E8]/30 bg-[#6D35E8]/10 px-2.5 py-0.5 text-[11px] text-primary hover:bg-[#6D35E8]/25"
           >
             {s}
           </button>
@@ -109,7 +109,7 @@ export function MessengerInputBar({
       {/* Driver-friendly quick replies */}
       {showDriverReplies && (
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[10px] uppercase tracking-wider text-[#8B90A7]">
+          <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
             Quick reply
           </span>
           {DRIVER_QUICK_REPLIES.map((s) => (
@@ -119,7 +119,7 @@ export function MessengerInputBar({
                 onDraftChange(s);
                 setTimeout(onSend, 0);
               }}
-              className="rounded-full border border-[#22C55E]/30 bg-[#22C55E]/10 px-2.5 py-0.5 text-[11px] text-[#5EE6A0] hover:bg-[#22C55E]/20"
+              className="rounded-full border border-[#22C55E]/30 bg-[#22C55E]/10 px-2.5 py-0.5 text-[11px] text-success hover:bg-[#22C55E]/20"
             >
               {s}
             </button>
@@ -128,7 +128,7 @@ export function MessengerInputBar({
       )}
 
       <div className="flex flex-wrap items-center gap-2 text-[11px]">
-        <span className="text-[#8B90A7]">Priority</span>
+        <span className="text-muted-foreground">Priority</span>
         <div className="flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-0.5">
           {PRIORITIES.map((p) => (
             <button
@@ -137,8 +137,8 @@ export function MessengerInputBar({
               className={cn(
                 "rounded-full px-2 py-0.5 transition-colors",
                 priority === p.id
-                  ? "bg-[#6D35E8]/25 text-white"
-                  : `${p.color} hover:text-white`,
+                  ? "bg-[#6D35E8]/25 text-foreground"
+                  : `${p.color} hover:text-foreground`,
               )}
             >
               {p.label}
@@ -157,7 +157,7 @@ export function MessengerInputBar({
         <div className="relative ml-auto">
           <button
             onClick={() => setTemplatesOpen((v) => !v)}
-            className="inline-flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-[#8B90A7] hover:text-white"
+            className="inline-flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-muted-foreground hover:text-foreground"
           >
             <FileText className="size-3" /> Templates
           </button>
@@ -173,8 +173,8 @@ export function MessengerInputBar({
                   }}
                   className="block w-full px-3 py-2 text-left text-[12px] hover:bg-white/5"
                 >
-                  <div className="font-semibold text-white">{t.label}</div>
-                  <div className="truncate text-[#8B90A7]">{t.body}</div>
+                  <div className="font-semibold text-foreground">{t.label}</div>
+                  <div className="truncate text-muted-foreground">{t.body}</div>
                 </button>
               ))}
             </div>
@@ -192,21 +192,21 @@ export function MessengerInputBar({
         <button
           onClick={() => fileInputRef.current?.click()}
           title="Attach POD or file"
-          className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
         >
           <Paperclip className="size-4" />
         </button>
         <button
           onClick={() => toast.info("Mention…")}
           title="Mention"
-          className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
         >
           <AtSign className="size-4" />
         </button>
         <button
           onClick={() => toast.success("Live location shared")}
           title="Share location"
-          className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
         >
           <MapPin className="size-4" />
         </button>
@@ -220,26 +220,26 @@ export function MessengerInputBar({
             }
           }}
           placeholder="Write a message…"
-          className="flex-1 bg-transparent px-2 text-sm outline-none placeholder:text-[#8B90A7]"
+          className="flex-1 bg-transparent px-2 text-sm outline-none placeholder:text-muted-foreground"
         />
         <button
           onClick={() => toast.info("Emoji picker coming soon")}
           title="Emoji"
-          className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
         >
           <Smile className="size-4" />
         </button>
         <button
           onClick={() => toast.info("Recording voice note…")}
           title="Voice note"
-          className="grid size-9 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
         >
           <Mic className="size-4" />
         </button>
         <button
           onClick={onSend}
           title="Send"
-          className="grid size-9 place-items-center rounded-xl bg-[#6D35E8] text-white shadow-[0_8px_30px_-8px_rgba(109,53,232,0.7)] hover:bg-[#7c47ee]"
+          className="grid size-9 place-items-center rounded-xl bg-[#6D35E8] text-foreground shadow-[0_8px_30px_-8px_rgba(109,53,232,0.7)] hover:bg-[#7c47ee]"
         >
           <Send className="size-4" />
         </button>

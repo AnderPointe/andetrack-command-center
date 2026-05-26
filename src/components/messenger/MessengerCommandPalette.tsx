@@ -63,21 +63,21 @@ export function MessengerCommandPalette({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-3">
-          <Search className="size-4 text-[#8B90A7]" />
+          <Search className="size-4 text-muted-foreground" />
           <input
             autoFocus
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search drivers, loads, customers, channels…"
-            className="flex-1 bg-transparent text-sm outline-none placeholder:text-[#8B90A7]"
+            className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
-          <span className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] text-[#8B90A7]">
+          <span className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] text-muted-foreground">
             ESC
           </span>
         </div>
 
         <div className="max-h-[60vh] overflow-y-auto p-2">
-          <div className="px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8B90A7]">
+          <div className="px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
             Conversations
           </div>
           {filtered.map((c) => {
@@ -94,9 +94,9 @@ export function MessengerCommandPalette({
                   "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm hover:bg-white/5",
                 )}
               >
-                <Icon className="size-4 text-[#B79CFF]" />
-                <span className="flex-1 truncate text-white">{c.name}</span>
-                <span className="text-[11px] text-[#8B90A7]">{c.role}</span>
+                <Icon className="size-4 text-primary" />
+                <span className="flex-1 truncate text-foreground">{c.name}</span>
+                <span className="text-[11px] text-muted-foreground">{c.role}</span>
                 {c.linkedLoad && (
                   <span className="rounded border border-[#F97316]/35 bg-[#F97316]/10 px-1.5 py-0.5 text-[10px] text-orange-300">
                     {c.linkedLoad.id}
@@ -106,12 +106,12 @@ export function MessengerCommandPalette({
             );
           })}
           {filtered.length === 0 && (
-            <div className="px-3 py-6 text-center text-sm text-[#8B90A7]">
+            <div className="px-3 py-6 text-center text-sm text-muted-foreground">
               No matches
             </div>
           )}
 
-          <div className="px-2 pb-1 pt-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8B90A7]">
+          <div className="px-2 pb-1 pt-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
             Quick actions
           </div>
           {quick.map((c) => {
@@ -122,8 +122,8 @@ export function MessengerCommandPalette({
                 onClick={onClose}
                 className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm hover:bg-white/5"
               >
-                <Icon className="size-4 text-[#F97316]" />
-                <span className="text-white">{c.label}</span>
+                <Icon className="size-4 text-orange" />
+                <span className="text-foreground">{c.label}</span>
               </button>
             );
           })}

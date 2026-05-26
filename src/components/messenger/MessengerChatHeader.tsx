@@ -40,7 +40,7 @@ export function MessengerChatHeader({
         />
         <div>
           <div className="flex items-center gap-2">
-            {isChannel && <span className="text-[#8B90A7]">#</span>}
+            {isChannel && <span className="text-muted-foreground">#</span>}
             <h3 className="text-[15px] font-semibold">{active.name}</h3>
             {!isChannel && active.kind === "dm" && (
               <span
@@ -59,18 +59,18 @@ export function MessengerChatHeader({
               </span>
             )}
           </div>
-          <p className="text-xs text-[#8B90A7]">
+          <p className="text-xs text-muted-foreground">
             {isChannel ? (
               active.channelTopic ?? "Channel"
             ) : (
               <>
                 {active.online ? (
-                  <span className="text-[#5EE6A0]">● Online</span>
+                  <span className="text-success">● Online</span>
                 ) : (
                   <span>Offline</span>
                 )}
                 {active.company ? ` · ${active.company}` : ""}
-                <span className="ml-2 text-[#8B90A7]">· {notifLevel}</span>
+                <span className="ml-2 text-muted-foreground">· {notifLevel}</span>
               </>
             )}
           </p>
@@ -103,7 +103,7 @@ export function MessengerChatHeader({
               className="absolute right-0 top-11 z-30 w-64 overflow-hidden rounded-xl border border-white/10 bg-[#101326]/95 shadow-2xl"
               onMouseLeave={() => setMenuOpen(false)}
             >
-              <div className="border-b border-white/[0.06] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8B90A7]">
+              <div className="border-b border-white/[0.06] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                 <Clock className="mr-1 inline size-3" /> Snooze
               </div>
               {SNOOZE_OPTIONS.map((s) => (
@@ -113,12 +113,12 @@ export function MessengerChatHeader({
                     setMenuOpen(false);
                     toast.success(`Snoozed for ${s.label}`);
                   }}
-                  className="block w-full px-3 py-1.5 text-left text-[12px] text-white hover:bg-white/5"
+                  className="block w-full px-3 py-1.5 text-left text-[12px] text-foreground hover:bg-white/5"
                 >
                   {s.label}
                 </button>
               ))}
-              <div className="border-b border-t border-white/[0.06] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8B90A7]">
+              <div className="border-b border-t border-white/[0.06] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                 <BellOff className="mr-1 inline size-3" /> Notifications
               </div>
               {NOTIFICATION_LEVELS.map((lvl) => (
@@ -131,7 +131,7 @@ export function MessengerChatHeader({
                   }}
                   className={cn(
                     "block w-full px-3 py-1.5 text-left text-[12px] hover:bg-white/5",
-                    notifLevel === lvl ? "text-[#B79CFF]" : "text-white",
+                    notifLevel === lvl ? "text-primary" : "text-foreground",
                   )}
                 >
                   {lvl}

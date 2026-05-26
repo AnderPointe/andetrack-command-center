@@ -26,7 +26,7 @@ export function MessengerSidebar({
       <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <div>
           <h2 className="text-base font-semibold tracking-tight">Inbox</h2>
-          <p className="text-[11px] text-[#8B90A7]">Anderoute Messenger</p>
+          <p className="text-[11px] text-muted-foreground">Anderoute Messenger</p>
         </div>
         <div className="flex items-center gap-2">
           <MessengerIconChip
@@ -40,12 +40,12 @@ export function MessengerSidebar({
 
       <div className="px-4 pb-3">
         <div className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2">
-          <Search className="size-4 text-[#8B90A7]" />
+          <Search className="size-4 text-muted-foreground" />
           <input
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
             placeholder="Search people, channels, loads…"
-            className="w-full bg-transparent text-sm outline-none placeholder:text-[#8B90A7]"
+            className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
         </div>
       </div>

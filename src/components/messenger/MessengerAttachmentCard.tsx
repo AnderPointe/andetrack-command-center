@@ -18,12 +18,12 @@ export function MessengerAttachmentCard({
   if (variant === "composer") {
     return (
       <div className="flex items-center gap-3 rounded-xl border border-[#6D35E8]/30 bg-[#6D35E8]/10 px-3 py-2">
-        <div className="grid size-9 place-items-center rounded-lg bg-[#6D35E8]/25 text-[#B79CFF]">
+        <div className="grid size-9 place-items-center rounded-lg bg-[#6D35E8]/25 text-primary">
           <FileText className="size-4" />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="truncate text-sm text-white">{filename}</div>
-          <div className="text-[11px] text-[#8B90A7]">
+          <div className="truncate text-sm text-foreground">{filename}</div>
+          <div className="text-[11px] text-muted-foreground">
             {filetype}
             {size ? ` · ${Math.round(size / 1024)} KB` : ""}
           </div>
@@ -31,7 +31,7 @@ export function MessengerAttachmentCard({
         {onRemove && (
           <button
             onClick={onRemove}
-            className="text-xs text-[#8B90A7] hover:text-white"
+            className="text-xs text-muted-foreground hover:text-foreground"
           >
             Remove
           </button>
@@ -42,16 +42,16 @@ export function MessengerAttachmentCard({
 
   return (
     <div className={cn("flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#1A1E33] px-3 py-2.5")}>
-      <div className="grid size-10 place-items-center rounded-xl bg-[#6D35E8]/20 text-[#B79CFF]">
+      <div className="grid size-10 place-items-center rounded-xl bg-[#6D35E8]/20 text-primary">
         <FileText className="size-5" />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="truncate text-sm font-medium text-white">{filename}</div>
-        <div className="text-[11px] text-[#8B90A7]">{filetype}</div>
+        <div className="truncate text-sm font-medium text-foreground">{filename}</div>
+        <div className="text-[11px] text-muted-foreground">{filetype}</div>
       </div>
       <button
         onClick={() => toast.success("Downloading…")}
-        className="grid size-9 place-items-center rounded-lg bg-[#6D35E8]/15 text-[#B79CFF] hover:bg-[#6D35E8]/25"
+        className="grid size-9 place-items-center rounded-lg bg-[#6D35E8]/15 text-primary hover:bg-[#6D35E8]/25"
       >
         <Download className="size-4" />
       </button>

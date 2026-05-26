@@ -21,7 +21,7 @@ function Section({
 }) {
   return (
     <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-3">
-      <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8B90A7]">
+      <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
         {title}
       </div>
       {children}
@@ -32,8 +32,8 @@ function Section({
 function KV({ k, v, tone }: { k: string; v: React.ReactNode; tone?: string }) {
   return (
     <div className="flex items-start justify-between gap-3 py-1 text-[12px]">
-      <span className="text-[#8B90A7]">{k}</span>
-      <span className={cn("text-right font-medium text-white", tone)}>{v}</span>
+      <span className="text-muted-foreground">{k}</span>
+      <span className={cn("text-right font-medium text-foreground", tone)}>{v}</span>
     </div>
   );
 }
@@ -53,13 +53,13 @@ function CtaButton({
       className={cn(
         "w-full rounded-xl border px-3 py-2 text-[12px] font-semibold transition-all",
         variant === "primary" &&
-          "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-white hover:bg-[#6D35E8]/30 shadow-[0_8px_28px_-12px_rgba(109,53,232,0.6)]",
+          "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-foreground hover:bg-[#6D35E8]/30 shadow-[0_8px_28px_-12px_rgba(109,53,232,0.6)]",
         variant === "danger" &&
           "border-[#EF4444]/40 bg-[#EF4444]/15 text-red-200 hover:bg-[#EF4444]/25",
         variant === "teal" &&
           "border-teal-400/40 bg-teal-500/15 text-teal-200 hover:bg-teal-500/25",
         variant === "default" &&
-          "border-white/[0.08] bg-white/[0.04] text-white hover:bg-white/[0.08]",
+          "border-white/[0.08] bg-white/[0.04] text-foreground hover:bg-white/[0.08]",
       )}
     >
       {children}
@@ -98,7 +98,7 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
                 </span>
               )}
             </div>
-            <p className="truncate text-[11px] text-[#8B90A7]">
+            <p className="truncate text-[11px] text-muted-foreground">
               {active.company ?? active.channelTopic ?? "—"}
             </p>
           </div>
@@ -115,17 +115,17 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
                 k="GPS"
                 v={
                   <span className="inline-flex items-center gap-1">
-                    <MapPin className="size-3 text-[#14B8A6]" />
+                    <MapPin className="size-3 text-teal" />
                     Round Rock, TX
                   </span>
                 }
               />
-              <KV k="ETA" v={active.linkedLoad?.eta ?? "—"} tone="text-[#5EE6A0]" />
+              <KV k="ETA" v={active.linkedLoad?.eta ?? "—"} tone="text-success" />
               <KV k="Last seen" v="2 min ago" />
               <KV
                 k="Safety"
                 v={
-                  <span className="inline-flex items-center gap-1 text-[#5EE6A0]">
+                  <span className="inline-flex items-center gap-1 text-success">
                     <Shield className="size-3" /> Clear
                   </span>
                 }
@@ -133,8 +133,8 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
             </Section>
             <Section title="Route progress">
               <div className="mb-2 flex items-center justify-between text-[11px]">
-                <span className="text-[#8B90A7]">Austin → Dallas</span>
-                <span className="font-semibold text-white">78%</span>
+                <span className="text-muted-foreground">Austin → Dallas</span>
+                <span className="font-semibold text-foreground">78%</span>
               </div>
               <div className="h-1.5 overflow-hidden rounded-full bg-white/5">
                 <div
@@ -179,7 +179,7 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
               <KV
                 k="Status"
                 v={
-                  <span className="text-[#5EE6A0]">{active.linkedLoad?.status ?? "—"}</span>
+                  <span className="text-success">{active.linkedLoad?.status ?? "—"}</span>
                 }
               />
               <KV k="ETA" v={active.linkedLoad?.eta ?? "—"} />
@@ -224,7 +224,7 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
               <KV k="Email" v="sarah@miltonretail.com" />
               <KV
                 k="SLA"
-                v={<span className="text-[#5EE6A0]">On track · 98%</span>}
+                v={<span className="text-success">On track · 98%</span>}
               />
             </Section>
             <Section title="Recent activity">
@@ -256,7 +256,7 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
               <KV k="Priority" v={active.priority ?? "normal"} />
             </Section>
             <Section title="AI summary">
-              <p className="text-[12px] leading-relaxed text-[#C9CDDF]">
+              <p className="text-[12px] leading-relaxed text-foreground/80">
                 Active weather advisory on I-35; 2 loads re-routed via US-77.
                 Average ETA delta +18 min. No safety incidents in the last hour.
               </p>

@@ -18,10 +18,10 @@ export function MessengerIconChip({
       title={title}
       onClick={onClick}
       className={cn(
-        "grid size-9 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md transition-all hover:border-[#6D35E8]/40 hover:bg-[#6D35E8]/15",
-        tone === "default" && "text-[#B79CFF]",
-        tone === "danger" && "text-red-300 hover:border-red-500/40 hover:bg-red-500/15",
-        tone === "teal" && "text-teal-300 hover:border-teal-400/40 hover:bg-teal-500/15",
+        "grid size-9 place-items-center rounded-xl border border-border bg-card/60 backdrop-blur-md transition-all hover:border-primary/40 hover:bg-primary/10",
+        tone === "default" && "text-primary",
+        tone === "danger" && "text-destructive hover:border-destructive/40 hover:bg-destructive/10",
+        tone === "teal" && "text-teal hover:border-teal/40 hover:bg-teal/10",
       )}
     >
       {children}
@@ -47,9 +47,9 @@ export function MessengerFilterChip({
         "shrink-0 rounded-full border px-3 py-1 text-[11px] font-medium transition-all",
         active
           ? variant === "category"
-            ? "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-[#D4C4FF] shadow-[0_0_18px_-6px_rgba(109,53,232,0.7)]"
-            : "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-[#D4C4FF]"
-          : "border-white/[0.08] bg-white/[0.03] text-[#8B90A7] hover:border-white/15 hover:text-white",
+            ? "border-primary/50 bg-primary/15 text-primary shadow-[0_0_18px_-6px_color-mix(in_oklab,var(--primary)_70%,transparent)]"
+            : "border-primary/50 bg-primary/15 text-primary"
+          : "border-border bg-card/50 text-muted-foreground hover:border-foreground/20 hover:text-foreground",
       )}
     >
       {children}
@@ -84,7 +84,7 @@ export function MessengerAvatar({
     return (
       <div
         style={dim}
-        className="relative grid shrink-0 place-items-center rounded-xl border border-white/10 bg-gradient-to-br from-[#6D35E8]/25 to-[#14B8A6]/15 text-[#B79CFF]"
+        className="relative grid shrink-0 place-items-center rounded-xl border border-white/10 bg-gradient-to-br from-[#6D35E8]/25 to-[#14B8A6]/15 text-primary"
       >
         <Hash className="size-4" />
       </div>
@@ -108,7 +108,7 @@ export function MessengerAvatar({
       {src ? (
         <img src={src} alt={name} className="h-full w-full object-cover" />
       ) : (
-        <div className="grid h-full w-full place-items-center bg-[#1A1E33] text-[11px] font-semibold text-[#B79CFF]">
+        <div className="grid h-full w-full place-items-center bg-[#1A1E33] text-[11px] font-semibold text-primary">
           {initials}
         </div>
       )}
@@ -135,7 +135,7 @@ export function MessengerSectionLabel({
 }) {
   return (
     <div className="flex items-center justify-between px-3 pt-4 pb-1.5">
-      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-[#8B90A7]">
+      <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
         {icon}
         {children}
       </div>
