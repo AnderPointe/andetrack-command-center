@@ -13,7 +13,6 @@ import { Route as VehiclesRouteImport } from './routes/vehicles'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RoutesRouteImport } from './routes/routes'
-import { Route as MessengerRouteImport } from './routes/messenger'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LoadsRouteImport } from './routes/loads'
 import { Route as FuelRouteImport } from './routes/fuel'
@@ -25,6 +24,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
 import { Route as DriversDriverIdRouteImport } from './routes/drivers.$driverId'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
+import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
 
 const VehiclesRoute = VehiclesRouteImport.update({
   id: '/vehicles',
@@ -44,11 +44,6 @@ const SettingsRoute = SettingsRouteImport.update({
 const RoutesRoute = RoutesRouteImport.update({
   id: '/routes',
   path: '/routes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MessengerRoute = MessengerRouteImport.update({
-  id: '/messenger',
-  path: '/messenger',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapRoute = MapRouteImport.update({
@@ -106,6 +101,11 @@ const DriverNavigationRoute = DriverNavigationRouteImport.update({
   path: '/driver/navigation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardMessagesRoute = DashboardMessagesRouteImport.update({
+  id: '/dashboard/messages',
+  path: '/dashboard/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -116,11 +116,11 @@ export interface FileRoutesByFullPath {
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
   '/map': typeof MapRoute
-  '/messenger': typeof MessengerRoute
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRoute
   '/shipments': typeof ShipmentsRoute
   '/vehicles': typeof VehiclesRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
   '/driver/': typeof DriverIndexRoute
@@ -134,11 +134,11 @@ export interface FileRoutesByTo {
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
   '/map': typeof MapRoute
-  '/messenger': typeof MessengerRoute
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRoute
   '/shipments': typeof ShipmentsRoute
   '/vehicles': typeof VehiclesRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
   '/driver': typeof DriverIndexRoute
@@ -153,11 +153,11 @@ export interface FileRoutesById {
   '/fuel': typeof FuelRoute
   '/loads': typeof LoadsRoute
   '/map': typeof MapRoute
-  '/messenger': typeof MessengerRoute
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRoute
   '/shipments': typeof ShipmentsRoute
   '/vehicles': typeof VehiclesRoute
+  '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
   '/driver/': typeof DriverIndexRoute
@@ -173,11 +173,11 @@ export interface FileRouteTypes {
     | '/fuel'
     | '/loads'
     | '/map'
-    | '/messenger'
     | '/routes'
     | '/settings'
     | '/shipments'
     | '/vehicles'
+    | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
     | '/driver/'
@@ -191,11 +191,11 @@ export interface FileRouteTypes {
     | '/fuel'
     | '/loads'
     | '/map'
-    | '/messenger'
     | '/routes'
     | '/settings'
     | '/shipments'
     | '/vehicles'
+    | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
     | '/driver'
@@ -209,11 +209,11 @@ export interface FileRouteTypes {
     | '/fuel'
     | '/loads'
     | '/map'
-    | '/messenger'
     | '/routes'
     | '/settings'
     | '/shipments'
     | '/vehicles'
+    | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
     | '/driver/'
@@ -228,11 +228,11 @@ export interface RootRouteChildren {
   FuelRoute: typeof FuelRoute
   LoadsRoute: typeof LoadsRoute
   MapRoute: typeof MapRoute
-  MessengerRoute: typeof MessengerRoute
   RoutesRoute: typeof RoutesRoute
   SettingsRoute: typeof SettingsRoute
   ShipmentsRoute: typeof ShipmentsRoute
   VehiclesRoute: typeof VehiclesRoute
+  DashboardMessagesRoute: typeof DashboardMessagesRoute
   DriverNavigationRoute: typeof DriverNavigationRoute
   DriverIndexRoute: typeof DriverIndexRoute
 }
@@ -265,13 +265,6 @@ declare module '@tanstack/react-router' {
       path: '/routes'
       fullPath: '/routes'
       preLoaderRoute: typeof RoutesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/messenger': {
-      id: '/messenger'
-      path: '/messenger'
-      fullPath: '/messenger'
-      preLoaderRoute: typeof MessengerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/map': {
@@ -351,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverNavigationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/messages': {
+      id: '/dashboard/messages'
+      path: '/dashboard/messages'
+      fullPath: '/dashboard/messages'
+      preLoaderRoute: typeof DashboardMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -374,14 +374,24 @@ const rootRouteChildren: RootRouteChildren = {
   FuelRoute: FuelRoute,
   LoadsRoute: LoadsRoute,
   MapRoute: MapRoute,
-  MessengerRoute: MessengerRoute,
   RoutesRoute: RoutesRoute,
   SettingsRoute: SettingsRoute,
   ShipmentsRoute: ShipmentsRoute,
   VehiclesRoute: VehiclesRoute,
+  DashboardMessagesRoute: DashboardMessagesRoute,
   DriverNavigationRoute: DriverNavigationRoute,
   DriverIndexRoute: DriverIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
