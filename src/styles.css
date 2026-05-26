@@ -451,11 +451,11 @@
   box-shadow: inset 1px 1px 1px var(--toggle-highlight);
 }
 
-.glass-toggle .toggle-label {
-  color: var(--toggle-text);
-  font-size: 16px;
-  user-select: none;
-}
+  .glass-toggle .toggle-label {
+    color: var(--toggle-text);
+    font-size: 14px;
+    user-select: none;
+  }
 
 /* Checked state */
   .glass-toggle .toggle-input:checked + .toggle-track .toggle-thumb {
