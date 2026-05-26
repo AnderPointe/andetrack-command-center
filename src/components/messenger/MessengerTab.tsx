@@ -150,7 +150,7 @@ export function MessengerTab() {
   }
 
   return (
-    <div className="relative h-[calc(100vh-4rem)] w-full overflow-hidden bg-[#080A16] text-[#F8FAFC]">
+    <div className="relative h-[calc(100vh-4rem)] w-full overflow-hidden bg-[#080A16] text-foreground">
       <div className="pointer-events-none absolute -top-32 left-1/3 h-[420px] w-[420px] rounded-full bg-[#6D35E8]/20 blur-[140px]" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-[360px] w-[360px] rounded-full bg-[#14B8A6]/10 blur-[120px]" />
       <div className="pointer-events-none absolute top-1/3 right-1/4 h-[280px] w-[280px] rounded-full bg-[#F97316]/10 blur-[120px]" />

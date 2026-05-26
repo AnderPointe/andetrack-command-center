@@ -38,11 +38,11 @@ export function MessengerCallLogModal({
         <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3">
           <div>
             <h3 className="text-sm font-semibold">Log call</h3>
-            <p className="text-[11px] text-[#8B90A7]">{contact.name}</p>
+            <p className="text-[11px] text-muted-foreground">{contact.name}</p>
           </div>
           <button
             onClick={onClose}
-            className="grid size-8 place-items-center rounded-lg text-[#8B90A7] hover:bg-white/5 hover:text-white"
+            className="grid size-8 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-white"
           >
             <X className="size-4" />
           </button>
@@ -55,7 +55,7 @@ export function MessengerCallLogModal({
               className={`flex-1 rounded-xl border px-3 py-2 text-xs font-semibold ${
                 type === "voice"
                   ? "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-white"
-                  : "border-white/10 bg-white/[0.03] text-[#8B90A7]"
+                  : "border-white/10 bg-white/[0.03] text-muted-foreground"
               }`}
             >
               <Phone className="mr-1 inline size-3.5" /> Voice
@@ -65,14 +65,14 @@ export function MessengerCallLogModal({
               className={`flex-1 rounded-xl border px-3 py-2 text-xs font-semibold ${
                 type === "video"
                   ? "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-white"
-                  : "border-white/10 bg-white/[0.03] text-[#8B90A7]"
+                  : "border-white/10 bg-white/[0.03] text-muted-foreground"
               }`}
             >
               <Video className="mr-1 inline size-3.5" /> Video
             </button>
           </div>
 
-          <label className="block text-[11px] text-[#8B90A7]">
+          <label className="block text-[11px] text-muted-foreground">
             Duration (mm:ss)
             <input
               value={duration}
@@ -82,7 +82,7 @@ export function MessengerCallLogModal({
             />
           </label>
 
-          <label className="block text-[11px] text-[#8B90A7]">
+          <label className="block text-[11px] text-muted-foreground">
             Linked load
             <input
               value={linkLoad}
@@ -92,7 +92,7 @@ export function MessengerCallLogModal({
             />
           </label>
 
-          <label className="block text-[11px] text-[#8B90A7]">
+          <label className="block text-[11px] text-muted-foreground">
             Notes
             <textarea
               value={notes}
@@ -107,7 +107,7 @@ export function MessengerCallLogModal({
         <div className="flex items-center justify-end gap-2 border-t border-white/[0.06] px-5 py-3">
           <button
             onClick={onClose}
-            className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs font-semibold text-[#8B90A7] hover:text-white"
+            className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs font-semibold text-muted-foreground hover:text-white"
           >
             Cancel
           </button>

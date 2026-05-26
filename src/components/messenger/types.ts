@@ -122,8 +122,8 @@ export type InboxFilter =
 export type TypeFilter = InboxFilter;
 
 export const roleStyles: Record<Role, string> = {
-  Carrier: "bg-[#6D35E8]/20 text-[#B79CFF] border border-[#6D35E8]/40",
-  Driver: "bg-[#22C55E]/15 text-[#5EE6A0] border border-[#22C55E]/35",
+  Carrier: "bg-[#6D35E8]/20 text-primary border border-[#6D35E8]/40",
+  Driver: "bg-[#22C55E]/15 text-success border border-[#22C55E]/35",
   Broker: "bg-amber-500/15 text-amber-300 border border-amber-500/30",
   Dispatcher: "bg-sky-500/15 text-sky-300 border border-sky-500/30",
   Customer: "bg-pink-500/15 text-pink-300 border border-pink-500/30",
@@ -132,14 +132,14 @@ export const roleStyles: Record<Role, string> = {
 };
 
 export const priorityStyles: Record<Priority, string> = {
-  normal: "bg-white/5 text-[#8B90A7] border border-white/10",
+  normal: "bg-white/5 text-muted-foreground border border-white/10",
   important: "bg-sky-500/15 text-sky-300 border border-sky-500/30",
   urgent: "bg-[#F97316]/15 text-orange-300 border border-[#F97316]/35",
   emergency: "bg-[#EF4444]/15 text-red-300 border border-[#EF4444]/40",
 };
 
 export const etaRiskStyles: Record<EtaRisk, { label: string; cls: string }> = {
-  low: { label: "ETA Low", cls: "bg-[#22C55E]/15 text-[#5EE6A0] border border-[#22C55E]/30" },
+  low: { label: "ETA Low", cls: "bg-[#22C55E]/15 text-success border border-[#22C55E]/30" },
   medium: { label: "ETA Med", cls: "bg-amber-500/15 text-amber-300 border border-amber-500/30" },
   high: { label: "ETA High", cls: "bg-[#F97316]/15 text-orange-300 border border-[#F97316]/35" },
   delayed: { label: "Delayed", cls: "bg-[#EF4444]/15 text-red-300 border border-[#EF4444]/40" },
