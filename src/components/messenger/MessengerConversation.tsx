@@ -61,6 +61,7 @@ export function MessengerConversation({
       </div>
 
       <MessengerInputBar
+        active={active}
         draft={draft}
         onDraftChange={onDraftChange}
         attachment={attachment}
