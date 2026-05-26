@@ -14,6 +14,7 @@ export function MessengerConversation({
   priority,
   onPriorityChange,
   onSend,
+  onOpenCallLog,
 }: {
   active: Contact;
   messages: Message[];
@@ -24,6 +25,7 @@ export function MessengerConversation({
   priority: Priority;
   onPriorityChange: (p: Priority) => void;
   onSend: () => void;
+  onOpenCallLog: () => void;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 

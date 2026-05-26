@@ -1,11 +1,34 @@
-import { Map as MapIcon, MoreHorizontal, Phone, Truck, Video } from "lucide-react";
+import { useState } from "react";
+import {
+  BellOff,
+  Clock,
+  Map as MapIcon,
+  MoreHorizontal,
+  Phone,
+  Truck,
+  Video,
+} from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { MessengerAvatar, MessengerIconChip } from "./primitives";
 import { roleStyles, type Contact } from "./types";
+import {
+  NOTIFICATION_LEVELS,
+  SNOOZE_OPTIONS,
+  type NotificationLevel,
+} from "./messenger-constants";
 
-export function MessengerChatHeader({ active }: { active: Contact }) {
+export function MessengerChatHeader({
+  active,
+  onOpenCallLog,
+}: {
+  active: Contact;
+  onOpenCallLog: () => void;
+}) {
   const isChannel = active.kind === "channel";
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [notifLevel, setNotifLevel] = useState<NotificationLevel>("All Messages");
+
   return (
     <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3.5">
       <div className="flex items-center gap-3">
@@ -37,26 +60,24 @@ export function MessengerChatHeader({ active }: { active: Contact }) {
             )}
           </div>
           <p className="text-xs text-[#8B90A7]">
-            {isChannel
-              ? active.channelTopic ?? "Channel"
-              : (
-                <>
-                  {active.online ? (
-                    <span className="text-[#5EE6A0]">● Online</span>
-                  ) : (
-                    <span>Offline</span>
-                  )}
-                  {active.company ? ` · ${active.company}` : ""}
-                </>
-              )}
+            {isChannel ? (
+              active.channelTopic ?? "Channel"
+            ) : (
+              <>
+                {active.online ? (
+                  <span className="text-[#5EE6A0]">● Online</span>
+                ) : (
+                  <span>Offline</span>
+                )}
+                {active.company ? ` · ${active.company}` : ""}
+                <span className="ml-2 text-[#8B90A7]">· {notifLevel}</span>
+              </>
+            )}
           </p>
         </div>
       </div>
       <div className="flex items-center gap-2">
-        <MessengerIconChip
-          title="Call"
-          onClick={() => toast.success(`Calling ${active.name}…`)}
-        >
+        <MessengerIconChip title="Call" onClick={onOpenCallLog}>
           <Phone className="size-4" />
         </MessengerIconChip>
         <MessengerIconChip
@@ -72,9 +93,53 @@ export function MessengerChatHeader({ active }: { active: Contact }) {
         >
           <MapIcon className="size-4" />
         </MessengerIconChip>
-        <MessengerIconChip title="More">
-          <MoreHorizontal className="size-4" />
-        </MessengerIconChip>
+
+        <div className="relative">
+          <MessengerIconChip title="More" onClick={() => setMenuOpen((v) => !v)}>
+            <MoreHorizontal className="size-4" />
+          </MessengerIconChip>
+          {menuOpen && (
+            <div
+              className="absolute right-0 top-11 z-30 w-64 overflow-hidden rounded-xl border border-white/10 bg-[#101326]/95 shadow-2xl"
+              onMouseLeave={() => setMenuOpen(false)}
+            >
+              <div className="border-b border-white/[0.06] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8B90A7]">
+                <Clock className="mr-1 inline size-3" /> Snooze
+              </div>
+              {SNOOZE_OPTIONS.map((s) => (
+                <button
+                  key={s.label}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    toast.success(`Snoozed for ${s.label}`);
+                  }}
+                  className="block w-full px-3 py-1.5 text-left text-[12px] text-white hover:bg-white/5"
+                >
+                  {s.label}
+                </button>
+              ))}
+              <div className="border-b border-t border-white/[0.06] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8B90A7]">
+                <BellOff className="mr-1 inline size-3" /> Notifications
+              </div>
+              {NOTIFICATION_LEVELS.map((lvl) => (
+                <button
+                  key={lvl}
+                  onClick={() => {
+                    setNotifLevel(lvl);
+                    setMenuOpen(false);
+                    toast.success(`Notifications: ${lvl}`);
+                  }}
+                  className={cn(
+                    "block w-full px-3 py-1.5 text-left text-[12px] hover:bg-white/5",
+                    notifLevel === lvl ? "text-[#B79CFF]" : "text-white",
+                  )}
+                >
+                  {lvl}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
