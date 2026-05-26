@@ -266,7 +266,30 @@ const roleStyles: Record<Role, string> = {
   Broker: "bg-amber-500/15 text-amber-300 border border-amber-500/30",
   Dispatcher: "bg-sky-500/15 text-sky-300 border border-sky-500/30",
   Customer: "bg-pink-500/15 text-pink-300 border border-pink-500/30",
+  Warehouse: "bg-cyan-500/15 text-cyan-300 border border-cyan-500/30",
 };
+
+type TypeFilter = "all" | "Driver" | "Courier" | "Carrier" | "Broker" | "Customer" | "Warehouse";
+type CategoryFilter = "all" | Category;
+
+const typeFilters: { id: TypeFilter; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "Driver", label: "Drivers" },
+  { id: "Courier", label: "Couriers" },
+  { id: "Carrier", label: "Carriers" },
+  { id: "Broker", label: "Brokers" },
+  { id: "Customer", label: "Customers" },
+  { id: "Warehouse", label: "Warehouses" },
+];
+
+const categoryFilters: { id: CategoryFilter; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "pinned", label: "Pinned" },
+  { id: "active_loads", label: "Active Loads" },
+  { id: "dispatch", label: "Dispatch" },
+  { id: "invoices", label: "Invoices" },
+  { id: "completed", label: "Completed" },
+];
 
 function MessengerPage() {
   return (
