@@ -1,5 +1,7 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
+import { MessengerCallLogModal } from "./MessengerCallLogModal";
+import { MessengerCommandPalette } from "./MessengerCommandPalette";
 import { MessengerContextPanel } from "./MessengerContextPanel";
 import { MessengerConversation } from "./MessengerConversation";
 import { MessengerSidebar } from "./MessengerSidebar";
@@ -23,9 +25,23 @@ export function MessengerTab() {
   const [draft, setDraft] = useState("");
   const [attachment, setAttachment] = useState<Attachment | null>(null);
   const [priority, setPriority] = useState<Priority>("normal");
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [callLogOpen, setCallLogOpen] = useState(false);
 
   const active = contacts.find((c) => c.id === activeId) ?? contacts[0];
   const messages = messagesByContact[active.id] ?? [];
+
+  // Ctrl/Cmd + K opens command palette
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setPaletteOpen(true);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -139,7 +155,11 @@ export function MessengerTab() {
       <div className="pointer-events-none absolute bottom-0 right-0 h-[360px] w-[360px] rounded-full bg-[#14B8A6]/10 blur-[120px]" />
       <div className="pointer-events-none absolute top-1/3 right-1/4 h-[280px] w-[280px] rounded-full bg-[#F97316]/10 blur-[120px]" />
 
-      <MessengerTopStatusBar unreadTotal={unreadTotal} online={onlineCount} />
+      <MessengerTopStatusBar
+        unreadTotal={unreadTotal}
+        online={onlineCount}
+        onOpenPalette={() => setPaletteOpen(true)}
+      />
 
       <div className="flex h-[calc(100%-92px)] gap-3 px-4 pb-4">
         <MessengerSidebar
@@ -162,10 +182,23 @@ export function MessengerTab() {
           priority={priority}
           onPriorityChange={setPriority}
           onSend={sendMessage}
+          onOpenCallLog={() => setCallLogOpen(true)}
         />
 
         <MessengerContextPanel active={active} />
       </div>
+
+      <MessengerCommandPalette
+        open={paletteOpen}
+        onClose={() => setPaletteOpen(false)}
+        contacts={contacts}
+        onSelect={selectContact}
+      />
+      <MessengerCallLogModal
+        open={callLogOpen}
+        onClose={() => setCallLogOpen(false)}
+        contact={active}
+      />
     </div>
   );
 }

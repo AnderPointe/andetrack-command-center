@@ -1,11 +1,13 @@
-import { Activity, Sparkles } from "lucide-react";
+import { Activity, Search, Sparkles } from "lucide-react";
 
 export function MessengerTopStatusBar({
   unreadTotal,
   online,
+  onOpenPalette,
 }: {
   unreadTotal: number;
   online: number;
+  onOpenPalette: () => void;
 }) {
   return (
     <div className="flex items-center justify-between px-6 pt-5 pb-4">
@@ -18,6 +20,14 @@ export function MessengerTopStatusBar({
         </p>
       </div>
       <div className="hidden items-center gap-2 md:flex">
+        <button
+          onClick={onOpenPalette}
+          className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[11px] text-[#8B90A7] backdrop-blur-md hover:text-white"
+        >
+          <Search className="size-3" />
+          Search
+          <span className="rounded border border-white/10 bg-white/5 px-1 text-[10px]">⌘K</span>
+        </button>
         <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[11px] text-[#8B90A7] backdrop-blur-md">
           <span className="size-1.5 rounded-full bg-[#22C55E] animate-pulse" />
           {online} online

@@ -1,15 +1,20 @@
 import {
   AlertTriangle,
+  Bell,
   CheckCheck,
   CheckCircle2,
+  Copy,
   Info,
+  Link2,
   MapPin,
   MessageSquare,
   Mic,
   Pin,
   Play,
+  Reply,
   Smile,
   Truck,
+  Zap,
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -186,32 +191,62 @@ export function MessengerBubble({ m }: { m: Message }) {
           {mine && <CheckCheck className="size-3 text-[#B79CFF]" />}
         </div>
 
-        {m.kind === "text" && (
+        <div className="relative">
+          {m.kind === "text" && (
+            <div
+              className={cn(
+                "rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-lg",
+                mine
+                  ? "bg-[#6D35E8] text-white shadow-[0_10px_30px_-12px_rgba(109,53,232,0.7)]"
+                  : "border border-white/[0.08] bg-[#1A1E33] text-[#E6E8F2]",
+              )}
+            >
+              {m.quote && (
+                <div className="mb-2 border-l-2 border-white/40 pl-2 text-[12px] opacity-90">
+                  <div className="font-semibold">{m.quote.name}</div>
+                  <div className="opacity-90">{m.quote.text}</div>
+                </div>
+              )}
+              {m.text}
+            </div>
+          )}
+
+          {m.kind === "file" && (
+            <MessengerAttachmentCard filename={m.filename} filetype={m.filetype} />
+          )}
+
+          {m.kind === "voice" && <VoiceBubble m={m} mine={mine} />}
+          {m.kind === "location" && <LocationBubble m={m} mine={mine} />}
+          {m.kind === "load_status" && <LoadStatusBubble m={m} />}
+
+          {/* Hover actions */}
           <div
             className={cn(
-              "rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-lg",
-              mine
-                ? "bg-[#6D35E8] text-white shadow-[0_10px_30px_-12px_rgba(109,53,232,0.7)]"
-                : "border border-white/[0.08] bg-[#1A1E33] text-[#E6E8F2]",
+              "absolute -top-3 hidden gap-0.5 rounded-full border border-white/10 bg-[#101326]/95 p-0.5 shadow-xl backdrop-blur group-hover:flex",
+              mine ? "right-2" : "left-2",
             )}
           >
-            {m.quote && (
-              <div className="mb-2 border-l-2 border-white/40 pl-2 text-[12px] opacity-90">
-                <div className="font-semibold">{m.quote.name}</div>
-                <div className="opacity-90">{m.quote.text}</div>
-              </div>
-            )}
-            {m.text}
+            {[
+              { icon: Reply, label: "Reply" },
+              { icon: Smile, label: "React" },
+              { icon: Pin, label: "Pin" },
+              { icon: Copy, label: "Copy" },
+              { icon: Zap, label: "Create task" },
+              { icon: Bell, label: "Create alert" },
+              { icon: Link2, label: "Link to load" },
+              { icon: AlertTriangle, label: "Mark urgent" },
+            ].map(({ icon: Icon, label }) => (
+              <button
+                key={label}
+                title={label}
+                onClick={() => toast.success(label)}
+                className="grid size-6 place-items-center rounded-full text-[#8B90A7] hover:bg-white/10 hover:text-white"
+              >
+                <Icon className="size-3" />
+              </button>
+            ))}
           </div>
-        )}
-
-        {m.kind === "file" && (
-          <MessengerAttachmentCard filename={m.filename} filetype={m.filetype} />
-        )}
-
-        {m.kind === "voice" && <VoiceBubble m={m} mine={mine} />}
-        {m.kind === "location" && <LocationBubble m={m} mine={mine} />}
-        {m.kind === "load_status" && <LoadStatusBubble m={m} />}
+        </div>
 
         {m.kind !== "file" && m.reactions && m.reactions.length > 0 && (
           <ReactionsRow reactions={m.reactions} />
