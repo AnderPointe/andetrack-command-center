@@ -357,9 +357,9 @@
 }
 
   .glass-toggle {
-    --toggle-bg: rgba(255, 255, 255, 0.25);
-    --toggle-highlight: rgba(255, 255, 255, 0.75);
-    --toggle-text: #ffffff;
+    --toggle-bg: rgba(0, 0, 0, 0.85);
+    --toggle-highlight: rgba(255, 255, 255, 0.35);
+    --toggle-text: #0a0a0a;
     --track-width: 44px;
     --track-height: 24px;
     --thumb-size: 18px;
