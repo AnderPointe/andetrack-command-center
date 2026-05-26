@@ -347,3 +347,148 @@
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Liquid Glass Toggle ─────────────────────────────────────── */
+
+.glass-toggle-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 200px;
+}
+
+.glass-toggle {
+  --toggle-bg: rgba(255, 255, 255, 0.25);
+  --toggle-highlight: rgba(255, 255, 255, 0.75);
+  --toggle-text: #ffffff;
+  --track-width: 60px;
+  --track-height: 32px;
+  --thumb-size: 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.glass-toggle .toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glass-toggle .toggle-track {
+  position: relative;
+  width: var(--track-width);
+  height: var(--track-height);
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.glass-toggle .toggle-track .glass-filter {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  filter: url(#glass-distortion) saturate(120%) brightness(1.15);
+}
+
+.glass-toggle .toggle-track .glass-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 2;
+  background: var(--toggle-bg);
+  transition: background 0.3s ease;
+}
+
+.glass-toggle .toggle-track .glass-specular {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 3;
+  box-shadow: inset 1px 1px 1px var(--toggle-highlight);
+}
+
+.glass-toggle .toggle-thumb {
+  position: absolute;
+  z-index: 4;
+  top: 4px;
+  left: 4px;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.glass-toggle .toggle-thumb .glass-filter {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  filter: url(#glass-distortion) saturate(120%) brightness(1.15);
+}
+
+.glass-toggle .toggle-thumb .glass-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.9);
+  transition: background 0.3s ease;
+}
+
+.glass-toggle .toggle-thumb .glass-specular {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 3;
+  box-shadow: inset 1px 1px 1px var(--toggle-highlight);
+}
+
+.glass-toggle .toggle-label {
+  color: var(--toggle-text);
+  font-size: 16px;
+  user-select: none;
+}
+
+/* Checked state */
+.glass-toggle .toggle-input:checked + .toggle-track .toggle-thumb {
+  transform: translateX(calc(var(--track-width) - var(--thumb-size) - 8px));
+}
+
+.glass-toggle .toggle-input:checked + .toggle-track .glass-overlay {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Focus state */
+.glass-toggle .toggle-input:focus-visible + .toggle-track {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Hover state */
+.glass-toggle:hover .toggle-track .glass-overlay {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Dark mode */
+.dark .glass-toggle {
+  --toggle-bg: rgba(0, 0, 0, 0.25);
+  --toggle-highlight: rgba(255, 255, 255, 0.15);
+}
+
+.dark .glass-toggle .toggle-thumb .glass-overlay {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.dark .glass-toggle .toggle-label {
+  color: var(--foreground);
+}
+
+
