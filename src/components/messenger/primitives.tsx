@@ -18,10 +18,10 @@ export function MessengerIconChip({
       title={title}
       onClick={onClick}
       className={cn(
-        "grid size-9 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-md transition-all hover:border-[#6D35E8]/40 hover:bg-[#6D35E8]/15",
+        "grid size-9 place-items-center rounded-xl border border-border bg-card/60 backdrop-blur-md transition-all hover:border-primary/40 hover:bg-primary/10",
         tone === "default" && "text-primary",
-        tone === "danger" && "text-red-300 hover:border-red-500/40 hover:bg-red-500/15",
-        tone === "teal" && "text-teal-300 hover:border-teal-400/40 hover:bg-teal-500/15",
+        tone === "danger" && "text-destructive hover:border-destructive/40 hover:bg-destructive/10",
+        tone === "teal" && "text-teal hover:border-teal/40 hover:bg-teal/10",
       )}
     >
       {children}
