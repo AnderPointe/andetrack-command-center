@@ -30,9 +30,33 @@ export function MessengerTab() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return contacts.filter((c) => {
-      if (typeFilter === "unread") {
-        if (c.unread === 0) return false;
-      } else if (typeFilter !== "all" && c.role !== typeFilter) return false;
+      switch (typeFilter) {
+        case "all":
+          break;
+        case "unread":
+          if (c.unread === 0) return false;
+          break;
+        case "urgent":
+          if (c.priority !== "urgent" && c.priority !== "emergency") return false;
+          break;
+        case "emergency":
+          if (c.priority !== "emergency") return false;
+          break;
+        case "active_loads":
+          if (c.category !== "active_loads") return false;
+          break;
+        case "delayed_loads":
+          if (c.etaRisk !== "delayed" && c.etaRisk !== "high") return false;
+          break;
+        case "invoices":
+          if (c.category !== "invoices") return false;
+          break;
+        case "archived":
+          if (c.category !== "archived") return false;
+          break;
+        default:
+          if (c.role !== typeFilter) return false;
+      }
       if (!q) return true;
       return (
         c.name.toLowerCase().includes(q) ||
