@@ -778,3 +778,31 @@ function IconChip({
     </button>
   );
 }
+
+function FilterChip({
+  children,
+  active,
+  onClick,
+  variant = "type",
+}: {
+  children: React.ReactNode;
+  active: boolean;
+  onClick: () => void;
+  variant?: "type" | "category";
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        "shrink-0 rounded-full border px-3 py-1 text-[11px] font-medium transition-all",
+        active
+          ? variant === "category"
+            ? "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-[#D4C4FF] shadow-[0_0_18px_-6px_rgba(109,53,232,0.7)]"
+            : "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-[#D4C4FF]"
+          : "border-white/[0.08] bg-[#0D1020] text-[#8B90A7] hover:border-white/15 hover:text-white",
+      )}
+    >
+      {children}
+    </button>
+  );
+}
