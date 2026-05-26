@@ -1687,6 +1687,7 @@ export type Database = {
           name: string
           on_time_percentage: number | null
           phone: string | null
+          photo_url: string | null
           safety_score: number | null
           status: Database["public"]["Enums"]["driver_status"]
           user_id: string | null
@@ -1715,6 +1716,7 @@ export type Database = {
           name: string
           on_time_percentage?: number | null
           phone?: string | null
+          photo_url?: string | null
           safety_score?: number | null
           status?: Database["public"]["Enums"]["driver_status"]
           user_id?: string | null
@@ -1743,6 +1745,7 @@ export type Database = {
           name?: string
           on_time_percentage?: number | null
           phone?: string | null
+          photo_url?: string | null
           safety_score?: number | null
           status?: Database["public"]["Enums"]["driver_status"]
           user_id?: string | null
@@ -2405,6 +2408,109 @@ export type Database = {
         }
         Relationships: []
       }
+      load_stops: {
+        Row: {
+          actual_arrival: string | null
+          actual_departure: string | null
+          address: string | null
+          city: string | null
+          company_id: string
+          contact_name: string | null
+          contact_phone: string | null
+          country: string | null
+          created_at: string
+          customer_location_id: string | null
+          id: string
+          instructions: string | null
+          kind: Database["public"]["Enums"]["load_stop_kind"]
+          latitude: number | null
+          load_id: string
+          longitude: number | null
+          name: string | null
+          postal_code: string | null
+          region: string | null
+          scheduled_arrival: string | null
+          scheduled_departure: string | null
+          sequence: number
+          status: Database["public"]["Enums"]["load_stop_status"]
+          updated_at: string
+        }
+        Insert: {
+          actual_arrival?: string | null
+          actual_departure?: string | null
+          address?: string | null
+          city?: string | null
+          company_id: string
+          contact_name?: string | null
+          contact_phone?: string | null
+          country?: string | null
+          created_at?: string
+          customer_location_id?: string | null
+          id?: string
+          instructions?: string | null
+          kind: Database["public"]["Enums"]["load_stop_kind"]
+          latitude?: number | null
+          load_id: string
+          longitude?: number | null
+          name?: string | null
+          postal_code?: string | null
+          region?: string | null
+          scheduled_arrival?: string | null
+          scheduled_departure?: string | null
+          sequence?: number
+          status?: Database["public"]["Enums"]["load_stop_status"]
+          updated_at?: string
+        }
+        Update: {
+          actual_arrival?: string | null
+          actual_departure?: string | null
+          address?: string | null
+          city?: string | null
+          company_id?: string
+          contact_name?: string | null
+          contact_phone?: string | null
+          country?: string | null
+          created_at?: string
+          customer_location_id?: string | null
+          id?: string
+          instructions?: string | null
+          kind?: Database["public"]["Enums"]["load_stop_kind"]
+          latitude?: number | null
+          load_id?: string
+          longitude?: number | null
+          name?: string | null
+          postal_code?: string | null
+          region?: string | null
+          scheduled_arrival?: string | null
+          scheduled_departure?: string | null
+          sequence?: number
+          status?: Database["public"]["Enums"]["load_stop_status"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "load_stops_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "load_stops_customer_location_id_fkey"
+            columns: ["customer_location_id"]
+            isOneToOne: false
+            referencedRelation: "customer_locations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "load_stops_load_id_fkey"
+            columns: ["load_id"]
+            isOneToOne: false
+            referencedRelation: "loads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       loads: {
         Row: {
           assigned_driver_id: string | null
@@ -2497,6 +2603,133 @@ export type Database = {
           },
           {
             foreignKeyName: "loads_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      logistics_map_geofences: {
+        Row: {
+          company_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          latitude: number
+          longitude: number
+          name: string
+          notes: string | null
+          radius_m: number
+          status: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          latitude: number
+          longitude: number
+          name: string
+          notes?: string | null
+          radius_m?: number
+          status?: string
+          type?: string
+          updated_at?: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          latitude?: number
+          longitude?: number
+          name?: string
+          notes?: string | null
+          radius_m?: number
+          status?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "logistics_map_geofences_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      logistics_map_pois: {
+        Row: {
+          address: string | null
+          category: string
+          city: string | null
+          company_id: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          is_active: boolean
+          is_public: boolean
+          latitude: number
+          longitude: number
+          metadata: Json
+          name: string
+          phone: string | null
+          state: string | null
+          updated_at: string
+          website: string | null
+          zip: string | null
+        }
+        Insert: {
+          address?: string | null
+          category?: string
+          city?: string | null
+          company_id: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          is_public?: boolean
+          latitude: number
+          longitude: number
+          metadata?: Json
+          name: string
+          phone?: string | null
+          state?: string | null
+          updated_at?: string
+          website?: string | null
+          zip?: string | null
+        }
+        Update: {
+          address?: string | null
+          category?: string
+          city?: string | null
+          company_id?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          is_public?: boolean
+          latitude?: number
+          longitude?: number
+          metadata?: Json
+          name?: string
+          phone?: string | null
+          state?: string | null
+          updated_at?: string
+          website?: string | null
+          zip?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "logistics_map_pois_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
@@ -3791,57 +4024,90 @@ export type Database = {
       }
       shipments: {
         Row: {
+          capacity_percent: number | null
+          cargo_type: string | null
           commodity: string | null
           company_id: string
           created_at: string
           customer_name: string | null
+          delay_minutes: number | null
           dropoff_address: string | null
           eta: string | null
+          eta_minutes: number | null
+          hauling_description: string | null
           id: string
+          is_hazardous: boolean | null
+          is_temperature_controlled: boolean | null
           load_id: string
           package_type: string | null
           pickup_address: string | null
           proof_of_delivery_url: string | null
           quantity: number | null
+          quantity_unit: string | null
+          route_progress: number | null
+          scheduled_arrival_at: string | null
           special_instructions: string | null
           status: Database["public"]["Enums"]["load_status"]
           updated_at: string
+          volume: number | null
           weight: number | null
         }
         Insert: {
+          capacity_percent?: number | null
+          cargo_type?: string | null
           commodity?: string | null
           company_id: string
           created_at?: string
           customer_name?: string | null
+          delay_minutes?: number | null
           dropoff_address?: string | null
           eta?: string | null
+          eta_minutes?: number | null
+          hauling_description?: string | null
           id?: string
+          is_hazardous?: boolean | null
+          is_temperature_controlled?: boolean | null
           load_id: string
           package_type?: string | null
           pickup_address?: string | null
           proof_of_delivery_url?: string | null
           quantity?: number | null
+          quantity_unit?: string | null
+          route_progress?: number | null
+          scheduled_arrival_at?: string | null
           special_instructions?: string | null
           status?: Database["public"]["Enums"]["load_status"]
           updated_at?: string
+          volume?: number | null
           weight?: number | null
         }
         Update: {
+          capacity_percent?: number | null
+          cargo_type?: string | null
           commodity?: string | null
           company_id?: string
           created_at?: string
           customer_name?: string | null
+          delay_minutes?: number | null
           dropoff_address?: string | null
           eta?: string | null
+          eta_minutes?: number | null
+          hauling_description?: string | null
           id?: string
+          is_hazardous?: boolean | null
+          is_temperature_controlled?: boolean | null
           load_id?: string
           package_type?: string | null
           pickup_address?: string | null
           proof_of_delivery_url?: string | null
           quantity?: number | null
+          quantity_unit?: string | null
+          route_progress?: number | null
+          scheduled_arrival_at?: string | null
           special_instructions?: string | null
           status?: Database["public"]["Enums"]["load_status"]
           updated_at?: string
+          volume?: number | null
           weight?: number | null
         }
         Relationships: [
@@ -3932,6 +4198,70 @@ export type Database = {
           support_user_id?: string
         }
         Relationships: []
+      }
+      telemetry: {
+        Row: {
+          company_id: string
+          created_at: string
+          driver_id: string
+          fuel_or_battery_percent: number | null
+          id: string
+          route_progress_percent: number | null
+          shipment_id: string | null
+          signal_percent: number | null
+          speed_mph: number | null
+          trip_status: string | null
+          updated_at: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          driver_id: string
+          fuel_or_battery_percent?: number | null
+          id?: string
+          route_progress_percent?: number | null
+          shipment_id?: string | null
+          signal_percent?: number | null
+          speed_mph?: number | null
+          trip_status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          driver_id?: string
+          fuel_or_battery_percent?: number | null
+          id?: string
+          route_progress_percent?: number | null
+          shipment_id?: string | null
+          signal_percent?: number | null
+          speed_mph?: number | null
+          trip_status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "telemetry_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "telemetry_driver_id_fkey"
+            columns: ["driver_id"]
+            isOneToOne: false
+            referencedRelation: "drivers"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "telemetry_shipment_id_fkey"
+            columns: ["shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       truck_route_restrictions: {
         Row: {
@@ -4070,15 +4400,23 @@ export type Database = {
       vehicles: {
         Row: {
           average_mpg: number | null
+          battery_level: number | null
           company_id: string
           created_at: string
           current_driver_id: string | null
+          driver_app_status: string | null
+          engine_status: string | null
+          fuel_level: number | null
           fuel_type: Database["public"]["Enums"]["fuel_type"]
           id: string
           make: string | null
+          mileage: number | null
           model: string | null
           plate: string | null
+          signal_strength: number | null
           status: Database["public"]["Enums"]["vehicle_op_status"]
+          telemetry_status: string | null
+          temperature_f: number | null
           type: Database["public"]["Enums"]["vehicle_type"]
           unit_number: string
           updated_at: string
@@ -4086,15 +4424,23 @@ export type Database = {
         }
         Insert: {
           average_mpg?: number | null
+          battery_level?: number | null
           company_id: string
           created_at?: string
           current_driver_id?: string | null
+          driver_app_status?: string | null
+          engine_status?: string | null
+          fuel_level?: number | null
           fuel_type?: Database["public"]["Enums"]["fuel_type"]
           id?: string
           make?: string | null
+          mileage?: number | null
           model?: string | null
           plate?: string | null
+          signal_strength?: number | null
           status?: Database["public"]["Enums"]["vehicle_op_status"]
+          telemetry_status?: string | null
+          temperature_f?: number | null
           type: Database["public"]["Enums"]["vehicle_type"]
           unit_number: string
           updated_at?: string
@@ -4102,15 +4448,23 @@ export type Database = {
         }
         Update: {
           average_mpg?: number | null
+          battery_level?: number | null
           company_id?: string
           created_at?: string
           current_driver_id?: string | null
+          driver_app_status?: string | null
+          engine_status?: string | null
+          fuel_level?: number | null
           fuel_type?: Database["public"]["Enums"]["fuel_type"]
           id?: string
           make?: string | null
+          mileage?: number | null
           model?: string | null
           plate?: string | null
+          signal_strength?: number | null
           status?: Database["public"]["Enums"]["vehicle_op_status"]
+          telemetry_status?: string | null
+          temperature_f?: number | null
           type?: Database["public"]["Enums"]["vehicle_type"]
           unit_number?: string
           updated_at?: string
@@ -4382,6 +4736,10 @@ export type Database = {
         Args: { _customer_id: string; _user_id: string }
         Returns: boolean
       }
+      is_driver_self: {
+        Args: { _driver_id: string; _user_id: string }
+        Returns: boolean
+      }
       is_platform_owner: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
@@ -4459,6 +4817,13 @@ export type Database = {
         | "delivered"
         | "completed"
         | "cancelled"
+      load_stop_kind: "pickup" | "dropoff"
+      load_stop_status:
+        | "pending"
+        | "en_route"
+        | "arrived"
+        | "completed"
+        | "skipped"
       location_permission_status:
         | "granted"
         | "denied"
@@ -4692,6 +5057,14 @@ export const Constants = {
         "delivered",
         "completed",
         "cancelled",
+      ],
+      load_stop_kind: ["pickup", "dropoff"],
+      load_stop_status: [
+        "pending",
+        "en_route",
+        "arrived",
+        "completed",
+        "skipped",
       ],
       location_permission_status: [
         "granted",
