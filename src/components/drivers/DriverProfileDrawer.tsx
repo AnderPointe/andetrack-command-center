@@ -18,7 +18,7 @@ import {
   Truck,
 } from "lucide-react";
 import { loads, shipments } from "@/data/mock";
-import { Button } from "@/components/ui/button";
+import { LiquidIconButton } from "@/components/ui/liquid-icon-button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function DriverProfileDrawer({
@@ -76,19 +76,31 @@ export function DriverProfileDrawer({
                       <VehicleTypeBadge type={driver.vehicleType} />
                     </div>
                   </div>
-                  <button
+                  <LiquidIconButton
+                    icon={<X className="size-4" />}
+                    size="icon"
+                    variant="ghost"
+                    glowColor="default"
                     onClick={onClose}
-                    className="size-9 rounded-md grid place-items-center hover:bg-secondary"
                     aria-label="Close"
-                  >
-                    <X className="size-4" />
-                  </button>
+                    className="shrink-0"
+                  />
                 </div>
 
                 {/* Quick contact row */}
                 <div className="mt-4 grid grid-cols-2 gap-2">
-                  <Button variant="outline" className="gap-2 h-9"><Phone className="size-4" /> Call driver</Button>
-                  <Button variant="outline" className="gap-2 h-9"><MessageSquare className="size-4" /> Message</Button>
+                  <LiquidIconButton
+                    icon={<Phone className="size-4" />}
+                    label="Call driver"
+                    glowColor="teal"
+                    className="w-full"
+                  />
+                  <LiquidIconButton
+                    icon={<MessageSquare className="size-4" />}
+                    label="Message"
+                    glowColor="teal"
+                    className="w-full"
+                  />
                 </div>
               </div>
             </div>
