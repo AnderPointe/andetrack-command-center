@@ -32,33 +32,80 @@ export function LiveRouteMapCard({ driver, shipment }: Props) {
       </div>
 
 
-      <div className="relative h-[360px] overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-        {/* Grid */}
-        <svg className="absolute inset-0 h-full w-full opacity-30" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid-ar" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgb(45 212 191 / 0.15)" strokeWidth="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid-ar)" />
-        </svg>
-
-        {/* Route line */}
+      <div className="relative h-[360px] overflow-hidden bg-[#0b1426]">
+        {/* Cartographic base: land, parks, water, streets, highways, interstate, labels */}
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 500 360" preserveAspectRatio="none">
           <defs>
+            <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#0e1a2e" />
+              <stop offset="100%" stopColor="#0a1322" />
+            </linearGradient>
             <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#2dd4bf" />
               <stop offset="100%" stopColor="#fb923c" />
             </linearGradient>
+            <pattern id="blocks" width="22" height="22" patternUnits="userSpaceOnUse">
+              <path d="M22 0H0V22" fill="none" stroke="rgba(148,163,184,0.06)" strokeWidth="0.6" />
+            </pattern>
           </defs>
-          <path
-            d="M 70 280 Q 200 100, 430 90"
-            stroke="url(#routeGrad)"
-            strokeWidth="3"
-            fill="none"
-            strokeDasharray="6 8"
-            strokeLinecap="round"
-          />
+          <rect width="500" height="360" fill="url(#land)" />
+          <rect width="500" height="360" fill="url(#blocks)" />
+
+          {/* Parks */}
+          <path d="M40 230 Q80 200 130 220 T220 240 L210 295 L60 300 Z" fill="rgba(34,197,94,0.10)" stroke="rgba(34,197,94,0.20)" strokeWidth="0.6" />
+          <path d="M330 40 Q380 30 440 55 L455 110 L360 120 Z" fill="rgba(34,197,94,0.10)" stroke="rgba(34,197,94,0.20)" strokeWidth="0.6" />
+
+          {/* River / water */}
+          <path d="M-10 320 Q 120 260 230 305 T 520 270" fill="none" stroke="#1e3a8a" strokeOpacity="0.6" strokeWidth="14" strokeLinecap="round" />
+          <path d="M-10 320 Q 120 260 230 305 T 520 270" fill="none" stroke="#3b82f6" strokeOpacity="0.35" strokeWidth="6" strokeLinecap="round" />
+
+          {/* Local streets — grey grid */}
+          <g stroke="#334155" strokeOpacity="0.6" strokeWidth="1">
+            <path d="M0 70 H500" /><path d="M0 130 H500" /><path d="M0 190 H500" /><path d="M0 250 H500" />
+            <path d="M80 0 V360" /><path d="M170 0 V360" /><path d="M260 0 V360" /><path d="M350 0 V360" /><path d="M430 0 V360" />
+          </g>
+          <g stroke="#64748b" strokeOpacity="0.35" strokeWidth="0.4" strokeDasharray="2 3">
+            <path d="M0 70 H500" /><path d="M0 190 H500" /><path d="M170 0 V360" /><path d="M350 0 V360" />
+          </g>
+
+          {/* Secondary highway — gold */}
+          <path d="M20 300 Q 150 220 260 200 T 490 140" fill="none" stroke="#0f172a" strokeWidth="9" strokeLinecap="round" />
+          <path d="M20 300 Q 150 220 260 200 T 490 140" fill="none" stroke="#f5c451" strokeWidth="6" strokeLinecap="round" />
+          <path d="M20 300 Q 150 220 260 200 T 490 140" fill="none" stroke="#fde68a" strokeOpacity="0.55" strokeWidth="1" strokeDasharray="6 8" strokeLinecap="round" />
+
+          {/* Interstate — thick white artery */}
+          <path d="M 50 330 Q 180 240 300 200 T 470 60" fill="none" stroke="#1e293b" strokeWidth="13" strokeLinecap="round" />
+          <path d="M 50 330 Q 180 240 300 200 T 470 60" fill="none" stroke="#e2e8f0" strokeWidth="8.5" strokeLinecap="round" />
+          <path d="M 50 330 Q 180 240 300 200 T 470 60" fill="none" stroke="#0b1426" strokeWidth="0.8" strokeDasharray="4 6" strokeLinecap="round" />
+
+          {/* Highway shields */}
+          <g fontFamily="ui-sans-serif, system-ui" fontWeight="800">
+            <g transform="translate(150 252)">
+              <path d="M0 -12 L12 -4 L12 8 L0 14 L-12 8 L-12 -4 Z" fill="#dc2626" stroke="#fff" strokeWidth="1.2" />
+              <text textAnchor="middle" y="4" fill="#fff" fontSize="9">I-45</text>
+            </g>
+            <g transform="translate(395 118)">
+              <path d="M0 -12 L12 -4 L12 8 L0 14 L-12 8 L-12 -4 Z" fill="#dc2626" stroke="#fff" strokeWidth="1.2" />
+              <text textAnchor="middle" y="4" fill="#fff" fontSize="9">I-10</text>
+            </g>
+            <g transform="translate(265 207)">
+              <rect x="-13" y="-10" width="26" height="18" rx="3" fill="#f5c451" stroke="#7c2d12" strokeWidth="1" />
+              <text textAnchor="middle" y="3" fill="#1c1917" fontSize="9">US 75</text>
+            </g>
+          </g>
+
+          {/* Street labels */}
+          <g fill="#94a3b8" fontSize="8" fontFamily="ui-sans-serif, system-ui" opacity="0.8">
+            <text x="6" y="66">Main St</text>
+            <text x="6" y="186">Commerce Ave</text>
+            <text x="174" y="20" transform="rotate(90 174 20)">Harwood St</text>
+            <text x="354" y="20" transform="rotate(90 354 20)">Industrial Blvd</text>
+            <text x="420" y="268" fill="#60a5fa" opacity="0.95">Trinity River</text>
+          </g>
+
+          {/* Active route overlay */}
+          <path d="M 70 280 Q 200 150 320 120 T 430 90" fill="none" stroke="url(#routeGrad)" strokeWidth="4.5" strokeLinecap="round" />
+          <path d="M 70 280 Q 200 150 320 120 T 430 90" fill="none" stroke="#ffffff" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="2 9" strokeLinecap="round" />
         </svg>
 
         {/* Pickup pin */}
