@@ -58,7 +58,7 @@ function DriverProfilePage() {
           {/* MAIN */}
           <div className="space-y-5">
             {/* Identity card */}
-            <div className="cc-tile !cursor-default p-6">
+            <div className="glass-tile p-6">
               <div className="flex items-start gap-5">
                 <div className="relative shrink-0">
                   <div className="size-20 rounded-2xl bg-gradient-to-br from-teal to-orange grid place-items-center text-white font-semibold text-2xl shadow-[var(--shadow-md)]">
@@ -263,7 +263,7 @@ function DriverProfilePage() {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="cc-tile !cursor-default p-5">
+    <section className="glass-tile p-5">
       <h2 className="text-sm font-semibold tracking-tight mb-3">{title}</h2>
       {children}
     </section>
