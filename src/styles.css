@@ -463,18 +463,18 @@
   }
 
 .glass-toggle .toggle-input:checked + .toggle-track .glass-overlay {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.95);
 }
 
 /* Focus state */
 .glass-toggle .toggle-input:focus-visible + .toggle-track {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline: 2px solid rgba(0, 0, 0, 0.5);
   outline-offset: 2px;
 }
 
 /* Hover state */
 .glass-toggle:hover .toggle-track .glass-overlay {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.92);
 }
 
 /* Dark mode */
