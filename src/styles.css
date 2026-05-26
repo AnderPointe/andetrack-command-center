@@ -376,14 +376,14 @@
   pointer-events: none;
 }
 
-.glass-toggle .toggle-track {
-  position: relative;
-  width: var(--track-width);
-  height: var(--track-height);
-  border-radius: 16px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
+  .glass-toggle .toggle-track {
+    position: relative;
+    width: var(--track-width);
+    height: var(--track-height);
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
 
 .glass-toggle .toggle-track .glass-filter {
   position: absolute;
