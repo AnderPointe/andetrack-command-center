@@ -1,11 +1,13 @@
-import { Activity, Sparkles } from "lucide-react";
+import { Activity, Search, Sparkles } from "lucide-react";
 
 export function MessengerTopStatusBar({
   unreadTotal,
   online,
+  onOpenPalette,
 }: {
   unreadTotal: number;
   online: number;
+  onOpenPalette: () => void;
 }) {
   return (
     <div className="flex items-center justify-between px-6 pt-5 pb-4">
