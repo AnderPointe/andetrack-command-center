@@ -2776,6 +2776,44 @@ export type Database = {
           },
         ]
       }
+      messenger_ai_summaries: {
+        Row: {
+          company_id: string
+          conversation_id: string
+          created_at: string
+          id: string
+          risk_level: string
+          suggested_action: string | null
+          summary_text: string
+        }
+        Insert: {
+          company_id: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+          risk_level?: string
+          suggested_action?: string | null
+          summary_text: string
+        }
+        Update: {
+          company_id?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          risk_level?: string
+          suggested_action?: string | null
+          summary_text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messenger_ai_summaries_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       messenger_attachments: {
         Row: {
           company_id: string | null
@@ -2870,6 +2908,56 @@ export type Database = {
           metadata?: Json
         }
         Relationships: []
+      }
+      messenger_call_logs: {
+        Row: {
+          call_status: string
+          call_type: string
+          company_id: string
+          contact_user_id: string | null
+          conversation_id: string | null
+          created_at: string
+          created_by: string | null
+          duration_seconds: number | null
+          id: string
+          linked_load_id: string | null
+          notes: string | null
+        }
+        Insert: {
+          call_status?: string
+          call_type: string
+          company_id: string
+          contact_user_id?: string | null
+          conversation_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          duration_seconds?: number | null
+          id?: string
+          linked_load_id?: string | null
+          notes?: string | null
+        }
+        Update: {
+          call_status?: string
+          call_type?: string
+          company_id?: string
+          contact_user_id?: string | null
+          conversation_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          duration_seconds?: number | null
+          id?: string
+          linked_load_id?: string | null
+          notes?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messenger_call_logs_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       messenger_channels: {
         Row: {
@@ -3002,6 +3090,7 @@ export type Database = {
           member_role: string | null
           notification_level: string | null
           role: string | null
+          snoozed_until: string | null
           user_id: string | null
         }
         Insert: {
@@ -3016,6 +3105,7 @@ export type Database = {
           member_role?: string | null
           notification_level?: string | null
           role?: string | null
+          snoozed_until?: string | null
           user_id?: string | null
         }
         Update: {
@@ -3030,6 +3120,7 @@ export type Database = {
           member_role?: string | null
           notification_level?: string | null
           role?: string | null
+          snoozed_until?: string | null
           user_id?: string | null
         }
         Relationships: [
@@ -3084,6 +3175,41 @@ export type Database = {
           },
           {
             foreignKeyName: "messenger_conversation_participants_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      messenger_conversation_tags: {
+        Row: {
+          company_id: string
+          conversation_id: string
+          created_at: string
+          id: string
+          tag_color: string | null
+          tag_name: string
+        }
+        Insert: {
+          company_id: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+          tag_color?: string | null
+          tag_name: string
+        }
+        Update: {
+          company_id?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          tag_color?: string | null
+          tag_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messenger_conversation_tags_conversation_id_fkey"
             columns: ["conversation_id"]
             isOneToOne: false
             referencedRelation: "messenger_conversations"
@@ -3167,6 +3293,41 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      messenger_internal_notes: {
+        Row: {
+          author_id: string
+          body: string
+          company_id: string
+          conversation_id: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          author_id: string
+          body: string
+          company_id: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          company_id?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messenger_internal_notes_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_conversations"
             referencedColumns: ["id"]
           },
         ]
@@ -3349,6 +3510,47 @@ export type Database = {
           },
         ]
       }
+      messenger_notification_preferences: {
+        Row: {
+          company_id: string
+          conversation_id: string | null
+          created_at: string
+          id: string
+          is_muted: boolean
+          muted_until: string | null
+          notification_level: string
+          user_id: string
+        }
+        Insert: {
+          company_id: string
+          conversation_id?: string | null
+          created_at?: string
+          id?: string
+          is_muted?: boolean
+          muted_until?: string | null
+          notification_level?: string
+          user_id: string
+        }
+        Update: {
+          company_id?: string
+          conversation_id?: string | null
+          created_at?: string
+          id?: string
+          is_muted?: boolean
+          muted_until?: string | null
+          notification_level?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messenger_notification_preferences_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       messenger_pinned_items: {
         Row: {
           company_id: string
@@ -3508,6 +3710,102 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      messenger_tasks: {
+        Row: {
+          assigned_to: string | null
+          company_id: string
+          completed_at: string | null
+          conversation_id: string | null
+          created_at: string
+          created_by: string | null
+          due_at: string | null
+          id: string
+          message_id: string | null
+          priority: string
+          status: string
+          task_description: string | null
+          task_title: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          company_id: string
+          completed_at?: string | null
+          conversation_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          due_at?: string | null
+          id?: string
+          message_id?: string | null
+          priority?: string
+          status?: string
+          task_description?: string | null
+          task_title: string
+        }
+        Update: {
+          assigned_to?: string | null
+          company_id?: string
+          completed_at?: string | null
+          conversation_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          due_at?: string | null
+          id?: string
+          message_id?: string | null
+          priority?: string
+          status?: string
+          task_description?: string | null
+          task_title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messenger_tasks_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_conversations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "messenger_tasks_message_id_fkey"
+            columns: ["message_id"]
+            isOneToOne: false
+            referencedRelation: "messenger_messages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      messenger_templates: {
+        Row: {
+          category: string | null
+          company_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          is_active: boolean
+          template_body: string
+          template_name: string
+        }
+        Insert: {
+          category?: string | null
+          company_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          is_active?: boolean
+          template_body: string
+          template_name: string
+        }
+        Update: {
+          category?: string | null
+          company_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          is_active?: boolean
+          template_body?: string
+          template_name?: string
+        }
+        Relationships: []
       }
       messenger_typing_status: {
         Row: {
