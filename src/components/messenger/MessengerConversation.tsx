@@ -38,7 +38,7 @@ export function MessengerConversation({
 
   return (
     <section className="flex min-w-0 flex-1 flex-col rounded-3xl border border-white/[0.08] bg-[#101326]/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
-      <MessengerChatHeader active={active} />
+      <MessengerChatHeader active={active} onOpenCallLog={onOpenCallLog} />
 
       <div
         ref={scrollRef}
