@@ -1,15 +1,20 @@
 import {
   AlertTriangle,
+  Bell,
   CheckCheck,
   CheckCircle2,
+  Copy,
   Info,
+  Link2,
   MapPin,
   MessageSquare,
   Mic,
   Pin,
   Play,
+  Reply,
   Smile,
   Truck,
+  Zap,
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
