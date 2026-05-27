@@ -129,15 +129,15 @@ export function MessengerInputBar({
 
       <div className="flex flex-wrap items-center gap-2 text-[11px]">
         <span className="text-muted-foreground">Priority</span>
-        <div className="flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-0.5">
+        <div className="flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 p-0.5">
           {PRIORITIES.map((p) => (
             <button
               key={p.id}
               onClick={() => onPriorityChange(p.id)}
               className={cn(
                 "rounded-full px-2 py-0.5 transition-colors",
-                priority === p.id
-                  ? "bg-[#6D35E8]/25 text-foreground"
+                  priority === p.id
+                  ? "bg-primary/25 text-foreground"
                   : `${p.color} hover:text-foreground`,
               )}
             >
@@ -148,7 +148,7 @@ export function MessengerInputBar({
         {detected !== "normal" && detected !== priority && (
           <button
             onClick={() => onPriorityChange(detected)}
-            className="inline-flex items-center gap-1 rounded-full border border-[#F97316]/40 bg-[#F97316]/10 px-2 py-0.5 text-orange-300"
+            className="inline-flex items-center gap-1 rounded-full border border-orange/40 bg-orange/10 px-2 py-0.5 text-orange"
           >
             <Sparkles className="size-3" /> AI: mark as {detected}
           </button>
@@ -157,7 +157,7 @@ export function MessengerInputBar({
         <div className="relative ml-auto">
           <button
             onClick={() => setTemplatesOpen((v) => !v)}
-            className="inline-flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 px-2 py-0.5 text-muted-foreground hover:text-foreground"
           >
             <FileText className="size-3" /> Templates
           </button>
