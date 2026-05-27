@@ -84,7 +84,7 @@ export function MessengerAvatar({
     return (
       <div
         style={dim}
-        className="relative grid shrink-0 place-items-center rounded-xl border border-white/10 bg-gradient-to-br from-[#6D35E8]/25 to-[#14B8A6]/15 text-primary"
+        className="relative grid shrink-0 place-items-center rounded-xl border border-border/60 bg-gradient-to-br from-primary/25 to-teal/15 text-primary"
       >
         <Hash className="size-4" />
       </div>
