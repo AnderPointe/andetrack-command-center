@@ -91,7 +91,7 @@ export function MessengerInputBar({
 
       {/* AI suggested replies */}
       <div className="flex flex-wrap items-center gap-1.5">
-        <Sparkles className="size-3 text-primary" />
+        <span className="text-primary"><Sparkles className="size-3" /></span>
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
           AI suggestions
         </span>
