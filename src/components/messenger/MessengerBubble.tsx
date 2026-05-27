@@ -222,7 +222,7 @@ export function MessengerBubble({ m }: { m: Message }) {
           {/* Hover actions */}
           <div
             className={cn(
-              "absolute -top-3 hidden gap-0.5 rounded-full border border-white/10 bg-[#101326]/95 p-0.5 shadow-xl backdrop-blur group-hover:flex",
+              "absolute -top-3 hidden gap-0.5 rounded-full border border-border/60 bg-card/95 p-0.5 shadow-xl backdrop-blur group-hover:flex",
               mine ? "right-2" : "left-2",
             )}
           >
