@@ -12,6 +12,10 @@
   --on-secondary: var(--accent);
   --on-highlight: color-mix(in oklab, var(--primary) 70%, white);
   --on-shadow: color-mix(in oklab, var(--primary) 60%, black);
+  --on-glow: color-mix(in oklab, var(--primary) 50%, transparent);
+  --on-secondary-glow: color-mix(in oklab, var(--accent) 30%, transparent);
+  --focus-ring: color-mix(in oklab, var(--ring, var(--primary)) 40%, transparent);
+  --sun-color: #f59e0b;
 
   position: relative;
   display: inline-block;
@@ -65,7 +69,7 @@
   box-shadow:
     0 0.05em 0.1em rgba(0, 0, 0, 0.2) inset,
     0 -0.05em 0.1em rgba(255, 255, 255, 0.1) inset,
-    0 0.1em 0.5em rgba(63, 94, 251, 0.5);
+    0 0.1em 0.5em var(--on-glow);
 }
 
 .premium-toggle input:checked ~ .switch .track-shadow { opacity: 0.7; }
@@ -117,7 +121,7 @@
   box-shadow:
     0.15em 0.15em 0.3em var(--on-shadow),
     -0.1em -0.1em 0.2em rgba(255, 255, 255, 0.2),
-    0 0 0.5em rgba(63, 94, 251, 0.5);
+    0 0 0.5em var(--on-glow);
 }
 
 .premium-toggle .handle-inner {
@@ -190,7 +194,7 @@
 
 .premium-toggle .ray {
   position: absolute;
-  background-color: #f59e0b;
+  background-color: var(--sun-color);
   width: 0.15em;
   height: 0.5em;
   left: 50%;
@@ -244,10 +248,10 @@
   height: 200%;
   background: linear-gradient(
     90deg,
-    rgba(252, 70, 107, 0) 0%,
-    rgba(252, 70, 107, 0.3) 50%,
-    rgba(63, 94, 251, 0.3) 50%,
-    rgba(63, 94, 251, 0) 100%
+    transparent 0%,
+    var(--on-secondary-glow) 50%,
+    var(--on-glow) 50%,
+    transparent 100%
   );
   opacity: 0;
   transform: translateY(100%);
@@ -273,13 +277,13 @@
     0 0.05em 0.1em rgba(0, 0, 0, 0.1) inset,
     0 -0.05em 0.1em rgba(255, 255, 255, 0.1) inset,
     0 0.1em 0.2em rgba(0, 0, 0, 0.2),
-    0 0 0 0.2em rgba(59, 130, 246, 0.3);
+    0 0 0 0.2em var(--focus-ring);
 }
 
 .premium-toggle input:checked:focus-visible ~ .switch .track {
   box-shadow:
     0 0.05em 0.1em rgba(0, 0, 0, 0.2) inset,
     0 -0.05em 0.1em rgba(255, 255, 255, 0.1) inset,
-    0 0.1em 0.5em rgba(63, 94, 251, 0.5),
-    0 0 0 0.2em rgba(59, 130, 246, 0.3);
+    0 0.1em 0.5em var(--on-glow),
+    0 0 0 0.2em var(--focus-ring);
 }
