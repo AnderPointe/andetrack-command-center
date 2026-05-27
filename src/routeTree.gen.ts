@@ -22,6 +22,7 @@ import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
+import { Route as SettingsThemeRouteImport } from './routes/settings.theme'
 import { Route as DriversDriverIdRouteImport } from './routes/drivers.$driverId'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
@@ -91,6 +92,11 @@ const DriverIndexRoute = DriverIndexRouteImport.update({
   path: '/driver/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsThemeRoute = SettingsThemeRouteImport.update({
+  id: '/theme',
+  path: '/theme',
+  getParentRoute: () => SettingsRoute,
+} as any)
 const DriversDriverIdRoute = DriversDriverIdRouteImport.update({
   id: '/$driverId',
   path: '/$driverId',
@@ -117,12 +123,13 @@ export interface FileRoutesByFullPath {
   '/loads': typeof LoadsRoute
   '/map': typeof MapRoute
   '/routes': typeof RoutesRoute
-  '/settings': typeof SettingsRoute
+  '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
   '/vehicles': typeof VehiclesRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
+  '/settings/theme': typeof SettingsThemeRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRoutesByTo {
@@ -135,12 +142,13 @@ export interface FileRoutesByTo {
   '/loads': typeof LoadsRoute
   '/map': typeof MapRoute
   '/routes': typeof RoutesRoute
-  '/settings': typeof SettingsRoute
+  '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
   '/vehicles': typeof VehiclesRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
+  '/settings/theme': typeof SettingsThemeRoute
   '/driver': typeof DriverIndexRoute
 }
 export interface FileRoutesById {
@@ -154,12 +162,13 @@ export interface FileRoutesById {
   '/loads': typeof LoadsRoute
   '/map': typeof MapRoute
   '/routes': typeof RoutesRoute
-  '/settings': typeof SettingsRoute
+  '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
   '/vehicles': typeof VehiclesRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
+  '/settings/theme': typeof SettingsThemeRoute
   '/driver/': typeof DriverIndexRoute
 }
 export interface FileRouteTypes {
@@ -180,6 +189,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
+    | '/settings/theme'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -198,6 +208,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
+    | '/settings/theme'
     | '/driver'
   id:
     | '__root__'
@@ -216,6 +227,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
+    | '/settings/theme'
     | '/driver/'
   fileRoutesById: FileRoutesById
 }
@@ -229,7 +241,7 @@ export interface RootRouteChildren {
   LoadsRoute: typeof LoadsRoute
   MapRoute: typeof MapRoute
   RoutesRoute: typeof RoutesRoute
-  SettingsRoute: typeof SettingsRoute
+  SettingsRoute: typeof SettingsRouteWithChildren
   ShipmentsRoute: typeof ShipmentsRoute
   VehiclesRoute: typeof VehiclesRoute
   DashboardMessagesRoute: typeof DashboardMessagesRoute
@@ -330,6 +342,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DriverIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings/theme': {
+      id: '/settings/theme'
+      path: '/theme'
+      fullPath: '/settings/theme'
+      preLoaderRoute: typeof SettingsThemeRouteImport
+      parentRoute: typeof SettingsRoute
+    }
     '/drivers/$driverId': {
       id: '/drivers/$driverId'
       path: '/$driverId'
@@ -365,6 +384,18 @@ const DriversRouteChildren: DriversRouteChildren = {
 const DriversRouteWithChildren =
   DriversRoute._addFileChildren(DriversRouteChildren)
 
+interface SettingsRouteChildren {
+  SettingsThemeRoute: typeof SettingsThemeRoute
+}
+
+const SettingsRouteChildren: SettingsRouteChildren = {
+  SettingsThemeRoute: SettingsThemeRoute,
+}
+
+const SettingsRouteWithChildren = SettingsRoute._addFileChildren(
+  SettingsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
@@ -375,7 +406,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoadsRoute: LoadsRoute,
   MapRoute: MapRoute,
   RoutesRoute: RoutesRoute,
-  SettingsRoute: SettingsRoute,
+  SettingsRoute: SettingsRouteWithChildren,
   ShipmentsRoute: ShipmentsRoute,
   VehiclesRoute: VehiclesRoute,
   DashboardMessagesRoute: DashboardMessagesRoute,
