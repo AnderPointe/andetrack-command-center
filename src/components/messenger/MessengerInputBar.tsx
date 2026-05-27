@@ -182,7 +182,7 @@ export function MessengerInputBar({
         </div>
       </div>
 
-      <div className="flex items-center gap-1 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-2 py-1.5 backdrop-blur-md">
+      <div className="flex items-center gap-1 rounded-2xl border border-border/60 bg-muted/50 px-2 py-1.5 backdrop-blur-md">
         <input
           ref={fileInputRef}
           type="file"
