@@ -122,7 +122,7 @@ export function MessengerCommandPalette({
                 onClick={onClose}
                 className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm hover:bg-white/5"
               >
-                <Icon className="size-4 text-orange" />
+                <span className="text-orange"><Icon className="size-4" /></span>
                 <span className="text-foreground">{c.label}</span>
               </button>
             );
