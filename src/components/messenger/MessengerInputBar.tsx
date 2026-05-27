@@ -162,7 +162,7 @@ export function MessengerInputBar({
             <FileText className="size-3" /> Templates
           </button>
           {templatesOpen && (
-            <div className="absolute bottom-full right-0 z-20 mb-2 w-64 overflow-hidden rounded-xl border border-white/10 bg-[#101326]/95 shadow-2xl">
+            <div className="absolute bottom-full right-0 z-20 mb-2 w-64 overflow-hidden rounded-xl border border-border/60 bg-card/95 shadow-2xl">
               {MESSAGE_TEMPLATES.map((t) => (
                 <button
                   key={t.label}
@@ -171,7 +171,7 @@ export function MessengerInputBar({
                     setTemplatesOpen(false);
                     toast.success(`Inserted: ${t.label}`);
                   }}
-                  className="block w-full px-3 py-2 text-left text-[12px] hover:bg-white/5"
+                  className="block w-full px-3 py-2 text-left text-[12px] hover:bg-muted"
                 >
                   <div className="font-semibold text-foreground">{t.label}</div>
                   <div className="truncate text-muted-foreground">{t.body}</div>
