@@ -76,15 +76,15 @@ function VoiceBubble({
       className={cn(
         "flex items-center gap-3 rounded-2xl px-3.5 py-2.5",
         mine
-          ? "bg-[#6D35E8] text-foreground shadow-[0_10px_30px_-12px_rgba(109,53,232,0.7)]"
-          : "border border-white/[0.08] bg-[#1A1E33]",
+          ? "bg-primary text-foreground shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--primary)_70%,transparent)]"
+          : "border border-border/60 bg-card",
       )}
     >
       <button
         onClick={() => toast.info("Playing voice note…")}
         className={cn(
           "grid size-9 place-items-center rounded-full",
-          mine ? "bg-white/15" : "bg-[#6D35E8]/25 text-primary",
+          mine ? "bg-primary-foreground/15" : "bg-primary/25 text-primary",
         )}
       >
         <Play className="size-4" />
@@ -95,7 +95,7 @@ function VoiceBubble({
             key={i}
             className={cn(
               "w-[2px] rounded-full",
-              mine ? "bg-white/80" : "bg-[#B79CFF]",
+              mine ? "bg-primary-foreground/80" : "bg-primary/60",
             )}
             style={{ height: `${h * 1.4}px` }}
           />
@@ -120,17 +120,17 @@ function LocationBubble({
     <div
       className={cn(
         "w-[260px] overflow-hidden rounded-2xl border",
-        mine ? "border-[#6D35E8]/30" : "border-white/[0.08]",
+        mine ? "border-primary/30" : "border-border/60",
       )}
     >
-      <div className="relative h-24 bg-gradient-to-br from-[#0D1020] via-[#101326] to-[#1A1E33]">
+      <div className="relative h-24 bg-gradient-to-br from-background via-card to-muted">
         <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px]" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <span className="absolute -inset-3 animate-ping rounded-full bg-[#14B8A6]/30" />
           <span className="relative text-teal drop-shadow-[0_0_8px_rgba(20,184,166,0.8)]"><MapPin className="size-5" /></span>
         </div>
       </div>
-      <div className="bg-[#1A1E33] px-3 py-2">
+      <div className="bg-card px-3 py-2">
         <div className="text-[12px] font-semibold text-foreground">{m.label}</div>
         <div className="text-[11px] text-muted-foreground">
           {m.city} · {m.coords}
