@@ -188,7 +188,7 @@ export function MessengerBubble({ m }: { m: Message }) {
               {m.priority}
             </span>
           )}
-          {mine && <CheckCheck className="size-3 text-primary" />}
+          {mine && <span className="text-primary"><CheckCheck className="size-3" /></span>}
         </div>
 
         <div className="relative">
