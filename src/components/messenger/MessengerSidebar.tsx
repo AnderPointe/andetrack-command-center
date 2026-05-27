@@ -22,7 +22,7 @@ export function MessengerSidebar({
   onSelect: (id: string) => void;
 }) {
   return (
-    <aside className="flex w-[320px] shrink-0 flex-col rounded-3xl border border-white/[0.08] bg-[#101326]/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
+    <aside className="flex w-[320px] shrink-0 flex-col rounded-3xl border border-border/60 bg-card/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
       <div className="flex items-center justify-between px-5 pt-5 pb-3">
         <div>
           <h2 className="text-base font-semibold tracking-tight">Inbox</h2>
@@ -39,7 +39,7 @@ export function MessengerSidebar({
       </div>
 
       <div className="px-4 pb-3">
-        <div className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-muted-foreground">
+        <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-muted/50 px-3 py-2 text-muted-foreground">
           <Search className="size-4" />
           <input
             value={query}

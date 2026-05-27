@@ -17,8 +17,8 @@ export function MessengerAttachmentCard({
 }) {
   if (variant === "composer") {
     return (
-      <div className="flex items-center gap-3 rounded-xl border border-[#6D35E8]/30 bg-[#6D35E8]/10 px-3 py-2">
-        <div className="grid size-9 place-items-center rounded-lg bg-[#6D35E8]/25 text-primary">
+      <div className="flex items-center gap-3 rounded-xl border border-primary/30 bg-primary/10 px-3 py-2">
+        <div className="grid size-9 place-items-center rounded-lg bg-primary/25 text-primary">
           <FileText className="size-4" />
         </div>
         <div className="min-w-0 flex-1">
@@ -41,8 +41,8 @@ export function MessengerAttachmentCard({
   }
 
   return (
-    <div className={cn("flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#1A1E33] px-3 py-2.5")}>
-      <div className="grid size-10 place-items-center rounded-xl bg-[#6D35E8]/20 text-primary">
+    <div className={cn("flex items-center gap-3 rounded-2xl border border-border/60 bg-card px-3 py-2.5")}>
+      <div className="grid size-10 place-items-center rounded-xl bg-primary/20 text-primary">
         <FileText className="size-5" />
       </div>
       <div className="min-w-0 flex-1">
@@ -51,7 +51,7 @@ export function MessengerAttachmentCard({
       </div>
       <button
         onClick={() => toast.success("Downloading…")}
-        className="grid size-9 place-items-center rounded-lg bg-[#6D35E8]/15 text-primary hover:bg-[#6D35E8]/25"
+        className="grid size-9 place-items-center rounded-lg bg-primary/15 text-primary hover:bg-primary/25"
       >
         <Download className="size-4" />
       </button>

@@ -20,7 +20,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-3">
+    <div className="rounded-2xl border border-border/60 bg-muted/40 p-3">
       <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
         {title}
       </div>
@@ -53,13 +53,13 @@ function CtaButton({
       className={cn(
         "w-full rounded-xl border px-3 py-2 text-[12px] font-semibold transition-all",
         variant === "primary" &&
-          "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-foreground hover:bg-[#6D35E8]/30 shadow-[0_8px_28px_-12px_rgba(109,53,232,0.6)]",
+          "border-primary/50 bg-primary/20 text-foreground hover:bg-primary/30 shadow-[0_8px_28px_-12px_color-mix(in_oklab,var(--primary)_60%,transparent)]",
         variant === "danger" &&
-          "border-[#EF4444]/40 bg-[#EF4444]/15 text-red-200 hover:bg-[#EF4444]/25",
+          "border-destructive/40 bg-destructive/15 text-destructive-foreground hover:bg-destructive/25",
         variant === "teal" &&
-          "border-teal-400/40 bg-teal-500/15 text-teal-200 hover:bg-teal-500/25",
+          "border-teal/40 bg-teal/15 text-teal-foreground hover:bg-teal/25",
         variant === "default" &&
-          "border-white/[0.08] bg-white/[0.04] text-foreground hover:bg-white/[0.08]",
+          "border-border/60 bg-muted/40 text-foreground hover:bg-muted",
       )}
     >
       {children}
@@ -74,8 +74,8 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
   const isCustomer = active.kind === "dm" && active.role === "Customer";
 
   return (
-    <aside className="hidden w-[320px] shrink-0 flex-col rounded-3xl border border-white/[0.08] bg-[#101326]/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)] xl:flex">
-      <div className="border-b border-white/[0.06] px-5 py-4">
+    <aside className="hidden w-[320px] shrink-0 flex-col rounded-3xl border border-border/60 bg-card/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)] xl:flex">
+      <div className="border-b border-border/60 px-5 py-4">
         <div className="flex items-center gap-3">
           <MessengerAvatar
             src={active.avatar}
@@ -136,9 +136,9 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
                 <span className="text-muted-foreground">Austin → Dallas</span>
                 <span className="font-semibold text-foreground">78%</span>
               </div>
-              <div className="h-1.5 overflow-hidden rounded-full bg-white/5">
+              <div className="h-1.5 overflow-hidden rounded-full bg-muted">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#6D35E8] to-[#14B8A6]"
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-teal"
                   style={{ width: "78%" }}
                 />
               </div>

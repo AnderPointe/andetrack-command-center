@@ -78,7 +78,7 @@ export function MessengerInputBar({
   }
 
   return (
-    <div className="border-t border-white/[0.06] p-3 space-y-2">
+    <div className="border-t border-border/60 p-3 space-y-2">
       {attachment && (
         <MessengerAttachmentCard
           variant="composer"
@@ -99,7 +99,7 @@ export function MessengerInputBar({
           <button
             key={s}
             onClick={() => applySuggestion(s)}
-            className="rounded-full border border-[#6D35E8]/30 bg-[#6D35E8]/10 px-2.5 py-0.5 text-[11px] text-primary hover:bg-[#6D35E8]/25"
+            className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-[11px] text-primary hover:bg-primary/25"
           >
             {s}
           </button>
@@ -119,7 +119,7 @@ export function MessengerInputBar({
                 onDraftChange(s);
                 setTimeout(onSend, 0);
               }}
-              className="rounded-full border border-[#22C55E]/30 bg-[#22C55E]/10 px-2.5 py-0.5 text-[11px] text-success hover:bg-[#22C55E]/20"
+              className="rounded-full border border-success/30 bg-success/10 px-2.5 py-0.5 text-[11px] text-success hover:bg-success/20"
             >
               {s}
             </button>
@@ -129,15 +129,15 @@ export function MessengerInputBar({
 
       <div className="flex flex-wrap items-center gap-2 text-[11px]">
         <span className="text-muted-foreground">Priority</span>
-        <div className="flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-0.5">
+        <div className="flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 p-0.5">
           {PRIORITIES.map((p) => (
             <button
               key={p.id}
               onClick={() => onPriorityChange(p.id)}
               className={cn(
                 "rounded-full px-2 py-0.5 transition-colors",
-                priority === p.id
-                  ? "bg-[#6D35E8]/25 text-foreground"
+                  priority === p.id
+                  ? "bg-primary/25 text-foreground"
                   : `${p.color} hover:text-foreground`,
               )}
             >
@@ -148,7 +148,7 @@ export function MessengerInputBar({
         {detected !== "normal" && detected !== priority && (
           <button
             onClick={() => onPriorityChange(detected)}
-            className="inline-flex items-center gap-1 rounded-full border border-[#F97316]/40 bg-[#F97316]/10 px-2 py-0.5 text-orange-300"
+            className="inline-flex items-center gap-1 rounded-full border border-orange/40 bg-orange/10 px-2 py-0.5 text-orange"
           >
             <Sparkles className="size-3" /> AI: mark as {detected}
           </button>
@@ -157,12 +157,12 @@ export function MessengerInputBar({
         <div className="relative ml-auto">
           <button
             onClick={() => setTemplatesOpen((v) => !v)}
-            className="inline-flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 px-2 py-0.5 text-muted-foreground hover:text-foreground"
           >
             <FileText className="size-3" /> Templates
           </button>
           {templatesOpen && (
-            <div className="absolute bottom-full right-0 z-20 mb-2 w-64 overflow-hidden rounded-xl border border-white/10 bg-[#101326]/95 shadow-2xl">
+            <div className="absolute bottom-full right-0 z-20 mb-2 w-64 overflow-hidden rounded-xl border border-border/60 bg-card/95 shadow-2xl">
               {MESSAGE_TEMPLATES.map((t) => (
                 <button
                   key={t.label}
@@ -171,7 +171,7 @@ export function MessengerInputBar({
                     setTemplatesOpen(false);
                     toast.success(`Inserted: ${t.label}`);
                   }}
-                  className="block w-full px-3 py-2 text-left text-[12px] hover:bg-white/5"
+                  className="block w-full px-3 py-2 text-left text-[12px] hover:bg-muted"
                 >
                   <div className="font-semibold text-foreground">{t.label}</div>
                   <div className="truncate text-muted-foreground">{t.body}</div>
@@ -182,7 +182,7 @@ export function MessengerInputBar({
         </div>
       </div>
 
-      <div className="flex items-center gap-1 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-2 py-1.5 backdrop-blur-md">
+      <div className="flex items-center gap-1 rounded-2xl border border-border/60 bg-muted/50 px-2 py-1.5 backdrop-blur-md">
         <input
           ref={fileInputRef}
           type="file"
@@ -192,21 +192,21 @@ export function MessengerInputBar({
         <button
           onClick={() => fileInputRef.current?.click()}
           title="Attach POD or file"
-          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
         >
           <Paperclip className="size-4" />
         </button>
         <button
           onClick={() => toast.info("Mention…")}
           title="Mention"
-          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
         >
           <AtSign className="size-4" />
         </button>
         <button
           onClick={() => toast.success("Live location shared")}
           title="Share location"
-          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
         >
           <MapPin className="size-4" />
         </button>
@@ -225,21 +225,21 @@ export function MessengerInputBar({
         <button
           onClick={() => toast.info("Emoji picker coming soon")}
           title="Emoji"
-          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
         >
           <Smile className="size-4" />
         </button>
         <button
           onClick={() => toast.info("Recording voice note…")}
           title="Voice note"
-          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-white/5 hover:text-foreground"
+          className="grid size-9 place-items-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
         >
           <Mic className="size-4" />
         </button>
         <button
           onClick={onSend}
           title="Send"
-          className="grid size-9 place-items-center rounded-xl bg-[#6D35E8] text-foreground shadow-[0_8px_30px_-8px_rgba(109,53,232,0.7)] hover:bg-[#7c47ee]"
+          className="grid size-9 place-items-center rounded-xl bg-primary text-foreground shadow-[0_8px_30px_-8px_color-mix(in_oklab,var(--primary)_70%,transparent)] hover:bg-primary/90"
         >
           <Send className="size-4" />
         </button>

@@ -59,10 +59,10 @@ export function MessengerCommandPalette({
       onClick={onClose}
     >
       <div
-        className="w-[min(640px,92vw)] overflow-hidden rounded-2xl border border-white/10 bg-[#101326]/95 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]"
+        className="w-[min(640px,92vw)] overflow-hidden rounded-2xl border border-border/60 bg-card/95 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center gap-2 border-b border-white/[0.06] px-4 py-3">
+        <div className="flex items-center gap-2 border-b border-border/60 px-4 py-3">
           <span className="text-muted-foreground"><Search className="size-4" /></span>
           <input
             autoFocus
@@ -71,7 +71,7 @@ export function MessengerCommandPalette({
             placeholder="Search drivers, loads, customers, channels…"
             className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
           />
-          <span className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] text-muted-foreground">
+          <span className="rounded border border-border/60 bg-muted/50 px-1.5 py-0.5 text-[10px] text-muted-foreground">
             ESC
           </span>
         </div>
@@ -90,9 +90,9 @@ export function MessengerCommandPalette({
                   onSelect(c.id);
                   onClose();
                 }}
-                className={cn(
-                  "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm hover:bg-white/5",
-                )}
+                  className={cn(
+                    "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm hover:bg-muted",
+                  )}
               >
                 <span className="text-primary"><Icon className="size-4" /></span>
                 <span className="flex-1 truncate text-foreground">{c.name}</span>
@@ -120,7 +120,7 @@ export function MessengerCommandPalette({
               <button
                 key={c.id}
                 onClick={onClose}
-                className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm hover:bg-white/5"
+                className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm hover:bg-muted"
               >
                 <span className="text-orange"><Icon className="size-4" /></span>
                 <span className="text-foreground">{c.label}</span>

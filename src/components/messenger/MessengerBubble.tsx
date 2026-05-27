@@ -31,8 +31,8 @@ function ReactionsRow({ reactions }: { reactions: Reaction[] }) {
           className={cn(
             "flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] transition-colors",
             r.mine
-              ? "border-[#6D35E8]/50 bg-[#6D35E8]/20 text-primary"
-              : "border-white/10 bg-white/[0.04] text-muted-foreground hover:text-foreground",
+              ? "border-primary/50 bg-primary/20 text-primary"
+              : "border-border/60 bg-muted/40 text-muted-foreground hover:text-foreground",
           )}
         >
           <span>{r.emoji}</span>
@@ -41,7 +41,7 @@ function ReactionsRow({ reactions }: { reactions: Reaction[] }) {
       ))}
       <button
         onClick={() => toast.info("Add reaction")}
-        className="grid size-6 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-muted-foreground hover:text-foreground"
+        className="grid size-6 place-items-center rounded-full border border-border/60 bg-muted/40 text-muted-foreground hover:text-foreground"
       >
         <Smile className="size-3" />
       </button>
@@ -54,7 +54,7 @@ function SystemBubble({ m }: { m: Extract<Message, { kind: "system" }> }) {
     m.icon === "alert" ? AlertTriangle : m.icon === "check" ? CheckCircle2 : Info;
   return (
     <div className="flex justify-center">
-      <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] text-muted-foreground">
+      <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-[11px] text-muted-foreground">
         <span className="text-primary"><Icon className="size-3" /></span>
         {m.text}
       </div>
@@ -76,15 +76,15 @@ function VoiceBubble({
       className={cn(
         "flex items-center gap-3 rounded-2xl px-3.5 py-2.5",
         mine
-          ? "bg-[#6D35E8] text-foreground shadow-[0_10px_30px_-12px_rgba(109,53,232,0.7)]"
-          : "border border-white/[0.08] bg-[#1A1E33]",
+          ? "bg-primary text-foreground shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--primary)_70%,transparent)]"
+          : "border border-border/60 bg-card",
       )}
     >
       <button
         onClick={() => toast.info("Playing voice note…")}
         className={cn(
           "grid size-9 place-items-center rounded-full",
-          mine ? "bg-white/15" : "bg-[#6D35E8]/25 text-primary",
+          mine ? "bg-primary-foreground/15" : "bg-primary/25 text-primary",
         )}
       >
         <Play className="size-4" />
@@ -95,7 +95,7 @@ function VoiceBubble({
             key={i}
             className={cn(
               "w-[2px] rounded-full",
-              mine ? "bg-white/80" : "bg-[#B79CFF]",
+              mine ? "bg-primary-foreground/80" : "bg-primary/60",
             )}
             style={{ height: `${h * 1.4}px` }}
           />
@@ -120,17 +120,17 @@ function LocationBubble({
     <div
       className={cn(
         "w-[260px] overflow-hidden rounded-2xl border",
-        mine ? "border-[#6D35E8]/30" : "border-white/[0.08]",
+        mine ? "border-primary/30" : "border-border/60",
       )}
     >
-      <div className="relative h-24 bg-gradient-to-br from-[#0D1020] via-[#101326] to-[#1A1E33]">
+      <div className="relative h-24 bg-gradient-to-br from-background via-card to-muted">
         <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px]" />
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <span className="absolute -inset-3 animate-ping rounded-full bg-[#14B8A6]/30" />
           <span className="relative text-teal drop-shadow-[0_0_8px_rgba(20,184,166,0.8)]"><MapPin className="size-5" /></span>
         </div>
       </div>
-      <div className="bg-[#1A1E33] px-3 py-2">
+      <div className="bg-card px-3 py-2">
         <div className="text-[12px] font-semibold text-foreground">{m.label}</div>
         <div className="text-[11px] text-muted-foreground">
           {m.city} · {m.coords}
@@ -146,8 +146,8 @@ function LoadStatusBubble({
   m: Extract<Message, { kind: "load_status" }>;
 }) {
   return (
-    <div className="w-[260px] rounded-2xl border border-[#F97316]/30 bg-[#F97316]/10 p-3">
-      <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-orange-300">
+    <div className="w-[260px] rounded-2xl border border-orange/30 bg-orange/10 p-3">
+      <div className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-orange">
         <Truck className="size-3.5" />
         {m.loadId} · {m.status}
       </div>
@@ -197,12 +197,12 @@ export function MessengerBubble({ m }: { m: Message }) {
               className={cn(
                 "rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-lg",
                 mine
-                  ? "bg-[#6D35E8] text-foreground shadow-[0_10px_30px_-12px_rgba(109,53,232,0.7)]"
-                  : "border border-white/[0.08] bg-[#1A1E33] text-foreground",
+                  ? "bg-primary text-foreground shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--primary)_70%,transparent)]"
+                  : "border border-border/60 bg-card text-foreground",
               )}
             >
               {m.quote && (
-                <div className="mb-2 border-l-2 border-white/40 pl-2 text-[12px] opacity-90">
+                <div className="mb-2 border-l-2 border-primary-foreground/40 pl-2 text-[12px] opacity-90">
                   <div className="font-semibold">{m.quote.name}</div>
                   <div className="opacity-90">{m.quote.text}</div>
                 </div>
@@ -222,7 +222,7 @@ export function MessengerBubble({ m }: { m: Message }) {
           {/* Hover actions */}
           <div
             className={cn(
-              "absolute -top-3 hidden gap-0.5 rounded-full border border-white/10 bg-[#101326]/95 p-0.5 shadow-xl backdrop-blur group-hover:flex",
+              "absolute -top-3 hidden gap-0.5 rounded-full border border-border/60 bg-card/95 p-0.5 shadow-xl backdrop-blur group-hover:flex",
               mine ? "right-2" : "left-2",
             )}
           >
@@ -240,7 +240,7 @@ export function MessengerBubble({ m }: { m: Message }) {
                 key={label}
                 title={label}
                 onClick={() => toast.success(label)}
-                className="grid size-6 place-items-center rounded-full text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                className="grid size-6 place-items-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground"
               >
                 <Icon className="size-3" />
               </button>
@@ -255,7 +255,7 @@ export function MessengerBubble({ m }: { m: Message }) {
         {m.threadCount && m.threadCount > 0 ? (
           <button
             onClick={() => toast.info("Open thread")}
-            className="mt-1 inline-flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-[11px] text-primary hover:text-foreground"
+            className="mt-1 inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 px-2 py-0.5 text-[11px] text-primary hover:text-foreground"
           >
             <MessageSquare className="size-3" />
             {m.threadCount} replies

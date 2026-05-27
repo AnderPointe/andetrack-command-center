@@ -37,7 +37,7 @@ export function MessengerConversation({
   }, [messages.length, active.id]);
 
   return (
-    <section className="flex min-w-0 flex-1 flex-col rounded-3xl border border-white/[0.08] bg-[#101326]/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
+    <section className="flex min-w-0 flex-1 flex-col rounded-3xl border border-border/60 bg-card/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
       <MessengerChatHeader active={active} onOpenCallLog={onOpenCallLog} />
 
       <div
@@ -45,7 +45,7 @@ export function MessengerConversation({
         className="flex-1 overflow-y-auto px-6 py-5 space-y-4"
       >
         <div className="flex justify-center">
-          <span className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 text-[11px] text-muted-foreground">
+          <span className="rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-[11px] text-muted-foreground">
             Today
           </span>
         </div>
