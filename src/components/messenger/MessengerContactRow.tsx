@@ -93,7 +93,7 @@ export function MessengerContactRow({
       <div className="flex shrink-0 flex-col items-end gap-1">
         <span className="text-[10px] text-muted-foreground">{c.time}</span>
         {c.unread > 0 && (
-          <span className="grid h-5 min-w-5 place-items-center rounded-full bg-[#EF4444] px-1.5 text-[10px] font-semibold text-foreground shadow-[0_0_10px_-2px_rgba(239,68,68,0.7)]">
+          <span className="grid h-5 min-w-5 place-items-center rounded-full bg-destructive px-1.5 text-[10px] font-semibold text-destructive-foreground shadow-[0_0_10px_-2px_color-mix(in_oklab,var(--destructive)_70%,transparent)]">
             {c.unread}
           </span>
         )}
