@@ -771,6 +771,45 @@ export type Database = {
           },
         ]
       }
+      company_theme_assets: {
+        Row: {
+          asset_name: string
+          asset_type: string
+          asset_url: string
+          company_id: string
+          created_at: string | null
+          file_size_bytes: number | null
+          file_type: string | null
+          id: string
+          is_active: boolean | null
+          uploaded_by: string | null
+        }
+        Insert: {
+          asset_name: string
+          asset_type: string
+          asset_url: string
+          company_id: string
+          created_at?: string | null
+          file_size_bytes?: number | null
+          file_type?: string | null
+          id?: string
+          is_active?: boolean | null
+          uploaded_by?: string | null
+        }
+        Update: {
+          asset_name?: string
+          asset_type?: string
+          asset_url?: string
+          company_id?: string
+          created_at?: string | null
+          file_size_bytes?: number | null
+          file_type?: string | null
+          id?: string
+          is_active?: boolean | null
+          uploaded_by?: string | null
+        }
+        Relationships: []
+      }
       company_theme_settings: {
         Row: {
           accent_color: string
