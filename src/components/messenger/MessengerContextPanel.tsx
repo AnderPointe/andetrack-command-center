@@ -186,7 +186,7 @@ export function MessengerContextPanel({ active }: { active: Contact }) {
               <KV
                 k="Route risk"
                 v={
-                  <span className="inline-flex items-center gap-1 text-orange-300">
+                  <span className="inline-flex items-center gap-1 text-orange">
                     <AlertTriangle className="size-3" /> Weather
                   </span>
                 }
