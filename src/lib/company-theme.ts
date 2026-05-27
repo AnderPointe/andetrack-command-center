@@ -165,25 +165,26 @@ export async function loadTemplates(): Promise<ThemeRow[]> {
   return (data as ThemeRow[]) ?? [];
 }
 
-const TEMPLATE_KEYS = new Set([
+const TEMPLATE_ONLY_KEYS = new Set([
   "id",
   "theme_template_id",
   "theme_key",
   "industry_type",
   "is_system_template",
   "is_active",
+  "description",
   "created_at",
   "updated_at",
 ]);
 
 /** Strip template-only columns so a template row can be saved as company settings. */
-export function toCompanyDraft(row: ThemeRow): Omit<ThemeRow, "id" | "company_id"> {
+export function toCompanyDraft(row: Partial<ThemeRow>): Record<string, unknown> {
   const draft: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(row)) {
-    if (TEMPLATE_KEYS.has(k)) continue;
+    if (TEMPLATE_ONLY_KEYS.has(k)) continue;
     draft[k] = v;
   }
-  return draft as Omit<ThemeRow, "id" | "company_id">;
+  return draft;
 }
 
 /** Upsert company theme settings without publishing. */
