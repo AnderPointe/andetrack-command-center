@@ -33,7 +33,7 @@ export function MessengerTopStatusBar({
           {online} online
         </div>
         <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[11px] text-muted-foreground backdrop-blur-md">
-          <Activity className="size-3 text-primary" />
+          <span className="text-primary"><Activity className="size-3" /></span>
           {unreadTotal} unread
         </div>
         <div className="flex items-center gap-2 rounded-full border border-[#6D35E8]/40 bg-[#6D35E8]/15 px-3 py-1.5 text-[11px] text-primary backdrop-blur-md">
