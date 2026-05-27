@@ -205,7 +205,7 @@ export async function saveDraft(
   };
   const { data, error } = await supabase
     .from("company_theme_settings")
-    .upsert(payload, { onConflict: "company_id" })
+    .upsert(payload as any, { onConflict: "company_id" })
     .select("*")
     .single();
   if (error) throw error;
@@ -248,7 +248,7 @@ export async function publishTheme(
   };
   const { data, error } = await supabase
     .from("company_theme_settings")
-    .upsert(payload, { onConflict: "company_id" })
+    .upsert(payload as any, { onConflict: "company_id" })
     .select("*")
     .single();
   if (error) throw error;
