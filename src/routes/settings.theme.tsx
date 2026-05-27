@@ -296,6 +296,53 @@ function ThemeSettingsPage() {
             </div>
           </aside>
         </div>
+
+        {/* Recommended Theme Templates */}
+        <section className="rounded-3xl border border-border bg-card/60 backdrop-blur-xl p-5 space-y-4">
+          <div className="flex items-center gap-2">
+            <Lightbulb className="size-4 text-primary" />
+            <h2 className="text-sm font-semibold tracking-tight">Recommended Theme Templates</h2>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="py-2 pr-4 text-[10px] uppercase tracking-[0.14em] text-muted-foreground font-medium">Theme</th>
+                  <th className="py-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground font-medium">Best For</th>
+                </tr>
+              </thead>
+              <tbody>
+                {THEME_PRESETS.filter((p) => p.id !== "customer-brand-custom").map((p) => (
+                  <tr
+                    key={p.id}
+                    onClick={() => applyPreset(p)}
+                    className={cn(
+                      "border-b border-border/50 cursor-pointer transition hover:bg-primary/5",
+                      theme.id === p.id && "bg-primary/5",
+                    )}
+                  >
+                    <td className="py-2.5 pr-4">
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="size-8 rounded-lg shrink-0 overflow-hidden grid grid-cols-2"
+                          style={{ border: `1px solid ${p.tokens.border}` }}
+                        >
+                          <span style={{ background: p.tokens.backgroundLight }} />
+                          <span style={{ background: p.tokens.backgroundDark }} />
+                          <span style={{ background: p.tokens.primary }} />
+                          <span style={{ background: p.tokens.accent }} />
+                        </div>
+                        <span className="text-xs font-medium">{p.name}</span>
+                        {theme.id === p.id && <Check className="size-3 text-primary" />}
+                      </div>
+                    </td>
+                    <td className="py-2.5 text-xs text-muted-foreground">{p.useCase}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </AppShell>
   );
