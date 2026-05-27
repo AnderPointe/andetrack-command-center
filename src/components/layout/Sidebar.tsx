@@ -16,6 +16,7 @@ import {
   Navigation,
   Activity,
   MessageCircle,
+  Palette,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { alerts, drivers } from "@/data/mock";
@@ -44,6 +45,7 @@ const nav = [
     { to: "/driver/navigation", label: "In-Trip Nav", icon: Navigation },
   ]},
   { group: "System", items: [
+    { to: "/settings/theme", label: "Theme Studio", icon: Palette },
     { to: "/settings", label: "Settings", icon: Settings },
   ]},
 ] as const;
