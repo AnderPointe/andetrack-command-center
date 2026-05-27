@@ -94,7 +94,7 @@ export function MessengerAvatar({
     return (
       <div
         style={dim}
-        className="relative grid shrink-0 place-items-center rounded-xl border border-[#F97316]/35 bg-[#F97316]/15 text-orange-300"
+        className="relative grid shrink-0 place-items-center rounded-xl border border-orange/35 bg-orange/15 text-orange"
       >
         <Truck className="size-4" />
       </div>
