@@ -30,7 +30,7 @@ export function MessengerChatHeader({
   const [notifLevel, setNotifLevel] = useState<NotificationLevel>("All Messages");
 
   return (
-    <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3.5">
+    <div className="flex items-center justify-between border-b border-border/60 px-5 py-3.5">
       <div className="flex items-center gap-3">
         <MessengerAvatar
           src={active.avatar}
@@ -100,10 +100,10 @@ export function MessengerChatHeader({
           </MessengerIconChip>
           {menuOpen && (
             <div
-              className="absolute right-0 top-11 z-30 w-64 overflow-hidden rounded-xl border border-white/10 bg-[#101326]/95 shadow-2xl"
+              className="absolute right-0 top-11 z-30 w-64 overflow-hidden rounded-xl border border-border/60 bg-card/95 shadow-2xl"
               onMouseLeave={() => setMenuOpen(false)}
             >
-              <div className="border-b border-white/[0.06] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              <div className="border-b border-border/60 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                 <Clock className="mr-1 inline size-3" /> Snooze
               </div>
               {SNOOZE_OPTIONS.map((s) => (
