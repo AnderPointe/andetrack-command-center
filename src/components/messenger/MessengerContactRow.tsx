@@ -20,8 +20,8 @@ export function MessengerContactRow({
       className={cn(
         "group flex w-full items-start gap-3 rounded-xl px-2.5 py-2.5 text-left transition-all",
         active
-          ? "border border-[#6D35E8]/40 bg-[#6D35E8]/15 shadow-[inset_0_0_0_1px_rgba(109,53,232,0.25),0_8px_28px_-12px_rgba(109,53,232,0.5)]"
-          : "border border-transparent hover:bg-white/[0.04]",
+          ? "border border-primary/40 bg-primary/15 shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--primary)_25%,transparent),0_8px_28px_-12px_color-mix(in_oklab,var(--primary)_50%,transparent)]"
+          : "border border-transparent hover:bg-foreground/[0.04]",
       )}
     >
       <MessengerAvatar
@@ -68,7 +68,7 @@ export function MessengerContactRow({
         </p>
         <div className="mt-1 flex flex-wrap items-center gap-1">
           {c.linkedLoad && (
-            <span className="inline-flex items-center gap-1 rounded-md border border-[#F97316]/30 bg-[#F97316]/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-orange-300">
+            <span className="inline-flex items-center gap-1 rounded-md border border-orange/30 bg-orange/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-orange">
               <Truck className="size-2.5" />
               {c.linkedLoad.id}
             </span>
@@ -93,7 +93,7 @@ export function MessengerContactRow({
       <div className="flex shrink-0 flex-col items-end gap-1">
         <span className="text-[10px] text-muted-foreground">{c.time}</span>
         {c.unread > 0 && (
-          <span className="grid h-5 min-w-5 place-items-center rounded-full bg-[#EF4444] px-1.5 text-[10px] font-semibold text-foreground shadow-[0_0_10px_-2px_rgba(239,68,68,0.7)]">
+          <span className="grid h-5 min-w-5 place-items-center rounded-full bg-destructive px-1.5 text-[10px] font-semibold text-destructive-foreground shadow-[0_0_10px_-2px_color-mix(in_oklab,var(--destructive)_70%,transparent)]">
             {c.unread}
           </span>
         )}

@@ -29,7 +29,7 @@ export function MessengerTopStatusBar({
           <span className="rounded border border-white/10 bg-white/5 px-1 text-[10px]">⌘K</span>
         </button>
         <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[11px] text-muted-foreground backdrop-blur-md">
-          <span className="size-1.5 rounded-full bg-[#22C55E] animate-pulse" />
+          <span className="size-1.5 rounded-full bg-success animate-pulse" />
           {online} online
         </div>
         <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[11px] text-muted-foreground backdrop-blur-md">
