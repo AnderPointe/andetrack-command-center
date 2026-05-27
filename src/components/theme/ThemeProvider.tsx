@@ -1,22 +1,46 @@
 import { useEffect } from "react";
-import { applyTheme, loadTheme, type CompanyTheme } from "@/lib/theme";
+import {
+  applyCompanyTheme,
+  loadActiveTheme,
+  type ThemeRow,
+} from "@/lib/company-theme";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    applyTheme(loadTheme());
-    const onChange = (e: Event) => {
-      const detail = (e as CustomEvent<CompanyTheme>).detail;
-      if (detail) applyTheme(detail);
+    let cancelled = false;
+
+    const apply = (t: ThemeRow | null) => {
+      if (!t || cancelled) return;
+      applyCompanyTheme(t);
     };
-    const onMode = () => applyTheme(loadTheme());
-    window.addEventListener("ar-theme-change", onChange);
-    // Reapply when dark mode toggles (TopBar toggles .dark class)
-    const observer = new MutationObserver(onMode);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    loadActiveTheme().then(apply).catch((e) => console.error("Theme load failed", e));
+
+    const onChange = (e: Event) => {
+      const detail = (e as CustomEvent<ThemeRow>).detail;
+      apply(detail);
+    };
+    window.addEventListener("ar-company-theme-change", onChange);
+
+    // Re-apply for active mode whenever <html> .dark class toggles
+    const observer = new MutationObserver(() => {
+      loadActiveTheme().then(apply).catch(() => {});
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    // Re-apply on auth change (company may differ)
+    const { data: sub } = (window as any).supabaseAuthSub ?? { data: null };
+    void sub;
+
     return () => {
-      window.removeEventListener("ar-theme-change", onChange);
+      cancelled = true;
+      window.removeEventListener("ar-company-theme-change", onChange);
       observer.disconnect();
     };
   }, []);
+
   return <>{children}</>;
 }
