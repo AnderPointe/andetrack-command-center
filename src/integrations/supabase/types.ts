@@ -899,6 +899,44 @@ export type Database = {
           },
         ]
       }
+      company_theme_versions: {
+        Row: {
+          company_id: string
+          created_at: string | null
+          created_by: string | null
+          id: string
+          theme_settings_id: string | null
+          theme_snapshot: Json
+          version_name: string | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          theme_settings_id?: string | null
+          theme_snapshot: Json
+          version_name?: string | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          theme_settings_id?: string | null
+          theme_snapshot?: Json
+          version_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_theme_versions_theme_settings_id_fkey"
+            columns: ["theme_settings_id"]
+            isOneToOne: false
+            referencedRelation: "company_theme_settings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       customer_contract_rates: {
         Row: {
           company_id: string
