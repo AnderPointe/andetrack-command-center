@@ -20,8 +20,8 @@ export function MessengerContactRow({
       className={cn(
         "group flex w-full items-start gap-3 rounded-xl px-2.5 py-2.5 text-left transition-all",
         active
-          ? "border border-[#6D35E8]/40 bg-[#6D35E8]/15 shadow-[inset_0_0_0_1px_rgba(109,53,232,0.25),0_8px_28px_-12px_rgba(109,53,232,0.5)]"
-          : "border border-transparent hover:bg-white/[0.04]",
+          ? "border border-primary/40 bg-primary/15 shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--primary)_25%,transparent),0_8px_28px_-12px_color-mix(in_oklab,var(--primary)_50%,transparent)]"
+          : "border border-transparent hover:bg-foreground/[0.04]",
       )}
     >
       <MessengerAvatar
