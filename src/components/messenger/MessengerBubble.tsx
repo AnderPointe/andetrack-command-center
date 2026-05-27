@@ -176,7 +176,7 @@ export function MessengerBubble({ m }: { m: Message }) {
             <span className="font-semibold text-foreground/80">{m.authorName}</span>
           )}
           <span>{m.time}</span>
-          {m.pinned && <Pin className="size-3 text-primary" />}
+          {m.pinned && <span className="text-primary"><Pin className="size-3" /></span>}
           {m.edited && <span className="italic">edited</span>}
           {m.priority && m.priority !== "normal" && (
             <span
