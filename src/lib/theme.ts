@@ -62,7 +62,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "anderoute-default",
     name: "Anderoute Default",
-    useCase: "Balanced premium dispatch UI",
+    useCase: "Your default teal/orange logistics brand",
     tokens: {
       primary: "#0EA5A5",
       secondary: "#F1F5F9",
@@ -80,7 +80,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "midnight-purple",
     name: "Midnight Purple",
-    useCase: "Premium night-shift dispatch",
+    useCase: "Messenger, dispatch, broker communication",
     tokens: {
       primary: "#6D35E8",
       secondary: "#1A1130",
@@ -98,7 +98,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "freight-blue",
     name: "Freight Blue",
-    useCase: "Carrier & freight ops",
+    useCase: "Enterprise freight customers",
     tokens: {
       primary: "#2563EB",
       secondary: "#EFF6FF",
@@ -116,7 +116,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "safety-orange",
     name: "Safety Orange",
-    useCase: "Hazmat & high-visibility ops",
+    useCase: "Field operations and high-alert dispatch",
     tokens: {
       primary: "#F97316",
       secondary: "#FFF7ED",
@@ -134,7 +134,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "emerald-logistics",
     name: "Emerald Logistics",
-    useCase: "Green / sustainable fleet brands",
+    useCase: "Food delivery, eco brands, courier service",
     tokens: {
       primary: "#10B981",
       secondary: "#ECFDF5",
@@ -152,7 +152,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "crimson-express",
     name: "Crimson Express",
-    useCase: "Urgent delivery & courier",
+    useCase: "Urgent freight and express delivery",
     tokens: {
       primary: "#DC2626",
       secondary: "#FEF2F2",
@@ -170,7 +170,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "executive-black-gold",
     name: "Executive Black & Gold",
-    useCase: "Luxury & white-glove transport",
+    useCase: "Premium customers and executive portals",
     tokens: {
       primary: "#C9A84C",
       secondary: "#1A1A1A",
@@ -188,7 +188,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "clean-light",
     name: "Clean Light",
-    useCase: "Minimal office / customer portal",
+    useCase: "Customer portal and office users",
     tokens: {
       primary: "#0F172A",
       secondary: "#F1F5F9",
@@ -206,7 +206,7 @@ export const THEME_PRESETS: CompanyTheme[] = [
   {
     id: "high-contrast-dispatch",
     name: "High Contrast Dispatch",
-    useCase: "Accessibility & 24/7 control rooms",
+    useCase: "Control rooms and large dispatch monitors",
     tokens: {
       primary: "#FFEB3B",
       secondary: "#000000",
