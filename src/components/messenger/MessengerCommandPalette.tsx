@@ -98,7 +98,7 @@ export function MessengerCommandPalette({
                 <span className="flex-1 truncate text-foreground">{c.name}</span>
                 <span className="text-[11px] text-muted-foreground">{c.role}</span>
                 {c.linkedLoad && (
-                  <span className="rounded border border-[#F97316]/35 bg-[#F97316]/10 px-1.5 py-0.5 text-[10px] text-orange-300">
+                  <span className="rounded border border-orange/35 bg-orange/10 px-1.5 py-0.5 text-[10px] text-orange">
                     {c.linkedLoad.id}
                   </span>
                 )}
