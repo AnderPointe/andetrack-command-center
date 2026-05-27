@@ -53,7 +53,7 @@ export function MessengerChatHeader({
               </span>
             )}
             {active.linkedLoad && (
-              <span className="inline-flex items-center gap-1 rounded-md border border-[#F97316]/35 bg-[#F97316]/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange-300">
+              <span className="inline-flex items-center gap-1 rounded-md border border-orange/35 bg-orange/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-orange">
                 <Truck className="size-3" />
                 {active.linkedLoad.id}
               </span>
