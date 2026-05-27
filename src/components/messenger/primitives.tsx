@@ -108,7 +108,7 @@ export function MessengerAvatar({
       {src ? (
         <img src={src} alt={name} className="h-full w-full object-cover" />
       ) : (
-        <div className="grid h-full w-full place-items-center bg-[#1A1E33] text-[11px] font-semibold text-primary">
+        <div className="grid h-full w-full place-items-center bg-muted text-[11px] font-semibold text-primary">
           {initials}
         </div>
       )}
@@ -154,7 +154,7 @@ export function GlassPanel({
   return (
     <div
       className={cn(
-        "rounded-3xl border border-white/[0.08] bg-[#101326]/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]",
+        "rounded-3xl border border-border/60 bg-card/70 backdrop-blur-xl shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]",
         className,
       )}
     >
