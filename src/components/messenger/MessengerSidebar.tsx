@@ -39,8 +39,8 @@ export function MessengerSidebar({
       </div>
 
       <div className="px-4 pb-3">
-        <div className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2">
-          <Search className="size-4 text-muted-foreground" />
+        <div className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-muted-foreground">
+          <Search className="size-4" />
           <input
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
