@@ -5405,6 +5405,111 @@ export type Database = {
           },
         ]
       }
+      theme_templates: {
+        Row: {
+          accent_color: string
+          border_radius_px: number | null
+          button_style: string | null
+          created_at: string
+          danger_color: string | null
+          dark_background: string | null
+          dark_muted_text: string | null
+          dark_surface: string | null
+          dark_text: string | null
+          description: string | null
+          font_family: string | null
+          glass_blur_px: number | null
+          glass_opacity: number | null
+          id: string
+          industry_type: string | null
+          info_color: string | null
+          is_active: boolean | null
+          is_system_template: boolean | null
+          light_background: string | null
+          light_muted_text: string | null
+          light_surface: string | null
+          light_text: string | null
+          map_style_key: string | null
+          primary_color: string
+          secondary_color: string
+          shadow_strength: string | null
+          success_color: string | null
+          theme_key: string
+          theme_name: string
+          theme_tokens: Json | null
+          updated_at: string
+          warning_color: string | null
+        }
+        Insert: {
+          accent_color: string
+          border_radius_px?: number | null
+          button_style?: string | null
+          created_at?: string
+          danger_color?: string | null
+          dark_background?: string | null
+          dark_muted_text?: string | null
+          dark_surface?: string | null
+          dark_text?: string | null
+          description?: string | null
+          font_family?: string | null
+          glass_blur_px?: number | null
+          glass_opacity?: number | null
+          id?: string
+          industry_type?: string | null
+          info_color?: string | null
+          is_active?: boolean | null
+          is_system_template?: boolean | null
+          light_background?: string | null
+          light_muted_text?: string | null
+          light_surface?: string | null
+          light_text?: string | null
+          map_style_key?: string | null
+          primary_color: string
+          secondary_color: string
+          shadow_strength?: string | null
+          success_color?: string | null
+          theme_key: string
+          theme_name: string
+          theme_tokens?: Json | null
+          updated_at?: string
+          warning_color?: string | null
+        }
+        Update: {
+          accent_color?: string
+          border_radius_px?: number | null
+          button_style?: string | null
+          created_at?: string
+          danger_color?: string | null
+          dark_background?: string | null
+          dark_muted_text?: string | null
+          dark_surface?: string | null
+          dark_text?: string | null
+          description?: string | null
+          font_family?: string | null
+          glass_blur_px?: number | null
+          glass_opacity?: number | null
+          id?: string
+          industry_type?: string | null
+          info_color?: string | null
+          is_active?: boolean | null
+          is_system_template?: boolean | null
+          light_background?: string | null
+          light_muted_text?: string | null
+          light_surface?: string | null
+          light_text?: string | null
+          map_style_key?: string | null
+          primary_color?: string
+          secondary_color?: string
+          shadow_strength?: string | null
+          success_color?: string | null
+          theme_key?: string
+          theme_name?: string
+          theme_tokens?: Json | null
+          updated_at?: string
+          warning_color?: string | null
+        }
+        Relationships: []
+      }
       truck_route_restrictions: {
         Row: {
           company_id: string
