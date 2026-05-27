@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Check,
   Lightbulb,
+  Lock,
   MapPin,
   MessageSquare,
   Moon,
@@ -19,17 +20,21 @@ import {
 import { AppShell } from "@/components/layout/AppShell";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 import {
-  DEFAULT_THEME,
-  THEME_PRESETS,
-  applyTheme,
-  loadTheme,
-  resetTheme,
-  saveTheme,
-  type CompanyTheme,
-  type ThemeMeta,
-  type ThemeTokens,
-} from "@/lib/theme";
+  ANDEROUTE_DEFAULT_KEY,
+  applyCompanyTheme,
+  getCurrentCompanyId,
+  loadActiveTheme,
+  loadTemplates,
+  loadThemePermissions,
+  publishTheme,
+  resetToDefault,
+  saveDraft,
+  uploadThemeAsset,
+  type ShadowStrength,
+  type ThemeRow,
+} from "@/lib/company-theme";
 
 export const Route = createFileRoute("/settings/theme")({
   head: () => ({
@@ -45,7 +50,7 @@ export const Route = createFileRoute("/settings/theme")({
   component: ThemeSettingsPage,
 });
 
-const FONTS: ThemeMeta["font"][] = [
+const FONTS = [
   "Inter",
   "SF Pro Display",
   "Space Grotesk",
@@ -53,66 +58,157 @@ const FONTS: ThemeMeta["font"][] = [
   "Manrope",
   "JetBrains Mono",
 ];
-const GLASSES: ThemeMeta["glass"][] = ["low", "medium", "high"];
+const SHADOWS: ShadowStrength[] = ["none", "soft", "medium", "dramatic"];
 
 function ThemeSettingsPage() {
-  const [theme, setTheme] = useState<CompanyTheme>(DEFAULT_THEME);
-  const [draft, setDraft] = useState<CompanyTheme | null>(null);
+  const [companyId, setCompanyId] = useState<string | null>(null);
+  const [templates, setTemplates] = useState<ThemeRow[]>([]);
+  const [activeTheme, setActiveTheme] = useState<ThemeRow | null>(null);
+  const [draft, setDraft] = useState<ThemeRow | null>(null);
+  const [templateId, setTemplateId] = useState<string | null>(null);
   const [mode, setMode] = useState<"light" | "dark">("dark");
   const [dirty, setDirty] = useState(false);
-  const [savedAt, setSavedAt] = useState<number | null>(null);
-  const [draftAt, setDraftAt] = useState<number | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [perms, setPerms] = useState({
+    canEdit: false,
+    canPublish: false,
+    canPreview: true,
+    role: null as string | null,
+  });
   const previewRef = useRef<HTMLDivElement>(null);
 
+  // Bootstrap data
   useEffect(() => {
-    setTheme(loadTheme());
-    try {
-      const raw = typeof window !== "undefined" ? localStorage.getItem("ar-theme-draft") : null;
-      if (raw) setDraft(JSON.parse(raw));
-    } catch {}
+    (async () => {
+      try {
+        const cid = await getCurrentCompanyId();
+        setCompanyId(cid);
+        const [tpls, active, p] = await Promise.all([
+          loadTemplates(),
+          loadActiveTheme(),
+          loadThemePermissions(cid),
+        ]);
+        setTemplates(tpls);
+        setActiveTheme(active);
+        setDraft(active);
+        setTemplateId((active as any)?.theme_template_id ?? null);
+        setPerms(p);
+      } catch (e: any) {
+        toast.error(`Failed to load themes: ${e.message ?? e}`);
+      }
+    })();
   }, []);
 
-  // Live-apply theme to preview panel only (don't mutate whole app until Publish)
+  // Live-apply draft to preview panel only
   useEffect(() => {
-    if (previewRef.current) applyTheme(theme, previewRef.current);
-  }, [theme, mode]);
+    if (draft && previewRef.current) {
+      applyCompanyTheme(draft, previewRef.current, mode);
+    }
+  }, [draft, mode]);
 
-  function updateTokens(patch: Partial<ThemeTokens>) {
-    setTheme((t) => ({ ...t, tokens: { ...t.tokens, ...patch } }));
-    setDirty(true);
-  }
-  function updateMeta(patch: Partial<ThemeMeta>) {
-    setTheme((t) => ({ ...t, meta: { ...t.meta, ...patch } }));
-    setDirty(true);
-  }
-  function applyPreset(p: CompanyTheme) {
-    setTheme({ ...p });
+  function selectTemplate(t: ThemeRow) {
+    if (!perms.canEdit) {
+      toast.message("Preview only", { description: "You don't have permission to edit themes." });
+    }
+    setDraft({ ...t });
+    setTemplateId((t as any).id ?? null);
     setDirty(true);
   }
 
-  function handleSaveDraft() {
-    if (typeof window === "undefined") return;
-    localStorage.setItem("ar-theme-draft", JSON.stringify(theme));
-    setDraft(theme);
-    setDraftAt(Date.now());
-  }
-  function handlePublish() {
-    saveTheme(theme);
-    applyTheme(theme);
-    setDirty(false);
-    setSavedAt(Date.now());
-  }
-  function handleReset() {
-    resetTheme();
-    setTheme(DEFAULT_THEME);
-    setDirty(false);
+  function patchDraft(patch: Partial<ThemeRow>) {
+    setDraft((d) => (d ? { ...d, ...patch } : d));
+    setDirty(true);
   }
 
-  function uploadLogo(kind: "logoLight" | "logoDark", file?: File | null) {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => updateMeta({ [kind]: reader.result as string });
-    reader.readAsDataURL(file);
+  async function handleSaveDraft() {
+    if (!companyId || !draft) return;
+    if (!perms.canEdit) {
+      toast.error("You don't have permission to edit themes.");
+      return;
+    }
+    setBusy(true);
+    try {
+      const saved = await saveDraft(companyId, draft, templateId);
+      setDraft(saved);
+      setDirty(false);
+      toast.success("Draft saved");
+    } catch (e: any) {
+      toast.error(`Save failed: ${e.message ?? e}`);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handlePublish() {
+    if (!companyId || !draft) return;
+    if (!perms.canPublish) {
+      toast.error("Only owners or admins can publish themes.");
+      return;
+    }
+    setBusy(true);
+    try {
+      const published = await publishTheme(companyId, draft, templateId);
+      setDraft(published);
+      setActiveTheme(published);
+      setDirty(false);
+      applyCompanyTheme(published);
+      toast.success("Theme published across workspace");
+    } catch (e: any) {
+      toast.error(`Publish failed: ${e.message ?? e}`);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleReset() {
+    if (!companyId) return;
+    if (!perms.canPublish) {
+      toast.error("Only owners or admins can reset themes.");
+      return;
+    }
+    setBusy(true);
+    try {
+      const restored = await resetToDefault(companyId);
+      setDraft(restored);
+      setActiveTheme(restored);
+      setTemplateId((restored as any).theme_template_id ?? null);
+      setDirty(false);
+      applyCompanyTheme(restored);
+      toast.success("Reset to Anderoute Default");
+    } catch (e: any) {
+      toast.error(`Reset failed: ${e.message ?? e}`);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleLogoUpload(
+    kind: "logo_light" | "logo_dark",
+    file: File | null,
+  ) {
+    if (!file || !companyId) return;
+    if (!perms.canEdit) {
+      toast.error("You don't have permission to upload assets.");
+      return;
+    }
+    setBusy(true);
+    try {
+      const { url } = await uploadThemeAsset(companyId, kind, file);
+      patchDraft({ [`${kind}_url`]: url } as Partial<ThemeRow>);
+      toast.success("Logo uploaded");
+    } catch (e: any) {
+      toast.error(`Upload failed: ${e.message ?? e}`);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  if (!draft) {
+    return (
+      <AppShell>
+        <div className="p-6 text-sm text-muted-foreground">Loading theme studio…</div>
+      </AppShell>
+    );
   }
 
   return (
@@ -130,15 +226,20 @@ function ThemeSettingsPage() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            <Button variant="ghost" size="sm" className="gap-2" onClick={handleReset}>
-              <RefreshCcw className="size-4" /> Reset
+            <span className="text-[11px] text-muted-foreground inline-flex items-center gap-1">
+              {perms.canPublish ? null : <Lock className="size-3" />}
+              Role: <strong className="text-foreground">{perms.role ?? "viewer"}</strong>
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="gap-2"
+              onClick={handleReset}
+              disabled={busy || !perms.canPublish}
+            >
+              <RefreshCcw className="size-4" /> Reset to Default
             </Button>
-            {draft && (
-              <span className="text-[11px] text-muted-foreground">
-                Draft saved · {draft.name}
-              </span>
-            )}
-            {savedAt && !dirty && (
+            {activeTheme?.is_published && !dirty && (
               <span className="text-[11px] text-success">Published · live across workspace</span>
             )}
           </div>
@@ -152,15 +253,15 @@ function ThemeSettingsPage() {
               <h2 className="text-xs font-semibold tracking-tight inline-flex items-center gap-2">
                 <Palette className="size-3.5 text-primary" /> Theme Gallery
               </h2>
-              <span className="text-[10px] text-muted-foreground">{THEME_PRESETS.length}</span>
+              <span className="text-[10px] text-muted-foreground">{templates.length}</span>
             </div>
             <ul className="space-y-1.5">
-              {THEME_PRESETS.map((p) => {
-                const active = theme.id === p.id;
+              {templates.map((p) => {
+                const active = templateId === (p as any).id;
                 return (
-                  <li key={p.id}>
+                  <li key={(p as any).id}>
                     <button
-                      onClick={() => applyPreset(p)}
+                      onClick={() => selectTemplate(p)}
                       className={cn(
                         "w-full flex items-center gap-3 rounded-2xl border p-2 text-left transition",
                         active
@@ -168,18 +269,15 @@ function ThemeSettingsPage() {
                           : "border-border bg-background/40 hover:border-border hover:bg-card/80",
                       )}
                     >
-                      <div
-                        className="size-10 rounded-xl shrink-0 overflow-hidden grid grid-cols-2"
-                        style={{ border: `1px solid ${p.tokens.border}` }}
-                      >
-                        <span style={{ background: p.tokens.backgroundLight }} />
-                        <span style={{ background: p.tokens.backgroundDark }} />
-                        <span style={{ background: p.tokens.primary }} />
-                        <span style={{ background: p.tokens.accent }} />
+                      <div className="size-10 rounded-xl shrink-0 overflow-hidden grid grid-cols-2 border border-border">
+                        <span style={{ background: p.light_background }} />
+                        <span style={{ background: p.dark_background }} />
+                        <span style={{ background: p.primary_color }} />
+                        <span style={{ background: p.accent_color }} />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <div className="text-xs font-medium truncate">{p.name}</div>
-                        <div className="text-[10px] text-muted-foreground truncate">{p.useCase}</div>
+                        <div className="text-xs font-medium truncate">{p.theme_name}</div>
+                        <div className="text-[10px] text-muted-foreground truncate">{p.description ?? ""}</div>
                       </div>
                       {active && <Check className="size-3.5 text-primary shrink-0" />}
                     </button>
@@ -215,7 +313,7 @@ function ThemeSettingsPage() {
               </div>
             </div>
 
-            <PreviewStage ref={previewRef} theme={theme} mode={mode} />
+            <PreviewStage ref={previewRef} theme={draft} mode={mode} />
           </section>
 
           {/* RIGHT: Customizer */}
@@ -224,27 +322,55 @@ function ThemeSettingsPage() {
               <h2 className="text-xs font-semibold tracking-tight inline-flex items-center gap-2">
                 <Wand2 className="size-3.5 text-primary" /> Customizer
               </h2>
-              <p className="text-[10px] text-muted-foreground mt-0.5">{theme.name}</p>
+              <p className="text-[10px] text-muted-foreground mt-0.5">{draft.theme_name}</p>
             </div>
 
             <div className="space-y-3">
-              <ColorField label="Primary color" value={theme.tokens.primary} onChange={(v) => updateTokens({ primary: v })} />
-              <ColorField label="Secondary color" value={theme.tokens.secondary} onChange={(v) => updateTokens({ secondary: v })} allowAlpha />
-              <ColorField label="Accent color" value={theme.tokens.accent} onChange={(v) => updateTokens({ accent: v })} allowAlpha />
+              <ColorField label="Primary color" value={draft.primary_color} onChange={(v) => patchDraft({ primary_color: v })} />
+              <ColorField label="Secondary color" value={draft.secondary_color} onChange={(v) => patchDraft({ secondary_color: v })} />
+              <ColorField label="Accent color" value={draft.accent_color} onChange={(v) => patchDraft({ accent_color: v })} />
             </div>
 
             <div>
               <div className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-1.5">Backgrounds</div>
               <div className="grid grid-cols-2 gap-2">
-                <ColorField label="Light" value={theme.tokens.backgroundLight} onChange={(v) => updateTokens({ backgroundLight: v })} compact />
-                <ColorField label="Dark" value={theme.tokens.backgroundDark} onChange={(v) => updateTokens({ backgroundDark: v })} compact />
+                <ColorField label="Light" value={draft.light_background} onChange={(v) => patchDraft({ light_background: v })} compact />
+                <ColorField label="Dark" value={draft.dark_background} onChange={(v) => patchDraft({ dark_background: v })} compact />
               </div>
             </div>
 
-            <SegmentRow label="Glass intensity">
-              {GLASSES.map((g) => (
-                <Seg key={g} active={theme.meta.glass === g} onClick={() => updateMeta({ glass: g })}>
-                  {g}
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-1.5">
+                Glass blur · {draft.glass_blur_px}px
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={40}
+                value={draft.glass_blur_px}
+                onChange={(e) => patchDraft({ glass_blur_px: Number(e.target.value) })}
+                className="w-full accent-primary"
+              />
+            </div>
+
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-1.5">
+                Border radius · {draft.border_radius_px}px
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={40}
+                value={draft.border_radius_px}
+                onChange={(e) => patchDraft({ border_radius_px: Number(e.target.value) })}
+                className="w-full accent-primary"
+              />
+            </div>
+
+            <SegmentRow label="Shadow strength">
+              {SHADOWS.map((s) => (
+                <Seg key={s} active={draft.shadow_strength === s} onClick={() => patchDraft({ shadow_strength: s })}>
+                  {s}
                 </Seg>
               ))}
             </SegmentRow>
@@ -252,10 +378,10 @@ function ThemeSettingsPage() {
             <div>
               <div className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground mb-1.5">Font</div>
               <select
-                value={theme.meta.font}
-                onChange={(e) => updateMeta({ font: e.target.value as ThemeMeta["font"] })}
+                value={draft.font_family}
+                onChange={(e) => patchDraft({ font_family: e.target.value })}
                 className="w-full rounded-xl border border-border bg-background/50 px-3 py-2 text-xs outline-none focus:border-primary"
-                style={{ fontFamily: theme.meta.font }}
+                style={{ fontFamily: draft.font_family }}
               >
                 {FONTS.map((f) => (
                   <option key={f} value={f}>{f}</option>
@@ -268,30 +394,44 @@ function ThemeSettingsPage() {
               <div className="grid grid-cols-2 gap-2">
                 <LogoField
                   label="Light"
-                  src={theme.meta.logoLight}
-                  bg={theme.tokens.backgroundLight}
-                  onChange={(f) => uploadLogo("logoLight", f)}
-                  onClear={() => updateMeta({ logoLight: undefined })}
+                  src={draft.logo_light_url ?? undefined}
+                  bg={draft.light_background}
+                  onChange={(f) => handleLogoUpload("logo_light", f)}
+                  onClear={() => patchDraft({ logo_light_url: null })}
                 />
                 <LogoField
                   label="Dark"
-                  src={theme.meta.logoDark}
-                  bg={theme.tokens.backgroundDark}
-                  onChange={(f) => uploadLogo("logoDark", f)}
-                  onClear={() => updateMeta({ logoDark: undefined })}
+                  src={draft.logo_dark_url ?? undefined}
+                  bg={draft.dark_background}
+                  onChange={(f) => handleLogoUpload("logo_dark", f)}
+                  onClear={() => patchDraft({ logo_dark_url: null })}
                 />
               </div>
             </div>
 
             <div className="pt-2 border-t border-border space-y-2">
-              <Button variant="outline" size="sm" className="w-full gap-2" onClick={handleSaveDraft}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full gap-2"
+                onClick={handleSaveDraft}
+                disabled={busy || !perms.canEdit}
+              >
                 <Save className="size-4" /> Save Draft
               </Button>
-              <Button size="sm" className="w-full gap-2" onClick={handlePublish}>
-                <Send className="size-4" /> Publish Theme
+              <Button
+                size="sm"
+                className="w-full gap-2"
+                onClick={handlePublish}
+                disabled={busy || !perms.canPublish}
+              >
+                {perms.canPublish ? <Send className="size-4" /> : <Lock className="size-4" />}
+                Publish Theme
               </Button>
-              {draftAt && (
-                <p className="text-[10px] text-center text-muted-foreground">Draft autosaved locally</p>
+              {!perms.canPublish && (
+                <p className="text-[10px] text-center text-muted-foreground">
+                  Only owners and admins can publish themes.
+                </p>
               )}
             </div>
           </aside>
@@ -312,33 +452,35 @@ function ThemeSettingsPage() {
                 </tr>
               </thead>
               <tbody>
-                {THEME_PRESETS.filter((p) => p.id !== "customer-brand-custom").map((p) => (
-                  <tr
-                    key={p.id}
-                    onClick={() => applyPreset(p)}
-                    className={cn(
-                      "border-b border-border/50 cursor-pointer transition hover:bg-primary/5",
-                      theme.id === p.id && "bg-primary/5",
-                    )}
-                  >
-                    <td className="py-2.5 pr-4">
-                      <div className="flex items-center gap-3">
-                        <div
-                          className="size-8 rounded-lg shrink-0 overflow-hidden grid grid-cols-2"
-                          style={{ border: `1px solid ${p.tokens.border}` }}
-                        >
-                          <span style={{ background: p.tokens.backgroundLight }} />
-                          <span style={{ background: p.tokens.backgroundDark }} />
-                          <span style={{ background: p.tokens.primary }} />
-                          <span style={{ background: p.tokens.accent }} />
-                        </div>
-                        <span className="text-xs font-medium">{p.name}</span>
-                        {theme.id === p.id && <Check className="size-3 text-primary" />}
-                      </div>
-                    </td>
-                    <td className="py-2.5 text-xs text-muted-foreground">{p.useCase}</td>
-                  </tr>
-                ))}
+                {templates
+                  .filter((t) => t.theme_key !== ANDEROUTE_DEFAULT_KEY || true)
+                  .map((p) => {
+                    const id = (p as any).id;
+                    return (
+                      <tr
+                        key={id}
+                        onClick={() => selectTemplate(p)}
+                        className={cn(
+                          "border-b border-border/50 cursor-pointer transition hover:bg-primary/5",
+                          templateId === id && "bg-primary/5",
+                        )}
+                      >
+                        <td className="py-2.5 pr-4">
+                          <div className="flex items-center gap-3">
+                            <div className="size-8 rounded-lg shrink-0 overflow-hidden grid grid-cols-2 border border-border">
+                              <span style={{ background: p.light_background }} />
+                              <span style={{ background: p.dark_background }} />
+                              <span style={{ background: p.primary_color }} />
+                              <span style={{ background: p.accent_color }} />
+                            </div>
+                            <span className="text-xs font-medium">{p.theme_name}</span>
+                            {templateId === id && <Check className="size-3 text-primary" />}
+                          </div>
+                        </td>
+                        <td className="py-2.5 text-xs text-muted-foreground">{p.description ?? ""}</td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>
@@ -354,16 +496,14 @@ function ColorField({
   label,
   value,
   onChange,
-  allowAlpha,
   compact,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
-  allowAlpha?: boolean;
   compact?: boolean;
 }) {
-  const hex = useMemo(() => (value.startsWith("#") ? value : "#888888"), [value]);
+  const hex = useMemo(() => (value?.startsWith("#") ? value : "#888888"), [value]);
   return (
     <label className="block">
       <span className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">{label}</span>
@@ -380,7 +520,6 @@ function ColorField({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             spellCheck={false}
-            placeholder={allowAlpha ? "rgba/#hex" : "#hex"}
             className="flex-1 bg-transparent text-xs outline-none font-mono min-w-0"
           />
         )}
@@ -465,33 +604,23 @@ function LogoField({
   );
 }
 
-/* ---------- Preview Stage with 4 sub-previews ---------- */
-
-const radiusMap = { sharp: "6px", soft: "14px", round: "22px", pill: "32px" } as const;
-const blurMap = { low: "8px", medium: "16px", high: "26px" } as const;
-const shadowMap = {
-  none: "none",
-  soft: "0 4px 14px -4px rgba(0,0,0,0.18)",
-  medium: "0 14px 40px -14px rgba(0,0,0,0.45)",
-  dramatic: "0 28px 70px -20px rgba(0,0,0,0.6)",
-} as const;
+/* ---------- Preview Stage ---------- */
 
 const PreviewStage = ({
   theme,
   mode,
   ref,
 }: {
-  theme: CompanyTheme;
+  theme: ThemeRow;
   mode: "light" | "dark";
   ref: React.RefObject<HTMLDivElement | null>;
 }) => {
-  const t = theme.tokens;
-  const bg = mode === "dark" ? t.backgroundDark : t.backgroundLight;
-  const fg = mode === "dark" ? "#F8FAFC" : "#0F172A";
-  const muted = mode === "dark" ? "rgba(248,250,252,0.6)" : "rgba(15,23,42,0.6)";
-  const radius = radiusMap[theme.meta.radius];
-  const shadow = shadowMap[theme.meta.shadow];
-  const blur = blurMap[theme.meta.glass];
+  const bg = mode === "dark" ? theme.dark_background : theme.light_background;
+  const fg = mode === "dark" ? theme.dark_text : theme.light_text;
+  const muted = mode === "dark" ? theme.dark_muted_text : theme.light_muted_text;
+  const surface = mode === "dark" ? theme.dark_surface : theme.light_surface;
+  const radius = `${theme.border_radius_px}px`;
+  const blur = `${theme.glass_blur_px}px`;
 
   return (
     <div
@@ -501,17 +630,16 @@ const PreviewStage = ({
         background: bg,
         color: fg,
         borderRadius: 24,
-        border: `1px solid ${t.border}`,
-        boxShadow: shadow,
-        fontFamily: theme.meta.font,
+        border: `1px solid ${surface}`,
+        fontFamily: theme.font_family,
         padding: 16,
       }}
     >
       <div className="grid gap-4 sm:grid-cols-2">
-        <CommandCenterPreview theme={theme} fg={fg} muted={muted} radius={radius} blur={blur} />
-        <MessengerPreview theme={theme} mode={mode} fg={fg} muted={muted} radius={radius} blur={blur} />
-        <DriverTilePreview theme={theme} fg={fg} muted={muted} radius={radius} blur={blur} />
-        <MapMarkerPreview theme={theme} mode={mode} fg={fg} muted={muted} radius={radius} blur={blur} />
+        <CommandCenterPreview theme={theme} surface={surface} muted={muted} radius={radius} blur={blur} />
+        <MessengerPreview theme={theme} surface={surface} muted={muted} radius={radius} blur={blur} fg={fg} />
+        <DriverTilePreview theme={theme} surface={surface} muted={muted} radius={radius} blur={blur} />
+        <MapMarkerPreview theme={theme} mode={mode} surface={surface} muted={muted} radius={radius} blur={blur} />
       </div>
     </div>
   );
@@ -521,31 +649,33 @@ function PreviewCard({
   title,
   icon,
   children,
-  t,
+  surface,
   radius,
   blur,
   muted,
+  primary,
 }: {
   title: string;
   icon: React.ReactNode;
   children: React.ReactNode;
-  t: ThemeTokens;
+  surface: string;
   radius: string;
   blur: string;
   muted: string;
+  primary: string;
 }) {
   return (
     <div
       style={{
-        background: t.cardGlass,
-        border: `1px solid ${t.border}`,
+        background: surface,
+        border: `1px solid ${surface}`,
         borderRadius: radius,
         backdropFilter: `blur(${blur})`,
         padding: 14,
       }}
     >
       <div className="flex items-center gap-2 mb-3">
-        <span style={{ color: t.primary }}>{icon}</span>
+        <span style={{ color: primary }}>{icon}</span>
         <span className="text-[10px] uppercase tracking-[0.14em]" style={{ color: muted }}>
           {title}
         </span>
@@ -555,42 +685,27 @@ function PreviewCard({
   );
 }
 
-function CommandCenterPreview({ theme, fg, muted, radius, blur }: any) {
-  const t: ThemeTokens = theme.tokens;
+function CommandCenterPreview({ theme, surface, muted, radius, blur }: any) {
   return (
-    <PreviewCard title="Command Center" icon={<Sparkles className="size-3.5" />} t={t} radius={radius} blur={blur} muted={muted}>
+    <PreviewCard title="Command Center" icon={<Sparkles className="size-3.5" />} surface={surface} radius={radius} blur={blur} muted={muted} primary={theme.primary_color}>
       <div className="grid grid-cols-3 gap-2">
         {[
-          { label: "Drivers", value: "48", tone: t.primary },
-          { label: "On time", value: "94%", tone: t.success },
-          { label: "Delayed", value: "3", tone: t.warning },
+          { label: "Drivers", value: "48", tone: theme.primary_color },
+          { label: "On time", value: "94%", tone: theme.success_color },
+          { label: "Delayed", value: "3", tone: theme.warning_color },
         ].map((s) => (
           <div
             key={s.label}
-            style={{
-              background: t.cardGlass,
-              border: `1px solid ${t.border}`,
-              borderRadius: radius,
-              padding: 10,
-            }}
+            style={{ background: surface, border: `1px solid ${surface}`, borderRadius: radius, padding: 10 }}
           >
-            <div className="text-[9px] uppercase tracking-wider" style={{ color: muted }}>
-              {s.label}
-            </div>
-            <div className="mt-0.5 text-lg font-semibold" style={{ color: s.tone }}>
-              {s.value}
-            </div>
+            <div className="text-[9px] uppercase tracking-wider" style={{ color: muted }}>{s.label}</div>
+            <div className="mt-0.5 text-lg font-semibold" style={{ color: s.tone }}>{s.value}</div>
           </div>
         ))}
       </div>
       <button
         className="mt-3 w-full text-xs font-semibold"
-        style={{
-          background: t.primary,
-          color: "#fff",
-          borderRadius: radius,
-          padding: "8px 12px",
-        }}
+        style={{ background: theme.primary_color, color: "#fff", borderRadius: radius, padding: "8px 12px" }}
       >
         Dispatch all
       </button>
@@ -598,21 +713,15 @@ function CommandCenterPreview({ theme, fg, muted, radius, blur }: any) {
   );
 }
 
-function MessengerPreview({ theme, fg, muted, radius, blur }: any) {
-  const t: ThemeTokens = theme.tokens;
+function MessengerPreview({ theme, surface, muted, radius, blur, fg }: any) {
   return (
-    <PreviewCard title="Messenger" icon={<MessageSquare className="size-3.5" />} t={t} radius={radius} blur={blur} muted={muted}>
+    <PreviewCard title="Messenger" icon={<MessageSquare className="size-3.5" />} surface={surface} radius={radius} blur={blur} muted={muted} primary={theme.primary_color}>
       <div className="space-y-2">
         <div className="flex gap-2 items-end">
-          <div className="size-6 rounded-full grid place-items-center text-[9px] font-bold text-white" style={{ background: t.primary }}>MR</div>
+          <div className="size-6 rounded-full grid place-items-center text-[9px] font-bold text-white" style={{ background: theme.primary_color }}>MR</div>
           <div
             className="text-xs px-3 py-2 max-w-[75%]"
-            style={{
-              background: t.cardGlass,
-              border: `1px solid ${t.border}`,
-              borderRadius: radius,
-              color: fg,
-            }}
+            style={{ background: surface, border: `1px solid ${surface}`, borderRadius: radius, color: fg }}
           >
             ETA 12 min to dropoff.
           </div>
@@ -620,76 +729,52 @@ function MessengerPreview({ theme, fg, muted, radius, blur }: any) {
         <div className="flex gap-2 items-end justify-end">
           <div
             className="text-xs px-3 py-2 max-w-[75%] text-white font-medium"
-            style={{ background: t.primary, borderRadius: radius }}
+            style={{ background: theme.primary_color, borderRadius: radius }}
           >
             Copy that. Customer notified.
           </div>
         </div>
       </div>
-      <div
-        className="mt-3 flex items-center gap-2 px-3 py-1.5 text-[11px]"
-        style={{ background: t.cardGlass, border: `1px solid ${t.border}`, borderRadius: radius, color: muted }}
-      >
-        <span className="flex-1">Type a message…</span>
-        <Send className="size-3.5" style={{ color: t.primary }} />
-      </div>
     </PreviewCard>
   );
 }
 
-function DriverTilePreview({ theme, fg, muted, radius, blur }: any) {
-  const t: ThemeTokens = theme.tokens;
+function DriverTilePreview({ theme, surface, muted, radius, blur }: any) {
   return (
-    <PreviewCard title="Driver tile" icon={<Truck className="size-3.5" />} t={t} radius={radius} blur={blur} muted={muted}>
+    <PreviewCard title="Driver tile" icon={<Truck className="size-3.5" />} surface={surface} radius={radius} blur={blur} muted={muted} primary={theme.primary_color}>
       <div className="flex items-center gap-3">
-        <div className="size-10 rounded-full grid place-items-center text-xs font-bold text-white" style={{ background: t.primary }}>MR</div>
+        <div className="size-10 rounded-full grid place-items-center text-xs font-bold text-white" style={{ background: theme.primary_color }}>MR</div>
         <div className="flex-1 min-w-0">
           <div className="text-sm font-medium truncate">Marcus Reed</div>
           <div className="text-[10px]" style={{ color: muted }}>CDL · LD-1048</div>
         </div>
         <span
           className="text-[9px] px-2 py-0.5 font-semibold"
-          style={{ background: `${t.success}26`, color: t.success, borderRadius: 999 }}
+          style={{ background: `${theme.success_color}26`, color: theme.success_color, borderRadius: 999 }}
         >
           On time
         </span>
       </div>
-      <div className="mt-3 h-1.5 rounded-full overflow-hidden" style={{ background: `${t.primary}22` }}>
-        <div className="h-full" style={{ background: t.primary, width: "68%", borderRadius: 999 }} />
-      </div>
-      <div className="mt-1 flex justify-between text-[10px]" style={{ color: muted }}>
-        <span>Pickup</span><span>68%</span><span>Dropoff</span>
+      <div className="mt-3 h-1.5 rounded-full overflow-hidden" style={{ background: `${theme.primary_color}22` }}>
+        <div className="h-full" style={{ background: theme.primary_color, width: "68%", borderRadius: 999 }} />
       </div>
     </PreviewCard>
   );
 }
 
-function MapMarkerPreview({ theme, mode, fg, muted, radius, blur }: any) {
-  const t: ThemeTokens = theme.tokens;
+function MapMarkerPreview({ theme, mode, surface, muted, radius, blur }: any) {
   const mapBg = mode === "dark"
     ? "linear-gradient(135deg, #0b1220 0%, #131c2e 100%)"
     : "linear-gradient(135deg, #e6edf5 0%, #d4dfee 100%)";
   return (
-    <PreviewCard title="Map marker" icon={<MapPin className="size-3.5" />} t={t} radius={radius} blur={blur} muted={muted}>
+    <PreviewCard title="Map marker" icon={<MapPin className="size-3.5" />} surface={surface} radius={radius} blur={blur} muted={muted} primary={theme.primary_color}>
       <div
         className="relative h-32 overflow-hidden"
-        style={{ background: mapBg, borderRadius: radius, border: `1px solid ${t.border}` }}
+        style={{ background: mapBg, borderRadius: radius, border: `1px solid ${surface}` }}
       >
-        {/* fake roads */}
-        <svg className="absolute inset-0 size-full" viewBox="0 0 200 130" preserveAspectRatio="none">
-          <path d="M0 90 Q60 70 100 80 T200 60" stroke={t.border} strokeWidth="6" fill="none" />
-          <path d="M20 0 L40 130" stroke={t.border} strokeWidth="3" fill="none" />
-          <path d="M140 0 L160 130" stroke={t.border} strokeWidth="3" fill="none" />
-        </svg>
-        {/* primary marker */}
-        <Marker x="35%" y="55%" color={t.primary} label="MR" pulse />
-        <Marker x="68%" y="38%" color={t.success} label="DR" />
-        <Marker x="20%" y="78%" color={t.warning} label="LD" />
-      </div>
-      <div className="mt-2 flex items-center gap-3 text-[10px]" style={{ color: muted }}>
-        <Legend dot={t.primary} label="Driver" />
-        <Legend dot={t.success} label="On time" />
-        <Legend dot={t.warning} label="Delayed" />
+        <Marker x="35%" y="55%" color={theme.primary_color} label="MR" pulse />
+        <Marker x="68%" y="38%" color={theme.success_color} label="DR" />
+        <Marker x="20%" y="78%" color={theme.warning_color} label="LD" />
       </div>
     </PreviewCard>
   );
@@ -698,12 +783,7 @@ function MapMarkerPreview({ theme, mode, fg, muted, radius, blur }: any) {
 function Marker({ x, y, color, label, pulse }: { x: string; y: string; color: string; label: string; pulse?: boolean }) {
   return (
     <div className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: x, top: y }}>
-      {pulse && (
-        <span
-          className="absolute inset-0 rounded-full animate-ping"
-          style={{ background: color, opacity: 0.4 }}
-        />
-      )}
+      {pulse && <span className="absolute inset-0 rounded-full animate-ping" style={{ background: color, opacity: 0.4 }} />}
       <div
         className="relative size-7 rounded-full grid place-items-center text-[9px] font-bold text-white ring-2 ring-white/30"
         style={{ background: color, boxShadow: `0 4px 12px ${color}66` }}
@@ -711,14 +791,5 @@ function Marker({ x, y, color, label, pulse }: { x: string; y: string; color: st
         {label}
       </div>
     </div>
-  );
-}
-
-function Legend({ dot, label }: { dot: string; label: string }) {
-  return (
-    <span className="inline-flex items-center gap-1">
-      <span className="size-2 rounded-full" style={{ background: dot }} />
-      {label}
-    </span>
   );
 }
