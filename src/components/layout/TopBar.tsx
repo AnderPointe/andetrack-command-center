@@ -107,11 +107,14 @@ export function TopBar() {
 
         <div className="h-6 w-px bg-border mx-1 hidden md:block" />
 
-        <PremiumToggle
-          checked={dark}
-          onChange={setDark}
-          aria-label="Toggle dark mode"
-        />
+        <div ref={toggleWrapRef} className="contents">
+          <PremiumToggle
+            checked={dark}
+            onChange={handleToggle}
+            aria-label="Toggle dark mode"
+          />
+        </div>
+
 
 
         <button className="size-9 rounded-md grid place-items-center hover:bg-secondary relative transition" aria-label="Alerts">
