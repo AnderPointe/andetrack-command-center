@@ -107,13 +107,14 @@ export function TopBar() {
 
         <div className="h-6 w-px bg-border mx-1 hidden md:block" />
 
-        <div ref={toggleWrapRef} className="contents">
+        <div ref={toggleWrapRef} className="inline-flex items-center">
           <PremiumToggle
             checked={dark}
             onChange={handleToggle}
             aria-label="Toggle dark mode"
           />
         </div>
+
 
 
 
