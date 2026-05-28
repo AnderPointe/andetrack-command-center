@@ -327,7 +327,7 @@ export async function loadThemePermissions(
   }
   const { data: roles } = await supabase
     .from("user_roles")
-    .select("role")
+    .select("role_id, roles(role_key)")
     .eq("user_id", auth.user.id)
     .eq("company_id", companyId);
   const roleList = (roles ?? []).map((r) => r.role as string);
