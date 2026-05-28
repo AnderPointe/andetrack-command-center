@@ -14,6 +14,38 @@ export type Database = {
   }
   public: {
     Tables: {
+      _legacy_user_roles: {
+        Row: {
+          company_id: string
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_roles_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       accessorial_charges: {
         Row: {
           code: string
@@ -343,6 +375,59 @@ export type Database = {
           user_id?: string | null
         }
         Relationships: []
+      }
+      app_users: {
+        Row: {
+          auth_user_id: string | null
+          avatar_url: string | null
+          company_id: string
+          created_at: string | null
+          email: string
+          full_name: string
+          id: string
+          last_login_at: string | null
+          phone: string | null
+          status: string | null
+          updated_at: string | null
+          user_type: string
+        }
+        Insert: {
+          auth_user_id?: string | null
+          avatar_url?: string | null
+          company_id: string
+          created_at?: string | null
+          email: string
+          full_name: string
+          id?: string
+          last_login_at?: string | null
+          phone?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_type?: string
+        }
+        Update: {
+          auth_user_id?: string | null
+          avatar_url?: string | null
+          company_id?: string
+          created_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          last_login_at?: string | null
+          phone?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "app_users_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       audit_log_events: {
         Row: {
@@ -5791,6 +5876,85 @@ export type Database = {
           },
         ]
       }
+      role_permissions: {
+        Row: {
+          can_create: boolean | null
+          can_delete: boolean | null
+          can_edit: boolean | null
+          can_view: boolean | null
+          created_at: string | null
+          id: string
+          permission_key: string
+          role_id: string
+        }
+        Insert: {
+          can_create?: boolean | null
+          can_delete?: boolean | null
+          can_edit?: boolean | null
+          can_view?: boolean | null
+          created_at?: string | null
+          id?: string
+          permission_key: string
+          role_id: string
+        }
+        Update: {
+          can_create?: boolean | null
+          can_delete?: boolean | null
+          can_edit?: boolean | null
+          can_view?: boolean | null
+          created_at?: string | null
+          id?: string
+          permission_key?: string
+          role_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "role_permissions_role_id_fkey"
+            columns: ["role_id"]
+            isOneToOne: false
+            referencedRelation: "roles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      roles: {
+        Row: {
+          company_id: string | null
+          created_at: string | null
+          description: string | null
+          id: string
+          is_system_role: boolean | null
+          role_key: string
+          role_name: string
+        }
+        Insert: {
+          company_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_system_role?: boolean | null
+          role_key: string
+          role_name: string
+        }
+        Update: {
+          company_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          is_system_role?: boolean | null
+          role_key?: string
+          role_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "roles_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       route_intelligence_insights: {
         Row: {
           company_id: string
@@ -6835,31 +6999,45 @@ export type Database = {
       user_roles: {
         Row: {
           company_id: string
-          created_at: string
+          created_at: string | null
           id: string
-          role: Database["public"]["Enums"]["app_role"]
+          role_id: string
           user_id: string
         }
         Insert: {
           company_id: string
-          created_at?: string
+          created_at?: string | null
           id?: string
-          role: Database["public"]["Enums"]["app_role"]
+          role_id: string
           user_id: string
         }
         Update: {
           company_id?: string
-          created_at?: string
+          created_at?: string | null
           id?: string
-          role?: Database["public"]["Enums"]["app_role"]
+          role_id?: string
           user_id?: string
         }
         Relationships: [
           {
-            foreignKeyName: "user_roles_company_id_fkey"
+            foreignKeyName: "user_roles_company_id_fkey1"
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_roles_role_id_fkey"
+            columns: ["role_id"]
+            isOneToOne: false
+            referencedRelation: "roles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_roles_user_id_fkey1"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "app_users"
             referencedColumns: ["id"]
           },
         ]
