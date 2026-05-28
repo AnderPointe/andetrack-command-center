@@ -105,7 +105,48 @@ const actionIconMap: Record<string, LucideIcon> = {
 
 function CommandCenter() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [assignOpen, setAssignOpen] = useState(false);
+  const [callOpen, setCallOpen] = useState(false);
+  const navigate = useNavigate();
   const active = tiles.find((t) => t.id === activeId) ?? null;
+
+  const handleAction = (action: string) => {
+    switch (action) {
+      case "Assign Driver":
+      case "Reassign Load":
+      case "Assign Courier":
+      case "Assign Truck":
+      case "Assign Vehicle":
+        setAssignOpen(true);
+        break;
+      case "Call Driver":
+        setCallOpen(true);
+        break;
+      case "Message Driver":
+      case "Message Customer":
+      case "Message Team":
+        navigate({ to: "/dashboard/messages" });
+        break;
+      case "View on Map":
+      case "View Map Layer":
+        navigate({ to: "/map" });
+        break;
+      case "View Profile":
+      case "View Route History":
+        navigate({ to: "/drivers" });
+        break;
+      case "View Vehicle":
+        navigate({ to: "/vehicles" });
+        break;
+      case "View Load":
+      case "View Order":
+        navigate({ to: "/loads" });
+        break;
+      default:
+        // For unmapped actions, just close the drawer
+        break;
+    }
+  };
 
   return (
     <AppShell>
@@ -176,7 +217,9 @@ function CommandCenter() {
         </div>
       </div>
 
-      <DetailDrawer tile={active} onClose={() => setActiveId(null)} />
+      <DetailDrawer tile={active} onClose={() => setActiveId(null)} onAction={handleAction} />
+      <AssignLoadDialog open={assignOpen} onOpenChange={setAssignOpen} />
+      <CallDriverDialog open={callOpen} onOpenChange={setCallOpen} />
     </AppShell>
   );
 }
