@@ -23,6 +23,7 @@ import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DriverIndexRouteImport } from './routes/driver.index'
 import { Route as SettingsThemeRouteImport } from './routes/settings.theme'
+import { Route as SettingsPermissionsRouteImport } from './routes/settings.permissions'
 import { Route as DriversDriverIdRouteImport } from './routes/drivers.$driverId'
 import { Route as DriverNavigationRouteImport } from './routes/driver.navigation'
 import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messages'
@@ -97,6 +98,11 @@ const SettingsThemeRoute = SettingsThemeRouteImport.update({
   path: '/theme',
   getParentRoute: () => SettingsRoute,
 } as any)
+const SettingsPermissionsRoute = SettingsPermissionsRouteImport.update({
+  id: '/permissions',
+  path: '/permissions',
+  getParentRoute: () => SettingsRoute,
+} as any)
 const DriversDriverIdRoute = DriversDriverIdRouteImport.update({
   id: '/$driverId',
   path: '/$driverId',
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
+  '/settings/permissions': typeof SettingsPermissionsRoute
   '/settings/theme': typeof SettingsThemeRoute
   '/driver/': typeof DriverIndexRoute
 }
@@ -148,6 +155,7 @@ export interface FileRoutesByTo {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
+  '/settings/permissions': typeof SettingsPermissionsRoute
   '/settings/theme': typeof SettingsThemeRoute
   '/driver': typeof DriverIndexRoute
 }
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
   '/drivers/$driverId': typeof DriversDriverIdRoute
+  '/settings/permissions': typeof SettingsPermissionsRoute
   '/settings/theme': typeof SettingsThemeRoute
   '/driver/': typeof DriverIndexRoute
 }
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
+    | '/settings/permissions'
     | '/settings/theme'
     | '/driver/'
   fileRoutesByTo: FileRoutesByTo
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
+    | '/settings/permissions'
     | '/settings/theme'
     | '/driver'
   id:
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
     | '/dashboard/messages'
     | '/driver/navigation'
     | '/drivers/$driverId'
+    | '/settings/permissions'
     | '/settings/theme'
     | '/driver/'
   fileRoutesById: FileRoutesById
@@ -349,6 +361,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsThemeRouteImport
       parentRoute: typeof SettingsRoute
     }
+    '/settings/permissions': {
+      id: '/settings/permissions'
+      path: '/permissions'
+      fullPath: '/settings/permissions'
+      preLoaderRoute: typeof SettingsPermissionsRouteImport
+      parentRoute: typeof SettingsRoute
+    }
     '/drivers/$driverId': {
       id: '/drivers/$driverId'
       path: '/$driverId'
@@ -385,10 +404,12 @@ const DriversRouteWithChildren =
   DriversRoute._addFileChildren(DriversRouteChildren)
 
 interface SettingsRouteChildren {
+  SettingsPermissionsRoute: typeof SettingsPermissionsRoute
   SettingsThemeRoute: typeof SettingsThemeRoute
 }
 
 const SettingsRouteChildren: SettingsRouteChildren = {
+  SettingsPermissionsRoute: SettingsPermissionsRoute,
   SettingsThemeRoute: SettingsThemeRoute,
 }
 

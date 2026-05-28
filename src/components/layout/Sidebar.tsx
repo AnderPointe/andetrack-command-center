@@ -17,6 +17,7 @@ import {
   Activity,
   MessageCircle,
   Palette,
+  ShieldCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { alerts, drivers } from "@/data/mock";
