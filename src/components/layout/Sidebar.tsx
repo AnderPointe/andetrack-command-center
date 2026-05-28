@@ -47,6 +47,7 @@ const nav = [
   ]},
   { group: "System", items: [
     { to: "/settings/theme", label: "Theme Studio", icon: Palette },
+    { to: "/settings/permissions", label: "Roles & Permissions", icon: ShieldCheck },
     { to: "/settings", label: "Settings", icon: Settings },
   ]},
 ] as const;
