@@ -7399,6 +7399,10 @@ export type Database = {
       }
     }
     Functions: {
+      _default_role_keys_for_user_type: {
+        Args: { _user_type: string }
+        Returns: string[]
+      }
       _postgis_deprecate: {
         Args: { newname: string; oldname: string; version: string }
         Returns: undefined
