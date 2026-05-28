@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { AppShell } from "@/components/layout/AppShell";
 import { drivers, loads, alerts } from "@/data/mock";
@@ -11,6 +11,8 @@ import {
   PhoneCall, AlertOctagon, ClipboardList, Plus, Edit3, Layers,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { AssignLoadDialog } from "@/components/dispatch/AssignLoadDialog";
+import { CallDriverDialog } from "@/components/dispatch/CallDriverDialog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
