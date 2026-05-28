@@ -238,6 +238,64 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Smooth color transitions while toggling light/dark mode.
+     Scoped via .theme-transitioning so it only runs during the switch,
+     avoiding interference with hover/focus animations elsewhere. */
+  html.theme-transitioning,
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition:
+      background-color 360ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 360ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 360ms cubic-bezier(0.4, 0, 0.2, 1),
+      fill 360ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke 360ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 360ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.theme-transitioning,
+    html.theme-transitioning *,
+    html.theme-transitioning *::before,
+    html.theme-transitioning *::after {
+      transition: none !important;
+    }
+  }
+
+  /* Circular reveal using the View Transitions API when supported. */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-old(root) { z-index: 0; }
+  ::view-transition-new(root) { z-index: 1; }
+  .dark::view-transition-old(root) { z-index: 1; }
+  .dark::view-transition-new(root) { z-index: 0; }
+
+  @keyframes theme-reveal-in {
+    from { clip-path: circle(0% at var(--theme-x, 50%) var(--theme-y, 50%)); }
+    to   { clip-path: circle(var(--theme-r, 150%) at var(--theme-x, 50%) var(--theme-y, 50%)); }
+  }
+  @keyframes theme-reveal-out {
+    from { clip-path: circle(var(--theme-r, 150%) at var(--theme-x, 50%) var(--theme-y, 50%)); }
+    to   { clip-path: circle(0% at var(--theme-x, 50%) var(--theme-y, 50%)); }
+  }
+  html.theme-view-transition::view-transition-new(root) {
+    animation: theme-reveal-in 520ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  html.theme-view-transition.dark::view-transition-old(root) {
+    animation: theme-reveal-out 520ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.theme-view-transition::view-transition-new(root),
+    html.theme-view-transition::view-transition-old(root) {
+      animation: none;
+    }
+  }
+
   /* Realistic map surface — subtle grid + soft city glow */
   .map-grid {
     background-color: var(--map-land);
