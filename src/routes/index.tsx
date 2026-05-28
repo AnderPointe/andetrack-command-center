@@ -257,7 +257,7 @@ function CommandTile({ tile, active, onClick }: { tile: Tile; active: boolean; o
 
 /* ─── Drawer ─────────────────────────────────────────── */
 
-function DetailDrawer({ tile, onClose }: { tile: Tile | null; onClose: () => void }) {
+function DetailDrawer({ tile, onClose, onAction }: { tile: Tile | null; onClose: () => void; onAction: (action: string) => void }) {
   const selectedTile = tile;
   const closeDetailDrawer = onClose;
   return (
@@ -297,15 +297,21 @@ function DetailDrawer({ tile, onClose }: { tile: Tile | null; onClose: () => voi
 
           <div className="mt-6 space-y-3">
             <p className="text-sm font-bold text-slate-950 dark:text-white">Quick Actions</p>
-            {selectedTile.actions.map((action) => (
-              <button
-                key={action}
-                className="w-full rounded-2xl bg-slate-950 px-4 py-3 text-left text-sm font-semibold text-white transition hover:bg-teal-600 dark:bg-white dark:text-slate-950 dark:hover:bg-teal-500 dark:hover:text-white"
-              >
-                {action}
-              </button>
-            ))}
+            {selectedTile.actions.map((action) => {
+              const Icon = actionIconMap[action];
+              return (
+                <button
+                  key={action}
+                  onClick={() => onAction(action)}
+                  className="w-full rounded-2xl bg-slate-950 px-4 py-3 text-left text-sm font-semibold text-white transition hover:bg-teal-600 dark:bg-white dark:text-slate-950 dark:hover:bg-teal-500 dark:hover:text-white flex items-center gap-2.5"
+                >
+                  {Icon && <Icon className="size-4" />}
+                  {action}
+                </button>
+              );
+            })}
           </div>
+
 
           <div className="mt-6">
             <p className="text-sm font-bold text-slate-950 dark:text-white">Recent Activity</p>
