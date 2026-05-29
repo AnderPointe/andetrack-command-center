@@ -76,9 +76,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Anderoute — Fleet & Dispatch Command Center" },
       { name: "description", content: "Real-time logistics platform for dispatch teams managing CDL and Non-CDL drivers, live shipments, and fleet operations." },
       { property: "og:title", content: "Anderoute — Fleet & Dispatch Command Center" },
-      { property: "og:description", content: "Modern logistics command center for dispatching drivers, tracking shipments, and managing fleet operations in real time." },
+      { property: "og:description", content: "Real-time logistics platform for dispatch teams managing CDL and Non-CDL drivers, live shipments, and fleet operations." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Anderoute — Fleet & Dispatch Command Center" },
+      { name: "twitter:description", content: "Real-time logistics platform for dispatch teams managing CDL and Non-CDL drivers, live shipments, and fleet operations." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3f8398f7-2933-46b9-b86a-d95b7a823272/id-preview-dbb8858c--5d0331aa-f2d4-4f12-8a68-3df89c3c9c2c.lovable.app-1780054940485.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3f8398f7-2933-46b9-b86a-d95b7a823272/id-preview-dbb8858c--5d0331aa-f2d4-4f12-8a68-3df89c3c9c2c.lovable.app-1780054940485.png" },
     ],
     links: [
       {
