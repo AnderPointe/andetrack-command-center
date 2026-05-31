@@ -54,7 +54,9 @@ function loadGoogleMaps(): Promise<void> {
   if (window.google?.maps) return Promise.resolve();
   if (scriptPromise) return scriptPromise;
 
-  const key = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY;
+  const key =
+    import.meta.env.VITE_GOOGLE_MAPS_BROWSER_KEY ||
+    "AIzaSyBI_EnlrbDkG9W29rOkYqBd-5q4SoJQUJo";
   const channel = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_TRACKING_ID;
   scriptPromise = new Promise<void>((resolve, reject) => {
     window.__anderouteInitMap = () => resolve();
