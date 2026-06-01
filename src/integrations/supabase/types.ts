@@ -694,6 +694,146 @@ export type Database = {
         }
         Relationships: []
       }
+      board_trust_report_items: {
+        Row: {
+          company_id: string
+          completed_at: string | null
+          created_at: string
+          description: string | null
+          due_at: string | null
+          id: string
+          item_type: string
+          metadata: Json
+          owner_id: string | null
+          priority: string
+          report_id: string
+          status: string
+          title: string
+        }
+        Insert: {
+          company_id: string
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_at?: string | null
+          id?: string
+          item_type: string
+          metadata?: Json
+          owner_id?: string | null
+          priority?: string
+          report_id: string
+          status?: string
+          title: string
+        }
+        Update: {
+          company_id?: string
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_at?: string | null
+          id?: string
+          item_type?: string
+          metadata?: Json
+          owner_id?: string | null
+          priority?: string
+          report_id?: string
+          status?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "board_trust_report_items_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "board_trust_report_items_report_id_fkey"
+            columns: ["report_id"]
+            isOneToOne: false
+            referencedRelation: "board_trust_reports"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      board_trust_reports: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          company_id: string
+          created_at: string
+          created_by: string | null
+          customer_trust_score: number
+          enterprise_trust_score: number
+          executive_summary: string | null
+          governance_summary: string | null
+          id: string
+          marketplace_trust_score: number
+          partner_trust_score: number
+          recommended_board_actions: Json
+          report_period: string
+          report_title: string
+          revenue_summary: string | null
+          revenue_trust_score: number
+          risk_summary: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          company_id: string
+          created_at?: string
+          created_by?: string | null
+          customer_trust_score?: number
+          enterprise_trust_score?: number
+          executive_summary?: string | null
+          governance_summary?: string | null
+          id?: string
+          marketplace_trust_score?: number
+          partner_trust_score?: number
+          recommended_board_actions?: Json
+          report_period: string
+          report_title: string
+          revenue_summary?: string | null
+          revenue_trust_score?: number
+          risk_summary?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          company_id?: string
+          created_at?: string
+          created_by?: string | null
+          customer_trust_score?: number
+          enterprise_trust_score?: number
+          executive_summary?: string | null
+          governance_summary?: string | null
+          id?: string
+          marketplace_trust_score?: number
+          partner_trust_score?: number
+          recommended_board_actions?: Json
+          report_period?: string
+          report_title?: string
+          revenue_summary?: string | null
+          revenue_trust_score?: number
+          risk_summary?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "board_trust_reports_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       companies: {
         Row: {
           billing_email: string | null
@@ -1322,6 +1462,86 @@ export type Database = {
             columns: ["customer_id"]
             isOneToOne: false
             referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      customer_trust_profiles: {
+        Row: {
+          account_owner_id: string | null
+          churn_risk_score: number
+          communication_confidence_score: number
+          company_id: string
+          created_at: string
+          customer_id: string | null
+          customer_name: string
+          executive_summary: string | null
+          expansion_confidence_score: number
+          growth_summary: string | null
+          id: string
+          last_service_review_at: string | null
+          maturity_level: string
+          metadata: Json
+          next_review_due_at: string | null
+          recommended_action: string | null
+          retention_confidence_score: number
+          risk_summary: string | null
+          sla_confidence_score: number
+          trust_score: number
+          updated_at: string
+        }
+        Insert: {
+          account_owner_id?: string | null
+          churn_risk_score?: number
+          communication_confidence_score?: number
+          company_id: string
+          created_at?: string
+          customer_id?: string | null
+          customer_name: string
+          executive_summary?: string | null
+          expansion_confidence_score?: number
+          growth_summary?: string | null
+          id?: string
+          last_service_review_at?: string | null
+          maturity_level?: string
+          metadata?: Json
+          next_review_due_at?: string | null
+          recommended_action?: string | null
+          retention_confidence_score?: number
+          risk_summary?: string | null
+          sla_confidence_score?: number
+          trust_score?: number
+          updated_at?: string
+        }
+        Update: {
+          account_owner_id?: string | null
+          churn_risk_score?: number
+          communication_confidence_score?: number
+          company_id?: string
+          created_at?: string
+          customer_id?: string | null
+          customer_name?: string
+          executive_summary?: string | null
+          expansion_confidence_score?: number
+          growth_summary?: string | null
+          id?: string
+          last_service_review_at?: string | null
+          maturity_level?: string
+          metadata?: Json
+          next_review_due_at?: string | null
+          recommended_action?: string | null
+          retention_confidence_score?: number
+          risk_summary?: string | null
+          sla_confidence_score?: number
+          trust_score?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "customer_trust_profiles_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
             referencedColumns: ["id"]
           },
         ]
@@ -3532,6 +3752,140 @@ export type Database = {
           },
         ]
       }
+      marketplace_governance_reviews: {
+        Row: {
+          company_id: string
+          compliance_score_at_review: number
+          created_at: string
+          decision: string
+          decision_reason: string | null
+          id: string
+          metadata: Json
+          next_review_due_at: string | null
+          partner_trust_profile_id: string | null
+          required_actions: Json
+          review_status: string
+          review_type: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          safety_score_at_review: number
+          trust_score_at_review: number
+        }
+        Insert: {
+          company_id: string
+          compliance_score_at_review?: number
+          created_at?: string
+          decision?: string
+          decision_reason?: string | null
+          id?: string
+          metadata?: Json
+          next_review_due_at?: string | null
+          partner_trust_profile_id?: string | null
+          required_actions?: Json
+          review_status?: string
+          review_type?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          safety_score_at_review?: number
+          trust_score_at_review?: number
+        }
+        Update: {
+          company_id?: string
+          compliance_score_at_review?: number
+          created_at?: string
+          decision?: string
+          decision_reason?: string | null
+          id?: string
+          metadata?: Json
+          next_review_due_at?: string | null
+          partner_trust_profile_id?: string | null
+          required_actions?: Json
+          review_status?: string
+          review_type?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          safety_score_at_review?: number
+          trust_score_at_review?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marketplace_governance_reviews_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marketplace_governance_reviews_partner_trust_profile_id_fkey"
+            columns: ["partner_trust_profile_id"]
+            isOneToOne: false
+            referencedRelation: "partner_trust_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      marketplace_trust_policies: {
+        Row: {
+          approval_required: boolean
+          auto_suspend_threshold: number
+          company_id: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          is_active: boolean
+          metadata: Json
+          minimum_compliance_score: number
+          minimum_safety_score: number
+          minimum_trust_score: number
+          policy_name: string
+          policy_type: string
+          updated_at: string
+        }
+        Insert: {
+          approval_required?: boolean
+          auto_suspend_threshold?: number
+          company_id: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          metadata?: Json
+          minimum_compliance_score?: number
+          minimum_safety_score?: number
+          minimum_trust_score?: number
+          policy_name: string
+          policy_type?: string
+          updated_at?: string
+        }
+        Update: {
+          approval_required?: boolean
+          auto_suspend_threshold?: number
+          company_id?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          metadata?: Json
+          minimum_compliance_score?: number
+          minimum_safety_score?: number
+          minimum_trust_score?: number
+          policy_name?: string
+          policy_type?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marketplace_trust_policies_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       message_read_receipts: {
         Row: {
           contact_id: string | null
@@ -5202,6 +5556,86 @@ export type Database = {
           },
         ]
       }
+      partner_trust_profiles: {
+        Row: {
+          approval_status: string
+          communication_score: number
+          company_id: string
+          compliance_score: number
+          created_at: string
+          executive_summary: string | null
+          financial_score: number
+          governance_status: string
+          id: string
+          last_review_at: string | null
+          maturity_level: string
+          metadata: Json
+          next_review_due_at: string | null
+          partner_name: string
+          partner_type: string
+          recommended_action: string | null
+          reliability_score: number
+          risk_summary: string | null
+          safety_score: number
+          trust_score: number
+          updated_at: string
+        }
+        Insert: {
+          approval_status?: string
+          communication_score?: number
+          company_id: string
+          compliance_score?: number
+          created_at?: string
+          executive_summary?: string | null
+          financial_score?: number
+          governance_status?: string
+          id?: string
+          last_review_at?: string | null
+          maturity_level?: string
+          metadata?: Json
+          next_review_due_at?: string | null
+          partner_name: string
+          partner_type?: string
+          recommended_action?: string | null
+          reliability_score?: number
+          risk_summary?: string | null
+          safety_score?: number
+          trust_score?: number
+          updated_at?: string
+        }
+        Update: {
+          approval_status?: string
+          communication_score?: number
+          company_id?: string
+          compliance_score?: number
+          created_at?: string
+          executive_summary?: string | null
+          financial_score?: number
+          governance_status?: string
+          id?: string
+          last_review_at?: string | null
+          maturity_level?: string
+          metadata?: Json
+          next_review_due_at?: string | null
+          partner_name?: string
+          partner_type?: string
+          recommended_action?: string | null
+          reliability_score?: number
+          risk_summary?: string | null
+          safety_score?: number
+          trust_score?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partner_trust_profiles_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       payment_methods: {
         Row: {
           brand: string | null
@@ -5872,6 +6306,90 @@ export type Database = {
             columns: ["payment_id"]
             isOneToOne: false
             referencedRelation: "payments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      revenue_trust_intelligence: {
+        Row: {
+          account_name: string
+          at_risk_revenue: number
+          churn_risk_score: number
+          company_id: string
+          created_at: string
+          current_revenue: number
+          customer_trust_profile_id: string | null
+          expansion_confidence_score: number
+          expansion_opportunity: number
+          id: string
+          metadata: Json
+          next_action_due_at: string | null
+          owner_id: string | null
+          projected_revenue: number
+          recommended_action: string | null
+          revenue_risk_reason: string | null
+          revenue_status: string
+          service_confidence_score: number
+          trust_score: number
+          updated_at: string
+        }
+        Insert: {
+          account_name: string
+          at_risk_revenue?: number
+          churn_risk_score?: number
+          company_id: string
+          created_at?: string
+          current_revenue?: number
+          customer_trust_profile_id?: string | null
+          expansion_confidence_score?: number
+          expansion_opportunity?: number
+          id?: string
+          metadata?: Json
+          next_action_due_at?: string | null
+          owner_id?: string | null
+          projected_revenue?: number
+          recommended_action?: string | null
+          revenue_risk_reason?: string | null
+          revenue_status?: string
+          service_confidence_score?: number
+          trust_score?: number
+          updated_at?: string
+        }
+        Update: {
+          account_name?: string
+          at_risk_revenue?: number
+          churn_risk_score?: number
+          company_id?: string
+          created_at?: string
+          current_revenue?: number
+          customer_trust_profile_id?: string | null
+          expansion_confidence_score?: number
+          expansion_opportunity?: number
+          id?: string
+          metadata?: Json
+          next_action_due_at?: string | null
+          owner_id?: string | null
+          projected_revenue?: number
+          recommended_action?: string | null
+          revenue_risk_reason?: string | null
+          revenue_status?: string
+          service_confidence_score?: number
+          trust_score?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "revenue_trust_intelligence_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "revenue_trust_intelligence_customer_trust_profile_id_fkey"
+            columns: ["customer_trust_profile_id"]
+            isOneToOne: false
+            referencedRelation: "customer_trust_profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -6995,6 +7513,281 @@ export type Database = {
           weight_restriction_detected?: boolean
         }
         Relationships: []
+      }
+      trust_automation_runs: {
+        Row: {
+          automation_name: string
+          automation_type: string
+          company_id: string
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          error_message: string | null
+          id: string
+          metadata: Json
+          records_created: number
+          records_scanned: number
+          records_updated: number
+          run_status: string
+          started_at: string | null
+          summary: string | null
+        }
+        Insert: {
+          automation_name: string
+          automation_type: string
+          company_id: string
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          metadata?: Json
+          records_created?: number
+          records_scanned?: number
+          records_updated?: number
+          run_status?: string
+          started_at?: string | null
+          summary?: string | null
+        }
+        Update: {
+          automation_name?: string
+          automation_type?: string
+          company_id?: string
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          metadata?: Json
+          records_created?: number
+          records_scanned?: number
+          records_updated?: number
+          run_status?: string
+          started_at?: string | null
+          summary?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trust_automation_runs_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trust_maturity_assessments: {
+        Row: {
+          assessment_name: string
+          assessment_type: string
+          company_id: string
+          completed_at: string | null
+          created_at: string
+          current_level: string
+          due_at: string | null
+          entity_id: string | null
+          entity_name: string | null
+          entity_type: string | null
+          gaps: Json
+          id: string
+          owner_id: string | null
+          required_actions: Json
+          score: number
+          status: string
+          strengths: Json
+          target_level: string
+          updated_at: string
+        }
+        Insert: {
+          assessment_name: string
+          assessment_type?: string
+          company_id: string
+          completed_at?: string | null
+          created_at?: string
+          current_level?: string
+          due_at?: string | null
+          entity_id?: string | null
+          entity_name?: string | null
+          entity_type?: string | null
+          gaps?: Json
+          id?: string
+          owner_id?: string | null
+          required_actions?: Json
+          score?: number
+          status?: string
+          strengths?: Json
+          target_level?: string
+          updated_at?: string
+        }
+        Update: {
+          assessment_name?: string
+          assessment_type?: string
+          company_id?: string
+          completed_at?: string | null
+          created_at?: string
+          current_level?: string
+          due_at?: string | null
+          entity_id?: string | null
+          entity_name?: string | null
+          entity_type?: string | null
+          gaps?: Json
+          id?: string
+          owner_id?: string | null
+          required_actions?: Json
+          score?: number
+          status?: string
+          strengths?: Json
+          target_level?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trust_maturity_assessments_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trust_scorecards: {
+        Row: {
+          communication_score: number
+          company_id: string
+          compliance_score: number
+          created_at: string
+          delivery_score: number
+          entity_id: string | null
+          entity_name: string | null
+          entity_type: string
+          financial_score: number
+          id: string
+          maturity_level: string
+          metadata: Json
+          recommended_action: string | null
+          reliability_score: number
+          risk_score: number
+          summary: string | null
+          trust_score: number
+          updated_at: string
+        }
+        Insert: {
+          communication_score?: number
+          company_id: string
+          compliance_score?: number
+          created_at?: string
+          delivery_score?: number
+          entity_id?: string | null
+          entity_name?: string | null
+          entity_type?: string
+          financial_score?: number
+          id?: string
+          maturity_level?: string
+          metadata?: Json
+          recommended_action?: string | null
+          reliability_score?: number
+          risk_score?: number
+          summary?: string | null
+          trust_score?: number
+          updated_at?: string
+        }
+        Update: {
+          communication_score?: number
+          company_id?: string
+          compliance_score?: number
+          created_at?: string
+          delivery_score?: number
+          entity_id?: string | null
+          entity_name?: string | null
+          entity_type?: string
+          financial_score?: number
+          id?: string
+          maturity_level?: string
+          metadata?: Json
+          recommended_action?: string | null
+          reliability_score?: number
+          risk_score?: number
+          summary?: string | null
+          trust_score?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trust_scorecards_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trust_signals: {
+        Row: {
+          company_id: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          entity_id: string | null
+          entity_name: string | null
+          entity_type: string | null
+          id: string
+          impact: string
+          metadata: Json
+          score_delta: number
+          severity: string
+          signal_source: string
+          signal_type: string
+          source_record_id: string | null
+          source_table: string | null
+          title: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          entity_id?: string | null
+          entity_name?: string | null
+          entity_type?: string | null
+          id?: string
+          impact?: string
+          metadata?: Json
+          score_delta?: number
+          severity?: string
+          signal_source: string
+          signal_type: string
+          source_record_id?: string | null
+          source_table?: string | null
+          title: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          entity_id?: string | null
+          entity_name?: string | null
+          entity_type?: string | null
+          id?: string
+          impact?: string
+          metadata?: Json
+          score_delta?: number
+          severity?: string
+          signal_source?: string
+          signal_type?: string
+          source_record_id?: string | null
+          source_table?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trust_signals_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
