@@ -45,6 +45,9 @@ const nav = [
     { to: "/driver", label: "Load Offer", icon: Smartphone },
     { to: "/driver/navigation", label: "In-Trip Nav", icon: Navigation },
   ]},
+  { group: "Executive", items: [
+    { to: "/trust-os", label: "Trust OS", icon: ShieldCheck },
+  ]},
   { group: "System", items: [
     { to: "/settings/theme", label: "Theme Studio", icon: Palette },
     { to: "/settings/permissions", label: "Roles & Permissions", icon: ShieldCheck },

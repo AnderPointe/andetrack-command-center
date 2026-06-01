@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VehiclesRouteImport } from './routes/vehicles'
+import { Route as TrustOsRouteImport } from './routes/trust-os'
 import { Route as ShipmentsRouteImport } from './routes/shipments'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RoutesRouteImport } from './routes/routes'
@@ -31,6 +32,11 @@ import { Route as DashboardMessagesRouteImport } from './routes/dashboard.messag
 const VehiclesRoute = VehiclesRouteImport.update({
   id: '/vehicles',
   path: '/vehicles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustOsRoute = TrustOsRouteImport.update({
+  id: '/trust-os',
+  path: '/trust-os',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShipmentsRoute = ShipmentsRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
+  '/trust-os': typeof TrustOsRoute
   '/vehicles': typeof VehiclesRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
+  '/trust-os': typeof TrustOsRoute
   '/vehicles': typeof VehiclesRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/routes': typeof RoutesRoute
   '/settings': typeof SettingsRouteWithChildren
   '/shipments': typeof ShipmentsRoute
+  '/trust-os': typeof TrustOsRoute
   '/vehicles': typeof VehiclesRoute
   '/dashboard/messages': typeof DashboardMessagesRoute
   '/driver/navigation': typeof DriverNavigationRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/routes'
     | '/settings'
     | '/shipments'
+    | '/trust-os'
     | '/vehicles'
     | '/dashboard/messages'
     | '/driver/navigation'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/routes'
     | '/settings'
     | '/shipments'
+    | '/trust-os'
     | '/vehicles'
     | '/dashboard/messages'
     | '/driver/navigation'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/routes'
     | '/settings'
     | '/shipments'
+    | '/trust-os'
     | '/vehicles'
     | '/dashboard/messages'
     | '/driver/navigation'
@@ -255,6 +267,7 @@ export interface RootRouteChildren {
   RoutesRoute: typeof RoutesRoute
   SettingsRoute: typeof SettingsRouteWithChildren
   ShipmentsRoute: typeof ShipmentsRoute
+  TrustOsRoute: typeof TrustOsRoute
   VehiclesRoute: typeof VehiclesRoute
   DashboardMessagesRoute: typeof DashboardMessagesRoute
   DriverNavigationRoute: typeof DriverNavigationRoute
@@ -268,6 +281,13 @@ declare module '@tanstack/react-router' {
       path: '/vehicles'
       fullPath: '/vehicles'
       preLoaderRoute: typeof VehiclesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust-os': {
+      id: '/trust-os'
+      path: '/trust-os'
+      fullPath: '/trust-os'
+      preLoaderRoute: typeof TrustOsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shipments': {
@@ -429,6 +449,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoutesRoute: RoutesRoute,
   SettingsRoute: SettingsRouteWithChildren,
   ShipmentsRoute: ShipmentsRoute,
+  TrustOsRoute: TrustOsRoute,
   VehiclesRoute: VehiclesRoute,
   DashboardMessagesRoute: DashboardMessagesRoute,
   DriverNavigationRoute: DriverNavigationRoute,
@@ -437,3 +458,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
